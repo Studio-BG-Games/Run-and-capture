@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Element_Icon
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 252a204eea48d4644bc144ecc703205d, type: 3}
+    totalSpriteSurfaceArea: 559915
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: adbed631d72e2442bb353e0509f544d3, type: 3}
+  - {fileID: 21300000, guid: a9f8ca61866e94c9ba1582f2e0da3511, type: 3}
+  - {fileID: 21300000, guid: 2a87eee1c1d6b4f2b8342023f5a7c41e, type: 3}
+  - {fileID: 21300000, guid: 9dfaf382b2458400d9e776ddd60728f7, type: 3}
+  - {fileID: 21300000, guid: 8438cbb24e16d41eca2cdc42b12bee2a, type: 3}
+  - {fileID: 21300000, guid: 0fcb17e4159d348cf8dd8326a95fe87d, type: 3}
+  - {fileID: 21300000, guid: bc0643f4216cd460aaf146c9e8e45511, type: 3}
+  - {fileID: 21300000, guid: 83bb1e45db6a54ccc8252c4da4375645, type: 3}
+  - {fileID: 21300000, guid: 22631bb53c2d747599d33633e45abe29, type: 3}
+  - {fileID: 21300000, guid: b38a2be5bd3b440a68425ca0229eed60, type: 3}
+  - {fileID: 21300000, guid: 4a3a5246772504b978ec3657ec47b809, type: 3}
+  - {fileID: 21300000, guid: e7252486bd1254527ae58bb72f017c54, type: 3}
+  - {fileID: 21300000, guid: 1853a007c748b4164bf28e613cb5fa78, type: 3}
+  - {fileID: 21300000, guid: 24a3df272a1d34f5d9f47bfa2fe88872, type: 3}
+  - {fileID: 21300000, guid: ecead377269c042598485062f9ba484a, type: 3}
+  - {fileID: 21300000, guid: 383fc7770a9684dedb1f6f59322177df, type: 3}
+  - {fileID: 21300000, guid: 3422d3a7bd6a64e46af04c0d9b0b2aab, type: 3}
+  - {fileID: 21300000, guid: 64f1e198b9303415b8165441b2aa752b, type: 3}
+  - {fileID: 21300000, guid: 81facc29dc4e44803ae817dae5701789, type: 3}
+  - {fileID: 21300000, guid: 8accecd9cb4784a5d8a6d68eeff1f810, type: 3}
+  - {fileID: 21300000, guid: bb12246a41ff946ea93c1a040420fc9e, type: 3}
+  - {fileID: 21300000, guid: 73057d9a709a544b89ecaf02b6c134b2, type: 3}
+  - {fileID: 21300000, guid: ff37f30b4daa24912a3728735fe0b617, type: 3}
+  - {fileID: 21300000, guid: 72f3f91bc2f334b20be9a51d58d94d59, type: 3}
+  - {fileID: 21300000, guid: b736da1bf125e49c0a9cd0091b5d8631, type: 3}
+  - {fileID: 21300000, guid: 4d7e5dacd25694afe9c403399f5e9dab, type: 3}
+  - {fileID: 21300000, guid: 91bcd97dd9c1841eba64fa0c428ca7b7, type: 3}
+  - {fileID: 21300000, guid: cd4c2c7d9629c43b6b365a19b7048114, type: 3}
+  - {fileID: 21300000, guid: e9b699bd1849a48618ec1c5db62963f6, type: 3}
+  - {fileID: 21300000, guid: fa5c832ea087b4d698fba15fececc6a3, type: 3}
+  - {fileID: 21300000, guid: b282533e634ed4908808462f1214b019, type: 3}
+  - {fileID: 21300000, guid: 7d16234e20d2b43eb8fd0003570f7beb, type: 3}
+  - {fileID: 21300000, guid: 271e3b7f5aa1c4bb69c7d75b0496a131, type: 3}
+  - {fileID: 21300000, guid: 5770289f8d988428b8efe0491b076809, type: 3}
+  - {fileID: 21300000, guid: 8a29aebfa696b4f79aa6dd2213f58440, type: 3}
+  - {fileID: 21300000, guid: 267a17cf447ca41ffaf378c487b16b94, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - icon_potion_green
+  - icon_speed
+  - icon_potion_blue
+  - icon_gem_white
+  - icon_timer
+  - icon_gem_pink
+  - icon_lock
+  - icon_trophy
+  - icon_coin
+  - icon_energy_purple
+  - icon_user
+  - icon_energy_yellow
+  - icon_star_white
+  - icon_bomb
+  - icon_star_gold
+  - icon_energy_green
+  - icon_life_empty
+  - icon_shield_2
+  - icon_key
+  - icon_scroll
+  - icon_potion_red
+  - icon_medal_bronze
+  - icon_medal_silver
+  - icon_skull
+  - icon_life
+  - icon_setting
+  - icon_energy_blue
+  - icon_medal_gold
+  - icon_store
+  - icon_crown
+  - icon_message
+  - icon_shield
+  - icon_sword
+  - icon_treasure
+  - icon_calendar
+  - icon_feather
+  m_Tag: Element_Icon
+  m_IsVariant: 0

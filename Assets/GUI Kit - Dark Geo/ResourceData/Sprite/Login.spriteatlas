@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Login
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 0944474b8a19a460ba53fc9f05885cf1, type: 3}
+    totalSpriteSurfaceArea: 48594
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: f3b4360130e024c728350ee2cc33d9b6, type: 3}
+  - {fileID: 21300000, guid: 1343efe1879464f70b7374487c7e885c, type: 3}
+  - {fileID: 21300000, guid: 2c1175823e5ab4534bcc7d974ec933a0, type: 3}
+  - {fileID: 21300000, guid: d020afce7909d49a596487325412d2e9, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - user_empty_n
+  - txt_input_n
+  - txt_input_f
+  - user_empty_d
+  m_Tag: Login
+  m_IsVariant: 0

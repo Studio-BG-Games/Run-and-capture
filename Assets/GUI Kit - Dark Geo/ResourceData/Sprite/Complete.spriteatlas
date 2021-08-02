@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Complete
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 530ec1bce00c2481f8dfe63cd69f2dcb, type: 3}
+    totalSpriteSurfaceArea: 421254
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7631970221f2241a5b90324190147bf6, type: 3}
+  - {fileID: 21300000, guid: 21d862f23c59f4128bfdd4be1803d80b, type: 3}
+  - {fileID: 21300000, guid: 0ef38213c8ca142668acd09a983fa518, type: 3}
+  - {fileID: 21300000, guid: aaba9f84734b54a5bbb11286533c8077, type: 3}
+  - {fileID: 21300000, guid: b00a95e4b691146a79b12d9476a51426, type: 3}
+  - {fileID: 21300000, guid: 25eedf27d06c74536a2077d25f5df997, type: 3}
+  - {fileID: 21300000, guid: 175c4067194a149c2b9119b882f042ba, type: 3}
+  - {fileID: 21300000, guid: 3fb9dc38782a44f48b9765d011dbd14a, type: 3}
+  - {fileID: 21300000, guid: a089f8887a75b4922b6060dd9a50818b, type: 3}
+  - {fileID: 21300000, guid: 8f2ea50af8e8d46bf819795162a6da28, type: 3}
+  - {fileID: 21300000, guid: 3b9dae8b2792d42f1bad62b0fc984cf7, type: 3}
+  - {fileID: 21300000, guid: 08c9814d97e0243a9b8beb9f6da8cb19, type: 3}
+  - {fileID: 21300000, guid: cfe13a6fa64ee42ff847e243e4d1611a, type: 3}
+  - {fileID: 21300000, guid: f2c5bb6fbcb984a5ea5073b3665f2717, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - btn_forward_n 1
+  - complete_star1
+  - complete_game_info_bg
+  - complete_icon_kill
+  - btn_restart_n 1
+  - complete_icon_coin
+  - btn_category_f 1
+  - btn_forward_f 1
+  - complete_icon_distance
+  - complete_star2
+  - complete_star_bg
+  - btn_restart_f 1
+  - complete_star3
+  - btn_category_n 1
+  m_Tag: Complete
+  m_IsVariant: 0

@@ -1,0 +1,194 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: _Common
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: cb7515ae870864d4686d6390f6394e9d, type: 3}
+    totalSpriteSurfaceArea: 4777059
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 34244b001811c4be4a92260d830f2f0f, type: 3}
+  - {fileID: 21300000, guid: df627a10c6dcc4ad18733b1826d619d8, type: 3}
+  - {fileID: 21300000, guid: c5a80d60e79b6437cb4d56842407cec8, type: 3}
+  - {fileID: 21300000, guid: 76ee7fa08f17a4b05b146aa98ce6baf6, type: 3}
+  - {fileID: 21300000, guid: 87effb214c89547629f9e442d67669e9, type: 3}
+  - {fileID: 21300000, guid: 26611d51d544c4efc9132485c79313b2, type: 3}
+  - {fileID: 21300000, guid: aa98b461e912d4687b7ca1141c46c9e8, type: 3}
+  - {fileID: 21300000, guid: d1ed27610e104451982b65f71b9a8dc2, type: 3}
+  - {fileID: 21300000, guid: 841d596164fb548469a5cda08ea71ed8, type: 3}
+  - {fileID: 21300000, guid: 2659729159e8844ffaafb90cc78c4259, type: 3}
+  - {fileID: 21300000, guid: c2b087c110eb343c996ace40f5242a9b, type: 3}
+  - {fileID: 21300000, guid: a44248c10ef6c403484b9029a0757690, type: 3}
+  - {fileID: 21300000, guid: 7a652ee13bd3d4a83973b400ec978aca, type: 3}
+  - {fileID: 21300000, guid: e475a8f152f864cc5893aa5a8b404c16, type: 3}
+  - {fileID: 21300000, guid: 0386c5023f2e448eda29ed207d520c9c, type: 3}
+  - {fileID: 21300000, guid: 03418322100494cde9d968d545d7af6d, type: 3}
+  - {fileID: 21300000, guid: 1c94d6223e524467e80dfb203feaef01, type: 3}
+  - {fileID: 21300000, guid: 8cbadb42a80b14c458e1b9489a585e27, type: 3}
+  - {fileID: 21300000, guid: 8ea29bc256e3c4e19b2843c1c1aa7e68, type: 3}
+  - {fileID: 21300000, guid: 09f296d2cfe0e4ecda3322916f272dea, type: 3}
+  - {fileID: 21300000, guid: 8dfbda73043ee459f9c55fcebf8a2b79, type: 3}
+  - {fileID: 21300000, guid: 16d0bfb301bd44a4cbd5d83a40deb6f7, type: 3}
+  - {fileID: 21300000, guid: 145a8ee31900b43a3bee744312c93ad3, type: 3}
+  - {fileID: 21300000, guid: ae650504bbda54835a8851d91bbfd9d8, type: 3}
+  - {fileID: 21300000, guid: 00488804f17e24990a5ce3131e024501, type: 3}
+  - {fileID: 21300000, guid: 5b8f11d49dc8c449387fbbd20c489665, type: 3}
+  - {fileID: 21300000, guid: 7136ece4f81ee4b36aceb737d44307d2, type: 3}
+  - {fileID: 21300000, guid: a50a83f4f74f7415dbf8d97ad7f70f12, type: 3}
+  - {fileID: 21300000, guid: 38336f15001304295b82fd53bc4723ba, type: 3}
+  - {fileID: 21300000, guid: 3e9b6425dbeeb40af95745323e8777d4, type: 3}
+  - {fileID: 21300000, guid: 245dc0554ed8a490585dab6a87edbffc, type: 3}
+  - {fileID: 21300000, guid: ac1a5265460c949dd833a79829a059d8, type: 3}
+  - {fileID: 21300000, guid: 0dba6285ce5cf422a9c816f9417ae02f, type: 3}
+  - {fileID: 21300000, guid: 12064485dc9004ea29551a7f4fddee81, type: 3}
+  - {fileID: 21300000, guid: a70e72e585865475fbc1ba1d900cddfc, type: 3}
+  - {fileID: 21300000, guid: 9aeac9162c3d8478ebdd32a39de7c429, type: 3}
+  - {fileID: 21300000, guid: f909f056a1aa04e2f9eb697f8ecdb03d, type: 3}
+  - {fileID: 21300000, guid: 196594565363e45dc839bd1473111bb7, type: 3}
+  - {fileID: 21300000, guid: b6f6d65637db346f6940973ca40164d4, type: 3}
+  - {fileID: 21300000, guid: 935798e62f135421f968c6384b850b0a, type: 3}
+  - {fileID: 21300000, guid: 2bfeace6901304288ab0e4e024730b35, type: 3}
+  - {fileID: 21300000, guid: ebe3f217d5d244705b5f1cf2bfe48c43, type: 3}
+  - {fileID: 21300000, guid: 32e0da67e74444bdbb0ec0b6a31b10eb, type: 3}
+  - {fileID: 21300000, guid: 8c64e987625d642ca86b56c7ca6f457b, type: 3}
+  - {fileID: 21300000, guid: 25578997d4c394562a23c3a650863cd9, type: 3}
+  - {fileID: 21300000, guid: f78ed168b332b48d694b1411b5bf7792, type: 3}
+  - {fileID: 21300000, guid: eefbe8780c0c341fe9c7e664426a0fb0, type: 3}
+  - {fileID: 21300000, guid: 9971e6d80ca9740ee8d1ee0fbde5470e, type: 3}
+  - {fileID: 21300000, guid: fc19aae8d43e34e44a545327684073b2, type: 3}
+  - {fileID: 21300000, guid: 768835f8a85e444b9b51d16a6c7079b7, type: 3}
+  - {fileID: 21300000, guid: e572ba2982d92457ca57a075e7df97f2, type: 3}
+  - {fileID: 21300000, guid: 4c685d39f702d4823b1909212c7cde05, type: 3}
+  - {fileID: 21300000, guid: 49855b69748c048078ef805e13e75c80, type: 3}
+  - {fileID: 21300000, guid: 4dc1f289e31bd436498286911e840fa1, type: 3}
+  - {fileID: 21300000, guid: 613a7799ad43346b4adf369e4f537da9, type: 3}
+  - {fileID: 21300000, guid: fe7c713ab323d46b5a3d09dd030c667f, type: 3}
+  - {fileID: 21300000, guid: fd68f49ae4da7466e8cdcc31797c2fb0, type: 3}
+  - {fileID: 21300000, guid: 5597c6ea87dab45579c8c56e33a93cb5, type: 3}
+  - {fileID: 21300000, guid: 444ce13be5d4347088aed716375bdb1d, type: 3}
+  - {fileID: 21300000, guid: 906e1f4b67068425d96a6ceb1c0e0328, type: 3}
+  - {fileID: 21300000, guid: ddcf3cab17cfc40d7891f4ca19cc590d, type: 3}
+  - {fileID: 21300000, guid: 55f82acb318e54699b08f5702ed67205, type: 3}
+  - {fileID: 21300000, guid: 1144330c2447b49a1bc25f69e7e10d8b, type: 3}
+  - {fileID: 21300000, guid: 0caf372cf01e14f968529fcd859fd92d, type: 3}
+  - {fileID: 21300000, guid: aa237d3c87dd94690a4535571b3a1abd, type: 3}
+  - {fileID: 21300000, guid: cad6a24c86d274cd2b5e624c2e807621, type: 3}
+  - {fileID: 21300000, guid: 8928c97c1ba0841cc99bbe0aeeab7a82, type: 3}
+  - {fileID: 21300000, guid: b85a4c8c3fd2c4a3ba0b93521ea23a82, type: 3}
+  - {fileID: 21300000, guid: 2de3dbfcbeb3644ef9ede72cfb199a08, type: 3}
+  - {fileID: 21300000, guid: 681f051d8fa5b41cca8737c48848099c, type: 3}
+  - {fileID: 21300000, guid: 954a5dad46e8f4ba59234f0dda56f8c5, type: 3}
+  - {fileID: 21300000, guid: 8eaf699e5401a4148a8ace713d07c342, type: 3}
+  - {fileID: 21300000, guid: 6c07457fae548415898fa30abd7d3b8e, type: 3}
+  - {fileID: 21300000, guid: eda48b7fc41be467ebbc27f02d3b86cd, type: 3}
+  - {fileID: 21300000, guid: 133b7bafe60dc41e8abe526a84db3733, type: 3}
+  - {fileID: 21300000, guid: 5c6e14bf7bd7949e88113a39d3eaee74, type: 3}
+  - {fileID: 21300000, guid: 2d7928ef9fa224212855831490cdf192, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - btn_common_pause_f
+  - btn_void_02_d
+  - status_icon_life_fill
+  - status_bar_small
+  - btn_close_n
+  - check_hexagon_off
+  - status_icon_life
+  - status_fill_yellow
+  - check_octagon_on
+  - btn_void_02_f
+  - page_navi_on
+  - bg_borderline
+  - radio_hexagon_on
+  - status_icon_coin
+  - status_bar_bg
+  - status_fill_orange
+  - radio_octagon_on
+  - status_fill_purple
+  - btn_void_01_f
+  - btn_sns_twitter_f
+  - check_lozenge_on
+  - btn_sns_facebook_f
+  - status_fill_brown
+  - btn_common_pause_n
+  - page_navi_line
+  - switch_bg
+  - check_square_on
+  - btn_void_01_n
+  - status_icon_energy
+  - loading_bar_bg
+  - loading_fill
+  - btn_add_n
+  - line_list
+  - bg_item_frame_n
+  - bg_panel
+  - status_icon_key
+  - btn_sns_twitter_n
+  - btn_close_f
+  - status_icon_speed
+  - btn_void_02_n
+  - status_gem
+  - switch_on
+  - list_shadow_bottom
+  - radio_hexagon_off
+  - page_navi_off
+  - radio_lozenge_on
+  - status_icon_time
+  - status_icon_bomb
+  - radio_octagon_off
+  - radio_sqaure_on
+  - radio_lozenge_off
+  - btn_sns_google_n
+  - status_icon_potion_blue
+  - switch_off
+  - btn_add_f
+  - btn_sns_google_f
+  - btn_common_back_n
+  - btn_common_back_f
+  - check_octagon_off
+  - count_bg
+  - list_shadow_top
+  - status_fill_green
+  - status_bar_life_large
+  - status_icon_life_empty
+  - status_fill_red
+  - btn_sns_facebook_n
+  - bg_list_frame
+  - loading_fill_bg
+  - icon_user
+  - status_icon_potion_red
+  - check_lozenge_off
+  - check_square_off
+  - check_hexagon_on
+  - bg_dimed
+  - loading_bg
+  - radio_sqaure_off
+  - bg_item_frame_f
+  m_Tag: _Common
+  m_IsVariant: 0

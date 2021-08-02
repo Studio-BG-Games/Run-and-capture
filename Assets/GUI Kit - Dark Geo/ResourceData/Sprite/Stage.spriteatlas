@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Stage
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 481310f11dbc04e49b30440dbd9e1f4d, type: 3}
+    totalSpriteSurfaceArea: 202673
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: b6da7eb138b05427eb498d35967f941e, type: 3}
+  - {fileID: 21300000, guid: ecf72c12022e642b985dcb242b8cea5e, type: 3}
+  - {fileID: 21300000, guid: 8135a40473b22461691bd6ff6c45bfc7, type: 3}
+  - {fileID: 21300000, guid: 034e68064aeeb4201993c5aaac852ed3, type: 3}
+  - {fileID: 21300000, guid: ac5f55c62046a4339abe58fa763e37a3, type: 3}
+  - {fileID: 21300000, guid: 7f03b847e90204b2b87816f9c8297a09, type: 3}
+  - {fileID: 21300000, guid: b9c0f089c365d441fbeb35684fcc0049, type: 3}
+  - {fileID: 21300000, guid: d9835e4a99d0040459f3e6c23986c64a, type: 3}
+  - {fileID: 21300000, guid: b98a6b6a7f73b440eb3b7e5a01147f52, type: 3}
+  - {fileID: 21300000, guid: c6aa878aa67bb4f46851e5a47aefca3e, type: 3}
+  - {fileID: 21300000, guid: 0ac09b3ba3fd24f0f932ee47de3d212d, type: 3}
+  - {fileID: 21300000, guid: 52681ffecc47f45fdb61c2937adcd28d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - page_prev_f
+  - icon_count_star
+  - page_next_n
+  - page_next_f
+  - stage_star_2
+  - stage_star_1
+  - stage_top_bg
+  - stage_frame_lock
+  - stage_star_3
+  - page_prev_n
+  - stage_frame_select
+  - stage_frame_default
+  m_Tag: Stage
+  m_IsVariant: 0

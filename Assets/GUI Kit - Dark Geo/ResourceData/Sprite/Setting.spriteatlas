@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Setting
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 5203569c790a94f5999ac4160f240561, type: 3}
+    totalSpriteSurfaceArea: 55758
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: ec33961130eb34d8f9b758f3fc2c56a4, type: 3}
+  - {fileID: 21300000, guid: 22d158318fb9944de92ccfca459a36d0, type: 3}
+  - {fileID: 21300000, guid: 89e13f22a989e449ca6557db3b4e1e2a, type: 3}
+  - {fileID: 21300000, guid: de6654c331e8249919e24405fe73b598, type: 3}
+  - {fileID: 21300000, guid: 198d0345055364c2fa1fbdf0955e39c2, type: 3}
+  - {fileID: 21300000, guid: e02c8ce552df54cedae367dc8681aca3, type: 3}
+  - {fileID: 21300000, guid: 4452e3360f77943318bd833fdac8da04, type: 3}
+  - {fileID: 21300000, guid: 723bd71991dcf4179a8659be5d4876ed, type: 3}
+  - {fileID: 21300000, guid: 0038453d31dd043a78f460ad216aa075, type: 3}
+  - {fileID: 21300000, guid: a105526df060d411597250ac5940bbc4, type: 3}
+  - {fileID: 21300000, guid: c3fbc1bf7c7c0417b9d11924fb70f647, type: 3}
+  - {fileID: 21300000, guid: d13cd1bf47b6048dbaf83ddea7b3c0ab, type: 3}
+  - {fileID: 21300000, guid: c3e4ebbf211184ad9aea4704ea1e9961, type: 3}
+  - {fileID: 21300000, guid: bf1eaadf8f36f4053aad8d07482cf694, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - difficulty_bar
+  - setting_language_bg
+  - difficulty_point_on
+  - setting_language_kor
+  - setting_language_chn
+  - setting_icon_language
+  - setting_icon_music
+  - setting_icon_sound
+  - setting_language_fra
+  - difficulty_point_off
+  - setting_language_jpn
+  - setting_icon_notification
+  - setting_language_usa
+  - setting_language_list
+  m_Tag: Setting
+  m_IsVariant: 0

@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Achievements
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 79b47936f4d5e4eae93cafb79da5173c, type: 3}
+    totalSpriteSurfaceArea: 136413
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d4bf18808b56b40debf0a9b593443d2d, type: 3}
+  - {fileID: 21300000, guid: c8e5d2907b6fb4617968e548797fda3f, type: 3}
+  - {fileID: 21300000, guid: 7265ab11b2ddc40d3b9457df159fb4b0, type: 3}
+  - {fileID: 21300000, guid: 3d440b22edfcf49619014fab8e8a40df, type: 3}
+  - {fileID: 21300000, guid: 7b8c4303d00b24ea8b69e28b479e2294, type: 3}
+  - {fileID: 21300000, guid: b1efce74518fb4eb98cacadee1190a58, type: 3}
+  - {fileID: 21300000, guid: a7c110b482dd2486096487d514e81d5a, type: 3}
+  - {fileID: 21300000, guid: d08feb357f47840c5b2fa5a24f364a61, type: 3}
+  - {fileID: 21300000, guid: 3b56b2268293c4935bde683d25a584ae, type: 3}
+  - {fileID: 21300000, guid: 0d095aa7672664a6cbfdd73f37e5c3f2, type: 3}
+  - {fileID: 21300000, guid: e3d1e159d8eb448f899cbf3864d50bae, type: 3}
+  - {fileID: 21300000, guid: c12a119ad47184d469d58cfe9b37eb8b, type: 3}
+  - {fileID: 21300000, guid: 091058cbfda704157b18b22e583512c3, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - achievements_btn_icon_gem
+  - achievements_btn_icon_coin
+  - achievements_btn_d
+  - achievements_img_distance
+  - achievements_img_kill
+  - achievements_gage_bg
+  - achievements_img_calendar
+  - achievements_gage_bar
+  - achievements_btn_f
+  - achievements_gage_bar_color
+  - achievements_img_combo
+  - achievements_btn_n
+  - achievements_img_scroll
+  m_Tag: Achievements
+  m_IsVariant: 0

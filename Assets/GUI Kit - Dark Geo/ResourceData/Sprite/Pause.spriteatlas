@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pause
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 38ec6f171cf894bbfb99939c8aa08be9, type: 3}
+    totalSpriteSurfaceArea: 2383020
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: abb1eb03391e644d190309dd744ec827, type: 3}
+  - {fileID: 21300000, guid: 69f42a64932194894923eade63bdb38d, type: 3}
+  - {fileID: 21300000, guid: 5d3af85513bfe408b9af0279226522a4, type: 3}
+  - {fileID: 21300000, guid: ca5638b6aed3f4f2aa4d1716e6251664, type: 3}
+  - {fileID: 21300000, guid: 347cbbc7c76f14f96a8cc5ee1bc1a483, type: 3}
+  - {fileID: 21300000, guid: ad7fc028cbb254097947e716651e2c76, type: 3}
+  - {fileID: 21300000, guid: c2cde0a840c284c80998b35c2a2b40b0, type: 3}
+  - {fileID: 21300000, guid: 78bf695af6af7489a8cb47a228b9d2ba, type: 3}
+  - {fileID: 21300000, guid: b0b9122cccd484b53883397c46c00f8c, type: 3}
+  - {fileID: 21300000, guid: 51bf9d6e130b84049802b917b54307bf, type: 3}
+  - {fileID: 21300000, guid: 928b90fe3a87c4474817c1eca35d32fd, type: 3}
+  - {fileID: 21300000, guid: 314537fe2a9e84c979eb80de617d66a0, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - btn_sound_n
+  - pause_btn_restart_n
+  - pause_btn_resume_f
+  - pause_title
+  - btn_sound_f
+  - pause_btn_home_n
+  - pause_btn_restart_f
+  - btn_music_f
+  - pause_btn_home_f
+  - pause_bg_dim
+  - pause_btn_resume_n
+  - btn_music_n
+  m_Tag: Pause
+  m_IsVariant: 0

@@ -1,0 +1,201 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TileManagment : MonoBehaviour
+{
+    public const int BASIC_DIRECTIONS = 6;
+
+    public static List<TileInfo> levelTiles = new List<TileInfo>();
+    public static List<TileInfo> ariostTiles = new List<TileInfo>();
+
+    public List<Material> tileMaterials;    
+
+    public static float tileOffset;
+
+    public static Vector3[] basicDirections;
+
+    private void Awake()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            var tile = transform.GetChild(i).GetComponent<TileInfo>();
+            if (tile)
+            {
+                levelTiles.Add(tile);
+                SetTileStartParams(tile);
+                if (tile.tileOwnerIndex == TileOwner.Ariost)
+                {
+                    ariostTiles.Add(tile);
+                }
+            }
+        }
+
+        tileOffset = Vector3.Distance(levelTiles[0].tilePosition, levelTiles[3].tilePosition);
+
+        basicDirections = GetBasicDirections(BASIC_DIRECTIONS);
+        
+    }    
+
+    private void Start()
+    {
+        //Debug.Log("We have "+ levelTiles.Count + " tiles on this level");
+        //Debug.Log("Tiles offset "+ _tilesOffset +" units");
+        //Debug.Log(GetTile(new Vector3(0f, 0f, 0f), new Vector3(-0.9f, 0f, 1.7f), 1));
+        if (tileMaterials.Count == 0)
+        {
+            Debug.LogError("You need to set tile materials to TileManagment");
+        }
+
+
+    }
+
+    private void SetTileStartParams(TileInfo tile)
+    {
+        tile.tilePosition = tile.transform.position;
+        tile.GetComponent<Renderer>().material = tileMaterials[(int)tile.tileOwnerIndex];
+    }
+
+    public void ChangeTileOwner(TileInfo tile, TileOwner ownerIndex)
+    {
+        tile.tileOwnerIndex = ownerIndex;
+        tile.GetComponent<Renderer>().material = tileMaterials[(int)tile.tileOwnerIndex];
+
+        ariostTiles.Add(tile);
+
+        //Debug.Log(GetOtherTiles(tile).Count);
+        CheckSurroundedTiles(levelTiles, ownerIndex, tile);
+        //Debug.Log("Captured " + tile.name);
+    }    
+
+    public static void AssignBuildingToTile(TileInfo tile, GameObject building)
+    {
+        tile.buildingOnTile = building;
+        tile.canMove = false;
+        tile.canBuildHere = false;
+    }
+
+    public static TileInfo GetTile(Vector3 position)
+    {
+        TileInfo resultTile = levelTiles[0];
+        foreach (TileInfo tile in levelTiles)
+        {
+            if (Vector3.Distance(position, tile.tilePosition) < Vector3.Distance(position, resultTile.tilePosition))
+            {
+                resultTile = tile;
+            }            
+        }
+        if (Vector3.Distance(position, resultTile.tilePosition) > tileOffset/2)
+        {
+            return null;
+        }
+        else 
+        {
+            return resultTile;
+        }        
+    }
+
+    public static TileInfo GetTile(Vector3 currentTilePosition, Vector3 direction, float distance)
+    {
+        direction = direction.normalized;
+        distance = distance -  0.1f;
+        Vector3 tilePos = currentTilePosition + (direction * distance*tileOffset);
+        return GetTile(tilePos);
+    }
+
+    public static List<TileInfo> GetOtherTiles(TileInfo currentTile, TileOwner ownerIndex)
+    {
+        List<TileInfo> otherTiles = new List<TileInfo>();
+        //int notMyTiles = 0;
+        foreach (Vector3 dir in basicDirections)
+        {
+            var tile = GetTile(currentTile.tilePosition + dir * TileManagment.tileOffset);
+            if (tile)
+            {
+                if (tile.tileOwnerIndex != ownerIndex)
+                {
+                    //notMyTiles++;
+                    otherTiles.Add(tile);
+                }
+            }
+        }
+        //Debug.Log("We have " + notMyTiles + " not my tiles around " + currentTile.name);
+        return otherTiles;
+    }
+
+    public static Vector3[] GetBasicDirections(int directionsAmount)
+    {
+        Vector3[] tempArr = new Vector3[directionsAmount];
+        float deltaAngle = 360 / directionsAmount;
+        for (int i = 0; i < directionsAmount; i++)
+        {
+            tempArr[i] = Quaternion.AngleAxis(i * deltaAngle, Vector3.up) * Vector3.right;
+        }
+        //Debug.Log(tempArr);
+        return tempArr;
+    }
+
+    public static void CheckSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)
+    {
+        foreach (TileInfo tile in tiles)
+        {
+            tile.isChecked = false;
+        }
+        List<TileInfo> firstAdjacentTiles = GetOtherTiles(startTile, ownerIndex);
+        foreach (TileInfo tile in firstAdjacentTiles)
+        {
+            SetSurroundedTiles(tiles, ownerIndex, tile);
+        }
+    }
+    public static void SetSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)
+    {
+        List<TileInfo> surroundedTiles = new List<TileInfo>();
+        var q = new Queue<TileInfo>(tiles.Count);
+        q.Enqueue(startTile);
+        int iterations = 0;
+
+        while (q.Count > 0)
+        {
+            var tile = q.Dequeue();
+            //Debug.Log("current tile " + tile.name);
+
+            if (q.Count > tiles.Count)
+            {
+                throw new Exception("The algorithm is probably looping. Queue size: " + q.Count);
+            }
+
+            if (tile.isBorderTile)  //we are in a wrong area
+            {
+                //Debug.Log("FindBorder");
+                surroundedTiles.Clear();
+                return;
+            }
+
+            if (surroundedTiles.Contains(tile))
+            {
+                continue;
+            }
+
+            surroundedTiles.Add(tile);
+            tile.isChecked = true;
+
+            var adjacentTiles = GetOtherTiles(tile, ownerIndex);
+            //Debug.Log("second tiles "+ adjacentTiles.Count);
+            foreach (TileInfo newTile in adjacentTiles)
+            {
+                q.Enqueue(newTile);                
+            }
+
+            iterations++;
+        }
+        //Debug.Log("Found " +surroundedTiles.Count + " tiles");
+        //Debug.Log("Iterations " + iterations);
+
+        foreach (TileInfo tile in surroundedTiles)
+        {
+            tile.whoCanEasyGetTile = ownerIndex;
+        }
+        Debug.Log("Surrounded " + surroundedTiles.Count);
+    }
+}

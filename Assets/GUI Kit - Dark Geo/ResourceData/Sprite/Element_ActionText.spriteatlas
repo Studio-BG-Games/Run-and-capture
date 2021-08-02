@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Element_ActionText
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 2f40815cc89d04fe880763201289279d, type: 3}
+    totalSpriteSurfaceArea: 868817
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 552a5170ba0744721966f274c655583d, type: 3}
+  - {fileID: 21300000, guid: 9bcaf42153ec94232ab8f4000bb069b3, type: 3}
+  - {fileID: 21300000, guid: 7e222e71fab6e4206ad2795fbc31321a, type: 3}
+  - {fileID: 21300000, guid: 8c774003bbe7e47f890eb526efbc4344, type: 3}
+  - {fileID: 21300000, guid: 8e60f363d26d54980a1ea31cff65ca24, type: 3}
+  - {fileID: 21300000, guid: a12382f3bada4435f9e9ae891b4cada1, type: 3}
+  - {fileID: 21300000, guid: 247da4449fc314b63871eb21a390272c, type: 3}
+  - {fileID: 21300000, guid: 9214e8871312043f1b44970f854e2a6f, type: 3}
+  - {fileID: 21300000, guid: 3b0b4808cfccc47aeb911ea51b39190b, type: 3}
+  - {fileID: 21300000, guid: 119d8888ca7ab4fd9a3d50b2965e467f, type: 3}
+  - {fileID: 21300000, guid: df4c6df8ed49b4fc3a38d1bb39fae689, type: 3}
+  - {fileID: 21300000, guid: 742912190f70c4ae2b8f4d89c82760db, type: 3}
+  - {fileID: 21300000, guid: f6966819f0e9b4dbdb25b817d08408b9, type: 3}
+  - {fileID: 21300000, guid: 12b83d6a0f4694ebf9cd9b35542050ff, type: 3}
+  - {fileID: 21300000, guid: b1ef015bf64c94c31adb47f37bed4249, type: 3}
+  - {fileID: 21300000, guid: 449509bbcebda475b944f3c5c7ac0fac, type: 3}
+  - {fileID: 21300000, guid: a0fb7dac9737e4265a6dcdc13fae5a47, type: 3}
+  - {fileID: 21300000, guid: cb7ec2bcf76214a55a532a380961e2ed, type: 3}
+  - {fileID: 21300000, guid: 1dd8e75e204c64dff981ea2caab445d8, type: 3}
+  - {fileID: 21300000, guid: b3c30c0f988ff4e5490a55db1ea77281, type: 3}
+  - {fileID: 21300000, guid: aa81924f759ab46cb9f2570777052635, type: 3}
+  - {fileID: 21300000, guid: 915584cfde26c4e788d478d984077cb3, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - txt_go
+  - txt_good
+  - txt_bonus_time
+  - txt_combo
+  - action_icon_sword
+  - txt_backward_Lage_deco2
+  - action_icon_medal
+  - txt_defeat
+  - action_icon_hourglass
+  - txt_backward_Lage_deco1
+  - txt_great
+  - txt_victory
+  - action_icon_laurel_right
+  - action_icon_laurel_left
+  - action_icon_skull
+  - txt_game_over
+  - txt_backward_small_deco2
+  - txt_backward_small_deco1
+  - txt_level_up
+  - txt_mission_clear
+  - txt_ready
+  - txt_wow
+  m_Tag: Element_ActionText
+  m_IsVariant: 0
