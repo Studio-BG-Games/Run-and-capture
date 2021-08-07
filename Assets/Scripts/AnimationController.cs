@@ -6,14 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerState))]
 public class AnimationController : MonoBehaviour
 {
-    public Animator characterAnimator;
+    private Animator _characterAnimator;
 
     private PlayerState _playerState;
 
     private void Start()
     {
         _playerState = GetComponent<PlayerState>();
-
+        _characterAnimator = GetComponentInChildren<Animator>();
         _playerState.OnCharStateChanged += SetNewStateAnimation;
     }
 
@@ -36,7 +36,7 @@ public class AnimationController : MonoBehaviour
         }
         if (activationTrigger != "")
         {
-            characterAnimator.SetTrigger(activationTrigger);
+            _characterAnimator.SetTrigger(activationTrigger);
         }
     }
     

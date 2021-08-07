@@ -10,6 +10,7 @@ public class PlayerState : MonoBehaviour
     public CharacterState currentState;
     public TileOwner ownerIndex = TileOwner.Ariost;
     public ActionType currentAction = ActionType.Attack;
+    public ControlType controlType = ControlType.Player;
 
 
     public TileInfo currentTile;
@@ -94,7 +95,7 @@ public class PlayerState : MonoBehaviour
 
     public bool IsAnyActionsAllowed()
     {
-        return currentTile.tileOwnerIndex == ownerIndex && currentState == CharacterState.Idle;
+        return (currentTile.tileOwnerIndex == ownerIndex) && (currentState == CharacterState.Idle);
     }
 }
 
@@ -118,4 +119,10 @@ public enum ActionType
 {
     Attack,
     Build,    
+}
+
+public enum ControlType
+{
+    Player,
+    AI
 }

@@ -16,9 +16,9 @@ public class TreesSpawner : MonoBehaviour
 
     public List<GameObject> treePrefabs;
 
-    private List<GameObject> ariostTrees = new List<GameObject>();
+    private List<List<GameObject>> charTrees = new List<List<GameObject>>();
 
-    private int requiredAriostTrees;
+    private List<int> requiredCharTrees;
 
     private Queue<GameObject> spawningTrees;
 
@@ -30,7 +30,7 @@ public class TreesSpawner : MonoBehaviour
 
     private void PlantTreeOnRandomTile()
     {
-        var treePrefToSpawn = spawningTrees.Dequeue();
+        /*var treePrefToSpawn = spawningTrees.Dequeue();
 
         int randIndex;
         TileInfo tile;
@@ -59,7 +59,7 @@ public class TreesSpawner : MonoBehaviour
             spawningTrees.Enqueue(treePrefToSpawn);
             PlantTreeOnRandomTile();
             return;
-        }        
+        }        */
 
         //Debug.Log("player pos " + playerPos);
         //Debug.Log("tile pos " + tile.tilePosition);
@@ -70,6 +70,7 @@ public class TreesSpawner : MonoBehaviour
 
     private void CheckForPlanting()
     {
+        /*foreach()
         requiredAriostTrees = Mathf.FloorToInt(treeCoverKoef * TileManagment.ariostTiles.Count);
         int newTreesForPlanting = requiredAriostTrees - ariostTrees.Count - spawningTrees.Count;
         //Debug.Log("need to spawn " + newTreesForPlanting);
@@ -78,7 +79,7 @@ public class TreesSpawner : MonoBehaviour
         for (int i = 0; i < newTreesForPlanting; i++)
         {
             CreatePlantTask();
-        }
+        }*/
     }
 
     private void CreatePlantTask()

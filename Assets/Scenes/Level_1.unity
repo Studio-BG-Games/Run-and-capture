@@ -135,6 +135,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 47682890}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &14250191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14250189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &14250194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +171,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &20254784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -316,6 +331,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1612463919}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &25663566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25663564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &25663569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +367,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &30624028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -571,6 +601,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 501594817}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &66595010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66595008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &66595013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,7 +637,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &72857587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -604,6 +649,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 834077339}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &72857589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72857587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &72857592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,7 +685,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &86572945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -972,7 +1032,7 @@ PrefabInstance:
     - target: {fileID: 5048506557351598633, guid: 8df6337a574cdad4bb6ec66cc50c6c2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8df6337a574cdad4bb6ec66cc50c6c2b, type: 3}
@@ -988,6 +1048,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1401260777}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &112167442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112167440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &112167445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,7 +1084,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &115669075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1095,6 +1170,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 242282009}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &121003175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121003173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &121003178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,7 +1206,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &135500051 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -1128,6 +1218,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1539306586}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &135500053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135500051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &135500056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1148,7 +1254,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &136963675 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -1161,6 +1266,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 393421528}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &136963677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136963675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &136963680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,7 +1302,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &139969362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1342,6 +1462,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 720996112}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &150056903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150056901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &150056906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1362,7 +1498,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &161552596 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -1375,6 +1510,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 180042169}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &161552598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161552596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &161552601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,7 +1546,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &171351058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1490,7 +1640,7 @@ PrefabInstance:
     - target: {fileID: 8972792315067895909, guid: cda7125c8e1c54f4381462bc1f17d4f2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8972792315067895909, guid: cda7125c8e1c54f4381462bc1f17d4f2,
         type: 3}
@@ -1544,90 +1694,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cda7125c8e1c54f4381462bc1f17d4f2, type: 3}
---- !u!1001 &172527815
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -1148229131982139879, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 9e1a6090cd4d65d4599676c24fcb5cff, type: 2}
-    - target: {fileID: -1148229131982139879, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 233917392663333734, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_Name
-      value: Ragnar
-      objectReference: {fileID: 0}
-    - target: {fileID: 233917392663333734, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9659258
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.2588191
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b4e44fa43f796444bb2acc08a5dc9568, type: 3}
 --- !u!1001 &172872020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1808,7 +1874,7 @@ Transform:
   m_Children:
   - {fileID: 526352758}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &185995048
 MonoBehaviour:
@@ -1872,6 +1938,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1252524476}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &186187758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186187756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &186187761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1892,7 +1974,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &194011036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1979,6 +2060,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 829807728}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &199662654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199662652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &199662657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1999,7 +2096,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &204020530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2086,6 +2182,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 986848581}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &209130275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209130273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &209130278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2106,7 +2218,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &209170406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2193,6 +2304,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1567347420}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &217891342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217891340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &217891345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2213,7 +2340,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &220841019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2300,6 +2426,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1799148886}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &222759791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222759789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &222759794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2320,7 +2462,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &224126221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -2333,6 +2474,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 220841019}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &224126223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224126221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &224126226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2353,7 +2510,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &242282009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2596,6 +2752,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1560670280}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &253089261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253089259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &253089264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2616,7 +2788,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &253892758 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -2629,6 +2800,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 955721060}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &253892760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253892758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &253892763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2649,7 +2836,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &272588900 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -2662,6 +2848,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1692866084}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &272588902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272588900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &272588905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2682,7 +2884,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &276439311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2769,6 +2970,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1579084041}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &278340248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278340246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &278340251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2789,7 +3006,6 @@ MonoBehaviour:
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &281753801 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -2802,6 +3018,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 503338020}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &281753803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281753801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &281753806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2822,7 +3054,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &284805664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2909,6 +3140,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 284805664}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &299309062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299309060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &299309065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2929,7 +3176,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &300084727 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -2942,6 +3188,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1084533236}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &300084729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300084727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &300084732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2962,7 +3224,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &301241212 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -2975,6 +3236,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1067445697}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &301241214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301241212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &301241217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2995,7 +3272,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &302478904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -3008,6 +3284,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2088698032}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &302478906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302478904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &302478909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3028,7 +3320,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &302483892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3350,7 +3641,7 @@ PrefabInstance:
     - target: {fileID: 8298710706611081709, guid: 60480c1f7fb543e4b9144e972e469275,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8298710706611081709, guid: 60480c1f7fb543e4b9144e972e469275,
         type: 3}
@@ -3416,6 +3707,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 194011036}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &342649177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342649175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &342649180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3436,7 +3743,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &343658094 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -3449,6 +3755,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 743919845}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &343658096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343658094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &343658099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3469,7 +3791,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &345538042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3638,7 +3959,7 @@ PrefabInstance:
     - target: {fileID: 3517096866996221093, guid: f873683fcfd25ff4990dd0725fd40b04,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3517096866996221093, guid: f873683fcfd25ff4990dd0725fd40b04,
         type: 3}
@@ -3704,6 +4025,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1998008198}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &358394929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358394927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &358394932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3724,7 +4061,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &362229898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -3737,6 +4073,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 209170406}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &362229900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362229898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &362229903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3757,7 +4109,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &367297075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3778,7 +4129,7 @@ PrefabInstance:
     - target: {fileID: 8075972121593568698, guid: 1a81dbbd6ef62324491d9f58654ebe4b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8075972121593568698, guid: 1a81dbbd6ef62324491d9f58654ebe4b,
         type: 3}
@@ -3854,6 +4205,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2029386485}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &377317912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377317910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &377317915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3874,7 +4241,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &388088729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4109,6 +4475,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 302483892}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &398996371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398996369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &398996374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4129,7 +4511,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &401769308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4364,6 +4745,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1082823265}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &412169717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412169715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &412169720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4384,7 +4781,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &427422206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4405,7 +4801,7 @@ PrefabInstance:
     - target: {fileID: 7150739129758644021, guid: f102085e8bc4cad4992d43b84dee1055,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7150739129758644021, guid: f102085e8bc4cad4992d43b84dee1055,
         type: 3}
@@ -4629,6 +5025,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1318940370}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &444687693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444687691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &444687696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4649,7 +5061,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &451650455 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -4662,6 +5073,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1925314439}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &451650457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451650455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &451650460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4682,7 +5109,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &454820459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -4695,6 +5121,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1711077902}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &454820461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454820459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &454820464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4715,7 +5157,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &465301246
 GameObject:
   m_ObjectHideFlags: 0
@@ -4744,8 +5185,88 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &466374034
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1819395262}
+    m_Modifications:
+    - target: {fileID: -1148229131982139879, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9e1a6090cd4d65d4599676c24fcb5cff, type: 2}
+    - target: {fileID: 233917392663333734, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_Name
+      value: Ragnar
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4e44fa43f796444bb2acc08a5dc9568, type: 3}
+--- !u!4 &466374035 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+    type: 3}
+  m_PrefabInstance: {fileID: 466374034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &471392440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4832,6 +5353,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1508945981}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &475241724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475241722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &475241727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4852,7 +5389,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &479454667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4939,6 +5475,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1857028305}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &487278053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487278051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &487278056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4959,7 +5511,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &488546937 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -4972,6 +5523,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2123919376}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &488546939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488546937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &488546942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4992,7 +5559,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &488744618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5079,6 +5645,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1258335437}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &492316318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492316316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &492316321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5099,7 +5681,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &496571509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5416,7 +5997,7 @@ Transform:
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &508187713
 PrefabInstance:
@@ -5504,6 +6085,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1381110093}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &508666158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508666156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &508666161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5524,7 +6121,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &526069304 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -5537,6 +6133,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 547364747}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &526069306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526069304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &526069309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5557,7 +6169,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &526352757
 GameObject:
   m_ObjectHideFlags: 0
@@ -5602,7 +6213,7 @@ PrefabInstance:
     - target: {fileID: 4105471131721419270, guid: 24fe481d133791942ad235ac6f948de1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4105471131721419270, guid: 24fe481d133791942ad235ac6f948de1,
         type: 3}
@@ -5678,6 +6289,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 931225833}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &537932467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537932465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &537932470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5698,7 +6325,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &539454218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5801,6 +6427,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1827194500}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &542818041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542818039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &542818044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5821,7 +6463,6 @@ MonoBehaviour:
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &544944283 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -5834,6 +6475,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 435744795}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &544944285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544944283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &544944288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5854,7 +6511,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &547364747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6089,6 +6745,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1405333779}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &562659415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562659413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &562659418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6109,7 +6781,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &564500538
 GameObject:
   m_ObjectHideFlags: 0
@@ -6349,6 +7020,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 42917921}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &570923319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570923317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &570923322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6369,7 +7056,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &572316721 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -6382,6 +7068,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 20484141}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &572316723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572316721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &572316726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6402,7 +7104,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &572774820 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -6415,6 +7116,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1151282827}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &572774822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572774820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &572774825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6435,7 +7152,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &584444496 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -6448,6 +7164,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1578005280}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &584444498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584444496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &584444501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6468,7 +7200,6 @@ MonoBehaviour:
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &585697842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6563,7 +7294,7 @@ PrefabInstance:
     - target: {fileID: 8133904133623688993, guid: 792d79bc559b59f4991d2347b491c743,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8133904133623688993, guid: 792d79bc559b59f4991d2347b491c743,
         type: 3}
@@ -6777,6 +7508,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 550447590}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &609645831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609645829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &609645834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6797,7 +7544,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &616429789 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -6810,6 +7556,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1365323309}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &616429791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616429789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &616429794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6830,7 +7592,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &621175344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6841,7 +7602,7 @@ PrefabInstance:
     - target: {fileID: 3412993055349026426, guid: d3e11f6c636bf1a498f07abd9e0bd885,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3412993055349026426, guid: d3e11f6c636bf1a498f07abd9e0bd885,
         type: 3}
@@ -6935,8 +7696,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_Father: {fileID: 1801060022}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7090,6 +7851,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1114791461}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &654258992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654258990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &654258995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7110,7 +7887,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &660685387 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -7123,6 +7899,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1934511458}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &660685389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660685387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &660685392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7143,7 +7935,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &664144873 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -7156,6 +7947,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 566106029}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &664144875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664144873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &664144878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7176,7 +7983,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &665268821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7263,6 +8069,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 678235799}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &676849462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676849460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &676849465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7283,7 +8105,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &678235799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7685,6 +8506,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2050445104}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &729535430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729535428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &729535433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7705,7 +8542,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &735264071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7792,6 +8628,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1148327361}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &736269107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736269105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &736269110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7812,7 +8664,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &738099163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7899,6 +8750,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1916896611}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &742343275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742343273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &742343278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7919,7 +8786,6 @@ MonoBehaviour:
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &743919845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8208,7 +9074,7 @@ Transform:
   - {fileID: 272588901}
   - {fileID: 1605217076}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &747264115
 MonoBehaviour:
@@ -8228,6 +9094,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 11cfdc9193510f14a800c079f03262bb, type: 2}
   - {fileID: 2100000, guid: 491734c35c2ab2a489382e51b21de431, type: 2}
   - {fileID: 2100000, guid: 8b4d0931cd71e884580506919f308711, type: 2}
+  pathTiles: []
 --- !u!1001 &752477394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8388,6 +9255,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1207377346}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &759264900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759264898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &759264903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8408,7 +9291,36 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
+--- !u!1 &774590128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774590129}
+  m_Layer: 0
+  m_Name: ProgressUI_Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &774590129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774590128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1819395262}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789804125
 GameObject:
   m_ObjectHideFlags: 0
@@ -8574,6 +9486,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 939946495}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &802253122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802253120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &802253125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8594,7 +9522,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &806015914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -8607,6 +9534,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1844833689}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &806015916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806015914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &806015919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8627,7 +9570,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &806778563
 GameObject:
   m_ObjectHideFlags: 0
@@ -8699,7 +9641,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &807330786
 PrefabInstance:
@@ -8787,6 +9729,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2027622908}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &810514393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810514391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &810514396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8807,7 +9765,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &829807728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9042,6 +9999,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1639545075}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &835294897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835294895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &835294900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9062,7 +10035,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &841449232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9137,6 +10109,37 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 592213770db2d80419af5780e2a1d20c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5ecf8ffbe22c7459c44494cee176d9, type: 3}
+--- !u!1 &842327023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 842327024}
+  m_Layer: 0
+  m_Name: AttackUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &842327024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842327023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1222129793}
+  m_Father: {fileID: 1819395262}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &848854254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9157,7 +10160,7 @@ PrefabInstance:
     - target: {fileID: 5433028802341862917, guid: 93c05c92bf8823547a10c203ca6a651b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5433028802341862917, guid: 93c05c92bf8823547a10c203ca6a651b,
         type: 3}
@@ -9223,6 +10226,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 949019540}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &856377011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856377009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &856377014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9243,7 +10262,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &856708958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9552,6 +10570,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 629086910}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &866915164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866915162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &866915167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9569,10 +10603,9 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &868688832
 GameObject:
   m_ObjectHideFlags: 0
@@ -9664,7 +10697,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 135, y: 89.99999, z: 0}
 --- !u!1 &868827590 stripped
 GameObject:
@@ -9678,6 +10711,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 859426124}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &868827592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868827590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &868827595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9695,10 +10744,9 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &872995756 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -9711,6 +10759,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1062658029}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &872995758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872995756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &872995761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9731,7 +10795,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &887494613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -9744,6 +10807,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1773802210}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &887494615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887494613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &887494618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9764,7 +10843,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &892520796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9898,7 +10976,7 @@ Transform:
   m_Children:
   - {fileID: 1946816076}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &913312418 stripped
 GameObject:
@@ -9912,6 +10990,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1620788192}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &913312420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913312418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &913312423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9932,7 +11026,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &913883549 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -9945,6 +11038,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 508187713}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &913883551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913883549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &913883554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9965,7 +11074,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &921127920 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -9978,6 +11086,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1360029666}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &921127922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921127920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &921127925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9998,7 +11122,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &923093435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10305,7 +11428,7 @@ PrefabInstance:
     - target: {fileID: 2519293579217985853, guid: b2345bf39a87f434fbdb5a2642b36287,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2519293579217985853, guid: b2345bf39a87f434fbdb5a2642b36287,
         type: 3}
@@ -10455,6 +11578,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2086404196}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &955183698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955183696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &955183701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10475,7 +11614,6 @@ MonoBehaviour:
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &955721060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10701,7 +11839,7 @@ Transform:
   m_Children:
   - {fileID: 1923264932}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 70, y: 45.000004, z: 0}
 --- !u!1001 &965368894
 PrefabInstance:
@@ -10789,6 +11927,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1659488779}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &975700895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975700893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &975700898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10809,7 +11963,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &983973728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11044,6 +12197,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1042468995}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1002769882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002769880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1002769885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11064,7 +12233,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1005407238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -11077,6 +12245,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 488744618}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1005407240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005407238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1005407243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11097,7 +12281,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1036492594
 GameObject:
   m_ObjectHideFlags: 0
@@ -11187,6 +12370,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2075045118}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1037174535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037174533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1037174538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11207,7 +12406,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1039789511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -11220,6 +12418,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 564857343}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1039789513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039789511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1039789516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11240,7 +12454,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1042468995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11327,6 +12540,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 204020530}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1044621585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044621583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1044621588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11347,7 +12576,6 @@ MonoBehaviour:
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1054728360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11582,6 +12810,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 395629330}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1066004026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066004024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1066004029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11602,7 +12846,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1067445697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11689,6 +12932,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1895071542}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1072166383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072166381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1072166386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11709,7 +12968,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1074924025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -11722,6 +12980,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 597858117}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1074924027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074924025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1074924030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11742,7 +13016,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1075600177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11829,6 +13102,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 276439311}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1079952226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079952224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1079952229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11846,10 +13135,9 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1081702126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12174,6 +13462,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 30624028}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1087367304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087367302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1087367307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12194,7 +13498,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1088193115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12281,6 +13584,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1999825936}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1093166809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093166807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1093166812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12301,7 +13620,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1097334397 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -12314,6 +13632,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1926669699}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1097334399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097334397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1097334402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12334,7 +13668,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1102420987
 GameObject:
   m_ObjectHideFlags: 0
@@ -12365,7 +13698,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1102420989
 MonoBehaviour:
@@ -12389,7 +13722,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102420987}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59b187fcbf5714a4d89fb4c847228909, type: 3}
   m_Name: 
@@ -12422,6 +13755,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1531856488}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1114709433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114709431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1114709436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12442,7 +13791,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1114791461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12693,7 +14041,7 @@ PrefabInstance:
     - target: {fileID: 73672630868547665, guid: 97b4a76c55741764e880b63d6e1514a9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 73672630868547665, guid: 97b4a76c55741764e880b63d6e1514a9,
         type: 3}
@@ -12843,6 +14191,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1920364013}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1134675642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134675640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1134675645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12863,7 +14227,6 @@ MonoBehaviour:
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1148327361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13174,6 +14537,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1054728360}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1151331191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151331189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1151331194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13194,7 +14573,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1154259503
 GameObject:
   m_ObjectHideFlags: 0
@@ -13340,6 +14718,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1570755517}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1163413835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163413833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1163413838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13360,7 +14754,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1180283870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -13373,6 +14766,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 989534984}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1180283872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180283870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1180283875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13393,7 +14802,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1186430587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -13406,6 +14814,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 738099163}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1186430589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186430587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1186430592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13426,7 +14850,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1189553016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13513,6 +14936,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 86572945}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1191155769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191155767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1191155772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13533,7 +14972,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1194815668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13620,6 +15058,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 735264071}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1196255350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196255348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1196255353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13640,7 +15094,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1203588818 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -13653,6 +15106,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 965368894}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1203588820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203588818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1203588823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13673,7 +15142,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1207377346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13748,6 +15216,88 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 592213770db2d80419af5780e2a1d20c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5ecf8ffbe22c7459c44494cee176d9, type: 3}
+--- !u!1 &1222129792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222129793}
+  - component: {fileID: 1222129794}
+  m_Layer: 0
+  m_Name: AttackDirectionSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1222129793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222129792}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 1.33}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 842327024}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &1222129794
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222129792}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 4c2fb6072e730cd4ab0b39b50aadb418, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.33333334}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 9.8, y: 9.7}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1224081298 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -13760,6 +15310,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1911590196}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1224081300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224081298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1224081303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13780,7 +15346,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1234201878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14222,6 +15787,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 171351058}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1265136424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265136422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1265136427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14242,7 +15823,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1270806738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14255,6 +15835,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1557554987}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1270806740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270806738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1270806743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14275,7 +15871,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1274464641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14288,6 +15883,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1691636340}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1274464643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274464641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1274464646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14308,7 +15919,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1278477962 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14321,6 +15931,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1318245480}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1278477964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278477962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1278477967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14341,7 +15967,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1286412069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14428,6 +16053,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 496571509}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1289115742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289115740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1289115745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14448,7 +16089,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1290933642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14461,6 +16101,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 309195500}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1290933644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290933642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1290933647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14481,7 +16137,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1293493784 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14494,6 +16149,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 665268821}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1293493786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293493784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1293493789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14514,7 +16185,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1307439359 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14527,6 +16197,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 115669075}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1307439361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307439359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1307439364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14547,7 +16233,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1318245480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14708,6 +16393,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 923093435}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1321334863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321334861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1321334866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14728,7 +16429,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1330179567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14741,6 +16441,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 833252419}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1330179569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330179567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1330179572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14761,7 +16477,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1333118045 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14774,6 +16489,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 345538042}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1333118047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333118045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1333118050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14794,7 +16525,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1338363135 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14807,6 +16537,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1980595518}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1338363137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338363135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1338363140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14827,7 +16573,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1340771453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14914,6 +16659,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1590299529}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1343782115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343782113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1343782118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14934,7 +16695,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1346029017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14947,6 +16707,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1456876944}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1346029019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346029017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1346029022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14967,7 +16743,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1348636821
 GameObject:
   m_ObjectHideFlags: 3
@@ -15148,6 +16923,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1340771453}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1353069922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353069920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1353069925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15168,7 +16959,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1359277488 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -15181,6 +16971,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1234201878}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1359277490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359277488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1359277493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15201,7 +17007,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1360029666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15362,6 +17167,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 139969362}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1369840347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369840345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1369840350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15382,7 +17203,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1370012668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -15395,6 +17215,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 892520796}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1370012670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370012668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1370012673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15415,7 +17251,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1381110093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15576,6 +17411,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 172872020}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1394773521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394773519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1394773524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15596,7 +17447,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1401260777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15831,6 +17681,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 401769308}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1415369912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415369910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1415369915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15851,7 +17717,6 @@ MonoBehaviour:
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1416442229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16095,6 +17960,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1120416314}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1431095253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431095251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1431095256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16115,7 +17996,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1433812391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -16128,6 +18008,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1350782738}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1433812393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433812391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1433812396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16148,7 +18044,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1439069574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16460,6 +18355,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1968305387}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1470397444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470397442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1470397447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16480,7 +18391,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1484900221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16867,6 +18777,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1900771504}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1524328943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524328941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1524328946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16887,7 +18813,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1528804975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -16900,6 +18825,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2062951820}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1528804977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528804975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1528804980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16920,7 +18861,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1531856488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17007,6 +18947,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1405623705}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1533244193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533244191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1533244196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17027,7 +18983,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1539306586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17114,6 +19069,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2071955325}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1552424298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552424296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1552424301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17134,7 +19105,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1557554987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17369,6 +19339,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1839228285}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1565828258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565828256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1565828261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17389,7 +19375,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1567347420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17550,6 +19535,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1592755409}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1571384657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571384655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1571384660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17570,7 +19571,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1575280383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17657,6 +19657,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1061207118}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1577315741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577315739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1577315744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17677,7 +19693,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1578005280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17764,6 +19779,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1075600177}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1578264706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578264704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1578264709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17784,7 +19815,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1578852023 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -17797,6 +19827,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2099581415}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1578852025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578852023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1578852028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17817,7 +19863,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1579084041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17965,6 +20010,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1575280383}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1579390682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579390680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1579390685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17985,7 +20046,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1589279167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18162,6 +20222,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 841449232}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1590553291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590553289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1590553294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18182,7 +20258,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1592755409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18269,6 +20344,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1495101176}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1605217077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605217075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1605217080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18289,7 +20380,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1612349999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -18302,6 +20392,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 409787415}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1612350001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612349999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1612350004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18322,7 +20428,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1612463919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18409,6 +20514,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 698825885}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1615882763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615882761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1615882766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18429,7 +20550,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1617784509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18590,6 +20710,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1721276996}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1621147716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621147714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1621147719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18610,7 +20746,6 @@ MonoBehaviour:
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1627954048 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -18623,6 +20758,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1286412069}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1627954050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627954048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1627954053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18643,7 +20794,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1634956416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -18670,13 +20820,22 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
---- !u!95 &1635369905 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4105327572543419563, guid: d00f156879942114488e4db0689a3fb7,
-    type: 3}
-  m_PrefabInstance: {fileID: 4105327572352019167}
+--- !u!114 &1634956418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634956416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!1001 &1639545075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18911,6 +21070,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1559337789}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1675476582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675476580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1675476585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18931,7 +21106,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1682944014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18942,7 +21116,7 @@ PrefabInstance:
     - target: {fileID: 1759658675031315366, guid: 0c236e4d8a47b184483f286677455225,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1759658675031315366, guid: 0c236e4d8a47b184483f286677455225,
         type: 3}
@@ -19018,6 +21192,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1646821501}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1688593103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688593101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1688593106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19038,7 +21228,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1691636340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19125,6 +21314,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2118135397}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1691705374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691705372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1691705377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19145,7 +21350,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1692866084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19232,6 +21436,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 860869701}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1693747134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693747132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1693747137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19252,7 +21472,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1699613867 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -19265,6 +21484,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2052589918}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1699613869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699613867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1699613872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19285,7 +21520,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1702585612 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -19298,6 +21532,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 983973728}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1702585614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702585612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1702585617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19318,7 +21568,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1705808837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19760,6 +22009,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1996405558}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1741174676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741174674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1741174679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19780,7 +22045,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1744385323 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -19793,6 +22057,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1912506827}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1744385325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744385323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1744385328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19813,7 +22093,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1753032967 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -19826,6 +22105,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 795897254}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1753032969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753032967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1753032972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19846,7 +22141,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1753486679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -19859,6 +22153,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 404962000}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1753486681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753486679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1753486684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19879,7 +22189,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1759211666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19890,7 +22199,7 @@ PrefabInstance:
     - target: {fileID: 7076342009220790268, guid: 60c19b408bf8a4648b07c7694619d3ff,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7076342009220790268, guid: 60c19b408bf8a4648b07c7694619d3ff,
         type: 3}
@@ -20114,6 +22423,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1705808837}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1764480612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764480610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1764480615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20134,7 +22459,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1773802210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20295,6 +22619,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 752477394}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1800593341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800593339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1800593344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20315,7 +22655,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1801060021
 GameObject:
   m_ObjectHideFlags: 0
@@ -20333,7 +22672,7 @@ GameObject:
   - component: {fileID: 1801060027}
   - component: {fileID: 1801060025}
   m_Layer: 0
-  m_Name: PlayerContainer
+  m_Name: Player_Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20346,15 +22685,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801060021}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1944520322}
   - {fileID: 896468143}
   - {fileID: 1996574566}
-  m_Father: {fileID: 0}
-  m_RootOrder: 22
+  - {fileID: 622020284}
+  m_Father: {fileID: 1904687149}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1801060023
 MonoBehaviour:
@@ -20385,6 +22725,7 @@ MonoBehaviour:
   neutralCaptureTime: 1
   enemyCaptureTime: 2
   fastCaptureTime: 0
+  _playerState: {fileID: 0}
 --- !u!114 &1801060025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20415,6 +22756,7 @@ MonoBehaviour:
   currentState: 0
   ownerIndex: 1
   currentAction: 0
+  controlType: 0
   currentTile: {fileID: 0}
   _selectionTool: {fileID: 185995048}
 --- !u!114 &1801060027
@@ -20443,7 +22785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1e558538e66434b894cbb9a74b1ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterAnimator: {fileID: 1635369905}
 --- !u!114 &1801060034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20552,7 +22893,7 @@ RectTransform:
   - {fileID: 1467082132}
   - {fileID: 1036492595}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -20648,7 +22989,7 @@ PrefabInstance:
     - target: {fileID: 6849494767014095798, guid: 30aaa36462358ce4aaf0d4b514031627,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6849494767014095798, guid: 30aaa36462358ce4aaf0d4b514031627,
         type: 3}
@@ -20724,6 +23065,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2105771518}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1818795346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818795344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1818795349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20744,7 +23101,165 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
+--- !u!1 &1819395261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819395262}
+  - component: {fileID: 1819395269}
+  - component: {fileID: 1819395268}
+  - component: {fileID: 1819395267}
+  - component: {fileID: 1819395266}
+  - component: {fileID: 1819395265}
+  - component: {fileID: 1819395264}
+  - component: {fileID: 1819395263}
+  - component: {fileID: 1819395270}
+  m_Layer: 0
+  m_Name: Enemy_1_Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1819395262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819395261}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.4632797, y: 0, z: -3.2316403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 466374035}
+  - {fileID: 774590129}
+  - {fileID: 842327024}
+  - {fileID: 1981449834}
+  m_Father: {fileID: 1904687149}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1819395263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819395261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a3ec3edb9d17a41810ebf997c51426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 853825489494233644, guid: d8e5752261f42474c9e7aa2ed04c75ac, type: 3}
+  target: {fileID: 774590129}
+  updateStepInSec: 0.05
+--- !u!114 &1819395264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819395261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff581aacfa68c4645bb27277b1a0dd23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackUI: {fileID: 842327024}
+  _buildUI: {fileID: 526352758}
+--- !u!114 &1819395265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819395261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1e558538e66434b894cbb9a74b1ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1819395266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819395261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3c4882af86905429c1c42aabf068c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutralCaptureTime: 1
+  enemyCaptureTime: 2
+  fastCaptureTime: 0
+  _playerState: {fileID: 0}
+--- !u!114 &1819395267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819395261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c2003192ca6ff43842a1068aa67998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAction: {fileID: 185995049}
+  buildAction: {fileID: 185995050}
+--- !u!114 &1819395268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819395261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f701310aaea215a4d9e0c8646d3e1ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextTileMoveTime: 0.5
+  moveDistance: 1
+--- !u!114 &1819395269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819395261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87be083c521172a4392e6aeb23c1976c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  ownerIndex: 2
+  currentAction: 0
+  controlType: 1
+  currentTile: {fileID: 0}
+  _selectionTool: {fileID: 185995048}
+--- !u!114 &1819395270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819395261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910a443bbcb74e44cb5ccf12a169accb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftInput: {x: 0, y: 0}
+  rightInput: {x: 0, y: 0}
 --- !u!1 &1826148571 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -20757,6 +23272,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 20254784}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1826148573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826148571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1826148576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20777,7 +23308,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1827194500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20864,6 +23394,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 759206019}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1832633988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832633986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1832633991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20884,7 +23430,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1833959108 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -20897,6 +23442,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1617784509}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1833959110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833959108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1833959113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20917,7 +23478,6 @@ MonoBehaviour:
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1839228285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21251,6 +23811,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 599208869}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1866025756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866025754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1866025759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21271,7 +23847,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1866725373 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -21284,6 +23859,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1088193115}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1866725375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866725373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1866725378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21304,7 +23895,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1871701293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -21317,6 +23907,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1716540837}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1871701295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871701293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1871701298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21337,7 +23943,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1873091525 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -21350,6 +23955,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 861149659}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1873091527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873091525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1873091530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21370,7 +23991,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1876878555 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -21383,6 +24003,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1937113651}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1876878557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876878555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1876878560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21403,7 +24039,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1878446538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21490,6 +24125,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 547391338}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1881881175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881881173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1881881178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21510,7 +24161,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &1890911142 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -21523,6 +24173,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 479454667}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1890911144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890911142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1890911147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21543,7 +24209,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1891403094 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -21556,6 +24221,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1878446538}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1891403096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891403094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1891403099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21576,7 +24257,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &1892425490 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -21589,6 +24269,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 856708958}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1892425492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892425490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1892425495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21609,7 +24305,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1895071542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21758,6 +24453,38 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 592213770db2d80419af5780e2a1d20c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5ecf8ffbe22c7459c44494cee176d9, type: 3}
+--- !u!1 &1904687148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904687149}
+  m_Layer: 0
+  m_Name: PLAYERS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1904687149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904687148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1801060022}
+  - {fileID: 1819395262}
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1911590196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21918,6 +24645,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1081702126}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1913911687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913911685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1913911690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21938,7 +24681,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1916896611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22482,6 +25224,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 145632616}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1930961647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930961645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1930961650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22502,7 +25260,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1934511458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22737,6 +25494,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1189553016}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1941669734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941669732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1941669737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22757,7 +25530,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!4 &1944520322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4572196853266583038, guid: d00f156879942114488e4db0689a3fb7,
@@ -22917,6 +25689,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2018356526}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1972326260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972326258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1972326263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22937,7 +25725,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1980595518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23012,6 +25799,105 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 592213770db2d80419af5780e2a1d20c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5ecf8ffbe22c7459c44494cee176d9, type: 3}
+--- !u!1 &1981449833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1981449834}
+  - component: {fileID: 1981449837}
+  - component: {fileID: 1981449836}
+  - component: {fileID: 1981449835}
+  m_Layer: 0
+  m_Name: PlayerInfoCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1981449834
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981449833}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1819395262}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2160, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1981449835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981449833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1981449836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981449833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &1981449837
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981449833}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 1923264935}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1987329738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -23024,6 +25910,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 355053620}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1987329740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987329738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &1987329743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23041,10 +25943,9 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &1996405558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23310,6 +26211,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1149800507}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2003746332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003746330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2003746335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23330,7 +26247,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &2004956692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -23343,6 +26259,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1194815668}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2004956694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004956692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2004956697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23363,7 +26295,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &2005331021 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -23376,6 +26307,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 246672269}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2005331023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005331021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2005331026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23396,7 +26343,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &2006467280 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -23409,6 +26355,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 388088729}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2006467282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006467280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2006467285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23429,7 +26391,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &2018356526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23516,6 +26477,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1422942957}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2022269867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022269865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2022269870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23536,7 +26513,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &2027622908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23697,6 +26673,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1392577811}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2031511497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031511495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2031511500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23717,7 +26709,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &2036756630 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -23730,6 +26721,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 310518486}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2036756632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036756630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2036756635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23750,7 +26757,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1 &2041876953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -23763,6 +26769,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 471392440}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2041876955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041876953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2041876958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23783,7 +26805,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &2050445104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23870,6 +26891,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1237474391}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2051976195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051976193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2051976198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23890,7 +26927,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &2052589918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23977,6 +27013,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1458833984}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2058617658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058617656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2058617661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23997,7 +27049,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &2060963489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24241,6 +27292,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 585697842}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2063456481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063456479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2063456484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24261,7 +27328,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &2063769351 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -24274,6 +27340,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1484900221}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2063769353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063769351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2063769356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24294,7 +27376,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &2065761917 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -24307,6 +27388,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 717863020}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2065761919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065761917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2065761922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24327,7 +27424,6 @@ MonoBehaviour:
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &2071955325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24488,6 +27584,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 439220385}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2082953608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082953606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2082953611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24508,7 +27620,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &2086404196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24669,6 +27780,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1936937859}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2091932723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091932721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2091932726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24689,7 +27816,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1001 &2099581415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24776,6 +27902,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2130638136}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2100631255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100631253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2100631258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24796,7 +27938,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &2105771518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25032,6 +28173,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 807330786}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2121257072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121257070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2121257075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25052,7 +28209,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &2123919376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25213,6 +28369,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1439069574}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139767235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139767233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2139767238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25233,7 +28405,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &2140581841 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -25246,6 +28417,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 932498267}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2140581843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140581841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2140581846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25266,7 +28453,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
-  isChecked: 0
 --- !u!1 &2146760167 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -25279,6 +28465,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1134601920}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2146760169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146760167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ee77e00b118ba4bb59a8cd07d7a399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
 --- !u!114 &2146760172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25299,7 +28501,6 @@ MonoBehaviour:
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 1
-  isChecked: 0
 --- !u!1001 &1782920097735742087
 PrefabInstance:
   m_ObjectHideFlags: 0

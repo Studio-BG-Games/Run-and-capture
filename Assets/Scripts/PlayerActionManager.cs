@@ -14,9 +14,7 @@ public class PlayerActionManager : MonoBehaviour
     public Action OnLostTarget;
 
     private PlayerState _playerState;
-    private PlayerAction _currentAction;
-
-    private IEnumerator _currentCoroutine;
+    private PlayerAction _currentAction;    
 
     private TileInfo _target;
 
@@ -24,7 +22,7 @@ public class PlayerActionManager : MonoBehaviour
 
     private void Awake()
     {
-        _playerState = FindObjectOfType<PlayerState>();
+        _playerState = GetComponent<PlayerState>();
         _playerState.OnActionChanged += SetNewCurrentAction;
 
         CustomInput.OnTouchDown += StartTargeting;
@@ -86,8 +84,7 @@ public class PlayerActionManager : MonoBehaviour
     {
         OnLostTarget?.Invoke();
         //StopCoroutine(_currentCoroutine);
-        StopAllCoroutines();
-        _currentCoroutine = null;
+        StopAllCoroutines();        
         _target = null;
     }
 

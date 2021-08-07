@@ -2,12 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class CustomInput : MonoBehaviour
 {
     public static Vector2 leftInput, rightInput;
-    public static float rightRegistrationDeadZone = 0.3f;
 
     public static Action OnTouchDown, OnTouchUp;
 

@@ -8,9 +8,11 @@ public class TileManagment : MonoBehaviour
     public const int BASIC_DIRECTIONS = 6;
 
     public static List<TileInfo> levelTiles = new List<TileInfo>();
-    public static List<TileInfo> ariostTiles = new List<TileInfo>();
 
-    public List<Material> tileMaterials;    
+    public static List<List<TileInfo>> charTiles = new List<List<TileInfo>>();
+
+    public List<Material> tileMaterials;
+    //public List<TileInfo> pathTiles = new List<TileInfo>();
 
     public static float tileOffset;
 
@@ -18,6 +20,7 @@ public class TileManagment : MonoBehaviour
 
     private void Awake()
     {
+        InitCharTiles();
         for (int i = 0; i < transform.childCount; i++)
         {
             var tile = transform.GetChild(i).GetComponent<TileInfo>();
@@ -25,24 +28,31 @@ public class TileManagment : MonoBehaviour
             {
                 levelTiles.Add(tile);
                 SetTileStartParams(tile);
-                if (tile.tileOwnerIndex == TileOwner.Ariost)
-                {
-                    ariostTiles.Add(tile);
-                }
+                charTiles[(int)tile.tileOwnerIndex].Add(tile);
             }
         }
 
         tileOffset = Vector3.Distance(levelTiles[0].tilePosition, levelTiles[3].tilePosition);
 
         basicDirections = GetBasicDirections(BASIC_DIRECTIONS);
-        
-    }    
+
+    }
+
+    private void InitCharTiles()
+    {
+        for (int i = 0; i < tileMaterials.Count; i++)
+        {
+            List<TileInfo> charTileList = new List<TileInfo>();
+            charTiles.Add(charTileList);  //init empty lists for character tiles
+        }
+    }
 
     private void Start()
     {
         //Debug.Log("We have "+ levelTiles.Count + " tiles on this level");
         //Debug.Log("Tiles offset "+ _tilesOffset +" units");
         //Debug.Log(GetTile(new Vector3(0f, 0f, 0f), new Vector3(-0.9f, 0f, 1.7f), 1));
+        //pathTiles = Pathfinding.FindPath(levelTiles[0].GetComponent<PathNode>(), levelTiles[106].GetComponent<PathNode>(), tileOffset);
         if (tileMaterials.Count == 0)
         {
             Debug.LogError("You need to set tile materials to TileManagment");
@@ -62,12 +72,12 @@ public class TileManagment : MonoBehaviour
         tile.tileOwnerIndex = ownerIndex;
         tile.GetComponent<Renderer>().material = tileMaterials[(int)tile.tileOwnerIndex];
 
-        ariostTiles.Add(tile);
+        charTiles[(int)ownerIndex].Add(tile);
 
         //Debug.Log(GetOtherTiles(tile).Count);
-        CheckSurroundedTiles(levelTiles, ownerIndex, tile);
+        //CheckSurroundedTiles(levelTiles, ownerIndex, tile);
         //Debug.Log("Captured " + tile.name);
-    }    
+    }
 
     public static void AssignBuildingToTile(TileInfo tile, GameObject building)
     {
@@ -84,23 +94,23 @@ public class TileManagment : MonoBehaviour
             if (Vector3.Distance(position, tile.tilePosition) < Vector3.Distance(position, resultTile.tilePosition))
             {
                 resultTile = tile;
-            }            
+            }
         }
-        if (Vector3.Distance(position, resultTile.tilePosition) > tileOffset/2)
+        if (Vector3.Distance(position, resultTile.tilePosition) > tileOffset / 2)
         {
             return null;
         }
-        else 
+        else
         {
             return resultTile;
-        }        
+        }
     }
 
     public static TileInfo GetTile(Vector3 currentTilePosition, Vector3 direction, float distance)
     {
         direction = direction.normalized;
-        distance = distance -  0.1f;
-        Vector3 tilePos = currentTilePosition + (direction * distance*tileOffset);
+        distance = distance - 0.1f;
+        Vector3 tilePos = currentTilePosition + (direction * distance * tileOffset);
         return GetTile(tilePos);
     }
 
@@ -110,7 +120,7 @@ public class TileManagment : MonoBehaviour
         //int notMyTiles = 0;
         foreach (Vector3 dir in basicDirections)
         {
-            var tile = GetTile(currentTile.tilePosition + dir * TileManagment.tileOffset);
+            var tile = GetTile(currentTile.tilePosition + dir * tileOffset);
             if (tile)
             {
                 if (tile.tileOwnerIndex != ownerIndex)
@@ -122,6 +132,31 @@ public class TileManagment : MonoBehaviour
         }
         //Debug.Log("We have " + notMyTiles + " not my tiles around " + currentTile.name);
         return otherTiles;
+    }
+
+    public static Vector2 GetJoystickDirection(TileInfo currentTile, TileInfo adjacentTile)
+    {
+        if (!currentTile || !adjacentTile)
+            return Vector2.zero;
+        Vector3 dir3 = adjacentTile.tilePosition - currentTile.tilePosition;
+        Vector2 dir2 = new Vector2(dir3.x, dir3.z);
+        return dir2;
+    }
+
+    public static List<TileInfo> GetAllTiles(TileInfo currentTile)
+    {
+        List<TileInfo> allTiles = new List<TileInfo>();
+        //int notMyTiles = 0;
+        foreach (Vector3 dir in basicDirections)
+        {
+            var tile = GetTile(currentTile.tilePosition + dir * tileOffset);
+            if (tile)
+            {
+                allTiles.Add(tile);
+            }
+        }
+        //Debug.Log("We have " + notMyTiles + " not my tiles around " + currentTile.name);
+        return allTiles;
     }
 
     public static Vector3[] GetBasicDirections(int directionsAmount)
@@ -138,10 +173,10 @@ public class TileManagment : MonoBehaviour
 
     public static void CheckSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)
     {
-        foreach (TileInfo tile in tiles)
+        /*foreach (TileInfo tile in tiles)
         {
             tile.isChecked = false;
-        }
+        }*/
         List<TileInfo> firstAdjacentTiles = GetOtherTiles(startTile, ownerIndex);
         foreach (TileInfo tile in firstAdjacentTiles)
         {
@@ -178,7 +213,7 @@ public class TileManagment : MonoBehaviour
             }
 
             surroundedTiles.Add(tile);
-            tile.isChecked = true;
+            //tile.isChecked = true;
 
             var adjacentTiles = GetOtherTiles(tile, ownerIndex);
             //Debug.Log("second tiles "+ adjacentTiles.Count);

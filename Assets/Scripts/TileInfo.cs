@@ -17,7 +17,7 @@ public class TileInfo : MonoBehaviour
 
 
     public bool isBorderTile = false;
-    public bool isChecked = false;
+    //public bool isChecked = false;
     
 }
 

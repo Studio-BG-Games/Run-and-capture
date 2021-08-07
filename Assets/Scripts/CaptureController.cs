@@ -11,7 +11,7 @@ public class CaptureController : MonoBehaviour
 
     private TileOwner _ownerIndex;
     private TileManagment _tileManagment;
-    private PlayerState _playerState;
+    public PlayerState _playerState;
 
     private float _captureProgress= 0f;
 
@@ -20,7 +20,7 @@ public class CaptureController : MonoBehaviour
 
     private IEnumerator _currentCoroutine;
 
-    private void Start()
+    private void Awake()
     {
         _playerState = GetComponent<PlayerState>();
         _tileManagment = FindObjectOfType<TileManagment>();
@@ -31,11 +31,14 @@ public class CaptureController : MonoBehaviour
 
         OnCaptureEnd += CaptureTile;
     }
+    
 
     private void CaptureStartTile()
     {
+        //Debug.Log("start tile cap");
         _ownerIndex = _playerState.ownerIndex;
         _tileManagment.ChangeTileOwner(_playerState.currentTile, _ownerIndex);
+        
     }
 
     private void StopCapturingTile()

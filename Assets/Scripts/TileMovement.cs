@@ -5,7 +5,6 @@ using UnityEngine;
 using DG.Tweening;
 
 [RequireComponent(typeof(PlayerState))]
-[RequireComponent(typeof(CaptureController))]
 public class TileMovement : MonoBehaviour
 {
 
@@ -17,10 +16,12 @@ public class TileMovement : MonoBehaviour
     public Action<ActionType, CharacterState> OnStartMovement;
 
     private PlayerState _playerState;
+    private AI_Input _AIInput;
 
     private void Start()
     {
         _playerState = GetComponent<PlayerState>();
+        _AIInput = GetComponent<AI_Input>();
     }
 
     private void Update()
@@ -32,12 +33,24 @@ public class TileMovement : MonoBehaviour
     {
         if (_playerState.currentState != CharacterState.Idle)
             return;
-        _moveDir = new Vector3(CustomInput.leftInput.x, 0f, CustomInput.leftInput.y);
+        switch (_playerState.controlType)
+        {
+            case ControlType.Player:
+                _moveDir = new Vector3(CustomInput.leftInput.x, 0f, CustomInput.leftInput.y);
+                break;
+            case ControlType.AI:
+                _moveDir = new Vector3(_AIInput.leftInput.x, 0f, _AIInput.leftInput.y);
+                break;
+
+        }
+        //_moveDir = new Vector3(CustomInput.leftInput.x, 0f, CustomInput.leftInput.y);
         if (_moveDir.magnitude > Mathf.Epsilon)
         {
-            TileInfo targetMoveTile = TileManagment.GetTile(_playerState.currentTile.tilePosition, _moveDir, 1);
+            TileInfo targetMoveTile = TileManagment.GetTile(_playerState.currentTile.tilePosition, _moveDir, moveDistance);
+            //Debug.Log("moving to " + targetMoveTile);
             if (IsMovementAllowed(targetMoveTile))
             {
+                //Debug.Log(IsMovementAllowed(targetMoveTile));
                 MoveToTile(targetMoveTile);
             }
         }
@@ -50,11 +63,13 @@ public class TileMovement : MonoBehaviour
         {
             bool canMoveToMyTile = (tile.tileOwnerIndex == _playerState.ownerIndex);
             bool canMoveToEnemyTile = (_playerState.currentTile.tileOwnerIndex == _playerState.ownerIndex);
+            
 
             return tile.canMove && (canMoveToMyTile || canMoveToEnemyTile);
         }
         else
         {
+            //Debug.Log("moving " + gameObject.name);
             return false;
         }
         
@@ -63,6 +78,7 @@ public class TileMovement : MonoBehaviour
     private void MoveToTile(TileInfo targetMoveTile)
     {
         OnStartMovement?.Invoke(ActionType.Attack, CharacterState.Move);
+        _playerState.currentTile.canMove = true;
         transform.DOMove(targetMoveTile.tilePosition, nextTileMoveTime).OnComplete(()=> FinishMovementActions(targetMoveTile));
         transform.LookAt(targetMoveTile.tilePosition);
     }
@@ -71,6 +87,7 @@ public class TileMovement : MonoBehaviour
     private void FinishMovementActions( TileInfo currentTile)
     {
         _playerState.currentTile = currentTile;
+        _playerState.currentTile.canMove = false;
         OnFinishMovement?.Invoke(ActionType.Attack, CharacterState.Idle);
     }    
 }
