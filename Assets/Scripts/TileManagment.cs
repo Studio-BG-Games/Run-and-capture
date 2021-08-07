@@ -75,7 +75,7 @@ public class TileManagment : MonoBehaviour
         charTiles[(int)ownerIndex].Add(tile);
 
         //Debug.Log(GetOtherTiles(tile).Count);
-        //CheckSurroundedTiles(levelTiles, ownerIndex, tile);
+        CheckSurroundedTiles(levelTiles, ownerIndex, tile);
         //Debug.Log("Captured " + tile.name);
     }
 
@@ -143,7 +143,7 @@ public class TileManagment : MonoBehaviour
         return dir2;
     }
 
-    public static List<TileInfo> GetAllTiles(TileInfo currentTile)
+    public static List<TileInfo> GetAllAdjacentTiles(TileInfo currentTile)
     {
         List<TileInfo> allTiles = new List<TileInfo>();
         //int notMyTiles = 0;
@@ -157,6 +157,17 @@ public class TileManagment : MonoBehaviour
         }
         //Debug.Log("We have " + notMyTiles + " not my tiles around " + currentTile.name);
         return allTiles;
+    }
+
+    public static TileInfo GetRandomOtherTile(TileOwner owner)
+    {
+        int randomIndex = UnityEngine.Random.Range(0, levelTiles.Count - 1);
+        while ((levelTiles[randomIndex].tileOwnerIndex == owner) && (levelTiles[randomIndex].canMove == false))
+        {
+            randomIndex = UnityEngine.Random.Range(0, levelTiles.Count - 1);
+        }
+        TileInfo otherTile = levelTiles[randomIndex];
+        return otherTile;
     }
 
     public static Vector3[] GetBasicDirections(int directionsAmount)
@@ -173,9 +184,9 @@ public class TileManagment : MonoBehaviour
 
     public static void CheckSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)
     {
-        /*foreach (TileInfo tile in tiles)
+        /*foreach (TileInfo tile in charTiles[(int)ownerIndex])
         {
-            tile.isChecked = false;
+            tile.whoCanEasyGetTile = TileOwner.Neutral;
         }*/
         List<TileInfo> firstAdjacentTiles = GetOtherTiles(startTile, ownerIndex);
         foreach (TileInfo tile in firstAdjacentTiles)
@@ -231,6 +242,6 @@ public class TileManagment : MonoBehaviour
         {
             tile.whoCanEasyGetTile = ownerIndex;
         }
-        Debug.Log("Surrounded " + surroundedTiles.Count);
+        //Debug.Log("Surrounded " + surroundedTiles.Count);
     }
 }

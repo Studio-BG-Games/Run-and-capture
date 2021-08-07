@@ -25,8 +25,11 @@ public class PlayerActionManager : MonoBehaviour
         _playerState = GetComponent<PlayerState>();
         _playerState.OnActionChanged += SetNewCurrentAction;
 
-        CustomInput.OnTouchDown += StartTargeting;
-        CustomInput.OnTouchUp += StopTargeting;
+        if (_playerState.controlType == ControlType.Player)
+        {
+            CustomInput.OnTouchDown += StartTargeting;
+            CustomInput.OnTouchUp += StopTargeting;
+        }       
 
         SetNewCurrentAction(ActionType.Attack);
     }   
@@ -144,6 +147,13 @@ public class PlayerActionManager : MonoBehaviour
     {
         return _actionProgress;
     }
+
+    public void AttackEnemyOnTile(TileInfo target)
+    {
+        _target = target;        
+        StopTargeting();
+    }
+
 
 }
 

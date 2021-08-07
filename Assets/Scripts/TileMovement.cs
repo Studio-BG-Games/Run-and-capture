@@ -79,6 +79,7 @@ public class TileMovement : MonoBehaviour
     {
         OnStartMovement?.Invoke(ActionType.Attack, CharacterState.Move);
         _playerState.currentTile.canMove = true;
+        targetMoveTile.canMove = false;
         transform.DOMove(targetMoveTile.tilePosition, nextTileMoveTime).OnComplete(()=> FinishMovementActions(targetMoveTile));
         transform.LookAt(targetMoveTile.tilePosition);
     }
@@ -87,7 +88,7 @@ public class TileMovement : MonoBehaviour
     private void FinishMovementActions( TileInfo currentTile)
     {
         _playerState.currentTile = currentTile;
-        _playerState.currentTile.canMove = false;
+        //_playerState.currentTile.canMove = false;
         OnFinishMovement?.Invoke(ActionType.Attack, CharacterState.Idle);
     }    
 }

@@ -9094,7 +9094,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 11cfdc9193510f14a800c079f03262bb, type: 2}
   - {fileID: 2100000, guid: 491734c35c2ab2a489382e51b21de431, type: 2}
   - {fileID: 2100000, guid: 8b4d0931cd71e884580506919f308711, type: 2}
-  pathTiles: []
 --- !u!1001 &752477394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23260,6 +23259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftInput: {x: 0, y: 0}
   rightInput: {x: 0, y: 0}
+  _currentFollowingPath: []
 --- !u!1 &1826148571 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,

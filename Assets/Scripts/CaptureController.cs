@@ -38,7 +38,8 @@ public class CaptureController : MonoBehaviour
         //Debug.Log("start tile cap");
         _ownerIndex = _playerState.ownerIndex;
         _tileManagment.ChangeTileOwner(_playerState.currentTile, _ownerIndex);
-        
+        _playerState.currentTile.canMove = false;
+
     }
 
     private void StopCapturingTile()

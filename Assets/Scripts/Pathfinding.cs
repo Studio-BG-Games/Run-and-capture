@@ -5,8 +5,16 @@ using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
 {
-    public static List<TileInfo> FindPath(TileInfo startTile, TileInfo endTile, float tileOffset)
+    public static List<TileInfo> FindPath(TileInfo startTile, TileInfo endTile, List<TileInfo> allTiles, float tileOffset)
     {
+        foreach (var tile in allTiles)
+        {
+            var pathNode = tile.GetComponent<PathNode>();
+            pathNode.gCost = 0f;
+            pathNode.hCost = 0f;
+            pathNode.fCost = 0f;
+            pathNode.parent = null;
+        }
         var openNodes = new List<PathNode>();
         var closedNodes = new List<PathNode>();
 
@@ -15,6 +23,7 @@ public class Pathfinding : MonoBehaviour
         startNode.gCost = 0f;
         startNode.hCost = Vector3.Distance(startNode.transform.position, endNode.transform.position);
         startNode.fCost = startNode.gCost + startNode.hCost;
+        startNode.parent = null;
         openNodes.Add(startNode);
 
         while (openNodes.Count > 0)
@@ -35,7 +44,7 @@ public class Pathfinding : MonoBehaviour
 
             openNodes.Remove(currentNode);
             closedNodes.Add(currentNode);
-            Debug.Log(currentNode.name);
+            //Debug.Log(currentNode.name);
             foreach (PathNode newNode in GetAdjacentNodes(currentNode))
             {
                 if (newNode)
@@ -67,7 +76,7 @@ public class Pathfinding : MonoBehaviour
 
     private static List<PathNode> GetAdjacentNodes(PathNode currentNode)
     {
-        var allAjacentTiles = TileManagment.GetAllTiles(currentNode.GetComponent<TileInfo>());
+        var allAjacentTiles = TileManagment.GetAllAdjacentTiles(currentNode.GetComponent<TileInfo>());
         List<PathNode> adjacentNodes = new List<PathNode>();
 
         foreach (TileInfo tile in allAjacentTiles)
@@ -90,7 +99,7 @@ public class Pathfinding : MonoBehaviour
             currentNode = currentNode.parent;
         }
         result.Reverse();
-        Debug.Log("path found");
+        //Debug.Log("path found");
         return result;
     }
 
