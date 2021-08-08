@@ -11,7 +11,7 @@ public class PlayerActionManager : MonoBehaviour
     public Action<ActionType, CharacterState> OnActionStart, OnActionEnd;
 
     public Action<TileInfo, ActionType> OnFoundTarget;
-    public Action OnLostTarget;
+    public Action OnLostTarget, OnActionSuccess;
 
     private PlayerState _playerState;
     private PlayerAction _currentAction;    
@@ -103,6 +103,7 @@ public class PlayerActionManager : MonoBehaviour
         }
         else 
         {
+            Debug.Log("failed attack");
             OnActionEnd?.Invoke(ActionType.Attack, _playerState.currentState);
         }
     }
@@ -139,6 +140,7 @@ public class PlayerActionManager : MonoBehaviour
     private void FinalActionOperations(PlayerAction action)
     {
          OnActionEnd?.Invoke(ActionType.Attack, CharacterState.Idle);
+        OnActionSuccess?.Invoke();
         _target = null;
         Debug.Log(action.actionType + " ended");        
     }

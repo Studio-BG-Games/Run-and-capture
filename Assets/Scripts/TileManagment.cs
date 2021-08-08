@@ -69,10 +69,12 @@ public class TileManagment : MonoBehaviour
 
     public void ChangeTileOwner(TileInfo tile, TileOwner ownerIndex)
     {
+        TileOwner oldOwner = tile.tileOwnerIndex;
         tile.tileOwnerIndex = ownerIndex;
         tile.GetComponent<Renderer>().material = tileMaterials[(int)tile.tileOwnerIndex];
 
         charTiles[(int)ownerIndex].Add(tile);
+        charTiles[(int)oldOwner].Remove(tile);
 
         //Debug.Log(GetOtherTiles(tile).Count);
         CheckSurroundedTiles(levelTiles, ownerIndex, tile);
@@ -134,13 +136,13 @@ public class TileManagment : MonoBehaviour
         return otherTiles;
     }
 
-    public static Vector2 GetJoystickDirection(TileInfo currentTile, TileInfo adjacentTile)
+    public static Vector2 GetDirection(TileInfo currentTile, TileInfo adjacentTile)
     {
         if (!currentTile || !adjacentTile)
             return Vector2.zero;
         Vector3 dir3 = adjacentTile.tilePosition - currentTile.tilePosition;
         Vector2 dir2 = new Vector2(dir3.x, dir3.z);
-        return dir2;
+        return dir2.normalized;
     }
 
     public static List<TileInfo> GetAllAdjacentTiles(TileInfo currentTile)
@@ -151,6 +153,22 @@ public class TileManagment : MonoBehaviour
         {
             var tile = GetTile(currentTile.tilePosition + dir * tileOffset);
             if (tile)
+            {
+                allTiles.Add(tile);
+            }
+        }
+        //Debug.Log("We have " + notMyTiles + " not my tiles around " + currentTile.name);
+        return allTiles;
+    }
+
+    public static List<TileInfo> GetAllAdjacentTiles(TileInfo currentTile, TileOwner ownerIndex)
+    {
+        List<TileInfo> allTiles = new List<TileInfo>();
+        //int notMyTiles = 0;
+        foreach (Vector3 dir in basicDirections)
+        {
+            var tile = GetTile(currentTile.tilePosition + dir * tileOffset);
+            if (tile && ownerIndex == tile.tileOwnerIndex)
             {
                 allTiles.Add(tile);
             }

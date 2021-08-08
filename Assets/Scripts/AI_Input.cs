@@ -11,12 +11,11 @@ public class AI_Input : MonoBehaviour
     public float agressiveTime = 5f;
     public float attackTime = 2f;
     public Action OnTouchDown, OnTouchUp;
-    public Action OnCurrentPathFinished;
+    public Action OnCurrentPathFinished, OnAttack;
     public List<PlayerState> enemies;
     public PlayerState _currentEnemy;
 
-    private List<TileInfo> _currentFollowingPath;
-    //public List<TileInfo> _testPath;
+    private List<TileInfo> _currentFollowingPath;    
 
     private PlayerState _playerState;
     private TileMovement _tileMovement;    
@@ -28,9 +27,9 @@ public class AI_Input : MonoBehaviour
         _tileMovement = GetComponent<TileMovement>();
         _actionManager = GetComponent<PlayerActionManager>();
 
-        _actionManager.OnActionEnd += BackToPatrol;
-
-        //_playerState.OnCharStateChanged += RecalculatePath;
+        _actionManager.OnActionSuccess += BackToPatrol;
+        _actionManager.OnActionStart += OnActionStart;
+        
         _tileMovement.OnFinishMovement += CheckState;
         _tileMovement.OnStartMovement += StopJoystick;
         _playerState.OnInitializied += StartPatrolBehaviour;
@@ -40,8 +39,15 @@ public class AI_Input : MonoBehaviour
         SetEnemies();
     }
 
-    private void BackToPatrol(ActionType arg1, CharacterState arg2)
+    private void OnActionStart(ActionType arg1, CharacterState arg2)
     {
+        _currentEnemy = null;
+    }
+
+    private void BackToPatrol()
+    {
+        Debug.Log("attack ended");
+        StopAllCoroutines();
         StartPatrolBehaviour();
     }
 
@@ -54,8 +60,7 @@ public class AI_Input : MonoBehaviour
             {
                 enemies.Add(player);
             }            
-        }
-        //Debug.Log("added " + enemies.Count);
+        }       
     }   
 
     private void StopJoystick(ActionType arg1, CharacterState arg2)
@@ -67,54 +72,23 @@ public class AI_Input : MonoBehaviour
     {
         if (_currentFollowingPath.Count > 0)
         {
-            leftInput = TileManagment.GetJoystickDirection(_playerState.currentTile, tile);
+            leftInput = TileManagment.GetDirection(_playerState.currentTile, tile);
         }
     }
 
     private void StartPatrolBehaviour()
     {
+        _currentEnemy = null;
         botState = BotState.Patrol;
-        TileInfo targetTile = TileManagment.GetRandomOtherTile(_playerState.ownerIndex);
-        //Debug.Log("move to " + targetTile.name);
+        TileInfo targetTile = TileManagment.GetRandomOtherTile(_playerState.ownerIndex);        
         var startTile = _playerState.currentTile;
         _currentFollowingPath = Pathfinding.FindPath(startTile, targetTile, TileManagment.levelTiles, TileManagment.tileOffset);
-        Pathfinding.FindPath(_playerState.currentTile, TileManagment.GetTile(enemies[0].transform.position), TileManagment.levelTiles, TileManagment.tileOffset);
+        if (_currentFollowingPath == null)
+        {
+            StartPatrolBehaviour();
+        }
         MoveTo(_currentFollowingPath[1]);        
-    }
-
-    private IEnumerator CalmDown(float time)
-    {
-        yield return new WaitForSeconds(time);
-        _currentEnemy = null;
-        StartPatrolBehaviour();
-        StopAllCoroutines();
-    }
-
-    private IEnumerator TryToAttack(float attackCoolDown)
-    {
-        while (_currentEnemy)
-        {
-            _actionManager.AttackEnemyOnTile(_currentEnemy.currentTile);
-            yield return new WaitForSeconds(attackCoolDown);
-        }
-    }
-
-    private void SetBehaviour(BotState state)
-    {
-        switch (state)
-        {
-            case BotState.Patrol:
-                MoveToNextPoint();
-                break;
-            case BotState.Agressive:
-                MoveToEnemy(_currentEnemy);
-                break;
-            case BotState.Attack:
-                AttackEnemy(_currentEnemy);
-                break;
-        }
-    }
-    
+    }   
 
     private void CheckState(ActionType newType, CharacterState newState)
     {
@@ -151,13 +125,30 @@ public class AI_Input : MonoBehaviour
         SetBehaviour(botState);
     }
 
+    private void SetBehaviour(BotState state)
+    {
+        switch (state)
+        {
+            case BotState.Patrol:
+                MoveToNextPoint();
+                break;
+            case BotState.Agressive:
+                MoveToEnemy(_currentEnemy);
+                break;
+            case BotState.Attack:
+                AttackEnemy(_currentEnemy);
+                break;
+        }
+    }
+
     private void AttackEnemy(PlayerState currentEnemy)
     {
         Debug.Log("attacking");
         leftInput = Vector2.zero;
+        _currentFollowingPath.Clear();
         //_actionManager.AttackEnemyOnTile(currentEnemy.currentTile);
         StartCoroutine(TryToAttack(0.2f));
-        StartCoroutine(CalmDown(attackTime));
+        //StartCoroutine(CalmDown(attackTime));
     }
 
     private void MoveToEnemy(PlayerState currentEnemy)
@@ -173,7 +164,7 @@ public class AI_Input : MonoBehaviour
             }
         }
         TileInfo currentPos = TileManagment.GetTile(transform.position);
-        Debug.Log(adjacentTarget);
+        //Debug.Log(adjacentTarget);
         RecalculatePath(currentPos, adjacentTarget);
         if (_currentFollowingPath == null)
         {
@@ -210,7 +201,29 @@ public class AI_Input : MonoBehaviour
             _currentFollowingPath = Pathfinding.FindPath(currentTile, endTile, TileManagment.levelTiles, TileManagment.tileOffset);
             MoveTo(_currentFollowingPath[1]);
         }
+        else
+        {
+            OnCurrentPathFinished?.Invoke();
+        }
         
+    }
+
+    private IEnumerator CalmDown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _currentEnemy = null;
+        StartPatrolBehaviour();
+        StopAllCoroutines();
+    }
+
+    private IEnumerator TryToAttack(float attackCoolDown)
+    {
+        while (_currentEnemy)
+        {
+            Debug.Log("try attack");
+            _actionManager.AttackEnemyOnTile(_currentEnemy.currentTile);           
+            yield return new WaitForSeconds(attackCoolDown);
+        }
     }
 
     public enum BotState 

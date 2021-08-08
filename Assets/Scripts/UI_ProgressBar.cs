@@ -22,7 +22,7 @@ public class UI_ProgressBar : MonoBehaviour
     private CaptureController _captureController;
     private PlayerActionManager _playerActions;
 
-    private bool _isCaptureUIUpdating;
+    private bool _isCaptureUIUpdating;    
 
     private void Start()
     {
@@ -47,7 +47,9 @@ public class UI_ProgressBar : MonoBehaviour
         _captureController.OnCaptureFailed += OnCaptureFailed;
 
         _playerActions.OnActionStart += OnActionStart;
-        _playerActions.OnActionEnd += OnActionStop;
+        _playerActions.OnActionSuccess += OnActionStop;
+
+         
 
     }
 
@@ -55,11 +57,12 @@ public class UI_ProgressBar : MonoBehaviour
     {
         if (_isCaptureUIUpdating)
         {
+            _isCaptureUIUpdating = false;
             StopUpdate();
         }
     }
 
-    private void OnActionStop(ActionType action, CharacterState arg2)
+    private void OnActionStop()
     {
         StopUpdate();
     }
@@ -96,8 +99,11 @@ public class UI_ProgressBar : MonoBehaviour
     private void OnStartUpdate()
     {
         _ui.gameObject.SetActive(true);
-        _currentCoroutine = Updating(updateStepInSec);
-        StartCoroutine(_currentCoroutine);
+        if (_currentCoroutine == null)
+        {
+            _currentCoroutine = Updating(updateStepInSec);
+            StartCoroutine(_currentCoroutine);
+        }        
     }
 
     private IEnumerator Updating(float timeInterval)
