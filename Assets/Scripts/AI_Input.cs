@@ -86,6 +86,7 @@ public class AI_Input : MonoBehaviour
         if (_currentFollowingPath == null)
         {
             StartPatrolBehaviour();
+            return;
         }
         MoveTo(_currentFollowingPath[1]);        
     }   
@@ -143,7 +144,7 @@ public class AI_Input : MonoBehaviour
 
     private void AttackEnemy(PlayerState currentEnemy)
     {
-        Debug.Log("attacking");
+        //Debug.Log("attacking");
         leftInput = Vector2.zero;
         _currentFollowingPath.Clear();
         //_actionManager.AttackEnemyOnTile(currentEnemy.currentTile);
@@ -194,7 +195,7 @@ public class AI_Input : MonoBehaviour
             if (!endTile.canMove)
             {
                 endTile = TileManagment.GetRandomOtherTile(_playerState.ownerIndex);
-                Debug.Log("changed target");
+                //Debug.Log("changed target");
             }
             var currentTile = _playerState.currentTile;
             _currentFollowingPath.Clear();
@@ -220,7 +221,7 @@ public class AI_Input : MonoBehaviour
     {
         while (_currentEnemy)
         {
-            Debug.Log("try attack");
+            //Debug.Log("try attack");
             _actionManager.AttackEnemyOnTile(_currentEnemy.currentTile);           
             yield return new WaitForSeconds(attackCoolDown);
         }

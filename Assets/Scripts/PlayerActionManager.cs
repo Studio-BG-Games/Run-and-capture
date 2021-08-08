@@ -103,7 +103,7 @@ public class PlayerActionManager : MonoBehaviour
         }
         else 
         {
-            Debug.Log("failed attack");
+            //Debug.Log("failed attack");
             OnActionEnd?.Invoke(ActionType.Attack, _playerState.currentState);
         }
     }
@@ -142,7 +142,7 @@ public class PlayerActionManager : MonoBehaviour
          OnActionEnd?.Invoke(ActionType.Attack, CharacterState.Idle);
         OnActionSuccess?.Invoke();
         _target = null;
-        Debug.Log(action.actionType + " ended");        
+        //Debug.Log(action.actionType + " ended");        
     }
 
     public float GetProgress()

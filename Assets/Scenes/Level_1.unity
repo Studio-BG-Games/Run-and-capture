@@ -3033,7 +3033,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
 --- !u!1 &281753801 stripped
@@ -11739,7 +11739,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   isBorderTile: 0
 --- !u!1001 &955721060
@@ -13263,8 +13263,8 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
-  whoCanEasyGetTile: 0
+  tileOwnerIndex: 0
+  whoCanEasyGetTile: 2
   isBorderTile: 0
 --- !u!1001 &1081702126
 PrefabInstance:
@@ -14975,7 +14975,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
 --- !u!1001 &1189553016
@@ -19108,7 +19108,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
 --- !u!1001 &1539306586
@@ -21172,7 +21172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1657916562
 Transform:
   m_ObjectHideFlags: 0
@@ -23051,8 +23051,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3c4882af86905429c1c42aabf068c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutralCaptureTime: 1
-  enemyCaptureTime: 2
+  neutralCaptureTime: 0.3
+  enemyCaptureTime: 0.5
   fastCaptureTime: 0
   _playerState: {fileID: 0}
 --- !u!114 &1801060025
@@ -23453,7 +23453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1819395262
 Transform:
   m_ObjectHideFlags: 0
@@ -24178,7 +24178,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   isBorderTile: 0
 --- !u!1 &1866725373 stripped
@@ -26279,7 +26279,7 @@ MonoBehaviour:
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
-  whoCanEasyGetTile: 0
+  whoCanEasyGetTile: 2
   isBorderTile: 0
 --- !u!1001 &1996405558
 PrefabInstance:
