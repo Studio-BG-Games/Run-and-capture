@@ -10,6 +10,7 @@ public class AI_Input : MonoBehaviour
 
     public float agressiveTime = 5f;
     public float attackTime = 2f;
+    public float updateBehaviourIn = 1f;
     public Action OnTouchDown, OnTouchUp;
     public Action OnCurrentPathFinished, OnAttack;
     public List<PlayerState> enemies;
@@ -30,13 +31,18 @@ public class AI_Input : MonoBehaviour
         _actionManager.OnActionSuccess += BackToPatrol;
         _actionManager.OnActionStart += OnActionStart;
         
-        _tileMovement.OnFinishMovement += CheckState;
+        //_tileMovement.OnFinishMovement += CheckState;
         _tileMovement.OnStartMovement += StopJoystick;
         _playerState.OnInitializied += StartPatrolBehaviour;
 
         OnCurrentPathFinished += StartPatrolBehaviour;
 
         SetEnemies();
+    }
+
+    private void Start()
+    {
+        InvokeRepeating("CheckState", UnityEngine.Random.Range(0.5f, 1f), updateBehaviourIn); //to make not the same start
     }
 
     private void OnActionStart(ActionType arg1, CharacterState arg2)
@@ -91,12 +97,12 @@ public class AI_Input : MonoBehaviour
         MoveTo(_currentFollowingPath[1]);        
     }   
 
-    private void CheckState(ActionType newType, CharacterState newState)
+    private void CheckState(/*ActionType newType, CharacterState newState*/)
     {
         foreach (PlayerState enemy in enemies)
         {
             Debug.Log("Check near enemy");
-            if (Vector3.Distance(enemy.transform.position, transform.position) <= TileManagment.tileOffset*1.1)
+            if (Vector3.Distance(enemy.transform.position, transform.position) <= TileManagment.tileOffset*1.1f)
             {
                 botState = BotState.Attack;
                 _currentEnemy = enemy;
@@ -124,6 +130,7 @@ public class AI_Input : MonoBehaviour
         }
 
         SetBehaviour(botState);
+        
     }
 
     private void SetBehaviour(BotState state)
@@ -144,7 +151,7 @@ public class AI_Input : MonoBehaviour
 
     private void AttackEnemy(PlayerState currentEnemy)
     {
-        //Debug.Log("attacking");
+        Debug.Log("attacking");
         leftInput = Vector2.zero;
         _currentFollowingPath.Clear();
         //_actionManager.AttackEnemyOnTile(currentEnemy.currentTile);
@@ -219,12 +226,14 @@ public class AI_Input : MonoBehaviour
 
     private IEnumerator TryToAttack(float attackCoolDown)
     {
-        while (_currentEnemy)
+        while (_currentEnemy && Vector3.Distance(_currentEnemy.transform.position, transform.position) <= TileManagment.tileOffset * 1.1f)
         {
             //Debug.Log("try attack");
             _actionManager.AttackEnemyOnTile(_currentEnemy.currentTile);           
             yield return new WaitForSeconds(attackCoolDown);
         }
+        BackToPatrol();
+        StopAllCoroutines();        
     }
 
     public enum BotState 

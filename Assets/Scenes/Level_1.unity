@@ -170,6 +170,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &20254784
 PrefabInstance:
@@ -366,6 +368,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &30624028
 PrefabInstance:
@@ -636,6 +640,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &72857587 stripped
 GameObject:
@@ -684,6 +690,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &76720597
 GameObject:
@@ -1113,6 +1121,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &115669075
 PrefabInstance:
@@ -1235,6 +1245,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &135500051 stripped
 GameObject:
@@ -1283,6 +1295,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &136963675 stripped
 GameObject:
@@ -1331,6 +1345,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &139969362
 PrefabInstance:
@@ -1527,6 +1543,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &161552596 stripped
 GameObject:
@@ -1575,6 +1593,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &171351058
 PrefabInstance:
@@ -2003,6 +2023,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &194011036
 PrefabInstance:
@@ -2125,6 +2147,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &204020530
 PrefabInstance:
@@ -2247,6 +2271,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &209170406
 PrefabInstance:
@@ -2369,6 +2395,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &220841019
 PrefabInstance:
@@ -2491,6 +2519,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &224126221 stripped
 GameObject:
@@ -2539,6 +2569,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &242282009
 PrefabInstance:
@@ -2817,6 +2849,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &253892758 stripped
 GameObject:
@@ -2865,6 +2899,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &272588900 stripped
 GameObject:
@@ -2913,6 +2949,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &276439311
 PrefabInstance:
@@ -3035,6 +3073,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &281753801 stripped
 GameObject:
@@ -3083,6 +3123,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &284805664
 PrefabInstance:
@@ -3205,6 +3247,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &300084727 stripped
 GameObject:
@@ -3253,6 +3297,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &301241212 stripped
 GameObject:
@@ -3301,6 +3347,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &302478904 stripped
 GameObject:
@@ -3349,6 +3397,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &302483892
 PrefabInstance:
@@ -3772,6 +3822,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &343658094 stripped
 GameObject:
@@ -3820,6 +3872,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &345538042
 PrefabInstance:
@@ -4090,6 +4144,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &362229898 stripped
 GameObject:
@@ -4138,6 +4194,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &367297075
 PrefabInstance:
@@ -4270,6 +4328,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &388088729
 PrefabInstance:
@@ -4540,6 +4600,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &401769308
 PrefabInstance:
@@ -4810,6 +4872,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &427422206
 PrefabInstance:
@@ -5090,6 +5154,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &451650455 stripped
 GameObject:
@@ -5138,6 +5204,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &454820459 stripped
 GameObject:
@@ -5186,6 +5254,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &465301246
 GameObject:
@@ -5418,6 +5488,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &479454667
 PrefabInstance:
@@ -5540,6 +5612,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &488546937 stripped
 GameObject:
@@ -5588,6 +5662,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &488744618
 PrefabInstance:
@@ -5710,6 +5786,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &496571509
 PrefabInstance:
@@ -6150,6 +6228,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &526069304 stripped
 GameObject:
@@ -6198,6 +6278,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &526352757
 GameObject:
@@ -6354,6 +6436,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &539454218
 PrefabInstance:
@@ -6492,6 +6576,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &544944283 stripped
 GameObject:
@@ -6540,6 +6626,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &547364747
 PrefabInstance:
@@ -6810,6 +6898,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &564500538
 GameObject:
@@ -7085,6 +7175,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &571651558
 GameObject:
@@ -7232,6 +7324,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &572774820 stripped
 GameObject:
@@ -7280,6 +7374,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &584444496 stripped
 GameObject:
@@ -7328,6 +7424,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &585697842
 PrefabInstance:
@@ -7672,6 +7770,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &616429789 stripped
 GameObject:
@@ -7720,6 +7820,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &621175344
 PrefabInstance:
@@ -8015,6 +8117,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &660685387 stripped
 GameObject:
@@ -8063,6 +8167,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &664144873 stripped
 GameObject:
@@ -8111,6 +8217,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &665268821
 PrefabInstance:
@@ -8233,6 +8341,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &678235799
 PrefabInstance:
@@ -8670,6 +8780,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &735264071
 PrefabInstance:
@@ -8792,6 +8904,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &738099163
 PrefabInstance:
@@ -8914,6 +9028,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &743919845
 PrefabInstance:
@@ -9418,6 +9534,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &774590128
 GameObject:
@@ -9649,6 +9767,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &806015914 stripped
 GameObject:
@@ -9697,6 +9817,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &806778563
 GameObject:
@@ -9892,6 +10014,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &829807728
 PrefabInstance:
@@ -10162,6 +10286,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &841449232
 PrefabInstance:
@@ -10389,6 +10515,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &856708958
 PrefabInstance:
@@ -10733,6 +10861,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &868688832
 GameObject:
@@ -10874,6 +11004,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &872995756 stripped
 GameObject:
@@ -10922,6 +11054,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &887494613 stripped
 GameObject:
@@ -10970,6 +11104,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &892520796
 PrefabInstance:
@@ -11153,6 +11289,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &913883549 stripped
 GameObject:
@@ -11201,6 +11339,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &921127920 stripped
 GameObject:
@@ -11249,6 +11389,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &923093435
 PrefabInstance:
@@ -11741,6 +11883,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &955721060
 PrefabInstance:
@@ -12090,6 +12234,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &983973728
 PrefabInstance:
@@ -12360,6 +12506,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1005407238 stripped
 GameObject:
@@ -12408,6 +12556,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1036492594
 GameObject:
@@ -12533,6 +12683,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1039789511 stripped
 GameObject:
@@ -12581,6 +12733,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1042468995
 PrefabInstance:
@@ -12703,6 +12857,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1054728360
 PrefabInstance:
@@ -12973,6 +13129,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1067445697
 PrefabInstance:
@@ -13095,6 +13253,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1074924025 stripped
 GameObject:
@@ -13143,6 +13303,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1075600177
 PrefabInstance:
@@ -13263,8 +13425,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
-  whoCanEasyGetTile: 2
+  tileOwnerIndex: 2
+  whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1081702126
 PrefabInstance:
@@ -13625,6 +13789,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1088193115
 PrefabInstance:
@@ -13747,6 +13913,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1097334397 stripped
 GameObject:
@@ -13795,6 +13963,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1102420987
 GameObject:
@@ -13918,6 +14088,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1114791461
 PrefabInstance:
@@ -14354,6 +14526,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1148327361
 PrefabInstance:
@@ -14700,6 +14874,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1154259503
 GameObject:
@@ -14881,6 +15057,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1180283870 stripped
 GameObject:
@@ -14929,6 +15107,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1186430587 stripped
 GameObject:
@@ -14975,8 +15155,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1189553016
 PrefabInstance:
@@ -15099,6 +15281,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1194815668
 PrefabInstance:
@@ -15221,6 +15405,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1203588818 stripped
 GameObject:
@@ -15269,6 +15455,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1207377346
 PrefabInstance:
@@ -15473,6 +15661,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1234201878
 PrefabInstance:
@@ -15950,6 +16140,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1270806738 stripped
 GameObject:
@@ -15998,6 +16190,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1274464641 stripped
 GameObject:
@@ -16046,6 +16240,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1278477962 stripped
 GameObject:
@@ -16094,6 +16290,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1286412069
 PrefabInstance:
@@ -16216,6 +16414,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1290933642 stripped
 GameObject:
@@ -16264,6 +16464,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1293493784 stripped
 GameObject:
@@ -16312,6 +16514,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1307439359 stripped
 GameObject:
@@ -16360,6 +16564,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1318245480
 PrefabInstance:
@@ -16556,6 +16762,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1330179567 stripped
 GameObject:
@@ -16604,6 +16812,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1333118045 stripped
 GameObject:
@@ -16652,6 +16862,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1338363135 stripped
 GameObject:
@@ -16700,6 +16912,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1340771453
 PrefabInstance:
@@ -16822,6 +17036,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1346029017 stripped
 GameObject:
@@ -16870,6 +17086,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1348636821
 GameObject:
@@ -17086,6 +17304,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1359277488 stripped
 GameObject:
@@ -17134,6 +17354,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1360029666
 PrefabInstance:
@@ -17330,6 +17552,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1370012668 stripped
 GameObject:
@@ -17378,6 +17602,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1381110093
 PrefabInstance:
@@ -17574,6 +17800,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1401260777
 PrefabInstance:
@@ -17844,6 +18072,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1416442229
 PrefabInstance:
@@ -18123,6 +18353,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1433812391 stripped
 GameObject:
@@ -18171,6 +18403,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1439069574
 PrefabInstance:
@@ -18518,6 +18752,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1484900221
 PrefabInstance:
@@ -18940,6 +19176,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1528804975 stripped
 GameObject:
@@ -18988,6 +19226,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1531856488
 PrefabInstance:
@@ -19108,8 +19348,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1539306586
 PrefabInstance:
@@ -19263,6 +19505,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1557554987
 PrefabInstance:
@@ -19533,6 +19777,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1567347420
 PrefabInstance:
@@ -19729,6 +19975,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1575280383
 PrefabInstance:
@@ -19851,6 +20099,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1578005280
 PrefabInstance:
@@ -19973,6 +20223,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1578852023 stripped
 GameObject:
@@ -20021,6 +20273,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1579084041
 PrefabInstance:
@@ -20204,6 +20458,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!4 &1583925737 stripped
 Transform:
@@ -20422,6 +20678,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1592755409
 PrefabInstance:
@@ -20544,6 +20802,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1612349999 stripped
 GameObject:
@@ -20592,6 +20852,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1612463919
 PrefabInstance:
@@ -20714,6 +20976,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1617784509
 PrefabInstance:
@@ -20910,6 +21174,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1627954048 stripped
 GameObject:
@@ -20958,6 +21224,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1634956416 stripped
 GameObject:
@@ -20984,6 +21252,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!114 &1634956418
 MonoBehaviour:
@@ -21172,7 +21442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1657916562
 Transform:
   m_ObjectHideFlags: 0
@@ -21208,6 +21478,7 @@ MonoBehaviour:
   rightInput: {x: 0, y: 0}
   agressiveTime: 5
   attackTime: 2
+  updateBehaviourIn: 1
   enemies: []
   _currentEnemy: {fileID: 0}
 --- !u!114 &1657916564
@@ -21434,6 +21705,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1682944014
 PrefabInstance:
@@ -21556,6 +21829,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1691636340
 PrefabInstance:
@@ -21678,6 +21953,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1692866084
 PrefabInstance:
@@ -21800,6 +22077,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1699613867 stripped
 GameObject:
@@ -21848,6 +22127,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1702585612 stripped
 GameObject:
@@ -21896,6 +22177,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1705808837
 PrefabInstance:
@@ -22373,6 +22656,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1744385323 stripped
 GameObject:
@@ -22421,6 +22706,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1753032967 stripped
 GameObject:
@@ -22469,6 +22756,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1753486679 stripped
 GameObject:
@@ -22517,6 +22806,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1759211666
 PrefabInstance:
@@ -22787,6 +23078,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1773802210
 PrefabInstance:
@@ -22983,6 +23276,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1801060021
 GameObject:
@@ -23051,8 +23346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3c4882af86905429c1c42aabf068c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutralCaptureTime: 0.3
-  enemyCaptureTime: 0.5
+  neutralCaptureTime: 1
+  enemyCaptureTime: 2
   fastCaptureTime: 0
   _playerState: {fileID: 0}
 --- !u!114 &1801060025
@@ -23429,6 +23724,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1819395261
 GameObject:
@@ -23453,7 +23750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1819395262
 Transform:
   m_ObjectHideFlags: 0
@@ -23592,6 +23889,7 @@ MonoBehaviour:
   rightInput: {x: 0, y: 0}
   agressiveTime: 5
   attackTime: 2
+  updateBehaviourIn: 1
   enemies: []
   _currentEnemy: {fileID: 0}
 --- !u!1 &1826148571 stripped
@@ -23641,6 +23939,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1827194500
 PrefabInstance:
@@ -23763,6 +24063,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1833959108 stripped
 GameObject:
@@ -23811,6 +24113,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1839228285
 PrefabInstance:
@@ -24178,8 +24482,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1866725373 stripped
 GameObject:
@@ -24228,6 +24534,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1871701293 stripped
 GameObject:
@@ -24276,6 +24584,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1873091525 stripped
 GameObject:
@@ -24324,6 +24634,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1876878555 stripped
 GameObject:
@@ -24372,6 +24684,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1878446538
 PrefabInstance:
@@ -24494,6 +24808,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &1890911142 stripped
 GameObject:
@@ -24542,6 +24858,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1891403094 stripped
 GameObject:
@@ -24590,6 +24908,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &1892425490 stripped
 GameObject:
@@ -24638,6 +24958,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1895071542
 PrefabInstance:
@@ -25015,6 +25337,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1916896611
 PrefabInstance:
@@ -25594,6 +25918,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1934511458
 PrefabInstance:
@@ -25864,6 +26190,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!4 &1944520322 stripped
 Transform:
@@ -26059,6 +26387,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1980595518
 PrefabInstance:
@@ -26279,7 +26609,9 @@ MonoBehaviour:
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
-  whoCanEasyGetTile: 2
+  whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &1996405558
 PrefabInstance:
@@ -26581,6 +26913,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &2004956692 stripped
 GameObject:
@@ -26629,6 +26963,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &2005331021 stripped
 GameObject:
@@ -26677,6 +27013,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &2006467280 stripped
 GameObject:
@@ -26725,6 +27063,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &2018356526
 PrefabInstance:
@@ -26847,6 +27187,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &2027622908
 PrefabInstance:
@@ -27043,6 +27385,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &2036756630 stripped
 GameObject:
@@ -27091,6 +27435,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1 &2041876953 stripped
 GameObject:
@@ -27139,6 +27485,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &2050445104
 PrefabInstance:
@@ -27261,6 +27609,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &2052589918
 PrefabInstance:
@@ -27383,6 +27733,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &2060963489
 PrefabInstance:
@@ -27662,6 +28014,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &2063769351 stripped
 GameObject:
@@ -27710,6 +28064,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &2065761917 stripped
 GameObject:
@@ -27758,6 +28114,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &2071955325
 PrefabInstance:
@@ -27954,6 +28312,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &2086404196
 PrefabInstance:
@@ -28150,6 +28510,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1001 &2099581415
 PrefabInstance:
@@ -28272,6 +28634,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &2105771518
 PrefabInstance:
@@ -28625,6 +28989,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &2123919376
 PrefabInstance:
@@ -28821,6 +29187,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &2140581841 stripped
 GameObject:
@@ -28869,6 +29237,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 0
 --- !u!1 &2146760167 stripped
 GameObject:
@@ -28917,6 +29287,8 @@ MonoBehaviour:
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
+  easyCaptureFor: 
+  checkedFor: 
   isBorderTile: 1
 --- !u!1001 &1782920097735742087
 PrefabInstance:

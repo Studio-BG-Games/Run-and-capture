@@ -14,6 +14,8 @@ public class TileInfo : MonoBehaviour
 
     public TileOwner tileOwnerIndex = TileOwner.Neutral; //recieved by TileManager on game start
     public TileOwner whoCanEasyGetTile = TileOwner.Neutral;
+    public List<TileOwner> easyCaptureFor = new List<TileOwner>();
+    public List<TileOwner> checkedFor = new List<TileOwner>();
 
 
     public bool isBorderTile = false;

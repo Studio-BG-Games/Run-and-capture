@@ -59,7 +59,7 @@ public class CaptureController : MonoBehaviour
         //Debug.Log("Try to capture " + tile.name);
         if(_ownerIndex != tile.tileOwnerIndex)
         {
-            if (tile.whoCanEasyGetTile != _ownerIndex)
+            if (!tile.easyCaptureFor.Contains(_ownerIndex))
             {
                 if (tile.tileOwnerIndex == TileOwner.Neutral)
                 {

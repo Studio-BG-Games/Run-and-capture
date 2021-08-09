@@ -11,8 +11,10 @@ public class TileManagment : MonoBehaviour
 
     public static List<List<TileInfo>> charTiles = new List<List<TileInfo>>();
 
+    public static PlayerState[] players;
+
     public List<Material> tileMaterials;
-    //public List<TileInfo> pathTiles = new List<TileInfo>();
+    
 
     public static float tileOffset;
 
@@ -35,6 +37,9 @@ public class TileManagment : MonoBehaviour
         tileOffset = Vector3.Distance(levelTiles[0].tilePosition, levelTiles[3].tilePosition);
 
         basicDirections = GetBasicDirections(BASIC_DIRECTIONS);
+
+        players = FindObjectsOfType<PlayerState>();
+        Debug.Log(players.Length);
 
     }
 
@@ -75,10 +80,9 @@ public class TileManagment : MonoBehaviour
 
         charTiles[(int)ownerIndex].Add(tile);
         charTiles[(int)oldOwner].Remove(tile);
-
-        //Debug.Log(GetOtherTiles(tile).Count);
+        
         CheckSurroundedTiles(levelTiles, ownerIndex, tile);
-        //Debug.Log("Captured " + tile.name);
+        
     }
 
     public static void AssignBuildingToTile(TileInfo tile, GameObject building)
@@ -197,11 +201,11 @@ public class TileManagment : MonoBehaviour
         return tempArr;
     }
 
-    public static void CheckSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)
+    public static void CheckSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo capTile)
     {
-        List<TileInfo> firstAdjacentTiles = GetOtherTiles(startTile, ownerIndex);
-        List<TileInfo> firstAllAdjacentTiles = GetAllAdjacentTiles(startTile);
-        List<TileOwner> differentOwners = new List<TileOwner>();
+        //List<TileInfo> firstAdjacentTiles = GetOtherTiles(startTile, ownerIndex);
+        //List<TileInfo> firstAllAdjacentTiles = GetAllAdjacentTiles(startTile);
+        //List<TileOwner> differentOwners = new List<TileOwner>();
         /*foreach (TileInfo tile in firstAllAdjacentTiles)
         {
             if (!differentOwners.Contains(tile.tileOwnerIndex) && tile.tileOwnerIndex != TileOwner.Neutral)
@@ -223,13 +227,94 @@ public class TileManagment : MonoBehaviour
             }
         }*/
 
-        foreach (TileInfo tile in firstAdjacentTiles)
+        /*foreach (TileInfo tile in firstAdjacentTiles)
         {
             SetSurroundedTiles(tiles, ownerIndex, tile);
+        }*/
+
+        List<TileOwner> checkingOwners = new List<TileOwner>();
+        checkingOwners.Add(capTile.tileOwnerIndex);
+        checkingOwners.Add(ownerIndex);
+
+        foreach (TileInfo tile in levelTiles)
+        {
+            /*tile.checkedFor.Clear();
+            tile.easyCaptureFor.Clear();*/
+            foreach (TileOwner owner in checkingOwners)
+            {
+                tile.checkedFor.Remove(owner);
+                tile.easyCaptureFor.Remove(owner);
+            }            
+        }
+        foreach (TileInfo tile in levelTiles)
+        {
+            if (!tile.isBorderTile)
+            {                
+                /*foreach (var player in players)
+                {
+                    if ((!tile.checkedFor.Contains(player.ownerIndex)) && (tile.tileOwnerIndex!= player.ownerIndex))
+                    {
+                        CheckIfSurroundedByOwner(tiles, player.ownerIndex, tile);
+                    }
+                }*/
+                foreach (TileOwner owner in checkingOwners)
+                {
+                    if ((!tile.checkedFor.Contains(owner)) && (tile.tileOwnerIndex != owner))
+                    {
+                        CheckIfSurroundedByOwner(tiles, owner, tile);
+                    }
+                }
+            }
+            
         }
 
     }
-    public static void SetSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)
+
+    public static void CheckIfSurroundedByOwner(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)
+    {
+        List<TileInfo> connectedTiles = new List<TileInfo>();
+        var q = new Queue<TileInfo>(tiles.Count);
+        q.Enqueue(startTile);
+        int iterations = 0;
+
+        while (q.Count > 0)
+        {
+            var tile = q.Dequeue();            
+            if (q.Count > tiles.Count)
+            {
+                throw new Exception("The algorithm is probably looping. Queue size: " + q.Count);
+            }
+
+            if (tile.isBorderTile)  //we are in a wrong area
+            {                
+                connectedTiles.Clear();
+                return;
+            }
+
+            if (connectedTiles.Contains(tile))
+            {
+                continue;
+            }
+
+            connectedTiles.Add(tile);
+            tile.checkedFor.Add(ownerIndex);
+            //Debug.Log("Checked");
+            var adjacentTiles = GetOtherTiles(tile, ownerIndex);
+
+            foreach (TileInfo newTile in adjacentTiles)
+            {
+                q.Enqueue(newTile);
+            }
+
+            iterations++;
+        }       
+
+        foreach (TileInfo tile in connectedTiles)
+        {
+            tile.easyCaptureFor.Add(ownerIndex);
+        }        
+    }
+   /* public static void SetSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)
     {
         List<TileInfo> surroundedTiles = new List<TileInfo>();
         var q = new Queue<TileInfo>(tiles.Count);
@@ -238,8 +323,7 @@ public class TileManagment : MonoBehaviour
 
         while (q.Count > 0)
         {
-            var tile = q.Dequeue();            
-            //Debug.Log("current tile " + tile.name);
+            var tile = q.Dequeue();
 
             if (q.Count > tiles.Count)
             {
@@ -248,12 +332,6 @@ public class TileManagment : MonoBehaviour
 
             if (tile.isBorderTile)  //we are in a wrong area
             {
-                //Debug.Log("FindBorder");
-                /*foreach (TileInfo t in surroundedTiles)
-                {
-                    //t.whoCanEasyGetTile = ownerIndex;
-                    t.whoCanEasyGetTile = TileOwner.Neutral;
-                }*/
                 surroundedTiles.Clear();
                 return;
             }
@@ -264,11 +342,9 @@ public class TileManagment : MonoBehaviour
             }
 
             surroundedTiles.Add(tile);
-            /*if(tile.whoCanEasyGetTile != TileOwner.Neutral)
-            tile.whoCanEasyGetTile = TileOwner.Neutral;*/
 
             var adjacentTiles = GetOtherTiles(tile, ownerIndex);
-            //Debug.Log("second tiles "+ adjacentTiles.Count);
+            
             foreach (TileInfo newTile in adjacentTiles)
             {
                 q.Enqueue(newTile);
@@ -284,5 +360,5 @@ public class TileManagment : MonoBehaviour
             tile.whoCanEasyGetTile = ownerIndex;
         }
         Debug.Log("Surrounded " + surroundedTiles.Count);
-    }
+    }*/
 }
