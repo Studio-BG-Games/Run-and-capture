@@ -11,11 +11,12 @@ public class TileManagment : MonoBehaviour
 
     public static List<List<TileInfo>> charTiles = new List<List<TileInfo>>();
 
-    public static PlayerState[] players;
+    public static List<PlayerState> players = new List<PlayerState>();
 
-    public List<Material> tileMaterials;
-    
+    public static Action OnAnyTileCaptured;
 
+    public List<Material> tileMaterials;    
+     
     public static float tileOffset;
 
     public static Vector3[] basicDirections;
@@ -37,9 +38,8 @@ public class TileManagment : MonoBehaviour
         tileOffset = Vector3.Distance(levelTiles[0].tilePosition, levelTiles[3].tilePosition);
 
         basicDirections = GetBasicDirections(BASIC_DIRECTIONS);
-
-        players = FindObjectsOfType<PlayerState>();
-        Debug.Log(players.Length);
+        
+        //Debug.Log(players.Count);
 
     }
 
@@ -82,6 +82,8 @@ public class TileManagment : MonoBehaviour
         charTiles[(int)oldOwner].Remove(tile);
         
         CheckSurroundedTiles(levelTiles, ownerIndex, tile);
+
+        OnAnyTileCaptured?.Invoke();
         
     }
 
@@ -187,6 +189,28 @@ public class TileManagment : MonoBehaviour
         }
         TileInfo otherTile = levelTiles[randomIndex];
         return otherTile;
+    }
+
+    public static TileInfo GetNearestNeutralTile(TileInfo currentTile, TileOwner owner)
+    {
+         var neutralTiles = charTiles[(int)TileOwner.Neutral];
+        Debug.Log("neutral tiles " + neutralTiles.Count);
+        TileInfo closestTile = GetRandomOtherTile(owner);
+        /*foreach (TileInfo tile in neutralTiles)
+        {
+            if (tile)
+            {
+                float distOld = Vector3.Distance(currentTile.tilePosition, closestTile.tilePosition);
+                float distNew = Vector3.Distance(currentTile.tilePosition, tile.tilePosition);
+                if (distNew < distOld && tile.canMove)
+                {
+                    closestTile = tile;
+                }
+            }
+            
+        }*/
+
+        return closestTile;
     }
 
     public static Vector3[] GetBasicDirections(int directionsAmount)

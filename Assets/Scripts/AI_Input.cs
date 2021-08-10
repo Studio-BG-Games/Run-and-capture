@@ -12,8 +12,7 @@ public class AI_Input : MonoBehaviour
     public float attackTime = 2f;
     public float updateBehaviourIn = 1f;
     public Action OnTouchDown, OnTouchUp;
-    public Action OnCurrentPathFinished, OnAttack;
-    public List<PlayerState> enemies;
+    public Action OnCurrentPathFinished, OnAttack;    
     public PlayerState _currentEnemy;
 
     private List<TileInfo> _currentFollowingPath;    
@@ -37,7 +36,16 @@ public class AI_Input : MonoBehaviour
 
         OnCurrentPathFinished += StartPatrolBehaviour;
 
-        SetEnemies();
+        PlayerDeathController.OnPlayerDeath += StopAllActions;
+       
+    }
+
+    private void StopAllActions(PlayerState player)
+    {
+        if (player.name == gameObject.name)
+        {
+            StopAllCoroutines();
+        }
     }
 
     private void Start()
@@ -56,18 +64,7 @@ public class AI_Input : MonoBehaviour
         StopAllCoroutines();
         StartPatrolBehaviour();
     }
-
-    private void SetEnemies()
-    {
-        var allPlayers = FindObjectsOfType<PlayerState>();
-        foreach (PlayerState player in allPlayers)
-        {
-            if (player.gameObject.name != gameObject.name)
-            {
-                enemies.Add(player);
-            }            
-        }       
-    }   
+    
 
     private void StopJoystick(ActionType arg1, CharacterState arg2)
     {
@@ -86,7 +83,8 @@ public class AI_Input : MonoBehaviour
     {
         _currentEnemy = null;
         botState = BotState.Patrol;
-        TileInfo targetTile = TileManagment.GetRandomOtherTile(_playerState.ownerIndex);        
+        //TileInfo targetTile = TileManagment.GetRandomOtherTile(_playerState.ownerIndex);        
+        TileInfo targetTile = TileManagment.GetNearestNeutralTile(_playerState.currentTile, _playerState.ownerIndex);        
         var startTile = _playerState.currentTile;
         _currentFollowingPath = Pathfinding.FindPath(startTile, targetTile, TileManagment.levelTiles, TileManagment.tileOffset);
         if (_currentFollowingPath == null)
@@ -99,9 +97,11 @@ public class AI_Input : MonoBehaviour
 
     private void CheckState(/*ActionType newType, CharacterState newState*/)
     {
-        foreach (PlayerState enemy in enemies)
+        if (_playerState.currentState == CharacterState.Dead)
+            return;
+        foreach (PlayerState enemy in _playerState.enemies)
         {
-            Debug.Log("Check near enemy");
+            //Debug.Log("Check near enemy");
             if (Vector3.Distance(enemy.transform.position, transform.position) <= TileManagment.tileOffset*1.1f)
             {
                 botState = BotState.Attack;
@@ -111,7 +111,7 @@ public class AI_Input : MonoBehaviour
         }
         if (botState == BotState.Patrol)
         {
-            foreach (PlayerState enemy in enemies)
+            foreach (PlayerState enemy in _playerState.enemies)
             {                
                 foreach (TileInfo tile in TileManagment.charTiles[(int)_playerState.ownerIndex])
                 {
@@ -151,7 +151,7 @@ public class AI_Input : MonoBehaviour
 
     private void AttackEnemy(PlayerState currentEnemy)
     {
-        Debug.Log("attacking");
+        //Debug.Log("attacking");
         leftInput = Vector2.zero;
         _currentFollowingPath.Clear();
         //_actionManager.AttackEnemyOnTile(currentEnemy.currentTile);
@@ -201,7 +201,8 @@ public class AI_Input : MonoBehaviour
             var endTile = _currentFollowingPath[_currentFollowingPath.Count - 1];
             if (!endTile.canMove)
             {
-                endTile = TileManagment.GetRandomOtherTile(_playerState.ownerIndex);
+                endTile = TileManagment.GetNearestNeutralTile(_playerState.currentTile, _playerState.ownerIndex);
+                //endTile = TileManagment.GetRandomOtherTile(_playerState.ownerIndex);
                 //Debug.Log("changed target");
             }
             var currentTile = _playerState.currentTile;
@@ -229,8 +230,11 @@ public class AI_Input : MonoBehaviour
         while (_currentEnemy && Vector3.Distance(_currentEnemy.transform.position, transform.position) <= TileManagment.tileOffset * 1.1f)
         {
             //Debug.Log("try attack");
-            _actionManager.AttackEnemyOnTile(_currentEnemy.currentTile);           
-            yield return new WaitForSeconds(attackCoolDown);
+            if (_currentEnemy.currentState != CharacterState.Dead)
+            {
+                _actionManager.AttackEnemyOnTile(_currentEnemy.currentTile);
+                yield return new WaitForSeconds(attackCoolDown);
+            }            
         }
         BackToPatrol();
         StopAllCoroutines();        
@@ -243,5 +247,5 @@ public class AI_Input : MonoBehaviour
         Attack,
         Dead
     }
-   
+    
 }

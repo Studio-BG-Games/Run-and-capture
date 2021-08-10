@@ -23,6 +23,9 @@ public class PlayerState : MonoBehaviour
     public Action OnCaptureAllow, OnCaptureForbid, OnInitializied;
     public Action<CharacterState, ActionType> OnCharStateChanged;
     public Action<ActionType> OnActionChanged;
+    public Action OnDeath;
+
+    public List<PlayerState> enemies;
 
     private void Start()
     {
@@ -38,11 +41,21 @@ public class PlayerState : MonoBehaviour
 
         _selectionTool.OnBuildingSelected += OnBuildingSelected;
 
-        //BuildManagment.OnBuildingSelected += SetPlacingBuildingsState;
-        //BuildManagment.OnBuildBtnDeactivated += SetIdleState;
 
         //Debug.Log("We are in " +currentTile.name);
+        
+    }
 
+    private void SetEnemies()
+    {
+        var allPlayers = PlayerDeathController.players;
+        foreach (PlayerState player in allPlayers)
+        {
+            if (player.gameObject.name != gameObject.name)
+            {
+                enemies.Add(player);
+            }
+        }
     }
 
     private void OnBuildingSelected()
@@ -62,17 +75,21 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    private void SetNewState(ActionType actionType, CharacterState newState)
+    public void SetNewState(ActionType actionType, CharacterState newState)
     {
         if (currentState != newState)
         {
             if (newState == CharacterState.Idle)
             {
                 CaptureState(true);
-            }
+            }            
             else
             {
                 CaptureState(false);
+                if (newState == CharacterState.Dead)
+                {
+                    OnDeath?.Invoke();
+                }
             }
             currentState = newState;
             OnCharStateChanged?.Invoke(newState, actionType);
@@ -85,11 +102,13 @@ public class PlayerState : MonoBehaviour
         
     }    
 
-    private void SetStartParams()
+    public void SetStartParams()
     {
         currentTile = TileManagment.GetTile(transform.position);
-        currentState = CharacterState.Idle;
-
+        //currentState = CharacterState.Idle;
+        //currentAction = ActionType.Attack;
+        SetNewState(ActionType.Attack, CharacterState.Idle);
+        SetEnemies();
         OnInitializied?.Invoke();        
     }
 
@@ -103,7 +122,8 @@ public enum CharacterState
 {
     Idle,
     Move,    
-    Action
+    Action,
+    Dead
 }
 
 public enum TileOwner

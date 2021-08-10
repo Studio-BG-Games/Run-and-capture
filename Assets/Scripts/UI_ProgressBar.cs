@@ -21,6 +21,7 @@ public class UI_ProgressBar : MonoBehaviour
 
     private CaptureController _captureController;
     private PlayerActionManager _playerActions;
+    private PlayerState _playerState;
 
     private bool _isCaptureUIUpdating;    
 
@@ -28,8 +29,8 @@ public class UI_ProgressBar : MonoBehaviour
     {
         _cam = Camera.main.transform;
 
-        foreach (Canvas c in FindObjectsOfType<Canvas>())
-        {
+        foreach (Canvas c in GetComponentsInChildren<Canvas>())
+        {   
             if (c.renderMode == RenderMode.WorldSpace)
             {
                 _ui = Instantiate(UIPrefab, c.transform).transform;
@@ -41,6 +42,7 @@ public class UI_ProgressBar : MonoBehaviour
         }
         _captureController = GetComponent<CaptureController>();
         _playerActions = GetComponent<PlayerActionManager>();
+        _playerState = GetComponent<PlayerState>();
 
         _captureController.OnCaptureStart += OnCaptureStart;
         _captureController.OnCaptureEnd += OnCaptureEnd;
@@ -49,7 +51,7 @@ public class UI_ProgressBar : MonoBehaviour
         _playerActions.OnActionStart += OnActionStart;
         _playerActions.OnActionSuccess += OnActionStop;
 
-         
+        _playerState.OnDeath += StopUpdate;
 
     }
 
