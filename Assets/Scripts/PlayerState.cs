@@ -13,7 +13,7 @@ public class PlayerState : MonoBehaviour
     public ControlType controlType = ControlType.Player;
 
 
-    public TileInfo currentTile;
+    public TileInfo currentTile;    
 
     [SerializeField]
     private BuildingSelectionTool _selectionTool;
@@ -75,7 +75,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public void SetNewState(ActionType actionType, CharacterState newState)
+    public void SetNewState(ActionType newAction, CharacterState newState)
     {
         if (currentState != newState)
         {
@@ -86,18 +86,18 @@ public class PlayerState : MonoBehaviour
             else
             {
                 CaptureState(false);
-                if (newState == CharacterState.Dead)
+                /*if (newState == CharacterState.Dead)
                 {
                     OnDeath?.Invoke();
-                }
+                }*/
             }
             currentState = newState;
-            OnCharStateChanged?.Invoke(newState, actionType);
+            OnCharStateChanged?.Invoke(newState, newAction);
         }
-        if (currentAction != actionType )
+        if (currentAction != newAction )
         {            
-            currentAction = actionType;
-            OnActionChanged?.Invoke(actionType);
+            currentAction = newAction;
+            OnActionChanged?.Invoke(newAction);
         }
         
     }    
@@ -115,6 +115,11 @@ public class PlayerState : MonoBehaviour
     public bool IsAnyActionsAllowed()
     {
         return (currentTile.tileOwnerIndex == ownerIndex) && (currentState == CharacterState.Idle);
+    }
+
+    public void OnDeathActions()
+    {
+        OnDeath?.Invoke();
     }
 }
 

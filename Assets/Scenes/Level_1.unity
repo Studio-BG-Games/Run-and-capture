@@ -8587,7 +8587,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15379,8 +15379,8 @@ Transform:
   - {fileID: 280329356}
   - {fileID: 531088200}
   - {fileID: 564569809}
-  m_Father: {fileID: 1904687149}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1186423015
 MonoBehaviour:
@@ -15399,8 +15399,11 @@ MonoBehaviour:
   rightInput: {x: 0, y: 0}
   agressiveTime: 5
   attackTime: 2
-  updateBehaviourIn: 1
+  updateBehaviourIn: 0.6
+  neutralCapDistance: 10
+  detectPlayerDistance: 4
   _currentEnemy: {fileID: 0}
+  _currentFollowingPath: []
 --- !u!114 &1186423016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23589,8 +23592,8 @@ Transform:
   - {fileID: 896468143}
   - {fileID: 1996574566}
   - {fileID: 622020284}
-  m_Father: {fileID: 1904687149}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1801060023
 MonoBehaviour:
@@ -24040,8 +24043,8 @@ Transform:
   - {fileID: 774590129}
   - {fileID: 842327024}
   - {fileID: 1981449834}
-  m_Father: {fileID: 1904687149}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1819395263
 MonoBehaviour:
@@ -24164,8 +24167,11 @@ MonoBehaviour:
   rightInput: {x: 0, y: 0}
   agressiveTime: 5
   attackTime: 2
-  updateBehaviourIn: 1
+  updateBehaviourIn: 0.6
+  neutralCapDistance: 10
+  detectPlayerDistance: 4
   _currentEnemy: {fileID: 0}
+  _currentFollowingPath: []
 --- !u!1 &1826148571 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -25409,12 +25415,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1801060022}
-  - {fileID: 1819395262}
-  - {fileID: 1186423014}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1911590196
 PrefabInstance:

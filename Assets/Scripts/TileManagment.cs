@@ -191,25 +191,32 @@ public class TileManagment : MonoBehaviour
         return otherTile;
     }
 
-    public static TileInfo GetNearestNeutralTile(TileInfo currentTile, TileOwner owner)
+    public static TileInfo GetNearestOtherTile(TileInfo currentTile, TileOwner owner, float capRadius, Vector3 startPoint)
     {
-         var neutralTiles = charTiles[(int)TileOwner.Neutral];
-        Debug.Log("neutral tiles " + neutralTiles.Count);
+        var neutralTiles = charTiles[(int)TileOwner.Neutral];
+        //Debug.Log("neutral tiles " + neutralTiles.Count);
         TileInfo closestTile = GetRandomOtherTile(owner);
-        /*foreach (TileInfo tile in neutralTiles)
+        foreach (TileInfo tile in levelTiles)
         {
-            if (tile)
+            if (tile.canMove && tile!=currentTile && tile.tileOwnerIndex!=owner)
             {
-                float distOld = Vector3.Distance(currentTile.tilePosition, closestTile.tilePosition);
-                float distNew = Vector3.Distance(currentTile.tilePosition, tile.tilePosition);
-                if (distNew < distOld && tile.canMove)
+                float distOld = Vector3.Distance(startPoint, closestTile.tilePosition);
+               
+                float distNew = Vector3.Distance(startPoint, tile.tilePosition);
+
+                //Debug.Log("new distance " + distNew);
+
+                if ((distNew < distOld) && (distNew < capRadius))
                 {
-                    closestTile = tile;
+                    closestTile = tile;                    
                 }
             }
-            
-        }*/
 
+        }
+        //float dist = Vector3.Distance(startPoint, closestTile.tilePosition);
+        //Debug.Log(startPoint);
+        //Debug.Log(closestTile);
+        //Debug.Log("start point " + startPoint);
         return closestTile;
     }
 

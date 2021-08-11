@@ -88,7 +88,7 @@ public class TileMovement : MonoBehaviour
     private void FinishMovementActions( TileInfo currentTile)
     {
         _playerState.currentTile = currentTile;
-        //_playerState.currentTile.canMove = false;
+        _playerState.currentTile.canMove = false;
         OnFinishMovement?.Invoke(ActionType.Attack, CharacterState.Idle);
     }    
 }
