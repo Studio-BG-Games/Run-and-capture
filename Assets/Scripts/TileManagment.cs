@@ -204,11 +204,17 @@ public class TileManagment : MonoBehaviour
                
                 float distNew = Vector3.Distance(startPoint, tile.tilePosition);
 
+                float distToTileOld = Vector3.Distance(currentTile.tilePosition, closestTile.tilePosition);
+                float distToTileNew = Vector3.Distance(currentTile.tilePosition, tile.tilePosition);
+
                 //Debug.Log("new distance " + distNew);
 
-                if ((distNew < distOld) && (distNew < capRadius))
+                if ((distNew <= distOld) && (distNew < capRadius))
                 {
-                    closestTile = tile;                    
+                    if ((distToTileNew < distToTileOld))
+                    {
+                        closestTile = tile;
+                    }                                       
                 }
             }
 
