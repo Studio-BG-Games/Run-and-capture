@@ -21,4 +21,5 @@ public class Build : PlayerAction
         var spawnedTower = Instantiate(selectedPref, targetTile.tilePosition, selectedPref.transform.rotation);
         TileManagment.AssignBuildingToTile(targetTile, spawnedTower);
     }
+    
 }

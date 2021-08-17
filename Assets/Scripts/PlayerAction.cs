@@ -21,7 +21,12 @@ public class PlayerAction : MonoBehaviour
     public virtual void StartActionOperations(TileInfo targetTile)
     { 
         
-    }    
+    }
+
+    public virtual void Impact(TileInfo targetTile, TileInfo currentTile, TileOwner owner)
+    {
+
+    }
 
 
 

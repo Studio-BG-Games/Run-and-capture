@@ -240,67 +240,36 @@ public class TileManagment : MonoBehaviour
 
     public static void CheckSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo capTile)
     {
-        //List<TileInfo> firstAdjacentTiles = GetOtherTiles(startTile, ownerIndex);
-        //List<TileInfo> firstAllAdjacentTiles = GetAllAdjacentTiles(startTile);
-        //List<TileOwner> differentOwners = new List<TileOwner>();
-        /*foreach (TileInfo tile in firstAllAdjacentTiles)
-        {
-            if (!differentOwners.Contains(tile.tileOwnerIndex) && tile.tileOwnerIndex != TileOwner.Neutral)
-            {
-                differentOwners.Add(tile.tileOwnerIndex);
-            }
-        }*/
-        //Debug.Log(differentOwners.Count);
-
-        /*foreach (var tileOwnerIndex in differentOwners)
-        {
-            foreach (TileInfo tile in firstAllAdjacentTiles)
-            {
-                if (tile.tileOwnerIndex != tileOwnerIndex)
-                {
-                    SetSurroundedTiles(tiles, tileOwnerIndex, tile);
-                }
-                
-            }
-        }*/
-
-        /*foreach (TileInfo tile in firstAdjacentTiles)
-        {
-            SetSurroundedTiles(tiles, ownerIndex, tile);
-        }*/
-
-        List<TileOwner> checkingOwners = new List<TileOwner>();
-        checkingOwners.Add(capTile.tileOwnerIndex);
-        checkingOwners.Add(ownerIndex);
-
+        //List<TileOwner> checkingOwners = new List<TileOwner>();
+        //checkingOwners.Add(capTile.tileOwnerIndex);
+        //checkingOwners.Add(ownerIndex);
+        //Debug.Log(checkingOwners[0]);
+        //Debug.Log(checkingOwners[1]);
         foreach (TileInfo tile in levelTiles)
         {
-            /*tile.checkedFor.Clear();
-            tile.easyCaptureFor.Clear();*/
-            foreach (TileOwner owner in checkingOwners)
+            tile.checkedFor.Remove(ownerIndex);
+            tile.easyCaptureFor.Remove(ownerIndex);
+            /*foreach (TileOwner owner in checkingOwners)
             {
                 tile.checkedFor.Remove(owner);
                 tile.easyCaptureFor.Remove(owner);
-            }            
+            }         */   
         }
         foreach (TileInfo tile in levelTiles)
         {
             if (!tile.isBorderTile)
-            {                
-                /*foreach (var player in players)
+            {
+                if ((!tile.checkedFor.Contains(ownerIndex)) && (tile.tileOwnerIndex != ownerIndex))
                 {
-                    if ((!tile.checkedFor.Contains(player.ownerIndex)) && (tile.tileOwnerIndex!= player.ownerIndex))
-                    {
-                        CheckIfSurroundedByOwner(tiles, player.ownerIndex, tile);
-                    }
-                }*/
-                foreach (TileOwner owner in checkingOwners)
+                    CheckIfSurroundedByOwner(tiles, ownerIndex, tile);
+                }
+                /*foreach (TileOwner owner in checkingOwners)
                 {
                     if ((!tile.checkedFor.Contains(owner)) && (tile.tileOwnerIndex != owner))
                     {
                         CheckIfSurroundedByOwner(tiles, owner, tile);
                     }
-                }
+                }*/
             }
             
         }

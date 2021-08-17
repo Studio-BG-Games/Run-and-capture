@@ -122,10 +122,16 @@ public class PlayerActionManager : MonoBehaviour
     {
         //Debug.Log("started cor");
         float time = action.duration;
+        bool actionImpact = false;
         _actionProgress = 0f;
         float timer = 0f;
         while (_actionProgress < 1f)
         {
+            if (_actionProgress > 0.7f && !actionImpact)
+            {
+                actionImpact = true;
+                action.Impact(_target, _playerState.currentTile, _playerState.ownerIndex);
+            }
             timer += Time.fixedDeltaTime;
             _actionProgress = timer / time;
             yield return new WaitForFixedUpdate();
@@ -138,7 +144,7 @@ public class PlayerActionManager : MonoBehaviour
     }
 
     private void FinalActionOperations(PlayerAction action)
-    {
+    {        
          OnActionEnd?.Invoke(ActionType.Attack, CharacterState.Idle);
         OnActionSuccess?.Invoke();
         _target = null;

@@ -38,15 +38,12 @@ public class AI_Input : MonoBehaviour
         _actionManager.OnActionSuccess += BackToPatrol;
         _actionManager.OnActionStart += OnActionStart;
         
-        //_tileMovement.OnFinishMovement += CheckState;
         _tileMovement.OnStartMovement += StopJoystick;
         _playerState.OnInitializied += StartPatrolBehaviour;
 
         OnCurrentPathFinished += StartPatrolBehaviour;
 
         _playerState.OnDeath += StopAllActions;
-
-        //_captureController.OnCaptureEnd += SetNewTarget;
 
         _startBotPoint = transform.position;
         //Debug.Log(_startBotPoint);
@@ -60,8 +57,9 @@ public class AI_Input : MonoBehaviour
 
     private void StopAllActions()
     {
+        botState = BotState.Patrol;
         StopAllCoroutines();
-        CancelInvoke();
+        //CancelInvoke();
     }
 
     private void Start()
@@ -84,7 +82,7 @@ public class AI_Input : MonoBehaviour
     {
         //Debug.Log("bot " + gameObject.name + " started");
         //InvokeRepeating("CheckState", UnityEngine.Random.Range(0.5f, 1f), updateBehaviourIn); //to make not the same start
-        StartCoroutine(CheckBotState(updateBehaviourIn));
+        StartCoroutine(CheckBotState(updateBehaviourIn));        
     }
 
     private void OnActionStart(ActionType arg1, CharacterState arg2)
@@ -94,8 +92,7 @@ public class AI_Input : MonoBehaviour
 
     private void BackToPatrol()
     {
-        Debug.Log("attack ended");
-        StopCoroutine(_attackCoroutine);
+        Debug.Log("back to patrol");        
         StartPatrolBehaviour();
         //StartCoroutine(CheckBotState(updateBehaviourIn));
     }
@@ -116,6 +113,7 @@ public class AI_Input : MonoBehaviour
 
     private void StartPatrolBehaviour()
     {
+        //Debug.Log("start Patrol");
         _currentEnemy = null;
         botState = BotState.Patrol;
         //TileInfo targetTile = TileManagment.GetRandomOtherTile(_playerState.ownerIndex);        
@@ -133,23 +131,33 @@ public class AI_Input : MonoBehaviour
     private void CheckState(/*ActionType newType, CharacterState newState*/)
     {
         //Debug.Log("Check state");
-        if (_playerState.currentState == CharacterState.Dead)
-            return;
-        foreach (PlayerState enemy in _playerState.enemies)
-        {
-            
-            if (Vector3.Distance(enemy.transform.position, transform.position) <= TileManagment.tileOffset*1.1f)
-            {
-                //Debug.Log("attack state");
-                botState = BotState.Attack;
-                _currentEnemy = enemy;
-                break;
-            }            
-        }
-        if (botState == BotState.Patrol)
+        /*if (botState.currentState == CharacterState.Dead)
+            return;*/
+        if (botState != BotState.Attack)
         {
             foreach (PlayerState enemy in _playerState.enemies)
-            {                
+            {
+                if (!enemy.gameObject.activeSelf)
+                {
+                    continue;
+                }
+                if (Vector3.Distance(enemy.transform.position, transform.position) <= TileManagment.tileOffset * 1.1f)
+                {
+                    //Debug.Log("attack state");
+                    botState = BotState.Attack;
+                    _currentEnemy = enemy;
+                    break;
+                }
+            }
+        }        
+        if (botState == BotState.Patrol)
+        {            
+            foreach (PlayerState enemy in _playerState.enemies)
+            {
+                if (!enemy.gameObject.activeSelf)
+                {
+                    continue;
+                }
                 foreach (TileInfo tile in TileManagment.charTiles[(int)_playerState.ownerIndex])
                 {
                     if ((enemy.transform.position - tile.tilePosition).magnitude < Mathf.Epsilon)
@@ -169,6 +177,7 @@ public class AI_Input : MonoBehaviour
                 }
                 if (_currentEnemy != null)
                 {
+                    //Debug.Log("found enemy");
                     break;
                 }
             }
@@ -196,11 +205,15 @@ public class AI_Input : MonoBehaviour
 
     private void AttackEnemy(PlayerState currentEnemy)
     {
-        //Debug.Log("attacking");
-        leftInput = Vector2.zero;
-        _currentFollowingPath.Clear();
-        _attackCoroutine = TryToAttack(0.2f);
-        StartCoroutine(_attackCoroutine);        
+        if (currentEnemy)
+        {
+            //Debug.Log("startAttack");
+            leftInput = Vector2.zero;
+            _currentFollowingPath.Clear();
+            //_attackCoroutine = TryToAttack(0.2f);
+            //StartCoroutine(_attackCoroutine);
+            _actionManager.AttackEnemyOnTile(_currentEnemy.currentTile);
+        }
     }
 
     private void MoveToEnemy(PlayerState currentEnemy)
@@ -234,7 +247,7 @@ public class AI_Input : MonoBehaviour
 
     private void MoveToNextPoint()
     {
-        Debug.Log("try to move next point");
+        //Debug.Log("try to move next point");
         if (_currentFollowingPath != null) //when stop movement, calculating path that begins from target tile
         {
             if (_playerState.currentTile.tileOwnerIndex == _playerState.ownerIndex)
@@ -256,7 +269,7 @@ public class AI_Input : MonoBehaviour
                 _currentFollowingPath.Clear();
                 _currentFollowingPath = Pathfinding.FindPath(currentTile, endTile, TileManagment.levelTiles, TileManagment.tileOffset);
                 MoveTo(_currentFollowingPath[1]);
-                Debug.Log("moving");
+                //Debug.Log("moving");
             }
 
         }
@@ -277,16 +290,11 @@ public class AI_Input : MonoBehaviour
 
     private IEnumerator TryToAttack(float attackCoolDown)
     {
-        while (_currentEnemy && Vector3.Distance(_currentEnemy.transform.position, transform.position) <= TileManagment.tileOffset * 1.1f)
-        {
-            //Debug.Log("try attack");
-            if (_currentEnemy.currentState != CharacterState.Dead)
-            {
-                _actionManager.AttackEnemyOnTile(_currentEnemy.currentTile);
-                yield return new WaitForSeconds(attackCoolDown);
-            }            
-        }
+        _actionManager.AttackEnemyOnTile(_currentEnemy.currentTile);
+        yield return new WaitForSeconds(attackCoolDown);
         BackToPatrol();
+        StopCoroutine(_attackCoroutine);
+        _attackCoroutine = null;
         //StopAllCoroutines();        
     }
 

@@ -76,7 +76,7 @@ public class PlayerDeathController : MonoBehaviour
         }
     }
 
-    private void MakeDead(PlayerState player)
+    public void MakeDead(PlayerState player)
     {        
         int playerIndex = players.IndexOf(player);
         lastDeadTime[playerIndex] = Time.time;
@@ -121,7 +121,7 @@ public class PlayerDeathController : MonoBehaviour
             Instantiate(deathParticles, player.transform.position, deathParticles.transform.rotation);
         }
 
-        //player.SetNewState(ActionType.Attack, CharacterState.Dead);
+        player.SetNewState(ActionType.Attack, CharacterState.Dead);
         player.OnDeathActions();
         List<TileInfo> playerTiles = TileManagment.charTiles[(int)player.ownerIndex];
         TileInfo currentTile = TileManagment.GetTile(player.transform.position);
@@ -134,7 +134,7 @@ public class PlayerDeathController : MonoBehaviour
             }
         }
         player.gameObject.SetActive(false);
-        Debug.Log("player " + player.name + " dead");
+        //Debug.Log("player " + player.name + " dead");
     }
 
     private void PlayerResActions(PlayerState player)
@@ -148,14 +148,14 @@ public class PlayerDeathController : MonoBehaviour
         }
 
         player.gameObject.SetActive(true);
-        //player.SetNewState(ActionType.Attack, CharacterState.Idle);
+        player.SetNewState(ActionType.Attack, CharacterState.Idle);
         player.currentTile = GetAvailableResPos(player, playerTiles);
         player.transform.position = player.currentTile.tilePosition;
         player.currentTile.canMove = false;
         //player.transform.position = TileManagment.GetRandomOtherTile(player.ownerIndex).tilePosition;
 
         //player.SetStartParams();
-        Debug.Log("player " + player.name + " res");
+        //Debug.Log("player " + player.name + " res");
 
         if (resParticles)
         {

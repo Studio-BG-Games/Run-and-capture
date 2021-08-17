@@ -119,7 +119,7 @@ public class PlayerState : MonoBehaviour
 
     public void OnDeathActions()
     {
-        OnDeath?.Invoke();
+        OnDeath?.Invoke();        
     }
 }
 
