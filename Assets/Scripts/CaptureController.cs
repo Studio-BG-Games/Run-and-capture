@@ -28,6 +28,7 @@ public class CaptureController : MonoBehaviour
         _playerState.OnInitializied += CaptureStartTile;
         _playerState.OnCaptureAllow += TryToCaptureTile;
         _playerState.OnCaptureForbid += StopCapturingTile;
+        _playerState.OnDeath += StopCapturingTile;
 
         OnCaptureEnd += CaptureTile;
     }
@@ -55,6 +56,8 @@ public class CaptureController : MonoBehaviour
 
     private void TryToCaptureTile()
     {
+        if (_playerState.currentState == CharacterState.Dead)
+            return;
         TileInfo tile = _playerState.currentTile;
         //Debug.Log("Try to capture " + tile.name);
         if(_ownerIndex != tile.tileOwnerIndex)

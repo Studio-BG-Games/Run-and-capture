@@ -53,11 +53,7 @@ public class TileManagment : MonoBehaviour
     }
 
     private void Start()
-    {
-        //Debug.Log("We have "+ levelTiles.Count + " tiles on this level");
-        //Debug.Log("Tiles offset "+ _tilesOffset +" units");
-        //Debug.Log(GetTile(new Vector3(0f, 0f, 0f), new Vector3(-0.9f, 0f, 1.7f), 1));
-        //pathTiles = Pathfinding.FindPath(levelTiles[0].GetComponent<PathNode>(), levelTiles[106].GetComponent<PathNode>(), tileOffset);
+    {        
         if (tileMaterials.Count == 0)
         {
             Debug.LogError("You need to set tile materials to TileManagment");
@@ -72,16 +68,16 @@ public class TileManagment : MonoBehaviour
         tile.GetComponent<Renderer>().material = tileMaterials[(int)tile.tileOwnerIndex];
     }
 
-    public void ChangeTileOwner(TileInfo tile, TileOwner ownerIndex)
+    public void ChangeTileOwner(TileInfo tile, TileOwner newOwner)
     {
         TileOwner oldOwner = tile.tileOwnerIndex;
-        tile.tileOwnerIndex = ownerIndex;
+        tile.tileOwnerIndex = newOwner;
         tile.GetComponent<Renderer>().material = tileMaterials[(int)tile.tileOwnerIndex];
 
-        charTiles[(int)ownerIndex].Add(tile);
+        charTiles[(int)newOwner].Add(tile);
         charTiles[(int)oldOwner].Remove(tile);
         
-        CheckSurroundedTiles(levelTiles, ownerIndex, tile);
+        CheckSurroundedTiles(levelTiles, newOwner, oldOwner);
 
         OnAnyTileCaptured?.Invoke();
         
@@ -238,41 +234,39 @@ public class TileManagment : MonoBehaviour
         return tempArr;
     }
 
-    public static void CheckSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo capTile)
+    public static void CheckSurroundedTiles(List<TileInfo> tiles, TileOwner newOwner, TileOwner oldOwner)
     {
-        //List<TileOwner> checkingOwners = new List<TileOwner>();
-        //checkingOwners.Add(capTile.tileOwnerIndex);
-        //checkingOwners.Add(ownerIndex);
-        //Debug.Log(checkingOwners[0]);
-        //Debug.Log(checkingOwners[1]);
-        foreach (TileInfo tile in levelTiles)
+        List<TileOwner> checkPlayers = new List<TileOwner>();
+        checkPlayers.Add(oldOwner);
+        checkPlayers.Add(newOwner);
+
+        foreach (var player in checkPlayers)
         {
-            tile.checkedFor.Remove(ownerIndex);
-            tile.easyCaptureFor.Remove(ownerIndex);
-            /*foreach (TileOwner owner in checkingOwners)
+            foreach (TileInfo tile in levelTiles)
             {
-                tile.checkedFor.Remove(owner);
-                tile.easyCaptureFor.Remove(owner);
-            }         */   
-        }
-        foreach (TileInfo tile in levelTiles)
-        {
-            if (!tile.isBorderTile)
-            {
-                if ((!tile.checkedFor.Contains(ownerIndex)) && (tile.tileOwnerIndex != ownerIndex))
+                
+                tile.checkedFor.Remove(newOwner);
+                if (!tile.isLocked)
                 {
-                    CheckIfSurroundedByOwner(tiles, ownerIndex, tile);
+                    tile.easyCaptureFor.Remove(newOwner);
                 }
-                /*foreach (TileOwner owner in checkingOwners)
-                {
-                    if ((!tile.checkedFor.Contains(owner)) && (tile.tileOwnerIndex != owner))
-                    {
-                        CheckIfSurroundedByOwner(tiles, owner, tile);
-                    }
-                }*/
             }
-            
         }
+
+        foreach (var player in checkPlayers)
+        {
+            foreach (TileInfo tile in levelTiles)
+            {
+                if (!tile.isBorderTile)
+                {
+                    if ((!tile.checkedFor.Contains(player)) && (tile.tileOwnerIndex != player))
+                    {
+                        CheckIfSurroundedByOwner(tiles, player, tile);
+                    }
+                }
+
+            }
+        }        
 
     }
 
@@ -317,7 +311,10 @@ public class TileManagment : MonoBehaviour
 
         foreach (TileInfo tile in connectedTiles)
         {
-            tile.easyCaptureFor.Add(ownerIndex);
+            if(!tile.isLocked)
+            {
+                tile.easyCaptureFor.Add(ownerIndex);
+            }
         }        
     }
    /* public static void SetSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)

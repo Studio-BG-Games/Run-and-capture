@@ -9,6 +9,7 @@ public class TileInfo : MonoBehaviour
     public bool canMove = true;
     public bool canBeAttacked = true;
     public bool canBuildHere = true;
+    public bool isLocked = false;
 
     public GameObject buildingOnTile;
 

@@ -86,10 +86,10 @@ public class PlayerState : MonoBehaviour
             else
             {
                 CaptureState(false);
-                /*if (newState == CharacterState.Dead)
+                if (newState == CharacterState.Dead)
                 {
                     OnDeath?.Invoke();
-                }*/
+                }
             }
             currentState = newState;
             OnCharStateChanged?.Invoke(newState, newAction);
@@ -104,9 +104,7 @@ public class PlayerState : MonoBehaviour
 
     public void SetStartParams()
     {
-        currentTile = TileManagment.GetTile(transform.position);
-        //currentState = CharacterState.Idle;
-        //currentAction = ActionType.Attack;
+        currentTile = TileManagment.GetTile(transform.position);        
         SetNewState(ActionType.Attack, CharacterState.Idle);
         SetEnemies();
         OnInitializied?.Invoke();        
@@ -116,11 +114,7 @@ public class PlayerState : MonoBehaviour
     {
         return (currentTile.tileOwnerIndex == ownerIndex) && (currentState == CharacterState.Idle);
     }
-
-    public void OnDeathActions()
-    {
-        OnDeath?.Invoke();        
-    }
+    
 }
 
 public enum CharacterState 

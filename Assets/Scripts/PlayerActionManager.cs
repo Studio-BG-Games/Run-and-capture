@@ -110,6 +110,10 @@ public class PlayerActionManager : MonoBehaviour
 
     private void DoAction(PlayerAction action)
     {
+        if (!action.IsActionAllowed(_target, _playerState))
+        {
+            return;
+        }
         OnActionStart?.Invoke(action.actionType, CharacterState.Action);        
         transform.LookAt(_target.tilePosition);
         action.StartActionOperations(_target);

@@ -9,7 +9,7 @@ public class HealthController : MonoBehaviour
     public float currentHealth;
 
     [SerializeField]
-    private UI_Health healthUI;
+    private UI_Quantity healthUI;
 
     public GameObject playerImpactVFX, groundImpactVFX;
 
@@ -17,7 +17,7 @@ public class HealthController : MonoBehaviour
     private void OnEnable()
     {
         currentHealth = startHealth;
-        healthUI.UpdateHealthBar(currentHealth, startHealth);
+        healthUI.UpdateBar(currentHealth, startHealth);
     }
 
     public void TakeDamage(float amount)
@@ -25,7 +25,7 @@ public class HealthController : MonoBehaviour
         if (currentHealth < 0)
             return;
         currentHealth -= amount;
-        healthUI.UpdateHealthBar(currentHealth, startHealth);
+        healthUI.UpdateBar(currentHealth, startHealth);
         Instantiate(playerImpactVFX, transform.position, playerImpactVFX.transform.rotation);
         Instantiate(groundImpactVFX, transform.position, groundImpactVFX.transform.rotation);
         if (currentHealth <= 0)

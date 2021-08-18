@@ -167,6 +167,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -365,6 +366,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -637,6 +639,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -687,6 +690,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -1088,6 +1092,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -1212,6 +1217,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -1262,6 +1268,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -1312,6 +1319,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -1510,6 +1518,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -1560,6 +1569,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -1872,8 +1882,6 @@ GameObject:
   m_Component:
   - component: {fileID: 185995047}
   - component: {fileID: 185995048}
-  - component: {fileID: 185995050}
-  - component: {fileID: 185995049}
   m_Layer: 0
   m_Name: AdditionalTools
   m_TagString: Untagged
@@ -1913,43 +1921,8 @@ MonoBehaviour:
   - {fileID: 5119240428719783082, guid: a80c8a9443ee8d547b06a2f1d8b4900e, type: 3}
   - {fileID: 4810627989180709430, guid: 019d55682fa91934eaf2df23b6eb055e, type: 3}
   _actionUI: {fileID: 1801060027}
-  _buidAction: {fileID: 185995050}
+  _buidAction: {fileID: 1801060031}
   _buildingsPanel: {fileID: 1864843842}
---- !u!114 &185995049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185995046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef86a7fd23f3f604d945074968fd7063, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 1.3
-  distance: 1
-  actionType: 0
-  standartAttackPref: {fileID: 8121987183708165570, guid: a69f2bfc3db12bf429b2420ae3b5ca1d,
-    type: 3}
-  standartAttackGroundImpact: {fileID: 8619867339336636724, guid: fb745cfc34702fc4daee97f8f3273f09,
-    type: 3}
---- !u!114 &185995050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185995046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41080f62be501b4a97bf5b9ab9dd6f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 3.15
-  distance: 1
-  actionType: 1
-  selectedPref: {fileID: 0}
 --- !u!1 &186187756 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -1994,6 +1967,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -2074,6 +2048,88 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 592213770db2d80419af5780e2a1d20c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5ecf8ffbe22c7459c44494cee176d9, type: 3}
+--- !u!1 &194466192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 194466193}
+  - component: {fileID: 194466194}
+  m_Layer: 0
+  m_Name: AttackDirectionSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &194466193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194466192}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 1.33}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1046437977}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &194466194
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194466192}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 4c2fb6072e730cd4ab0b39b50aadb418, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.33333334}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 9.8, y: 9.7}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &199662652 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -2118,6 +2174,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -2242,6 +2299,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -2366,6 +2424,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -2490,6 +2549,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -2540,6 +2600,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -2820,6 +2881,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -2870,6 +2932,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -2920,6 +2983,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -3044,6 +3108,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -3094,6 +3159,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -3174,6 +3240,250 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8b4d0931cd71e884580506919f308711, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5ecf8ffbe22c7459c44494cee176d9, type: 3}
+--- !u!1 &290088159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 290088172}
+  - component: {fileID: 290088171}
+  - component: {fileID: 290088170}
+  - component: {fileID: 290088169}
+  - component: {fileID: 290088168}
+  - component: {fileID: 290088167}
+  - component: {fileID: 290088166}
+  - component: {fileID: 290088165}
+  - component: {fileID: 290088164}
+  - component: {fileID: 290088163}
+  - component: {fileID: 290088162}
+  - component: {fileID: 290088161}
+  - component: {fileID: 290088160}
+  m_Layer: 0
+  m_Name: Enemy_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &290088160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910a443bbcb74e44cb5ccf12a169accb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botState: 0
+  leftInput: {x: 0, y: 0}
+  rightInput: {x: 0, y: 0}
+  agressiveTime: 5
+  attackTime: 2
+  updateBehaviourIn: 0.6
+  neutralCapDistance: 10
+  detectPlayerDistance: 4
+  _currentEnemy: {fileID: 0}
+  _currentFollowingPath: []
+--- !u!114 &290088161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64add3e878d8428479aa2da3e467b1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHealth: 1400
+  currentHealth: 0
+  healthUI: {fileID: 1273192371}
+  playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
+    type: 3}
+  groundImpactVFX: {fileID: 6794377120831721188, guid: 2e8dc25f6c4c6264e95bc99e5bffa3e5,
+    type: 3}
+--- !u!114 &290088162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a3ec3edb9d17a41810ebf997c51426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 853825489494233644, guid: d8e5752261f42474c9e7aa2ed04c75ac, type: 3}
+  target: {fileID: 319470933}
+  updateStepInSec: 0.05
+--- !u!114 &290088163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff581aacfa68c4645bb27277b1a0dd23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackUI: {fileID: 1046437977}
+  _buildUI: {fileID: 526352758}
+--- !u!114 &290088164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1e558538e66434b894cbb9a74b1ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &290088165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3c4882af86905429c1c42aabf068c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutralCaptureTime: 1
+  enemyCaptureTime: 2
+  fastCaptureTime: 0
+  _playerState: {fileID: 0}
+--- !u!114 &290088166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41080f62be501b4a97bf5b9ab9dd6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3.15
+  distance: 1
+  actionType: 1
+  selectedPref: {fileID: 0}
+--- !u!114 &290088167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef86a7fd23f3f604d945074968fd7063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1.3
+  distance: 1
+  actionType: 0
+  standartAttackPref: {fileID: 8121987183708165570, guid: a69f2bfc3db12bf429b2420ae3b5ca1d,
+    type: 3}
+  standartAttackGroundImpact: {fileID: 8619867339336636724, guid: fb745cfc34702fc4daee97f8f3273f09,
+    type: 3}
+  maxAttackEnergy: 3.1
+  attackResetTime: 3
+  attackCost: 1
+  UI_Energy: {fileID: 816720975}
+--- !u!114 &290088168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c2003192ca6ff43842a1068aa67998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAction: {fileID: 290088167}
+  buildAction: {fileID: 290088166}
+--- !u!114 &290088169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f701310aaea215a4d9e0c8646d3e1ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextTileMoveTime: 0.5
+  moveDistance: 1
+--- !u!114 &290088170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87be083c521172a4392e6aeb23c1976c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  ownerIndex: 2
+  currentAction: 0
+  controlType: 1
+  currentTile: {fileID: 0}
+  _selectionTool: {fileID: 185995048}
+  enemies: []
+--- !u!136 &290088171
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 2.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!4 &290088172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088159}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.4632797, y: 0, z: -3.2316403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1257918533}
+  - {fileID: 319470933}
+  - {fileID: 1046437977}
+  - {fileID: 1017185705}
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299309060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -3218,6 +3528,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -3268,6 +3579,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -3318,6 +3630,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -3368,6 +3681,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -3749,6 +4063,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60480c1f7fb543e4b9144e972e469275, type: 3}
+--- !u!1 &319470932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 319470933}
+  m_Layer: 0
+  m_Name: ProgressUI_Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319470933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319470932}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 290088172}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &342649175 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -3793,6 +4137,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -3843,6 +4188,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -4042,18 +4388,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91362a5819664c44393acb2d057ad719, type: 3}
---- !u!114 &346215088 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 962935407416420353, guid: 91362a5819664c44393acb2d057ad719,
-    type: 3}
-  m_PrefabInstance: {fileID: 346215087}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cebe8e1376b6b2c47a1679181730a908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &346215089 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
@@ -4252,6 +4586,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -4302,6 +4637,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -4436,6 +4772,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -4708,6 +5045,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -4980,6 +5318,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -5178,6 +5517,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -5228,6 +5568,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -5278,6 +5619,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -5512,6 +5854,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -5636,6 +5979,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -5686,6 +6030,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -5810,6 +6155,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -6009,18 +6355,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91362a5819664c44393acb2d057ad719, type: 3}
---- !u!114 &500846504 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 962935407416420353, guid: 91362a5819664c44393acb2d057ad719,
-    type: 3}
-  m_PrefabInstance: {fileID: 500846503}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cebe8e1376b6b2c47a1679181730a908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &500846505 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
@@ -6389,6 +6723,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -6439,6 +6774,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
@@ -6597,6 +6933,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
@@ -6737,6 +7074,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
@@ -6787,6 +7125,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -7059,6 +7398,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -7336,6 +7676,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -7386,6 +7727,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -7436,6 +7778,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -7486,6 +7829,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
@@ -7832,6 +8176,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -7882,6 +8227,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -7993,6 +8339,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6375375739667912520}
+  - {fileID: 4801730346373268651}
   m_Father: {fileID: 1801060022}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8180,6 +8527,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -8230,6 +8578,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -8280,6 +8629,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -8404,6 +8754,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -8976,6 +9327,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -9100,6 +9452,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -9224,6 +9577,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
@@ -9730,6 +10084,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -9963,6 +10318,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -10013,6 +10369,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -10210,12 +10567,150 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
+--- !u!1001 &816720973
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1017185705}
+    m_Modifications:
+    - target: {fileID: 8903131178351670492, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_AttackEnergy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38920eb0e54d3704a8051d8884b5b76a, type: 3}
+--- !u!224 &816720974 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+    type: 3}
+  m_PrefabInstance: {fileID: 816720973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &816720975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7660888748284326884, guid: 38920eb0e54d3704a8051d8884b5b76a,
+    type: 3}
+  m_PrefabInstance: {fileID: 816720973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891957198d6ac824b834b2240d628d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &829807728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10482,6 +10977,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -10711,6 +11207,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -11057,6 +11554,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
@@ -11200,6 +11698,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
@@ -11250,6 +11749,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -11300,6 +11800,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -11434,7 +11935,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896468142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.5, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1801060022}
@@ -11515,6 +12016,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -11565,6 +12067,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -11615,6 +12118,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -12109,6 +12613,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -12460,6 +12965,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -12732,6 +13238,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -12782,12 +13289,114 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
+--- !u!1 &1017185704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1017185705}
+  - component: {fileID: 1017185708}
+  - component: {fileID: 1017185707}
+  - component: {fileID: 1017185706}
+  m_Layer: 0
+  m_Name: PlayerInfoCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1017185705
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017185704}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1273192372}
+  - {fileID: 816720974}
+  m_Father: {fileID: 290088172}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2160, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1017185706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017185704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1017185707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017185704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &1017185708
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017185704}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 1923264935}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1023048202
 GameObject:
   m_ObjectHideFlags: 0
@@ -13009,6 +13618,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -13059,6 +13669,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -13183,12 +13794,44 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
+--- !u!1 &1046437976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1046437977}
+  m_Layer: 0
+  m_Name: AttackUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1046437977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046437976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 194466193}
+  m_Father: {fileID: 290088172}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1054728360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13455,6 +14098,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -13579,6 +14223,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -13629,6 +14274,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -13753,6 +14399,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
@@ -14115,6 +14762,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -14239,6 +14887,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -14289,6 +14938,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -14387,7 +15037,7 @@ MonoBehaviour:
     type: 3}
   resParticles: {fileID: 4017566179281655563, guid: ea13d84c4b665e04dad27017bf079e19,
     type: 3}
-  resurrectTime: 3
+  resurrectTime: 7
 --- !u!1 &1114709431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -14432,6 +15082,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -14870,6 +15521,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
@@ -15218,6 +15870,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -15401,6 +16054,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -15451,6 +16105,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -15501,6 +16156,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -15625,6 +16281,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
@@ -15749,6 +16406,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -15799,6 +16457,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -16084,6 +16743,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
@@ -16312,6 +16972,86 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 592213770db2d80419af5780e2a1d20c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5ecf8ffbe22c7459c44494cee176d9, type: 3}
+--- !u!1001 &1257918532
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 290088172}
+    m_Modifications:
+    - target: {fileID: -1148229131982139879, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9e1a6090cd4d65d4599676c24fcb5cff, type: 2}
+    - target: {fileID: 233917392663333734, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_Name
+      value: Ragnar
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4e44fa43f796444bb2acc08a5dc9568, type: 3}
+--- !u!4 &1257918533 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 609351601165668828, guid: b4e44fa43f796444bb2acc08a5dc9568,
+    type: 3}
+  m_PrefabInstance: {fileID: 1257918532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1258335437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16563,6 +17303,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -16613,12 +17354,150 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
+--- !u!1001 &1273192370
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1017185705}
+    m_Modifications:
+    - target: {fileID: 6574093771786895448, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91362a5819664c44393acb2d057ad719, type: 3}
+--- !u!114 &1273192371 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5396834544230483808, guid: 91362a5819664c44393acb2d057ad719,
+    type: 3}
+  m_PrefabInstance: {fileID: 1273192370}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891957198d6ac824b834b2240d628d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &1273192372 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
+    type: 3}
+  m_PrefabInstance: {fileID: 1273192370}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1274464641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -16663,6 +17542,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -16713,6 +17593,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -16837,6 +17718,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -16887,6 +17769,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -16937,6 +17820,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -16987,6 +17871,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -17185,6 +18070,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -17235,6 +18121,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
@@ -17285,6 +18172,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -17335,6 +18223,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -17459,6 +18348,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -17509,6 +18399,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -17727,6 +18618,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -17777,6 +18669,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -17975,6 +18868,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -18025,6 +18919,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -18305,6 +19200,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -18577,6 +19473,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
@@ -18858,6 +19755,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -18908,6 +19806,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -19257,6 +20156,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -19681,6 +20581,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -19731,6 +20632,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -19855,6 +20757,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -19901,7 +20804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startHealth: 2000
   currentHealth: 0
-  healthUI: {fileID: 500846504}
+  healthUI: {fileID: 0}
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
     type: 3}
   groundImpactVFX: {fileID: 6794377120831721188, guid: 2e8dc25f6c4c6264e95bc99e5bffa3e5,
@@ -19997,8 +20900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c2003192ca6ff43842a1068aa67998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAction: {fileID: 185995049}
-  buildAction: {fileID: 185995050}
+  attackAction: {fileID: 0}
+  buildAction: {fileID: 0}
 --- !u!114 &1535125215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20182,6 +21085,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -20454,6 +21358,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -20652,6 +21557,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -20776,6 +21682,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -20900,6 +21807,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -20950,6 +21858,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -21135,6 +22044,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -21349,6 +22259,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -21473,6 +22384,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -21523,6 +22435,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -21647,6 +22560,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -21845,6 +22759,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 2
   whoCanEasyGetTile: 0
@@ -21895,6 +22810,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -21923,6 +22839,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -22211,6 +23128,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -22335,6 +23253,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -22459,6 +23378,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -22583,6 +23503,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -22633,6 +23554,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -22683,6 +23605,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -23162,6 +24085,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -23212,6 +24136,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 4
   whoCanEasyGetTile: 0
@@ -23262,6 +24187,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -23312,6 +24238,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -23615,6 +24542,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -23813,6 +24741,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -23832,13 +24761,15 @@ GameObject:
   - component: {fileID: 1801060026}
   - component: {fileID: 1801060023}
   - component: {fileID: 1801060034}
+  - component: {fileID: 1801060032}
+  - component: {fileID: 1801060031}
   - component: {fileID: 1801060024}
   - component: {fileID: 1801060028}
   - component: {fileID: 1801060027}
   - component: {fileID: 1801060025}
   - component: {fileID: 1801060029}
   m_Layer: 0
-  m_Name: Player_Container
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23964,9 +24895,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64add3e878d8428479aa2da3e467b1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 2000
+  startHealth: 3000
   currentHealth: 0
-  healthUI: {fileID: 234817206489962258}
+  healthUI: {fileID: 1956560547}
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
     type: 3}
   groundImpactVFX: {fileID: 6794377120831721188, guid: 2e8dc25f6c4c6264e95bc99e5bffa3e5,
@@ -23985,6 +24916,45 @@ CapsuleCollider:
   m_Height: 2.2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1801060031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801060021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41080f62be501b4a97bf5b9ab9dd6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3.15
+  distance: 1
+  actionType: 1
+  selectedPref: {fileID: 0}
+--- !u!114 &1801060032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801060021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef86a7fd23f3f604d945074968fd7063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1.3
+  distance: 1
+  actionType: 0
+  standartAttackPref: {fileID: 8121987183708165570, guid: a69f2bfc3db12bf429b2420ae3b5ca1d,
+    type: 3}
+  standartAttackGroundImpact: {fileID: 8619867339336636724, guid: fb745cfc34702fc4daee97f8f3273f09,
+    type: 3}
+  maxAttackEnergy: 3.1
+  attackResetTime: 3
+  attackCost: 1
+  UI_Energy: {fileID: 6016135478453453714}
 --- !u!114 &1801060034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23997,8 +24967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c2003192ca6ff43842a1068aa67998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAction: {fileID: 185995049}
-  buildAction: {fileID: 185995050}
+  attackAction: {fileID: 1801060032}
+  buildAction: {fileID: 1801060031}
 --- !u!1 &1801607759
 GameObject:
   m_ObjectHideFlags: 0
@@ -24298,6 +25268,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -24329,7 +25300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1819395262
 Transform:
   m_ObjectHideFlags: 0
@@ -24417,8 +25388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c2003192ca6ff43842a1068aa67998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAction: {fileID: 185995049}
-  buildAction: {fileID: 185995050}
+  attackAction: {fileID: 0}
+  buildAction: {fileID: 0}
 --- !u!114 &1819395268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24459,7 +25430,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819395261}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910a443bbcb74e44cb5ccf12a169accb, type: 3}
   m_Name: 
@@ -24500,9 +25471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64add3e878d8428479aa2da3e467b1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 2000
+  startHealth: 900
   currentHealth: 0
-  healthUI: {fileID: 346215088}
+  healthUI: {fileID: 0}
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
     type: 3}
   groundImpactVFX: {fileID: 6794377120831721188, guid: 2e8dc25f6c4c6264e95bc99e5bffa3e5,
@@ -24551,6 +25522,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -24675,6 +25647,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -24725,6 +25698,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
@@ -25096,6 +26070,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -25146,6 +26121,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -25196,6 +26172,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -25246,6 +26223,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -25296,6 +26274,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -25420,6 +26399,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -25470,6 +26450,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -25520,6 +26501,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -25570,6 +26552,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -25916,6 +26899,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -26099,7 +27083,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923264931}
-  m_LocalRotation: {x: 0.029971035, y: 0.000000004076362, z: -0.000000007576159, w: 0.9995508}
+  m_LocalRotation: {x: 0.029971035, y: -0.000000004076362, z: 0.0000000075761575,
+    w: 0.9995508}
   m_LocalPosition: {x: 0, y: 0.87083435, z: -14.50833}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -26496,6 +27481,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -26768,6 +27754,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -26804,7 +27791,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946816075}
-  m_LocalRotation: {x: 0.5257311, y: 0.0000000073183117, z: -0.0000000045229647, w: 0.85065085}
+  m_LocalRotation: {x: 0.5257311, y: -0.000000007318311, z: 0.000000004522964, w: 0.85065085}
   m_LocalPosition: {x: 0, y: 13, z: -6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -26847,6 +27834,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1348636822}
+--- !u!114 &1956560547 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5396834544230483808, guid: 91362a5819664c44393acb2d057ad719,
+    type: 3}
+  m_PrefabInstance: {fileID: 234817206489962257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891957198d6ac824b834b2240d628d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1968305387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26965,6 +27964,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -27189,6 +28189,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -27492,6 +28493,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -27542,6 +28544,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -27592,6 +28595,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -27642,6 +28646,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -27766,6 +28771,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -27964,6 +28970,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -28014,6 +29021,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -28064,6 +29072,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -28188,6 +29197,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -28392,6 +29402,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -28673,6 +29684,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -28723,6 +29735,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -28773,6 +29786,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 1
   whoCanEasyGetTile: 0
@@ -28971,6 +29985,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -29169,6 +30184,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -29293,6 +30309,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -29566,6 +30583,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -29764,6 +30782,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -29814,6 +30833,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -29864,6 +30884,7 @@ MonoBehaviour:
   canMove: 1
   canBeAttacked: 1
   canBuildHere: 1
+  isLocked: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   whoCanEasyGetTile: 0
@@ -29970,7 +30991,7 @@ PrefabInstance:
     - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6574093771786895449, guid: 91362a5819664c44393acb2d057ad719,
         type: 3}
@@ -29989,18 +31010,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91362a5819664c44393acb2d057ad719, type: 3}
---- !u!114 &234817206489962258 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 962935407416420353, guid: 91362a5819664c44393acb2d057ad719,
-    type: 3}
-  m_PrefabInstance: {fileID: 234817206489962257}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cebe8e1376b6b2c47a1679181730a908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1782920097735742087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31159,6 +32168,143 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d00f156879942114488e4db0689a3fb7, type: 3}
+--- !u!1001 &4120066804423979126
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 622020284}
+    m_Modifications:
+    - target: {fileID: 8903131178351670492, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_AttackEnergy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38920eb0e54d3704a8051d8884b5b76a, type: 3}
+--- !u!224 &4801730346373268651 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8903131178351670493, guid: 38920eb0e54d3704a8051d8884b5b76a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4120066804423979126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6016135478453453714 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7660888748284326884, guid: 38920eb0e54d3704a8051d8884b5b76a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4120066804423979126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891957198d6ac824b834b2240d628d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6246584200148587256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5624546620962832511, guid: fa5ecf8ffbe22c7459c44494cee176d9,

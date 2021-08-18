@@ -111,7 +111,6 @@ public class PlayerDeathController : MonoBehaviour
         alivePlayers.Add(player);
         deadPlayers.Remove(player);
         PlayerResActions(player);
-        //player.gameObject.SetActive(true);        
     }
 
     private void PlayerDeadActions(PlayerState player)
@@ -120,17 +119,18 @@ public class PlayerDeathController : MonoBehaviour
         {
             Instantiate(deathParticles, player.transform.position, deathParticles.transform.rotation);
         }
-
+        player.currentTile.canMove = true;
         player.SetNewState(ActionType.Attack, CharacterState.Dead);
-        player.OnDeathActions();
+        
         List<TileInfo> playerTiles = TileManagment.charTiles[(int)player.ownerIndex];
-        TileInfo currentTile = TileManagment.GetTile(player.transform.position);
-        currentTile.canMove = true;
+        //TileInfo currentTile = TileManagment.GetTile(player.transform.position);
+        
         foreach (TileInfo tile in playerTiles)
         {
             foreach (var enemy in player.enemies)
             {
                 tile.easyCaptureFor.Add(enemy.ownerIndex);
+                tile.isLocked = true;
             }
         }
         player.gameObject.SetActive(false);
@@ -145,16 +145,14 @@ public class PlayerDeathController : MonoBehaviour
         foreach (TileInfo tile in playerTiles)
         {
             tile.easyCaptureFor.Clear();
+            tile.isLocked = false;
         }
 
-        player.gameObject.SetActive(true);
-        player.SetNewState(ActionType.Attack, CharacterState.Idle);
-        player.currentTile = GetAvailableResPos(player, playerTiles);
-        player.transform.position = player.currentTile.tilePosition;
-        player.currentTile.canMove = false;
-        //player.transform.position = TileManagment.GetRandomOtherTile(player.ownerIndex).tilePosition;
+        player.gameObject.SetActive(true);        
+        player.transform.position = GetAvailableResPos(player, playerTiles);
+        player.SetStartParams();
+        player.currentTile.canMove = false; 
 
-        //player.SetStartParams();
         //Debug.Log("player " + player.name + " res");
 
         if (resParticles)
@@ -163,7 +161,7 @@ public class PlayerDeathController : MonoBehaviour
         }
     }
 
-    private TileInfo GetAvailableResPos(PlayerState player, List<TileInfo> playerTiles)
+    private Vector3 GetAvailableResPos(PlayerState player, List<TileInfo> playerTiles)
     {
         foreach (TileInfo tile in playerTiles)
         {
@@ -172,12 +170,12 @@ public class PlayerDeathController : MonoBehaviour
                 var myNeighbourTiles = TileManagment.GetAllAdjacentTiles(tile, player.ownerIndex);
                 if (myNeighbourTiles.Count >= spawnSafezone)
                 {
-                    return tile;
+                    return tile.tilePosition;
                 }
             }            
         }
         Debug.Log("nowhere to spawn");
-        return null;
+        return Vector2.zero;
     }
 
     public void OnKillBtnClick(int playerIndex)
