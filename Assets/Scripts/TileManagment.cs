@@ -118,6 +118,21 @@ public class TileManagment : MonoBehaviour
         return GetTile(tilePos);
     }
 
+    public static TileInfo GetTile(TileOwner owner)
+    {
+        var ownerTiles = charTiles[(int)owner];
+        int randomTileIndex = UnityEngine.Random.Range(0, ownerTiles.Count - 1);
+
+        TileInfo resultTile = ownerTiles[randomTileIndex];
+        while (!resultTile.canMove)
+        {
+            randomTileIndex = UnityEngine.Random.Range(0, ownerTiles.Count - 1);
+            resultTile = ownerTiles[randomTileIndex];
+        }
+
+        return resultTile;
+    }
+
     public static List<TileInfo> GetOtherTiles(TileInfo currentTile, TileOwner ownerIndex)
     {
         List<TileInfo> otherTiles = new List<TileInfo>();
@@ -317,51 +332,5 @@ public class TileManagment : MonoBehaviour
             }
         }        
     }
-   /* public static void SetSurroundedTiles(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)
-    {
-        List<TileInfo> surroundedTiles = new List<TileInfo>();
-        var q = new Queue<TileInfo>(tiles.Count);
-        q.Enqueue(startTile);
-        int iterations = 0;
-
-        while (q.Count > 0)
-        {
-            var tile = q.Dequeue();
-
-            if (q.Count > tiles.Count)
-            {
-                throw new Exception("The algorithm is probably looping. Queue size: " + q.Count);
-            }
-
-            if (tile.isBorderTile)  //we are in a wrong area
-            {
-                surroundedTiles.Clear();
-                return;
-            }
-
-            if (surroundedTiles.Contains(tile))
-            {
-                continue;
-            }
-
-            surroundedTiles.Add(tile);
-
-            var adjacentTiles = GetOtherTiles(tile, ownerIndex);
-            
-            foreach (TileInfo newTile in adjacentTiles)
-            {
-                q.Enqueue(newTile);
-            }
-
-            iterations++;
-        }
-        //Debug.Log("Found " +surroundedTiles.Count + " tiles");
-        //Debug.Log("Iterations " + iterations);
-
-        foreach (TileInfo tile in surroundedTiles)
-        {
-            tile.whoCanEasyGetTile = ownerIndex;
-        }
-        Debug.Log("Surrounded " + surroundedTiles.Count);
-    }*/
+   
 }

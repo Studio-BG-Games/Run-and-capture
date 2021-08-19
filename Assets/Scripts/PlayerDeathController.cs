@@ -11,8 +11,9 @@ public class PlayerDeathController : MonoBehaviour
 
     public float resurrectTime = 7f;
 
-    private List<PlayerState> alivePlayers = new List<PlayerState>();
-    private List<PlayerState> deadPlayers = new List<PlayerState>();
+    public static List<PlayerState> alivePlayers = new List<PlayerState>();
+    public static List<PlayerState> deadPlayers = new List<PlayerState>();
+
     private List<float> lastDeadTime = new List<float>();
 
     private float updateTime = 1f;
