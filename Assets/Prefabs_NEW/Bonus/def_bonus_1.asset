@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cab700e817ae53f49be6c90d5fd5cdf5, type: 3}
-  m_Name: TestAttack
+  m_Name: def_bonus_1
   m_EditorClassIdentifier: 
-  bonusType: 0
-  icon: {fileID: 21300000, guid: 3eea92b60b81945068925f98ef44b940, type: 3}
+  bonusType: 1
+  icon: {fileID: 21300000, guid: ebc9a94c7b8dc445eb2d8081a53db2b0, type: 3}
   bonusLevel: 0

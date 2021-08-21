@@ -189,7 +189,7 @@ public class AI_Input : MonoBehaviour
 
     private void AttackEnemy(PlayerState currentEnemy)
     {
-        if (currentEnemy)
+        if (currentEnemy && Vector3.Distance(currentEnemy.transform.position, transform.position) < 1.1f * TileManagment.tileOffset)
         {
             //Debug.Log("startAttack");
             leftInput = Vector2.zero;

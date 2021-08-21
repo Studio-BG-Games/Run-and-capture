@@ -74,7 +74,7 @@ public class ProjectileController : MonoBehaviour
         if (healthController && owner!=playerState.ownerIndex)
         {
             healthController.TakeDamage(damage);
-            //Destroy(gameObject);            
+            Destroy(gameObject);            
         }
     }
 }

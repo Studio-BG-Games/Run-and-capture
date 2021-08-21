@@ -10,7 +10,25 @@ public class PlayerBonusController : MonoBehaviour
     public List<Bonus> attackBonuses;
     public List<Bonus> protectBonuses;
 
+    public Bonus currentSelectedBonus;
     public Action OnBonusesChanged;
+
+    private PlayerActionManager _actionManager;
+
+
+    private void Start()
+    {
+        _actionManager = GetComponent<PlayerActionManager>();
+        _actionManager.OnActionStart += RemoveCurrentBonus;
+    }
+
+    private void RemoveCurrentBonus(ActionType arg1, CharacterState arg2)
+    {
+        if (currentSelectedBonus != null)
+        {
+            RemoveBonus(currentSelectedBonus);
+        }       
+    }
 
     public bool AddBonusToPlayer(Bonus bonus)
     {

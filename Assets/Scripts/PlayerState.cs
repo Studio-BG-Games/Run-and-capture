@@ -39,11 +39,17 @@ public class PlayerState : MonoBehaviour
         _playerActions.OnActionStart += SetNewState;
         _playerActions.OnActionEnd += SetNewState;
 
-        _selectionTool.OnBuildingSelected += OnBuildingSelected;
+        _selectionTool.OnProtectBonusSelected += OnBuildingSelected;
+        _selectionTool.OnAttackBonusSelected += OnAttackBonusSelected;
 
 
         //Debug.Log("We are in " +currentTile.name);
         
+    }
+
+    private void OnAttackBonusSelected()
+    {
+        SetNewState(ActionType.Attack, currentState);
     }
 
     private void SetEnemies()

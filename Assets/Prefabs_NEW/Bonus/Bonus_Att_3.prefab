@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 388713782}
   - component: {fileID: 388713781}
   m_Layer: 0
-  m_Name: BonusAttackContainer
+  m_Name: Bonus_Att_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b298673af6158984f907a4f27e5524cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonus: {fileID: 11400000, guid: c786d5172da5bb04594d5629474bddd8, type: 2}
+  bonus: {fileID: 11400000, guid: 69acfe2de9574a64d99f2e5a51989d73, type: 2}
 --- !u!54 &388713780
 Rigidbody:
   m_ObjectHideFlags: 0

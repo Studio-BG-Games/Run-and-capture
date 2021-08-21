@@ -14,6 +14,8 @@ public class BonusCollisionController : MonoBehaviour
             if (bonusPickedUp)
             {
                 Debug.Log("picked up " + gameObject.name);
+                var tile = TileManagment.GetTile(transform.position);
+                tile.canBuildHere = true;
                 Destroy(gameObject);
             }            
         }        

@@ -12,18 +12,35 @@ public class BuildingSelectionTool : MonoBehaviour
     [SerializeField]
     private Build _buidAction;
     [SerializeField]
+    private PlayerActionManager _action;
+    [SerializeField]
+    private PlayerBonusController _bonusController;
+    [SerializeField]
     private GameObject _buildingsPanel;
    
 
     private GameObject _selectedBuilding;
     private bool _isBuildBtnActivated;
 
-    public Action OnBuildingSelected;
+    public Action OnProtectBonusSelected;
+    public Action OnAttackBonusSelected;
+
+    public BonusSlot currentSelectedSlot;
 
 
     private void Start()
     {
         SetInitialParams();
+
+        _action.OnActionStart += ClearBonusSlot;
+    }
+
+    private void ClearBonusSlot(ActionType newAction, CharacterState newState)
+    {
+        if (newAction == ActionType.Build)
+        {
+            currentSelectedSlot.ClearSlot();
+        }
     }
 
     private void SetInitialParams()
@@ -37,8 +54,16 @@ public class BuildingSelectionTool : MonoBehaviour
         _actionUI.SetSelectedUI(index);
         _buidAction.selectedPref = _selectedBuilding;
 
-        OnBuildingSelected?.Invoke();
+        OnProtectBonusSelected?.Invoke();
+        _bonusController.currentSelectedBonus = currentSelectedSlot.GetItem();
     }
+
+    public void OnAttackBonusClick(int index)
+    {
+        OnAttackBonusSelected?.Invoke();
+        _bonusController.currentSelectedBonus = currentSelectedSlot.GetItem();
+    }
+    
 
 
 

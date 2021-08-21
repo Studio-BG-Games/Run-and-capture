@@ -13,7 +13,7 @@ public class Bonus : ScriptableObject
     public void Use()
     {
         Debug.Log("Using " /*+ itemName*/);
-        FindObjectOfType<PlayerBonusController>().RemoveBonus(this);
+        //FindObjectOfType<PlayerBonusController>().RemoveBonus(this);
     }
 
     /*public void RemoveFromInventory()

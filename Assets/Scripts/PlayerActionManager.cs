@@ -110,7 +110,7 @@ public class PlayerActionManager : MonoBehaviour
 
     private void DoAction(PlayerAction action)
     {
-        if (!action.IsActionAllowed(_target, _playerState))
+        if (!action.IsActionAllowed(_target, _playerState)  || (_target.tilePosition - transform.position).magnitude < 0.9f*TileManagment.tileOffset)
         {
             return;
         }
@@ -162,6 +162,8 @@ public class PlayerActionManager : MonoBehaviour
 
     public void AttackEnemyOnTile(TileInfo target)
     {
+        /*if ((target.tilePosition - transform.position).magnitude > TileManagment.tileOffset)
+            return;*/
         _target = target;        
         StopTargeting();
     }

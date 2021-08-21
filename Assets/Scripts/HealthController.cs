@@ -27,7 +27,7 @@ public class HealthController : MonoBehaviour
         currentHealth -= amount;
         healthUI.UpdateBar(currentHealth, startHealth);
         Instantiate(playerImpactVFX, transform.position, playerImpactVFX.transform.rotation);
-        Instantiate(groundImpactVFX, transform.position, groundImpactVFX.transform.rotation);
+        Instantiate(groundImpactVFX, transform.position+Vector3.up*0.01f, groundImpactVFX.transform.rotation);
         if (currentHealth <= 0)
         {
             Die();

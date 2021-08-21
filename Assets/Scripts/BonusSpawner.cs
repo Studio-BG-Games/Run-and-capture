@@ -17,12 +17,13 @@ public class BonusSpawner : MonoBehaviour
 
             List<PlayerState> activePlayers = PlayerDeathController.alivePlayers;
             var chosenPlayer = activePlayers[Random.Range(0, activePlayers.Count)];
-            TileInfo availableTile = TileManagment.GetTile(chosenPlayer.ownerIndex);
+            TileInfo availableTile = GetAvailableTile(chosenPlayer.ownerIndex);
+            availableTile.canBuildHere = false;
 
             int bonusIndex = Random.Range(0, bounsPrefs.Count);
             GameObject chosenBonus = bounsPrefs[bonusIndex];
             Instantiate(chosenBonus, availableTile.tilePosition, chosenBonus.transform.rotation);
-            Debug.Log("spawned");
+            //Debug.Log("spawned");
         }        
 
     }
@@ -30,5 +31,18 @@ public class BonusSpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnRandomBonus());
+    }
+
+    private TileInfo GetAvailableTile(TileOwner owner)
+    {
+        TileInfo availableTile = TileManagment.GetTile(owner);
+        if (!availableTile.canBuildHere)
+        {
+            return GetAvailableTile(owner);
+        }
+        else
+        {
+            return availableTile;
+        }
     }
 }

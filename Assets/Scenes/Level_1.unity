@@ -1922,7 +1922,10 @@ MonoBehaviour:
   - {fileID: 4810627989180709430, guid: 019d55682fa91934eaf2df23b6eb055e, type: 3}
   _actionUI: {fileID: 1801060027}
   _buidAction: {fileID: 1801060031}
+  _action: {fileID: 1801060034}
+  _bonusController: {fileID: 1801060033}
   _buildingsPanel: {fileID: 1864843842}
+  currentSelectedSlot: {fileID: 0}
 --- !u!1 &186187756 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -3392,7 +3395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &290088160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5177,6 +5180,18 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
+--- !u!114 &400993318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4020685152307600105, guid: eadd60cd722fbd44c9f6baf3983c5d25,
+    type: 3}
+  m_PrefabInstance: {fileID: 1774177805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &401769308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15467,6 +15482,7 @@ GameObject:
   - component: {fileID: 1102420990}
   - component: {fileID: 1102420991}
   - component: {fileID: 1102420992}
+  - component: {fileID: 1102420993}
   m_Layer: 0
   m_Name: GameManagment
   m_TagString: Untagged
@@ -15564,7 +15580,31 @@ MonoBehaviour:
   maxBonusSpwnTime: 5
   bounsPrefs:
   - {fileID: 4203281806542915686, guid: 536082ec12a94934eb7403bae5a97801, type: 3}
+  - {fileID: 4203281806542915686, guid: 408a12846c122f3428ec79677a5098d1, type: 3}
+  - {fileID: 4203281806542915686, guid: b54ab3cc4fa0e0a4e9d9129a859c14e0, type: 3}
+  - {fileID: 8097115959948697207, guid: 41c2a57ed7ceb6d44bae37d3d7f98e75, type: 3}
+  - {fileID: 8097115959948697207, guid: d9761938130a3b94199123c8e1f2a5c6, type: 3}
   - {fileID: 8097115959948697207, guid: 4a38eff5bf7424e45b29d928dfbe9f0b, type: 3}
+--- !u!114 &1102420993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102420987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0679c5c2b8366f4fa3e5bf8161fc7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectionTool: {fileID: 185995048}
+  _actionManager: {fileID: 1801060034}
+  joystickBack: {fileID: 1567393763}
+  joystickHandle: {fileID: 400993318}
+  joystickBackAtt: {fileID: 21300000, guid: 27666cfc7b82d7043b83edb675b4c8f7, type: 3}
+  joystickHandleAtt: {fileID: 21300000, guid: c0d6e108ba063664b9f8a145d873d5d7, type: 3}
+  joystickBackDef: {fileID: 21300000, guid: 109543970f07ec64fb6bfff5ae70317d, type: 3}
+  joystickHandleDef: {fileID: 21300000, guid: bdd65c565b23f404db19532d69ba1bc3, type: 3}
 --- !u!1 &1114709431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -22015,6 +22055,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 592213770db2d80419af5780e2a1d20c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5ecf8ffbe22c7459c44494cee176d9, type: 3}
+--- !u!114 &1567393763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4020685150541603070, guid: eadd60cd722fbd44c9f6baf3983c5d25,
+    type: 3}
+  m_PrefabInstance: {fileID: 1774177805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1570755517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25468,7 +25520,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2d446f6fe244a5a4680a4ff7dd747682,
+      objectReference: {fileID: 21300000, guid: c0d6e108ba063664b9f8a145d873d5d7,
         type: 3}
     - target: {fileID: 4020685152307600106, guid: eadd60cd722fbd44c9f6baf3983c5d25,
         type: 3}
@@ -25956,6 +26008,7 @@ MonoBehaviour:
   maxBonusCount: 3
   attackBonuses: []
   protectBonuses: []
+  currentSelectedBonus: {fileID: 0}
 --- !u!114 &1801060034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28086,8 +28139,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923264931}
-  m_LocalRotation: {x: 0.029971035, y: -0.000000004076362, z: 0.0000000075761575,
-    w: 0.9995508}
+  m_LocalRotation: {x: 0.029971035, y: 0.000000004076362, z: -0.000000007576159, w: 0.9995508}
   m_LocalPosition: {x: 0, y: 0.87083435, z: -14.50833}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -28794,7 +28846,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946816075}
-  m_LocalRotation: {x: 0.5257311, y: -0.000000007318311, z: 0.000000004522964, w: 0.85065085}
+  m_LocalRotation: {x: 0.5257311, y: 0.0000000073183117, z: -0.0000000045229647, w: 0.85065085}
   m_LocalPosition: {x: 0, y: 13, z: -6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -33375,6 +33427,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveJoystick
       objectReference: {fileID: 0}
+    - target: {fileID: 4020685152307600105, guid: eadd60cd722fbd44c9f6baf3983c5d25,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 89a9b1420ed6fb649ab9ffa562eba048,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eadd60cd722fbd44c9f6baf3983c5d25, type: 3}
 --- !u!114 &6016135478453453714 stripped

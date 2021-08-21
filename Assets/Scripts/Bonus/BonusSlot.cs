@@ -33,11 +33,28 @@ public class BonusSlot : MonoBehaviour
         Inventory.instance.Remove(item);
     }*/
 
+    public Bonus GetItem()
+    {
+        return _item;
+    }
+
     public void UseItem()
     {
         if (_item != null)
         {
-            _item.Use();
+            
+            //_item.Use();
+            var buildTool = FindObjectOfType<BuildingSelectionTool>();
+            buildTool.currentSelectedSlot = this;
+            if (_item.bonusType == BonusType.Attack)
+            {
+                buildTool.OnAttackBonusClick(_item.bonusLevel);
+            }
+            else 
+            {
+                buildTool.OnSelectButtonClick(_item.bonusLevel);
+            }
+            
         }
     }
 }
