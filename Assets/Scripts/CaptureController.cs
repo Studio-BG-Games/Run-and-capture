@@ -3,66 +3,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof (PlayerState))]
+[RequireComponent(typeof(PlayerState))]
 public class CaptureController : MonoBehaviour
 {
 
-    public float neutralCaptureTime = 3f, enemyCaptureTime = 5f, fastCaptureTime = 0f;
+    public float neutralCaptureTime = 3f, enemyCaptureTime = 5f/*, fastCaptureTime = 0f*/;
 
-    private TileOwner _ownerIndex;
-    private TileManagment _tileManagment;
-    public PlayerState _playerState;
+    [SerializeField]
+    private GameObject capVFX;
+    
+    private PlayerState _playerState;
 
     private float _captureProgress= 0f;
 
-    public Action OnCaptureStart, OnCaptureFailed;
-    public Action<TileInfo, float> OnCaptureEnd;
+    //public Action OnCaptureStart, OnCaptureFailed;
+    //public Action<TileInfo, float> OnCaptureEnd;
 
     private IEnumerator _currentCoroutine;
 
     private void Awake()
     {
         _playerState = GetComponent<PlayerState>();
-        _tileManagment = FindObjectOfType<TileManagment>();
-
         _playerState.OnInitializied += CaptureStartTile;
-        _playerState.OnCaptureAllow += TryToCaptureTile;
-        _playerState.OnCaptureForbid += StopCapturingTile;
-        _playerState.OnDeath += StopCapturingTile;
+        _playerState.OnCharStateChanged += CheckCapturing;
 
-        OnCaptureEnd += CaptureTile;
-    }
-    
+        //OnCaptureEnd += CaptureTile;
+    }   
 
-    private void CaptureStartTile()
+    private void CheckCapturing(CharacterState newState)
     {
-        //Debug.Log("start tile cap");
-        _ownerIndex = _playerState.ownerIndex;
-        _tileManagment.ChangeTileOwner(_playerState.currentTile, _ownerIndex);
-        _playerState.currentTile.canMove = false;
-
-    }
-
-    private void StopCapturingTile()
-    {
-        OnCaptureFailed?.Invoke();
-        _captureProgress = 0f;
-        if (_currentCoroutine != null)
+       
+        switch (newState)
         {
-            StopCoroutine(_currentCoroutine);
-            _currentCoroutine = null;
+            case CharacterState.Idle:
+                TryToCaptureTile();                
+                break;
+            case CharacterState.Move:
+                StopCapturingTile();                
+                break;
+            default:
+                return;
         }
     }
 
     private void TryToCaptureTile()
     {
-        if (_playerState.currentState == CharacterState.Dead)
-            return;
         TileInfo tile = _playerState.currentTile;
-        //Debug.Log("Try to capture " + tile.name);
-        if(_ownerIndex != tile.tileOwnerIndex)
-        {
-            if (!tile.easyCaptureFor.Contains(_ownerIndex))
+        
+        if (_playerState.ownerIndex != tile.tileOwnerIndex)
+        {            
+            _playerState.SetNewState(CharacterState.Capture);
+            
+            if (!tile.easyCaptureFor.Contains(_playerState.ownerIndex))
             {
                 if (tile.tileOwnerIndex == TileOwner.Neutral)
                 {
@@ -77,34 +69,61 @@ public class CaptureController : MonoBehaviour
             }
             else
             {
-                CaptureTile(tile, fastCaptureTime);
+                CaptureTile(tile);
             }
             
+
+        }
+    }    
+
+    private void CaptureStartTile()
+    {
+        //Debug.Log("capStartTile");
+        if (_playerState.currentTile.tileOwnerIndex != _playerState.ownerIndex)
+        {
+            CaptureTile(_playerState.currentTile);
+        }        
+    }
+
+    private void StopCapturingTile()
+    {
+        if (_currentCoroutine != null)
+        {
+            //OnCaptureFailed?.Invoke();
+            _captureProgress = 0f;            
+            StopCoroutine(_currentCoroutine);
+            _currentCoroutine = null;            
         }
     }
 
-    private void CaptureTile(TileInfo tile, float captureTime)
+    private void CaptureTile(TileInfo tile)
     {
-        _tileManagment.ChangeTileOwner(tile, _ownerIndex);
-        //Debug.Log("Captured " + tile.name);
+        TileManagment.ChangeTileOwner(tile, _playerState.ownerIndex);
+        _playerState.SetNewState(CharacterState.Idle);
+        if (capVFX != null)
+        {
+            Instantiate(capVFX, tile.tilePosition + capVFX.transform.position, capVFX.transform.rotation);
+        }        
     }
 
     private IEnumerator Capturing(TileInfo tile, float captureTime)
     {
-        OnCaptureStart?.Invoke();
-
+        //OnCaptureStart?.Invoke();        
         _captureProgress = 0f;
         float captureTimer = 0f;
         while (_captureProgress < 1f)
         {
             captureTimer += Time.fixedDeltaTime;
-            _captureProgress = captureTimer / captureTime;
-            yield return new WaitForFixedUpdate();
+            _captureProgress = captureTimer / captureTime;            
+
+            yield return new WaitForFixedUpdate();            
         }
         _captureProgress = 0f;
 
-        OnCaptureEnd?.Invoke(tile, captureTime);
-        StopCoroutine(_currentCoroutine);
+        //OnCaptureEnd?.Invoke(tile, captureTime);
+        CaptureTile(tile);
+        StopCapturingTile();
+        //StopCoroutine(_currentCoroutine);
     }
 
     public float GetCaptureProgress()

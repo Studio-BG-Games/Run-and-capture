@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 64add3e878d8428479aa2da3e467b1b7
+guid: 5182c2cb5eef6d849b560f764c4a0ed6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - healthUI: {instanceID: 0}
-  - playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
-      type: 3}
-  - groundImpactVFX: {fileID: 6794377120831721188, guid: 2e8dc25f6c4c6264e95bc99e5bffa3e5,
-      type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -15,22 +15,28 @@ public class AnimationController : MonoBehaviour
         _playerState = GetComponent<PlayerState>();
         _characterAnimator = GetComponentInChildren<Animator>();
         _playerState.OnCharStateChanged += SetNewStateAnimation;
-    }
+    }    
 
-    private void SetNewStateAnimation(CharacterState newState, ActionType currentAction)
+    private void SetNewStateAnimation(CharacterState newState)
     {
-        if (newState != CharacterState.Action)
+        /*if (newState != CharacterState.Action)
         {
             return;
-        }
+        }*/
         string activationTrigger = "";
-        switch(currentAction)
+        switch(newState)
         {
-            case ActionType.Attack:
+            case CharacterState.Move:
+                activationTrigger = "Move";
+                break;
+            case CharacterState.Attack:
                 activationTrigger = "Attack";
                 break;
-            case ActionType.Build:
+            case CharacterState.Build:
                 activationTrigger = "Build";
+                break;
+            case CharacterState.TreeAttack:
+                activationTrigger = "TreeAttack";
                 break;
 
         }

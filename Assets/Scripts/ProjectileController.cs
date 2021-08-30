@@ -71,10 +71,16 @@ public class ProjectileController : MonoBehaviour
         //Debug.Log("collision");
         var healthController = other.gameObject.GetComponent<HealthController>();
         var playerState = other.gameObject.GetComponent<PlayerState>();
-        if (healthController && owner!=playerState.ownerIndex)
+        var treeController = other.gameObject.GetComponent<TreeHealthController>();
+        if (healthController && owner != playerState.ownerIndex)
         {
             healthController.TakeDamage(damage);
-            Destroy(gameObject);            
+            Destroy(gameObject);
+        }
+        if (treeController)
+        {
+            treeController.TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }

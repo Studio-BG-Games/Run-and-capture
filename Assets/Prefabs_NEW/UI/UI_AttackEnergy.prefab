@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8903131178351670493}
-  - component: {fileID: 7660888748284326884}
+  - component: {fileID: 2019227370455529871}
   m_Layer: 0
   m_Name: UI_AttackEnergy
   m_TagString: Untagged
@@ -113,7 +113,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7660888748284326884
+--- !u!114 &2019227370455529871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8903131178351670492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 891957198d6ac824b834b2240d628d99, type: 3}
+  m_Script: {fileID: 11500000, guid: aa359e5293579a4479bf31f75ae45318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _progressSlider: {fileID: 8903131178090680179}

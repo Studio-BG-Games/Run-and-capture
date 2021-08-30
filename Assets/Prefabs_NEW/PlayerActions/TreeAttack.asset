@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a3b6731cc061d4ba7ba74c5deae16c, type: 3}
+  m_Name: TreeAttack
+  m_EditorClassIdentifier: 
+  duration: 0.3
+  distance: 1
+  actionState: 5
+  attackPref: {fileID: 5329242548601918259, guid: 87df8882a1fca7f4f83d9c9015eede7a,
+    type: 3}
+  damage: 60

@@ -5,23 +5,24 @@ using UnityEngine;
 using DG.Tweening;
 
 [RequireComponent(typeof(PlayerState))]
+[RequireComponent(typeof(CaptureController))]
 public class TileMovement : MonoBehaviour
 {
 
     public float nextTileMoveTime = 0.8f;
     public int moveDistance = 1;
+
+    public ParticleSystem moveVFX;
+
     private Vector3 _moveDir;
 
-    public Action<ActionType, CharacterState> OnFinishMovement;
-    public Action<ActionType, CharacterState> OnStartMovement;
-
     private PlayerState _playerState;
-    private AI_Input _AIInput;
+    private AI_BotController _botController;
 
-    private void Start()
+    private void Awake()
     {
         _playerState = GetComponent<PlayerState>();
-        _AIInput = GetComponent<AI_Input>();
+        _botController = GetComponent<AI_BotController>();
     }
 
     private void Update()
@@ -31,29 +32,28 @@ public class TileMovement : MonoBehaviour
 
     private void Move()
     {
-        if (_playerState.currentState != CharacterState.Idle)
-            return;
-        switch (_playerState.controlType)
+        if (IsMoveCondition())
         {
-            case ControlType.Player:
-                _moveDir = new Vector3(CustomInput.leftInput.x, 0f, CustomInput.leftInput.y);
-                break;
-            case ControlType.AI:
-                _moveDir = new Vector3(_AIInput.leftInput.x, 0f, _AIInput.leftInput.y);
-                break;
-
-        }
-        //_moveDir = new Vector3(CustomInput.leftInput.x, 0f, CustomInput.leftInput.y);
-        if (_moveDir.magnitude > Mathf.Epsilon)
-        {
-            TileInfo targetMoveTile = TileManagment.GetTile(_playerState.currentTile.tilePosition, _moveDir, moveDistance);
-            //Debug.Log("moving to " + targetMoveTile);
-            if (IsMovementAllowed(targetMoveTile))
+            switch (_playerState.controlType)
             {
-                //Debug.Log(IsMovementAllowed(targetMoveTile));
-                MoveToTile(targetMoveTile);
+                case ControlType.Player:
+                    _moveDir = new Vector3(CustomInput.leftInput.x, 0f, CustomInput.leftInput.y);
+                    break;
+                case ControlType.AI:
+                    _moveDir = new Vector3(_botController.leftInput.x, 0f, _botController.leftInput.y);
+                    break;
+
             }
-        }
+            //_moveDir = new Vector3(CustomInput.leftInput.x, 0f, CustomInput.leftInput.y);
+            if (_moveDir.magnitude > Mathf.Epsilon)
+            {
+                TileInfo targetMoveTile = TileManagment.GetTile(_playerState.currentTile.tilePosition, _moveDir, 1);
+                if (IsMovementAllowed(targetMoveTile))
+                {
+                    MoveToTile(targetMoveTile);
+                }
+            }
+        }      
 
     }
 
@@ -63,13 +63,11 @@ public class TileMovement : MonoBehaviour
         {
             bool canMoveToMyTile = (tile.tileOwnerIndex == _playerState.ownerIndex);
             bool canMoveToEnemyTile = (_playerState.currentTile.tileOwnerIndex == _playerState.ownerIndex);
-            
 
             return tile.canMove && (canMoveToMyTile || canMoveToEnemyTile);
         }
         else
         {
-            //Debug.Log("moving " + gameObject.name);
             return false;
         }
         
@@ -77,18 +75,25 @@ public class TileMovement : MonoBehaviour
 
     private void MoveToTile(TileInfo targetMoveTile)
     {
-        OnStartMovement?.Invoke(ActionType.Attack, CharacterState.Move);
-        _playerState.currentTile.canMove = true;
-        targetMoveTile.canMove = false;
+        _playerState.SetNewState(CharacterState.Move);
         transform.DOMove(targetMoveTile.tilePosition, nextTileMoveTime).OnComplete(()=> FinishMovementActions(targetMoveTile));
         transform.LookAt(targetMoveTile.tilePosition);
-    }
-    
 
+        _playerState.targetMoveTile = targetMoveTile;
+        _playerState.targetMoveTile.canMove = false;
+        _playerState.currentTile.canMove = true;
+
+        moveVFX.Play();
+    }
+
+    private bool IsMoveCondition()
+    {
+        return _playerState.currentState == CharacterState.Idle || _playerState.currentState == CharacterState.Capture;
+    }
     private void FinishMovementActions( TileInfo currentTile)
     {
+        //Debug.Log("finish movement");
         _playerState.currentTile = currentTile;
-        _playerState.currentTile.canMove = false;
-        OnFinishMovement?.Invoke(ActionType.Attack, CharacterState.Idle);
+        _playerState.SetNewState(CharacterState.Idle);
     }    
 }
