@@ -120,6 +120,6 @@ public class Attack : PlayerAction
 
     public bool IsReady()
     {
-        return _isReady;
+        return _isReady;        
     }
 }

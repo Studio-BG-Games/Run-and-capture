@@ -79,8 +79,7 @@ public class TileManagment : MonoBehaviour
         
         CheckSurroundedTiles(levelTiles, newOwner, oldOwner);
 
-        OnAnyTileCaptured?.Invoke();
-        
+        OnAnyTileCaptured?.Invoke();        
     }
 
     public static void AssignBuildingToTile(TileInfo tile, GameObject building)
