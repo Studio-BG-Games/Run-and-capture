@@ -18,6 +18,7 @@ public class TileInfo : MonoBehaviour
 
 
     public bool isBorderTile = false;
+    public bool easyCapForAll = false;
     public bool isChecked = false;
     public bool isLocked = false;
 
