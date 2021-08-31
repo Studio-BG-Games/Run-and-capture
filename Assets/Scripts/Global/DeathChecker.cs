@@ -156,7 +156,7 @@ public class DeathChecker : MonoBehaviour
     private void PlayerDeadActions(PlayerState player)
     {
         List<TileInfo> playerTiles = TileManagment.GetCharacterTiles(player);
-        TileManagment.LockTiles(playerTiles, true);
+        TileManagment.SetEasyCapState(playerTiles, true);
 
         player.SetDead();
         Debug.Log("player " + player.name + " dead");
@@ -174,7 +174,7 @@ public class DeathChecker : MonoBehaviour
         TileInfo resTile = GetAvailableResTile(player, playerTiles);
         if (resTile)
         {
-            TileManagment.LockTiles(playerTiles, false);            
+            TileManagment.SetEasyCapState(playerTiles, false);            
 
             player.SetAlive(resTile.tilePosition);
             

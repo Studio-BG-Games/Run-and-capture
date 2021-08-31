@@ -86,7 +86,7 @@ public class TileManagment : MonoBehaviour
 
     public static void ChangeTileOwner(TileInfo tile, PlayerState newPlayer)
     {
-        tile.isLocked = false;
+        tile.easyCaptureForAll = false;
         TileOwner newOwner = newPlayer.ownerIndex;
         TileOwner oldOwner = tile.tileOwnerIndex;
         tile.tileOwnerIndex = newOwner;
@@ -98,6 +98,7 @@ public class TileManagment : MonoBehaviour
         OnAnyTileCaptured?.Invoke(newPlayer);
 
         CheckSurroundedTiles(levelTiles, newOwner, oldOwner);
+        SetAllPLayersTilesCapState(GameManager.activePlayers);
 
     }
 
@@ -245,11 +246,11 @@ public class TileManagment : MonoBehaviour
         return playerTiles;
     }
 
-    public static void LockTiles(List<TileInfo> tiles, bool lockState)
+    public static void SetEasyCapState(List<TileInfo> tiles, bool capState)
     {
         foreach (TileInfo tile in tiles)
         {
-            tile.isLocked = lockState;
+            tile.easyCaptureForAll = capState;
         }
     }
 
@@ -342,6 +343,62 @@ public class TileManagment : MonoBehaviour
             }
         }
 
+    }
+
+    public static void SetPlayerTilesCapState(PlayerState player)
+    {
+        List<TileInfo> playerTiles = charTiles[(int)player.ownerIndex];
+        foreach (TileInfo tile in playerTiles)
+        {
+            tile.easyCaptureForAll = true;
+        }
+        List<TileInfo> playerConnectedTiles = GetConnectedTiles(levelTiles, player.ownerIndex, player.currentTile);
+        foreach (TileInfo tile in playerConnectedTiles)
+        {
+            tile.easyCaptureForAll = false;
+        }
+    }
+
+    public static void SetAllPLayersTilesCapState(List<PlayerState> activePlayers)
+    {
+        foreach (PlayerState player in activePlayers)
+        {
+            SetPlayerTilesCapState(player);
+        }
+    }
+
+    public static List<TileInfo> GetConnectedTiles(List<TileInfo> allTiles, TileOwner ownerIndex, TileInfo startTile)
+    {
+        List<TileInfo> connectedTiles = new List<TileInfo>();
+        var q = new Queue<TileInfo>(allTiles.Count);
+        q.Enqueue(startTile);
+        int iterations = 0;
+
+        while (q.Count > 0)
+        {
+            var tile = q.Dequeue();
+            if (q.Count > allTiles.Count)
+            {
+                throw new Exception("The algorithm is probably looping. Queue size: " + q.Count);
+            }           
+
+            if (connectedTiles.Contains(tile))
+            {
+                continue;
+            }
+
+            connectedTiles.Add(tile);
+            var myAdjacentTiles = GetOwnerAdjacentTiles(tile, ownerIndex);
+
+            foreach (TileInfo newTile in myAdjacentTiles)
+            {
+                q.Enqueue(newTile);
+            }
+
+            iterations++;
+        }
+
+        return connectedTiles;
     }
 
     public static void CheckIfSurroundedByOwner(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)

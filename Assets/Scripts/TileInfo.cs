@@ -18,7 +18,7 @@ public class TileInfo : MonoBehaviour
 
 
     public bool isBorderTile = false;
-    public bool isLocked = false;
+    public bool easyCaptureForAll = false;
 
     #region Pathfinding values
     [Header("Pathfinding Settings")]
