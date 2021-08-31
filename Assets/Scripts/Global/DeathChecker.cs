@@ -15,7 +15,7 @@ public class DeathChecker : MonoBehaviour
     private List<float> lastDeathTime = new List<float>();
 
     private float updateTime = 1f;
-    private int spawnSafezone = 1;
+    private int spawnSafezone = 2;
     
 
     public static Action<PlayerState> OnPlayerDeath;
@@ -166,7 +166,7 @@ public class DeathChecker : MonoBehaviour
     private void PlayerDeadActions(PlayerState player)
     {
         List<TileInfo> playerTiles = TileManagment.GetCharacterTiles(player);
-        TileManagment.SetEasyCaptureForAll(playerTiles);
+        TileManagment.SetEasyCaptureForPlayers(playerTiles, player.enemies);
 
         player.SetDead();
         //Debug.Log("player " + player.name + " dead");
@@ -184,9 +184,15 @@ public class DeathChecker : MonoBehaviour
         TileInfo resTile = GetAvailableResTile(player, playerTiles);
         if (resTile)
         {
-            TileManagment.RemoveLockState(playerTiles);
+            TileManagment.RemoveEasyCaptureForTiles(playerTiles);
+
+            foreach (var enemy in player.enemies)
+            {
+                TileManagment.CheckIfSurroundedByOwner(TileManagment.levelTiles, enemy.ownerIndex, playerTiles[0]);
+            }
+
             player.SetAlive(resTile.tilePosition);
-            TileManagment.SetCharTilesState(player);
+            
             if (resParticles)
             {
                 Instantiate(resParticles, player.transform.position, deathParticles.transform.rotation);

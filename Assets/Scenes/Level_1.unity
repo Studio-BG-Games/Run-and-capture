@@ -156,7 +156,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -346,7 +345,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -754,7 +752,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -794,7 +791,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -1186,7 +1182,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -1301,7 +1296,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -1419,11 +1413,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -1463,7 +1456,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -1653,7 +1645,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -1693,7 +1684,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -2098,7 +2088,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -2209,11 +2198,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -2328,7 +2316,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -2443,7 +2430,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -2558,7 +2544,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -2598,7 +2583,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -2870,7 +2854,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -2910,7 +2893,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -2950,7 +2932,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -3065,7 +3046,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -3105,7 +3085,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -3220,7 +3199,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -3260,7 +3238,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -3300,7 +3277,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -3340,7 +3316,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -3853,7 +3828,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -3893,7 +3867,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -4083,7 +4056,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -4123,7 +4095,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -4247,7 +4218,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -4512,7 +4482,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -4777,7 +4746,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -5127,7 +5095,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -5167,7 +5134,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -5207,7 +5173,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -5352,7 +5317,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -5467,7 +5431,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -5507,7 +5470,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -5622,7 +5584,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -6058,7 +6019,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -6098,7 +6058,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -6172,7 +6131,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -6302,7 +6260,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -6342,7 +6299,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -6607,7 +6563,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -6876,7 +6831,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -6916,7 +6870,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -6956,7 +6909,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -6996,7 +6948,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -7261,7 +7212,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -7301,7 +7251,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -7518,7 +7467,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -7558,7 +7506,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -7598,7 +7545,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -7713,7 +7659,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -8146,7 +8091,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -8261,7 +8205,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -8376,7 +8319,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -8856,7 +8798,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -9050,7 +8991,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -9090,7 +9030,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -9278,7 +9217,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -9543,7 +9481,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -9658,7 +9595,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -9998,7 +9934,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -10131,7 +10066,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -10171,7 +10105,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -10211,7 +10144,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -10357,7 +10289,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -10397,7 +10328,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -10437,7 +10367,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -11121,11 +11050,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -11468,7 +11396,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -11733,7 +11660,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -11773,7 +11699,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -11892,7 +11817,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -11932,7 +11856,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -12047,7 +11970,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -12312,7 +12234,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -12427,7 +12348,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -12467,7 +12387,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -12578,11 +12497,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -13079,7 +12997,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -13194,7 +13111,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -13234,7 +13150,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -13627,7 +13542,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -14054,11 +13968,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -14399,7 +14312,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -14572,7 +14484,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -14612,7 +14523,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -14652,7 +14562,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -14767,7 +14676,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -14882,7 +14790,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -14922,7 +14829,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -15037,7 +14943,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -15510,7 +15415,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -15550,7 +15454,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -15590,7 +15493,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -15630,7 +15532,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -15745,7 +15646,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -15785,7 +15685,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -15825,7 +15724,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -15865,7 +15763,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -16061,7 +15958,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -16411,7 +16307,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -16451,7 +16346,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -16491,7 +16385,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -16606,7 +16499,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -16646,7 +16538,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -16855,7 +16746,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -16895,7 +16785,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -17085,7 +16974,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -17125,7 +17013,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -17548,7 +17435,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -17813,7 +17699,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -18127,7 +18012,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -18167,7 +18051,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -18509,7 +18392,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -18975,7 +18857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f701310aaea215a4d9e0c8646d3e1ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextTileMoveTime: 0.7
+  nextTileMoveTime: 1
   moveDistance: 1
   moveVFX: {fileID: 2040783568}
 --- !u!114 &1503763734
@@ -19044,7 +18926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754e9bf36b6ab0b40a8b71c58aa34b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAIActive: 1
+  isAIActive: 0
   botState: 0
   leftInput: {x: 0, y: 0}
   rightInput: {x: 0, y: 0}
@@ -19278,7 +19160,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -19318,7 +19199,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -19433,7 +19313,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -19548,7 +19427,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -19813,7 +19691,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -20003,7 +19880,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -20118,7 +19994,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -20233,7 +20108,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -20273,7 +20147,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -20449,7 +20322,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -20654,7 +20526,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -20769,7 +20640,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -20809,7 +20679,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -20924,7 +20793,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -21114,7 +20982,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -21154,7 +21021,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -21188,7 +21054,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -21483,7 +21348,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -21523,7 +21387,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -21638,7 +21501,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -21753,7 +21615,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -21793,7 +21654,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -21833,7 +21693,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -22306,7 +22165,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -22346,7 +22204,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -22518,7 +22375,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -22558,7 +22414,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -22731,7 +22586,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -22952,7 +22806,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -23016,7 +22869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f701310aaea215a4d9e0c8646d3e1ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextTileMoveTime: 0.7
+  nextTileMoveTime: 1
   moveDistance: 1
   moveVFX: {fileID: 1307683756}
 --- !u!114 &1801060024
@@ -23388,7 +23241,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -23428,7 +23280,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -23543,7 +23394,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -23583,7 +23433,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -24086,11 +23935,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -24126,11 +23974,10 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -24170,7 +24017,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -24210,7 +24056,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -24250,7 +24095,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -24365,7 +24209,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -24405,7 +24248,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -24445,7 +24287,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -24485,7 +24326,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -24825,7 +24665,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -25011,7 +24850,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923264931}
-  m_LocalRotation: {x: 0.029971035, y: 0.000000004076362, z: -0.000000007576159, w: 0.9995508}
+  m_LocalRotation: {x: 0.029971035, y: -0.000000004076362, z: 0.0000000075761575,
+    w: 0.9995508}
   m_LocalPosition: {x: 0, y: 0.87083435, z: -14.50833}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -25399,7 +25239,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -25664,7 +25503,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -25701,7 +25539,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946816075}
-  m_LocalRotation: {x: 0.5257311, y: 0.0000000073183117, z: -0.0000000045229647, w: 0.85065085}
+  m_LocalRotation: {x: 0.5257311, y: -0.000000007318311, z: 0.000000004522964, w: 0.85065085}
   m_LocalPosition: {x: 0, y: 13, z: -6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -25852,7 +25690,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -25967,7 +25804,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -26263,7 +26099,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -26303,7 +26138,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -26343,7 +26177,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -26383,7 +26216,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -26510,7 +26342,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -26700,7 +26531,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -26770,7 +26600,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -26891,7 +26720,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -27006,7 +26834,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -27121,7 +26948,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -27425,7 +27251,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -27465,7 +27290,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -27505,7 +27329,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -27695,7 +27518,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -27885,7 +27707,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -28000,7 +27821,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -28265,7 +28085,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -28467,7 +28286,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -28507,7 +28325,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
@@ -28547,7 +28364,6 @@ MonoBehaviour:
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 1
-  easyCapForAll: 0
   isChecked: 0
   isLocked: 0
   gCost: 0
