@@ -12,7 +12,7 @@ public class TileManagment : MonoBehaviour
     public static List<List<TileInfo>> charTiles = new List<List<TileInfo>>();
 
     public static Action OnInitialized;
-    public static Action OnAnyTileCaptured;
+    public static Action<PlayerState> OnAnyTileCaptured;
 
     public static List<Material> tileMaterialsStatic;
 
@@ -28,7 +28,8 @@ public class TileManagment : MonoBehaviour
 
     private void Awake()
     {
-        InitTileManager();        
+        InitTileManager();
+        Debug.Log("tile offset is " + tileOffset + " points");
     }
 
     private void InitTileManager()
@@ -83,8 +84,10 @@ public class TileManagment : MonoBehaviour
         tile.GetComponent<Renderer>().material = tileMaterialsStatic[(int)tile.tileOwnerIndex];
     }
 
-    public static void ChangeTileOwner(TileInfo tile, TileOwner newOwner)
+    public static void ChangeTileOwner(TileInfo tile, PlayerState newPlayer)
     {
+        tile.isLocked = false;
+        TileOwner newOwner = newPlayer.ownerIndex;
         TileOwner oldOwner = tile.tileOwnerIndex;
         tile.tileOwnerIndex = newOwner;
         tile.GetComponent<Renderer>().material = tileMaterialsStatic[(int)tile.tileOwnerIndex];
@@ -92,7 +95,7 @@ public class TileManagment : MonoBehaviour
         charTiles[(int)newOwner].Add(tile);
         charTiles[(int)oldOwner].Remove(tile);
 
-        OnAnyTileCaptured?.Invoke();
+        OnAnyTileCaptured?.Invoke(newPlayer);
 
         CheckSurroundedTiles(levelTiles, newOwner, oldOwner);
 
@@ -242,30 +245,24 @@ public class TileManagment : MonoBehaviour
         return playerTiles;
     }
 
-    public static void SetEasyCaptureForPlayers(List<TileInfo> tiles, List<PlayerState> enemies)
+    public static void LockTiles(List<TileInfo> tiles, bool lockState)
     {
-        if (enemies.Count <= 0)
-        {
-            return;
-        }
         foreach (TileInfo tile in tiles)
         {
-            tile.isLocked = true;
-            foreach (var enemy in enemies)
-            {
-                tile.easyCaptureFor.Add(enemy.ownerIndex);
-            }
+            tile.isLocked = lockState;
         }
     }
 
-    public static void RemoveEasyCaptureForTiles(List<TileInfo> tiles)
+    
+
+    /*public static void RemoveEasyCaptureForTiles(List<TileInfo> tiles)
     {
         foreach (TileInfo tile in tiles)
         {
             tile.easyCaptureFor.Clear();
             tile.isLocked = false;
         }
-    }
+    }*/
 
     /*public static TileInfo GetClosestOwnerTile(TileInfo startTile, TileOwner owner, float searchRadius)
     {
@@ -323,13 +320,8 @@ public class TileManagment : MonoBehaviour
         {
             tile.checkedFor.Clear();
             foreach (var owner in checkPlayers)
-            {                
-                //tile.checkedFor.Remove(newOwner);
-                if (!tile.isLocked)
-                {
-                    tile.easyCaptureFor.Remove(owner);
-                    //tile.easyCaptureFor.Clear();
-                }
+            {
+                tile.easyCaptureFor.Remove(owner);
             }
 
             
@@ -393,10 +385,7 @@ public class TileManagment : MonoBehaviour
 
         foreach (TileInfo tile in connectedTiles)
         {
-            if (!tile.isLocked)
-            {
-                tile.easyCaptureFor.Add(ownerIndex);
-            }
+            tile.easyCaptureFor.Add(ownerIndex);
         }
     }
 

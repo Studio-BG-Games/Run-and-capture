@@ -31,6 +31,9 @@ public class AI_BotController : MonoBehaviour
 
     private bool isAttackedOnce = false;
 
+    private int _maxTriesToCalculatePath = 15;
+    private int _triesToCalculatePath = 15;
+
     private void Awake()
     {
         _playerState = GetComponent<PlayerState>();
@@ -99,14 +102,24 @@ public class AI_BotController : MonoBehaviour
         //calculate path        
         TileInfo currentTile = _playerState.currentTile;
         TileInfo targetPathTile = TileManagment.GetClosestOtherTile(currentTile, _playerState.ownerIndex, _startBotPoint);
+        _triesToCalculatePath++;
         //Debug.Log(targetPathTile);        
-        if (!RecalculatePath(currentTile, targetPathTile))
+        if (!RecalculatePath(currentTile, targetPathTile) && _triesToCalculatePath < _maxTriesToCalculatePath)
         {
             StartPatrolBehaviour();
-            botState = BotState.Patrol;
             return;
         }
-        botState = BotState.Patrol;
+        else
+        {
+            targetPathTile = TileManagment.GetRandomOtherTile(_playerState.ownerIndex);
+            RecalculatePath(currentTile, targetPathTile);
+        }
+        if (_currentFollowingPath.Count > 0)
+        {
+            botState = BotState.Patrol;
+            _triesToCalculatePath = 0;
+        }
+        
     }
 
     private void SetInitialBotParams()
@@ -317,7 +330,7 @@ public class AI_BotController : MonoBehaviour
                 }
                 if (RecalculatePath(currentTile, endTile))
                 {
-                    TileInfo nextPathTile = _currentFollowingPath[1];
+                    TileInfo nextPathTile = _currentFollowingPath[1];                    
                     Move(nextPathTile);
                 }
             }

@@ -15,7 +15,7 @@ public class DeathChecker : MonoBehaviour
     private List<float> lastDeathTime = new List<float>();
 
     private float updateTime = 1f;
-    private int spawnSafezone = 2;
+    private int spawnSafezone = 1;
     
 
     public static Action<PlayerState> OnPlayerDeath;
@@ -36,55 +36,36 @@ public class DeathChecker : MonoBehaviour
         InvokeRepeating("Checker", 1f, updateTime);
     }
 
-    private void SetupLastDeathTimes(List<PlayerState> players)
-    {
-        foreach (var player in players)
-        {
-            lastDeathTime.Add(0f);
-        }
-    }
-
-    private void CheckPlayersDeath()
+    private void CheckPlayersDeath(PlayerState agressor)
     {
         List<PlayerState> thisIterationDeadPlayers = new List<PlayerState>();
-        foreach (var player in GameManager.activePlayers)
+        foreach (var player in agressor.enemies)
         {
-            var playerTile = player.currentTile;
+            if (!GameManager.activePlayers.Contains(player) 
+                || Vector3.Distance(agressor.transform.position, player.transform.position)>1.5f*TileManagment.tileOffset)
+            {
+                continue;
+            }
+            TileInfo playerTile = player.currentTile;
+            if (player.currentTile.canMove)
+            {
+                playerTile = player.targetMoveTile;
+            }            
             var myAdjacentTiles = TileManagment.GetOwnerAdjacentTiles(playerTile, player.ownerIndex);
-            int cantStandTilesCounter = 0;
-            int tileCounter = 0;
+            int canStandTiles = 0;
             foreach (var tile in myAdjacentTiles)
             {
-                tileCounter++;
-                if (!tile.canMove)
+                if (tile.canMove)
                 {
-                    cantStandTilesCounter++;
+                    canStandTiles++;
                 }
-
             }
-            if (cantStandTilesCounter >= myAdjacentTiles.Count)
+            if (canStandTiles > 0)
             {
-                thisIterationDeadPlayers.Add(player);
+                continue;
             }
-            /*if (playerTile.tileOwnerIndex != player.ownerIndex)
-            {
-
-                int cantStandTilesCounter = 0;
-                int tileCounter = 0;
-                foreach (var tile in myAdjacentTiles)
-                {
-                    tileCounter++;
-                    if (!tile.canMove)
-                    {
-                        cantStandTilesCounter++;
-                    }
-
-                }
-                if (cantStandTilesCounter >= myAdjacentTiles.Count)
-                {
-                    thisIterationDeadPlayers.Add(player);
-                }
-            }*/
+            thisIterationDeadPlayers.Add(player);
+            Debug.Log("Found " + canStandTiles + " canStand tiles in " + myAdjacentTiles.Count + " adjacent");
         }
 
         foreach (var player in thisIterationDeadPlayers)
@@ -92,6 +73,15 @@ public class DeathChecker : MonoBehaviour
             MakeDead(player);
         }
     }
+
+    private void SetupLastDeathTimes(List<PlayerState> players)
+    {
+        foreach (var player in players)
+        {
+            lastDeathTime.Add(0f);
+        }
+    }
+    
 
     public void MakeDead(PlayerState player)
     {
@@ -166,10 +156,10 @@ public class DeathChecker : MonoBehaviour
     private void PlayerDeadActions(PlayerState player)
     {
         List<TileInfo> playerTiles = TileManagment.GetCharacterTiles(player);
-        TileManagment.SetEasyCaptureForPlayers(playerTiles, player.enemies);
+        TileManagment.LockTiles(playerTiles, true);
 
         player.SetDead();
-        //Debug.Log("player " + player.name + " dead");
+        Debug.Log("player " + player.name + " dead");
 
         if (deathParticles)
         {
@@ -184,12 +174,7 @@ public class DeathChecker : MonoBehaviour
         TileInfo resTile = GetAvailableResTile(player, playerTiles);
         if (resTile)
         {
-            TileManagment.RemoveEasyCaptureForTiles(playerTiles);
-
-            foreach (var enemy in player.enemies)
-            {
-                TileManagment.CheckIfSurroundedByOwner(TileManagment.levelTiles, enemy.ownerIndex, playerTiles[0]);
-            }
+            TileManagment.LockTiles(playerTiles, false);            
 
             player.SetAlive(resTile.tilePosition);
             

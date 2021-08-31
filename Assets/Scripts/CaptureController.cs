@@ -54,7 +54,11 @@ public class CaptureController : MonoBehaviour
         {            
             _playerState.SetNewState(CharacterState.Capture);
             
-            if (!tile.easyCaptureFor.Contains(_playerState.ownerIndex))
+            if (tile.easyCaptureFor.Contains(_playerState.ownerIndex) || tile.isLocked)
+            {
+                CaptureTile(tile);                
+            }
+            else
             {
                 if (tile.tileOwnerIndex == TileOwner.Neutral)
                 {
@@ -66,10 +70,6 @@ public class CaptureController : MonoBehaviour
                     _currentCoroutine = Capturing(tile, enemyCaptureTime);
                     StartCoroutine(_currentCoroutine);
                 }
-            }
-            else
-            {
-                CaptureTile(tile);
             }
             
 
@@ -98,7 +98,7 @@ public class CaptureController : MonoBehaviour
 
     private void CaptureTile(TileInfo tile)
     {
-        TileManagment.ChangeTileOwner(tile, _playerState.ownerIndex);
+        TileManagment.ChangeTileOwner(tile, _playerState);
         _playerState.SetNewState(CharacterState.Idle);
         if (capVFX != null)
         {

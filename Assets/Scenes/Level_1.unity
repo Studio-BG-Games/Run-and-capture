@@ -18857,7 +18857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f701310aaea215a4d9e0c8646d3e1ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextTileMoveTime: 1
+  nextTileMoveTime: 0.7
   moveDistance: 1
   moveVFX: {fileID: 2040783568}
 --- !u!114 &1503763734
@@ -18926,7 +18926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754e9bf36b6ab0b40a8b71c58aa34b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAIActive: 0
+  isAIActive: 1
   botState: 0
   leftInput: {x: 0, y: 0}
   rightInput: {x: 0, y: 0}
@@ -22869,7 +22869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f701310aaea215a4d9e0c8646d3e1ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextTileMoveTime: 1
+  nextTileMoveTime: 0.7
   moveDistance: 1
   moveVFX: {fileID: 1307683756}
 --- !u!114 &1801060024
@@ -22884,8 +22884,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3c4882af86905429c1c42aabf068c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutralCaptureTime: 1
-  enemyCaptureTime: 2
+  neutralCaptureTime: 0.2
+  enemyCaptureTime: 0.4
   capVFX: {fileID: 442387583353148024, guid: 53959bc898e9a644daad0282881d596a, type: 3}
 --- !u!114 &1801060025
 MonoBehaviour:
@@ -22938,7 +22938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5182c2cb5eef6d849b560f764c4a0ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 120
+  startHealth: 10000
   currentHealth: 0
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
     type: 3}
@@ -24850,8 +24850,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923264931}
-  m_LocalRotation: {x: 0.029971035, y: -0.000000004076362, z: 0.0000000075761575,
-    w: 0.9995508}
+  m_LocalRotation: {x: 0.029971035, y: 0.000000004076362, z: -0.000000007576159, w: 0.9995508}
   m_LocalPosition: {x: 0, y: 0.87083435, z: -14.50833}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -25539,7 +25538,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946816075}
-  m_LocalRotation: {x: 0.5257311, y: -0.000000007318311, z: 0.000000004522964, w: 0.85065085}
+  m_LocalRotation: {x: 0.5257311, y: 0.0000000073183117, z: -0.0000000045229647, w: 0.85065085}
   m_LocalPosition: {x: 0, y: 13, z: -6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
