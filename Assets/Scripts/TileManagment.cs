@@ -12,7 +12,7 @@ public class TileManagment : MonoBehaviour
     public static List<List<TileInfo>> charTiles = new List<List<TileInfo>>();
 
     public static Action OnInitialized;
-    public static Action<PlayerState> OnAnyTileCaptured;
+    public static Action OnAnyTileCaptured;
 
     public static List<Material> tileMaterialsStatic;
 
@@ -83,9 +83,8 @@ public class TileManagment : MonoBehaviour
         tile.GetComponent<Renderer>().material = tileMaterialsStatic[(int)tile.tileOwnerIndex];
     }
 
-    public static void ChangeTileOwner(TileInfo tile, PlayerState newPlayer)
+    public static void ChangeTileOwner(TileInfo tile, TileOwner newOwner)
     {
-        TileOwner newOwner = newPlayer.ownerIndex;
         TileOwner oldOwner = tile.tileOwnerIndex;
         tile.tileOwnerIndex = newOwner;
         tile.GetComponent<Renderer>().material = tileMaterialsStatic[(int)tile.tileOwnerIndex];
@@ -94,14 +93,14 @@ public class TileManagment : MonoBehaviour
         charTiles[(int)oldOwner].Remove(tile);
 
         SetTilesCapState(newOwner, oldOwner, levelTiles, GameManager.players);
-        OnAnyTileCaptured?.Invoke(newPlayer);
+        OnAnyTileCaptured?.Invoke();
 
     }
 
     public static void SetTilesCapState(TileOwner ownerNew, TileOwner owerOld, List<TileInfo> allTiles, List<PlayerState> players)
     {
         CheckSurroundedTiles(allTiles, ownerNew, owerOld);
-        //SetAllCharTilesStates(players);
+        SetAllCharTilesStates(players);
     }
 
     public static void AssignBuildingToTile(TileInfo tile, GameObject building)
@@ -248,24 +247,13 @@ public class TileManagment : MonoBehaviour
         return playerTiles;
     }
 
-    public static void SetLockState(List<TileInfo> tiles)
+    public static void SetEasyCaptureForAll(List<TileInfo> tiles)
     {        
         foreach (TileInfo tile in tiles)
         {
             tile.isLocked = true;
             tile.easyCapForAll = true;
         }
-        Debug.Log("easycapForAll");
-    }
-
-    public static void SetEasyCaptureForAll(PlayerState player)
-    {
-        List<TileInfo> tiles = charTiles[(int)player.ownerIndex];
-        foreach (TileInfo tile in tiles)
-        {
-            tile.isLocked = true;
-            tile.easyCapForAll = true;
-        }        
     }
 
     public static void RemoveLockState(List<TileInfo> tiles)
@@ -273,9 +261,19 @@ public class TileManagment : MonoBehaviour
         foreach (TileInfo tile in tiles)
         {            
             tile.isLocked = false;
-            tile.easyCapForAll = false;
         }
-    }       
+    }
+
+    /*public static TileInfo GetClosestOwnerTile(TileInfo startTile, TileOwner owner, float searchRadius)
+    {
+        var ownerTiles = charTiles[(int)owner];
+        TileInfo closestTile = ownerTiles[0];
+        foreach (TileInfo tile in ownerTiles)
+        {
+            //if ()
+        }
+        return closestTile;
+    }*/
 
     public static TileInfo GetClosestOtherTile(TileInfo currentTile, TileOwner owner,/* float capRadius,*/ Vector3 startPoint)
     {
@@ -353,7 +351,6 @@ public class TileManagment : MonoBehaviour
 
     public static void SetCharTilesState(PlayerState player)
     {
-        //Debug.Log("set chartiles state");
         List<TileInfo> allPlayerTiles = charTiles[(int)player.ownerIndex];
         foreach (TileInfo tile in allPlayerTiles)
         {
@@ -362,10 +359,7 @@ public class TileManagment : MonoBehaviour
         List<TileInfo> playerConnectedTiles = GetConnectedTiles(levelTiles, player.ownerIndex, player.currentTile);
         foreach (TileInfo tile in playerConnectedTiles)
         {
-            if (!tile.isLocked)
-            {
-                tile.easyCapForAll = false;
-            }            
+            tile.easyCapForAll = false;
         }
     }
 
@@ -447,15 +441,18 @@ public class TileManagment : MonoBehaviour
 
             connectedTiles.Add(tile);
             
-            var adjacentTiles = GetOwnerAdjacentTiles(tile, tile.tileOwnerIndex);
+            var adjacentTiles = GetAllAdjacentTiles(tile);
 
             foreach (TileInfo newTile in adjacentTiles)
             {
-                q.Enqueue(newTile);
+                if (newTile.tileOwnerIndex == tile.tileOwnerIndex)
+                {
+                    q.Enqueue(newTile);
+                }                
             }
             iterations++;
         }
-        //Debug.Log("there are " + connectedTiles.Count + " near the " + ownerIndex);
+
         return connectedTiles;
     }
 

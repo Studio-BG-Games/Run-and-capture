@@ -96,8 +96,7 @@ public class AI_BotController : MonoBehaviour
 
     private void StartPatrolBehaviour() //looking for available tiles, calculating path and set patrol state
     {
-        //calculate path
-        leftInput = Vector2.zero;
+        //calculate path        
         TileInfo currentTile = _playerState.currentTile;
         TileInfo targetPathTile = TileManagment.GetClosestOtherTile(currentTile, _playerState.ownerIndex, _startBotPoint);
         //Debug.Log(targetPathTile);        
@@ -130,7 +129,7 @@ public class AI_BotController : MonoBehaviour
 
     private void CheckBotState()
     {
-        //Debug.Log("CheckState");
+        Debug.Log("CheckState");
         BotState newBotState;
 
         if (IsEnemyEnabledForAttack())

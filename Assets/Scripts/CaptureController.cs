@@ -49,11 +49,11 @@ public class CaptureController : MonoBehaviour
     private void TryToCaptureTile()
     {
         TileInfo tile = _playerState.currentTile;
-
+        
         if (_playerState.ownerIndex != tile.tileOwnerIndex)
-        {
+        {            
             _playerState.SetNewState(CharacterState.Capture);
-
+            
             if (tile.easyCaptureFor.Contains(_playerState.ownerIndex) || tile.easyCapForAll)
             {
                 CaptureTile(tile);
@@ -69,16 +69,11 @@ public class CaptureController : MonoBehaviour
                 {
                     _currentCoroutine = Capturing(tile, enemyCaptureTime);
                     StartCoroutine(_currentCoroutine);
-                }
+                }                
             }
-
+            
 
         }
-        /*else
-        {
-            TileManagment.SetCharTilesState(_playerState);
-            //Debug.Log("for " + gameObject.name);
-        }*/
     }    
 
     private void CaptureStartTile()
@@ -103,7 +98,7 @@ public class CaptureController : MonoBehaviour
 
     private void CaptureTile(TileInfo tile)
     {
-        TileManagment.ChangeTileOwner(tile, _playerState);
+        TileManagment.ChangeTileOwner(tile, _playerState.ownerIndex);
         _playerState.SetNewState(CharacterState.Idle);
         if (capVFX != null)
         {
