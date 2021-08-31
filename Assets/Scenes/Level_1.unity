@@ -1419,7 +1419,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
@@ -2209,7 +2209,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
@@ -11121,7 +11121,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
@@ -11464,7 +11464,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 0
+  tileOwnerIndex: 2
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
@@ -12578,7 +12578,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
@@ -13377,7 +13377,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102420987}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bdb1f3013038a142b6409f33a96c7b4, type: 3}
   m_Name: 
@@ -14054,7 +14054,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0
@@ -18874,7 +18874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5182c2cb5eef6d849b560f764c4a0ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 120
+  startHealth: 50
   currentHealth: 0
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
     type: 3}
@@ -23031,8 +23031,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3c4882af86905429c1c42aabf068c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutralCaptureTime: 1
-  enemyCaptureTime: 2
+  neutralCaptureTime: 0.2
+  enemyCaptureTime: 0.3
   capVFX: {fileID: 442387583353148024, guid: 53959bc898e9a644daad0282881d596a, type: 3}
 --- !u!114 &1801060025
 MonoBehaviour:
@@ -23085,7 +23085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5182c2cb5eef6d849b560f764c4a0ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 120
+  startHealth: 350
   currentHealth: 0
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
     type: 3}
@@ -24086,7 +24086,7 @@ MonoBehaviour:
   canBeAttacked: 1
   canBuildHere: 1
   buildingOnTile: {fileID: 0}
-  tileOwnerIndex: 2
+  tileOwnerIndex: 0
   easyCaptureFor: 
   checkedFor: 
   isBorderTile: 0

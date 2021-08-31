@@ -36,6 +36,40 @@ public class DeathChecker : MonoBehaviour
         InvokeRepeating("Checker", 1f, updateTime);
     }
 
+    private void CheckPlayersDeath(PlayerState capPlayer)
+    {
+        List<PlayerState> thisIterationDeadPlayers = new List<PlayerState>();        
+        foreach (var player in capPlayer.enemies)
+        {
+            if (!GameManager.activePlayers.Contains(player))
+            {
+                continue;
+            }
+            var playerTile = player.currentTile;
+            var myAdjacentTiles = TileManagment.GetOwnerAdjacentTiles(playerTile, player.ownerIndex);
+            int canStandTiles = 0;
+            foreach (var tile in myAdjacentTiles)
+            {
+                if (tile.canMove)
+                {
+                    canStandTiles++;
+                }
+
+            }
+            if (canStandTiles == 0)
+            {
+                thisIterationDeadPlayers.Add(player);
+            }
+            Debug.Log("Found " + canStandTiles + " canStand tiles in " + myAdjacentTiles.Count + " adjacent player tiles for " + player.name);
+        }
+
+        foreach (var player in thisIterationDeadPlayers)
+        {
+            Debug.Log("make dead " + player.name + "via checker");
+            MakeDead(player);
+        }
+    }
+
     private void SetupLastDeathTimes(List<PlayerState> players)
     {
         foreach (var player in players)
@@ -44,54 +78,7 @@ public class DeathChecker : MonoBehaviour
         }
     }
 
-    private void CheckPlayersDeath()
-    {
-        List<PlayerState> thisIterationDeadPlayers = new List<PlayerState>();
-        foreach (var player in GameManager.activePlayers)
-        {
-            var playerTile = player.currentTile;
-            var myAdjacentTiles = TileManagment.GetOwnerAdjacentTiles(playerTile, player.ownerIndex);
-            int cantStandTilesCounter = 0;
-            int tileCounter = 0;
-            foreach (var tile in myAdjacentTiles)
-            {
-                tileCounter++;
-                if (!tile.canMove)
-                {
-                    cantStandTilesCounter++;
-                }
-
-            }
-            if (cantStandTilesCounter >= myAdjacentTiles.Count)
-            {
-                thisIterationDeadPlayers.Add(player);
-            }
-            /*if (playerTile.tileOwnerIndex != player.ownerIndex)
-            {
-
-                int cantStandTilesCounter = 0;
-                int tileCounter = 0;
-                foreach (var tile in myAdjacentTiles)
-                {
-                    tileCounter++;
-                    if (!tile.canMove)
-                    {
-                        cantStandTilesCounter++;
-                    }
-
-                }
-                if (cantStandTilesCounter >= myAdjacentTiles.Count)
-                {
-                    thisIterationDeadPlayers.Add(player);
-                }
-            }*/
-        }
-
-        foreach (var player in thisIterationDeadPlayers)
-        {
-            MakeDead(player);
-        }
-    }
+    
 
     public void MakeDead(PlayerState player)
     {
@@ -101,6 +88,8 @@ public class DeathChecker : MonoBehaviour
 
         OnPlayerDeath?.Invoke(player);
         PlayerDeadActions(player);
+
+        //Debug.Log("make dead " + player.name);
     }
 
     public void MakeDeadPermanent(PlayerState player)
@@ -166,9 +155,8 @@ public class DeathChecker : MonoBehaviour
     private void PlayerDeadActions(PlayerState player)
     {
         List<TileInfo> playerTiles = TileManagment.GetCharacterTiles(player);
-        TileManagment.SetEasyCaptureForAll(playerTiles);
-
         player.SetDead();
+        TileManagment.SetLockState(playerTiles);
         //Debug.Log("player " + player.name + " dead");
 
         if (deathParticles)
@@ -186,7 +174,7 @@ public class DeathChecker : MonoBehaviour
         {
             TileManagment.RemoveLockState(playerTiles);
             player.SetAlive(resTile.tilePosition);
-            TileManagment.SetCharTilesState(player);
+            //TileManagment.SetCharTilesState(player);
             if (resParticles)
             {
                 Instantiate(resParticles, player.transform.position, deathParticles.transform.rotation);

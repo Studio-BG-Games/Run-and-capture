@@ -94,6 +94,6 @@ public class TileMovement : MonoBehaviour
     {
         //Debug.Log("finish movement");
         _playerState.currentTile = currentTile;
-        _playerState.SetNewState(CharacterState.Idle);
+        _playerState.SetNewState(CharacterState.Idle);        
     }    
 }
