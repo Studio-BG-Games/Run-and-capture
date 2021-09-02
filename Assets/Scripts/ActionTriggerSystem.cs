@@ -77,14 +77,15 @@ public class ActionTriggerSystem : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }       
-        FinalActionOperations();        
+        FinalActionOperations(action);        
     }
 
-    private void FinalActionOperations()
+    private void FinalActionOperations(PlayerAction action)
     {
         //OnActionEnd?.Invoke();
         //OnActionSuccess?.Invoke();
         _actionProgress = 0f;
+        action.FinishActionOperations(_playerState);
         StopAllCoroutines();
         _playerState.SetNewState(CharacterState.Idle);               
        

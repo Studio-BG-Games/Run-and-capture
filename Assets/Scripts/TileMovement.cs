@@ -64,7 +64,18 @@ public class TileMovement : MonoBehaviour
             bool canMoveToMyTile = (tile.tileOwnerIndex == _playerState.ownerIndex);
             bool canMoveToEnemyTile = (_playerState.currentTile.tileOwnerIndex == _playerState.ownerIndex);
 
-            return tile.canMove && (canMoveToMyTile || canMoveToEnemyTile);
+            bool canMoveThroughBuilding = true;
+
+            if (tile.buildingOnTile != null)
+            {
+                TrapObj trap = tile.buildingOnTile.GetComponent<TrapObj>();
+                if (trap != null)
+                {
+                    canMoveThroughBuilding = trap.owner != _playerState.ownerIndex;
+                }
+            }
+
+            return tile.canMove && (canMoveToMyTile || canMoveToEnemyTile) && canMoveThroughBuilding;
         }
         else
         {

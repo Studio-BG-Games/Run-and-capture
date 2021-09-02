@@ -29,6 +29,11 @@ public class PlayerAction : ScriptableObject
     {
 
     }
+
+    public virtual void FinishActionOperations(PlayerState currentPlayer)
+    {
+        Debug.Log("final action");
+    }
 }
 
 public enum ActionType

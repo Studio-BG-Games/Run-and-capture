@@ -14,8 +14,7 @@ public class TileInfo : MonoBehaviour
 
     public TileOwner tileOwnerIndex = TileOwner.Neutral; //recieved by TileManager on game start
     public List<TileOwner> easyCaptureFor = new List<TileOwner>();
-    public List<TileOwner> checkedFor = new List<TileOwner>();
-
+    public List<TileOwner> checkedFor = new List<TileOwner>();    
 
     public bool isBorderTile = false;
     public bool easyCaptureForAll = false;
@@ -29,7 +28,7 @@ public class TileInfo : MonoBehaviour
     public TileInfo parent = null;
 
     #endregion
-
+    
 }
 
 
