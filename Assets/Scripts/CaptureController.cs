@@ -100,7 +100,7 @@ public class CaptureController : MonoBehaviour
         }
     }
 
-    private void CaptureTile(TileInfo tile)
+    public void CaptureTile(TileInfo tile)
     {
         TileManagment.ChangeTileOwner(tile, _playerState);
         _playerState.SetNewState(CharacterState.Idle);

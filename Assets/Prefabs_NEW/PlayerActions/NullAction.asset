@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 1
   distance: 1
-  actionType: 3
+  actionType: 0

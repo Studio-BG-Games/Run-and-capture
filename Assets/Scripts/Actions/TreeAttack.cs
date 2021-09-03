@@ -19,11 +19,11 @@ public class TreeAttack : PlayerAction
         return permission;
     }
 
-    public override void Impact(TileInfo targetTile, TileInfo currentTile, TileOwner owner)
+    public override void Impact(TileInfo targetTile, PlayerState currentPlayer)
     {
-        base.Impact(targetTile, currentTile, owner);
-        Vector3 direction = targetTile.tilePosition - currentTile.tilePosition;
-        var currentProjectile = Instantiate(attackPref, currentTile.tilePosition + attackPref.transform.position, attackPref.transform.rotation);
+        base.Impact(targetTile, currentPlayer);
+        Vector3 direction = targetTile.tilePosition - currentPlayer.currentTile.tilePosition;
+        var currentProjectile = Instantiate(attackPref, currentPlayer.currentTile.tilePosition + attackPref.transform.position, attackPref.transform.rotation);
         currentProjectile.transform.LookAt(targetTile.tilePosition + attackPref.transform.position);
         //InitAttack(currentTile.tilePosition, direction, owner);
         TreeHealthController tree = targetTile.buildingOnTile.GetComponent<TreeHealthController>();

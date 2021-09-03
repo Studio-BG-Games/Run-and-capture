@@ -29,15 +29,18 @@ public class AnimationController : MonoBehaviour
             case CharacterState.Move:
                 activationTrigger = "Move";
                 break;
-            case CharacterState.Attack:
-                activationTrigger = "Attack";
+            case CharacterState.Action:
+                activationTrigger = GetActionName(_playerState);
                 break;
-            case CharacterState.Build:
-                activationTrigger = "Build";
-                break;
-            case CharacterState.TreeAttack:
-                activationTrigger = "TreeAttack";
-                break;
+                /*case CharacterState.Attack:
+                    activationTrigger = "Attack";
+                    break;
+                case CharacterState.Build:
+                    activationTrigger = "Build";
+                    break;
+                case CharacterState.TreeAttack:
+                    activationTrigger = "TreeAttack";
+                    break;*/
 
         }
         if (activationTrigger != "")
@@ -45,5 +48,26 @@ public class AnimationController : MonoBehaviour
             _characterAnimator.SetTrigger(activationTrigger);
         }
     }
-    
+
+    private string GetActionName(PlayerState player)
+    {
+        var charSubState = player.currentAction.actionType;
+        string result = "";
+        switch (charSubState)
+        {
+            case ActionType.Attack:
+                result = "Attack";
+                break;
+            case ActionType.Build:
+                result = "Build";
+                break;
+            case ActionType.TreeAttack:
+                result = "TreeAttack";
+                break;
+            case ActionType.SuperJump:
+                result = "SuperJump";
+                break;
+        }
+        return result;
+    }
 }

@@ -6,7 +6,7 @@ using System;
 public class ActionTargetingSystem : MonoBehaviour
 {
     
-    public Action<TileInfo> OnFoundTarget;
+    public Action<TileInfo, ActionType> OnFoundTarget;
     public Action OnLostTarget;
 
     private PlayerState _playerState;
@@ -49,7 +49,7 @@ public class ActionTargetingSystem : MonoBehaviour
                 if (targetTile != _playerState.currentActionTarget)
                 {
                     _playerState.currentActionTarget = targetTile;
-                    OnFoundTarget?.Invoke(_playerState.currentActionTarget);
+                    OnFoundTarget?.Invoke(_playerState.currentActionTarget, _playerState.currentAction.actionType);
                 }
             }
             else

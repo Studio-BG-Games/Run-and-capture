@@ -37,7 +37,7 @@ public class PlayerUIController : MonoBehaviour
         _attackEnergy = GetComponent<AttackEnergyController>();
 
 
-        _targetingSystem.OnFoundTarget += UpdateAttackUI;
+        _targetingSystem.OnFoundTarget += UpdateActionUI;
         _targetingSystem.OnLostTarget += StopUpdateAttackUI;        
 
         _playerState.OnCharStateChanged += StartUpdatingProgressUI;
@@ -45,6 +45,16 @@ public class PlayerUIController : MonoBehaviour
         _healthController.OnHealthChanged += UpdateHealthUI;
 
         _attackEnergy.OnAttackEnergyChanged += UpdateEnergyUI;
+    }
+
+    private void UpdateActionUI(TileInfo target, ActionType actionType)
+    {
+        Vector3 targetPos = target.tilePosition;
+        if (targetPos != null)
+        {
+            _attackUI.gameObject.SetActive(true);
+            _attackUI.LookAt(targetPos);
+        }
     }
 
     private void UpdateEnergyUI(float curEnergy, float maxEnergy)
@@ -66,10 +76,10 @@ public class PlayerUIController : MonoBehaviour
         string actionTypeText = "";
         switch (newState)
         {
-            case CharacterState.Attack:
+            /*case CharacterState.Attack:
                 actionTypeText = "Attack";
                 GetActionProgress += GetCurrentActionProgress;                
-                break;
+                break;*/
             case CharacterState.Capture:
                 actionTypeText = "Capturing...";
                 GetActionProgress += GetCaptureProgress;                
@@ -80,20 +90,46 @@ public class PlayerUIController : MonoBehaviour
             case CharacterState.Idle:
                 StopUpdateProgressUI();                
                 return;
-            case CharacterState.Build:
+            case CharacterState.Action:
+                actionTypeText = GetActionText(_playerState);
+                GetActionProgress += GetCurrentActionProgress;
+                break;
+            /*case CharacterState.Build:
                 actionTypeText = "Building...";
                 GetActionProgress += GetCurrentActionProgress;                
                 break;
             case CharacterState.TreeAttack:
                 actionTypeText = "Attack";
                 GetActionProgress += GetCurrentActionProgress;
-                break;
+                break;*/
             default:                
                 return;
                 
         }
         _progressUI.UpdateActionType(actionTypeText);
         StartCoroutine(_progressUICoroutine);
+    }
+
+    private string GetActionText(PlayerState player)
+    {
+        var charSubState = player.currentAction.actionType;
+        string result = "";
+        switch (charSubState)
+        {
+            case ActionType.Attack:
+                result = "Attack";
+                break;
+            case ActionType.Build:
+                result = "Build...";
+                break;
+            case ActionType.TreeAttack:
+                result = "TreeAttack";
+                break;
+            case ActionType.SuperJump:
+                result = "SuperJump";
+                break;
+        }
+        return result;
     }
 
     private void StopUpdateProgressUI()
@@ -138,15 +174,6 @@ public class PlayerUIController : MonoBehaviour
     {
         _attackUI.gameObject.SetActive(false);
     }
-
-    private void UpdateAttackUI(TileInfo target)
-    {
-        Vector3 targetPos = target.tilePosition;
-        if (targetPos != null)
-        {
-            _attackUI.gameObject.SetActive(true);
-            _attackUI.LookAt(targetPos);
-        }
-    }
+    
 
 }

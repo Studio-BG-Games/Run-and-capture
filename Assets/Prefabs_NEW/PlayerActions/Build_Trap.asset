@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 3.15
   distance: 1
-  actionState: 4
+  actionType: 2
   trapPref: {fileID: 8305872390849316384, guid: abdfd5b61d4a8664fb8222503bb9f3e8,
     type: 3}

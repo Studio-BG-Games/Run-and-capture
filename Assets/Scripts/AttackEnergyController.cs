@@ -28,7 +28,7 @@ public class AttackEnergyController : MonoBehaviour
 
     private void OnPlayerAttack(CharacterState newState)
     {
-        if (newState != CharacterState.Attack)
+        if (newState != CharacterState.Action || _playerState.currentAction.actionType!=ActionType.Attack)
         {
             return;
         }

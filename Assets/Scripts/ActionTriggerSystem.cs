@@ -29,7 +29,7 @@ public class ActionTriggerSystem : MonoBehaviour
             //OnLostTarget?.Invoke();
             StopAllCoroutines();
             //Debug.Log("trigger current action");
-            if (_playerState.currentAction.actionState == CharacterState.Attack)
+            if (_playerState.currentAction.actionType == ActionType.Attack)
             {                
                 if (!GetComponent<AttackEnergyController>().IsReady())
                 {
@@ -51,10 +51,11 @@ public class ActionTriggerSystem : MonoBehaviour
         {
             return;
         }       
-        _playerState.SetNewState(action.actionState);
+        _playerState.SetNewState(CharacterState.Action);
+
         //Debug.Log("started state " + action.actionState);
         transform.LookAt(_playerState.currentActionTarget.tilePosition);
-        action.StartActionOperations(_playerState.currentActionTarget);
+        action.StartActionOperations(_playerState.currentActionTarget, _playerState);
         StartCoroutine(WaitTillActionEnd(action));        
     }
 
@@ -70,7 +71,7 @@ public class ActionTriggerSystem : MonoBehaviour
             if (_actionProgress > 0.7f && !actionImpact)
             {
                 actionImpact = true;
-                action.Impact(target, _playerState.currentTile, _playerState.ownerIndex);
+                action.Impact(target, _playerState);
             }
             timer += Time.fixedDeltaTime;
             _actionProgress = timer / waitTime;

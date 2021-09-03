@@ -18,9 +18,9 @@ public class Trap : PlayerAction
         return permission;
     }
 
-    public override void StartActionOperations(TileInfo targetTile)
+    public override void StartActionOperations(TileInfo targetTile, PlayerState currentPlayer)
     {
-        base.StartActionOperations(targetTile);
+        base.StartActionOperations(targetTile, currentPlayer);
         _target = targetTile;
     }
 

@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41080f62be501b4a97bf5b9ab9dd6f4, type: 3}
-  m_Name: Build_T1
+  m_Script: {fileID: 11500000, guid: 0169a7715dc4850439785448a35ff4a3, type: 3}
+  m_Name: SuperJump
   m_EditorClassIdentifier: 
-  duration: 3.15
+  duration: 2
   distance: 1
-  actionType: 2
-  buildPref: {fileID: 2876353875295318420, guid: 2fb427c4f691758448ac2c6450b27242,
-    type: 3}
+  actionType: 4

@@ -16,11 +16,10 @@ public class Build : PlayerAction
         return permission;
     }
 
-    public override void StartActionOperations(TileInfo targetTile)
+    public override void StartActionOperations(TileInfo targetTile, PlayerState currentPlayer)
     {
-        base.StartActionOperations(targetTile);
+        base.StartActionOperations(targetTile, currentPlayer);
         var spawnedTower = Instantiate(buildPref, targetTile.tilePosition, buildPref.transform.rotation);
         TileManagment.AssignBuildingToTile(targetTile, spawnedTower);
-        //Debug.Log("startBuilding");
     }
 }

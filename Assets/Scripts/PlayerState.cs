@@ -11,7 +11,7 @@ public class PlayerState : MonoBehaviour
     public TileOwner ownerIndex = TileOwner.Ariost;
     public CharacterState prevState = CharacterState.Idle;    
     public CharacterState currentState = CharacterState.Idle;
-    //public CharacterSubState currentSubState = CharacterSubState.None;
+    //public ActionType currentSubState = ActionType.None;
 
     public TileInfo currentTile;
     public TileInfo targetMoveTile;
@@ -21,7 +21,7 @@ public class PlayerState : MonoBehaviour
 
     public Action OnInitializied;
     public Action<CharacterState> OnCharStateChanged;
-    //public Action<CharacterSubState> OnSubStateChanged;
+    public Action<ActionType> OnSubStateChanged;
     public Action OnActionChanged;
     public Action OnDefaultAction;
     public Action OnActionInterrupt;
@@ -68,17 +68,21 @@ public class PlayerState : MonoBehaviour
         if (currentState != newState)
         {
             prevState = currentState;
-            currentState = newState;            
+            currentState = newState;
+            /*if (newState == CharacterState.Action)
+            {
+                currentSubState = currentAction.actionType;
+            }*/
             OnCharStateChanged?.Invoke(newState);            
         }
     }
 
-    /*public void SetNewSubState(CharacterSubState newSubState)
-    {        
-        if (currentSubState != newSubState)
+    /*public void SetNewCharSubState(ActionType newActionType)
+    {
+        if (currentSubState != newActionType)
         {
-            currentSubState = newSubState;
-            OnSubStateChanged?.Invoke(newSubState);
+            currentSubState = newActionType;
+            OnSubStateChanged?.Invoke(newActionType);
         }
     }*/
 
@@ -142,14 +146,15 @@ public class PlayerState : MonoBehaviour
     }
 }
 
-public enum CharacterState 
+public enum CharacterState
 {
     Idle,
     Capture,
     Move,
-    Attack,
+    Action,
+    /*Attack,
     Build,
-    TreeAttack,
+    TreeAttack,*/
     Dead
 }
 
@@ -159,8 +164,11 @@ public enum ControlType
     AI
 }
 
-/*public enum CharacterSubState
+public enum ActionType
 {
-    Targeting,
-    None,    
-}*/
+    None,
+    Attack,
+    Build,
+    TreeAttack,
+    SuperJump
+}

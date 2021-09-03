@@ -18,11 +18,11 @@ public class Attack : PlayerAction
         return permission;
     }
 
-    public override void Impact(TileInfo targetTile, TileInfo currentTile, TileOwner owner)
+    public override void Impact(TileInfo targetTile, PlayerState currentPlayer)
     {
-        base.Impact(targetTile, currentTile, owner);
-        Vector3 direction = targetTile.tilePosition - currentTile.tilePosition;
-        InitAttack(currentTile.tilePosition, direction, owner);
+        base.Impact(targetTile, currentPlayer);
+        Vector3 direction = targetTile.tilePosition - currentPlayer.currentTile.tilePosition;
+        InitAttack(currentPlayer.currentTile.tilePosition, direction, currentPlayer.ownerIndex);
     }
 
     private void InitAttack(Vector3 startPosition, Vector3 direction, TileOwner projOwner)

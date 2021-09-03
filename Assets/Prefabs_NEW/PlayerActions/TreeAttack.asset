@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.3
   distance: 1
-  actionState: 5
+  actionType: 3
   attackPref: {fileID: 5329242548601918259, guid: 87df8882a1fca7f4f83d9c9015eede7a,
     type: 3}
   damage: 60
