@@ -11,9 +11,11 @@ public class PlayerUIController : MonoBehaviour
     [SerializeField]
     private UI_Progress _progressUI;
     [SerializeField]
-    private UI_Quantity healthUI;
+    private UI_Quantity _healthUI;
     [SerializeField]
-    private UI_Quantity attackEnergyUI;
+    private UI_Quantity _attackEnergyUI;
+    [SerializeField]
+    private UI_SuperJump _superJumpUI;
 
     private PlayerState _playerState;
     private ActionTargetingSystem _targetingSystem;
@@ -38,7 +40,7 @@ public class PlayerUIController : MonoBehaviour
 
 
         _targetingSystem.OnFoundTarget += UpdateActionUI;
-        _targetingSystem.OnLostTarget += StopUpdateAttackUI;        
+        _targetingSystem.OnLostTarget += StopUpdateActionUI;        
 
         _playerState.OnCharStateChanged += StartUpdatingProgressUI;
 
@@ -48,6 +50,20 @@ public class PlayerUIController : MonoBehaviour
     }
 
     private void UpdateActionUI(TileInfo target, ActionType actionType)
+    {
+        switch (actionType)
+        {
+            case ActionType.SuperJump:
+                _superJumpUI.UpdateUI(target);
+                break;
+            default:
+                UpdateAttackUI(target);
+                break;
+        }
+        
+    }    
+
+    private void UpdateAttackUI(TileInfo target)
     {
         Vector3 targetPos = target.tilePosition;
         if (targetPos != null)
@@ -59,12 +75,12 @@ public class PlayerUIController : MonoBehaviour
 
     private void UpdateEnergyUI(float curEnergy, float maxEnergy)
     {        
-        attackEnergyUI.UpdateBar(curEnergy, maxEnergy);
+        _attackEnergyUI.UpdateBar(curEnergy, maxEnergy);
     }
 
     private void UpdateHealthUI(float curHealth, float maxHealth)
     {
-        healthUI.UpdateBar(curHealth, maxHealth);
+        _healthUI.UpdateBar(curHealth, maxHealth);
     }
 
     private void StartUpdatingProgressUI(CharacterState newState)
@@ -170,9 +186,10 @@ public class PlayerUIController : MonoBehaviour
         
     }
 
-    private void StopUpdateAttackUI()
+    private void StopUpdateActionUI()
     {
         _attackUI.gameObject.SetActive(false);
+        _superJumpUI.StopUpdateUI() ;
     }
     
 

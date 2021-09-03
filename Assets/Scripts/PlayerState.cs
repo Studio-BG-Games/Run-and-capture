@@ -152,6 +152,7 @@ public enum CharacterState
     Capture,
     Move,
     Action,
+    Frozen,
     /*Attack,
     Build,
     TreeAttack,*/

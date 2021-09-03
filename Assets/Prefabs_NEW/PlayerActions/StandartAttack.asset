@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef86a7fd23f3f604d945074968fd7063, type: 3}
   m_Name: StandartAttack
   m_EditorClassIdentifier: 
-  duration: 0.3
+  duration: 0.5
   distance: 1
-  actionState: 3
+  actionType: 1
   standartAttackPref: {fileID: 8121987183708165570, guid: a69f2bfc3db12bf429b2420ae3b5ca1d,
     type: 3}
   standartAttackGroundImpact: {fileID: 8619867339336636724, guid: fb745cfc34702fc4daee97f8f3273f09,

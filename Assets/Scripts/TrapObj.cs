@@ -10,6 +10,8 @@ public class TrapObj : MonoBehaviour
 
     public GameObject collisionVFX;
 
+    public float timeToDamage = 1f;
+
     public void SetOwner(TileOwner newOwner)
     {
         owner = newOwner;
@@ -21,13 +23,29 @@ public class TrapObj : MonoBehaviour
         var playerState = other.gameObject.GetComponent<PlayerState>();        
         if (healthController && owner != playerState.ownerIndex)
         {
-            healthController.TakeDamage(damage);
-            if(collisionVFX!=null)
+            if (collisionVFX != null)
             {
                 Instantiate(collisionVFX, collisionVFX.transform.position + transform.position, collisionVFX.transform.rotation);
             }
-            Destroy(gameObject);
-            
+            playerState.SetNewState(CharacterState.Frozen);
+            StartCoroutine(WaitToDamage(timeToDamage, healthController, playerState));
+
         }       
+    }
+
+    private IEnumerator WaitToDamage(float time, HealthController healthController, PlayerState player)
+    {
+        float timer = 0f;
+        while (timer < time)
+        {
+            timer += Time.fixedDeltaTime;
+            player.currentState = CharacterState.Frozen;
+            yield return new WaitForFixedUpdate();
+        }        
+        healthController.TakeDamage(damage);
+        
+        Destroy(gameObject);
+        player.SetNewState(CharacterState.Idle);
+
     }
 }

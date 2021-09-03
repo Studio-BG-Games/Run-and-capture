@@ -48,8 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 1
   damage: 100
-  collisionVFX: {fileID: 2214609422064327837, guid: 234698f23c9068940b633be5a4f146ea,
+  collisionVFX: {fileID: 2307028534112872116, guid: 79d768bf87aadec478a5722da8c6d516,
     type: 3}
+  timeToDamage: 2
 --- !u!135 &8305872390849316386
 SphereCollider:
   m_ObjectHideFlags: 0

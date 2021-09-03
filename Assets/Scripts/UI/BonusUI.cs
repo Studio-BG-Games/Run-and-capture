@@ -56,6 +56,10 @@ public class BonusUI : MonoBehaviour
 
     public void SetSelectedSlot(BonusSlot selection)
     {
+        if (bonusController.GetComponent<PlayerState>().currentState != CharacterState.Idle)
+        {
+            return;
+        }
         if (selectedSlot != selection)
         {
             selectedSlot = selection;

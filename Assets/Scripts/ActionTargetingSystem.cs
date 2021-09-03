@@ -18,9 +18,16 @@ public class ActionTargetingSystem : MonoBehaviour
         if (_playerState.controlType == ControlType.Player)
         {
             CustomInput.OnTouchDown += StartTargeting;            
+            CustomInput.OnTouchUp += EndTargeting;            
         }
 
         //OnFoundTarget += WriteSome;
+    }
+
+    private void EndTargeting()
+    {
+        OnLostTarget?.Invoke();
+        StopAllCoroutines();
     }
 
     /*private void WriteSome(TileInfo target)

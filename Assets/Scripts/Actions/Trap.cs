@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,13 +16,40 @@ public class Trap : PlayerAction
         bool permission = base.IsActionAllowed(targetTile, playerState);
         bool isMyTile = targetTile.tileOwnerIndex == playerState.ownerIndex;
         permission = permission && targetTile.canBuildHere && isMyTile;
+
+        bool ifCanPlaceAnotherTrap = CheckExit(playerState);
+        if (!ifCanPlaceAnotherTrap)
+        {
+            return false;
+        }
         return permission;
+    }
+
+    private bool CheckExit(PlayerState playerState)
+    {
+        bool permision = false;
+        int possibleMoveTiles = 0;
+        List<TileInfo> adjacentTiles = TileManagment.GetAllAdjacentTiles(playerState.currentTile);
+        foreach (var tile in adjacentTiles)
+        {
+            if (tile.canMove && tile.buildingOnTile == null)
+            {
+                possibleMoveTiles++;
+            }
+        }
+        //Debug.Log(possibleMoveTiles);
+        if (possibleMoveTiles > 1)
+        {
+            return true;
+        }
+        return permision;
     }
 
     public override void StartActionOperations(TileInfo targetTile, PlayerState currentPlayer)
     {
         base.StartActionOperations(targetTile, currentPlayer);
         _target = targetTile;
+        _target.canBuildHere = false;
     }
 
     public override void FinishActionOperations(PlayerState currentPlayer)
