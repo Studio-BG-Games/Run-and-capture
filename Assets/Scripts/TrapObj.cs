@@ -43,7 +43,7 @@ public class TrapObj : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }        
         healthController.TakeDamage(damage);
-        
+        Debug.Log("ouch");
         Destroy(gameObject);
         player.SetNewState(CharacterState.Idle);
 

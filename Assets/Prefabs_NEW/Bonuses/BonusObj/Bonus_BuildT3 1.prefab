@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 685896563}
   - component: {fileID: 7066197434503510216}
   m_Layer: 0
-  m_Name: Bonus_BuildT3
+  m_Name: Bonus_BuildT3 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acd690d26225ec48941ae511fd00f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonus: {fileID: 11400000, guid: 9e80fbb3ce5dac444b0c6b02b0bf4b3f, type: 2}
+  bonus: {fileID: 11400000, guid: da51e27cc47c1e742bfaf861459c8c5e, type: 2}
   aliveTime: 10
 --- !u!1001 &3542199505056966218
 PrefabInstance:

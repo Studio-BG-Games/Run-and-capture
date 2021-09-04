@@ -6,7 +6,7 @@ public class BonusObject : MonoBehaviour
 {
     public Bonus bonus;
 
-    public float aliveTime = 3f;
+    public float aliveTime = 8f;
 
     private float spawnTime;
 
