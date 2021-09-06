@@ -45,6 +45,10 @@ public class SuperJump : PlayerAction
 
         foreach (TileInfo tile in _capTiles)
         {
+            if (tile == null)
+            {
+                continue;
+            }
             if (tile.tileOwnerIndex != currentPlayer.ownerIndex)
             {
                 capController.CaptureTile(tile);
