@@ -44,6 +44,7 @@ public class HealthController : MonoBehaviour
 
     private void Die()
     {
-        _deathChecker.MakeDead(_playerState);
+        //_deathChecker.MakeDead(_playerState);
+        _deathChecker.MakeDeadPermanent(_playerState);
     }
 }

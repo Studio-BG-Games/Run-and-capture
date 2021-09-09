@@ -7,10 +7,10 @@ using UnityEngine;
 public class CaptureController : MonoBehaviour
 {
 
-    public float neutralCaptureTime = 3f, enemyCaptureTime = 5f/*, fastCaptureTime = 0f*/;
+    public float /*neutralCaptureTime = 3f,*/ enemyCaptureTime = 5f/*, fastCaptureTime = 0f*/;
 
-    [SerializeField]
-    private GameObject capVFX;
+    [SerializeField] private GameObject capVFX;
+    [SerializeField] private AudioController _ac;
     
     private PlayerState _playerState;
 
@@ -62,8 +62,10 @@ public class CaptureController : MonoBehaviour
             {
                 if (tile.tileOwnerIndex == TileOwner.Neutral)
                 {
-                    _currentCoroutine = Capturing(tile, neutralCaptureTime);
-                    StartCoroutine(_currentCoroutine);
+                   /* _currentCoroutine = Capturing(tile, neutralCaptureTime);
+                    StartCoroutine(_currentCoroutine);*/
+
+                    CaptureTile(tile);
                 }
                 else
                 {
@@ -107,7 +109,8 @@ public class CaptureController : MonoBehaviour
         if (capVFX != null)
         {
             Instantiate(capVFX, tile.tilePosition + capVFX.transform.position, capVFX.transform.rotation);
-        }        
+        }
+        _ac.PlayCapSound();
     }
 
     private IEnumerator Capturing(TileInfo tile, float captureTime)

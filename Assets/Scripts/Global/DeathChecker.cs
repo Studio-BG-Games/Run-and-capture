@@ -7,6 +7,9 @@ public class DeathChecker : MonoBehaviour
 {
 
     public GameObject deathParticles, resParticles;
+    public GameObject deathBlue_VFX, deathRed_VFX, deathGreen_VFX, deathYellow_VFX;
+
+    public AudioSource deathSrc;
 
     public float resurrectTime = 7f;
 
@@ -16,7 +19,7 @@ public class DeathChecker : MonoBehaviour
 
     private float updateTime = 1f;
     private int spawnSafezone = 1;
-    
+
 
     public static Action<PlayerState> OnPlayerDeath;
     public static Action<PlayerState> OnPlayerDeathPermanent;
@@ -27,7 +30,7 @@ public class DeathChecker : MonoBehaviour
         //TileManagment.OnAnyTileCaptured += CheckPlayersDeath;
     }
     private void Start()
-    {       
+    {
 
         SetupLastDeathTimes(GameManager.activePlayers);
 
@@ -41,8 +44,8 @@ public class DeathChecker : MonoBehaviour
         List<PlayerState> thisIterationDeadPlayers = new List<PlayerState>();
         foreach (var player in agressor.enemies)
         {
-            if (!GameManager.activePlayers.Contains(player) 
-                || Vector3.Distance(agressor.transform.position, player.transform.position)>1.5f*TileManagment.tileOffset)
+            if (!GameManager.activePlayers.Contains(player)
+                || Vector3.Distance(agressor.transform.position, player.transform.position) > 1.5f * TileManagment.tileOffset)
             {
                 continue;
             }
@@ -50,7 +53,7 @@ public class DeathChecker : MonoBehaviour
             if (player.currentTile.canMove)
             {
                 playerTile = player.targetMoveTile;
-            }            
+            }
             var myAdjacentTiles = TileManagment.GetOwnerAdjacentTiles(playerTile, player.ownerIndex);
             int canStandTiles = 0;
             foreach (var tile in myAdjacentTiles)
@@ -70,7 +73,8 @@ public class DeathChecker : MonoBehaviour
 
         foreach (var player in thisIterationDeadPlayers)
         {
-            MakeDead(player);
+            //MakeDead(player);
+            MakeDeadPermanent(player);
         }
     }
 
@@ -81,7 +85,7 @@ public class DeathChecker : MonoBehaviour
             lastDeathTime.Add(0f);
         }
     }
-    
+
 
     public void MakeDead(PlayerState player)
     {
@@ -106,7 +110,7 @@ public class DeathChecker : MonoBehaviour
     private void Checker()
     {
         CheckFinalDeath();
-        CheckIfNeedRessurection();        
+        //CheckIfNeedRessurection();
     }
 
     private void CheckFinalDeath()
@@ -153,6 +157,30 @@ public class DeathChecker : MonoBehaviour
         PlayerResActions(player);
     }
 
+    private void SpawnPlayerDeathParticles(PlayerState player)
+    {
+        GameObject deathVFX;
+        switch (player.ownerIndex)
+        {
+            case TileOwner.Ariost:
+                deathVFX = deathRed_VFX;
+                break;
+            case TileOwner.Ragnar:
+                deathVFX = deathBlue_VFX;
+                break;
+            case TileOwner.Asvald:
+                deathVFX = deathYellow_VFX;
+                break;
+            case TileOwner.Emir:
+                deathVFX = deathGreen_VFX;
+                break;
+            default:
+                deathVFX = deathParticles;
+                break;
+        }
+        Instantiate(deathVFX, player.transform.position, deathVFX.transform.rotation);
+    }
+
     private void PlayerDeadActions(PlayerState player)
     {
         List<TileInfo> playerTiles = TileManagment.GetCharacterTiles(player);
@@ -163,8 +191,10 @@ public class DeathChecker : MonoBehaviour
 
         if (deathParticles)
         {
-            Instantiate(deathParticles, player.transform.position, deathParticles.transform.rotation);
+            SpawnPlayerDeathParticles(player);
         }
+
+        deathSrc.Play();
     }
 
     private void PlayerResActions(PlayerState player)

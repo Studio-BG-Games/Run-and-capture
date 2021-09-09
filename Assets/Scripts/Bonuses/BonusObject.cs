@@ -5,6 +5,7 @@ using UnityEngine;
 public class BonusObject : MonoBehaviour
 {
     public Bonus bonus;
+    public AudioClip collect_SFX;
 
     public float aliveTime = 8f;
 
@@ -36,6 +37,7 @@ public class BonusObject : MonoBehaviour
                 //Debug.Log("picked up " + gameObject.name);
                 var tile = TileManagment.GetTile(transform.position);
                 TileManagment.SetTileAvailable(tile);
+                playerBonusController.GetComponent<AudioController>().PlayCollectSound(collect_SFX);
                 Destroy(gameObject);
             }
         }

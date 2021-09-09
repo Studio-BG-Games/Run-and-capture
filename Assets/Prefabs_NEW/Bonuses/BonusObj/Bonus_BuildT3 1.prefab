@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonus: {fileID: 11400000, guid: da51e27cc47c1e742bfaf861459c8c5e, type: 2}
+  collect_SFX: {fileID: 8300000, guid: 0a34a43bc14857c4b809ad1276de6f14, type: 3}
   aliveTime: 10
 --- !u!1001 &3542199505056966218
 PrefabInstance:
@@ -143,7 +144,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: cd614b90a6102304781b42552cbacdab, type: 2}
     - target: {fileID: 617218703874866897, guid: 2f1a385431c99b64f96b9d73008ac91a,
         type: 3}
       propertyPath: m_Name

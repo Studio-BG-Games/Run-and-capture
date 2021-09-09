@@ -22,6 +22,10 @@ public class SuperJump : PlayerAction
         _capTiles = GetActualCapTargets(GameData.playerLevel, targetTile, playerState);
         foreach (var enemy in playerState.enemies)
         {
+            if (!enemy.gameObject.activeSelf)
+            {
+                continue;
+            }
             if (_capTiles.Contains(enemy.currentTile))
             {
                 return false;

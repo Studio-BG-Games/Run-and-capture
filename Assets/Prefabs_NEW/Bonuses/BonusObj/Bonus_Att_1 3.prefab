@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 388713782}
   - component: {fileID: 2451167883024310619}
   m_Layer: 0
-  m_Name: Bonus_Att_1
+  m_Name: Bonus_Att_1 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonus: {fileID: 11400000, guid: 7e835ff05f9d81849b88e10fbd231924, type: 2}
+  collect_SFX: {fileID: 8300000, guid: 9143d61a72bdc1544b4939ec86f98a8f, type: 3}
   aliveTime: 10
 --- !u!1001 &4203281804588797499
 PrefabInstance:
@@ -93,7 +94,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: cd614b90a6102304781b42552cbacdab, type: 2}
     - target: {fileID: 3196347567083805044, guid: e2feb442e3095ec4aa195eeb2b66fb08,
         type: 3}
       propertyPath: m_RootOrder

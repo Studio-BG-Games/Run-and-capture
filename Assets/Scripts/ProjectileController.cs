@@ -6,7 +6,7 @@ public class ProjectileController : MonoBehaviour
 {
     public TileOwner owner = TileOwner.Neutral;
     public float velocity = 10f;
-    public float damage = 100f;
+    public float damage = 100f;    
 
     private Rigidbody _rb;
 
@@ -18,7 +18,7 @@ public class ProjectileController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
 
-    }
+    }   
 
     private void FixedUpdate()
     {
@@ -74,6 +74,7 @@ public class ProjectileController : MonoBehaviour
         var treeController = other.gameObject.GetComponent<TreeHealthController>();
         if (healthController && owner != playerState.ownerIndex)
         {
+            healthController.GetComponent<AudioController>().PlayHitSound();
             healthController.TakeDamage(damage);
             Destroy(gameObject);
         }
