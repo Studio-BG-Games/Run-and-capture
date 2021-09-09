@@ -57,6 +57,8 @@ public class CaptureController : MonoBehaviour
             if (tile.easyCaptureFor.Contains(_playerState.ownerIndex) || tile.easyCaptureForAll)
             {
                 CaptureTile(tile);
+                _playerState.SetNewState(CharacterState.Idle);
+
             }
             else
             {
@@ -66,6 +68,8 @@ public class CaptureController : MonoBehaviour
                     StartCoroutine(_currentCoroutine);*/
 
                     CaptureTile(tile);
+                    _playerState.SetNewState(CharacterState.Idle);
+
                 }
                 else
                 {
@@ -88,7 +92,8 @@ public class CaptureController : MonoBehaviour
         if (_playerState.currentTile.tileOwnerIndex != _playerState.ownerIndex)
         {
             CaptureTile(_playerState.currentTile);
-        }        
+            _playerState.SetNewState(CharacterState.Idle);
+        }
     }
 
     private void StopCapturingTile()
@@ -105,7 +110,7 @@ public class CaptureController : MonoBehaviour
     public void CaptureTile(TileInfo tile)
     {
         TileManagment.ChangeTileOwner(tile, _playerState);
-        _playerState.SetNewState(CharacterState.Idle);
+        //_playerState.SetNewState(CharacterState.Idle);
         if (capVFX != null)
         {
             Instantiate(capVFX, tile.tilePosition + capVFX.transform.position, capVFX.transform.rotation);
@@ -129,6 +134,7 @@ public class CaptureController : MonoBehaviour
 
         //OnCaptureEnd?.Invoke(tile, captureTime);
         CaptureTile(tile);
+        _playerState.SetNewState(CharacterState.Idle);
         StopCapturingTile();
         //StopCoroutine(_currentCoroutine);
     }

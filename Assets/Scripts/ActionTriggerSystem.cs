@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ActionTriggerSystem : MonoBehaviour
 {
+    public int autoattackDistance = 3;
+
     private PlayerState _playerState;   
     
     public Action OnActionEnd;
@@ -16,10 +18,52 @@ public class ActionTriggerSystem : MonoBehaviour
 
         if (_playerState.controlType == ControlType.Player)
         {
-            CustomInput.OnTouchUp += TryToTriggerCurrentAction;            
+            CustomInput.OnTouchUp += TryToTriggerCurrentAction;
+            CustomInput.OnTouchUp += TryToAutoAttack;
         }
 
-    }    
+    }
+
+    private void TryToAutoAttack()
+    {
+        PlayerState targetPlayer = null;
+        Debug.Log("auto ");
+        foreach(var enemy in _playerState.enemies)
+        {
+            if (!enemy.gameObject.activeSelf)
+            {
+                continue;
+            }
+            if (Vector3.Distance(_playerState.currentTile.tilePosition, enemy.transform.position) <= 1.1f*autoattackDistance*TileManagment.tileOffset)
+            {
+                targetPlayer = enemy;
+                Debug.Log("I see " + enemy.gameObject.name);
+                break;
+            }
+        }
+
+        if (_playerState.IsAnyActionsAllowed() && _playerState.currentAction.actionType==ActionType.Attack && targetPlayer!=null)
+        {
+            if (!GetComponent<AttackEnergyController>().IsReady())
+            {
+                return;
+            }
+            StopAllCoroutines();
+            List<TileInfo> adjacentTiles = TileManagment.GetAllAdjacentTiles(_playerState.currentTile);
+            TileInfo closestTile = adjacentTiles[0];
+            foreach (TileInfo tile in adjacentTiles)
+            {
+                float oldDist = Vector3.Distance(targetPlayer.transform.position, closestTile.tilePosition);
+                float newDist = Vector3.Distance(targetPlayer.transform.position, tile.tilePosition);
+                if (newDist < oldDist)
+                {
+                    closestTile = tile;
+                }
+            }
+            _playerState.currentActionTarget = closestTile;
+            DoAction(_playerState.currentAction);
+        }
+    }
 
     private void TryToTriggerCurrentAction()
     {

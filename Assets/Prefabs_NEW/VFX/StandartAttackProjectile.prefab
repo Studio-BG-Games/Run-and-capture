@@ -76,10 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 0
-  velocity: 10
+  velocity: 20
   damage: 100
-  throwSFX: {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
-  ac: {fileID: 0}
 --- !u!1001 &8121987183007887425
 PrefabInstance:
   m_ObjectHideFlags: 0

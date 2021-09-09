@@ -47,6 +47,18 @@ public class SuperJump : PlayerAction
 
         var capController = currentPlayer.GetComponent<CaptureController>();
 
+        foreach (var enemy in currentPlayer.enemies)
+        {
+            if (!enemy.gameObject.activeSelf)
+            {
+                continue;
+            }
+            if (_capTiles.Contains(enemy.currentTile))
+            {
+                return;
+            }
+        }
+
         foreach (TileInfo tile in _capTiles)
         {
             if (tile == null)

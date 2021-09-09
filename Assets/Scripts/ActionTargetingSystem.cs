@@ -42,6 +42,7 @@ public class ActionTargetingSystem : MonoBehaviour
             StartCoroutine(Targeting());
         }
     }
+    
 
     private IEnumerator Targeting()
     {

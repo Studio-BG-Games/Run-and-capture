@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0169a7715dc4850439785448a35ff4a3, type: 3}
   m_Name: SuperJump
   m_EditorClassIdentifier: 
-  duration: 3
+  duration: 2.8
   distance: 1
   actionType: 4
