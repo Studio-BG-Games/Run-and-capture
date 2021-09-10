@@ -195,6 +195,19 @@ public class DeathChecker : MonoBehaviour
         }
 
         deathSrc.Play();
+
+        //////////////////////////PLAYER DEATH//////////////
+        if (player.ownerIndex == TileOwner.Ariost)
+        {
+            StartCoroutine(GoToMenuAfter(3f));
+        }
+        //////////////////////////PLAYER DEATH//////////////
+    }
+
+    private IEnumerator GoToMenuAfter(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneLoader.LoadScene(0);
     }
 
     private void PlayerResActions(PlayerState player)
