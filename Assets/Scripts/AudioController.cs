@@ -6,7 +6,7 @@ public class AudioController : MonoBehaviour
 {
     public List<AudioClip> jump_SFXs;
     public List<AudioClip> capture_SFXs;
-    public AudioClip hit_SFX;
+    public AudioClip hit_SFX, throw_SFX;
 
     [SerializeField] private AudioSource ac;/* capSrc, hitSrc, collectSrc;*/
 
@@ -42,6 +42,12 @@ public class AudioController : MonoBehaviour
         ac.volume = _startVolume;
         ac.PlayOneShot(clip);
     }
+    public void PlayAttackSound()
+    {
+        ac.volume = _startVolume;
+        ac.PlayOneShot(throw_SFX);
+    }
+
 
     public void PlaySound(AudioClip clip)
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FootStepsSound : MonoBehaviour
+public class CharAnimSound : MonoBehaviour
 {
     private AudioController _controller;
     private void Start()
@@ -13,5 +13,11 @@ public class FootStepsSound : MonoBehaviour
     public void Step()
     {
         _controller.PlayJumpSound();
+    }
+
+
+    public void Attack()
+    {
+        _controller.PlayAttackSound();
     }
 }
