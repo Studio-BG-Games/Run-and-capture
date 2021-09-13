@@ -45,7 +45,7 @@ public class AudioController : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
-        ac.volume = 0.6f*_startVolume;
+        ac.volume = 0.4f*_startVolume;
         ac.PlayOneShot(clip);
     }
 }
