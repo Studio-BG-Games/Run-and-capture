@@ -28,12 +28,15 @@ public class TileManagment : MonoBehaviour
 
     private void Awake()
     {
+        //OnInitialized = null;
+        //OnAnyTileCaptured = null;
         InitTileManager();
         Debug.Log("tile offset is " + tileOffset + " points");
-    }
+    }    
 
     private void InitTileManager()
     {
+        levelTiles.Clear();
         SetStaticTileMaterials();
         InitCharacterTiles();
         for (int i = 0; i < _tileParent.childCount; i++)
@@ -72,6 +75,10 @@ public class TileManagment : MonoBehaviour
     }
     private void InitCharacterTiles()
     {
+        if (charTiles.Count > 0)
+        {
+            charTiles.Clear();
+        }
         for (int i = 0; i < tileMaterialsStatic.Count; i++)
         {
             List<TileInfo> charTileList = new List<TileInfo>();

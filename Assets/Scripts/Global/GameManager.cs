@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        activePlayers.Clear();
+        tempDeadPlayers.Clear();
+        deadPlayers.Clear();
+        players.Clear();
         DeathChecker.OnPlayerDeath += KillPlayer;
         DeathChecker.OnPlayerRes += ResPlayer;
         DeathChecker.OnPlayerDeathPermanent += DestroyPermanent;

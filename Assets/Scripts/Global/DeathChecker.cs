@@ -199,6 +199,8 @@ public class DeathChecker : MonoBehaviour
         //////////////////////////PLAYER DEATH//////////////
         if (player.ownerIndex == TileOwner.Ariost)
         {
+            TileManagment.OnAnyTileCaptured = null;
+            TileManagment.OnInitialized = null;
             StartCoroutine(GoToMenuAfter(3f));
         }
         //////////////////////////PLAYER DEATH//////////////
