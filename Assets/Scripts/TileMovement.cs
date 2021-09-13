@@ -14,8 +14,6 @@ public class TileMovement : MonoBehaviour
 
     public ParticleSystem moveVFX;
 
-    [SerializeField] private AudioController _ac;
-
     private Vector3 _moveDir;
 
     private PlayerState _playerState;
@@ -97,7 +95,6 @@ public class TileMovement : MonoBehaviour
         _playerState.currentTile.canMove = true;
 
         moveVFX.Play();
-        _ac.PlayJumpSound();
     }
 
     private bool IsMoveCondition()
