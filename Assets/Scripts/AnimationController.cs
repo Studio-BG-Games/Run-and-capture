@@ -26,15 +26,19 @@ public class AnimationController : MonoBehaviour
         string activationTrigger = "";
         switch(newState)
         {
+            /*case CharacterState.Move:
+                activationTrigger = "Move";
+                break;*/
             case CharacterState.Move:
+                _characterAnimator.SetBool("isMoving", true);
                 activationTrigger = "Move";
                 break;
-            /*case CharacterState.Move:
-                _characterAnimator.SetBool("isMoving", true);
-                return;
             case CharacterState.Idle:
-                _characterAnimator.SetBool("isMoving", false);
-                return;*/
+                if (CustomInput.leftInput.magnitude < 0.3f)
+                {
+                    _characterAnimator.SetBool("isMoving", false);
+                }
+                break;
             case CharacterState.Action:
                 activationTrigger = GetActionName(_playerState);
                 break;
