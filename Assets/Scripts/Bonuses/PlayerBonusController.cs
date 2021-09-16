@@ -44,33 +44,22 @@ public class PlayerBonusController : MonoBehaviour
 
     public bool AddBonusToPlayer(Bonus bonus)
     {
-        if (bonus.bonusType == BonusType.Attack)
+        if (!CanTakeBonus(bonus.bonusType))
         {
-            if (attackBonuses.Count < maxBonusCount)
-            {
+            return false;
+        }
+        switch (bonus.bonusType)
+        {
+            case BonusType.Attack:
                 attackBonuses.Add(bonus);
                 OnBonusesChanged?.Invoke();
                 return true;
-            }
-            else 
-            {
-                return false;
-            }
-            
-        }
-        else 
-        {
-            if (protectBonuses.Count < maxBonusCount)
-            {
+            case BonusType.Defend:
                 protectBonuses.Add(bonus);
                 OnBonusesChanged?.Invoke();
                 return true;
-            }
-            else
-            {
-                return false;
-            }
         }
+        return false;
     }
 
     public void RemoveBonus(Bonus bonus)
@@ -101,5 +90,24 @@ public class PlayerBonusController : MonoBehaviour
             currentSelectedBonus = newBonus;
             _playerState.SetCurrentAction(currentSelectedBonus.bonusAction);
         }
+    }
+
+    public bool CanTakeBonus(BonusType type)
+    {
+        if (type == BonusType.Attack)
+        {
+            if (attackBonuses.Count < maxBonusCount)
+            {
+                return true;
+            }
+        }
+        else
+        {
+            if (protectBonuses.Count < maxBonusCount)
+            {
+                return true;
+            }
+        }
+        return false;   
     }
 }

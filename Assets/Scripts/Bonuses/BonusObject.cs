@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BonusObject : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class BonusObject : MonoBehaviour
     public AudioClip collect_SFX;
 
     public float aliveTime = 8f;
+
+    public Action<BonusObject> OnDestroy;
 
     private float spawnTime;
 
@@ -22,6 +25,7 @@ public class BonusObject : MonoBehaviour
         {
             var tile = TileManagment.GetTile(transform.position);
             tile.canBuildHere = true;
+            OnDestroy?.Invoke(this);
             Destroy(gameObject);
         }
     }

@@ -6,9 +6,14 @@ public class BonusSpawner : MonoBehaviour
 {
     public float minBonusSpawnTime = 5f, maxBonusSpwnTime = 20f;
 
+    public Transform bonusParent;
+
     public List<GameObject> bounsPrefs;
 
+    public List<BonusObject> activeBonuses = new List<BonusObject>();
+
     private int _currentTries = 0, _maxTries = 15;
+
 
     private IEnumerator SpawnRandomBonus()
     {
@@ -30,11 +35,19 @@ public class BonusSpawner : MonoBehaviour
                 availableTile.canBuildHere = false;
                 int bonusIndex = Random.Range(0, bounsPrefs.Count);
                 GameObject chosenBonus = bounsPrefs[bonusIndex];
-                Instantiate(chosenBonus, availableTile.tilePosition, chosenBonus.transform.rotation);
+                BonusObject spawnedBonus = Instantiate(chosenBonus, availableTile.tilePosition, chosenBonus.transform.rotation, bonusParent).GetComponent<BonusObject>();
+                spawnedBonus.OnDestroy += RemoveBonus;
+                activeBonuses.Add(spawnedBonus);
             }            
             //Debug.Log("spawned");
         }        
 
+    }
+
+    private void RemoveBonus(BonusObject sender)
+    {
+        sender.OnDestroy -= RemoveBonus;
+        activeBonuses.Remove(sender);
     }
 
     private void Start()

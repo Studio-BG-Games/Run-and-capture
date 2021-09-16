@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!111 &3475182687918756679
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578081020095409936}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a155ad12c73fe7b40ac5faf8c4f50608, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 70979252cb3fc1c4d9a94aad42bfadbc, type: 2}
+  - {fileID: 7400000, guid: a155ad12c73fe7b40ac5faf8c4f50608, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4810627989180709430
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,22 +48,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &7562763973066586529
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578081020095409936}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 70979252cb3fc1c4d9a94aad42bfadbc, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 70979252cb3fc1c4d9a94aad42bfadbc, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1001 &5939674552618899199
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bonusType: 1
   bonusAction: {fileID: 11400000, guid: c3ef94a234033484ca37ca40467af3dc, type: 2}
-  icon: {fileID: 21300000, guid: b53496893be8b3c49917a89d33f9a112, type: 3}
+  icon: {fileID: 21300000, guid: 7c1e239d516bc3e4b9b74073d2c2ce9e, type: 3}
   bonusLevel: 0

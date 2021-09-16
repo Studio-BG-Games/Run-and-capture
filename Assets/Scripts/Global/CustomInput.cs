@@ -17,8 +17,9 @@ public class CustomInput : MonoBehaviour
     [Header("Character Control Parameters")]
     public CharControlType controlType = CharControlType.UI_Joysticks;    
     [SerializeField]
-    private FloatingJoystick leftJoystick, rightJoystick;
-
+    private DynamicJoystick leftJoystick;
+    [SerializeField]
+    private FloatingJoystick rightJoystick;
     [SerializeField]
     private FixedJoystick attackJoystick, defendJoystick;
 

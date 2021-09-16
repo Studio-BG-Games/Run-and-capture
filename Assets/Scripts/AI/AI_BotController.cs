@@ -14,16 +14,21 @@ public class AI_BotController : MonoBehaviour
     public float attackTime = 2f;
     public float updateBehaviourIn = 1f;
     public float neutralCapDistance = 6f;
-    public float detectPlayerDistance = 4f;
+    public float detectDistance = 4f;
+    public float bonusDetectDistance = 4f;
+    public float attackPlayerDistance = 4f;
     public Action OnTouchDown, OnTouchUp;
     public Action OnCurrentPathFinished, OnAttack;
     public PlayerState _currentEnemy;
+    public TileInfo _currentTargetTile;
 
-    public List<TileInfo> _currentFollowingPath = new List<TileInfo>();
+    private List<TileInfo> _currentFollowingPath = new List<TileInfo>();
 
     private PlayerState _playerState;
     private AttackEnergyController _attackEnergyController;
     private ActionTriggerSystem _actionTriggerSystem;
+    private PlayerBonusController _playerBonuses;
+    private BonusSpawner _bonusController;
     //private PlayerActionManager _actionManager;
     //private Attack _attack;
 
@@ -39,7 +44,8 @@ public class AI_BotController : MonoBehaviour
         _playerState = GetComponent<PlayerState>();
         _attackEnergyController = GetComponent<AttackEnergyController>();
         _actionTriggerSystem = GetComponent<ActionTriggerSystem>();
-
+        _playerBonuses = GetComponent<PlayerBonusController>();
+        _bonusController = FindObjectOfType<BonusSpawner>();
 
         if (isAIActive)
         {
@@ -144,8 +150,12 @@ public class AI_BotController : MonoBehaviour
     {
         Debug.Log("CheckState");
         BotState newBotState;
-
-        if (IsEnemyEnabledForAttack())
+        if (IsBonusDetected())
+        {
+            newBotState = BotState.CollectingBonus;
+            Debug.Log("CollectBonus");
+        }
+        else if(IsEnemyEnabledForAttack())
         {
             newBotState = BotState.Attack;
         }
@@ -162,6 +172,31 @@ public class AI_BotController : MonoBehaviour
         SetBehaviour(newBotState);        
     }
 
+    private bool IsBonusDetected()
+    {
+        //Debug.Log("Detect bonus");
+        if (botState == BotState.CollectingBonus)
+        {
+            return false;
+        }
+        foreach (var bonusObj in _bonusController.activeBonuses)
+        {
+            if (!_playerBonuses.CanTakeBonus(bonusObj.bonus.bonusType) || bonusObj ==null)
+            {
+                //Debug.Log("Can`t take or bonus doesn`t exists");
+
+                continue;
+            }
+            if (Vector3.Distance(bonusObj.transform.position, _playerState.currentTile.tilePosition) < bonusDetectDistance)
+            {
+                //Debug.Log("All good");
+                _currentTargetTile = TileManagment.GetTile(bonusObj.transform.position);
+                return true;
+            }
+        }
+        return false;
+    }
+
     private bool SetNewBotState(BotState newState)
     {
         if (botState != newState)
@@ -176,6 +211,35 @@ public class AI_BotController : MonoBehaviour
     }
 
     private bool IsEnemyEnabledForAttack()
+    {
+        if (isAttackedOnce)
+            return false;
+        if (botState != BotState.Attack && _attackEnergyController.IsReady())
+        {
+            foreach (PlayerState enemy in _playerState.enemies)
+            {
+                if (!enemy.gameObject.activeSelf)
+                {
+                    continue;
+                }
+                foreach (var dir in TileManagment.basicDirections)
+                {
+                    for (int i = 1; i <= attackPlayerDistance; i++)
+                    {
+                        TileInfo checkTile = TileManagment.GetTile(_playerState.currentTile.tilePosition, dir, i);
+                        if (enemy.currentTile == checkTile)
+                        {
+                            _currentEnemy = enemy;
+                            return true;
+                        }
+                    }
+                }                
+            }
+        }
+        return false;
+    }
+
+    /*private bool IsEnemyEnabledForAttack()
     {      
         if (isAttackedOnce)
             return false;
@@ -196,7 +260,7 @@ public class AI_BotController : MonoBehaviour
             }
         }
         return false;
-    }
+    }*/
 
     private bool IsEnemyCloseOrRude()
     {
@@ -216,7 +280,7 @@ public class AI_BotController : MonoBehaviour
                     return true;
                 }
                 float distanceToEnemy = Vector3.Distance(enemy.currentTile.tilePosition, _playerState.currentTile.tilePosition);
-                if (distanceToEnemy < detectPlayerDistance) //if enemy is close enough to us we starting to chase him fo some time
+                if (distanceToEnemy < detectDistance) //if enemy is close enough to us we starting to chase him fo some time
                 {
                     _currentEnemy = enemy;
                     StartCoroutine(CalmDown(agressiveTime));
@@ -241,8 +305,13 @@ public class AI_BotController : MonoBehaviour
             case BotState.Attack:
                 AttackEnemy(_currentEnemy);
                 break;
+            case BotState.CollectingBonus:
+                MoveToBonus(_currentTargetTile);
+                break;
         }
     }
+
+    
 
     private void Move(TileInfo tile)
     {
@@ -254,11 +323,19 @@ public class AI_BotController : MonoBehaviour
         }
     }
 
-    
+    private void MoveToBonus(TileInfo currentTarget)
+    {
+        bool isPathExists = RecalculatePath(_playerState.currentTile, currentTarget);
+        if (!isPathExists)
+        {
+            StartPatrolBehaviour();
+        }
+        MoveAlongPath();
+    }
 
     private void AttackEnemy(PlayerState currentEnemy)
     {
-        if (currentEnemy && Vector3.Distance(currentEnemy.transform.position, transform.position) < 1.1f * TileManagment.tileOffset)
+        /*if (currentEnemy && Vector3.Distance(currentEnemy.transform.position, transform.position) < 1.1f * TileManagment.tileOffset)
         {
             //Debug.Log("startAttack");
             //isAttackedOnce = true;
@@ -266,7 +343,12 @@ public class AI_BotController : MonoBehaviour
             _currentFollowingPath.Clear();
             _actionTriggerSystem.TriggerAction(currentEnemy.currentTile, _playerState.defaultAction);
             StartPatrolBehaviour();
-        }
+        }*/
+
+        leftInput = Vector2.zero;
+        _currentFollowingPath.Clear();
+        _actionTriggerSystem.TriggerAction(currentEnemy.currentTile, _playerState.defaultAction);
+        StartPatrolBehaviour();
     }
 
     private void MoveToEnemy(PlayerState currentEnemy)
@@ -356,5 +438,6 @@ public enum BotState
     Patrol,
     Agressive,
     Attack,
+    CollectingBonus,
     Dead
 }

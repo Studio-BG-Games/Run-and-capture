@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41080f62be501b4a97bf5b9ab9dd6f4, type: 3}
   m_Name: Build_T2
   m_EditorClassIdentifier: 
-  duration: 3.15
+  duration: 1.15
   distance: 1
   actionType: 2
   buildPref: {fileID: 5119240428719783082, guid: a80c8a9443ee8d547b06a2f1d8b4900e,
