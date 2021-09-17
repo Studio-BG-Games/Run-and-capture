@@ -59,5 +59,10 @@ public class Trap : PlayerAction
         spawnedTrap.GetComponent<TrapObj>().SetOwner(currentPlayer.ownerIndex);
         TileManagment.AssignBuildingToTile(_target, spawnedTrap);
         _target.canMove = true;
+
+        if (currentPlayer.controlType != ControlType.Player)
+        {
+            spawnedTrap.GetComponentInChildren<ParticleSystem>().Stop();
+        }
     }
 }

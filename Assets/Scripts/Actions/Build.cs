@@ -20,6 +20,8 @@ public class Build : PlayerAction
     {
         base.StartActionOperations(targetTile, currentPlayer);
         var spawnedTower = Instantiate(buildPref, targetTile.tilePosition, buildPref.transform.rotation);
+        int activeModelIndex = (int)currentPlayer.ownerIndex - 1;
+        spawnedTower.transform.GetChild(activeModelIndex).gameObject.SetActive(true);
         TileManagment.AssignBuildingToTile(targetTile, spawnedTower);
     }
 }

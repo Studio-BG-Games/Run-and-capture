@@ -19,6 +19,8 @@ public class CaptureController : MonoBehaviour
     //public Action OnCaptureStart, OnCaptureFailed;
     //public Action<TileInfo, float> OnCaptureEnd;
 
+    public Action<TileInfo> OnCaptureEnemyTile;
+
     private IEnumerator _currentCoroutine;
 
     private void Awake()
@@ -40,7 +42,7 @@ public class CaptureController : MonoBehaviour
                 break;
             case CharacterState.Move:
                 StopCapturingTile();                
-                break;
+                break;            
             default:
                 return;
         }
@@ -49,7 +51,7 @@ public class CaptureController : MonoBehaviour
     private void TryToCaptureTile()
     {
         TileInfo tile = _playerState.currentTile;
-
+        Debug.Log("try cap");
         if (_playerState.ownerIndex != tile.tileOwnerIndex)
         {
             _playerState.SetNewState(CharacterState.Capture);
@@ -57,7 +59,7 @@ public class CaptureController : MonoBehaviour
             if (tile.easyCaptureFor.Contains(_playerState.ownerIndex) || tile.easyCaptureForAll)
             {
                 CaptureTile(tile);
-                _playerState.SetNewState(CharacterState.Idle);
+                _playerState.SetNewState(CharacterState.Idle);               
 
             }
             else
@@ -78,7 +80,8 @@ public class CaptureController : MonoBehaviour
                 }
             }
 
-
+            
+            
         }
         else
         {
@@ -131,12 +134,17 @@ public class CaptureController : MonoBehaviour
             yield return new WaitForFixedUpdate();            
         }
         _captureProgress = 0f;
-
+        TileOwner oldOwner = tile.tileOwnerIndex;
         //OnCaptureEnd?.Invoke(tile, captureTime);
         CaptureTile(tile);
         _playerState.SetNewState(CharacterState.Idle);
         StopCapturingTile();
         //StopCoroutine(_currentCoroutine);
+
+        if (oldOwner != TileOwner.Neutral)
+        {
+            OnCaptureEnemyTile?.Invoke(tile);
+        }
     }
 
     public float GetCaptureProgress()

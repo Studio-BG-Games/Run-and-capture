@@ -105,6 +105,9 @@ public class TileMovement : MonoBehaviour
     {
         //Debug.Log("finish movement");
         _playerState.currentTile = currentTile;
-        _playerState.SetNewState(CharacterState.Idle);
+        if (_playerState.currentState != CharacterState.Frozen)
+        {
+            _playerState.SetNewState(CharacterState.Idle);
+        }
     }    
 }

@@ -8,7 +8,7 @@ public class AI_BotController : MonoBehaviour
     public bool isAIActive = true;
 
     public BotState botState = BotState.Patrol;
-    public Vector2 leftInput, rightInput;    
+    public Vector2 leftInput, rightInput;
 
     public float agressiveTime = 5f;
     public float attackTime = 2f;
@@ -17,10 +17,14 @@ public class AI_BotController : MonoBehaviour
     public float detectDistance = 4f;
     public float bonusDetectDistance = 4f;
     public float attackPlayerDistance = 4f;
+    public float bonusPlaceColdown = 4f;
+    public float protectionDistance = 4f;
     public Action OnTouchDown, OnTouchUp;
     public Action OnCurrentPathFinished, OnAttack;
     public PlayerState _currentEnemy;
     public TileInfo _currentTargetTile;
+
+    private Bonus _currentBonus;
 
     private List<TileInfo> _currentFollowingPath = new List<TileInfo>();
 
@@ -29,12 +33,14 @@ public class AI_BotController : MonoBehaviour
     private ActionTriggerSystem _actionTriggerSystem;
     private PlayerBonusController _playerBonuses;
     private BonusSpawner _bonusController;
+    private CaptureController _captureController;
     //private PlayerActionManager _actionManager;
     //private Attack _attack;
 
     private Vector3 _startBotPoint;
 
     private bool isAttackedOnce = false;
+    private bool isUseBonusEnabled = true;
 
     private int _maxTriesToCalculatePath = 15;
     private int _triesToCalculatePath = 15;
@@ -46,19 +52,64 @@ public class AI_BotController : MonoBehaviour
         _actionTriggerSystem = GetComponent<ActionTriggerSystem>();
         _playerBonuses = GetComponent<PlayerBonusController>();
         _bonusController = FindObjectOfType<BonusSpawner>();
+        _captureController = GetComponent<CaptureController>();
+
+        _captureController.OnCaptureEnemyTile += TryToSuperJump;
+        _playerState.OnDefaultAction += RemoveCurrentBonus;
 
         if (isAIActive)
         {
             _playerState.OnInitializied += ActivateAI;
             _playerState.OnCharStateChanged += ChangeBotBehaviour;
-        }       
+        }
 
         OnCurrentPathFinished += StartPatrolBehaviour;
     }
+
+    private void RemoveCurrentBonus()
+    {
+        if (_currentBonus != null && _playerState.prevState == CharacterState.Action)
+        {
+            _playerBonuses.RemoveBonus(_currentBonus);
+            _currentBonus = null;
+        }        
+    }
+
+    private void TryToSuperJump(TileInfo current)
+    {
+        //Debug.Log("try SJ");
+        if (!isUseBonusEnabled)
+        {
+            return;
+        }
+        List<TileInfo> adjTiles = TileManagment.GetOtherTiles(current, _playerState.ownerIndex);
+        if (adjTiles.Count == 0 || _playerBonuses.attackBonuses.Count == 0)
+        {
+            return;
+        }
+        Debug.Log("try SJ");
+        TileInfo targetTile = adjTiles[UnityEngine.Random.Range(0, adjTiles.Count)];
+        Bonus chosenBonus;
+        chosenBonus = _playerBonuses.attackBonuses[UnityEngine.Random.Range(0, _playerBonuses.attackBonuses.Count)];
+
+        botState = BotState.AttackBonusUsage;
+        isUseBonusEnabled = false;
+        _actionTriggerSystem.TriggerAction(targetTile, chosenBonus.bonusAction);
+        _currentBonus = chosenBonus;
+        StartCoroutine(WaitTillBonusReset(chosenBonus.bonusAction.duration + bonusPlaceColdown));
+    }
+
+    private IEnumerator WaitTillBonusReset(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isUseBonusEnabled = true;
+        StartPatrolBehaviour();
+    }
+
     private void Start()
     {
         //ActivateAI();
-        
+
         /* TileInfo currentTile = _playerState.currentTile;
         _startBotPoint = currentTile.tilePosition;
         TileInfo targetPathTile = TileManagment.GetClosestOtherTile(currentTile, _playerState.ownerIndex, _startBotPoint);
@@ -81,14 +132,14 @@ public class AI_BotController : MonoBehaviour
             case CharacterState.Move:
                 leftInput = Vector2.zero;
                 return;
-            /*case CharacterState.Idle:
+                /*case CharacterState.Idle:
 
-                return;
-            case CharacterState.Build:
+                    return;
+                case CharacterState.Build:
 
-                break;
-            default:
-                return;*/
+                    break;
+                default:
+                    return;*/
 
         }
     }
@@ -101,7 +152,7 @@ public class AI_BotController : MonoBehaviour
         StartCoroutine(CheckBotState(updateBehaviourIn));
     }
 
-    
+
 
     private void StartPatrolBehaviour() //looking for available tiles, calculating path and set patrol state
     {
@@ -125,7 +176,7 @@ public class AI_BotController : MonoBehaviour
             botState = BotState.Patrol;
             _triesToCalculatePath = 0;
         }
-        
+
     }
 
     private void SetInitialBotParams()
@@ -148,14 +199,18 @@ public class AI_BotController : MonoBehaviour
 
     private void CheckBotState()
     {
-        Debug.Log("CheckState");
+        //Debug.Log("CheckState");
         BotState newBotState;
-        if (IsBonusDetected())
+        if (CanPlaceProtectBonus())
+        {
+            newBotState = BotState.ProtectBonusUsage;
+        }
+        else if (IsBonusDetected())
         {
             newBotState = BotState.CollectingBonus;
-            Debug.Log("CollectBonus");
+            //Debug.Log("CollectBonus");
         }
-        else if(IsEnemyEnabledForAttack())
+        else if (IsEnemyEnabledForAttack())
         {
             newBotState = BotState.Attack;
         }
@@ -169,7 +224,33 @@ public class AI_BotController : MonoBehaviour
         }
 
         SetNewBotState(newBotState);
-        SetBehaviour(newBotState);        
+        SetBehaviour(newBotState);
+    }
+
+    private bool CanPlaceProtectBonus()
+    {
+        
+        if (botState == BotState.ProtectBonusUsage || botState == BotState.AttackBonusUsage)
+        {
+            return false;
+        }
+        if (_playerBonuses.protectBonuses.Count == 0 || !isUseBonusEnabled)
+        {
+            return false;
+        }
+        foreach (var enemy in _playerState.enemies)
+        {
+            if (!enemy.gameObject.activeSelf)
+            {
+                continue;
+            }
+            if (Vector3.Distance(_playerState.transform.position, enemy.transform.position) < protectionDistance)
+            {
+                Debug.Log("can place");
+                return true;
+            }
+        }
+        return false;
     }
 
     private bool IsBonusDetected()
@@ -227,6 +308,10 @@ public class AI_BotController : MonoBehaviour
                     for (int i = 1; i <= attackPlayerDistance; i++)
                     {
                         TileInfo checkTile = TileManagment.GetTile(_playerState.currentTile.tilePosition, dir, i);
+                        if (checkTile == null || checkTile.tileOwnerIndex == TileOwner.Neutral)
+                        {
+                            break;
+                        }
                         if (enemy.currentTile == checkTile)
                         {
                             _currentEnemy = enemy;
@@ -308,10 +393,24 @@ public class AI_BotController : MonoBehaviour
             case BotState.CollectingBonus:
                 MoveToBonus(_currentTargetTile);
                 break;
+            case BotState.ProtectBonusUsage:
+                PlaceProtectBonus(_playerState.currentTile);
+                break;
         }
     }
 
-    
+    private void PlaceProtectBonus(TileInfo currentTile)
+    {
+        Debug.Log("try protect");
+        Bonus chosenBonus = _playerBonuses.protectBonuses[UnityEngine.Random.Range(0, _playerBonuses.protectBonuses.Count)];
+        List<TileInfo> targets = TileManagment.GetOwnerAdjacentTiles(currentTile, _playerState.ownerIndex);
+        TileInfo target = targets[UnityEngine.Random.Range(0, targets.Count)];
+        _actionTriggerSystem.TriggerAction(target, chosenBonus.bonusAction);
+        isUseBonusEnabled = false;
+        _currentBonus = chosenBonus;
+        StartCoroutine(WaitTillBonusReset(chosenBonus.bonusAction.duration + bonusPlaceColdown));
+
+    }
 
     private void Move(TileInfo tile)
     {
@@ -439,5 +538,7 @@ public enum BotState
     Agressive,
     Attack,
     CollectingBonus,
+    AttackBonusUsage,
+    ProtectBonusUsage,
     Dead
 }

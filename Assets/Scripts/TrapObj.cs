@@ -23,11 +23,11 @@ public class TrapObj : MonoBehaviour
         var playerState = other.gameObject.GetComponent<PlayerState>();        
         if (healthController && owner != playerState.ownerIndex)
         {
+            playerState.SetNewState(CharacterState.Frozen);
             if (collisionVFX != null)
             {
                 Instantiate(collisionVFX, collisionVFX.transform.position + transform.position, collisionVFX.transform.rotation);
-            }
-            playerState.SetNewState(CharacterState.Frozen);
+            }            
             StartCoroutine(WaitToDamage(timeToDamage, healthController, playerState));
 
         }       
