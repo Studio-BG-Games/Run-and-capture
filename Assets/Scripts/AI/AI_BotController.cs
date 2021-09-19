@@ -87,7 +87,7 @@ public class AI_BotController : MonoBehaviour
         {
             return;
         }
-        Debug.Log("try SJ");
+        //Debug.Log("try SJ");
         TileInfo targetTile = adjTiles[UnityEngine.Random.Range(0, adjTiles.Count)];
         Bonus chosenBonus;
         chosenBonus = _playerBonuses.attackBonuses[UnityEngine.Random.Range(0, _playerBonuses.attackBonuses.Count)];
@@ -240,13 +240,17 @@ public class AI_BotController : MonoBehaviour
         }
         foreach (var enemy in _playerState.enemies)
         {
+            if (enemy == null)
+            {
+                continue;
+            }
             if (!enemy.gameObject.activeSelf)
             {
                 continue;
             }
             if (Vector3.Distance(_playerState.transform.position, enemy.transform.position) < protectionDistance)
             {
-                Debug.Log("can place");
+                //Debug.Log("can place");
                 return true;
             }
         }
@@ -299,6 +303,10 @@ public class AI_BotController : MonoBehaviour
         {
             foreach (PlayerState enemy in _playerState.enemies)
             {
+                if (enemy == null)
+                {
+                    continue;
+                }
                 if (!enemy.gameObject.activeSelf)
                 {
                     continue;
@@ -355,6 +363,10 @@ public class AI_BotController : MonoBehaviour
         {
             foreach (PlayerState enemy in _playerState.enemies)
             {
+                if (enemy == null)
+                {
+                    continue;
+                }
                 if (!enemy.gameObject.activeSelf)
                 {
                     continue;
@@ -401,7 +413,7 @@ public class AI_BotController : MonoBehaviour
 
     private void PlaceProtectBonus(TileInfo currentTile)
     {
-        Debug.Log("try protect");
+        //Debug.Log("try protect");
         Bonus chosenBonus = _playerBonuses.protectBonuses[UnityEngine.Random.Range(0, _playerBonuses.protectBonuses.Count)];
         List<TileInfo> targets = TileManagment.GetOwnerAdjacentTiles(currentTile, _playerState.ownerIndex);
         TileInfo target = targets[UnityEngine.Random.Range(0, targets.Count)];

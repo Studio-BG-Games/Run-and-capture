@@ -100,7 +100,7 @@ public class DeathChecker : MonoBehaviour
     public void MakeDeadPermanent(PlayerState player)
     {
         int playerIndex = GameManager.players.IndexOf(player);
-        lastDeathTime[playerIndex] = Time.time;
+        //lastDeathTime[playerIndex] = Time.time;
         //GameManager.UpdatePlayers(player);
 
         OnPlayerDeathPermanent?.Invoke(player);
@@ -187,7 +187,7 @@ public class DeathChecker : MonoBehaviour
         TileManagment.SetEasyCapState(playerTiles, true);
 
         player.SetDead();
-        Debug.Log("player " + player.name + " dead");
+        //Debug.Log("player " + player.name + " dead");
 
         if (deathParticles)
         {
@@ -206,6 +206,9 @@ public class DeathChecker : MonoBehaviour
             StartCoroutine(GoToMenuAfter(3f));
         }
         //////////////////////////PLAYER DEATH//////////////
+        CharSpawner.OnPlayerSpawned -= player.ResetEnemies;
+
+        Destroy(player.gameObject); //for test purp
     }
 
     private IEnumerator GoToMenuAfter(float time)

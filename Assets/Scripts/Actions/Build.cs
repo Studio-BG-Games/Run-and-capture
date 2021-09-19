@@ -19,6 +19,7 @@ public class Build : PlayerAction
     public override void StartActionOperations(TileInfo targetTile, PlayerState currentPlayer)
     {
         base.StartActionOperations(targetTile, currentPlayer);
+        targetTile.canMove = false;
         var spawnedTower = Instantiate(buildPref, targetTile.tilePosition, buildPref.transform.rotation);
         int activeModelIndex = (int)currentPlayer.ownerIndex - 1;
         spawnedTower.transform.GetChild(activeModelIndex).gameObject.SetActive(true);

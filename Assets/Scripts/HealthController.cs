@@ -38,7 +38,7 @@ public class HealthController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-            Debug.Log("Dead");
+            //Debug.Log("Dead");
         }
     }
 

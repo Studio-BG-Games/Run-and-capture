@@ -30,10 +30,28 @@ public class PlayerState : MonoBehaviour
 
     public List<PlayerState> enemies;
 
+    private bool isInitialized = false;
+
     private void Awake()
     {
         TileManagment.OnInitialized += SetStartParams;
+        CharSpawner.OnPlayerSpawned += ResetEnemies;
+       // DeathChecker.OnPlayerDeathPermanent += ResetEnemies;
         OnCharStateChanged += OnStateChanged;
+    }
+
+    private void Start()
+    {
+        if (!isInitialized)
+        {
+            SetStartParams();
+        }
+    }
+
+    public void ResetEnemies()
+    {
+        enemies.Clear();
+        enemies = SetEnemies();
     }
 
     private void OnStateChanged(CharacterState newState)
@@ -105,7 +123,8 @@ public class PlayerState : MonoBehaviour
         currentActionTarget = null;
         enemies = SetEnemies();
         //Debug.Log("player state init");
-        OnInitializied?.Invoke();        
+        OnInitializied?.Invoke();
+        isInitialized = true;
     }
 
     private List<PlayerState> SetEnemies()

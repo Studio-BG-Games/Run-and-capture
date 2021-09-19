@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static List<PlayerState> tempDeadPlayers = new List<PlayerState>();
     public static List<PlayerState> deadPlayers = new List<PlayerState>();
 
-    //public List<PlayerState>playersNOnStatic = new List<PlayerState>();
+    public static List<TileOwner> deadOwners = new List<TileOwner>();
 
     public static int coinsPerTree = 50;
 
@@ -63,7 +63,13 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("destroyed perm " + deadPlayer.name);
         activePlayers.Remove(deadPlayer);
-        deadPlayers.Add(deadPlayer);
+        players.Remove(deadPlayer);
+        foreach (var player in activePlayers)
+        {
+            player.ResetEnemies();
+        }
+        deadOwners.Add(deadPlayer.ownerIndex);
+        //deadPlayers.Add(deadPlayer);
     }
 
     private List<PlayerState> FindPlayers()

@@ -37,7 +37,7 @@ public class ActionTriggerSystem : MonoBehaviour
             if (Vector3.Distance(_playerState.currentTile.tilePosition, enemy.transform.position) <= 1.1f*autoattackDistance*TileManagment.tileOffset)
             {
                 targetPlayer = enemy;
-                Debug.Log("I see " + enemy.gameObject.name);
+                //Debug.Log("I see " + enemy.gameObject.name);
                 break;
             }
         }

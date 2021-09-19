@@ -31,7 +31,7 @@ public class TileManagment : MonoBehaviour
         //OnInitialized = null;
         //OnAnyTileCaptured = null;
         InitTileManager();
-        Debug.Log("tile offset is " + tileOffset + " points");
+        //Debug.Log("tile offset is " + tileOffset + " points");
     }    
 
     private void InitTileManager()
@@ -106,6 +106,24 @@ public class TileManagment : MonoBehaviour
 
         CheckSurroundedTiles(levelTiles, newOwner, oldOwner);
         SetAllPLayersTilesCapState(GameManager.activePlayers);
+
+    }
+
+    public static void ChangeTileOwnerSilent(TileInfo tile, PlayerState newPlayer)
+    {
+        tile.easyCaptureForAll = false;
+        TileOwner newOwner = newPlayer.ownerIndex;
+        TileOwner oldOwner = tile.tileOwnerIndex;
+        tile.tileOwnerIndex = newOwner;
+        tile.GetComponent<Renderer>().material = tileMaterialsStatic[(int)tile.tileOwnerIndex];
+
+        charTiles[(int)newOwner].Add(tile);
+        charTiles[(int)oldOwner].Remove(tile);
+
+        //OnAnyTileCaptured?.Invoke(newPlayer);
+
+        //CheckSurroundedTiles(levelTiles, newOwner, oldOwner);
+        //SetAllPLayersTilesCapState(GameManager.activePlayers);
 
     }
 
@@ -191,6 +209,19 @@ public class TileManagment : MonoBehaviour
         {
             return otherTile;
         }        
+    }
+
+    public static TileInfo GetRandomOwnerTile(TileOwner owner)
+    {
+        int targetOwner = (int)owner;
+        var searchingTiles = charTiles[targetOwner];
+        while (searchingTiles.Count == 0 || targetOwner != (int)owner)
+        {
+            searchingTiles = charTiles[targetOwner];
+        }
+        int randomTileIndex = UnityEngine.Random.Range(0, searchingTiles.Count);
+        TileInfo ownerTile = searchingTiles[randomTileIndex];
+        return ownerTile;
     }
 
     public static List<TileInfo> GetOtherTiles(TileInfo currentTile, TileOwner ownerIndex)

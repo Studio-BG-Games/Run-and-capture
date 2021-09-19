@@ -51,7 +51,7 @@ public class CaptureController : MonoBehaviour
     private void TryToCaptureTile()
     {
         TileInfo tile = _playerState.currentTile;
-        Debug.Log("try cap");
+        //Debug.Log("try cap");
         if (_playerState.ownerIndex != tile.tileOwnerIndex)
         {
             _playerState.SetNewState(CharacterState.Capture);
