@@ -17,6 +17,7 @@ public class PlayBtnClick : MonoBehaviour
 
     private void BtnTask()
     {
-        SceneLoader.LoadNextScene();
+        //SceneLoader.LoadNextScene();
+        SceneLoader.LoadScene(GameData.currentChosenLevel);
     }
 }

@@ -21,10 +21,15 @@ public class TileManagment : MonoBehaviour
     public static Vector3[] basicDirections;
 
     [SerializeField]
+    private TileInfo adjTile_1, adjTile_2, targTestTile;
+
+    [SerializeField]
     private List<Material> _tileMaterials;
 
     [SerializeField]
     private Transform _tileParent;
+
+    private static TileInfo[,] lvTilesStruct;
 
     private void Awake()
     {
@@ -32,6 +37,10 @@ public class TileManagment : MonoBehaviour
         //OnAnyTileCaptured = null;
         InitTileManager();
         //Debug.Log("tile offset is " + tileOffset + " points");
+
+        //lvTiles = new TileInfo[_tileParent.childCount, _tileParent.childCount];
+        //Vector2.Dot
+        
     }    
 
     private void InitTileManager()
@@ -51,19 +60,24 @@ public class TileManagment : MonoBehaviour
         }
 
         basicDirections = GetBasicDirections(BASIC_DIRECTIONS);
-        tileOffset = GetTileOffset(levelTiles);
+        tileOffset = GetTileOffset();
 
         //Debug.Log("tile offset is "+ tileOffset);
+
+        lvTilesStruct = new TileInfo[100, 100];
+        foreach (var tile in levelTiles)
+        {
+            lvTilesStruct[(int)Mathf.Round(2 * tile.tilePosition.x / tileOffset), (int)Mathf.Round(-2 * tile.tilePosition.z / tileOffset)] = tile;
+        }
+
         OnInitialized?.Invoke();
         
     }
 
-    private float GetTileOffset(List<TileInfo> tiles)
+    
+    private float GetTileOffset()
     {
-        TileInfo firstTile = tiles[0];
-        TileInfo secondTile = tiles[1];
-
-        return Vector3.Distance(firstTile.tilePosition, secondTile.tilePosition);
+        return Vector3.Distance(adjTile_1.tilePosition, adjTile_2.tilePosition);
     }
     private void SetStaticTileMaterials()
     {
@@ -105,6 +119,16 @@ public class TileManagment : MonoBehaviour
         OnAnyTileCaptured?.Invoke(newPlayer);
 
         CheckSurroundedTiles(levelTiles, newOwner, oldOwner);
+
+        /*foreach (var newTile in GetOtherTiles(tile, newOwner))
+        {
+            if (newTile.tileOwnerIndex == TileOwner.Neutral)
+            {
+                continue;
+            }
+            CheckIfSurroundedByOwner(levelTiles, newOwner, newTile, newPlayer);
+        }*/
+
         SetAllPLayersTilesCapState(GameManager.activePlayers);
 
     }
@@ -147,9 +171,14 @@ public class TileManagment : MonoBehaviour
         tile.canBuildHere = true;
     }
 
+    public static TileInfo GetTileAlt(Vector3 pos)
+    {
+        return lvTilesStruct[(int)Mathf.Round(2f * pos.x / tileOffset), (int)Mathf.Round(-2f * pos.z / tileOffset)];
+    }
+
     public static TileInfo GetTile(Vector3 position)
     {
-        TileInfo resultTile = levelTiles[0];
+        /*TileInfo resultTile = levelTiles[0];
         foreach (TileInfo tile in levelTiles)
         {
             if (Vector3.Distance(position, tile.tilePosition) < Vector3.Distance(position, resultTile.tilePosition))
@@ -164,16 +193,28 @@ public class TileManagment : MonoBehaviour
         else
         {
             return resultTile;
+        }*/
+        if (position.x < 0 || position.z > 0)
+        {
+            return null;
         }
+
+        TileInfo result = lvTilesStruct[(int)Mathf.Round(2f * position.x / tileOffset), (int)Mathf.Round(-2f * position.z / tileOffset)];
+
+        if (result != null)
+        {
+            return result;
+        }
+        return null;
     }
 
     public static TileInfo GetTile(Vector3 currentTilePosition, Vector3 direction, float distance)
     {
         direction = direction.normalized;
-        distance = distance - 0.1f;
+        //distance = distance - 0.1f;
         Vector3 tilePos = currentTilePosition + (direction * distance * tileOffset);
         return GetTile(tilePos);
-    }
+    }    
 
     public static TileInfo GetTile(TileOwner owner)
     {
@@ -292,28 +333,6 @@ public class TileManagment : MonoBehaviour
         }
     }
 
-    
-
-    /*public static void RemoveEasyCaptureForTiles(List<TileInfo> tiles)
-    {
-        foreach (TileInfo tile in tiles)
-        {
-            tile.easyCaptureFor.Clear();
-            tile.isLocked = false;
-        }
-    }*/
-
-    /*public static TileInfo GetClosestOwnerTile(TileInfo startTile, TileOwner owner, float searchRadius)
-    {
-        var ownerTiles = charTiles[(int)owner];
-        TileInfo closestTile = ownerTiles[0];
-        foreach (TileInfo tile in ownerTiles)
-        {
-            //if ()
-        }
-        return closestTile;
-    }*/
-
     public static TileInfo GetClosestOtherTile(TileInfo currentTile, TileOwner owner,/* float capRadius,*/ Vector3 startPoint)
     {
         var neutralTiles = charTiles[(int)TileOwner.Neutral];
@@ -338,6 +357,9 @@ public class TileManagment : MonoBehaviour
                     {
                         closestTile = tile;
                     }
+                    //closestTile = tile;
+                    //Debug.Log("changed to " + closestTile);
+
                 }
             }
 
@@ -449,6 +471,7 @@ public class TileManagment : MonoBehaviour
         while (q.Count > 0)
         {
             var tile = q.Dequeue();
+            //Debug.Log("anotherTile");
             if (q.Count > tiles.Count)
             {
                 throw new Exception("The algorithm is probably looping. Queue size: " + q.Count);
@@ -481,9 +504,10 @@ public class TileManagment : MonoBehaviour
         foreach (TileInfo tile in connectedTiles)
         {
             tile.easyCaptureFor.Add(ownerIndex);
+            //ChangeTileOwnerSilent(tile, ownerIndex);
         }
     }
-
+    
     private Vector3[] GetBasicDirections(int directionsAmount)
     {
         Vector3[] tempArr = new Vector3[directionsAmount];

@@ -46,6 +46,8 @@ public class PlayerState : MonoBehaviour
         {
             SetStartParams();
         }
+
+        //Debug.Log(TileManagment.GetTileAlt(transform.position));
     }
 
     public void ResetEnemies()

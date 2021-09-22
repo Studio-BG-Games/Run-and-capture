@@ -194,7 +194,10 @@ public class DeathChecker : MonoBehaviour
             SpawnPlayerDeathParticles(player);
         }
 
-        deathSrc.Play();
+        if (GameData.isSFXAllowed)
+        {
+            deathSrc.Play();
+        }
 
         //////////////////////////PLAYER DEATH//////////////
         if (player.ownerIndex == TileOwner.Ariost)

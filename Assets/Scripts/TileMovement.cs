@@ -44,7 +44,7 @@ public class TileMovement : MonoBehaviour
                     break;
 
             }
-            //_moveDir = new Vector3(CustomInput.leftInput.x, 0f, CustomInput.leftInput.y);
+            _moveDir = RecalculateDir(_moveDir);
             if (_moveDir.magnitude > Mathf.Epsilon)
             {
                 TileInfo targetMoveTile = TileManagment.GetTile(_playerState.currentTile.tilePosition, _moveDir, 1);
@@ -109,5 +109,24 @@ public class TileMovement : MonoBehaviour
         {
             _playerState.SetNewState(CharacterState.Idle);
         }
-    }    
+    }
+
+    private Vector3 RecalculateDir(Vector3 dir)
+    {
+        if (dir.magnitude < 0.3f)
+        {
+            return Vector3.zero;
+        }
+        Vector3 closestDir = TileManagment.basicDirections[0];
+        foreach (var newDir in TileManagment.basicDirections)
+        {
+            float distOld = Vector3.Distance(closestDir, dir);
+            float distNew = Vector3.Distance(newDir, dir);
+            if (distNew < distOld)
+            {
+                closestDir = newDir;
+            }
+        }
+        return closestDir;
+    }
 }

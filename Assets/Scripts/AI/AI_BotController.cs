@@ -26,7 +26,7 @@ public class AI_BotController : MonoBehaviour
 
     private Bonus _currentBonus;
 
-    private List<TileInfo> _currentFollowingPath = new List<TileInfo>();
+    public List<TileInfo> _currentFollowingPath = new List<TileInfo>();
 
     private PlayerState _playerState;
     private AttackEnergyController _attackEnergyController;
@@ -43,7 +43,7 @@ public class AI_BotController : MonoBehaviour
     private bool isUseBonusEnabled = true;
 
     private int _maxTriesToCalculatePath = 15;
-    private int _triesToCalculatePath = 15;
+    private int _triesToCalculatePath = 0;
 
     private void Awake()
     {
@@ -157,21 +157,27 @@ public class AI_BotController : MonoBehaviour
     private void StartPatrolBehaviour() //looking for available tiles, calculating path and set patrol state
     {
         //calculate path        
-        TileInfo currentTile = _playerState.currentTile;
+        TileInfo currentTile = _playerState.currentTile;        
         TileInfo targetPathTile = TileManagment.GetClosestOtherTile(currentTile, _playerState.ownerIndex, _startBotPoint);
+        Debug.Log(targetPathTile + " in pos "+ targetPathTile.tilePosition);
         _triesToCalculatePath++;
-        //Debug.Log(targetPathTile);        
-        if (!RecalculatePath(currentTile, targetPathTile) && _triesToCalculatePath < _maxTriesToCalculatePath)
+        if (_triesToCalculatePath < _maxTriesToCalculatePath)
         {
-            StartPatrolBehaviour();
-            return;
+            if (!RecalculatePath(currentTile, targetPathTile))
+            {
+                Debug.Log("recursion");
+                StartPatrolBehaviour();
+                return;
+            }            
         }
         else
         {
+            Debug.Log("not found path by max tries");
+
             targetPathTile = TileManagment.GetRandomOtherTile(_playerState.ownerIndex);
             RecalculatePath(currentTile, targetPathTile);
         }
-        if (_currentFollowingPath.Count > 0)
+        if (_currentFollowingPath!=null)
         {
             botState = BotState.Patrol;
             _triesToCalculatePath = 0;
@@ -183,6 +189,7 @@ public class AI_BotController : MonoBehaviour
     {
         _currentEnemy = null;
         _startBotPoint = _playerState.currentTile.tilePosition;
+        //Debug.Log(_startBotPoint);
         //botState = BotState.Patrol;
     }
 
@@ -391,6 +398,7 @@ public class AI_BotController : MonoBehaviour
 
     private void SetBehaviour(BotState state)
     {
+        //leftInput = Vector2.zero;
         switch (state)
         {
             case BotState.Patrol:
@@ -491,7 +499,7 @@ public class AI_BotController : MonoBehaviour
             _currentFollowingPath.Clear();
         }        
         _currentFollowingPath = Pathfinding.FindPath(curentPos, target, TileManagment.levelTiles, TileManagment.tileOffset);
-        //Debug.Log("created path to " + target);
+        Debug.Log("created path to " + target);
         if (_currentFollowingPath != null)
         {
             return true;

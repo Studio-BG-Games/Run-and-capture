@@ -8,6 +8,10 @@ public class PlayerFollower : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (_player == null)
+        {
+            return;
+        }
         transform.position = _player.transform.position;
     }
 }
