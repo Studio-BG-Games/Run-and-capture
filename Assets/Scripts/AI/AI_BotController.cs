@@ -454,16 +454,6 @@ public class AI_BotController : MonoBehaviour
 
     private void AttackEnemy(PlayerState currentEnemy)
     {
-        /*if (currentEnemy && Vector3.Distance(currentEnemy.transform.position, transform.position) < 1.1f * TileManagment.tileOffset)
-        {
-            //Debug.Log("startAttack");
-            //isAttackedOnce = true;
-            leftInput = Vector2.zero;
-            _currentFollowingPath.Clear();
-            _actionTriggerSystem.TriggerAction(currentEnemy.currentTile, _playerState.defaultAction);
-            StartPatrolBehaviour();
-        }*/
-
         leftInput = Vector2.zero;
         _currentFollowingPath.Clear();
         _actionTriggerSystem.TriggerAction(currentEnemy.currentTile, _playerState.defaultAction);
@@ -500,14 +490,8 @@ public class AI_BotController : MonoBehaviour
         }        
         _currentFollowingPath = Pathfinding.FindPath(curentPos, target, TileManagment.levelTiles, TileManagment.tileOffset);
         //Debug.Log("created path to " + target);
-        if (_currentFollowingPath != null)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return _currentFollowingPath != null;
+        
     }
 
     private void MoveAlongPath()

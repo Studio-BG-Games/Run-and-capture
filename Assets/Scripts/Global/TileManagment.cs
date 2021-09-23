@@ -195,7 +195,7 @@ public class TileManagment : MonoBehaviour
         {
             return resultTile;
         }*/
-        if (position.x < 0 || position.z > 0.5f)
+        if (position.x < -0.5 || position.z > 0.5f)
         {
             //Debug.Log("null pos");
             return null;
