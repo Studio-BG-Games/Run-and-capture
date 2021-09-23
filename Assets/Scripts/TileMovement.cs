@@ -93,7 +93,7 @@ public class TileMovement : MonoBehaviour
         _playerState.targetMoveTile = targetMoveTile;
         _playerState.targetMoveTile.canMove = false;
         _playerState.currentTile.canMove = true;
-
+        //Debug.Log("wtf");
         moveVFX.Play();
     }
 

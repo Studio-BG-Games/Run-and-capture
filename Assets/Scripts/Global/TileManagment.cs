@@ -2,9 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Jobs;
+using Unity.Collections;
+using Unity.Burst;
+using Unity.Jobs;
+using Unity.Mathematics;
 
+[BurstCompile]
 public class TileManagment : MonoBehaviour
-{
+{    
     public const int BASIC_DIRECTIONS = 6;
 
     public static List<TileInfo> levelTiles = new List<TileInfo>();
@@ -464,7 +470,7 @@ public class TileManagment : MonoBehaviour
 
         return connectedTiles;
     }
-
+    
     public static void CheckIfSurroundedByOwner(List<TileInfo> tiles, TileOwner ownerIndex, TileInfo startTile)
     {
         List<TileInfo> connectedTiles = new List<TileInfo>();
