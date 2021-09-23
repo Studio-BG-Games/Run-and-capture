@@ -3401,6 +3401,7 @@ MonoBehaviour:
   menuSprites:
   - {fileID: 21300000, guid: 426478b073313244bbe84d3ec1cafa64, type: 3}
   - {fileID: 21300000, guid: 29916103981328e438052adcf04f2737, type: 3}
+  gameText: {fileID: 1138818630}
 --- !u!1 &1862883448
 GameObject:
   m_ObjectHideFlags: 0

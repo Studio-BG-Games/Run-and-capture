@@ -31,6 +31,8 @@ public class ToweHealthController : MonoBehaviour
 
     private void Die()
     {
+        TileInfo tile = TileManagment.GetTile(transform.position);
+        TileManagment.ReleaseTile(tile);
         Destroy(gameObject);
     }
 }

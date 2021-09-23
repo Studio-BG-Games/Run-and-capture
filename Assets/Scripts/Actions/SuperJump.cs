@@ -71,6 +71,7 @@ public class SuperJump : PlayerAction
                 if (tile.buildingOnTile != null)
                 {
                     Destroy(tile.buildingOnTile);
+                    TileManagment.ReleaseTile(tile);
                 }
             }
         }

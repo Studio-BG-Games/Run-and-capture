@@ -68,6 +68,7 @@ public class TileManagment : MonoBehaviour
         foreach (var tile in levelTiles)
         {
             lvTilesStruct[(int)Mathf.Round(2 * tile.tilePosition.x / tileOffset), (int)Mathf.Round(-2 * tile.tilePosition.z / tileOffset)] = tile;
+            //Debug.Log((int)Mathf.Round(2 * tile.tilePosition.x / tileOffset) +" and "+ Mathf.Round(-2 * tile.tilePosition.z / tileOffset));
         }
 
         OnInitialized?.Invoke();
@@ -194,8 +195,9 @@ public class TileManagment : MonoBehaviour
         {
             return resultTile;
         }*/
-        if (position.x < 0 || position.z > 0)
+        if (position.x < 0 || position.z > 0.5f)
         {
+            //Debug.Log("null pos");
             return null;
         }
 
@@ -203,8 +205,10 @@ public class TileManagment : MonoBehaviour
 
         if (result != null)
         {
+            //Debug.Log(result);
             return result;
         }
+        //Debug.Log("not tile");
         return null;
     }
 
