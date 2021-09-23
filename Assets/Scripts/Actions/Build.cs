@@ -21,6 +21,7 @@ public class Build : PlayerAction
         base.StartActionOperations(targetTile, currentPlayer);
         targetTile.canMove = false;
         var spawnedTower = Instantiate(buildPref, targetTile.tilePosition, buildPref.transform.rotation);
+        spawnedTower.GetComponent<ToweHealthController>().owner = currentPlayer.ownerIndex;
         int activeModelIndex = (int)currentPlayer.ownerIndex - 1;
         spawnedTower.transform.GetChild(activeModelIndex).gameObject.SetActive(true);
         TileManagment.AssignBuildingToTile(targetTile, spawnedTower);

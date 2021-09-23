@@ -21,7 +21,7 @@ public class TileManagment : MonoBehaviour
     public static Vector3[] basicDirections;
 
     [SerializeField]
-    private TileInfo adjTile_1, adjTile_2, targTestTile;
+    private TileInfo adjTile_1, adjTile_2;
 
     [SerializeField]
     private List<Material> _tileMaterials;

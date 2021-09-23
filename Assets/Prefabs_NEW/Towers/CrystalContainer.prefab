@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088596190299031929}
+  - component: {fileID: -8898625679934015859}
+  - component: {fileID: 8413281927074889085}
   m_Layer: 0
   m_Name: CrystalContainer
   m_TagString: Untagged
@@ -34,6 +36,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8898625679934015859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858714285192226355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb480d4011a50c488ad69c1b525d8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: 2
+  startHealth: 190
+  currentHealth: 0
+  playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
+    type: 3}
+  groundImpactVFX: {fileID: 6794377120831721188, guid: 2e8dc25f6c4c6264e95bc99e5bffa3e5,
+    type: 3}
+--- !u!136 &8413281927074889085
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858714285192226355}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 2.68
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.41, z: 0}
 --- !u!1001 &5497938960835943598
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -159,7 +159,7 @@ public class AI_BotController : MonoBehaviour
         //calculate path        
         TileInfo currentTile = _playerState.currentTile;        
         TileInfo targetPathTile = TileManagment.GetClosestOtherTile(currentTile, _playerState.ownerIndex, _startBotPoint);
-        Debug.Log(targetPathTile + " in pos "+ targetPathTile.tilePosition);
+        //Debug.Log(targetPathTile + " in pos "+ targetPathTile.tilePosition);
         _triesToCalculatePath++;
         if (_triesToCalculatePath < _maxTriesToCalculatePath)
         {
@@ -499,7 +499,7 @@ public class AI_BotController : MonoBehaviour
             _currentFollowingPath.Clear();
         }        
         _currentFollowingPath = Pathfinding.FindPath(curentPos, target, TileManagment.levelTiles, TileManagment.tileOffset);
-        Debug.Log("created path to " + target);
+        //Debug.Log("created path to " + target);
         if (_currentFollowingPath != null)
         {
             return true;

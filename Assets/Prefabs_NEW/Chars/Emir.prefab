@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5182c2cb5eef6d849b560f764c4a0ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 50
+  startHealth: 250
   currentHealth: 0
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
     type: 3}
@@ -338,6 +338,7 @@ MonoBehaviour:
   protectionDistance: 4
   _currentEnemy: {fileID: 0}
   _currentTargetTile: {fileID: 0}
+  _currentFollowingPath: []
 --- !u!114 &5657602507249370745
 MonoBehaviour:
   m_ObjectHideFlags: 0

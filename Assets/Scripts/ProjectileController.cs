@@ -72,6 +72,7 @@ public class ProjectileController : MonoBehaviour
         var healthController = other.gameObject.GetComponent<HealthController>();
         var playerState = other.gameObject.GetComponent<PlayerState>();
         var treeController = other.gameObject.GetComponent<TreeHealthController>();
+        var towerController = other.gameObject.GetComponent<ToweHealthController>();
         if (healthController && owner != playerState.ownerIndex)
         {
             healthController.GetComponent<AudioController>().PlayHitSound();
@@ -81,6 +82,18 @@ public class ProjectileController : MonoBehaviour
         if (treeController)
         {
             treeController.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        if (towerController && owner != towerController.owner)
+        {
+            if (owner != towerController.owner)
+            {
+                towerController.TakeDamage(damage);
+            }
+            else
+            {
+                towerController.TakeDamage(0f);
+            }
             Destroy(gameObject);
         }
     }

@@ -68,6 +68,10 @@ public class SuperJump : PlayerAction
             if (tile.tileOwnerIndex != currentPlayer.ownerIndex)
             {
                 capController.CaptureTile(tile);
+                if (tile.buildingOnTile != null)
+                {
+                    Destroy(tile.buildingOnTile);
+                }
             }
         }
         
