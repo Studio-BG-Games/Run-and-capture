@@ -50,6 +50,7 @@ public class ActionTargetingSystem : MonoBehaviour
         while (_playerState.IsAnyActionsAllowed())
         {
             Vector3 actionDir = new Vector3(CustomInput.rightInput.x, 0f, CustomInput.rightInput.y);
+            actionDir = RecalculateDir(actionDir);
             TileInfo targetTile = TileManagment.GetTile(_playerState.currentTile.tilePosition, actionDir, _playerState.currentAction.distance);
 
             if (IsTargetingAllowed(targetTile))
@@ -84,5 +85,24 @@ public class ActionTargetingSystem : MonoBehaviour
         OnLostTarget?.Invoke();
         StopAllCoroutines();
         _playerState.currentActionTarget = null;
-    } 
+    }
+
+    private Vector3 RecalculateDir(Vector3 dir)
+    {
+        if (dir.magnitude < 0.3f)
+        {
+            return Vector3.zero;
+        }
+        Vector3 closestDir = TileManagment.basicDirections[0];
+        foreach (var newDir in TileManagment.basicDirections)
+        {
+            float distOld = Vector3.Distance(closestDir, dir);
+            float distNew = Vector3.Distance(newDir, dir);
+            if (distNew < distOld)
+            {
+                closestDir = newDir;
+            }
+        }
+        return closestDir;
+    }
 }
