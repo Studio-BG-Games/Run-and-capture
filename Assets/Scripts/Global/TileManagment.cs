@@ -80,12 +80,12 @@ public class TileManagment : MonoBehaviour
         OnInitialized?.Invoke();
         
     }
-
     
     private float GetTileOffset()
     {
         return Vector3.Distance(adjTile_1.tilePosition, adjTile_2.tilePosition);
     }
+    
     private void SetStaticTileMaterials()
     {
         tileMaterialsStatic = new List<Material>();
@@ -108,6 +108,7 @@ public class TileManagment : MonoBehaviour
     }
     private void SetTileStartParams(TileInfo tile)
     {
+        //print(tile);
         tile.tilePosition = tile.transform.position;
         tile.GetComponent<Renderer>().material = tileMaterialsStatic[(int)tile.tileOwnerIndex];
     }
@@ -137,7 +138,6 @@ public class TileManagment : MonoBehaviour
         }*/
 
         SetAllPLayersTilesCapState(GameManager.activePlayers);
-
     }
 
     public static void ChangeTileOwnerSilent(TileInfo tile, PlayerState newPlayer)
