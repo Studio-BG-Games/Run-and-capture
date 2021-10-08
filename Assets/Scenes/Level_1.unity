@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1801060022}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 6
+    OrthographicSize: 12.36
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -1968,7 +1968,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.7
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5190,7 +5190,10 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   targetMoveTile: {fileID: 0}
   currentActionTarget: {fileID: 0}
-  defaultAction: {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
+  fireActions:
+  - {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
+  - {fileID: 11400000, guid: f61f0169dd2c5c743a2731e3827c74b8, type: 2}
+  defaultAction: {fileID: 11400000, guid: f61f0169dd2c5c743a2731e3827c74b8, type: 2}
   currentAction: {fileID: 0}
   enemies: []
 --- !u!114 &1801060027
@@ -5386,9 +5389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11c25b2c2cf92046ba8fb0105c87ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAttackEnergy: 3.1
-  attackResetTime: 3
-  attackCost: 1
 --- !u!114 &1801060035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5750,7 +5750,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 12.36
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

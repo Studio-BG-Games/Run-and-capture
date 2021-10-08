@@ -8,7 +8,7 @@ public class TrapObj : MonoBehaviour
 
     public float damage = 100f;
 
-    public GameObject collisionVFX;
+    public GameObject collisionVFX, groundVFX;
 
     public float timeToDamage = 1f;
 
@@ -42,7 +42,7 @@ public class TrapObj : MonoBehaviour
             player.currentState = CharacterState.Frozen;
             yield return new WaitForFixedUpdate();
         }        
-        healthController.TakeDamage(damage);
+        healthController.TakeDamage(damage, collisionVFX, groundVFX);
         Debug.Log("ouch");
         Destroy(gameObject);
         player.SetNewState(CharacterState.Idle);

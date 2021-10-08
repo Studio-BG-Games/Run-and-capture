@@ -192,6 +192,9 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   targetMoveTile: {fileID: 0}
   currentActionTarget: {fileID: 0}
+  fireActions:
+  - {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
+  - {fileID: 11400000, guid: f61f0169dd2c5c743a2731e3827c74b8, type: 2}
   defaultAction: {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
   currentAction: {fileID: 0}
   enemies: []
@@ -274,9 +277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11c25b2c2cf92046ba8fb0105c87ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAttackEnergy: 3.1
-  attackResetTime: 3
-  attackCost: 1
 --- !u!114 &8834890311105204200
 MonoBehaviour:
   m_ObjectHideFlags: 0

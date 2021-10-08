@@ -5,9 +5,9 @@ using System;
 
 public class AttackEnergyController : MonoBehaviour
 {
-    public float maxAttackEnergy = 3f;
-    public float attackResetTime = 3f;
-    public float attackCost = 1f;
+    private float maxAttackEnergy;
+    private float attackResetTime;
+    private float attackCost;
 
     private float attackEnergy;
     private float _silenceTime = 2f;
@@ -24,6 +24,10 @@ public class AttackEnergyController : MonoBehaviour
     {
         _playerState = GetComponent<PlayerState>();
         _playerState.OnCharStateChanged += OnPlayerAttack;
+        
+        maxAttackEnergy = _playerState.defaultAction.maxAttackEnergy;
+        attackResetTime = _playerState.defaultAction.attackResetTime;
+        attackCost = _playerState.defaultAction.attackCost;
     }
 
     private void OnPlayerAttack(CharacterState newState)

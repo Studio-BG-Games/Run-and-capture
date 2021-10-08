@@ -12,8 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f6dcf8306c22c429eb9ebde71dab56, type: 3}
   m_Name: Build_Trap
   m_EditorClassIdentifier: 
+  maxAttackEnergy: 3
+  attackResetTime: 3
+  attackCost: 1
   duration: 0.5
   distance: 1
+  playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
+    type: 3}
+  groundImpactVFX: {fileID: 6794377120831721188, guid: 2e8dc25f6c4c6264e95bc99e5bffa3e5,
+    type: 3}
   actionType: 2
   trapPref: {fileID: 8305872390849316384, guid: abdfd5b61d4a8664fb8222503bb9f3e8,
     type: 3}

@@ -77,7 +77,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 0
   velocity: 20
-  damage: 100
+  damage: 1000
+  playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
+    type: 3}
+  groundImpactVFX: {fileID: 6794377120831721188, guid: 2e8dc25f6c4c6264e95bc99e5bffa3e5,
+    type: 3}
 --- !u!1001 &8121987183007887425
 PrefabInstance:
   m_ObjectHideFlags: 0

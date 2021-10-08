@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(TileMovement))]
 //[RequireComponent(typeof(PlayerActionManager))]
@@ -16,6 +17,9 @@ public class PlayerState : MonoBehaviour
     public TileInfo currentTile;
     public TileInfo targetMoveTile;
     public TileInfo currentActionTarget;
+    
+    public PlayerAction[] fireActions;
+    
     public PlayerAction defaultAction;
     public PlayerAction currentAction;
 
@@ -121,6 +125,11 @@ public class PlayerState : MonoBehaviour
         currentTile.canMove = false;
         //currentState = CharacterState.Idle;
         SetNewState(CharacterState.Idle);
+        
+        int fireIndx = controlType != ControlType.Player ? Random.Range(0, fireActions.Length) : PlayerPrefs.GetInt("fireMode");
+        
+        defaultAction = fireActions[fireIndx];
+        
         currentAction = defaultAction;
         currentActionTarget = null;
         enemies = SetEnemies();

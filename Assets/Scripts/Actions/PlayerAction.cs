@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerAction : ScriptableObject
 {
+    public float maxAttackEnergy = 3f;
+    public float attackResetTime = 3f;
+    public float attackCost = 1f;
     public float duration = 1f;
     public float distance = 1;
 

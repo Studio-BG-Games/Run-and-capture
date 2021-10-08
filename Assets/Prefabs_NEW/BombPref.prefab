@@ -50,6 +50,8 @@ MonoBehaviour:
   damage: 500
   collisionVFX: {fileID: 2307028534112872116, guid: 79d768bf87aadec478a5722da8c6d516,
     type: 3}
+  groundVFX: {fileID: 6794377120831721188, guid: 2e8dc25f6c4c6264e95bc99e5bffa3e5,
+    type: 3}
   timeToDamage: 2
 --- !u!135 &8305872390849316386
 SphereCollider:

@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ba2e614b063db45b9f7a47d7a2bb4c, type: 3}
   m_Name: NullAction
   m_EditorClassIdentifier: 
+  maxAttackEnergy: 3.1
+  attackResetTime: 3
+  attackCost: 1
   duration: 1
   distance: 1
+  playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
+    type: 3}
+  groundImpactVFX: {fileID: 6794377120831721188, guid: 2e8dc25f6c4c6264e95bc99e5bffa3e5,
+    type: 3}
   actionType: 0
