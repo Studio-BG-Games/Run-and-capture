@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using LoadedAssets.Joystick_Pack.Scripts.Editor;
 using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(FloatingJoystick))]
-public class FloatingJoystickEditor : JoystickEditor
+public class FloatingJoystickEditor : OpacityJoystickEditor
 {
     public override void OnInspectorGUI()
     {
@@ -12,7 +11,7 @@ public class FloatingJoystickEditor : JoystickEditor
 
         if (background != null)
         {
-            RectTransform backgroundRect = (RectTransform)background.objectReferenceValue;
+            RectTransform backgroundRect = (RectTransform) background.objectReferenceValue;
             backgroundRect.anchorMax = Vector2.zero;
             backgroundRect.anchorMin = Vector2.zero;
             backgroundRect.pivot = center;

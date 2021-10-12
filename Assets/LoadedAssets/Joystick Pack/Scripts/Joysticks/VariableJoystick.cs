@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using LoadedAssets.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class VariableJoystick : Joystick
+public class VariableJoystick : OpacityJoystick
 {
     public float MoveThreshold { get { return moveThreshold; } set { moveThreshold = Mathf.Abs(value); } }
 

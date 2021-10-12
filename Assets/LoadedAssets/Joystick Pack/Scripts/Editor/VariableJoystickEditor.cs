@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using LoadedAssets.Joystick_Pack.Scripts.Editor;
+using UnityEditor;
 using UnityEngine;
 
-using UnityEditor;
-
 [CustomEditor(typeof(VariableJoystick))]
-public class VariableJoystickEditor : JoystickEditor
+public class VariableJoystickEditor : OpacityJoystickEditor
 {
     private SerializedProperty moveThreshold;
     private SerializedProperty joystickType;

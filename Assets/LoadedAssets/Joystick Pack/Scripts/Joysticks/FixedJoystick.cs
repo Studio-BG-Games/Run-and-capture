@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using LoadedAssets.Joystick_Pack.Scripts.Joysticks;
 
-public class FixedJoystick : Joystick
+public class FixedJoystick : OpacityJoystick
 {
 
 }
