@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  damage: 100
+  damage: 500
   collisionVFX: {fileID: 2307028534112872116, guid: 79d768bf87aadec478a5722da8c6d516,
     type: 3}
   timeToDamage: 2
