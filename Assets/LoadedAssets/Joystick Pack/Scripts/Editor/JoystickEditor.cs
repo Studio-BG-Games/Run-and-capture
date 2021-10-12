@@ -13,6 +13,7 @@ public class JoystickEditor : Editor
     private SerializedProperty snapY;
     protected SerializedProperty background;
     private SerializedProperty handle;
+    private SerializedProperty backToStartOnTouchUp;
 
     protected Vector2 center = new Vector2(0.5f, 0.5f);
 
@@ -25,6 +26,7 @@ public class JoystickEditor : Editor
         snapY = serializedObject.FindProperty("snapY");
         background = serializedObject.FindProperty("background");
         handle = serializedObject.FindProperty("handle");
+        backToStartOnTouchUp = serializedObject.FindProperty("backToStartOnTouchUp");
     }
 
     public override void OnInspectorGUI()
@@ -54,6 +56,7 @@ public class JoystickEditor : Editor
         EditorGUILayout.PropertyField(axisOptions, new GUIContent("Axis Options", "Which axes the joystick uses."));
         EditorGUILayout.PropertyField(snapX, new GUIContent("Snap X", "Snap the horizontal input to a whole value."));
         EditorGUILayout.PropertyField(snapY, new GUIContent("Snap Y", "Snap the vertical input to a whole value."));
+        EditorGUILayout.PropertyField(backToStartOnTouchUp, new GUIContent("Back To Start On TouchUp", "Moves Joystic back to the start position when player stops touch it."));
     }
 
     protected virtual void DrawComponents()

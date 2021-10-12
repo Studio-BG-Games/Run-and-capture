@@ -36,6 +36,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     [SerializeField] protected RectTransform background = null;
     [SerializeField] protected RectTransform handle = null;
+    
+    [SerializeField] private bool backToStartOnTouchUp;
 
     private RectTransform baseRect = null;
 
@@ -43,6 +45,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private Camera cam;
 
     private Vector2 input = Vector2.zero;
+
+    private Vector2 startPosition;
 
     protected virtual void Start()
     {
@@ -60,6 +64,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         handle.anchorMax = center;
         handle.pivot = center;
         handle.anchoredPosition = Vector2.zero;
+
+        startPosition = background.anchoredPosition;
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
@@ -140,6 +146,10 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
         OnTouchUp?.Invoke();
+        if (backToStartOnTouchUp)
+        {
+            MoveBackToStartPosition();
+        }
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)
@@ -151,6 +161,11 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             return localPoint - (background.anchorMax * baseRect.sizeDelta) + pivotOffset;
         }
         return Vector2.zero;
+    }
+
+    private void MoveBackToStartPosition()
+    {
+        background.anchoredPosition = startPosition;
     }
 }
 

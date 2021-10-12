@@ -19,6 +19,7 @@ MonoBehaviour:
   snapY: 0
   background: {fileID: 1415495983658094506}
   handle: {fileID: 1415495981690910128}
+  backToStartOnTouchUp: 1
   _idleStateOpacity: 0.3
   _activeStateOpacity: 1
   moveThreshold: 1
@@ -2919,6 +2920,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _idleStateOpacity
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18,
+        type: 3}
+      propertyPath: backToStartOnTouchUp
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
