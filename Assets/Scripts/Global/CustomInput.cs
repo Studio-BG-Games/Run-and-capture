@@ -1,51 +1,61 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class CustomInput : MonoBehaviour
 {
-    public static Vector2 leftInput, rightInput;
-    //public static Vector2 attackActionInput, protectActionInput;
-    //public static float rightRegistrationDeadZone = 0.3f;
+    #region Static fields
 
-    public static Action OnTouchDown, OnTouchUp;
-   /* public static Action OnDefendTouchDown, OnDefendTouchUp;
-    public static Action OnAttackTouchDown, OnAttackTouchUp;*/
+    public static Vector2 leftInput;
+    public static Vector2 rightInput;
+    public static Action OnTouchDown;
+    public static Action OnTouchUp;
 
-    [Header("Character Control Parameters")]
-    public CharControlType controlType = CharControlType.UI_Joysticks;    
-    [SerializeField]
-    private DynamicJoystick leftJoystick;
-    [SerializeField]
-    private FloatingJoystick rightJoystick;
-    [SerializeField]
-    private FixedJoystick attackJoystick, defendJoystick;
+    #endregion
+
+    [Header("Character Control Parameters")] 
+    
+    [SerializeField] private DynamicJoystick _leftJoystick;
+    [SerializeField] private FloatingJoystick _rightJoystick;
+    [SerializeField] private FixedJoystick _attackJoystick;
+    [SerializeField] private FixedJoystick _defendJoystick;
 
     private Joystick _currentRightJoystick;
 
 
     private void Awake()
     {
-        SetupDeafultControls();
+        SetupDefaultControls();
 
-        rightJoystick.OnTouchDown += InvokeTouchDown;
-        rightJoystick.OnTouchUp += InvokeTouchUp;
+        _rightJoystick.OnTouchDown += InvokeTouchDown;
+        _rightJoystick.OnTouchUp += InvokeTouchUp;
 
-        attackJoystick.OnTouchDown += InvokeTouchDown;
-        attackJoystick.OnTouchUp += InvokeTouchUp;
+        _attackJoystick.OnTouchDown += InvokeTouchDown;
+        _attackJoystick.OnTouchUp += InvokeTouchUp;
 
-        defendJoystick.OnTouchDown += InvokeTouchDown;
-        defendJoystick.OnTouchUp += InvokeTouchUp;
+        _defendJoystick.OnTouchDown += InvokeTouchDown;
+        _defendJoystick.OnTouchUp += InvokeTouchUp;
+    }
+    
+    private void Start()
+    {
+        ResetInput();
     }
 
-    public void SetupDeafultControls()
+    private void Update()
     {
-        rightJoystick.gameObject.SetActive(true);
-        defendJoystick.gameObject.SetActive(false);
-        attackJoystick.gameObject.SetActive(false);
-        _currentRightJoystick = rightJoystick;
+        leftInput.x = _leftJoystick.Horizontal;
+        leftInput.y = _leftJoystick.Vertical;
+
+        rightInput.x = _currentRightJoystick.Horizontal;
+        rightInput.y = _currentRightJoystick.Vertical;
+    }
+
+    public void SetupDefaultControls()
+    {
+        _rightJoystick.gameObject.SetActive(true);
+        _defendJoystick.gameObject.SetActive(false);
+        _attackJoystick.gameObject.SetActive(false);
+        _currentRightJoystick = _rightJoystick;
     }
 
     public void SetupActiveJoystick(BonusType bonusType)
@@ -53,15 +63,16 @@ public class CustomInput : MonoBehaviour
         Joystick newActiveJoystick;
         if (bonusType == BonusType.Attack)
         {
-            newActiveJoystick = attackJoystick;
+            newActiveJoystick = _attackJoystick;
         }
         else
         {
-            newActiveJoystick = defendJoystick;
+            newActiveJoystick = _defendJoystick;
         }
-        rightJoystick.gameObject.SetActive(false);
-        defendJoystick.gameObject.SetActive(false);
-        attackJoystick.gameObject.SetActive(false);
+
+        _rightJoystick.gameObject.SetActive(false);
+        _defendJoystick.gameObject.SetActive(false);
+        _attackJoystick.gameObject.SetActive(false);
 
         newActiveJoystick.gameObject.SetActive(true);
         _currentRightJoystick = newActiveJoystick;
@@ -71,15 +82,10 @@ public class CustomInput : MonoBehaviour
     {
         OnTouchDown?.Invoke();
     }
+
     private void InvokeTouchUp()
     {
         OnTouchUp?.Invoke();
-    }    
-
-
-    private void Start()
-    {
-        ResetInput();        
     }
 
     private void ResetInput()
@@ -87,21 +93,4 @@ public class CustomInput : MonoBehaviour
         leftInput = Vector2.zero;
     }
 
-    private void Update()
-    {
-        leftInput.x = leftJoystick.Horizontal;
-        leftInput.y = leftJoystick.Vertical;
-
-        rightInput.x = _currentRightJoystick.Horizontal;
-        rightInput.y = _currentRightJoystick.Vertical;
-
-    }
-}
-
-
-
-public enum CharControlType 
-{
-    UI_Joysticks,
-    //Else //test purp for now
 }

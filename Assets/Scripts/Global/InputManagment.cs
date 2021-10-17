@@ -1,15 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManagment : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerState _controllablePlayer;
-
-    [SerializeField]
-    private CustomInput _customInput;
+    [SerializeField] private PlayerState _controllablePlayer;
+    [SerializeField] private CustomInput _customInput;
 
     private BonusUI _bonusUIManager;
 
@@ -24,12 +18,11 @@ public class InputManagment : MonoBehaviour
 
     private void SetupDefault()
     {
-        _customInput.SetupDeafultControls();
+        _customInput.SetupDefaultControls();
     }
 
     private void SetupBonusJoysticks(Bonus selectedBonus)
     {
         _customInput.SetupActiveJoystick(selectedBonus.bonusType);
     }
-    
 }

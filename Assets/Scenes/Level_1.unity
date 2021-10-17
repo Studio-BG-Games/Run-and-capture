@@ -243,9 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3cee3b8892508d478b1c4d0fad4801c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSize: 7.5
-  camExpandSmoothness: 0.01
-  trackingPlayer: 1
+  _maxSize: 7.5
+  _camExpandSmoothness: 0.01
+  _trackingPlayer: 1
   _cam: {fileID: 95433828}
 --- !u!1 &112562703 stripped
 GameObject:
@@ -2768,11 +2768,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc14c61ebbe85804bacfb5a675a95310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlType: 0
-  leftJoystick: {fileID: 1712987976}
-  rightJoystick: {fileID: 2060963491}
-  attackJoystick: {fileID: 320155194}
-  defendJoystick: {fileID: 1105100998}
+  _leftJoystick: {fileID: 1712987976}
+  _rightJoystick: {fileID: 2060963491}
+  _attackJoystick: {fileID: 320155194}
+  _defendJoystick: {fileID: 1105100998}
 --- !u!114 &1102420990
 MonoBehaviour:
   m_ObjectHideFlags: 0
