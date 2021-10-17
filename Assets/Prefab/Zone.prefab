@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9086712109930795521}
-  - component: {fileID: 6202238952767389623}
   m_Layer: 0
   m_Name: ' Snap Point'
   m_TagString: Untagged
@@ -31,18 +30,6 @@ Transform:
   m_Father: {fileID: 5624546620962832511}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6202238952767389623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3833269577856017143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c61104889393343ac0fea14ff74581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4991598031878838981
 GameObject:
   m_ObjectHideFlags: 0
@@ -54,9 +41,8 @@ GameObject:
   - component: {fileID: 5624546620962832511}
   - component: {fileID: 8764493948209205210}
   - component: {fileID: 6792918654691506960}
-  - component: {fileID: 4621458471676120662}
   m_Layer: 0
-  m_Name: Zone (46)
+  m_Name: Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,6 +91,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -129,18 +116,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &4621458471676120662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991598031878838981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15744dd8ca4a9044b844f2c87e4715eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8625350783171417669
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +126,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8625350783171417674}
-  - component: {fileID: 8625350783171417675}
   m_Layer: 0
   m_Name: ' Snap Point (1)'
   m_TagString: Untagged
@@ -172,18 +147,6 @@ Transform:
   m_Father: {fileID: 5624546620962832511}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8625350783171417675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625350783171417669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c61104889393343ac0fea14ff74581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8625350783490098518
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +156,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8625350783490098519}
-  - component: {fileID: 8625350783490098516}
   m_Layer: 0
   m_Name: ' Snap Point (3)'
   m_TagString: Untagged
@@ -215,18 +177,6 @@ Transform:
   m_Father: {fileID: 5624546620962832511}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8625350783490098516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625350783490098518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c61104889393343ac0fea14ff74581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8625350783812157934
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +186,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8625350783812157935}
-  - component: {fileID: 8625350783812157932}
   m_Layer: 0
   m_Name: ' Snap Point (2)'
   m_TagString: Untagged
@@ -258,18 +207,6 @@ Transform:
   m_Father: {fileID: 5624546620962832511}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8625350783812157932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625350783812157934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c61104889393343ac0fea14ff74581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8625350784447292078
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +216,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8625350784447292079}
-  - component: {fileID: 8625350784447292076}
   m_Layer: 0
   m_Name: ' Snap Point (5)'
   m_TagString: Untagged
@@ -301,18 +237,6 @@ Transform:
   m_Father: {fileID: 5624546620962832511}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8625350784447292076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625350784447292078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c61104889393343ac0fea14ff74581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8625350784683172180
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +246,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8625350784683172181}
-  - component: {fileID: 8625350784683172186}
   m_Layer: 0
   m_Name: ' Snap Point (4)'
   m_TagString: Untagged
@@ -344,15 +267,3 @@ Transform:
   m_Father: {fileID: 5624546620962832511}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8625350784683172186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625350784683172180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c61104889393343ac0fea14ff74581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
