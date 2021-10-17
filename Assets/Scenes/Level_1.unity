@@ -2784,7 +2784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51375d97c071d8c4f93cf2aa6881d048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinText: {fileID: 6614787374390785080}
+  _coinText: {fileID: 6614787374390785080}
 --- !u!114 &1102420991
 MonoBehaviour:
   m_ObjectHideFlags: 0

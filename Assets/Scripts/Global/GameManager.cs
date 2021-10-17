@@ -1,42 +1,37 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static List<PlayerState> players = new List<PlayerState>();
+    #region Static Fields
 
+    public static List<PlayerState> players = new List<PlayerState>();
     public static List<PlayerState> activePlayers = new List<PlayerState>();
     public static List<PlayerState> tempDeadPlayers = new List<PlayerState>();
-    public static List<PlayerState> deadPlayers = new List<PlayerState>();
-
     public static List<TileOwner> deadOwners = new List<TileOwner>();
-
     public static int coinsPerTree = 50;
 
-    [SerializeField]
-    private TextMeshProUGUI coinText;
+    #endregion
+
+    [SerializeField] private TextMeshProUGUI _coinText;
 
     private void Awake()
     {
         activePlayers.Clear();
         tempDeadPlayers.Clear();
-        deadPlayers.Clear();
         players.Clear();
         DeathChecker.OnPlayerDeath += KillPlayer;
         DeathChecker.OnPlayerRes += ResPlayer;
         DeathChecker.OnPlayerDeathPermanent += DestroyPermanent;
         GameData.OnCoinsCollected += UpdateCoinUI;
         players = FindPlayers();
-        SetupActivePlayers(players);        
-        //playersNOnStatic = players;
+        SetupActivePlayers(players);
     }
 
     private void UpdateCoinUI()
     {
-        coinText.text = GameData.coins.ToString();
+        _coinText.text = GameData.coins.ToString();
     }
 
     private void SetupActivePlayers(List<PlayerState> allPlayers)
@@ -68,18 +63,19 @@ public class GameManager : MonoBehaviour
         {
             player.ResetEnemies();
         }
+
         deadOwners.Add(deadPlayer.ownerIndex);
-        //deadPlayers.Add(deadPlayer);
     }
 
     private List<PlayerState> FindPlayers()
     {
         List<PlayerState> resultPlayerList = new List<PlayerState>();
         var players = FindObjectsOfType<PlayerState>();
-        foreach(var player in players)
+        foreach (var player in players)
         {
             resultPlayerList.Add(player);
         }
+
         return resultPlayerList;
     }
 }
