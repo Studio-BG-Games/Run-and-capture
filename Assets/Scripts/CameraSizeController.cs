@@ -1,21 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Cinemachine;
-using System;
+using UnityEngine;
 
 public class CameraSizeController : MonoBehaviour
 {
-    public float maxSize = 7.5f, camExpandSmoothness = 0.01f;
-    public TileOwner trackingPlayer = TileOwner.Ariost;
+    [SerializeField] private float _maxSize = 7.5f;
+    [SerializeField] private float _camExpandSmoothness = 0.01f;
+    [SerializeField] private TileOwner _trackingPlayer = TileOwner.Ariost;
+    [SerializeField] private CinemachineVirtualCamera _cam;
 
     private float _startSize;
 
-    [SerializeField] private CinemachineVirtualCamera _cam;
-
     private void Awake()
     {
-        //TileManagment.OnAnyTileCaptured += UpdateCamSize;
         _startSize = _cam.m_Lens.OrthographicSize;
     }
 
@@ -24,29 +20,15 @@ public class CameraSizeController : MonoBehaviour
         UpdateCamSize();
     }
 
-    private void UpdateCamSize(PlayerState player)
-    {
-        if (player.ownerIndex != trackingPlayer)
-        {
-            return;
-        }
-        int maxTilesNumber = TileManagment.levelTiles.Count;
-        int playerTilesNumber = TileManagment.charTiles[(int)player.ownerIndex].Count;
-
-        float camSizeDelta = maxSize - _startSize;
-
-        _cam.m_Lens.OrthographicSize = _startSize + (float)playerTilesNumber / maxTilesNumber * camSizeDelta;
-    }
-
     private void UpdateCamSize()
     {
         int maxTilesNumber = TileManagment.levelTiles.Count;
-        int playerTilesNumber = TileManagment.charTiles[(int)trackingPlayer].Count;
+        int playerTilesNumber = TileManagment.charTiles[(int) _trackingPlayer].Count;
 
-        float camSizeDelta = maxSize - _startSize;
+        float camSizeDelta = _maxSize - _startSize;
 
-        float targetSize = _startSize + (float)playerTilesNumber / maxTilesNumber * camSizeDelta;
+        float targetSize = _startSize + (float) playerTilesNumber / maxTilesNumber * camSizeDelta;
 
-        _cam.m_Lens.OrthographicSize = Mathf.Lerp(_cam.m_Lens.OrthographicSize, targetSize, camExpandSmoothness);
+        _cam.m_Lens.OrthographicSize = Mathf.Lerp(_cam.m_Lens.OrthographicSize, targetSize, _camExpandSmoothness);
     }
 }
