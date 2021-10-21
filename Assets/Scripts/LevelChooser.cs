@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +6,6 @@ public class LevelChooser : MonoBehaviour
 {
     [SerializeField] private List<LevelModel> _levels;
     [SerializeField] private Image _levelImage;
-    [SerializeField] private TextMeshProUGUI _levelNameText;
 
     [SerializeField] private GameObject _nextButton;
     [SerializeField] private GameObject _prevButton;
@@ -47,7 +45,6 @@ public class LevelChooser : MonoBehaviour
     private void UpdateUI()
     {
         _levelImage.sprite = CurrentLevel.MenuSprite;
-        _levelNameText.text = CurrentLevel.Name;
 
         UpdateButtonsVisibility();
     }

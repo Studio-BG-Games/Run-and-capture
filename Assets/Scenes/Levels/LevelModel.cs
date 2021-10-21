@@ -4,6 +4,5 @@ using UnityEngine;
 public class LevelModel : ScriptableObject
 {
     public string SceneName;
-    public string Name;
     public Sprite MenuSprite;
 }
