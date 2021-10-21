@@ -8,8 +8,6 @@ public class GameData : MonoBehaviour
     public static int coins = 0;
     public static int playerLevel = 5;
     public static int gameMaxPlayers = 2;
-    public static int possibleMaxPlayers = 4;
-    public static int currentChosenLevel = 1;
 
     public static bool isMusicAllowed = true;
     public static bool isSFXAllowed = true;
