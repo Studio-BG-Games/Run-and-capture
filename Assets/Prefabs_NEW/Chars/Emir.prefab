@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 5657602507249370745}
   - component: {fileID: 7509513666596637474}
   - component: {fileID: 6125172369148389766}
+  - component: {fileID: 1623388407224328517}
   m_Layer: 0
   m_Name: Emir
   m_TagString: Untagged
@@ -489,6 +490,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1623388407224328517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8853505284533567511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb9aa66cf2083c4b810af683ee33947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponType: 2
+  _weaponlist:
+  - {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
+  - {fileID: 11400000, guid: ee4c4a79d615ec7479a4c1c287803cec, type: 2}
 --- !u!1001 &154816995971194204
 PrefabInstance:
   m_ObjectHideFlags: 0

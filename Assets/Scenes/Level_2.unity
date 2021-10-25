@@ -97,8 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: ef9ec0dbc3f7f974b9984e3436490d4c,
-    type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 1579331161}
 --- !u!196 &4
 NavMeshSettings:
@@ -4858,6 +4857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1801060022}
   - component: {fileID: 1801060032}
+  - component: {fileID: 1801060036}
   - component: {fileID: 1801060026}
   - component: {fileID: 1801060023}
   - component: {fileID: 1801060024}
@@ -5185,6 +5185,19 @@ MonoBehaviour:
   hit_SFX: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
   throw_SFX: {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
   ac: {fileID: 1801060029}
+--- !u!114 &1801060036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801060021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24318c8c1ca83a54ba0ec54a5fe253e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: {fileID: 0}
 --- !u!1001 &1850245407
 PrefabInstance:
   m_ObjectHideFlags: 0
