@@ -5194,13 +5194,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1801060021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7eb9aa66cf2083c4b810af683ee33947, type: 3}
+  m_Script: {fileID: 11500000, guid: 24318c8c1ca83a54ba0ec54a5fe253e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponType: 2
-  _weaponlist:
-  - {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
-  - {fileID: 11400000, guid: ee4c4a79d615ec7479a4c1c287803cec, type: 2}
+  _weapon: {fileID: 0}
 --- !u!1001 &1850245407
 PrefabInstance:
   m_ObjectHideFlags: 0

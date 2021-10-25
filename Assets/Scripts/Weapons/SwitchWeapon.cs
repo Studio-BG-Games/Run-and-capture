@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchWeapon : MonoBehaviour
-{    
     public enum TypeOfWeapon
     {
         Bolt,
         Laser,
         Random
     }
+public class SwitchWeapon : MonoBehaviour
+{    
+    // public enum TypeOfWeapon
+    // {
+    //     Bolt,
+    //     Laser,
+    //     Random
+    // }
 
     [SerializeField] private TypeOfWeapon _weaponType;
     [SerializeField] private List<PlayerAction> _weaponlist = new List<PlayerAction>();
-
     private PlayerState _playerState;
     private AttackEnergyController _attackEnergiController; // = new AttackEnergyController();
 
@@ -24,6 +29,7 @@ public class SwitchWeapon : MonoBehaviour
         _attackEnergiController = GetComponent<AttackEnergyController>();
         
         _playerState = GetComponent<PlayerState>();
+        //_weapon = StateWeapon._chosenWeapon;
         ChangehWeapon(_weaponType);
     }
 
@@ -60,6 +66,11 @@ public class SwitchWeapon : MonoBehaviour
                 _attackEnergiController.attackResetTime = 2f;
                 _attackEnergiController.attackCost = 0.5f;
             }
+    }
+
+    public void Switcher(PlayerAction weaponScript)
+    {
+        
     }
 }
 
