@@ -190,7 +190,6 @@ MonoBehaviour:
   _weaponlist:
   - {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
   - {fileID: 11400000, guid: ee4c4a79d615ec7479a4c1c287803cec, type: 2}
-  _isRandom: 0
 --- !u!114 &8834890311105204208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5182c2cb5eef6d849b560f764c4a0ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 250
+  startHealth: 4200
   currentHealth: 0
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
     type: 3}
