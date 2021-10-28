@@ -11,6 +11,7 @@ public class Attack : PlayerAction
 
     public AudioClip throw_SFX;
     
+    
     public override bool IsActionAllowed(TileInfo targetTile, PlayerState playerState)
     {
         if (!targetTile)

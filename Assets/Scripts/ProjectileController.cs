@@ -63,7 +63,7 @@ public class ProjectileController : MonoBehaviour
         _tileOffset = tileOffset;
         this.owner = owner;
 
-        transform.LookAt(direction);
+        transform.LookAt(direction * 10f);
     }
 
     private void OnTriggerEnter(Collider other)
