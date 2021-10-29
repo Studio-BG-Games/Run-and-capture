@@ -15,7 +15,7 @@ public class ScaleChanger : MonoBehaviour
         _startScale.localScale = new Vector3(minScale, minScale);
     //    _maxRadius.radius = 0.1f;
     }
-    private void FixedUpdate() 
+    private void Update() 
     {
         for(float i = minScale; i <= 1; i++)
         {

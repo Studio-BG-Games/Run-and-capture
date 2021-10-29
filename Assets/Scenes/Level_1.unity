@@ -4724,7 +4724,7 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   targetMoveTile: {fileID: 0}
   currentActionTarget: {fileID: 0}
-  defaultAction: {fileID: 11400000, guid: ee4c4a79d615ec7479a4c1c287803cec, type: 2}
+  defaultAction: {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
   currentAction: {fileID: 0}
   enemies: []
 --- !u!114 &1801060027
