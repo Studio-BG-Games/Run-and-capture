@@ -60,10 +60,10 @@ public class ProjectileController : MonoBehaviour
     {
         _isMoving = true;
         _rb.velocity = direction.normalized * velocity;
-        _tileOffset = tileOffset;
+        _tileOffset = tileOffset + 0.5f;
         this.owner = owner;
 
-        transform.LookAt(direction);
+        transform.LookAt((direction + Vector3.forward) * 10f);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -10,6 +10,10 @@ public class Attack : PlayerAction
     public GameObject standartAttackGroundImpact;
 
     public AudioClip throw_SFX;
+
+    //
+    //[SerializeField] private Transform _offset;
+    
     
     public override bool IsActionAllowed(TileInfo targetTile, PlayerState playerState)
     {
@@ -30,8 +34,8 @@ public class Attack : PlayerAction
     public override void Impact(TileInfo targetTile, PlayerState currentPlayer)
     {
         base.Impact(targetTile, currentPlayer);
-        Vector3 direction = targetTile.tilePosition - currentPlayer.currentTile.tilePosition;
-        InitAttack(currentPlayer.currentTile.tilePosition, direction, currentPlayer.ownerIndex);
+        Vector3 direction = (targetTile.tilePosition  ) - currentPlayer.currentTile.tilePosition ;
+        InitAttack(currentPlayer.currentTile.tilePosition, direction  , currentPlayer.ownerIndex);
         //currentPlayer.GetComponent<AudioController>().PlaySound(throw_SFX);
     }
 

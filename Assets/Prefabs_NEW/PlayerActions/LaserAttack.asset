@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef86a7fd23f3f604d945074968fd7063, type: 3}
   m_Name: LaserAttack
   m_EditorClassIdentifier: 
-  duration: 0.15
-  distance: 1
+  duration: 0.3
+  distance: 2
   actionType: 1
   standartAttackPref: {fileID: 8121987183708165570, guid: cb8749a9b299fa64089f10bdb65197f5,
     type: 3}
-  standartAttackGroundImpact: {fileID: 8715260329460421181, guid: e0388f43a34de79458c79763de903ffb,
+  standartAttackGroundImpact: {fileID: 8619867339336636724, guid: fb745cfc34702fc4daee97f8f3273f09,
     type: 3}
   throw_SFX: {fileID: 0}
