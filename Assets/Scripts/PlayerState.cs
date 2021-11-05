@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(TileMovement))]
@@ -32,12 +33,22 @@ public class PlayerState : MonoBehaviour
 
     private bool isInitialized = false;
 
+    //
+    private int _towerCount = 0;
+    private int _playerCount = 0;
+    
+    [SerializeField] private List<PlayerState> _crystalls ;
+    
+
+
     private void Awake()
     {
         TileManagment.OnInitialized += SetStartParams;
         CharSpawner.OnPlayerSpawned += ResetEnemies;
        // DeathChecker.OnPlayerDeathPermanent += ResetEnemies;
         OnCharStateChanged += OnStateChanged;
+        //
+        _playerCount = FindObjectsOfType<PlayerState>().Length;
     }
 
     private void Start()
@@ -46,14 +57,47 @@ public class PlayerState : MonoBehaviour
         {
             SetStartParams();
         }
-
-        //Debug.Log(TileManagment.GetTileAlt(transform.position));
+    
+        //_crystalls = new List<PlayerState>() {GameObject.FindObjectOfType<DirectOwner>()};
     }
+    
+    private void Update()
+    {
+        List<PlayerState> players = GameManager.activePlayers;
+        _towerCount = FindObjectsOfType<DirectOwner>().Length;
+        foreach(PlayerState player in players)
+        {
+            // enemies.Count < _towerCount + 1 || 
+            if((enemies.Count < _towerCount + 3) && !gameObject.GetComponent<DirectOwner>())
+            {
+                enemies.Add(FindObjectOfType<DirectOwner>().GetComponent<PlayerState>());
+            }
+                
+        }
+
+        
+        //enemies = enemies.Add(GameObject.FindObjectOfType<DirectOwner>().gameObject.GetComponent<PlayerState>());
+    }
+/*
+    private List<DirectOwner> SetCrystallEnemies(List<PlayerState> enemies)
+    {
+        enemies = SetEnemies();
+        var crystalls = new List<DirectOwner>() { GameObject.FindObjectOfType<DirectOwner>() };
+        foreach (D crystall in _crystalls)
+        {
+            if (crystall.gameObject.GetComponent<DirectOwner>())
+                _crystalls.Add(crystall);
+        }
+        return _crystalls;
+    }
+    */
 
     public void ResetEnemies()
     {
         enemies.Clear();
         enemies = SetEnemies();
+        //_crystalls = SetCrystallEnemies(SetEnemies());
+        //SetCrystallEnemies();
     }
 
     private void OnStateChanged(CharacterState newState)
@@ -135,10 +179,15 @@ public class PlayerState : MonoBehaviour
         List<PlayerState> enemies = new List<PlayerState>();
         foreach (PlayerState player in players)
         {
-            if (player.gameObject.name != gameObject.name)
+            // && player.ownerIndex != gameObject.GetComponent<PlayerState>().ownerIndex
+            if (player.gameObject.name != gameObject.name && player.ownerIndex != gameObject.GetComponent<PlayerState>().ownerIndex)
             {
                 enemies.Add(player);
-            }
+            }/*
+            if(gameObject.GetComponent<Crystall>() && gameObject.GetComponent<PlayerState>())
+            {
+                enemies.Add(gameObject.GetComponent<PlayerState>());
+            }*/
         }
         return enemies;
     }

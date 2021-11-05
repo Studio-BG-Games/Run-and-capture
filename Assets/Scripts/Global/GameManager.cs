@@ -87,4 +87,7 @@ public enum TileOwner
     Ragnar = 2,
     Emir = 3,
     Asvald = 4,
+
+    Tower = 5
+    
 }

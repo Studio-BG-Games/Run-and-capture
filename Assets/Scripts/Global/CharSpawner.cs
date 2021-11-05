@@ -37,7 +37,8 @@ public class CharSpawner : MonoBehaviour
             }
             foreach (var enemy in GameManager.activePlayers)
             {
-                if (prefIndex == enemy.ownerIndex )
+                if (prefIndex == enemy.ownerIndex && 
+                gameObject.GetComponent<Crystall>())
                 {
                     canSpawnThisPref = false;
                 }
