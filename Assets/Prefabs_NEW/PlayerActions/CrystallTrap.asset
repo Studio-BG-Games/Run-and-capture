@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41080f62be501b4a97bf5b9ab9dd6f4, type: 3}
-  m_Name: Build_Crystal
+  m_Script: {fileID: 11500000, guid: 57f6dcf8306c22c429eb9ebde71dab56, type: 3}
+  m_Name: CrystallTrap
   m_EditorClassIdentifier: 
   duration: 0.5
   distance: 1
-  actionType: 2
-  buildPref: {fileID: 8834890311105204202, guid: 935cb93f0fb421b47bac368a21e42353,
+  actionType: 1
+  trapPref: {fileID: 8305872390849316384, guid: 592d4105a27218b4ea4567191c1c9fba,
     type: 3}

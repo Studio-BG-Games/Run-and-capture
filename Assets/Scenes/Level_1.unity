@@ -124,6 +124,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3435604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3435605}
+  - component: {fileID: 3435606}
+  m_Layer: 0
+  m_Name: EnemyObserver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3435605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3435606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435604}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95921be22f9b5824c9c20add6e95c9c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _count: 0
+  enemies: []
 --- !u!1 &26582153 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
@@ -3025,6 +3070,7 @@ MonoBehaviour:
   - {fileID: 8834890311105204202, guid: 585c8859be6cfc149ad6ff266df753df, type: 3}
   - {fileID: 8853505284533567511, guid: fdb87511c2362f4408b49383b0f37ff6, type: 3}
   - {fileID: 1830563931789208422, guid: cdc012e0347e3ff4c8bcc6e16a2f3bc3, type: 3}
+  - {fileID: 8834890311105204202, guid: 935cb93f0fb421b47bac368a21e42353, type: 3}
 --- !u!114 &1105100998 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5359326301570881751, guid: a72be70db1163c14b8b7a3cb1c00a59d,
@@ -4724,9 +4770,10 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   targetMoveTile: {fileID: 0}
   currentActionTarget: {fileID: 0}
-  defaultAction: {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
+  defaultAction: {fileID: 11400000, guid: dcded92d8d60ee347846c8b18600c9dc, type: 2}
   currentAction: {fileID: 0}
   enemies: []
+  _crystalls: []
 --- !u!114 &1801060027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4906,7 +4953,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBonusCount: 2
   attackBonuses: []
-  protectBonuses: []
+  protectBonuses:
+  - {fileID: 11400000, guid: ee2dfe6eb8350d5449472b1acf94b2b3, type: 2}
   currentSelectedBonus: {fileID: 0}
 --- !u!114 &1801060034
 MonoBehaviour:

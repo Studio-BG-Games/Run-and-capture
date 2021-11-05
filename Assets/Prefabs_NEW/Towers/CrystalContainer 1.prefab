@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -8898625679934015859}
   - component: {fileID: 8413281927074889085}
   m_Layer: 0
-  m_Name: CrystalContainer
+  m_Name: CrystalContainer 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb480d4011a50c488ad69c1b525d8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: 2
+  owner: 5
   startHealth: 190
   currentHealth: 500
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,

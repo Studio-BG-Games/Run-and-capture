@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41080f62be501b4a97bf5b9ab9dd6f4, type: 3}
-  m_Name: Build_Crystal
+  m_Script: {fileID: 11500000, guid: 2758ee7f0b824d54fad918b91c9de5d1, type: 3}
+  m_Name: CrystallBombBonus
   m_EditorClassIdentifier: 
-  duration: 0.5
-  distance: 1
-  actionType: 2
-  buildPref: {fileID: 8834890311105204202, guid: 935cb93f0fb421b47bac368a21e42353,
-    type: 3}
+  bonusType: 1
+  bonusAction: {fileID: 11400000, guid: 02499a2a475f8944d86b17f16d100abc, type: 2}
+  icon: {fileID: 21300000, guid: b53496893be8b3c49917a89d33f9a112, type: 3}
+  bonusLevel: 0

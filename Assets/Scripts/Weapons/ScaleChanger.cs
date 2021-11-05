@@ -7,7 +7,8 @@ public class ScaleChanger : MonoBehaviour
     [SerializeField] private Transform _startScale;
     private float minScale = 0;
     private float maxScale = 1f;
-
+    [SerializeField] private float target = 0.1f;
+    [SerializeField] private float _setSize = 1f;
 
     private void Awake() 
     {
@@ -17,9 +18,9 @@ public class ScaleChanger : MonoBehaviour
     }
     private void Update() 
     {
-        for(float i = minScale; i <= 1; i++)
+        for(float i = minScale; i <= _setSize; i++)
         {
-            var x = 0.1f;
+            var x = target;
             minScale += x;
             
             _startScale.localScale = new Vector3(minScale, 1f, minScale);
