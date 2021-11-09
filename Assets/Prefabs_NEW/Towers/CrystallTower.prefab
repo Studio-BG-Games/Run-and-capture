@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f701310aaea215a4d9e0c8646d3e1ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextTileMoveTime: 0.5
-  moveDistance: 1
+  nextTileMoveTime: 0.25
+  moveDistance: 0
   moveVFX: {fileID: 0}
 --- !u!114 &8834890311105204210
 MonoBehaviour:
@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAttackEnergy: 3.1
-  attackResetTime: 2
-  attackCost: 3
+  attackResetTime: 2.5
+  attackCost: 0
 --- !u!114 &1406732623307280272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAIActive: 1
-  botState: 1
+  botState: 2
   leftInput: {x: 0, y: 0}
   rightInput: {x: 0, y: 0}
   agressiveTime: 30000
@@ -239,7 +239,7 @@ MonoBehaviour:
   updateBehaviourIn: 0.6
   neutralCapDistance: 6
   detectDistance: 3
-  bonusDetectDistance: 8
+  bonusDetectDistance: 0
   attackPlayerDistance: 2
   bonusPlaceColdown: 4
   protectionDistance: 2
