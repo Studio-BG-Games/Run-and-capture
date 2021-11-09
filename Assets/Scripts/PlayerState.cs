@@ -72,7 +72,7 @@ public class PlayerState : MonoBehaviour
         {
             // && player.ownerIndex != gameObject.GetComponent<PlayerState>().ownerIndex
             // (enemies.Count < _towerCount + 3)
-            if ((enemies.Count < _towerCount + 1)
+            if ((enemies.Count < _towerCount + GameManager.activePlayers.Count + 3)
                 &&
                 FindObjectOfType<ToweHealthController>() != null                
                 &&

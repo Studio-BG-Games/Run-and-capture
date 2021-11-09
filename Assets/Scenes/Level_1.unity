@@ -2913,6 +2913,7 @@ MonoBehaviour:
   - {fileID: 8097115959948697207, guid: c3ae9b3dc92386b4aa244713690d894a, type: 3}
   - {fileID: 8097115959948697207, guid: 9d4b9d6b2ecc5cc4aba97c4b296568d5, type: 3}
   - {fileID: 4203281806542915686, guid: 3e5d8011af939c646a23bfd84e4b5850, type: 3}
+  - {fileID: 8097115959948697207, guid: c3ae9b3dc92386b4aa244713690d894a, type: 3}
   activeBonuses: []
 --- !u!114 &1102420995
 MonoBehaviour:
@@ -3067,10 +3068,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateRate: 10
   charPrefs:
-  - {fileID: 8834890311105204202, guid: 27152153f1b1cf443ac798b4dab20fa3, type: 3}
+  - {fileID: 8834890311105204202, guid: 585c8859be6cfc149ad6ff266df753df, type: 3}
   - {fileID: 8853505284533567511, guid: fdb87511c2362f4408b49383b0f37ff6, type: 3}
   - {fileID: 1830563931789208422, guid: cdc012e0347e3ff4c8bcc6e16a2f3bc3, type: 3}
-  - {fileID: 8834890311105204202, guid: 935cb93f0fb421b47bac368a21e42353, type: 3}
 --- !u!114 &1105100998 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5359326301570881751, guid: a72be70db1163c14b8b7a3cb1c00a59d,
@@ -4770,7 +4770,7 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   targetMoveTile: {fileID: 0}
   currentActionTarget: {fileID: 0}
-  defaultAction: {fileID: 11400000, guid: dcded92d8d60ee347846c8b18600c9dc, type: 2}
+  defaultAction: {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
   currentAction: {fileID: 0}
   enemies: []
   _crystalls: []

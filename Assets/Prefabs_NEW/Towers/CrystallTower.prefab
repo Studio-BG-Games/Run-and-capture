@@ -239,7 +239,7 @@ MonoBehaviour:
   updateBehaviourIn: 0.6
   neutralCapDistance: 6
   detectDistance: 3
-  bonusDetectDistance: 0
+  bonusDetectDistance: 8
   attackPlayerDistance: 2
   bonusPlaceColdown: 4
   protectionDistance: 2
