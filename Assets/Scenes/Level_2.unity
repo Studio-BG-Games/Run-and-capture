@@ -4967,6 +4967,7 @@ MonoBehaviour:
   defaultAction: {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
   currentAction: {fileID: 0}
   enemies: []
+  _crystalls: []
 --- !u!114 &1801060027
 MonoBehaviour:
   m_ObjectHideFlags: 0
