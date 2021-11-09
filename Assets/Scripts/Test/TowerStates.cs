@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class TowerCount : MonoBehaviour
+public class TowerStates : PlayerState
 {
-    public int towersCount = 0;
+    
 }

@@ -187,7 +187,12 @@ public class AI_BotController : MonoBehaviour
 
     private void SetInitialBotParams()
     {
+        //
+        if(_currentEnemy != null 
+            && _currentEnemy.ownerIndex == FindObjectOfType<ToweHealthController>().GetComponent<PlayerState>().ownerIndex)
         _currentEnemy = null;
+
+        //
         _startBotPoint = _playerState.currentTile.tilePosition;
         //Debug.Log(_startBotPoint);
         //botState = BotState.Patrol;
@@ -370,7 +375,7 @@ public class AI_BotController : MonoBehaviour
         {
             foreach (PlayerState enemy in _playerState.enemies)
             {
-                if (enemy == null)
+                if (enemy == null)//
                 {
                     continue;
                 }

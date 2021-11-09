@@ -82,8 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 0
-  velocity: 10
-  damage: 440
+  velocity: 15
+  damage: 380
 --- !u!114 &1813624109411210032
 MonoBehaviour:
   m_ObjectHideFlags: 0

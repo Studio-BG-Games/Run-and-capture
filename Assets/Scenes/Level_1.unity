@@ -3067,7 +3067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateRate: 10
   charPrefs:
-  - {fileID: 8834890311105204202, guid: 585c8859be6cfc149ad6ff266df753df, type: 3}
+  - {fileID: 8834890311105204202, guid: 27152153f1b1cf443ac798b4dab20fa3, type: 3}
   - {fileID: 8853505284533567511, guid: fdb87511c2362f4408b49383b0f37ff6, type: 3}
   - {fileID: 1830563931789208422, guid: cdc012e0347e3ff4c8bcc6e16a2f3bc3, type: 3}
   - {fileID: 8834890311105204202, guid: 935cb93f0fb421b47bac368a21e42353, type: 3}
@@ -4953,8 +4953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBonusCount: 2
   attackBonuses: []
-  protectBonuses:
-  - {fileID: 11400000, guid: ee2dfe6eb8350d5449472b1acf94b2b3, type: 2}
+  protectBonuses: []
   currentSelectedBonus: {fileID: 0}
 --- !u!114 &1801060034
 MonoBehaviour:
@@ -14388,9 +14387,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
-  canMove: 1
-  canBeAttacked: 1
-  canBuildHere: 1
+  canMove: 0
+  canBeAttacked: 0
+  canBuildHere: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   easyCaptureFor: 
@@ -30320,9 +30319,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
-  canMove: 1
-  canBeAttacked: 1
-  canBuildHere: 1
+  canMove: 0
+  canBeAttacked: 0
+  canBuildHere: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   easyCaptureFor: 

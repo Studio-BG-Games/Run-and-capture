@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 8834890311105204220}
   - component: {fileID: 8834890311105204219}
   m_Layer: 0
-  m_Name: Ragnar
+  m_Name: Ragnar 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   targetMoveTile: {fileID: 0}
   currentActionTarget: {fileID: 0}
-  defaultAction: {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
+  defaultAction: {fileID: 11400000, guid: dcded92d8d60ee347846c8b18600c9dc, type: 2}
   currentAction: {fileID: 0}
   enemies: []
   _crystalls: []
@@ -327,7 +327,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBonusCount: 2
   attackBonuses: []
-  protectBonuses: []
+  protectBonuses:
+  - {fileID: 11400000, guid: ee2dfe6eb8350d5449472b1acf94b2b3, type: 2}
+  - {fileID: 11400000, guid: ee2dfe6eb8350d5449472b1acf94b2b3, type: 2}
   currentSelectedBonus: {fileID: 0}
 --- !u!114 &8834890311105204223
 MonoBehaviour:
