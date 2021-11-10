@@ -133,7 +133,7 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   targetMoveTile: {fileID: 0}
   currentActionTarget: {fileID: 0}
-  defaultAction: {fileID: 11400000, guid: aa2f04e23889dba4ba225ceac2b7275b, type: 2}
+  defaultAction: {fileID: 11400000, guid: f7a96d7d7fba39d4cb0137e81e70e830, type: 2}
   currentAction: {fileID: 0}
   enemies: []
   _crystalls: []

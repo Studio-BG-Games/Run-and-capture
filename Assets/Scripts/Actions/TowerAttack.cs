@@ -1,11 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Attack", menuName = "Actions/New Attack")]
-public class Attack : PlayerAction
+
+[CreateAssetMenu(fileName = "New TowerAttack", menuName = "Actions/New TowerAttack")]
+public class TowerAttack : PlayerAction
 {
+
     public GameObject standartAttackPref;
     public GameObject standartAttackGroundImpact;
 
@@ -46,7 +47,9 @@ public class Attack : PlayerAction
         var currentProjectile = Instantiate(standartAttackPref, startPosition, standartAttackPref.transform.rotation).GetComponent<ProjectileController>();
         currentProjectile.SetinitialParams(projOwner, direction, TileManagment.tileOffset);
         //
-
+        currentProjectile.GetComponent<ProjectileController>().owner = projOwner;
+        int activeModelIndex = (int)projOwner - 1;
+        currentProjectile.transform.GetChild(activeModelIndex).gameObject.SetActive(true);
         //
 
         Instantiate(standartAttackGroundImpact, startPosition, standartAttackGroundImpact.transform.rotation);

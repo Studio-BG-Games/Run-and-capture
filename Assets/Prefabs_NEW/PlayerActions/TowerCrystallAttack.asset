@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edec6846e70b8c6408283a80751a8b81, type: 3}
+  m_Name: TowerCrystallAttack
+  m_EditorClassIdentifier: 
+  duration: 0.6
+  distance: 2
+  actionType: 1
+  standartAttackPref: {fileID: 8121987183708165570, guid: 9b1736dcfdc57a942840ff040a0d4cc7,
+    type: 3}
+  standartAttackGroundImpact: {fileID: 309578085925084758, guid: 3a909a798f418024fa81484aff623108,
+    type: 3}
+  throw_SFX: {fileID: 0}

@@ -83,6 +83,7 @@ MonoBehaviour:
   defaultAction: {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
   currentAction: {fileID: 0}
   enemies: []
+  _crystalls: []
 --- !u!114 &9168429453977567459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCaptureTime: 1
-  capVFX: {fileID: 1651852338557341938, guid: fa6c1fc3da7c8d24c85a88b00cf598d4, type: 3}
+  capVFX: {fileID: 5732852186060375560, guid: 54d847a18c62f57479c53469d4398ceb, type: 3}
   _ac: {fileID: 8981675715780948568}
 --- !u!114 &6646124388588297559
 MonoBehaviour:
