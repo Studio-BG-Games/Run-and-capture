@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f6dcf8306c22c429eb9ebde71dab56, type: 3}
+  m_Name: Build_CrystallTowerTrap
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  distance: 1
+  actionType: 1
+  trapPref: {fileID: 8834890311105204202, guid: 935cb93f0fb421b47bac368a21e42353,
+    type: 3}

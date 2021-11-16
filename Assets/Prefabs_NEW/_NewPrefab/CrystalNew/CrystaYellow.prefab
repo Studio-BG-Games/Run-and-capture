@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1860354886055367572}
   - component: {fileID: 2187614262282769931}
   m_Layer: 0
-  m_Name: CrystaYellow 1
+  m_Name: CrystaYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,7 +636,7 @@ PrefabInstance:
     - target: {fileID: 8998066517073135031, guid: a6e69add579ce85468c8a53493ee5f2d,
         type: 3}
       propertyPath: m_Name
-      value: PowerupGlow1 (1)
+      value: PowerupGlow
       objectReference: {fileID: 0}
     - target: {fileID: 8998066517073430615, guid: a6e69add579ce85468c8a53493ee5f2d,
         type: 3}

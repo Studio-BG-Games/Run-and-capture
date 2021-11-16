@@ -200,7 +200,8 @@ public class DeathChecker : MonoBehaviour
         }
 
         //////////////////////////PLAYER DEATH//////////////
-        if (player.ownerIndex == TileOwner.Ariost)
+        if (player.ownerIndex == TileOwner.Ariost 
+            && !player.GetComponent<ToweHealthController>())
         {
             TileManagment.OnAnyTileCaptured = null;
             TileManagment.OnInitialized = null;
@@ -212,7 +213,14 @@ public class DeathChecker : MonoBehaviour
         //////////////////////////PLAYER DEATH//////////////
         CharSpawner.OnPlayerSpawned -= player.ResetEnemies;
 
+        if(gameObject.GetComponent<ToweHealthController>())
+        {
+            Destroy(player.gameObject.GetComponent<ToweHealthController>());
+        }
+
+        /*
         Destroy(player.gameObject); //for test purp
+        */
     }
 
     private IEnumerator GoToMenuAfter(float time)

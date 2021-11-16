@@ -210,10 +210,9 @@ MonoBehaviour:
   targetMoveTile: {fileID: 0}
   currentActionTarget: {fileID: 0}
   defaultAction: {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
-  currentAction: {fileID: 11400000, guid: dcded92d8d60ee347846c8b18600c9dc, type: 2}
-  enemies:
-  - {fileID: 0}
-  - {fileID: 0}
+  currentAction: {fileID: 0}
+  enemies: []
+  _crystalls: []
 --- !u!114 &8834890311105204211
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ public class PlayerState : MonoBehaviour
     private int _towerCount = 0;
     private int _playerCount = 0;
     
-    [SerializeField] private List<PlayerState> _crystalls ;
+    [SerializeField] private List<ToweHealthController> _crystalls ;
     
 
 
@@ -63,41 +63,55 @@ public class PlayerState : MonoBehaviour
     
     private void Update()
     {
-        List<PlayerState> players = GameManager.activePlayers;
-        _towerCount = FindObjectsOfType<DirectOwner>().Length;
-        foreach(PlayerState player in players)
-        {
-            // enemies.Count < _towerCount + 1 || 
-            if((enemies.Count < _towerCount + 3) && !gameObject.GetComponent<DirectOwner>())
-            {
-                enemies.Add(FindObjectOfType<DirectOwner>().GetComponent<PlayerState>());
-            }
-                
-        }
+        AddTowerEnemy();
+    }
 
-        
-        //enemies = enemies.Add(GameObject.FindObjectOfType<DirectOwner>().gameObject.GetComponent<PlayerState>());
-    }
-/*
-    private List<DirectOwner> SetCrystallEnemies(List<PlayerState> enemies)
+
+
+    private List<PlayerState> AddTowerEnemy()
     {
-        enemies = SetEnemies();
-        var crystalls = new List<DirectOwner>() { GameObject.FindObjectOfType<DirectOwner>() };
-        foreach (D crystall in _crystalls)
+        List<PlayerState> players = new List<PlayerState>(SetEnemies());
+        enemies = new List<PlayerState>(enemies);
+        _towerCount = FindObjectsOfType<ToweHealthController>().Length;
+        foreach (PlayerState player in players)
         {
-            if (crystall.gameObject.GetComponent<DirectOwner>())
-                _crystalls.Add(crystall);
+            // && player.ownerIndex != gameObject.GetComponent<PlayerState>().ownerIndex
+            // (enemies.Count < _towerCount + 3)
+            if ((enemies.Count < _towerCount + 3)
+                &&
+                FindObjectOfType<ToweHealthController>() != null                
+                &&
+                player.ownerIndex != gameObject.GetComponent<PlayerState>().ownerIndex
+                &&
+                !gameObject.GetComponent<ToweHealthController>()
+                && 
+                gameObject.GetComponent<PlayerState>().ownerIndex != FindObjectOfType<ToweHealthController>().GetComponent<PlayerState>().ownerIndex
+                )
+            {
+                //enemies.Add(player);
+                enemies.Add(FindObjectOfType<ToweHealthController>().GetComponent<PlayerState>());
+            }
         }
-        return _crystalls;
+        return enemies;
     }
-    */
+
+
+    private void SetTowerEnemyForAI()
+    {
+        if ((enemies.Count < _towerCount + GameManager.activePlayers.Count)
+            && gameObject.GetComponent<HealthController>()
+            && !gameObject.GetComponent<MainWeapon>()
+            )
+        {
+            enemies.Add(FindObjectOfType<ToweHealthController>().GetComponent<PlayerState>());
+        }
+    }
 
     public void ResetEnemies()
     {
         enemies.Clear();
         enemies = SetEnemies();
-        //_crystalls = SetCrystallEnemies(SetEnemies());
-        //SetCrystallEnemies();
+
     }
 
     private void OnStateChanged(CharacterState newState)
@@ -183,11 +197,8 @@ public class PlayerState : MonoBehaviour
             if (player.gameObject.name != gameObject.name && player.ownerIndex != gameObject.GetComponent<PlayerState>().ownerIndex)
             {
                 enemies.Add(player);
-            }/*
-            if(gameObject.GetComponent<Crystall>() && gameObject.GetComponent<PlayerState>())
-            {
-                enemies.Add(gameObject.GetComponent<PlayerState>());
-            }*/
+            }
+
         }
         return enemies;
     }
