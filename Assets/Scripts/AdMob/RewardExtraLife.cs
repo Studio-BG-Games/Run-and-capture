@@ -27,7 +27,9 @@ public class RewardExtraLife : MonoBehaviour
     {
         extralife = _extraLife.life ;
         //extralife--;
-        _extraLife.life--;
+        //_extraLife.life--;
+        Count.lifesValue -= 1;
+        _extraLife.life = Count.lifesValue;
     }
 
     public void ShowAd()
