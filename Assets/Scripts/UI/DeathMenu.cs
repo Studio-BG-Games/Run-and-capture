@@ -7,9 +7,23 @@ public class DeathMenu : MonoBehaviour
 {
     public static bool playerIsDead = false; 
     [SerializeField] private HealthController playerHealth;
-    public int extralife = 1;
+    [SerializeField] private GameObject button;
+    [SerializeField] private GameObject heart;
+    private bool isActive;
+    //[SerializeField] private Extralife lifes; 
+    //public int extralife = 1;
 
     public GameObject deathMenuUI;
+    /*
+    private void Update() {
+
+        if(lifes.life <= 0)
+        {        
+            Quit(lifes.life);
+            LoadMenu();
+        }
+    }
+    */
     
  /*
     void Update()
@@ -49,11 +63,15 @@ public class DeathMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void Resurect()
+    public void Quit(int extra)
     {
+       /* for(int i = extra; i > 0; i--)
+        {
+            lifes.life = i + extra;
+        }
         //extralife -= lifes;
-        Debug.Log("Comertial");
-        playerHealth.currentHealth = 4200;
-
+        //Debug.Log("Comertial");
+        //playerHealth.currentHealth = 4200;
+*/
     }
 }

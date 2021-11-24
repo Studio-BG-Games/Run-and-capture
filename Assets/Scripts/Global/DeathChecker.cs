@@ -9,6 +9,7 @@ public class DeathChecker : MonoBehaviour
     public GameObject deathParticles, resParticles;
     public GameObject deathBlue_VFX, deathRed_VFX, deathGreen_VFX, deathYellow_VFX;
     public DeathMenu deathMenu;
+    public Extralife extralife;
 
     public AudioSource deathSrc;
 
@@ -221,7 +222,13 @@ public class DeathChecker : MonoBehaviour
         {
             Destroy(player.gameObject.GetComponent<ToweHealthController>());
         }
-
+/*
+        if(extralife.life < 0)
+        {
+            deathMenu.LoadMenu();
+            //SceneLoader.LoadScene(0);
+        }
+*/
         /*
         Destroy(player.gameObject); //for test purp
         */
