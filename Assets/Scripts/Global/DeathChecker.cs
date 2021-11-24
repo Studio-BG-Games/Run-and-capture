@@ -8,6 +8,7 @@ public class DeathChecker : MonoBehaviour
 
     public GameObject deathParticles, resParticles;
     public GameObject deathBlue_VFX, deathRed_VFX, deathGreen_VFX, deathYellow_VFX;
+    public DeathMenu deathMenu;
 
     public AudioSource deathSrc;
 
@@ -208,7 +209,10 @@ public class DeathChecker : MonoBehaviour
             CustomInput.OnTouchDown = null;
             CustomInput.OnTouchUp = null;
             CharSpawner.OnPlayerSpawned = null;
-            StartCoroutine(GoToMenuAfter(3f));
+            //StartCoroutine(GoToMenuAfter(3f));
+            //Time.timeScale = 0f;
+            deathMenu.deathMenuUI.SetActive(true);
+            player.gameObject.SetActive(false);
         }
         //////////////////////////PLAYER DEATH//////////////
         CharSpawner.OnPlayerSpawned -= player.ResetEnemies;
@@ -227,6 +231,12 @@ public class DeathChecker : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         SceneLoader.LoadScene(0);
+    }
+
+    private IEnumerator GoToDeathMenu(float time)
+    {
+        yield return new WaitForSeconds(time);
+        deathMenu.deathMenuUI.SetActive(true);
     }
 
     private void PlayerResActions(PlayerState player)
