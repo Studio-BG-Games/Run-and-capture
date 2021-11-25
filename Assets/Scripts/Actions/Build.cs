@@ -6,6 +6,7 @@ using UnityEngine;
 public class Build : PlayerAction
 {
     public GameObject buildPref;
+    public GameObject prefVFX;
     public override bool IsActionAllowed(TileInfo targetTile, PlayerState playerState)
     {
         if (!targetTile)
@@ -22,8 +23,21 @@ public class Build : PlayerAction
         targetTile.canMove = false;
         var spawnedTower = Instantiate(buildPref, targetTile.tilePosition, buildPref.transform.rotation);
         spawnedTower.GetComponent<ToweHealthController>().owner = currentPlayer.ownerIndex;
+        //SetEffect();
         int activeModelIndex = (int)currentPlayer.ownerIndex - 1;
         spawnedTower.transform.GetChild(activeModelIndex).gameObject.SetActive(true);
         TileManagment.AssignBuildingToTile(targetTile, spawnedTower);
+    }
+
+    private void SetEffect()
+    {
+        if(prefVFX != null)
+        {
+            var effect = Instantiate(prefVFX, buildPref.transform.position, buildPref.transform.rotation);
+        }
+        else
+        {
+            prefVFX = null;
+        }
     }
 }

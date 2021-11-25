@@ -186,13 +186,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6589153021179780257}
   - component: {fileID: 6700202575529220414}
+  - component: {fileID: 2560119615610951704}
   m_Layer: 0
   m_Name: CrystaGreen 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6589153021179780257
 Transform:
   m_ObjectHideFlags: 0
@@ -231,6 +232,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2560119615610951704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5781090781081929243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daea5dc0944a6f64494462ccf70528f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefVFX: {fileID: 5056009352300414474, guid: 06523df870a4ea841951e16293f9195b, type: 3}
 --- !u!1001 &2719370941896027787
 PrefabInstance:
   m_ObjectHideFlags: 0

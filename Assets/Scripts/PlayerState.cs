@@ -91,6 +91,10 @@ public class PlayerState : MonoBehaviour
                 //enemies.Add(player);
                 enemies.Add(FindObjectOfType<ToweHealthController>().GetComponent<PlayerState>());
             }
+            else if(GetComponent<AI_BotController>() && enemies.Count == 0)
+            {
+                enemies.Add(gameObject.GetComponent<MainWeapon>().GetComponent<PlayerState>());
+            }
         }
         return enemies;
     }
@@ -147,22 +151,11 @@ public class PlayerState : MonoBehaviour
         {
             prevState = currentState;
             currentState = newState;
-            /*if (newState == CharacterState.Action)
-            {
-                currentSubState = currentAction.actionType;
-            }*/
+ 
             OnCharStateChanged?.Invoke(newState);            
         }
     }
 
-    /*public void SetNewCharSubState(ActionType newActionType)
-    {
-        if (currentSubState != newActionType)
-        {
-            currentSubState = newActionType;
-            OnSubStateChanged?.Invoke(newActionType);
-        }
-    }*/
 
     public void SetCurrentAction(PlayerAction newAction)
     {

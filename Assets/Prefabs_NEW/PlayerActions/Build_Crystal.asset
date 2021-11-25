@@ -17,3 +17,4 @@ MonoBehaviour:
   actionType: 2
   buildPref: {fileID: 8834890311105204202, guid: 935cb93f0fb421b47bac368a21e42353,
     type: 3}
+  prefVFX: {fileID: 5056009352300414474, guid: 06523df870a4ea841951e16293f9195b, type: 3}

@@ -11,14 +11,36 @@ public class AudioChanger : MonoBehaviour
     [SerializeField] 
     private AudioClip[] throw_SFX;
     private AudioClip hit_Audio, throw_Audio;
+    [SerializeField] private AudioClip bonusSound;    
+    [SerializeField] private AudioClip _startGame;  
+    
     [SerializeField] private AudioController _controller;
+
+    private AudioSource aSourse;
+    private float _startVolume;
 
     private void Awake() {
         //if(state.defaultAction.name == "LaserAttack")/*
+        aSourse = GetComponent<AudioSource>();
+        _startVolume = aSourse.volume ;
+
+        if(bonusSound != null)
+        {
+             aSourse.volume = _startVolume ;
+            aSourse.PlayOneShot(bonusSound);
+        }
+
+        if(_startGame != null)
+        {
+             aSourse.volume = _startVolume ;
+            aSourse.PlayOneShot(_startGame);
+        }
+
 
         hit_Audio = _controller.hit_SFX;
         throw_Audio = _controller.throw_SFX;
         
+
         switch (state.defaultAction.name )
         {
             case "LaserAttack":
@@ -44,6 +66,7 @@ public class AudioChanger : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.GetComponent<ProjectileController>() != null)
         {
+            aSourse.volume = _startVolume ;
             var damage = other.gameObject.GetComponent<ProjectileController>().damage;
             switch (damage)
             {

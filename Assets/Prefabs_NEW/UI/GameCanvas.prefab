@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 195587186}
   - component: {fileID: 195587188}
   - component: {fileID: 195587187}
+  - component: {fileID: 7382954402493043111}
   m_Layer: 5
   m_Name: GreyHeart
   m_TagString: Untagged
@@ -478,6 +479,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7382954402493043111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195587185}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc4cc07f3bed18489377bd6a954befc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victorySound: {fileID: 8300000, guid: c5d6f7a31e8ea824a8e65927b92b86f8, type: 3}
+  defeatSound: {fileID: 8300000, guid: 8e59fee47fa858a419bdc652dc2a9a71, type: 3}
+  audioSource: {fileID: 0}
 --- !u!1 &252584711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,6 +2466,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7382954402493043111}
+        m_TargetAssemblyTypeName: VictoryOrNot, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5194,7 +5222,7 @@ PrefabInstance:
     - target: {fileID: 3858971544782492865, guid: 97a03d914d2e6ea40a905290ce13f5b0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -950.0009
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3858971544782492865, guid: 97a03d914d2e6ea40a905290ce13f5b0,
         type: 3}
@@ -5391,12 +5419,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
---- !u!224 &1415495981690910128 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8170153791961219456, guid: 0d230cc8be529a542a08cb878ab14b18,
-    type: 3}
-  m_PrefabInstance: {fileID: 7117637457990202416}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1415495983658094506 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8170153792821263258, guid: 0d230cc8be529a542a08cb878ab14b18,
@@ -5406,6 +5428,12 @@ RectTransform:
 --- !u!224 &1415495982521125428 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
+    type: 3}
+  m_PrefabInstance: {fileID: 7117637457990202416}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1415495981690910128 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8170153791961219456, guid: 0d230cc8be529a542a08cb878ab14b18,
     type: 3}
   m_PrefabInstance: {fileID: 7117637457990202416}
   m_PrefabAsset: {fileID: 0}

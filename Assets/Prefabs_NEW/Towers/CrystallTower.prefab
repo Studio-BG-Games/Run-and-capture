@@ -368,6 +368,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4af8bb0096e5d15489b02be84b6ce2a4, type: 3}
   - {fileID: 8300000, guid: dbba45d74994bff4e8b406722fc8f468, type: 3}
   _controller: {fileID: 8834890311105204220}
+  bonusSound: {fileID: 8300000, guid: e9d3f46b0b5ba9f4cada050219138aac, type: 3}
 --- !u!114 &8834890311105204220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,11 +560,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CrystaYellow
-      objectReference: {fileID: 0}
-    - target: {fileID: 1340557858584807726, guid: cd3a6e7cd307230459efab7793f89144,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1860354886055367572, guid: cd3a6e7cd307230459efab7793f89144,
         type: 3}
@@ -775,11 +771,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrystaBlue
       objectReference: {fileID: 0}
-    - target: {fileID: 7608523144868387482, guid: 6a709e09a5df18740b3bf6709d4c445b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a709e09a5df18740b3bf6709d4c445b, type: 3}
 --- !u!4 &6848853734429725399 stripped
@@ -799,11 +790,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PowerupGlow
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998066517073135031, guid: a6e69add579ce85468c8a53493ee5f2d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8998066517073430615, guid: a6e69add579ce85468c8a53493ee5f2d,
         type: 3}
@@ -925,11 +911,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrystaRed
       objectReference: {fileID: 0}
-    - target: {fileID: 3665624539438581465, guid: ebf1f3df6cc165e45a6d7b7070a8254b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4149287178398162019, guid: ebf1f3df6cc165e45a6d7b7070a8254b,
         type: 3}
       propertyPath: m_RootOrder
@@ -1004,11 +985,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CrystaGreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 5781090781081929243, guid: cf18b2edcc8f55240b200e3dde713ec6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6589153021179780257, guid: cf18b2edcc8f55240b200e3dde713ec6,
         type: 3}
