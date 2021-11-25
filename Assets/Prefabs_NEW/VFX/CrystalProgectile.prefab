@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8121987183708165572}
   - component: {fileID: 6726407894995915518}
   - component: {fileID: 1813624109411210032}
-  - component: {fileID: 5758753399228782538}
   m_Layer: 0
   m_Name: CrystalProgectile
   m_TagString: Untagged
@@ -82,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6b2684c40d43445a596c28df81c05b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: 1
+  owner: 0
   velocity: 10
   damage: 440
 --- !u!114 &1813624109411210032
@@ -98,22 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sphereRadius: {fileID: 8121987183708165575}
---- !u!114 &5758753399228782538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8121987183708165570}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac3eebbbbc00ae408e546b1023dd451, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startScale: {fileID: 8121987183708165574, guid: cb8749a9b299fa64089f10bdb65197f5,
-    type: 3}
-  target: 0.1
-  _setSize: 1
 --- !u!1001 &2178756392315369057
 PrefabInstance:
   m_ObjectHideFlags: 0

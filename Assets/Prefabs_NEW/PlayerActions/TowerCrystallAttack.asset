@@ -19,4 +19,4 @@ MonoBehaviour:
     type: 3}
   standartAttackGroundImpact: {fileID: 309578085925084758, guid: 197b6c58dfd4be54fa6f618174a88bba,
     type: 3}
-  throw_SFX: {fileID: 0}
+  throw_SFX: {fileID: 8300000, guid: dbba45d74994bff4e8b406722fc8f468, type: 3}

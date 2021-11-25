@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 4694651891899383837}
   - component: {fileID: 5137071782196184314}
   - component: {fileID: 8981675715780948568}
+  - component: {fileID: 836796198181563709}
   - component: {fileID: 7882768389961234964}
   - component: {fileID: 8433444239434282589}
   m_Layer: 0
@@ -264,6 +265,32 @@ MonoBehaviour:
   hit_SFX: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
   throw_SFX: {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
   ac: {fileID: 7882768389961234964}
+--- !u!114 &836796198181563709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830563931789208422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a99dc0f9656d2241b5ada4edc0765ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 9218554871732546463}
+  hit_LightingAudio: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
+  hit_LaserAudio: {fileID: 8300000, guid: 75cd25f85e881bc458b1dd2f2bd8d84a, type: 3}
+  hit_TowerFireballAudio: {fileID: 8300000, guid: ab5fd4a38b69eb84f8ca0b8919cedd9c,
+    type: 3}
+  hit_SFX:
+  - {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
+  - {fileID: 8300000, guid: 75cd25f85e881bc458b1dd2f2bd8d84a, type: 3}
+  - {fileID: 8300000, guid: ab5fd4a38b69eb84f8ca0b8919cedd9c, type: 3}
+  throw_SFX:
+  - {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
+  - {fileID: 8300000, guid: 4af8bb0096e5d15489b02be84b6ce2a4, type: 3}
+  - {fileID: 8300000, guid: dbba45d74994bff4e8b406722fc8f468, type: 3}
+  _controller: {fileID: 8981675715780948568}
 --- !u!82 &7882768389961234964
 AudioSource:
   m_ObjectHideFlags: 0
