@@ -2797,7 +2797,6 @@ GameObject:
   - component: {fileID: 1102420994}
   - component: {fileID: 1102420995}
   - component: {fileID: 1102420996}
-  - component: {fileID: 1102421000}
   - component: {fileID: 1102420997}
   - component: {fileID: 1102420999}
   - component: {fileID: 1102420998}
@@ -3105,21 +3104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b5dadb9684306343863ce74df4f19db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1102421000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102420987}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dc4cc07f3bed18489377bd6a954befc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  victorySound: {fileID: 8300000, guid: c5d6f7a31e8ea824a8e65927b92b86f8, type: 3}
-  defeatSound: {fileID: 8300000, guid: 8e59fee47fa858a419bdc652dc2a9a71, type: 3}
-  audioSource: {fileID: 1102420997}
 --- !u!114 &1105100998 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5359326301570881751, guid: a72be70db1163c14b8b7a3cb1c00a59d,
@@ -4726,8 +4710,8 @@ GameObject:
   - component: {fileID: 1801060033}
   - component: {fileID: 1801060039}
   - component: {fileID: 1801060035}
-  - component: {fileID: 1801060029}
   - component: {fileID: 1801060038}
+  - component: {fileID: 1801060029}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4868,7 +4852,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5083,6 +5067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc4cc07f3bed18489377bd6a954befc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extralife: {fileID: 1801060037}
   victorySound: {fileID: 8300000, guid: c5d6f7a31e8ea824a8e65927b92b86f8, type: 3}
   defeatSound: {fileID: 8300000, guid: 8e59fee47fa858a419bdc652dc2a9a71, type: 3}
   audioSource: {fileID: 1801060029}
@@ -27342,9 +27327,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
-  canMove: 1
-  canBeAttacked: 1
-  canBuildHere: 1
+  canMove: 0
+  canBeAttacked: 0
+  canBuildHere: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   easyCaptureFor: 
@@ -50679,9 +50664,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
-  canMove: 1
-  canBeAttacked: 1
-  canBuildHere: 1
+  canMove: 0
+  canBeAttacked: 0
+  canBuildHere: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   easyCaptureFor: 

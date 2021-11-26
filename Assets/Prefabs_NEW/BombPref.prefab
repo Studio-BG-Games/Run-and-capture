@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8305872390849316397}
   - component: {fileID: 8305872390849316386}
   - component: {fileID: 8305872390849316387}
-  - component: {fileID: 253748612048010415}
   m_Layer: 0
   m_Name: BombPref
   m_TagString: Untagged
@@ -81,34 +80,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &253748612048010415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8305872390849316384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a99dc0f9656d2241b5ada4edc0765ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 8834890311105204208, guid: 935cb93f0fb421b47bac368a21e42353, type: 3}
-  hit_LightingAudio: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
-  hit_LaserAudio: {fileID: 8300000, guid: 75cd25f85e881bc458b1dd2f2bd8d84a, type: 3}
-  hit_TowerFireballAudio: {fileID: 8300000, guid: ab5fd4a38b69eb84f8ca0b8919cedd9c,
-    type: 3}
-  hit_SFX:
-  - {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
-  - {fileID: 8300000, guid: 75cd25f85e881bc458b1dd2f2bd8d84a, type: 3}
-  - {fileID: 8300000, guid: ab5fd4a38b69eb84f8ca0b8919cedd9c, type: 3}
-  throw_SFX:
-  - {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
-  - {fileID: 8300000, guid: 4af8bb0096e5d15489b02be84b6ce2a4, type: 3}
-  - {fileID: 8300000, guid: dbba45d74994bff4e8b406722fc8f468, type: 3}
-  _controller: {fileID: 8834890311105204220, guid: 935cb93f0fb421b47bac368a21e42353,
-    type: 3}
-  bonusSound: {fileID: 8300000, guid: e9d3f46b0b5ba9f4cada050219138aac, type: 3}
 --- !u!1001 &8305872391170760256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,16 +91,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736513976106618110, guid: 18fb35664a7886842aa1702160b555a8,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7652393
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736513976106618110, guid: 18fb35664a7886842aa1702160b555a8,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7652393
       objectReference: {fileID: 0}
     - target: {fileID: 6736513976106618110, guid: 18fb35664a7886842aa1702160b555a8,
         type: 3}

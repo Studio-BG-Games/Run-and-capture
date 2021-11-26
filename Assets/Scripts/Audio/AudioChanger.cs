@@ -34,7 +34,7 @@ public class AudioChanger : MonoBehaviour
 
         if(bonusSound != null)
         {
-             aSourse.volume = _startVolume ;
+            aSourse.volume = _startVolume ;
             aSourse.PlayOneShot(bonusSound);
         }
 
