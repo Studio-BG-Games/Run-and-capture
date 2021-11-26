@@ -2802,6 +2802,7 @@ GameObject:
   - component: {fileID: 1102420996}
   - component: {fileID: 1102420997}
   - component: {fileID: 1102420998}
+  - component: {fileID: 1102420999}
   m_Layer: 0
   m_Name: GameManagment
   m_TagString: Untagged
@@ -3093,6 +3094,23 @@ MonoBehaviour:
   - {fileID: 8834890311105204202, guid: 585c8859be6cfc149ad6ff266df753df, type: 3}
   - {fileID: 8853505284533567511, guid: fdb87511c2362f4408b49383b0f37ff6, type: 3}
   - {fileID: 1830563931789208422, guid: cdc012e0347e3ff4c8bcc6e16a2f3bc3, type: 3}
+--- !u!114 &1102420999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102420987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc4cc07f3bed18489377bd6a954befc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greyHeart: {fileID: 1129072382}
+  extralife: {fileID: 1801060037}
+  victorySound: {fileID: 8300000, guid: c5d6f7a31e8ea824a8e65927b92b86f8, type: 3}
+  defeatSound: {fileID: 8300000, guid: 192ca0b7d7d54cd43bc2df85cf441905, type: 3}
+  audioSource: {fileID: 1102420997}
 --- !u!1 &1114792376
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,11 +3200,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 150272095}
     m_Modifications:
+    - target: {fileID: 1705319700, guid: a72be70db1163c14b8b7a3cb1c00a59d, type: 3}
+      propertyPath: heakth
+      value: 
+      objectReference: {fileID: 1801060027}
     - target: {fileID: 5557455103468811314, guid: a72be70db1163c14b8b7a3cb1c00a59d,
         type: 3}
       propertyPath: bonusController
       value: 
       objectReference: {fileID: 1801060033}
+    - target: {fileID: 7117637457801964014, guid: a72be70db1163c14b8b7a3cb1c00a59d,
+        type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 1801060027}
+    - target: {fileID: 7117637457801964014, guid: a72be70db1163c14b8b7a3cb1c00a59d,
+        type: 3}
+      propertyPath: _extraLife
+      value: 
+      objectReference: {fileID: 1801060037}
     - target: {fileID: 7117637459326710691, guid: a72be70db1163c14b8b7a3cb1c00a59d,
         type: 3}
       propertyPath: m_Name
@@ -3371,6 +3403,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6ea01ae722df64c91475339c635a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1129072382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 195587185, guid: a72be70db1163c14b8b7a3cb1c00a59d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1129072374}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134777176 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4991598031878838981, guid: fa5ecf8ffbe22c7459c44494cee176d9,
