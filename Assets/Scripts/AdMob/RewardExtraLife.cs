@@ -10,6 +10,7 @@ public class RewardExtraLife : MonoBehaviour
     private string RewardUnitId = "ca-app-pub-3940256099942544/5224354917"; //ca-app-pub-6397060103571541~3496155288
     private RewardedAd rewardedAd;
     [SerializeField] private Extralife _extraLife;
+    [SerializeField] private HealthController health;
     private int lifeCount;
     
 
@@ -25,7 +26,7 @@ public class RewardExtraLife : MonoBehaviour
     }
 
     private void Update() {
-
+        if(health.currentHealth <= 0)
         _extraLife.life = lifeCount - 1;
     }
 
@@ -35,7 +36,7 @@ public class RewardExtraLife : MonoBehaviour
         //extralife--;
         //_extraLife.life--;
         lifeCount -= 1;
-        _extraLife.life = lifeCount;
+        _extraLife.life = lifeCount ;
     }
 
     public void ShowAd()

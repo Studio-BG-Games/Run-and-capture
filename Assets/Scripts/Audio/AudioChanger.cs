@@ -21,6 +21,7 @@ public class AudioChanger : MonoBehaviour
 
     private void Awake() {
         //if(state.defaultAction.name == "LaserAttack")/*
+        
         if(aSourse != null)
         {
             //aSourse = GetComponent<AudioSource>();
@@ -29,6 +30,7 @@ public class AudioChanger : MonoBehaviour
         else
         {
             aSourse = GetComponent<AudioSource>();
+            _startVolume = aSourse.volume;
         }
 
 
@@ -40,10 +42,11 @@ public class AudioChanger : MonoBehaviour
 
         if(_startGame != null)
         {
-            aSourse.volume = _startVolume ;
+            aSourse.volume = - 0.25f + _startVolume ;
             aSourse.PlayOneShot(_startGame);
+            //aSourse.volume = _startVolume;
         }
-
+        //aSourse.volume = _startVolume ;
 
         hit_Audio = _controller.hit_SFX;
         throw_Audio = _controller.throw_SFX;
@@ -69,6 +72,10 @@ public class AudioChanger : MonoBehaviour
                 break;
         }
         
+    }
+
+    private void Update() {
+        //aSourse.volume = _startVolume ;
     }
 
     private void OnTriggerEnter(Collider other) {

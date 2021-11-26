@@ -164,6 +164,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5675810155637013921, guid: dabd2db5af864be40b33d846618cd372,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dabd2db5af864be40b33d846618cd372, type: 3}
 --- !u!4 &5834686163564528828 stripped
@@ -179,6 +184,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8121987183708165574}
     m_Modifications:
+    - target: {fileID: 7042033215317480297, guid: cf0b8eee8b981b04b963961eded1ee9c,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7042033215325559829, guid: cf0b8eee8b981b04b963961eded1ee9c,
         type: 3}
       propertyPath: m_RootOrder
@@ -394,6 +404,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireballMissileGreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8186924384101499655, guid: ae7ae5ea0ae7cd34abc05e19304d5600,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7ae5ea0ae7cd34abc05e19304d5600, type: 3}
 --- !u!4 &3387702041049523021 stripped
@@ -409,6 +424,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8121987183708165574}
     m_Modifications:
+    - target: {fileID: 1899256003540832681, guid: e433f487ec2dc67409795011e08dd4dc,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1899256003546321141, guid: e433f487ec2dc67409795011e08dd4dc,
         type: 3}
       propertyPath: m_Name

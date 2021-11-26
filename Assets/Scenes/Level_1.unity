@@ -2797,6 +2797,7 @@ GameObject:
   - component: {fileID: 1102420994}
   - component: {fileID: 1102420995}
   - component: {fileID: 1102420996}
+  - component: {fileID: 1102421000}
   - component: {fileID: 1102420997}
   - component: {fileID: 1102420999}
   - component: {fileID: 1102420998}
@@ -2998,11 +2999,11 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 1.01
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3104,6 +3105,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b5dadb9684306343863ce74df4f19db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1102421000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102420987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc4cc07f3bed18489377bd6a954befc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greyHeart: {fileID: 1289410420}
+  extralife: {fileID: 1801060037}
+  victorySound: {fileID: 8300000, guid: c5d6f7a31e8ea824a8e65927b92b86f8, type: 3}
+  defeatSound: {fileID: 8300000, guid: 192ca0b7d7d54cd43bc2df85cf441905, type: 3}
+  audioSource: {fileID: 1102420997}
 --- !u!114 &1105100998 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5359326301570881751, guid: a72be70db1163c14b8b7a3cb1c00a59d,
@@ -3589,6 +3607,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5624546620962832511, guid: fa5ecf8ffbe22c7459c44494cee176d9,
     type: 3}
   m_PrefabInstance: {fileID: 1252010335}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1289410420 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 195587185, guid: a72be70db1163c14b8b7a3cb1c00a59d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7117637457801964012}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1289717989 stripped
 GameObject:
@@ -4710,7 +4734,6 @@ GameObject:
   - component: {fileID: 1801060033}
   - component: {fileID: 1801060039}
   - component: {fileID: 1801060035}
-  - component: {fileID: 1801060038}
   - component: {fileID: 1801060029}
   m_Layer: 0
   m_Name: Player
@@ -4852,16 +4875,16 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 1.01
+  DopplerLevel: 0
+  MinDistance: 0
+  MaxDistance: 0.01
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -5055,22 +5078,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 2
   menu: {fileID: 104479278}
---- !u!114 &1801060038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801060021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dc4cc07f3bed18489377bd6a954befc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  extralife: {fileID: 1801060037}
-  victorySound: {fileID: 8300000, guid: c5d6f7a31e8ea824a8e65927b92b86f8, type: 3}
-  defeatSound: {fileID: 8300000, guid: 8e59fee47fa858a419bdc652dc2a9a71, type: 3}
-  audioSource: {fileID: 1801060029}
 --- !u!114 &1801060039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27327,9 +27334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
-  canMove: 0
-  canBeAttacked: 0
-  canBuildHere: 0
+  canMove: 1
+  canBeAttacked: 1
+  canBuildHere: 1
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   easyCaptureFor: 
@@ -50484,9 +50491,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
-  canMove: 1
-  canBeAttacked: 1
-  canBuildHere: 1
+  canMove: 0
+  canBeAttacked: 0
+  canBuildHere: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   easyCaptureFor: 
@@ -55607,6 +55614,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1801060021}
+    - target: {fileID: 1705319700, guid: a72be70db1163c14b8b7a3cb1c00a59d, type: 3}
+      propertyPath: heakth
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705319701, guid: a72be70db1163c14b8b7a3cb1c00a59d, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3195387929267588557, guid: a72be70db1163c14b8b7a3cb1c00a59d,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -55707,6 +55722,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7117637457801964014, guid: a72be70db1163c14b8b7a3cb1c00a59d,
+        type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 1801060027}
     - target: {fileID: 7117637457801964014, guid: a72be70db1163c14b8b7a3cb1c00a59d,
         type: 3}
       propertyPath: _extraLife
@@ -55847,11 +55867,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 185995048}
-    - target: {fileID: 7382954402493043111, guid: a72be70db1163c14b8b7a3cb1c00a59d,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 1102420997}
     - target: {fileID: 8859217424454144084, guid: a72be70db1163c14b8b7a3cb1c00a59d,
         type: 3}
       propertyPath: m_AnchorMax.y

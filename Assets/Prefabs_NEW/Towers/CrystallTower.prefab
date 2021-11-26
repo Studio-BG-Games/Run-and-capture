@@ -367,8 +367,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
   - {fileID: 8300000, guid: 4af8bb0096e5d15489b02be84b6ce2a4, type: 3}
   - {fileID: 8300000, guid: dbba45d74994bff4e8b406722fc8f468, type: 3}
-  _controller: {fileID: 8834890311105204220}
   bonusSound: {fileID: 8300000, guid: e9d3f46b0b5ba9f4cada050219138aac, type: 3}
+  _startGame: {fileID: 0}
+  _controller: {fileID: 8834890311105204220}
+  aSourse: {fileID: 0}
 --- !u!114 &8834890311105204220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,9 +402,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e9d3f46b0b5ba9f4cada050219138aac, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
