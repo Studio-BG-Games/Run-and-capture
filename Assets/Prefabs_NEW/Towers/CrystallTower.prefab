@@ -558,6 +558,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8834890311105204222}
     m_Modifications:
+    - target: {fileID: 772873969996633363, guid: cd3a6e7cd307230459efab7793f89144,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1340557858584807726, guid: cd3a6e7cd307230459efab7793f89144,
         type: 3}
       propertyPath: m_Name
@@ -713,6 +718,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8834890311105204222}
     m_Modifications:
+    - target: {fileID: 864987177325504702, guid: 6a709e09a5df18740b3bf6709d4c445b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7123911558665044000, guid: 6a709e09a5df18740b3bf6709d4c445b,
         type: 3}
       propertyPath: m_RootOrder
@@ -792,6 +802,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PowerupGlow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998066517073135031, guid: a6e69add579ce85468c8a53493ee5f2d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8998066517073430615, guid: a6e69add579ce85468c8a53493ee5f2d,
         type: 3}
@@ -908,6 +923,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8834890311105204222}
     m_Modifications:
+    - target: {fileID: 2313046354239542925, guid: ebf1f3df6cc165e45a6d7b7070a8254b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3665624539438581465, guid: ebf1f3df6cc165e45a6d7b7070a8254b,
         type: 3}
       propertyPath: m_Name
@@ -987,6 +1007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CrystaGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440895841354935100, guid: cf18b2edcc8f55240b200e3dde713ec6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6589153021179780257, guid: cf18b2edcc8f55240b200e3dde713ec6,
         type: 3}

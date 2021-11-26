@@ -17,7 +17,7 @@ public class Die : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(heakth.enabled == false)
+        if(heakth != null && heakth.enabled == false)
         {
             source.volume = volume;
             source.Play();
