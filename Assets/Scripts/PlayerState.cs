@@ -64,9 +64,20 @@ public class PlayerState : MonoBehaviour
     private void Update()
     {
         AddTowerEnemy();
+        AddNewEnemies(enemies.Count);
     }
 
-
+    private void AddNewEnemies(int amount)
+    {
+        if (amount == 0)
+        {
+            var newEnemy = GameObject.Find("Player");
+            if (newEnemy != null)
+            {
+                enemies.Add(newEnemy.GetComponent<PlayerState>());
+            }
+        }
+    }
 
     private List<PlayerState> AddTowerEnemy()
     {
