@@ -3112,7 +3112,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102420987}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dc4cc07f3bed18489377bd6a954befc, type: 3}
   m_Name: 
@@ -4594,6 +4594,66 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1726069082}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1743009244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1743009246}
+  - component: {fileID: 1743009245}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1743009245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743009244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3278c752de75f1f4e9d52e87c943effa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - nmae: Lighting_Hit
+    clip: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  - nmae: Laser_Hit
+    clip: {fileID: 8300000, guid: 75cd25f85e881bc458b1dd2f2bd8d84a, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  - nmae: TowerCrystall_Hit
+    clip: {fileID: 8300000, guid: ab5fd4a38b69eb84f8ca0b8919cedd9c, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  phrases: []
+--- !u!4 &1743009246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743009244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.27023, y: 3.8074334, z: -13.900061}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1794612832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4732,7 +4792,7 @@ GameObject:
   - component: {fileID: 1801060025}
   - component: {fileID: 1801060027}
   - component: {fileID: 1801060033}
-  - component: {fileID: 1801060039}
+  - component: {fileID: 1801060038}
   - component: {fileID: 1801060035}
   - component: {fileID: 1801060029}
   m_Layer: 0
@@ -5078,7 +5138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 2
   menu: {fileID: 104479278}
---- !u!114 &1801060039
+--- !u!114 &1801060038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5087,26 +5147,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1801060021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a99dc0f9656d2241b5ada4edc0765ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 6204da1a1285ccf469ff66d606c6b9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 1801060026}
-  hit_LightingAudio: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
-  hit_LaserAudio: {fileID: 8300000, guid: 75cd25f85e881bc458b1dd2f2bd8d84a, type: 3}
-  hit_TowerFireballAudio: {fileID: 8300000, guid: ab5fd4a38b69eb84f8ca0b8919cedd9c,
-    type: 3}
-  hit_SFX:
-  - {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
-  - {fileID: 8300000, guid: 75cd25f85e881bc458b1dd2f2bd8d84a, type: 3}
-  - {fileID: 8300000, guid: ab5fd4a38b69eb84f8ca0b8919cedd9c, type: 3}
-  throw_SFX:
-  - {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
-  - {fileID: 8300000, guid: 4af8bb0096e5d15489b02be84b6ce2a4, type: 3}
-  - {fileID: 8300000, guid: dbba45d74994bff4e8b406722fc8f468, type: 3}
-  bonusSound: {fileID: 0}
-  _startGame: {fileID: 8300000, guid: 074f6b4b9b40a344e9af80a6b6346201, type: 3}
-  _controller: {fileID: 1801060035}
-  aSourse: {fileID: 1801060029}
 --- !u!1001 &1850245407
 PrefabInstance:
   m_ObjectHideFlags: 0
