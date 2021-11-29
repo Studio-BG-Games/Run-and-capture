@@ -7,6 +7,8 @@ public class PlayerTrigger : MonoBehaviour
     //[SerializeField] private HealthController _healthHit;
     //[SerializeField] private AudioSwitcher 
 
+
+
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.GetComponent<ProjectileController>().damage == 1000)
         {
