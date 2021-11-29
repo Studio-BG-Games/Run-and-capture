@@ -6,7 +6,7 @@ using UnityEngine;
 public class Build : PlayerAction
 {
     public GameObject buildPref;
-    public GameObject prefVFX;
+    //public GameObject prefVFX;
     public override bool IsActionAllowed(TileInfo targetTile, PlayerState playerState)
     {
         if (!targetTile)
@@ -28,7 +28,7 @@ public class Build : PlayerAction
         spawnedTower.transform.GetChild(activeModelIndex).gameObject.SetActive(true);
         TileManagment.AssignBuildingToTile(targetTile, spawnedTower);
     }
-
+/*
     private void SetEffect()
     {
         if(prefVFX != null)
@@ -40,4 +40,5 @@ public class Build : PlayerAction
             prefVFX = null;
         }
     }
+    */
 }
