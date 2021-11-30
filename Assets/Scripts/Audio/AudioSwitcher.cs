@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class AudioSwitcher : MonoBehaviour
 {
     public Sounds[] sounds;
-    public Sounds[] phrases;
+    //public Sounds[] phrases;
 
     private void Awake() {
         foreach(Sounds s in sounds)
@@ -18,7 +18,7 @@ public class AudioSwitcher : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
         }
-
+/*
         foreach(Sounds p in phrases)
         {
             p.source = gameObject.AddComponent<AudioSource>();
@@ -26,8 +26,10 @@ public class AudioSwitcher : MonoBehaviour
 
             p.source.volume = p.volume;
             p.source.pitch = p.pitch;
-        }
+        }    
+        */
     }
+
 
     public void Play(string name)
     {
@@ -36,6 +38,7 @@ public class AudioSwitcher : MonoBehaviour
             return;
         s.source.Play();
     }
+    /*
     public void PlayPhrase(string name)
     {
         Sounds s = Array.Find(phrases, sound => sound.nmae == name);
@@ -43,4 +46,5 @@ public class AudioSwitcher : MonoBehaviour
             return;
         s.source.Play();
     }
+    */
 }

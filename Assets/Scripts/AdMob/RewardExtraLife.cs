@@ -27,7 +27,7 @@ public class RewardExtraLife : MonoBehaviour
 
     private void Update() {
         if(health.currentHealth <= 0)
-        _extraLife.life = lifeCount - 1;
+        Extralife.staticLives = lifeCount - 1;
     }
 
     private void HandleEarnedReward(object sender, Reward e)
@@ -35,7 +35,9 @@ public class RewardExtraLife : MonoBehaviour
         //_extraLife.life ;
         //extralife--;
         //_extraLife.life--;
-        lifeCount -= 1;
+        Extralife.staticLives-- ;
+        //-= 1;
+        lifeCount = Extralife.staticLives ;
         _extraLife.life = lifeCount ;
     }
 

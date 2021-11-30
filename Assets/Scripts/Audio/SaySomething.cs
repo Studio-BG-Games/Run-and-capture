@@ -8,47 +8,48 @@ using UnityEngine.Audio;
 public class SaySomething : MonoBehaviour
 {
     //[SerializeField] private List<HealthController> playerHealths;
-    [SerializeField] private List<Sounds> prases;
+    //[SerializeField] private List<Sounds> phrases;
+    [SerializeField] private Extralife life;
+    //[SerializeField] private GameManager manager;
     [SerializeField] private HealthController health;
+    [SerializeField] MainWeapon player;
+    [SerializeField] private AudioSource playerSource;
+    [SerializeField] private List<PlayerState> players;
+    private int startlives;
+    public static float healthCount;
+    public static MainWeapon mainWeapon;
 
     void Start()
     {
-        health = FindObjectOfType<HealthController>();
+        mainWeapon = player;
+        healthCount = health.currentHealth;
+        //players = new List<PlayerState>(FindObjectsOfType<PlayerState>());
 
-        foreach(Sounds p in prases)
-        {
-            p.source = gameObject.AddComponent<AudioSource>();
-            p.source.clip = p.clip;
+        //startPlayersCount = players.Count;
+        
+        startlives = Extralife.staticLives;
 
-            p.source.volume = p.volume;
-            p.source.pitch = p.pitch;
-        }
 
-        // playerHealths = new List<HealthController>( FindObjectsOfType<HealthController>()); 
-        // //playerHealths.AddRange( );
-        // foreach(HealthController hc in playerHealths)
-        // {
-            
-        //     if(hc.currentHealth <= 0)
-        //     {
-        //         //FindObjectOfType<AudioSwitcher>().PlayPhrase(Random.Range(0, 15));
-        //     }
-        // }
 
     }
 
     // Update is called once per frame
 
     private void Update() {
-        if(health.currentHealth <= 0)
+        player = FindObjectOfType<MainWeapon>();
+        if(player == null)
         {
-            Say();
+            VoiceEnable.isDisable = true;
+            //playerSource.Play();
         }
+        else
+            VoiceEnable.isDisable = false;
     }
 
     public void Say()
     {
-        
-        if()
+
+        playerSource.Play();
+        Debug.Log("Play");
     }
 }

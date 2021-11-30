@@ -10,6 +10,11 @@ public class PlayerTrigger : MonoBehaviour
 
 
     private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.GetComponent<ProjectileController>() == null)
+        {
+            return;
+        }
+        
         if(other.gameObject.GetComponent<ProjectileController>().damage == 1000)
         {
             FindObjectOfType<AudioSwitcher>().Play("Lighting_Hit");
