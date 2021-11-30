@@ -3796,6 +3796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1372123123}
+  - component: {fileID: 1372123124}
   - component: {fileID: 1372123122}
   m_Layer: 0
   m_Name: Voices
@@ -3915,6 +3916,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1372123124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372123121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12c2d538046f654f840184e9326eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictor:
+  - {fileID: 8300000, guid: 2a383482135175741bfbff39772edaee, type: 3}
+  - {fileID: 8300000, guid: c905266e868a02c4f83180768a534375, type: 3}
+  - {fileID: 8300000, guid: 843701470ff70894c84132c4fd61c4f8, type: 3}
+  - {fileID: 8300000, guid: 9a78b95f785f72f4b8f46aa9a8eb1722, type: 3}
+  - {fileID: 8300000, guid: a19c2c5c05f035b4cac6ccf0cebf64e1, type: 3}
+  - {fileID: 8300000, guid: f3fdaa6a581302649a10233f34c0f427, type: 3}
+  - {fileID: 8300000, guid: 6d9e1616328f3884591d2c3415ef64bb, type: 3}
+  - {fileID: 8300000, guid: 3a5b757866fa91549b518afd182e8bf4, type: 3}
+  - {fileID: 8300000, guid: 4fdd725a2355b3448b7e2b98e4527532, type: 3}
+  aSoursce: {fileID: 1372123122}
 --- !u!1001 &1378130270
 PrefabInstance:
   m_ObjectHideFlags: 0
