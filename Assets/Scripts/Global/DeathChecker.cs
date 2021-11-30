@@ -207,8 +207,8 @@ public class DeathChecker : MonoBehaviour
         {
             TileManagment.OnAnyTileCaptured = null;
             TileManagment.OnInitialized = null;
-            CustomInput.OnTouchDown = null;
-            CustomInput.OnTouchUp = null;
+            //CustomInput.OnTouchDown = null;
+            //CustomInput.OnTouchUp = null;
             CharSpawner.OnPlayerSpawned = null;
             //StartCoroutine(GoToMenuAfter(3f));
             //Time.timeScale = 0f;

@@ -11,6 +11,7 @@ public class RewardExtraLife : MonoBehaviour
     private RewardedAd rewardedAd;
     [SerializeField] private Extralife _extraLife;
     [SerializeField] private HealthController health;
+    public AudioSource audioSource;
     private int lifeCount;
     
 
@@ -27,7 +28,15 @@ public class RewardExtraLife : MonoBehaviour
 
     private void Update() {
         if(health.currentHealth <= 0)
-        Extralife.staticLives = lifeCount - 1;
+        {
+            Extralife.staticLives = lifeCount - 1;  
+            //audioSource.Play();
+        }
+        if(_extraLife.life < 1)
+        {
+             audioSource.Play();
+        }
+
     }
 
     private void HandleEarnedReward(object sender, Reward e)
@@ -35,7 +44,9 @@ public class RewardExtraLife : MonoBehaviour
         //_extraLife.life ;
         //extralife--;
         //_extraLife.life--;
+        audioSource.Play();
         Extralife.staticLives-- ;
+        
         //-= 1;
         lifeCount = Extralife.staticLives ;
         _extraLife.life = lifeCount ;

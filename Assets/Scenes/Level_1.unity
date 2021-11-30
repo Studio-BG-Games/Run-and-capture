@@ -1435,7 +1435,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 507719630}
-  - component: {fileID: 507719629}
   - component: {fileID: 507719628}
   m_Layer: 0
   m_Name: Voices (2)
@@ -1443,7 +1442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &507719628
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1453,9 +1452,9 @@ AudioSource:
   m_GameObject: {fileID: 507719627}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6241634536419500954, guid: 5b71a1e2cfc04854a866ea6c6c092898,
+  OutputAudioMixerGroup: {fileID: -6502101523354408336, guid: 5b71a1e2cfc04854a866ea6c6c092898,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 2a383482135175741bfbff39772edaee, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 192ca0b7d7d54cd43bc2df85cf441905, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1541,29 +1540,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &507719629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507719627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12c2d538046f654f840184e9326eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dictor:
-  - {fileID: 8300000, guid: 2a383482135175741bfbff39772edaee, type: 3}
-  - {fileID: 8300000, guid: c905266e868a02c4f83180768a534375, type: 3}
-  - {fileID: 8300000, guid: 843701470ff70894c84132c4fd61c4f8, type: 3}
-  - {fileID: 8300000, guid: 9a78b95f785f72f4b8f46aa9a8eb1722, type: 3}
-  - {fileID: 8300000, guid: a19c2c5c05f035b4cac6ccf0cebf64e1, type: 3}
-  - {fileID: 8300000, guid: f3fdaa6a581302649a10233f34c0f427, type: 3}
-  - {fileID: 8300000, guid: 6d9e1616328f3884591d2c3415ef64bb, type: 3}
-  - {fileID: 8300000, guid: 3a5b757866fa91549b518afd182e8bf4, type: 3}
-  - {fileID: 8300000, guid: 4fdd725a2355b3448b7e2b98e4527532, type: 3}
-  aSoursce: {fileID: 507719628}
 --- !u!4 &507719630
 Transform:
   m_ObjectHideFlags: 0
@@ -5097,6 +5073,11 @@ MonoBehaviour:
     volume: 0.75
     pitch: 1
     source: {fileID: 0}
+  - nmae: Startgame
+    clip: {fileID: 8300000, guid: 074f6b4b9b40a344e9af80a6b6346201, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &1743009246
 Transform:
   m_ObjectHideFlags: 0
@@ -5398,7 +5379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5182c2cb5eef6d849b560f764c4a0ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 80000
+  startHealth: 1
   currentHealth: 0
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
     type: 3}
@@ -56417,6 +56398,11 @@ PrefabInstance:
       propertyPath: _extraLife
       value: 
       objectReference: {fileID: 1801060037}
+    - target: {fileID: 7117637457801964014, guid: a72be70db1163c14b8b7a3cb1c00a59d,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 507719628}
     - target: {fileID: 7117637458793366621, guid: a72be70db1163c14b8b7a3cb1c00a59d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
