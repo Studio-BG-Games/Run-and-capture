@@ -5,8 +5,11 @@ using UnityEngine;
 public class VoiceEnable : MonoBehaviour
 {
     public GameObject objectToEnable;
+    public GameObject objectAiToEnable;
     public AudioSource source;
+    public AudioSource aiSource;
     public static bool isDisable;
+    public static bool isAiDisabled;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,16 @@ public class VoiceEnable : MonoBehaviour
         else
             objectToEnable.SetActive(false);
             //source.PlayOneShot(source.clip);
-            source.playOnAwake = source.clip;
+            //source.playOnAwake = source.clip;
+
+        //if(objectAiToEnable != null)
+        //{
+            if(isAiDisabled)
+                objectAiToEnable.SetActive(true);
+                
+            else
+                objectAiToEnable.SetActive(false);            
+        //}
+
     }
 }
