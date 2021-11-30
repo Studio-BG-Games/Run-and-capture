@@ -18,6 +18,8 @@ public class AudioSwitcher : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
         }
+
+        Play("Startgame");
 /*
         foreach(Sounds p in phrases)
         {
