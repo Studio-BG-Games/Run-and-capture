@@ -13,27 +13,31 @@ public class SaySomething : MonoBehaviour
     //[SerializeField] private GameManager manager;
     [SerializeField] private HealthController health;
     [SerializeField] MainWeapon player;
-    [SerializeField] SwitchWeapon Ragnar;
+    [SerializeField] List<SwitchWeapon> Ragnar;
+    //[SerializeField] SwitchWeapon Ragnar;
 
     //[SerializeField] List<AI_BotController> bot;
     [SerializeField] private AudioSource playerSource;
     [SerializeField] private AudioSource botSource;
     [SerializeField] private List<PlayerState> players;
+    private string nameing = "Ragnar(Clone)";
     private int startlives;
     public static float healthCount;
     public static MainWeapon mainWeapon;
+    public static SwitchWeapon staticswitch;
     //public static List<AI_BotController> bostatic;
 
     void Start()
     {
         mainWeapon = player;
         healthCount = health.currentHealth;
+        //staticswitch = Ragnar;
         //bostatic = bot;
         //players = new List<PlayerState>(FindObjectsOfType<PlayerState>());
 
         //startPlayersCount = players.Count;
-        
-        startlives = Extralife.staticLives;
+        startlives = new List<SwitchWeapon>( FindObjectsOfType<SwitchWeapon>()).Count;
+        //startlives = Extralife.staticLives;
 
 
 
@@ -45,20 +49,28 @@ public class SaySomething : MonoBehaviour
         player = FindObjectOfType<MainWeapon>();
         if(player == null)
         {
-            VoiceEnable.isDisable = true;
+            //VoiceEnable.isDisable = true;
             //playerSource.Play();
         }
         else
-            VoiceEnable.isDisable = false;
+            //VoiceEnable.isDisable = false;
         
-        Ragnar = FindObjectOfType<SwitchWeapon>();
-        if(Ragnar == null)
-        {
-            VoiceEnable.isAiDisabled = true;
-            //playerSource.Play();
-        }
-        else
-            VoiceEnable.isAiDisabled = false;
+        Ragnar = new List<SwitchWeapon>( FindObjectsOfType<SwitchWeapon>());
+        //Ragnar = FindObjectOfType<SwitchWeapon>();
+        //if(Ragnar.name == nameing)
+        //{
+            //foreach(SwitchWeapon sw in Ragnar)
+            //{
+                if(Ragnar.Count < startlives)
+                {
+                    VoiceEnable.isAiDisabled = true;
+                    //playerSource.Play();
+                }
+                else
+                    VoiceEnable.isAiDisabled = false;                
+            //}
+        //}
+
             /*
         bot = new List<AI_BotController>( FindObjectsOfType<AI_BotController>());
         foreach(AI_BotController ai in bot)
