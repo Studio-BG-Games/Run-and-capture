@@ -7,43 +7,25 @@ using UnityEngine.Audio;
 
 public class SaySomething : MonoBehaviour
 {
-    //[SerializeField] private List<HealthController> playerHealths;
-    //[SerializeField] private List<Sounds> phrases;
-    [SerializeField] private Extralife life;
-    //[SerializeField] private GameManager manager;
-    [SerializeField] private HealthController health;
+    //[SerializeField] private HealthController health;
     [SerializeField] MainWeapon player;
-    [SerializeField] List<SwitchWeapon> Ragnar;
-    //[SerializeField] SwitchWeapon Ragnar;
+    [SerializeField] List<SwitchWeapon> enemies;
 
-    //[SerializeField] List<AI_BotController> bot;
-    [SerializeField] private AudioSource playerSource;
-    [SerializeField] private AudioSource botSource;
-    [SerializeField] private List<PlayerState> players;
-    private string nameing = "Ragnar(Clone)";
-    private int startlives;
+    //[SerializeField] private List<PlayerState> players;
+    private int startPlayersCount;
     public static float healthCount;
     public static MainWeapon mainWeapon;
     public static SwitchWeapon staticswitch;
-    //public static List<AI_BotController> bostatic;
 
     void Start()
     {
         mainWeapon = player;
-        healthCount = health.currentHealth;
-        //staticswitch = Ragnar;
-        //bostatic = bot;
-        //players = new List<PlayerState>(FindObjectsOfType<PlayerState>());
+        //healthCount = health.currentHealth;
 
-        //startPlayersCount = players.Count;
-        startlives = new List<SwitchWeapon>( FindObjectsOfType<SwitchWeapon>()).Count;
-        //startlives = Extralife.staticLives;
-
-
-
+        startPlayersCount = new List<SwitchWeapon>( FindObjectsOfType<SwitchWeapon>()).Count;
     }
 
-    // Update is called once per frame
+
 
     private void Update() {
         player = FindObjectOfType<MainWeapon>();
@@ -55,40 +37,22 @@ public class SaySomething : MonoBehaviour
         else
             //VoiceEnable.isDisable = false;
         
-        Ragnar = new List<SwitchWeapon>( FindObjectsOfType<SwitchWeapon>());
-        //Ragnar = FindObjectOfType<SwitchWeapon>();
-        //if(Ragnar.name == nameing)
-        //{
-            //foreach(SwitchWeapon sw in Ragnar)
-            //{
-                if(Ragnar.Count < startlives)
-                {
-                    VoiceEnable.isAiDisabled = true;
-                    //playerSource.Play();
-                }
-                else
-                    VoiceEnable.isAiDisabled = false;                
-            //}
-        //}
+        enemies = new List<SwitchWeapon>( FindObjectsOfType<SwitchWeapon>());
 
-            /*
-        bot = new List<AI_BotController>( FindObjectsOfType<AI_BotController>());
-        foreach(AI_BotController ai in bot)
+        if(enemies.Count < startPlayersCount)
         {
-            if(bot == null)
-            {
-                VoiceEnable.isAiDisabled = true;
-                //playerSource.Play();
-            }
-            else
-                VoiceEnable.isAiDisabled = false;
-        }*/
+            VoiceEnable.isAiDisabled = true;
+                    //playerSource.Play();
+        }
+        else
+            VoiceEnable.isAiDisabled = false;                
+
     }
 
     public void Say()
     {
 
-        playerSource.Play();
+        //playerSource.Play();
         Debug.Log("Play");
     }
 }
