@@ -34,7 +34,7 @@ public class RewardExtraLife : MonoBehaviour
         }
         if(_extraLife.life < 1)
         {
-             audioSource.Play();
+             //audioSource.Play();
         }
 
     }
@@ -44,7 +44,7 @@ public class RewardExtraLife : MonoBehaviour
         //_extraLife.life ;
         //extralife--;
         //_extraLife.life--;
-        audioSource.Play();
+        //audioSource.Play();
         Extralife.staticLives-- ;
         
         //-= 1;

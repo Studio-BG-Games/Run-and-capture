@@ -5,15 +5,23 @@ using UnityEngine.Audio;
 
 public class Gameover : MonoBehaviour
 {
-    public AudioSource source;
+    //public AudioSource source;
     public GameObject fake;
+    public static bool disable = true;
+    
 
     // Update is called once per frame
     void Update()
     {
-        if(fake.activeSelf == true  && Extralife.staticLives < 1  )
+        
+        if(disable)
         {
-            source.Play();
+            fake.SetActive(false);
+            
+        }
+        else
+        {
+            fake.SetActive(true);
         }
     }
 }

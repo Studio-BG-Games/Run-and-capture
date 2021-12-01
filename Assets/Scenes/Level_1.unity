@@ -1436,13 +1436,14 @@ GameObject:
   m_Component:
   - component: {fileID: 507719630}
   - component: {fileID: 507719628}
+  - component: {fileID: 507719629}
   m_Layer: 0
-  m_Name: Voices (2)
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &507719628
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1455,7 +1456,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -6502101523354408336, guid: 5b71a1e2cfc04854a866ea6c6c092898,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 192ca0b7d7d54cd43bc2df85cf441905, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1540,6 +1541,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &507719629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507719627}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393d2b0e827f7c4498aa535f4ef132f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fake: {fileID: 1801060021}
 --- !u!4 &507719630
 Transform:
   m_ObjectHideFlags: 0
@@ -2929,6 +2943,8 @@ GameObject:
   - component: {fileID: 1102420997}
   - component: {fileID: 1102420999}
   - component: {fileID: 1102420998}
+  - component: {fileID: 1102421002}
+  - component: {fileID: 1102421001}
   m_Layer: 0
   m_Name: GameManagment
   m_TagString: Untagged
@@ -3119,7 +3135,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 158e2b6cd6cdcba49bc9f9c1cb29d84b, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.481
   m_Pitch: 1
   Loop: 0
@@ -3250,6 +3266,33 @@ MonoBehaviour:
   victorySound: {fileID: 8300000, guid: c5d6f7a31e8ea824a8e65927b92b86f8, type: 3}
   defeatSound: {fileID: 8300000, guid: 192ca0b7d7d54cd43bc2df85cf441905, type: 3}
   audioSource: {fileID: 1102420997}
+--- !u!114 &1102421001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102420987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393d2b0e827f7c4498aa535f4ef132f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fake: {fileID: 507719627}
+--- !u!114 &1102421002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102420987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47dfb83d783aebf43ac5290aff451e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 0
+  source: {fileID: 507719628}
 --- !u!114 &1105100998 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5359326301570881751, guid: a72be70db1163c14b8b7a3cb1c00a59d,
@@ -38858,9 +38901,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
-  canMove: 1
-  canBeAttacked: 1
-  canBuildHere: 1
+  canMove: 0
+  canBeAttacked: 0
+  canBuildHere: 0
   buildingOnTile: {fileID: 0}
   tileOwnerIndex: 0
   easyCaptureFor: 
