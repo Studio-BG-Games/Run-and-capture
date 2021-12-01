@@ -5312,6 +5312,7 @@ GameObject:
   - component: {fileID: 1801060038}
   - component: {fileID: 1801060035}
   - component: {fileID: 1801060029}
+  - component: {fileID: 1801060039}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5406,7 +5407,7 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   targetMoveTile: {fileID: 0}
   currentActionTarget: {fileID: 0}
-  defaultAction: {fileID: 11400000, guid: 92504437725aa854c98196750a332319, type: 2}
+  defaultAction: {fileID: 11400000, guid: dcded92d8d60ee347846c8b18600c9dc, type: 2}
   currentAction: {fileID: 0}
   enemies: []
   _crystalls: []
@@ -5422,7 +5423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5182c2cb5eef6d849b560f764c4a0ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 1
+  startHealth: 4200
   currentHealth: 0
   playerImpactVFX: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
     type: 3}
@@ -5668,6 +5669,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6204da1a1285ccf469ff66d606c6b9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1801060039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801060021}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daea5dc0944a6f64494462ccf70528f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  tower: {fileID: 0}
+  prefVFX: {fileID: 5056009352300414474, guid: 06523df870a4ea841951e16293f9195b, type: 3}
 --- !u!1001 &1850245407
 PrefabInstance:
   m_ObjectHideFlags: 0

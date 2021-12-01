@@ -14,21 +14,21 @@ public class PlayerTrigger : MonoBehaviour
         {
             return;
         }
-        
+
         if(other.gameObject.GetComponent<ProjectileController>().damage == 1000)
         {
             FindObjectOfType<AudioSwitcher>().Play("Lighting_Hit");
-            Debug.Log("Take 1000");
+            //Debug.Log("Take 1000");
         }
         else if(other.gameObject.GetComponent<ProjectileController>().damage == 360)
         {
             FindObjectOfType<AudioSwitcher>().Play("Laser_Hit");
-            Debug.Log("Take 360");
+            //Debug.Log("Take 360");
         }
         else if(other.gameObject.GetComponent<ProjectileController>().damage == 440)
         {
             FindObjectOfType<AudioSwitcher>().Play("TowerCrystall_Hit");
-            Debug.Log("Take 440");
+            //Debug.Log("Take 440");
         }
     }
 }
