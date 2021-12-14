@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1700d9ee2ab4d8e8ac1b551b7c93ce8, type: 3}
+  m_Name: FieldData
+  m_EditorClassIdentifier: 
+  width: 15
+  height: 15
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  touchedColor: {r: 1, g: 0, b: 1, a: 1}
+  cellPrefab: {fileID: 2474514080286293112, guid: bcea5b4a96735bd4b936f8f3fefcc688, type: 3}
+  cellLabelPrefab: {fileID: 5211075868027037164, guid: efd47cbd22ddfee4aa2b1391914116fc, type: 3}
+  CoordinatesCanvas: {fileID: 4726489279989878083, guid: f31e0880dd078104bb31dc0fd7ef9f19, type: 3}
+  HexMeshPrefab: {fileID: 695382969544946598, guid: 3af15cc359f2a714f8e880d401a0c029, type: 3}
