@@ -12,9 +12,9 @@ namespace Controller
            hexGrid.OnHexPainted += DoSomething;
         }
 
-        private void DoSomething()
+        private void DoSomething(HexCoordinates coordinates)
         {
-            Debug.Log("Painted!" );
+            Debug.Log("Painted! " + coordinates );
         }
     }
 }

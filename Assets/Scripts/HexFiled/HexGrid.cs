@@ -20,7 +20,7 @@ namespace HexFiled
 		private Canvas _gridCanvas;
 		private HexMesh _hexMesh;
 		private GameObject _baseGameObject;
-		public Action OnHexPainted;
+		public Action<HexCoordinates> OnHexPainted;
 
 		public HexGrid(FieldData fieldData)
 		{
@@ -63,7 +63,7 @@ namespace HexFiled
 			HexCell cell = _cells[index];
 			cell.color = _touchedColor;
 			_hexMesh.Triangulate(_cells);
-			OnHexPainted.Invoke();
+			OnHexPainted.Invoke(coordinates);
 		}
 		void CreateCell (int x, int z, int i) {
 			Vector3 position;
