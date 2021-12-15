@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Data
   m_EditorClassIdentifier: 
   fieldDataPath: FieldData
-  tagDataPath: 
+  cameraDataPath: CameraData
+  playerDataPath: PlayerData

@@ -1,4 +1,5 @@
 ﻿using HexFiled;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +13,8 @@ namespace Runtime.Data
         public Color defaultColor = Color.white;
         public Color touchedColor = Color.magenta;
 
-        public HexCell cellPrefab;
-        public Text cellLabelPrefab;
+        public GameObject cellPrefab;
+        public TMP_Text cellLabelPrefab;
         public GameObject CoordinatesCanvas;
-        public GameObject HexMeshPrefab;
     }
 }

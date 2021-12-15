@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Chars;
 using Runtime.Data;
 using UnityEngine;
 
@@ -9,8 +10,12 @@ namespace Data
     {
         [SerializeField] private string fieldDataPath;
         private FieldData _fieldData;
-        
-        public FieldData Field
+        [SerializeField] private string cameraDataPath;
+        private CameraData _cameraData;
+        [SerializeField] private string playerDataPath;
+        private PlayerData _playerData;
+
+        public FieldData FieldData
         {
             get
             {
@@ -23,8 +28,33 @@ namespace Data
             }
         }
 
-       
-        
+        public CameraData CameraData
+        {
+            get
+            {
+                if (_cameraData == null)
+                {
+                    _cameraData = Load<CameraData>("Data/" + cameraDataPath);
+                }
+
+                return _cameraData;
+            }
+        }
+
+        public PlayerData PlayerData
+        {
+            get
+            {
+                if (_playerData == null)
+                {
+                    _playerData = Load<PlayerData>("Data/" + playerDataPath);
+                }
+
+                return _playerData;
+            }
+        }
+
+
         private static T Load<T>(string resourcesPath) where T : Object =>
             Resources.Load<T>(Path.ChangeExtension(resourcesPath, null));
     }

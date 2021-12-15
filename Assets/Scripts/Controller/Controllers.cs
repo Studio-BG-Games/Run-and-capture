@@ -9,6 +9,8 @@ namespace Controller
         private readonly List<IExecute> _executeControllers;
         private readonly List<ILateExecute> _lateControllers;
         private readonly List<ICleanup> _cleanupControllers;
+        private readonly List<IFixedExecute> _fixedExecuteControllers;
+        private readonly List<IAwake> _awakeExecuteControllers;
 
         public Controllers()
         {
@@ -16,6 +18,7 @@ namespace Controller
             _executeControllers = new List<IExecute>();
             _lateControllers = new List<ILateExecute>();
             _cleanupControllers = new List<ICleanup>();
+            _fixedExecuteControllers = new List<IFixedExecute>();
         }
 
         internal Controllers Add(IController controller)
@@ -40,12 +43,16 @@ namespace Controller
                 _cleanupControllers.Add(cleanupController);
             }
 
+            if (controller is IFixedExecute fixedExecute)
+            {
+                _fixedExecuteControllers.Add(fixedExecute);
+            }
             return this;
         }
 
         public void Execute()
         {
-            _executeControllers.ForEach(x => x.Execute());
+            _executeControllers?.ForEach(x => x.Execute());
         }
 
         public void Init()
@@ -55,12 +62,24 @@ namespace Controller
 
         public void LateExecute()
         {
-            _lateControllers.ForEach(x => x.LateExecute());
+            _lateControllers?.ForEach(x => x.LateExecute());
         }
 
         public void Cleanup()
         {
-            _cleanupControllers.ForEach(x => x.Cleanup());
+            _cleanupControllers?.ForEach(x => x.Cleanup());
+        }
+
+        public void FixedExecute()
+        {
+            _fixedExecuteControllers?.ForEach(x => x.FixedExecute());
+        }
+
+        public void Awake()
+        {
+            _awakeExecuteControllers?.ForEach(x => x.Awake());
         }
     }
+
+    
 }
