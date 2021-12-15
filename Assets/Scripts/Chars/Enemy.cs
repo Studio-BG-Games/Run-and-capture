@@ -4,7 +4,7 @@ namespace Chars
 {
     public class Enemy : IUnit
     {
-        public void Move(HexCoordinates coordinates)
+        public void Move(HexDirection direction)
         {
             throw new System.NotImplementedException();
         }

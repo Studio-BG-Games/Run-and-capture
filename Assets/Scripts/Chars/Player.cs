@@ -13,18 +13,25 @@ namespace Chars
         private HexCell _cell;
         private HexGrid _hexGrid;
 
+        public GameObject Playerinstance => _instance;
+
         public Player(PlayerData playerData, HexGrid hexGrid)
         {
-            _curentPosition = playerData.SpawnPos;
-            prefab = playerData.PlayerPrefab;
+            _curentPosition = playerData.spawnPos;
+            prefab = playerData.playerPrefab;
             _isAlive = false;
             _hexGrid = hexGrid;
-            
         }
 
-        public void Move(HexCoordinates coordinates)
+
+        public void Move(HexDirection direction)
         {
-            throw new System.NotImplementedException();
+            if (_cell.GetNeighbor(direction))
+            {
+                _cell = _cell.GetNeighbor(direction);
+                _instance.transform.Translate(_cell.transform.position);
+                
+            }
         }
 
         public void Spawn()

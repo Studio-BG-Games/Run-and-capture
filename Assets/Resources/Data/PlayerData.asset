@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d46325a4e4e45338d7e9733fb8d6013, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  SpawnPos:
-    x: 2
-    z: 2
-  PlayerPrefab: {fileID: 7527582019267571087, guid: f102085e8bc4cad4992d43b84dee1055,
+  spawnPos:
+    x: 0
+    z: 0
+  playerPrefab: {fileID: 7527582019267571087, guid: f102085e8bc4cad4992d43b84dee1055,
+    type: 3}
+  joystickView: {fileID: 4385872142190176059, guid: 4df6913b39f4979429158c344680d83f,
     type: 3}

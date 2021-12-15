@@ -1,7 +1,7 @@
 ﻿namespace HexFiled
 {
     public enum HexDirection {
-        NE, E, SE, SW, W, NW
+        NE, E, SE, SW, W, NW, NULL
     }
 
     public static class HexDirectionExtensions

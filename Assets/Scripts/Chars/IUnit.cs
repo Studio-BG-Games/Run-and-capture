@@ -4,7 +4,7 @@ namespace Chars
 {
     public interface IUnit
     {
-        public void Move(HexCoordinates coordinates);
+        public void Move(HexDirection direction);
         public void Spawn();
         public void Death();
     }

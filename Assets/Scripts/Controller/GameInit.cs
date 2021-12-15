@@ -19,7 +19,10 @@ namespace Controller
             
             var unitFactory = new UnitFactory(units);
             hexGrid.OnGridLoaded += unitFactory.Spawn;
-            
+
+            PlayerControl playerControl = new PlayerControl(player, data.PlayerData);
+            controllers.Add(playerControl);
+
         }
 
         private void DoSomething(HexCell cell)
