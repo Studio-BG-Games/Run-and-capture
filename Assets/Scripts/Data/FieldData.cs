@@ -16,5 +16,6 @@ namespace Runtime.Data
         public GameObject cellPrefab;
         public TMP_Text cellLabelPrefab;
         public GameObject CoordinatesCanvas;
+        public Texture DefaultTexture;
     }
 }

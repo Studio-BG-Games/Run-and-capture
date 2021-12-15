@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace HexFiled
 {
-    public class HexGrid : IInitialization, IExecute
+    public class HexGrid : IInitialization
     {
         private int _width;
         private int _height;
@@ -48,24 +48,6 @@ namespace HexFiled
             return _cells[i - 1];
         }
 
-        void HandleInput()
-        {
-            Ray inputRay = _camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(inputRay, out hit))
-            {
-                TouchCell(hit.point);
-            }
-        }
-
-
-        void TouchCell(Vector3 position)
-        {
-            position = _baseGameObject.transform.InverseTransformPoint(position);
-            HexCoordinates coordinates = HexCoordinates.FromPosition(position);
-            PaintHex(_touchedColor, coordinates);
-        }
-
         private void PaintHex(Color color, HexCoordinates coordinates)
         {
             int index = coordinates.X + coordinates.Z * _width + coordinates.Z / 2;
@@ -88,6 +70,7 @@ namespace HexFiled
             cell.transform.localPosition = position;
             cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
             cell.color = _defaultColor;
+            cell.OnHexPainted += OnHexPainted;
             
             if (x > 0) {
                 cell.SetNeighbor(HexDirection.W, _cells[i - 1]);
@@ -129,13 +112,6 @@ namespace HexFiled
             // _hexMesh.Triangulate(_cells);
             OnGridLoaded.Invoke();
         }
-
-        public void Execute()
-        {
-            if (Input.GetMouseButton(0))
-            {
-                HandleInput();
-            }
-        }
+        
     }
 }

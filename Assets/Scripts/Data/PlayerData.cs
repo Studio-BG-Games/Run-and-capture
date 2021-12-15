@@ -11,5 +11,6 @@ namespace Data
         public GameObject playerPrefab;
         public PlayerControlView joystickView;
         public float Tick;
+        public Texture hexTexture;
     }
 }

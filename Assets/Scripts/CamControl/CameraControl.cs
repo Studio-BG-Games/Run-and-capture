@@ -31,7 +31,7 @@ namespace CamControl
             Vector3 desiredPosition = _target.position + _offset;
             Vector3 smothedPosition =
                 Vector3.Lerp(_camera.transform.position, desiredPosition, _smoothSpeed * Time.deltaTime);
-            _camera.transform.position = desiredPosition;
+            _camera.transform.position = smothedPosition;
             _camera.transform.LookAt(_target);
         }
     }
