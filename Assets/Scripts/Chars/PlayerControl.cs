@@ -2,7 +2,6 @@
 using Data;
 using HexFiled;
 using Runtime.Controller;
-using UnityEditor.Callbacks;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -13,6 +12,8 @@ namespace Chars
         private Player _player;
         private FloatingJoystick _moveJoystick;
         private FloatingJoystick _attackJoystick;
+        private float _curTime;
+        private float _tick;
 
         public PlayerControl(Player player, PlayerData playerData)
         {
@@ -20,12 +21,15 @@ namespace Chars
             var joyView = Object.Instantiate(playerData.joystickView);
             _moveJoystick = joyView.MoveJoystick;
             _attackJoystick = joyView.AttackJoystick;
+            _curTime = Time.time;
+            _tick = playerData.Tick;
         }
 
         public void Execute()
         {
-            if (_moveJoystick.Direction != Vector2.zero)
+            if (Time.time - _curTime >= _tick && _moveJoystick.Direction != Vector2.zero)
             {
+                _curTime = Time.time;
                 _player.Move(VectorToDirection(_moveJoystick.Direction.normalized));
             }
         }
@@ -62,7 +66,7 @@ namespace Chars
                 return HexDirection.NW;
             }
 
-            return HexDirection.NULL;
+            return HexDirection.W;
         }
     }
 }

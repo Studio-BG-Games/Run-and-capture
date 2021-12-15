@@ -1,6 +1,8 @@
-﻿using Data;
+﻿using System;
+using Data;
 using HexFiled;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Chars
 {
@@ -12,6 +14,7 @@ namespace Chars
         private GameObject prefab;
         private HexCell _cell;
         private HexGrid _hexGrid;
+        public Action<GameObject> OnPlayerSpawned;
 
         public GameObject Playerinstance => _instance;
 
@@ -29,8 +32,9 @@ namespace Chars
             if (_cell.GetNeighbor(direction))
             {
                 _cell = _cell.GetNeighbor(direction);
-                _instance.transform.Translate(_cell.transform.position);
+                _curentPosition = _cell.coordinates;
                 
+                _instance.transform.localPosition = _cell.transform.localPosition;
             }
         }
 
@@ -39,7 +43,9 @@ namespace Chars
             if (!_isAlive)
             {
                 _cell = _hexGrid.GetCellFromCoord(_curentPosition);
-                _instance = Object.Instantiate(prefab, _cell.transform.position, Quaternion.identity);
+                _instance = Object.Instantiate(prefab, _cell.transform.parent);
+                _instance.transform.localPosition = _cell.transform.localPosition;
+                OnPlayerSpawned?.Invoke(_instance);
             }
         }
 

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   spawnPos:
-    x: 0
-    z: 0
+    x: 7
+    z: 8
   playerPrefab: {fileID: 7527582019267571087, guid: f102085e8bc4cad4992d43b84dee1055,
     type: 3}
   joystickView: {fileID: 4385872142190176059, guid: 4df6913b39f4979429158c344680d83f,
     type: 3}
+  Tick: 0.8

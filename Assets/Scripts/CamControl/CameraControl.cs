@@ -1,9 +1,8 @@
 ﻿using Controller;
 using Data;
-using Runtime.Controller;
 using UnityEngine;
 
-namespace CameraControl
+namespace CamControl
 {
     public class CameraControl : IFixedExecute
     {
@@ -13,14 +12,18 @@ namespace CameraControl
         private Vector3 _offset;
         private float _smoothSpeed;
 
-        public CameraControl(Camera camera, Transform target, CameraData cameraData)
+        public CameraControl(Camera camera, CameraData cameraData)
         {
             _camera = camera;
-            _target = target;
+           
             _offset = cameraData.offset;
             _smoothSpeed = cameraData.smoothSpeed;
         }
-        
+
+        public void InitCameraControl(GameObject target)
+        {
+            _target = target.transform;
+        }
         public void FixedExecute()
         {
             if (_target == null)
@@ -28,7 +31,7 @@ namespace CameraControl
             Vector3 desiredPosition = _target.position + _offset;
             Vector3 smothedPosition =
                 Vector3.Lerp(_camera.transform.position, desiredPosition, _smoothSpeed * Time.deltaTime);
-            _camera.transform.position = smothedPosition;
+            _camera.transform.position = desiredPosition;
             _camera.transform.LookAt(_target);
         }
     }
