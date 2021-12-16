@@ -23,17 +23,21 @@ namespace Chars
             _attackJoystick = joyView.AttackJoystick;
             _curTime = Time.time;
             _tick = playerData.Tick;
+            _moveJoystick.OnPadDrag += Move;
         }
 
         public void Execute()
         {
-            
             if (Time.time - _curTime >= _tick && _moveJoystick.Direction != Vector2.zero)
             {
                 _curTime = Time.time;
                 _player.Move(VectorToDirection(_moveJoystick.Direction.normalized));
-                
+                var g = new Graph()
             }
+        }
+
+        private void Move(Vector3 dir)
+        {
         }
 
         private static HexDirection VectorToDirection(Vector2 dir)
