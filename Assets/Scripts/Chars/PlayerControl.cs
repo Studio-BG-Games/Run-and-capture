@@ -27,10 +27,12 @@ namespace Chars
 
         public void Execute()
         {
+            
             if (Time.time - _curTime >= _tick && _moveJoystick.Direction != Vector2.zero)
             {
                 _curTime = Time.time;
                 _player.Move(VectorToDirection(_moveJoystick.Direction.normalized));
+                
             }
         }
 

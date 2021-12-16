@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace HexFiled
+﻿namespace HexFiled
 {
 	public static class HexMetrics {
 
