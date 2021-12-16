@@ -32,7 +32,6 @@ namespace Chars
             {
                 _curTime = Time.time;
                 _player.Move(VectorToDirection(_moveJoystick.Direction.normalized));
-                var g = new Graph()
             }
         }
 
