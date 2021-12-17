@@ -2,7 +2,6 @@
 using Data;
 using DG.Tweening;
 using HexFiled;
-using TMPro;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
