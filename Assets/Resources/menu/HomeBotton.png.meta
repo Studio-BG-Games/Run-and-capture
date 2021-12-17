@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: a46675f9b4ecabf48a87c8ca677f6421
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8536133104978798909
+    second: HomeBotton_0
+  - first:
+      213: 3401388886711715988
+    second: HomeBotton_1
+  - first:
+      213: -8767154470008726834
+    second: HomeBotton_2
+  - first:
+      213: 633053397979461921
+    second: HomeBotton_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,7 +125,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: HomeBotton_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 49
+        width: 212
+        height: 993
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d39a6b525df667670800000000000000
+      internalID: 8536133104978798909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HomeBotton_1
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 370
+        width: 308
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 498c96fcb29243f20800000000000000
+      internalID: 3401388886711715988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HomeBotton_2
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 368
+        width: 310
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecad62cb57fc45680800000000000000
+      internalID: -8767154470008726834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HomeBotton_3
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 417
+        width: 756
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1297b6e16be09c800800000000000000
+      internalID: 633053397979461921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

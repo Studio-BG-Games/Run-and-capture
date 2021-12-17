@@ -14,7 +14,6 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private GameMenuData GameData;
     [SerializeField] private Transform targetSlideTransform;
     [SerializeField] private float slideTime;
-    private Animator _ac;
     private bool _isActive = false;
     private bool _isMusicAllowed = true;
     private bool _isSFXAllowed = true;
@@ -23,7 +22,6 @@ public class SettingsController : MonoBehaviour
     private void Start()
     {
         defailtPosition = transform.position;
-        _ac = GetComponent<Animator>();
         SetMenuMusicState();
         UpdateVisuals();
     }
