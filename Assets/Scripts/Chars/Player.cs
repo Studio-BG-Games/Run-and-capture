@@ -19,7 +19,10 @@ namespace Chars
         public Action<GameObject> OnPlayerSpawned;
         private Animator _animator;
         private float _tick;
+        private PlayerView _playerView;
+        private bool _isMoving;
 
+        public bool IsMoving => _isMoving;
         public GameObject Playerinstance => _instance;
 
         public Player(PlayerData playerData, HexGrid hexGrid)
@@ -30,6 +33,7 @@ namespace Chars
             _hexGrid = hexGrid;
             _texture = playerData.hexTexture;
             _tick = playerData.Tick;
+            _isMoving = false;
         }
 
 
@@ -37,22 +41,25 @@ namespace Chars
         {
             if (_cell.GetNeighbor(direction))
             {
+                _isMoving = true;
                 _cell = _cell.GetNeighbor(direction);
                 _curentPosition = _cell.coordinates;
                 
                 _instance.transform.LookAt(_cell.transform);
                 _animator.SetTrigger("Move");
-                _animator.SetBool("isMoving", true);
-                _instance.transform.DOMove(_cell.transform.position, _tick).OnComplete(() =>
+                _animator.SetBool("isMoving", _isMoving);
+                _playerView.OnStep += () =>
                 {
-                    _animator.SetBool("isMoving", false);
-                    _animator.SetTrigger("Jump");
+                    _isMoving = false;
                     _cell.PaintHex(_texture);
-                });
+                    _animator.SetBool("isMoving", _isMoving);
+                };
+                _instance.transform.DOMove(_cell.transform.position, _tick);
 
             }
         }
 
+        
         public void Spawn()
         {
             if (!_isAlive)
@@ -68,6 +75,7 @@ namespace Chars
                 OnPlayerSpawned?.Invoke(_instance);
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
+                _playerView = _instance.GetComponent<PlayerView>();
             }
         }
 
