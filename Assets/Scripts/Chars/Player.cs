@@ -54,7 +54,7 @@ namespace Chars
                     _cell.PaintHex(_texture);
                     _animator.SetBool("isMoving", _isMoving);
                 };
-                _instance.transform.DOMove(_cell.transform.position, _tick);
+                _instance.transform.DOMove(_cell.transform.position, _animator.GetCurrentAnimatorClipInfo(0).LongLength);
 
             }
         }
@@ -76,6 +76,7 @@ namespace Chars
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
                 _playerView = _instance.GetComponent<PlayerView>();
+                
             }
         }
 

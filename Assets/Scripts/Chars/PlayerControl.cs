@@ -1,4 +1,5 @@
 ﻿using System;
+using Controller;
 using Data;
 using HexFiled;
 using Runtime.Controller;
@@ -7,13 +8,12 @@ using Object = UnityEngine.Object;
 
 namespace Chars
 {
-    public class PlayerControl : IExecute
+    public class PlayerControl : IFixedExecute
     {
         private Player _player;
         private FloatingJoystick _moveJoystick;
         private FloatingJoystick _attackJoystick;
-        private float _curTime;
-        private float _tick;
+
 
         public PlayerControl(Player player, PlayerData playerData)
         {
@@ -21,22 +21,15 @@ namespace Chars
             var joyView = Object.Instantiate(playerData.joystickView);
             _moveJoystick = joyView.MoveJoystick;
             _attackJoystick = joyView.AttackJoystick;
-            _curTime = Time.time;
-            _tick = playerData.Tick;
-            _moveJoystick.OnPadDrag += Move;
         }
-
-        public void Execute()
+        
+        
+        public void FixedExecute()
         {
-            if (!_player.IsMoving && _moveJoystick.Direction != Vector2.zero)
+            if (!_player.IsMoving && _moveJoystick.isPressed)
             {
-                _curTime = Time.time;
                 _player.Move(VectorToDirection(_moveJoystick.Direction.normalized));
             }
-        }
-
-        private void Move(Vector3 dir)
-        {
         }
 
         private static HexDirection VectorToDirection(Vector2 dir)
@@ -73,5 +66,7 @@ namespace Chars
 
             return HexDirection.W;
         }
+
+        
     }
 }
