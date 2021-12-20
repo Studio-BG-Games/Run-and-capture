@@ -10,7 +10,6 @@ namespace Data
         public HexCoordinates spawnPos;
         public GameObject playerPrefab;
         public PlayerControlView joystickView;
-        public float Tick;
         public Texture hexTexture;
     }
 }

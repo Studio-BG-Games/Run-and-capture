@@ -18,7 +18,6 @@ namespace Chars
         private Texture _texture;
         public Action<GameObject> OnPlayerSpawned;
         private Animator _animator;
-        private float _tick;
         private PlayerView _playerView;
         private bool _isMoving;
 
@@ -32,7 +31,6 @@ namespace Chars
             _isAlive = false;
             _hexGrid = hexGrid;
             _texture = playerData.hexTexture;
-            _tick = playerData.Tick;
             _isMoving = false;
         }
 
