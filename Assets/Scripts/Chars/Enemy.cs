@@ -24,7 +24,7 @@ namespace Chars
             throw new System.NotImplementedException();
         }
 
-        public void Damag(float dmg)
+        public void Damage(float dmg)
         {
             throw new System.NotImplementedException();
         }

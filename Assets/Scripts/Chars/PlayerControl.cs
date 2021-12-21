@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace Chars
 {
-    public class PlayerControl : IFixedExecute, IInitialization
+    public class PlayerControl : IFixedExecute, IExecute
     {
         private Player _player;
         private FloatingJoystick _moveJoystick;
@@ -30,13 +30,18 @@ namespace Chars
         public void FixedExecute()
         {
             
-            if (!_player.IsMoving && _moveJoystick.isPressed)
+            if (!_player.IsBusy && _moveJoystick.Direction != Vector2.zero)
             {
                 _player.Move(VectorToDirection(_moveJoystick.Direction.normalized));
-                _player.PlayerView.charBarCanvas.transform.LookAt(
-                    _player.PlayerView.charBarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
-                    _camera.transform.rotation * Vector3.up);
+               
             }
+
+            if (!_player.IsBusy && _attackJoystick.Direction != Vector2.zero)
+            {
+                _player.Attack(VectorToDirection(_attackJoystick.Direction.normalized));
+               
+            }
+            
         }
 
         private static HexDirection VectorToDirection(Vector2 dir)
@@ -73,8 +78,9 @@ namespace Chars
 
             return HexDirection.W;
         }
+        
 
-        public void Init()
+        public void Execute()
         {
             _player.PlayerView.charBarCanvas.transform.LookAt(
                 _player.PlayerView.charBarCanvas.transform.position + _camera.transform.rotation * Vector3.back,

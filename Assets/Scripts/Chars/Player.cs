@@ -1,5 +1,6 @@
 ﻿using System;
 using Data;
+using DefaultNamespace.Weapons;
 using DG.Tweening;
 using HexFiled;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Chars
     struct AnimLength
     {
         public float Move;
+        public float Attack;
     }
 
     public class Player : IUnit
@@ -24,46 +26,38 @@ namespace Chars
         public Action<GameObject> onPlayerSpawned;
         private Animator _animator;
         private PlayerView _playerView;
-        private bool _isMoving;
+        private bool _isBusy;
         private UnitColor _color;
-        private static readonly int Moving = Animator.StringToHash("isMoving");
-        private static readonly int Move1 = Animator.StringToHash("Move");
         private float _hp;
         private float _mana;
+        private Weapon _weapon;
+        private HexCell _cellEdge;
+        private CharBar _charBar;
 
-        public bool IsMoving => _isMoving;
+        public bool IsBusy => _isBusy;
         public GameObject PlayerInstance => _instance;
         public PlayerView PlayerView => _playerView;
 
-        public Player(PlayerData playerData, HexGrid hexGrid)
+        public Player(PlayerData playerData, Weapon weapon, HexGrid hexGrid)
         {
+            _weapon = weapon;
             _spawnPos = playerData.spawnPos;
             _prefab = playerData.playerPrefab;
             _isAlive = false;
             _hexGrid = hexGrid;
-            _isMoving = false;
+            _isBusy = false;
             _color = playerData.color;
         }
-
-        
 
         public void Move(HexDirection direction)
         {
             if (_cell.GetNeighbor(direction))
             {
-                _isMoving = true;
+                _isBusy = true;
                 _cell = _cell.GetNeighbor(direction);
-                _instance.transform.LookAt(_cell.transform);
-                _animator.SetTrigger(Move1);
-                _animator.SetBool(Moving, _isMoving);
-                _playerView.OnStep += () =>
-                {
-                    _isMoving = false;
-                    _cell.PaintHex(_color);
-
-                    _animator.SetBool(Moving, _isMoving);
-                };
-                
+                _instance.transform.DOLookAt(_cell.transform.position, 0.1f);
+                _animator.SetTrigger("Move");
+                _animator.SetBool("isMoving", _isBusy);
                 _instance.transform.DOMove(_cell.transform.position, _animLength.Move);
             }
         }
@@ -75,13 +69,15 @@ namespace Chars
             {
                 switch (clip.name)
                 {
-                    case "Jump":
+                    case "MoveJump":
                         _animLength.Move = clip.length;
+                        break;
+                    case "Attack":
+                        _animLength.Attack = clip.length;
                         break;
                     default:
                         break;
                 }
-                
             }
         }
 
@@ -102,8 +98,31 @@ namespace Chars
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
                 _playerView = _instance.GetComponent<PlayerView>();
+                _charBar = _playerView.charBarCanvas.GetComponent<CharBar>();
                 SetAnimLength();
+                _mana = 100f;
+                _playerView.OnStep += () =>
+                {
+                    _isBusy = false;
+                    _cell.PaintHex(_color);
+                    _animator.SetBool("isMoving", _isBusy);
+                };
+                _playerView.OnAttackEnd += () =>
+                {
+                    _isBusy = false;
+                    _mana -= _weapon.manaCost;
+                    UpdateCanvas();
+                    var ball = Object.Instantiate(_weapon.objectToThrow,
+                        _instance.transform.position + new Vector3(0, 2), Quaternion.identity);
+                    ball.transform.DOMove(_cellEdge.transform.position + new Vector3(0, 2), _weapon.speed, false)
+                        .OnComplete(() => { Object.Destroy(ball); });
+                };
             }
+        }
+
+        private void UpdateCanvas()
+        {
+            _charBar.ManaBar.fillAmount = _mana / 100;
         }
 
         public void Death()
@@ -113,10 +132,20 @@ namespace Chars
 
         public void Attack(HexDirection direction)
         {
-            throw new NotImplementedException();
+            if (_cell.GetNeighbor(direction))
+            {
+                _isBusy = true;
+                _instance.transform.DOLookAt(_cell.GetNeighbor(direction).transform.position, 0.1f);
+                _animator.SetTrigger("Attack");
+                _cellEdge = _cell.GetNeighbor(direction);
+                while (_cellEdge.GetNeighbor(direction) != null)
+                {
+                    _cellEdge = _cellEdge.GetNeighbor(direction);
+                }
+            }
         }
 
-        public void Damag(float dmg)
+        public void Damage(float dmg)
         {
             throw new NotImplementedException();
         }

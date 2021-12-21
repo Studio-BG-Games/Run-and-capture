@@ -8,6 +8,6 @@ namespace Chars
         public void Spawn();
         public void Death();
         public void Attack(HexDirection direction);
-        public void Damag(float dmg);
+        public void Damage(float dmg);
     }
 }

@@ -12,6 +12,6 @@ public class FadeIn : MonoBehaviour
     private void OnEnable()
     {
         var back = GetComponent<Image>();
-        back.DOFade(0, 5).OnComplete(() => gameObject.SetActive(false));
+        back.DOFade(0, duration).OnComplete(() => gameObject.SetActive(false));
     }
 }

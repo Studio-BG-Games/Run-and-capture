@@ -14,7 +14,7 @@ namespace Controller
             controllers.Add(hexGrid);
             hexGrid.OnHexPainted += DoSomething;
 
-            Player player = new Player(data.PlayerData, hexGrid);
+            Player player = new Player(data.PlayerData, data.WeaponsData.WeaponsList[0], hexGrid);
             
             List<IUnit> units = new List<IUnit> { player };
             
