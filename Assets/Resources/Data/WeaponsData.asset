@@ -17,4 +17,4 @@ MonoBehaviour:
       type: 3}
     manaCost: 10
     damage: 10
-    speed: 50
+    speed: 0.1
