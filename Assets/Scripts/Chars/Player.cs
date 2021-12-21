@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Data;
 using DefaultNamespace.Weapons;
 using DG.Tweening;
@@ -13,6 +14,7 @@ namespace Chars
         public float Move;
         public float Attack;
     }
+
 
     public class Player : IUnit
     {
@@ -31,7 +33,7 @@ namespace Chars
         private float _hp;
         private float _mana;
         private Weapon _weapon;
-        private HexCell _cellEdge;
+        private List<HexCell> _cellsToEdge;
         private CharBar _charBar;
 
         public bool IsBusy => _isBusy;
@@ -47,6 +49,7 @@ namespace Chars
             _hexGrid = hexGrid;
             _isBusy = false;
             _color = playerData.color;
+            
         }
 
         public void Move(HexDirection direction)
@@ -101,28 +104,48 @@ namespace Chars
                 _charBar = _playerView.charBarCanvas.GetComponent<CharBar>();
                 SetAnimLength();
                 _mana = 100f;
-                _playerView.OnStep += () =>
-                {
-                    _isBusy = false;
-                    _cell.PaintHex(_color);
-                    _animator.SetBool("isMoving", _isBusy);
-                };
-                _playerView.OnAttackEnd += () =>
-                {
-                    _isBusy = false;
-                    _mana -= _weapon.manaCost;
-                    UpdateCanvas();
-                    var ball = Object.Instantiate(_weapon.objectToThrow,
-                        _instance.transform.position + new Vector3(0, 2), Quaternion.identity);
-                    ball.transform.DOMove(_cellEdge.transform.position + new Vector3(0, 2), _weapon.speed, false)
-                        .OnComplete(() => { Object.Destroy(ball); });
-                };
+                _hp = 100f;
+                SetUpActions();
             }
+        }
+
+        private void SetUpActions()
+        {
+            _playerView.OnStep += () =>
+            {
+                _isBusy = false;
+                _cell.PaintHex(_color);
+                _animator.SetBool("isMoving", _isBusy);
+            };
+            _playerView.OnAttackEnd += () =>
+            {
+                _isBusy = false;
+                _mana -= _weapon.manaCost;
+                UpdateCanvas();
+                var ball = Object.Instantiate(_weapon.objectToThrow,
+                    _instance.transform.position + new Vector3(0, 2), Quaternion.identity);
+                var sequence = DOTween.Sequence();
+                _cellsToEdge.ForEach(cell =>
+                {
+                        
+                    sequence.Append(ball.transform
+                        .DOMove(cell.transform.position + new Vector3(0, 2), _weapon.speed).SetEase(Ease.Linear));
+                });
+                sequence.onComplete += () => { Object.Destroy(ball); };
+                sequence.onUpdate += () =>
+                {
+                    if (ball == null)
+                    {
+                        sequence.Kill();
+                    }
+                };
+            };
         }
 
         private void UpdateCanvas()
         {
             _charBar.ManaBar.fillAmount = _mana / 100;
+            _charBar.HealthBar.fillAmount = _hp / 100;
         }
 
         public void Death()
@@ -132,22 +155,30 @@ namespace Chars
 
         public void Attack(HexDirection direction)
         {
-            if (_cell.GetNeighbor(direction))
+            if (_cell.GetNeighbor(direction) && _mana - _weapon.manaCost >= 0)
             {
+                _cellsToEdge = new List<HexCell>();
                 _isBusy = true;
                 _instance.transform.DOLookAt(_cell.GetNeighbor(direction).transform.position, 0.1f);
                 _animator.SetTrigger("Attack");
-                _cellEdge = _cell.GetNeighbor(direction);
-                while (_cellEdge.GetNeighbor(direction) != null)
+                var curCell = _cell.GetNeighbor(direction);
+                _cellsToEdge.Add(curCell);
+                while (curCell.GetNeighbor(direction) != null)
                 {
-                    _cellEdge = _cellEdge.GetNeighbor(direction);
+                    curCell = curCell.GetNeighbor(direction);
+                    _cellsToEdge.Add(curCell);
                 }
             }
         }
 
         public void Damage(float dmg)
         {
-            throw new NotImplementedException();
+            if (_hp - dmg <= 0f)
+            {
+                Death();
+            }
+
+            _hp -= dmg;
         }
     }
 }
