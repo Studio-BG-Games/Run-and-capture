@@ -4,6 +4,7 @@
     {
         GREEN,
         RED,
-        GREY
+        GREY,
+        YELLOW
     }
 }

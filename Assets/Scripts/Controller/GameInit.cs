@@ -25,9 +25,9 @@ namespace Controller
             controllers.Add(playerControl);
 
             CameraControl cameraControl =
-                new CameraControl(UnityEngine.Camera.main, data.CameraData);
+                new CameraControl(Camera.main, data.CameraData);
             controllers.Add(cameraControl);
-            player.OnPlayerSpawned += cameraControl.InitCameraControl;
+            player.onPlayerSpawned += cameraControl.InitCameraControl;
         }
         private void DoSomething(HexCell cell)
         {

@@ -18,5 +18,10 @@ namespace Chars
         {
             throw new System.NotImplementedException();
         }
+
+        public void Attack(HexDirection direction)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

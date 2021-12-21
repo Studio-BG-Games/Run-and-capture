@@ -7,5 +7,6 @@ namespace Chars
         public void Move(HexDirection direction);
         public void Spawn();
         public void Death();
+        public void Attack(HexDirection direction);
     }
 }

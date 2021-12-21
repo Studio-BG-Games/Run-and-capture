@@ -14,19 +14,17 @@ namespace Chars
 
     public class Player : IUnit
     {
-        private HexCoordinates spawnPos;
+        private HexCoordinates _spawnPos;
         private bool _isAlive;
         private GameObject _instance;
-        private GameObject prefab;
+        private GameObject _prefab;
         private AnimLength _animLength;
         private HexCell _cell;
         private HexGrid _hexGrid;
-        private Texture _texture;
-        public Action<GameObject> OnPlayerSpawned;
+        public Action<GameObject> onPlayerSpawned;
         private Animator _animator;
         private PlayerView _playerView;
         private bool _isMoving;
-        private GameObject _vfxPrefab;
         private UnitColor _color;
         private static readonly int Moving = Animator.StringToHash("isMoving");
         private static readonly int Move1 = Animator.StringToHash("Move");
@@ -36,8 +34,8 @@ namespace Chars
 
         public Player(PlayerData playerData, HexGrid hexGrid)
         {
-            spawnPos = playerData.spawnPos;
-            prefab = playerData.playerPrefab;
+            _spawnPos = playerData.spawnPos;
+            _prefab = playerData.playerPrefab;
             _isAlive = false;
             _hexGrid = hexGrid;
             _isMoving = false;
@@ -71,11 +69,15 @@ namespace Chars
             AnimationClip[] clips = _animator.runtimeAnimatorController.animationClips;
             foreach (var clip in clips)
             {
-                _animLength.Move = clip.name switch
+                switch (clip.name)
                 {
-                    "Jump" => clip.length,
-                    _ => _animLength.Move
-                };
+                    case "Jump":
+                        _animLength.Move = clip.length;
+                        break;
+                    default:
+                        break;
+                }
+                
             }
         }
 
@@ -83,16 +85,16 @@ namespace Chars
         {
             if (!_isAlive)
             {
-                _cell = _hexGrid.GetCellFromCoord(spawnPos);
+                _cell = _hexGrid.GetCellFromCoord(_spawnPos);
                 _cell.PaintHex(_color);
                 for (int i = 0; i < 6; i++)
                 {
                     _cell.GetNeighbor((HexDirection)i).PaintHex(_color);
                 }
 
-                _instance = Object.Instantiate(prefab, _cell.transform.parent);
+                _instance = Object.Instantiate(_prefab, _cell.transform.parent);
                 _instance.transform.localPosition = _cell.transform.localPosition;
-                OnPlayerSpawned?.Invoke(_instance);
+                onPlayerSpawned?.Invoke(_instance);
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
                 _playerView = _instance.GetComponent<PlayerView>();
@@ -102,7 +104,12 @@ namespace Chars
 
         public void Death()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        public void Attack(HexDirection direction)
+        {
+            throw new NotImplementedException();
         }
     }
 }

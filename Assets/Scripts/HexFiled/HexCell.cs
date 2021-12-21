@@ -17,7 +17,7 @@ namespace HexFiled
         private void Awake()
         {
             _renderer = GetComponent<MeshRenderer>();
-            PaintHex(UnitColor.GREY);
+            _color = UnitColor.GREY;
         }
 
         public void SetDictionary(Dictionary<UnitColor, CellColor> colors)
