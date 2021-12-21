@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Runtime.Controller;
 using Runtime.Data;
 using TMPro;
@@ -11,31 +12,30 @@ namespace HexFiled
     {
         private int _width;
         private int _height;
-        private Color _defaultColor = Color.white;
-        private Color _touchedColor = Color.magenta;
         private GameObject _cellPrefab;
         private TMP_Text _cellLabelPrefab;
-        private Camera _camera;
         private HexCell[] _cells;
         private Canvas _gridCanvas;
         private GameObject _baseGameObject;
         public Action<HexCell> OnHexPainted;
         public Action OnGridLoaded;
+        private Dictionary<UnitColor, CellColor> _colors;
 
         public HexGrid(FieldData fieldData)
         {
             _width = fieldData.width;
             _height = fieldData.height;
-            _defaultColor = fieldData.defaultColor;
-            _touchedColor = fieldData.touchedColor;
             _cellPrefab = fieldData.cellPrefab;
             _cellLabelPrefab = fieldData.cellLabelPrefab;
-            _camera = Camera.main;
             _baseGameObject = new GameObject("HexGrid");
+            _colors = new Dictionary<UnitColor, CellColor>(fieldData.colors.Count);
+            foreach (var color in fieldData.colors)
+            {
+                _colors.Add(color.UnitColor, color);
+            }
 
             _gridCanvas = Object.Instantiate(fieldData.CoordinatesCanvas, _baseGameObject.transform)
                 .GetComponent<Canvas>();
-            
         }
 
         public HexCell GetCellFromCoord(HexCoordinates coordinates)
@@ -48,15 +48,6 @@ namespace HexFiled
             return _cells[i - 1];
         }
 
-        private void PaintHex(Color color, HexCoordinates coordinates)
-        {
-            int index = coordinates.X + coordinates.Z * _width + coordinates.Z / 2;
-            HexCell cell = _cells[index];
-            
-            cell.color = color;
-            cell.gameObject.GetComponent<MeshRenderer>().material.color = color;
-            OnHexPainted.Invoke(_cells[index]);
-        }
 
         void CreateCell(int x, int z, int i)
         {
@@ -66,36 +57,43 @@ namespace HexFiled
             position.z = z * (HexMetrics.outerRadius * 1.5f);
             var cellGO = Object.Instantiate(_cellPrefab);
             HexCell cell = _cells[i] = cellGO.GetComponent<HexCell>();
+            cell.SetDictionary(_colors);
+            cell.PaintHex(UnitColor.GREY);
             cell.transform.SetParent(_baseGameObject.transform, false);
             cell.transform.localPosition = position;
             cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
-            cell.color = _defaultColor;
-            cell.OnHexPainted += OnHexPainted;
-            
-            if (x > 0) {
+            cell.onHexPainted += OnHexPainted;
+
+            if (x > 0)
+            {
                 cell.SetNeighbor(HexDirection.W, _cells[i - 1]);
             }
-            
-            if (z > 0) {
-                if ((z & 1) == 0) {
+
+            if (z > 0)
+            {
+                if ((z & 1) == 0)
+                {
                     cell.SetNeighbor(HexDirection.SE, _cells[i - _width]);
-                    if (x > 0) {
+                    if (x > 0)
+                    {
                         cell.SetNeighbor(HexDirection.SW, _cells[i - _width - 1]);
                     }
                 }
-                else {
+                else
+                {
                     cell.SetNeighbor(HexDirection.SW, _cells[i - _width]);
-                    if (x < _width - 1) {
+                    if (x < _width - 1)
+                    {
                         cell.SetNeighbor(HexDirection.SE, _cells[i - _width + 1]);
                     }
                 }
             }
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             TMP_Text label = Object.Instantiate(_cellLabelPrefab, _gridCanvas.transform, false);
             label.rectTransform.anchoredPosition =
                 new Vector2(position.x, position.z);
             label.text = cell.coordinates.ToStringOnSeparateLines();
-            #endif
+#endif
         }
 
         public void Init()
@@ -113,6 +111,5 @@ namespace HexFiled
             // _hexMesh.Triangulate(_cells);
             OnGridLoaded.Invoke();
         }
-        
     }
 }

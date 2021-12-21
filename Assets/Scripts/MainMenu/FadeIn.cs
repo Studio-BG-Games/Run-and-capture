@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class FadeIn : MonoBehaviour
 {
     [SerializeField] private float duration;
+
     private void OnEnable()
     {
         var back = GetComponent<Image>();

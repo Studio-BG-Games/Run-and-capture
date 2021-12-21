@@ -1,4 +1,5 @@
-﻿using HexFiled;
+﻿using System.Collections.Generic;
+using HexFiled;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,5 +18,6 @@ namespace Runtime.Data
         public TMP_Text cellLabelPrefab;
         public GameObject CoordinatesCanvas;
         public Texture DefaultTexture;
+        public List<CellColor> colors;
     }
 }

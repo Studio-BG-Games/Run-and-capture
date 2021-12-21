@@ -11,6 +11,7 @@ namespace Chars
     {
         public float Move;
     }
+
     public class Player : IUnit
     {
         private HexCoordinates spawnPos;
@@ -25,9 +26,11 @@ namespace Chars
         private Animator _animator;
         private PlayerView _playerView;
         private bool _isMoving;
+        private GameObject _vfxPrefab;
+        private UnitColor _color;
         private static readonly int Moving = Animator.StringToHash("isMoving");
         private static readonly int Move1 = Animator.StringToHash("Move");
-        private float _tick = 0.8f;
+
         public bool IsMoving => _isMoving;
         public GameObject PlayerInstance => _instance;
 
@@ -37,14 +40,13 @@ namespace Chars
             prefab = playerData.playerPrefab;
             _isAlive = false;
             _hexGrid = hexGrid;
-            _texture = playerData.hexTexture;
             _isMoving = false;
+            _color = playerData.color;
         }
 
 
         public void Move(HexDirection direction)
         {
-            _tick = Time.time;
             if (_cell.GetNeighbor(direction))
             {
                 _isMoving = true;
@@ -55,21 +57,19 @@ namespace Chars
                 _playerView.OnStep += () =>
                 {
                     _isMoving = false;
-                    _cell.PaintHex(_texture);
-                    _tick = Time.time - _tick;
+                    _cell.PaintHex(_color);
+
                     _animator.SetBool(Moving, _isMoving);
-                    
                 };
 
                 _instance.transform.DOMove(_cell.transform.position, _animLength.Move);
-
             }
         }
 
         private void SetAnimLength()
         {
             AnimationClip[] clips = _animator.runtimeAnimatorController.animationClips;
-            foreach(var clip in clips)
+            foreach (var clip in clips)
             {
                 _animLength.Move = clip.name switch
                 {
@@ -84,10 +84,10 @@ namespace Chars
             if (!_isAlive)
             {
                 _cell = _hexGrid.GetCellFromCoord(spawnPos);
-                _cell.PaintHex(_texture);
+                _cell.PaintHex(_color);
                 for (int i = 0; i < 6; i++)
                 {
-                    _cell.GetNeighbor((HexDirection)i).PaintHex(_texture);
+                    _cell.GetNeighbor((HexDirection)i).PaintHex(_color);
                 }
 
                 _instance = Object.Instantiate(prefab, _cell.transform.parent);
