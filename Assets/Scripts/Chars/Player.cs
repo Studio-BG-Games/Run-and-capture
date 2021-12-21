@@ -28,9 +28,12 @@ namespace Chars
         private UnitColor _color;
         private static readonly int Moving = Animator.StringToHash("isMoving");
         private static readonly int Move1 = Animator.StringToHash("Move");
+        private float _hp;
+        private float _mana;
 
         public bool IsMoving => _isMoving;
         public GameObject PlayerInstance => _instance;
+        public PlayerView PlayerView => _playerView;
 
         public Player(PlayerData playerData, HexGrid hexGrid)
         {
@@ -42,6 +45,7 @@ namespace Chars
             _color = playerData.color;
         }
 
+        
 
         public void Move(HexDirection direction)
         {
@@ -59,7 +63,7 @@ namespace Chars
 
                     _animator.SetBool(Moving, _isMoving);
                 };
-
+                
                 _instance.transform.DOMove(_cell.transform.position, _animLength.Move);
             }
         }
@@ -108,6 +112,11 @@ namespace Chars
         }
 
         public void Attack(HexDirection direction)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Damag(float dmg)
         {
             throw new NotImplementedException();
         }

@@ -8,11 +8,12 @@ using Object = UnityEngine.Object;
 
 namespace Chars
 {
-    public class PlayerControl : IFixedExecute
+    public class PlayerControl : IFixedExecute, IInitialization
     {
         private Player _player;
         private FloatingJoystick _moveJoystick;
         private FloatingJoystick _attackJoystick;
+        private Camera _camera;
 
 
         public PlayerControl(Player player, PlayerData playerData)
@@ -21,14 +22,20 @@ namespace Chars
             var joyView = Object.Instantiate(playerData.joystickView);
             _moveJoystick = joyView.MoveJoystick;
             _attackJoystick = joyView.AttackJoystick;
+            _camera = Camera.main;
+            
         }
-        
-        
+
+
         public void FixedExecute()
         {
+            
             if (!_player.IsMoving && _moveJoystick.isPressed)
             {
                 _player.Move(VectorToDirection(_moveJoystick.Direction.normalized));
+                _player.PlayerView.charBarCanvas.transform.LookAt(
+                    _player.PlayerView.charBarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
+                    _camera.transform.rotation * Vector3.up);
             }
         }
 
@@ -67,6 +74,11 @@ namespace Chars
             return HexDirection.W;
         }
 
-        
+        public void Init()
+        {
+            _player.PlayerView.charBarCanvas.transform.LookAt(
+                _player.PlayerView.charBarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
+                _camera.transform.rotation * Vector3.up);
+        }
     }
 }
