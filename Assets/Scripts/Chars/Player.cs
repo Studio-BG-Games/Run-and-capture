@@ -27,7 +27,7 @@ namespace Chars
         private float _hp;
         private float _mana;
         private Weapon _weapon;
-        private Vector3 _direction;
+        private Vector2 _direction;
         private CharBar _charBar;
 
         public bool IsBusy => _isBusy;
@@ -119,8 +119,11 @@ namespace Chars
         private void Attacking()
         {
             var ball = Object.Instantiate(_weapon.objectToThrow,
-                _instance.transform.position + new Vector3(0, 2), Quaternion.identity);
-            ball.transform.DOMove(new Vector3(_direction.x * 100,2, _direction.y * 100), _weapon.speed)
+                _instance.transform.position + new Vector3(0, 0), Quaternion.identity);
+            ball.transform.DOMove(
+                    new Vector3(_direction.normalized.x,
+                        0, _direction.normalized.y) * _weapon.disnatce * _hexGrid.HexDistance + _instance.transform.position,
+                    _weapon.speed)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => Object.Destroy(ball));
         }
@@ -152,7 +155,7 @@ namespace Chars
 
         public void Aim(Vector2 direction)
         {
-            _unitView.transform.LookAt(new Vector3(direction.x,0, direction.y) + _unitView.transform.position);
+            _unitView.transform.LookAt(new Vector3(direction.x, 0, direction.y) + _unitView.transform.position);
             _direction = direction;
         }
 

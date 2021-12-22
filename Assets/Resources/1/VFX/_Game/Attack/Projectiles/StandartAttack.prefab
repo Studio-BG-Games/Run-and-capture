@@ -14396,6 +14396,8 @@ GameObject:
   - component: {fileID: 4746165193703840883}
   - component: {fileID: 4746165193722172489}
   - component: {fileID: 4746165193724002145}
+  - component: {fileID: 1047993054701375893}
+  - component: {fileID: 7831311356765102851}
   m_Layer: 0
   m_Name: StandartAttack
   m_TagString: Untagged
@@ -19133,6 +19135,32 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!136 &1047993054701375893
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746165193704193263}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7831311356765102851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746165193704193263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35bf8471b73bda40bb1eb4c020d64e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6794842974925477961
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3440,6 +3440,8 @@ GameObject:
   - component: {fileID: 8075972121593568698}
   - component: {fileID: -1510388322638865353}
   - component: {fileID: 7120083236827966330}
+  - component: {fileID: 2198464067484123790}
+  - component: {fileID: 5657146932405139005}
   m_Layer: 0
   m_Name: Mats
   m_TagString: Untagged
@@ -3513,6 +3515,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charBarCanvas: {fileID: 8614863231585036848}
+--- !u!136 &2198464067484123790
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887939040951305984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4395566
+  m_Height: 2.058372
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.0294466, z: -0.0604434}
+--- !u!54 &5657146932405139005
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887939040951305984}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8928538182418462435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3893,15 +3925,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec5dd0d644d5c548a53563e65837162, type: 3}
---- !u!1 &8614863231585036848 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6049883652435591266, guid: dec5dd0d644d5c548a53563e65837162,
-    type: 3}
-  m_PrefabInstance: {fileID: 2628876604355308114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7200088151662806852 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5156761560679623958, guid: dec5dd0d644d5c548a53563e65837162,
+    type: 3}
+  m_PrefabInstance: {fileID: 2628876604355308114}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8614863231585036848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6049883652435591266, guid: dec5dd0d644d5c548a53563e65837162,
     type: 3}
   m_PrefabInstance: {fileID: 2628876604355308114}
   m_PrefabAsset: {fileID: 0}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7219588875864790975}
   - component: {fileID: 7219588875865804323}
   - component: {fileID: 7219588875878423961}
+  - component: {fileID: 6099487056254604312}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -4834,6 +4835,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!136 &6099487056254604312
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7219588875883387333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5445045
+  m_Height: 1.089009
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.586327e-17, z: -0.02872634}
 --- !u!1 &7219588875883396939
 GameObject:
   m_ObjectHideFlags: 0
@@ -5222,7 +5237,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -5275,7 +5290,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -9860,7 +9875,7 @@ ParticleSystem:
         m_RotationOrder: 0
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -9913,7 +9928,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:

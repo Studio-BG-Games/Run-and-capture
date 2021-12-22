@@ -7,7 +7,7 @@ namespace Chars
 {
     public class Enemy : IUnit
     {
-        private GameObject _playerPrefab;
+        private GameObject _enemyPrefab;
         private HexCoordinates _spawnPos;
         private UnitColor _color;
         private HexCell _cell;
@@ -18,13 +18,16 @@ namespace Chars
         private bool _isBusy;
         private Animator _animator;
         private AnimLength _animLength;
+        private CharBar _charBar;
+        private float _mana;
+        private float _hp;
 
         public UnitView EnemyView => _unitView;
         public bool IsBusy => _isBusy;
         
         public Enemy(EnemyInfo enemyInfo, HexGrid grid)
         {
-            _playerPrefab = enemyInfo.playerPrefab;
+            _enemyPrefab = enemyInfo.playerPrefab;
             _spawnPos = enemyInfo.spawnPos;
             _color = enemyInfo.color;
             _grid = grid;
@@ -62,12 +65,18 @@ namespace Chars
             }
         }
 
+        private void UpdateCanvas()
+        {
+            _charBar.ManaBar.fillAmount = _mana / 100;
+            _charBar.HealthBar.fillAmount = _hp / 100;
+        }
+        
         public void Spawn()
         {
             if(!_isAlive)
             {
                 _cell = _grid.GetCellFromCoord(_spawnPos);
-                _instance = Object.Instantiate(_playerPrefab, _cell.transform.parent);
+                _instance = Object.Instantiate(_enemyPrefab, _cell.transform.parent);
                 _instance.transform.localPosition = _cell.transform.localPosition;
                 _cell.PaintHex(_color);
                 for (int i = 0; i < 6; i++)
@@ -78,10 +87,15 @@ namespace Chars
                 _isAlive = true;
                 _unitView = _instance.GetComponent<UnitView>();
                 _animator = _instance.GetComponent<Animator>();
+                _charBar = _instance.GetComponent<CharBar>();
                 SetAnimLength();
             }
         }
 
+        private void SetUpActions()
+        {
+            _unitView.OnHit += Damage;
+        }
         public void Death()
         {
             throw new System.NotImplementedException();
@@ -95,7 +109,8 @@ namespace Chars
 
         public void Damage(float dmg)
         {
-            throw new System.NotImplementedException();
+            _hp -= dmg;
+            UpdateCanvas();
         }
     }
 }

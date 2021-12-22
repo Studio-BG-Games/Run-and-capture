@@ -17,9 +17,12 @@ namespace HexFiled
         private HexCell[] _cells;
         private Canvas _gridCanvas;
         private GameObject _baseGameObject;
+        private Dictionary<UnitColor, CellColor> _colors;
+        private float _hexDistance;
+
+        public float HexDistance => _hexDistance;
         public Action<HexCell> OnHexPainted;
         public Action OnGridLoaded;
-        private Dictionary<UnitColor, CellColor> _colors;
 
         public HexGrid(FieldData fieldData)
         {
@@ -82,19 +85,26 @@ namespace HexFiled
                 else
                 {
                     cell.SetNeighbor(HexDirection.SW, _cells[i - _width]);
+                    if (_hexDistance == 0f)
+                    {
+                        _hexDistance = Vector3.Distance(cell.transform.position,
+                            cell.GetNeighbor(HexDirection.SW).transform.position);
+                    }
+
                     if (x < _width - 1)
                     {
                         cell.SetNeighbor(HexDirection.SE, _cells[i - _width + 1]);
                     }
                 }
             }
-#if UNITY_EDITOR
-            TMP_Text label = Object.Instantiate(_cellLabelPrefab, _gridCanvas.transform, false);
-            label.rectTransform.anchoredPosition =
-                new Vector2(position.x, position.z);
-            label.text = cell.coordinates.ToStringOnSeparateLines();
-#endif
         }
+// #if UNITY_EDITOR
+//             TMP_Text label = Object.Instantiate(_cellLabelPrefab, _gridCanvas.transform, false);
+//             label.rectTransform.anchoredPosition =
+//                 new Vector2(position.x, position.z);
+//             label.text = cell.coordinates.ToStringOnSeparateLines();
+// #endif
+
 
         public void Init()
         {
@@ -107,7 +117,7 @@ namespace HexFiled
                     CreateCell(x, z, i++);
                 }
             }
-            
+
             OnGridLoaded.Invoke();
         }
     }
