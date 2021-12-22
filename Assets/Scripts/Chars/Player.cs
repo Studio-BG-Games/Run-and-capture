@@ -119,10 +119,10 @@ namespace Chars
         private void Attacking()
         {
             var ball = Object.Instantiate(_weapon.objectToThrow,
-                _instance.transform.position + new Vector3(0, 0), Quaternion.identity);
+                _instance.transform.position + new Vector3(0, 2), Quaternion.identity);
             ball.transform.DOMove(
                     new Vector3(_direction.normalized.x,
-                        0, _direction.normalized.y) * _weapon.disnatce * _hexGrid.HexDistance + _instance.transform.position,
+                        0, _direction.normalized.y) * _weapon.disnatce * _hexGrid.HexDistance + _instance.transform.position + new Vector3(0,2,0),
                     _weapon.speed)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => Object.Destroy(ball));
