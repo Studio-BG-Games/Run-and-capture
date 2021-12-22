@@ -7,6 +7,7 @@ using HexFiled;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
+
 namespace Chars
 {
     struct AnimLength
@@ -33,7 +34,7 @@ namespace Chars
         private float _hp;
         private float _mana;
         private Weapon _weapon;
-        private List<HexCell> _cellsToEdge;
+        private Vector3 _direction;
         private CharBar _charBar;
 
         public bool IsBusy => _isBusy;
@@ -49,7 +50,6 @@ namespace Chars
             _hexGrid = hexGrid;
             _isBusy = false;
             _color = playerData.color;
-            
         }
 
         public void Move(HexDirection direction)
@@ -109,37 +109,34 @@ namespace Chars
             }
         }
 
+        private void Step()
+        {
+            _isBusy = false;
+            _cell.PaintHex(_color);
+            _animator.SetBool("isMoving", _isBusy);
+        }
+
+        private void AttackEnd()
+        {
+            _isBusy = false;
+            _mana -= _weapon.manaCost;
+            UpdateCanvas();
+        }
+
+        private void Attacking()
+        {
+            var ball = Object.Instantiate(_weapon.objectToThrow,
+                _instance.transform.position + new Vector3(0, 2), Quaternion.identity);
+            ball.transform.DOMove(new Vector3(_direction.x * 100,2, _direction.y * 100), _weapon.speed)
+                .SetEase(Ease.Linear)
+                .OnComplete(() => Object.Destroy(ball));
+        }
+
         private void SetUpActions()
         {
-            _playerView.OnStep += () =>
-            {
-                _isBusy = false;
-                _cell.PaintHex(_color);
-                _animator.SetBool("isMoving", _isBusy);
-            };
-            _playerView.OnAttackEnd += () =>
-            {
-                _isBusy = false;
-                _mana -= _weapon.manaCost;
-                UpdateCanvas();
-                var ball = Object.Instantiate(_weapon.objectToThrow,
-                    _instance.transform.position + new Vector3(0, 2), Quaternion.identity);
-                var sequence = DOTween.Sequence();
-                _cellsToEdge.ForEach(cell =>
-                {
-                        
-                    sequence.Append(ball.transform
-                        .DOMove(cell.transform.position + new Vector3(0, 2), _weapon.speed).SetEase(Ease.Linear));
-                });
-                sequence.onComplete += () => { Object.Destroy(ball); };
-                sequence.onUpdate += () =>
-                {
-                    if (ball == null)
-                    {
-                        sequence.Kill();
-                    }
-                };
-            };
+            _playerView.OnStep += Step;
+            _playerView.OnAttackEnd += AttackEnd;
+            _playerView.OnAttack += Attacking;
         }
 
         private void UpdateCanvas()
@@ -153,22 +150,17 @@ namespace Chars
             throw new NotImplementedException();
         }
 
-        public void Attack(HexDirection direction)
+
+        public void Attack(Vector2 direction)
         {
-            if (_cell.GetNeighbor(direction) && _mana - _weapon.manaCost >= 0)
-            {
-                _cellsToEdge = new List<HexCell>();
-                _isBusy = true;
-                _instance.transform.DOLookAt(_cell.GetNeighbor(direction).transform.position, 0.1f);
-                _animator.SetTrigger("Attack");
-                var curCell = _cell.GetNeighbor(direction);
-                _cellsToEdge.Add(curCell);
-                while (curCell.GetNeighbor(direction) != null)
-                {
-                    curCell = curCell.GetNeighbor(direction);
-                    _cellsToEdge.Add(curCell);
-                }
-            }
+            _isBusy = true;
+            _animator.SetTrigger("Attack");
+        }
+
+        public void Aim(Vector2 direction)
+        {
+            _playerView.transform.LookAt(new Vector3(direction.x,0, direction.y) + _playerView.transform.position);
+            _direction = direction;
         }
 
         public void Damage(float dmg)

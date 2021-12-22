@@ -5,15 +5,21 @@ public class PlayerView : MonoBehaviour
 {
     public Action OnStep;
     public Action OnAttackEnd;
+    public Action OnAttack;
     public GameObject charBarCanvas;
     
-    public void Step()
+    private void Step()
     {
         OnStep?.Invoke();
     }
 
-    public void AttackEnd()
+    private void AttackEnd()
     {
         OnAttackEnd?.Invoke();
+    }
+
+    private void Attack()
+    {
+        OnAttack?.Invoke();
     }
 }

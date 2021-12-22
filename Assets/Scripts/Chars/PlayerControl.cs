@@ -14,6 +14,7 @@ namespace Chars
         private FloatingJoystick _moveJoystick;
         private FloatingJoystick _attackJoystick;
         private Camera _camera;
+        private Vector2 _attackDircetion;
 
 
         public PlayerControl(Player player, PlayerData playerData)
@@ -23,25 +24,27 @@ namespace Chars
             _moveJoystick = joyView.MoveJoystick;
             _attackJoystick = joyView.AttackJoystick;
             _camera = Camera.main;
-            
+            _attackJoystick.OnTouchUp += DoAttack;
         }
 
-
+        private void DoAttack()
+        {
+            _player.Attack(_attackDircetion);
+        }
+        
         public void FixedExecute()
         {
-            
             if (!_player.IsBusy && _moveJoystick.Direction != Vector2.zero)
             {
                 _player.Move(VectorToDirection(_moveJoystick.Direction.normalized));
-               
             }
 
-            if (!_player.IsBusy && _attackJoystick.Direction != Vector2.zero)
+            if (!_player.IsBusy && _attackJoystick.isPressed)
             {
-                _player.Attack(VectorToDirection(_attackJoystick.Direction.normalized));
-               
+                _attackDircetion = _attackJoystick.Direction.normalized;
+                _player.Aim(_attackDircetion);
             }
-            
+
         }
 
         private static HexDirection VectorToDirection(Vector2 dir)
@@ -78,7 +81,7 @@ namespace Chars
 
             return HexDirection.W;
         }
-        
+
 
         public void Execute()
         {

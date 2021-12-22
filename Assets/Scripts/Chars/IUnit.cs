@@ -1,4 +1,6 @@
-﻿using HexFiled;
+﻿
+using HexFiled;
+using UnityEngine;
 
 namespace Chars
 {
@@ -7,7 +9,7 @@ namespace Chars
         public void Move(HexDirection direction);
         public void Spawn();
         public void Death();
-        public void Attack(HexDirection direction);
+        public void Attack(Vector2 direction);
         public void Damage(float dmg);
     }
 }

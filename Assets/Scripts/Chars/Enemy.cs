@@ -1,4 +1,5 @@
 ﻿using HexFiled;
+using UnityEngine;
 
 namespace Chars
 {
@@ -19,10 +20,11 @@ namespace Chars
             throw new System.NotImplementedException();
         }
 
-        public void Attack(HexDirection direction)
+        public void Attack(Vector2 direction)
         {
             throw new System.NotImplementedException();
         }
+
 
         public void Damage(float dmg)
         {
