@@ -107,8 +107,7 @@ namespace HexFiled
                     CreateCell(x, z, i++);
                 }
             }
-
-            // _hexMesh.Triangulate(_cells);
+            
             OnGridLoaded.Invoke();
         }
     }

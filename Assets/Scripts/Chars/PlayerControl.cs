@@ -85,9 +85,12 @@ namespace Chars
 
         public void Execute()
         {
-            _player.PlayerView.charBarCanvas.transform.LookAt(
-                _player.PlayerView.charBarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
-                _camera.transform.rotation * Vector3.up);
+            if (_player.UnitView != null)
+            {
+                _player.UnitView.charBarCanvas.transform.LookAt(
+                    _player.UnitView.charBarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
+                    _camera.transform.rotation * Vector3.up);
+            }
         }
     }
 }

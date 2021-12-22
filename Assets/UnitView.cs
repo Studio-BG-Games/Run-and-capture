@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+public class UnitView : MonoBehaviour
 {
     public Action OnStep;
     public Action OnAttackEnd;

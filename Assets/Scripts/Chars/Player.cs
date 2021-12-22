@@ -10,13 +10,6 @@ using Object = UnityEngine.Object;
 
 namespace Chars
 {
-    struct AnimLength
-    {
-        public float Move;
-        public float Attack;
-    }
-
-
     public class Player : IUnit
     {
         private HexCoordinates _spawnPos;
@@ -28,7 +21,7 @@ namespace Chars
         private HexGrid _hexGrid;
         public Action<GameObject> onPlayerSpawned;
         private Animator _animator;
-        private PlayerView _playerView;
+        private UnitView _unitView;
         private bool _isBusy;
         private UnitColor _color;
         private float _hp;
@@ -39,7 +32,7 @@ namespace Chars
 
         public bool IsBusy => _isBusy;
         public GameObject PlayerInstance => _instance;
-        public PlayerView PlayerView => _playerView;
+        public UnitView UnitView => _unitView;
 
         public Player(PlayerData playerData, Weapon weapon, HexGrid hexGrid)
         {
@@ -100,8 +93,8 @@ namespace Chars
                 onPlayerSpawned?.Invoke(_instance);
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
-                _playerView = _instance.GetComponent<PlayerView>();
-                _charBar = _playerView.charBarCanvas.GetComponent<CharBar>();
+                _unitView = _instance.GetComponent<UnitView>();
+                _charBar = _unitView.charBarCanvas.GetComponent<CharBar>();
                 SetAnimLength();
                 _mana = 100f;
                 _hp = 100f;
@@ -134,9 +127,9 @@ namespace Chars
 
         private void SetUpActions()
         {
-            _playerView.OnStep += Step;
-            _playerView.OnAttackEnd += AttackEnd;
-            _playerView.OnAttack += Attacking;
+            _unitView.OnStep += Step;
+            _unitView.OnAttackEnd += AttackEnd;
+            _unitView.OnAttack += Attacking;
         }
 
         private void UpdateCanvas()
@@ -159,7 +152,7 @@ namespace Chars
 
         public void Aim(Vector2 direction)
         {
-            _playerView.transform.LookAt(new Vector3(direction.x,0, direction.y) + _playerView.transform.position);
+            _unitView.transform.LookAt(new Vector3(direction.x,0, direction.y) + _unitView.transform.position);
             _direction = direction;
         }
 

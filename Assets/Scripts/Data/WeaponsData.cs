@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace DefaultNamespace.Weapons
@@ -20,5 +21,8 @@ namespace DefaultNamespace.Weapons
         public int manaCost;
         public int damage;
         public float speed;
+        public int disnatce;
+        public float reloadTime;
+        public int shots;
     }
 }

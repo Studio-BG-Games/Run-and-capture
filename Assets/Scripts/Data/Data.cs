@@ -17,7 +17,22 @@ namespace Data
         private PlayerData _playerData;
         [SerializeField] private string weaponDataPath;
         private WeaponsData _weaponData;
+        [SerializeField] private string enemyDataPath;
+        private EnemyData _enemyData;
 
+        public EnemyData EnemyData
+        {
+            get
+            {
+                if (_enemyData == null)
+                {
+                    _enemyData = Load<EnemyData>("Data/" + enemyDataPath);
+                }
+
+                return _enemyData;
+            }
+        }
+        
         public WeaponsData WeaponsData
         {
             get
@@ -73,4 +88,5 @@ namespace Data
         private static T Load<T>(string resourcesPath) where T : Object =>
             Resources.Load<T>(Path.ChangeExtension(resourcesPath, null));
     }
+    
 }

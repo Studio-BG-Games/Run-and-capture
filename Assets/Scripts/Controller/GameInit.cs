@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CamControl;
 using Chars;
+using Data;
 using HexFiled;
 using UnityEngine;
 
@@ -15,8 +16,14 @@ namespace Controller
             hexGrid.OnHexPainted += DoSomething;
 
             Player player = new Player(data.PlayerData, data.WeaponsData.WeaponsList[0], hexGrid);
-            
             List<IUnit> units = new List<IUnit> { player };
+            data.EnemyData.Enemies.ForEach(enemyInfo =>
+            {
+                var enemy = new Enemy(enemyInfo, hexGrid);
+                var enemyController = new EnemyController(enemyInfo, enemy);
+                controllers.Add(enemyController);
+                units.Add(enemy);
+            });
             
             var unitFactory = new UnitFactory(units);
             hexGrid.OnGridLoaded += unitFactory.Spawn;
