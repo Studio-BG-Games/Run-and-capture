@@ -1,16 +1,17 @@
 ﻿using Controller;
 using Data;
 using Runtime.Controller;
+using Units;
 using UnityEngine;
 
 namespace Chars
 {
     public class EnemyController : IFixedExecute, IExecute
     {
-        private Enemy _enemy;
+        private Unit _enemy;
         private Camera _camera;
 
-        public EnemyController(EnemyInfo enemyInfo, Enemy enemy)
+        public EnemyController(UnitInfo enemyInfo, Unit enemy)
         {
             _enemy = enemy;
             _camera = Camera.main;
@@ -24,10 +25,10 @@ namespace Chars
 
         public void Execute()
         {
-            if (_enemy.EnemyView != null)
+            if (_enemy.UnitView != null)
             {
-                _enemy.EnemyView.BarCanvas.transform.LookAt(
-                    _enemy.EnemyView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
+                _enemy.UnitView.BarCanvas.transform.LookAt(
+                    _enemy.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
                     _camera.transform.rotation * Vector3.up);
             }
         }

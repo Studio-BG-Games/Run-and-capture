@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d46325a4e4e45338d7e9733fb8d6013, type: 3}
+  m_Name: UnitsData
+  m_EditorClassIdentifier: 
+  _units:
+  - isPlayer: 1
+    spawnPos:
+      x: 9
+      z: 10
+    unitPrefa: {fileID: 7527582019267571087, guid: f102085e8bc4cad4992d43b84dee1055,
+      type: 3}
+    color: 3
+    manaRegen: 10
+    maxMana: 100
+    maxHP: 100
+  - isPlayer: 0
+    spawnPos:
+      x: 0
+      z: 0
+    unitPrefa: {fileID: 3762867976042010436, guid: d00f156879942114488e4db0689a3fb7,
+      type: 3}
+    color: 4
+    manaRegen: 10
+    maxMana: 100
+    maxHP: 100
+  - isPlayer: 0
+    spawnPos:
+      x: 3
+      z: 10
+    unitPrefa: {fileID: 742650227762578155, guid: 97b4a76c55741764e880b63d6e1514a9,
+      type: 3}
+    color: 0
+    manaRegen: 10
+    maxMana: 100
+    maxHP: 100

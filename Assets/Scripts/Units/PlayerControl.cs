@@ -3,6 +3,7 @@ using Controller;
 using Data;
 using HexFiled;
 using Runtime.Controller;
+using Units;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -10,17 +11,17 @@ namespace Chars
 {
     public class PlayerControl : IFixedExecute, IExecute
     {
-        private Player _player;
+        private Unit _unit;
         private FloatingJoystick _moveJoystick;
         private FloatingJoystick _attackJoystick;
         private Camera _camera;
         private Vector2 _attackDircetion;
 
 
-        public PlayerControl(Player player, PlayerData playerData)
+        public PlayerControl(Unit unit, UIData uiData)
         {
-            _player = player;
-            var joyView = Object.Instantiate(playerData.joystickView);
+            _unit = unit;
+            var joyView = Object.Instantiate(uiData.joystickView);
             _moveJoystick = joyView.MoveJoystick;
             _attackJoystick = joyView.AttackJoystick;
             _camera = Camera.main;
@@ -30,26 +31,26 @@ namespace Chars
 
         private void DoAttack()
         {
-            _player.UnitView.AimCanvas.SetActive(false);
-            _player.StartAttack(_attackDircetion);
+            _unit.UnitView.AimCanvas.SetActive(false);
+            _unit.StartAttack(_attackDircetion);
         }
 
         private void AimCanvas()
         {
-            _player.UnitView.AimCanvas.SetActive(true);
+            _unit.UnitView.AimCanvas.SetActive(true);
         }
         
         public void FixedExecute()
         {
-            if (!_player.IsBusy && _moveJoystick.Direction != Vector2.zero)
+            if (!_unit.IsBusy && _moveJoystick.Direction != Vector2.zero)
             {
-                _player.Move(VectorToDirection(_moveJoystick.Direction.normalized));
+                _unit.Move(VectorToDirection(_moveJoystick.Direction.normalized));
             }
 
-            if (!_player.IsBusy && _attackJoystick.isPressed)
+            if (!_unit.IsBusy && _attackJoystick.isPressed)
             {
                 _attackDircetion = _attackJoystick.Direction.normalized;
-                _player.Aim(_attackDircetion);
+                _unit.Aim(_attackDircetion);
             }
 
         }
@@ -92,10 +93,10 @@ namespace Chars
 
         public void Execute()
         {
-            if (_player.UnitView != null)
+            if (_unit.UnitView != null)
             {
-                _player.UnitView.BarCanvas.transform.LookAt(
-                    _player.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
+                _unit.UnitView.BarCanvas.transform.LookAt(
+                    _unit.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
                     _camera.transform.rotation * Vector3.up);
             }
         }

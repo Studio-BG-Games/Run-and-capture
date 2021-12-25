@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using Chars;
 using Data;
-using DefaultNamespace.Weapons;
 using DG.Tweening;
 using HexFiled;
 using UnityEngine;
+using Weapons;
 using Object = UnityEngine.Object;
 
 
-namespace Chars
+namespace Units
 {
-    public class Player : IUnit
+    public class Unit
     {
         private bool _isAlive;
         private GameObject _instance;
@@ -23,7 +22,7 @@ namespace Chars
         private Animator _animator;
         private UnitView _unitView;
         private bool _isBusy;
-        private PlayerData _data;
+        private UnitInfo _data;
         private int _hp;
         private int _mana;
         private Weapon _weapon;
@@ -35,10 +34,10 @@ namespace Chars
         public GameObject PlayerInstance => _instance;
         public UnitView UnitView => _unitView;
 
-        public Player(PlayerData playerData, Weapon weapon, HexGrid hexGrid)
+        public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
             _weapon = weapon;
-            _data = playerData;
+            _data = unitData;
             _isAlive = false;
             _hexGrid = hexGrid;
             _isBusy = false;
@@ -97,10 +96,10 @@ namespace Chars
                 _cell.PaintHex(_data.color);
                 for (int i = 0; i < 6; i++)
                 {
-                    _cell.GetNeighbor((HexDirection)i).PaintHex(_data.color);
+                    _cell.GetNeighbor((HexDirection)i)?.PaintHex(_data.color);
                 }
 
-                _instance = Object.Instantiate(_data.playerPrefab, _cell.transform.parent);
+                _instance = Object.Instantiate(_data.unitPrefa, _cell.transform.parent);
                 _instance.transform.localPosition = _cell.transform.localPosition;
                 onPlayerSpawned?.Invoke(_instance);
                 _isAlive = true;
@@ -171,9 +170,15 @@ namespace Chars
             _barCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
-        public void Death()
+        private void Death()
         {
-            throw new NotImplementedException();
+            _unitView.OnStep -= MoveEnd;
+            _unitView.OnAttackEnd -= AttackEnd;
+            _unitView.OnAttack -= Attacking;
+            _unitView.OnHit -= Damage;
+            _isAlive = false;
+            _animator.SetTrigger("Death");
+            
         }
 
 
@@ -192,7 +197,7 @@ namespace Chars
             _direction = direction;
         }
 
-        public void Damage(int dmg)
+        private void Damage(int dmg)
         {
             if (_hp - dmg <= 0f)
             {
@@ -200,6 +205,7 @@ namespace Chars
             }
 
             _hp -= dmg;
+            UpdateBarCanvas();
         }
     }
 }

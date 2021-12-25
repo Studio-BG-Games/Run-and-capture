@@ -40,3 +40,7 @@ MonoBehaviour:
     _texture: {fileID: 2800000, guid: 1a76a79d5a83143479c76f4f37c4b896, type: 3}
     _vfxPrefab: {fileID: 5732852186060375560, guid: 54d847a18c62f57479c53469d4398ceb,
       type: 3}
+  - _unitColor: 4
+    _texture: {fileID: 2800000, guid: 779719648deedb4478ddebb3b81751ef, type: 3}
+    _vfxPrefab: {fileID: 1651852338557341938, guid: fa6c1fc3da7c8d24c85a88b00cf598d4,
+      type: 3}

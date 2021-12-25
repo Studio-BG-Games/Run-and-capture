@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Weapons;
 using UnityEngine;
+using Weapons;
 
 public class WeaponView : MonoBehaviour
 {

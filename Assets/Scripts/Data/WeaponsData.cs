@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Weapons;
 
 namespace DefaultNamespace.Weapons
 {
@@ -12,18 +12,5 @@ namespace DefaultNamespace.Weapons
         private List<Weapon> _weapons;
 
         public List<Weapon> WeaponsList => _weapons;
-    }
-
-    [Serializable]
-    public struct Weapon
-    {
-        public GameObject objectToThrow;
-        public GameObject VFXGameObject;
-        public int manaCost;
-        public int damage;
-        public float speed;
-        public int disnatce;
-        public float reloadTime;
-        public int shots;
     }
 }

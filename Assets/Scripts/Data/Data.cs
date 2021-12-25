@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using Chars;
 using DefaultNamespace.Weapons;
-using Runtime.Data;
 using UnityEngine;
 
 namespace Data
@@ -13,25 +12,28 @@ namespace Data
         private FieldData _fieldData;
         [SerializeField] private string cameraDataPath;
         private CameraData _cameraData;
-        [SerializeField] private string playerDataPath;
-        private PlayerData _playerData;
+        [SerializeField] private string unitDataPath;
+        private UnitData _unitData;
         [SerializeField] private string weaponDataPath;
         private WeaponsData _weaponData;
-        [SerializeField] private string enemyDataPath;
-        private EnemyData _enemyData;
+        
+        [SerializeField] private string uiDataPath;
+        private UIData _uiData;
 
-        public EnemyData EnemyData
+        
+        public UIData UIData
         {
             get
             {
-                if (_enemyData == null)
+                if (_uiData == null)
                 {
-                    _enemyData = Load<EnemyData>("Data/" + enemyDataPath);
+                    _uiData = Load<UIData>("Data/" + uiDataPath);
                 }
 
-                return _enemyData;
+                return _uiData;
             }
         }
+        
         
         public WeaponsData WeaponsData
         {
@@ -71,16 +73,16 @@ namespace Data
             }
         }
 
-        public PlayerData PlayerData
+        public UnitData UnitData
         {
             get
             {
-                if (_playerData == null)
+                if (_unitData == null)
                 {
-                    _playerData = Load<PlayerData>("Data/" + playerDataPath);
+                    _unitData = Load<UnitData>("Data/" + unitDataPath);
                 }
 
-                return _playerData;
+                return _unitData;
             }
         }
 

@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using Units;
 
 namespace Chars
 {
     public class UnitFactory
     {
-        private List<IUnit> _units;
+        private List<Unit> _units;
 
-        public UnitFactory(List<IUnit> units)
+        public UnitFactory(List<Unit> units)
         {
             _units = units;
         }

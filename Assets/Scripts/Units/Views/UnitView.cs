@@ -5,6 +5,7 @@ using DefaultNamespace.Weapons;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using Weapons;
 
 public class UnitView : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class UnitView : MonoBehaviour
     [SerializeField] private GameObject barCanvas;
     [SerializeField] private GameObject aimCanvas;
 
-    private Stack<ShotUIView> _shotUIStack;
+    private Stack<ShotUIView> _shootUIStack;
     private Stack<ShotUIView> _toReloadStack;
     private Weapon _weapon;
     private int _manaRegen;
@@ -29,7 +30,7 @@ public class UnitView : MonoBehaviour
 
     public void SetUp(Stack<ShotUIView> shots, Weapon weapon, Action RegenMana, int manaRegen)
     {
-        _shotUIStack = shots;
+        _shootUIStack = shots;
         _weapon = weapon;
         _toReloadStack = new Stack<ShotUIView>();
         _startRegen = RegenMana;
@@ -38,8 +39,8 @@ public class UnitView : MonoBehaviour
 
     public bool Shoot()
     {
-        if (_shotUIStack.Count == 0) return false;
-        var shot = _shotUIStack.Pop();
+        if (_shootUIStack.Count == 0) return false;
+        var shot = _shootUIStack.Pop();
         shot.Switch();
         _toReloadStack.Push(shot);
         if (_previosReload != null)
@@ -92,15 +93,12 @@ public class UnitView : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        if (_toReloadStack.Count == 0)
-        {
-            yield break;
-        }
-
+        if (_toReloadStack.Count == 0) yield break; //TODO При частой стрльбе перезарядка работает некорректно 
         yield return new WaitForSeconds(_weapon.reloadTime);
+        if (_toReloadStack.Count == 0) yield break;
         var shot = _toReloadStack.Pop();
         shot.Switch();
-        _shotUIStack.Push(shot);
+        _shootUIStack.Push(shot);
         StartCoroutine(Reload());
     }
 

@@ -3,6 +3,7 @@ using CamControl;
 using Chars;
 using Data;
 using HexFiled;
+using Units;
 using UnityEngine;
 
 namespace Controller
@@ -14,27 +15,36 @@ namespace Controller
             var hexGrid = new HexGrid(data.FieldData);
             controllers.Add(hexGrid);
             hexGrid.OnHexPainted += DoSomething;
-
-            Player player = new Player(data.PlayerData, data.WeaponsData.WeaponsList[0], hexGrid);
-            List<IUnit> units = new List<IUnit> { player };
-            data.EnemyData.Enemies.ForEach(enemyInfo =>
+            Unit player;
+            
+            List<Unit> units = new List<Unit>();
+            data.UnitData.Units.ForEach(unit =>
             {
-                var enemy = new Enemy(enemyInfo, hexGrid);
-                var enemyController = new EnemyController(enemyInfo, enemy);
-                controllers.Add(enemyController);
-                units.Add(enemy);
+                if (unit.isPlayer)
+                {
+                    player = new Unit(unit, data.WeaponsData.WeaponsList[0], hexGrid);
+                    PlayerControl playerControl = new PlayerControl(player, data.UIData);
+                    controllers.Add(playerControl);
+                    CameraControl cameraControl =
+                        new CameraControl(Camera.main, data.CameraData);
+                    controllers.Add(cameraControl);
+                    player.onPlayerSpawned += cameraControl.InitCameraControl;
+                    units.Add(player);
+                }
+                else
+                {
+                    var enemy = new Unit(unit,data.WeaponsData.WeaponsList[0], hexGrid);
+                    var enemyController = new EnemyController(unit, enemy);
+                    controllers.Add(enemyController);
+                    units.Add(enemy);
+                }
+                
             });
             
             var unitFactory = new UnitFactory(units);
             hexGrid.OnGridLoaded += unitFactory.Spawn;
-
-            PlayerControl playerControl = new PlayerControl(player, data.PlayerData);
-            controllers.Add(playerControl);
-
-            CameraControl cameraControl =
-                new CameraControl(Camera.main, data.CameraData);
-            controllers.Add(cameraControl);
-            player.onPlayerSpawned += cameraControl.InitCameraControl;
+            
+            
         }
         private void DoSomething(HexCell cell)
         {
