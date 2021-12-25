@@ -7,9 +7,8 @@ namespace Chars
 {
     public class Enemy : IUnit
     {
-        private GameObject _enemyPrefab;
-        private HexCoordinates _spawnPos;
-        private UnitColor _color;
+
+        private EnemyInfo _data;
         private HexCell _cell;
         private HexGrid _grid;
         private GameObject _instance;
@@ -18,7 +17,7 @@ namespace Chars
         private bool _isBusy;
         private Animator _animator;
         private AnimLength _animLength;
-        private CharBar _charBar;
+        private BarCanvas _barCanvas;
         private float _mana;
         private float _hp;
 
@@ -27,9 +26,7 @@ namespace Chars
         
         public Enemy(EnemyInfo enemyInfo, HexGrid grid)
         {
-            _enemyPrefab = enemyInfo.playerPrefab;
-            _spawnPos = enemyInfo.spawnPos;
-            _color = enemyInfo.color;
+            _data = enemyInfo;
             _grid = grid;
             _isAlive = false;
         }
@@ -67,28 +64,40 @@ namespace Chars
 
         private void UpdateCanvas()
         {
-            _charBar.ManaBar.fillAmount = _mana / 100;
-            _charBar.HealthBar.fillAmount = _hp / 100;
+            if (_hp > _data.maxHP)
+                _hp = _data.maxHP;
+            if (_mana > _data.maxMana)
+                _mana = _data.maxMana;
+
+            float hp = _hp;
+            float mana = _mana;
+            float maxHp = _data.maxHP;
+            float maxMana = _data.maxMana;
+            _barCanvas.ManaBar.DOFillAmount(mana / maxMana, 0.5f).SetEase(Ease.InQuad);
+            _barCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
         
         public void Spawn()
         {
             if(!_isAlive)
             {
-                _cell = _grid.GetCellFromCoord(_spawnPos);
-                _instance = Object.Instantiate(_enemyPrefab, _cell.transform.parent);
+                _cell = _grid.GetCellFromCoord(_data.spawnPos);
+                _instance = Object.Instantiate(_data.playerPrefab, _cell.transform.parent);
                 _instance.transform.localPosition = _cell.transform.localPosition;
-                _cell.PaintHex(_color);
+                _cell.PaintHex(_data.color);
                 for (int i = 0; i < 6; i++)
                 {
-                    _cell.GetNeighbor((HexDirection)i).PaintHex(_color);
+                    _cell.GetNeighbor((HexDirection)i).PaintHex(_data.color);
                 }
 
                 _isAlive = true;
                 _unitView = _instance.GetComponent<UnitView>();
                 _animator = _instance.GetComponent<Animator>();
-                _charBar = _instance.GetComponent<CharBar>();
+                _barCanvas = _unitView.BarCanvas.GetComponent<BarCanvas>();
+                _hp = _data.maxHP;
+                _mana = _data.maxMana;
                 SetAnimLength();
+                SetUpActions();
             }
         }
 
@@ -101,13 +110,13 @@ namespace Chars
             throw new System.NotImplementedException();
         }
 
-        public void Attack(Vector2 direction)
+        public void StartAttack(Vector2 direction)
         {
             throw new System.NotImplementedException();
         }
 
 
-        public void Damage(float dmg)
+        public void Damage(int dmg)
         {
             _hp -= dmg;
             UpdateCanvas();

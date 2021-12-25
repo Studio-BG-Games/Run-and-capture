@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Weapons;
@@ -13,5 +14,9 @@ public class WeaponView : MonoBehaviour
     {
         _weapon = weapon;
     }
-    
+
+    private void OnDestroy()
+    {
+        Instantiate(_weapon.VFXGameObject, transform.position, transform.rotation);
+    }
 }

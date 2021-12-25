@@ -19,9 +19,15 @@ MonoBehaviour:
     playerPrefab: {fileID: 742650227762578155, guid: 97b4a76c55741764e880b63d6e1514a9,
       type: 3}
     color: 0
+    maxHP: 100
+    maxMana: 100
+    manaRegen: 10
   - spawnPos:
       x: 9
       z: 2
     playerPrefab: {fileID: 8887939040951305984, guid: 1a81dbbd6ef62324491d9f58654ebe4b,
       type: 3}
     color: 1
+    maxHP: 100
+    maxMana: 100
+    manaRegen: 10

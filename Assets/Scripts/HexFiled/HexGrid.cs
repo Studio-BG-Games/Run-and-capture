@@ -19,13 +19,16 @@ namespace HexFiled
         private GameObject _baseGameObject;
         private Dictionary<UnitColor, CellColor> _colors;
         private float _hexDistance;
+        private int _hexCaptureCost;
 
         public float HexDistance => _hexDistance;
         public Action<HexCell> OnHexPainted;
         public Action OnGridLoaded;
+        public int HexCaptureCost => _hexCaptureCost;
 
         public HexGrid(FieldData fieldData)
         {
+            _hexCaptureCost = fieldData.hexCaptureManaCost;
             _width = fieldData.width;
             _height = fieldData.height;
             _cellPrefab = fieldData.cellPrefab;

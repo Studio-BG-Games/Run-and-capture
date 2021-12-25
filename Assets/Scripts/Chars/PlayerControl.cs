@@ -25,11 +25,18 @@ namespace Chars
             _attackJoystick = joyView.AttackJoystick;
             _camera = Camera.main;
             _attackJoystick.OnTouchUp += DoAttack;
+            _attackJoystick.OnTouchDown += AimCanvas;
         }
 
         private void DoAttack()
         {
-            _player.Attack(_attackDircetion);
+            _player.UnitView.AimCanvas.SetActive(false);
+            _player.StartAttack(_attackDircetion);
+        }
+
+        private void AimCanvas()
+        {
+            _player.UnitView.AimCanvas.SetActive(true);
         }
         
         public void FixedExecute()
@@ -87,8 +94,8 @@ namespace Chars
         {
             if (_player.UnitView != null)
             {
-                _player.UnitView.charBarCanvas.transform.LookAt(
-                    _player.UnitView.charBarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
+                _player.UnitView.BarCanvas.transform.LookAt(
+                    _player.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
                     _camera.transform.rotation * Vector3.up);
             }
         }

@@ -20,3 +20,6 @@ MonoBehaviour:
   joystickView: {fileID: 4385872142190176059, guid: 4df6913b39f4979429158c344680d83f,
     type: 3}
   color: 3
+  manaRegen: 10
+  maxMana: 100
+  maxHP: 100

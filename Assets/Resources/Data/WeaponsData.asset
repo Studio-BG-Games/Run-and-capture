@@ -15,9 +15,11 @@ MonoBehaviour:
   _weapons:
   - objectToThrow: {fileID: 4746165193704193263, guid: 4e7523811a052fd46acf941fc69c8c98,
       type: 3}
+    VFXGameObject: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
+      type: 3}
     manaCost: 10
     damage: 10
-    speed: 10
+    speed: 1
     disnatce: 5
-    reloadTime: 1
+    reloadTime: 3
     shots: 3

@@ -16,13 +16,14 @@ MonoBehaviour:
   height: 50
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   touchedColor: {r: 1, g: 0, b: 1, a: 1}
+  hexCaptureManaCost: 10
   cellPrefab: {fileID: 1661242500252451528, guid: bcea5b4a96735bd4b936f8f3fefcc688,
     type: 3}
   cellLabelPrefab: {fileID: 3836123284387241147, guid: efd47cbd22ddfee4aa2b1391914116fc,
     type: 3}
   CoordinatesCanvas: {fileID: 4726489279989878083, guid: f31e0880dd078104bb31dc0fd7ef9f19,
     type: 3}
-  DefaultTexture: {fileID: 0}
+  DefaultTexture: {fileID: 2800000, guid: 983242f4b4db7a841af48234cf0021b8, type: 3}
   colors:
   - _unitColor: 2
     _texture: {fileID: 2800000, guid: 983242f4b4db7a841af48234cf0021b8, type: 3}

@@ -11,5 +11,8 @@ namespace Data
         public GameObject playerPrefab;
         public PlayerControlView joystickView;
         public UnitColor color;
+        public int manaRegen;
+        public int maxMana;
+        public int maxHP;
     }
 }

@@ -18,6 +18,7 @@ namespace DefaultNamespace.Weapons
     public struct Weapon
     {
         public GameObject objectToThrow;
+        public GameObject VFXGameObject;
         public int manaCost;
         public int damage;
         public float speed;

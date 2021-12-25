@@ -18,5 +18,8 @@ namespace Data
         public HexCoordinates spawnPos;
         public GameObject playerPrefab;
         public UnitColor color;
+        public int maxHP;
+        public int maxMana;
+        public int manaRegen;
     }
 }

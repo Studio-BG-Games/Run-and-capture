@@ -26,8 +26,8 @@ namespace Chars
         {
             if (_enemy.EnemyView != null)
             {
-                _enemy.EnemyView.charBarCanvas.transform.LookAt(
-                    _enemy.EnemyView.charBarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
+                _enemy.EnemyView.BarCanvas.transform.LookAt(
+                    _enemy.EnemyView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
                     _camera.transform.rotation * Vector3.up);
             }
         }

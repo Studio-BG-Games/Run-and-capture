@@ -9,7 +9,7 @@ namespace Chars
         public void Move(HexDirection direction);
         public void Spawn();
         public void Death();
-        public void Attack(Vector2 direction);
-        public void Damage(float dmg);
+        public void StartAttack(Vector2 direction);
+        public void Damage(int dmg);
     }
 }

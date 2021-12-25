@@ -13,6 +13,8 @@ namespace HexFiled
         private UnitColor _color;
         private MeshRenderer _renderer;
         private Dictionary<UnitColor, CellColor> _cellColor;
+        
+        public UnitColor Color => _color;
 
         private void Awake()
         {

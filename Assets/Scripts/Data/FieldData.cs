@@ -13,6 +13,7 @@ namespace Runtime.Data
         public int height = 6;
         public Color defaultColor = Color.white;
         public Color touchedColor = Color.magenta;
+        public int hexCaptureManaCost;
 
         public GameObject cellPrefab;
         public TMP_Text cellLabelPrefab;
