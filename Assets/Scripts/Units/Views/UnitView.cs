@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Weapons;
 using DG.Tweening;
+using DG.Tweening.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Weapons;
 
 public class UnitView : MonoBehaviour
@@ -15,6 +17,7 @@ public class UnitView : MonoBehaviour
     public Action<int> OnHit;
     [SerializeField] private GameObject barCanvas;
     [SerializeField] private GameObject aimCanvas;
+    [SerializeField] private Image captureBar;
 
 
     private Stack<ShotUIView> _shootUIStack;
@@ -26,7 +29,7 @@ public class UnitView : MonoBehaviour
     private Coroutine _previosReload;
     private int _mana;
     private Action _capureHex;
-    private Coroutine _captureHexCoroutine;
+    private Sequence _sequence;
 
     public GameObject BarCanvas => barCanvas;
     public GameObject AimCanvas => aimCanvas;
@@ -43,13 +46,21 @@ public class UnitView : MonoBehaviour
 
     public void HardCaptureHex()
     {
-        _captureHexCoroutine = StartCoroutine(HardCapture());
+        captureBar.gameObject.SetActive(true);
+        _sequence = DOTween.Sequence();
+        _sequence.Append(captureBar.DOFillAmount(1f, 3f).OnComplete(() =>
+        {
+            _capureHex.Invoke();
+            captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
+            captureBar.gameObject.SetActive(false);
+        }));
     }
 
     public void StopHardCature()
     {
-        if (_captureHexCoroutine != null)
-            StopCoroutine(_captureHexCoroutine);
+        _sequence.Kill(); 
+        captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
+        captureBar.gameObject.SetActive(false);
     }
 
     public bool Shoot()
@@ -129,11 +140,5 @@ public class UnitView : MonoBehaviour
         _mana += _manaRegen;
         _startRegen.Invoke();
         StartCoroutine(Regen());
-    }
-
-    private IEnumerator HardCapture()
-    {
-        yield return new WaitForSeconds(3f);
-        _capureHex.Invoke();
     }
 }
