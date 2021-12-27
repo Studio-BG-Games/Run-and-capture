@@ -32,7 +32,7 @@ namespace Chars
         private void DoAttack()
         {
             _unit.UnitView.AimCanvas.SetActive(false);
-            _unit.StartAttack(_attackDircetion);
+            _unit.StartAttack();
         }
 
         private void AimCanvas()

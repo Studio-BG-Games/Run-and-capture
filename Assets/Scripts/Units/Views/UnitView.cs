@@ -15,6 +15,7 @@ public class UnitView : MonoBehaviour
     public Action<int> OnHit;
     [SerializeField] private GameObject barCanvas;
     [SerializeField] private GameObject aimCanvas;
+    
 
     private Stack<ShotUIView> _shootUIStack;
     private Stack<ShotUIView> _toReloadStack;
@@ -104,7 +105,7 @@ public class UnitView : MonoBehaviour
 
     private IEnumerator Regen()
     {
-        if (_mana >= 100)
+        if (_mana >= 100) //TODO если пользовать ману во время регенерации, то мана не тратится.
         {
             yield break;
         }

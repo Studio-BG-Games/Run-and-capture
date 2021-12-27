@@ -135,8 +135,14 @@ namespace Units
 
         private void Attacking()
         {
+            if (_direction.Equals(Vector2.zero))
+            {
+                _direction = new Vector2(_unitView.transform.forward.x, _unitView.transform.forward.z);
+            }
+
             var ball = Object.Instantiate(_weapon.objectToThrow,
-                _instance.transform.forward + _instance.transform.position + new Vector3(0, 2), _instance.transform.rotation);
+                _instance.transform.forward + _instance.transform.position + new Vector3(0, 2),
+                _instance.transform.rotation);
             ball.GetComponent<WeaponView>().SetWeapon(_weapon);
             ball.transform.DOMove(
                     new Vector3(_direction.normalized.x,
@@ -178,22 +184,26 @@ namespace Units
             _unitView.OnHit -= Damage;
             _isAlive = false;
             _animator.SetTrigger("Death");
-            
         }
 
 
-        public void StartAttack(Vector2 direction)
+        public void StartAttack()
         {
             if (!_isBusy && _unitView.Shoot())
             {
                 _isBusy = true;
+                if (!_direction.Equals(Vector2.zero))
+                    _unitView.transform.DOLookAt(
+                        new Vector3(_direction.x, 0, _direction.y) + _unitView.transform.position,
+                        0.3f);
                 _animator.SetTrigger("Attack");
             }
         }
 
         public void Aim(Vector2 direction)
         {
-            _unitView.transform.LookAt(new Vector3(direction.x, 0, direction.y) + _unitView.transform.position);
+            _unitView.AimCanvas.transform.LookAt(
+                new Vector3(direction.x, 0, direction.y) + _unitView.transform.position);
             _direction = direction;
         }
 

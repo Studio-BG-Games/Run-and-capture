@@ -20,7 +20,7 @@ MonoBehaviour:
     unitPrefa: {fileID: 7527582019267571087, guid: f102085e8bc4cad4992d43b84dee1055,
       type: 3}
     color: 3
-    manaRegen: 10
+    manaRegen: 5
     maxMana: 100
     maxHP: 100
   - isPlayer: 0
