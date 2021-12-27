@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Data;
+using DG.Tweening;
 using Runtime.Controller;
 using Units;
 using UnityEngine;
@@ -27,9 +28,9 @@ namespace Chars
         {
             if (_enemy.UnitView != null)
             {
-                _enemy.UnitView.BarCanvas.transform.LookAt(
-                    _enemy.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
-                    _camera.transform.rotation * Vector3.up);
+                _enemy.UnitView.BarCanvas.transform.DOLookAt(
+                    _enemy.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back, 0f,
+                    up: _camera.transform.rotation * Vector3.up);
             }
         }
     }

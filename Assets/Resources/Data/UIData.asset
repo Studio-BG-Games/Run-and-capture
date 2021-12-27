@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d802c0065ac04effbd7685b3eddc7574, type: 3}
   m_Name: UIData
   m_EditorClassIdentifier: 
+  _objectsToSpawn:
+  - {fileID: 5336165614562949988, guid: b65a64902764f84428e8a07b071bad15, type: 3}
+  - {fileID: 5296751824488078361, guid: 7305318dc10267546b643a42c7c21af3, type: 3}
   joystickView: {fileID: 4385872142190176059, guid: 4df6913b39f4979429158c344680d83f,
     type: 3}

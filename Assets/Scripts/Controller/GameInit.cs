@@ -2,6 +2,7 @@
 using CamControl;
 using Chars;
 using Data;
+using GameUI;
 using HexFiled;
 using Units;
 using UnityEngine;
@@ -15,15 +16,17 @@ namespace Controller
             var hexGrid = new HexGrid(data.FieldData);
             controllers.Add(hexGrid);
             hexGrid.OnHexPainted += DoSomething;
-            Unit player;
+            UIController uiController = new UIController(data.UIData);
+            uiController.Spawn();
             
+            Unit player;
             List<Unit> units = new List<Unit>();
             data.UnitData.Units.ForEach(unit =>
             {
                 if (unit.isPlayer)
                 {
                     player = new Unit(unit, data.WeaponsData.WeaponsList[0], hexGrid);
-                    PlayerControl playerControl = new PlayerControl(player, data.UIData);
+                    PlayerControl playerControl = new PlayerControl(player, uiController.PlayerControlView);
                     controllers.Add(playerControl);
                     CameraControl cameraControl =
                         new CameraControl(Camera.main, data.CameraData);
@@ -42,6 +45,7 @@ namespace Controller
             });
             
             var unitFactory = new UnitFactory(units);
+            
             hexGrid.OnGridLoaded += unitFactory.Spawn;
             
             

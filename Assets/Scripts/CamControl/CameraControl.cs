@@ -23,6 +23,7 @@ namespace CamControl
         public void InitCameraControl(GameObject target)
         {
             _target = target.transform;
+            _camera.transform.position = _target.position + _offset;
         }
         public void FixedExecute()
         {

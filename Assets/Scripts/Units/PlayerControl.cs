@@ -1,6 +1,7 @@
 ﻿using System;
 using Controller;
 using Data;
+using DG.Tweening;
 using HexFiled;
 using Runtime.Controller;
 using Units;
@@ -18,10 +19,9 @@ namespace Chars
         private Vector2 _attackDircetion;
 
 
-        public PlayerControl(Unit unit, UIData uiData)
+        public PlayerControl(Unit unit, PlayerControlView joyView)
         {
             _unit = unit;
-            var joyView = Object.Instantiate(uiData.joystickView);
             _moveJoystick = joyView.MoveJoystick;
             _attackJoystick = joyView.AttackJoystick;
             _camera = Camera.main;
@@ -37,9 +37,10 @@ namespace Chars
 
         private void AimCanvas()
         {
-            _unit.UnitView.AimCanvas.SetActive(true);
+            if (!_unit.IsBusy)
+                _unit.UnitView.AimCanvas.SetActive(true);
         }
-        
+
         public void FixedExecute()
         {
             if (!_unit.IsBusy && _moveJoystick.Direction != Vector2.zero)
@@ -52,7 +53,6 @@ namespace Chars
                 _attackDircetion = _attackJoystick.Direction.normalized;
                 _unit.Aim(_attackDircetion);
             }
-
         }
 
         private static HexDirection VectorToDirection(Vector2 dir)
@@ -93,11 +93,11 @@ namespace Chars
 
         public void Execute()
         {
-            if (_unit.UnitView != null)
+            if (_unit.IsAlive)
             {
-                _unit.UnitView.BarCanvas.transform.LookAt(
-                    _unit.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
-                    _camera.transform.rotation * Vector3.up);
+                _unit.UnitView.BarCanvas.transform.DOLookAt(
+                    _unit.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back, 0f,
+                    up: _camera.transform.rotation * Vector3.up);
             }
         }
     }

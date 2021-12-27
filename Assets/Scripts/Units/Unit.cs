@@ -33,6 +33,7 @@ namespace Units
         public bool IsBusy => _isBusy;
         public GameObject PlayerInstance => _instance;
         public UnitView UnitView => _unitView;
+        public bool IsAlive => _isAlive;
 
         public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
@@ -63,7 +64,8 @@ namespace Units
         {
             _isBusy = true;
             _cell = _cell.GetNeighbor(direction);
-            _instance.transform.DOLookAt(_cell.transform.position, 0.1f);
+            
+            RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x, (_cell.transform.position - _instance.transform.position).normalized.z));
             _animator.SetTrigger("Move");
             _animator.SetBool("isMoving", _isBusy);
             _instance.transform.DOMove(_cell.transform.position, _animLength.Move);
@@ -138,6 +140,7 @@ namespace Units
             if (_direction.Equals(Vector2.zero))
             {
                 _direction = new Vector2(_unitView.transform.forward.x, _unitView.transform.forward.z);
+                Aim(_direction);
             }
 
             var ball = Object.Instantiate(_weapon.objectToThrow,
@@ -193,11 +196,16 @@ namespace Units
             {
                 _isBusy = true;
                 if (!_direction.Equals(Vector2.zero))
-                    _unitView.transform.DOLookAt(
-                        new Vector3(_direction.x, 0, _direction.y) + _unitView.transform.position,
-                        0.3f);
+                    RotateUnit(_direction);
+                
                 _animator.SetTrigger("Attack");
             }
+        }
+
+        private void RotateUnit(Vector2 direction)
+        {
+            _unitView.transform.DOLookAt(new Vector3(direction.x, 0, direction.y) + _unitView.transform.position,
+                0.1f);
         }
 
         public void Aim(Vector2 direction)
