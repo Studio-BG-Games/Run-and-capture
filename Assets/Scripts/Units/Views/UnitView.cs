@@ -15,7 +15,7 @@ public class UnitView : MonoBehaviour
     public Action<int> OnHit;
     [SerializeField] private GameObject barCanvas;
     [SerializeField] private GameObject aimCanvas;
-    
+
 
     private Stack<ShotUIView> _shootUIStack;
     private Stack<ShotUIView> _toReloadStack;
@@ -25,17 +25,31 @@ public class UnitView : MonoBehaviour
     private Coroutine _previosRegen;
     private Coroutine _previosReload;
     private int _mana;
+    private Action _capureHex;
+    private Coroutine _captureHexCoroutine;
 
     public GameObject BarCanvas => barCanvas;
     public GameObject AimCanvas => aimCanvas;
 
-    public void SetUp(Stack<ShotUIView> shots, Weapon weapon, Action RegenMana, int manaRegen)
+    public void SetUp(Stack<ShotUIView> shots, Weapon weapon, Action regenMana, int manaRegen, Action captureHex)
     {
         _shootUIStack = shots;
         _weapon = weapon;
         _toReloadStack = new Stack<ShotUIView>();
-        _startRegen = RegenMana;
+        _startRegen = regenMana;
         _manaRegen = manaRegen;
+        _capureHex = captureHex;
+    }
+
+    public void HardCaptureHex()
+    {
+        _captureHexCoroutine = StartCoroutine(HardCapture());
+    }
+
+    public void StopHardCature()
+    {
+        if (_captureHexCoroutine != null)
+            StopCoroutine(_captureHexCoroutine);
     }
 
     public bool Shoot()
@@ -48,6 +62,7 @@ public class UnitView : MonoBehaviour
         {
             StopCoroutine(_previosReload);
         }
+
         _previosReload = StartCoroutine(Reload());
         return true;
     }
@@ -85,9 +100,9 @@ public class UnitView : MonoBehaviour
         {
             OnHit?.Invoke(weaponView.Weapon.damage);
             other.transform.DOComplete();
-            
+
             other.transform.position = transform.position;
-            
+
             Destroy(other.gameObject);
         }
     }
@@ -109,9 +124,16 @@ public class UnitView : MonoBehaviour
         {
             yield break;
         }
+
         yield return new WaitForSeconds(1f);
         _mana += _manaRegen;
         _startRegen.Invoke();
         StartCoroutine(Regen());
+    }
+
+    private IEnumerator HardCapture()
+    {
+        yield return new WaitForSeconds(3f);
+        _capureHex.Invoke();
     }
 }

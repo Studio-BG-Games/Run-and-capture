@@ -28,6 +28,8 @@ namespace Units
         private Weapon _weapon;
         private Vector2 _direction;
         private BarCanvas _barCanvas;
+        private bool _isHardToCapture;
+       
 
 
         public bool IsBusy => _isBusy;
@@ -42,17 +44,27 @@ namespace Units
             _isAlive = false;
             _hexGrid = hexGrid;
             _isBusy = false;
+            _isHardToCapture = false;
         }
 
         public void Move(HexDirection direction)
         {
             if (!_cell.GetNeighbor(direction) || _isBusy) return;
+            _unitView.StopHardCature();
             if (_cell.GetNeighbor(direction).Color == _data.color)
             {
                 DoTransit(direction);
             }
+            else if (_cell.GetNeighbor(direction).Color != UnitColor.GREY)
+            {
+                _isHardToCapture = true;
+                _unitView.RegenMana(_mana);
+                DoTransit(direction);
+            }
+            
             else if (_mana - _hexGrid.HexCaptureCost >= 0)
             {
+                
                 _mana -= _hexGrid.HexCaptureCost;
                 _unitView.RegenMana(_mana);
                 UpdateBarCanvas();
@@ -64,13 +76,17 @@ namespace Units
         {
             _isBusy = true;
             _cell = _cell.GetNeighbor(direction);
-            
             RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x, (_cell.transform.position - _instance.transform.position).normalized.z));
             _animator.SetTrigger("Move");
             _animator.SetBool("isMoving", _isBusy);
             _instance.transform.DOMove(_cell.transform.position, _animLength.Move);
         }
 
+        private void CaptureHex()
+        {
+            _cell.PaintHex(_data.color);
+        }
+        
         private void SetAnimLength()
         {
             AnimationClip[] clips = _animator.runtimeAnimatorController.animationClips;
@@ -108,7 +124,7 @@ namespace Units
                 _animator = _instance.GetComponent<Animator>();
                 _unitView = _instance.GetComponent<UnitView>();
                 _barCanvas = _unitView.BarCanvas.GetComponent<BarCanvas>();
-                _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen);
+                _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex);
                 SetAnimLength();
                 _mana = _data.maxMana;
                 _hp = _data.maxHP;
@@ -125,8 +141,16 @@ namespace Units
         private void MoveEnd()
         {
             _isBusy = false;
-            _cell.PaintHex(_data.color);
             _animator.SetBool("isMoving", _isBusy);
+            if (_isHardToCapture)
+            {
+                _unitView.HardCaptureHex();
+            }
+            else
+            {
+                CaptureHex();
+            }
+            _isHardToCapture = false;
         }
 
         private void AttackEnd()
