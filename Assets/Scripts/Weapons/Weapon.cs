@@ -6,6 +6,7 @@ namespace Weapons
     [Serializable]
     public struct Weapon
     {
+        public Sprite icon;
         public GameObject objectToThrow;
         public GameObject VFXGameObject;
         public int manaCost;
@@ -14,5 +15,7 @@ namespace Weapons
         public int disnatce;
         public float reloadTime;
         public int shots;
+        public AudioClip shotSound;
+        public AudioClip hitSound;
     }
 }

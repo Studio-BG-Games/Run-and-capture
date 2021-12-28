@@ -1,6 +1,7 @@
 ﻿using System;
 using Chars;
 using Data;
+using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
 using UnityEngine;
@@ -129,6 +130,7 @@ namespace Units
                 _mana = _data.maxMana;
                 _hp = _data.maxHP;
                 SetUpActions();
+                
             }
         }
 
@@ -170,7 +172,9 @@ namespace Units
             var ball = Object.Instantiate(_weapon.objectToThrow,
                 _instance.transform.forward + _instance.transform.position + new Vector3(0, 2),
                 _instance.transform.rotation);
-            ball.GetComponent<WeaponView>().SetWeapon(_weapon);
+            MusicController.Instance.AddAudioSource(ball);
+            MusicController.Instance.PlayerAudioClip(_weapon.shotSound, ball);
+            ball.AddComponent<WeaponView>().SetWeapon(_weapon);
             ball.transform.DOMove(
                     new Vector3(_direction.normalized.x,
                         0, _direction.normalized.y) * _weapon.disnatce * _hexGrid.HexDistance +

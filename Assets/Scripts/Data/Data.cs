@@ -16,11 +16,26 @@ namespace Data
         private UnitData _unitData;
         [SerializeField] private string weaponDataPath;
         private WeaponsData _weaponData;
-        
         [SerializeField] private string uiDataPath;
         private UIData _uiData;
+        [SerializeField] private string musicDataPath;
+        private MusicData _musicData;
+        [SerializeField] private TextAsset chosenWeapon;
 
-        
+        public TextAsset ChosenWeapon => chosenWeapon;
+
+        public MusicData MusicData
+        {
+            get
+            {
+                if (_musicData == null)
+                {
+                    _musicData = Load<MusicData>("Data/" + musicDataPath);
+                }
+
+                return _musicData;
+            }
+        }
         public UIData UIData
         {
             get

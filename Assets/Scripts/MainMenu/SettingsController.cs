@@ -1,8 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using DefaultNamespace;
 using DG.Tweening;
+using MainMenu;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,13 +13,25 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private GameMenuData GameData;
     [SerializeField] private Transform targetSlideTransform;
     [SerializeField] private float slideTime;
+    [SerializeField] private string dataFilePath;
     private bool _isActive = false;
     private bool _isMusicAllowed = true;
     private bool _isSFXAllowed = true;
+    private Settings _settings;
     private Vector3 defailtPosition;
 
     private void Start()
     {
+        dataFilePath = Application.dataPath + dataFilePath;
+        
+        if(File.Exists(dataFilePath))
+            _settings = JsonUtility.FromJson<Settings>(File.ReadAllText(dataFilePath));
+        else
+        {
+            _settings = new Settings(GameData);
+            File.WriteAllText(dataFilePath, JsonUtility.ToJson(_settings));
+        }
+        
         defailtPosition = transform.position;
         SetMenuMusicState();
         UpdateVisuals();
@@ -28,8 +39,8 @@ public class SettingsController : MonoBehaviour
 
     private void UpdateVisuals()
     {
-        musImg.sprite = GameData.isMusicAllowed ? musOnSpr : musOffSpr;
-        sfxImg.sprite = GameData.isSFXAllowed ? sfxOnSpr : sfxOffSpr;
+        musImg.sprite = _settings.isMusicAllowed ? musOnSpr : musOffSpr;
+        sfxImg.sprite = _settings.isSFXAllowed ? sfxOnSpr : sfxOffSpr;
     }
 
     public void OnSettingsBtnClick()
@@ -45,20 +56,22 @@ public class SettingsController : MonoBehaviour
 
     public void OnMusicBtnClick()
     {
-        GameData.isMusicAllowed = !GameData.isMusicAllowed;
-        musImg.sprite = GameData.isMusicAllowed ? musOnSpr : musOffSpr;
+        _settings.isMusicAllowed = !_settings.isMusicAllowed;
+        musImg.sprite = _settings.isMusicAllowed ? musOnSpr : musOffSpr;
         SetMenuMusicState();
+        File.WriteAllText(dataFilePath, JsonUtility.ToJson(_settings));
     }
 
     public void OnSFXBtnClick()
     {
-        GameData.isSFXAllowed = !GameData.isSFXAllowed;
-        sfxImg.sprite = GameData.isSFXAllowed ? sfxOnSpr : sfxOffSpr;
+        _settings.isSFXAllowed = !_settings.isSFXAllowed;
+        sfxImg.sprite = _settings.isSFXAllowed ? sfxOnSpr : sfxOffSpr;
+        File.WriteAllText(dataFilePath, JsonUtility.ToJson(_settings));
     }
 
     private void SetMenuMusicState()
     {
-        if (GameData.isMusicAllowed)
+        if (_settings.isMusicAllowed)
         {
             menuMusSRC.Play();
         }

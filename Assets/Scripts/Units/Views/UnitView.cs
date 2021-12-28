@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Data;
+using DefaultNamespace;
 using DefaultNamespace.Weapons;
 using DG.Tweening;
 using DG.Tweening.Core;
@@ -30,6 +32,7 @@ public class UnitView : MonoBehaviour
     private int _mana;
     private Action _capureHex;
     private Sequence _sequence;
+    private AudioSource _audioSource;
 
     public GameObject BarCanvas => barCanvas;
     public GameObject AimCanvas => aimCanvas;
@@ -42,6 +45,8 @@ public class UnitView : MonoBehaviour
         _startRegen = regenMana;
         _manaRegen = manaRegen;
         _capureHex = captureHex;
+
+        
     }
 
     public void HardCaptureHex()
@@ -58,7 +63,7 @@ public class UnitView : MonoBehaviour
 
     public void StopHardCature()
     {
-        _sequence.Kill(); 
+        _sequence.Kill();
         captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
         captureBar.gameObject.SetActive(false);
     }
@@ -92,6 +97,7 @@ public class UnitView : MonoBehaviour
     private void Step()
     {
         OnStep?.Invoke();
+        MusicController.Instance.PlayerAudioClip(MusicController.Instance.MusicData.SfxMusic.Step, gameObject);
     }
 
     private void AttackEnd()
@@ -110,10 +116,7 @@ public class UnitView : MonoBehaviour
         if (weaponView != null)
         {
             OnHit?.Invoke(weaponView.Weapon.damage);
-            other.transform.DOComplete();
-
-            other.transform.position = transform.position;
-
+            other.transform.DOKill();
             Destroy(other.gameObject);
         }
     }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Data;
+using DefaultNamespace;
 using DefaultNamespace.Weapons;
 using UnityEngine;
 using Weapons;
@@ -18,6 +20,10 @@ public class WeaponView : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(_weapon.VFXGameObject, transform.position, transform.rotation);
+        var go = Instantiate(_weapon.VFXGameObject, transform.position, transform.rotation);
+        go.AddComponent<VFXView>();
+        MusicController.Instance.AddAudioSource(go);
+        MusicController.Instance.RemoveAudioSource(gameObject);
+        MusicController.Instance.PlayerAudioClip(_weapon.hitSound, go);
     }
 }
