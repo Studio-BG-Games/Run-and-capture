@@ -20,7 +20,7 @@ namespace DefaultNamespace
             Instance ??= this;
             _sources = new Dictionary<GameObject, AudioSource>();
         }
-
+        
         public void SetMusicData(MusicData data)
         {
             _data = data;
@@ -29,6 +29,7 @@ namespace DefaultNamespace
         public void PlayerAudioClip(AudioClip clip, GameObject source)
         {
             _sources[source].clip = clip;
+            _sources[source].volume = _data.Settings.isSFXAllowed ? 1f : 0f;
             _sources[source].Play();
         }
 
@@ -39,10 +40,6 @@ namespace DefaultNamespace
 
         public void AddAudioSource(GameObject gameObject)
         {
-            if (_sources.ContainsKey(new GameObject(null)))
-            {
-                _sources.Remove(new GameObject(null));
-            }
             var source = gameObject.AddComponent<AudioSource>();
             _sources.Add(gameObject, source);
         }

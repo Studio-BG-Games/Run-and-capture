@@ -10,6 +10,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Weapons;
+using Random = UnityEngine.Random;
+
 
 public class UnitView : MonoBehaviour
 {
@@ -45,8 +47,6 @@ public class UnitView : MonoBehaviour
         _startRegen = regenMana;
         _manaRegen = manaRegen;
         _capureHex = captureHex;
-
-        
     }
 
     public void HardCaptureHex()
@@ -97,7 +97,9 @@ public class UnitView : MonoBehaviour
     private void Step()
     {
         OnStep?.Invoke();
-        MusicController.Instance.PlayerAudioClip(MusicController.Instance.MusicData.SfxMusic.Step, gameObject);
+        MusicController.Instance.PlayerAudioClip(
+            MusicController.Instance.MusicData.SfxMusic.Step[
+                Random.Range(0, MusicController.Instance.MusicData.SfxMusic.Step.Count - 1)], gameObject);
     }
 
     private void AttackEnd()

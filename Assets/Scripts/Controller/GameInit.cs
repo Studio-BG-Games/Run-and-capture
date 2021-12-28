@@ -19,7 +19,7 @@ namespace Controller
             new MusicController();
             MusicController.Instance.SetMusicData(data.MusicData);
             controllers.Add(hexGrid);
-            hexGrid.OnHexPainted += DoSomething;
+            
             UIController uiController = new UIController(data.UIData);
             uiController.Spawn();
 
@@ -29,7 +29,7 @@ namespace Controller
             {
                 if (unit.isPlayer)
                 {
-                    player = new Unit(unit, JsonUtility.FromJson<Weapon>(data.ChosenWeapon.text), hexGrid);
+                    player = new Unit(unit, JsonUtility.FromJson<Weapon>(data.ChosenWeapon), hexGrid);
                     PlayerControl playerControl = new PlayerControl(player, uiController.PlayerControlView);
                     controllers.Add(playerControl);
                     CameraControl cameraControl =
@@ -54,9 +54,6 @@ namespace Controller
             hexGrid.OnGridLoaded += unitFactory.Spawn;
         }
 
-        private void DoSomething(HexCell cell)
-        {
-            Debug.Log("Painted! " + cell.coordinates);
-        }
+        
     }
 }

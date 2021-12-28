@@ -4,6 +4,7 @@ using DG.Tweening;
 using MainMenu;
 using UnityEngine;
 using UnityEngine.UI;
+using AudioSettings = MainMenu.AudioSettings;
 
 public class SettingsController : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class SettingsController : MonoBehaviour
     private bool _isActive = false;
     private bool _isMusicAllowed = true;
     private bool _isSFXAllowed = true;
-    private Settings _settings;
+    private AudioSettings _audioSettings;
     private Vector3 defailtPosition;
 
     private void Start()
@@ -25,11 +26,11 @@ public class SettingsController : MonoBehaviour
         dataFilePath = Application.dataPath + dataFilePath;
         
         if(File.Exists(dataFilePath))
-            _settings = JsonUtility.FromJson<Settings>(File.ReadAllText(dataFilePath));
+            _audioSettings = JsonUtility.FromJson<AudioSettings>(File.ReadAllText(dataFilePath));
         else
         {
-            _settings = new Settings(GameData);
-            File.WriteAllText(dataFilePath, JsonUtility.ToJson(_settings));
+            _audioSettings = new AudioSettings(GameData);
+            File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));
         }
         
         defailtPosition = transform.position;
@@ -39,8 +40,8 @@ public class SettingsController : MonoBehaviour
 
     private void UpdateVisuals()
     {
-        musImg.sprite = _settings.isMusicAllowed ? musOnSpr : musOffSpr;
-        sfxImg.sprite = _settings.isSFXAllowed ? sfxOnSpr : sfxOffSpr;
+        musImg.sprite = _audioSettings.isMusicAllowed ? musOnSpr : musOffSpr;
+        sfxImg.sprite = _audioSettings.isSFXAllowed ? sfxOnSpr : sfxOffSpr;
     }
 
     public void OnSettingsBtnClick()
@@ -56,22 +57,22 @@ public class SettingsController : MonoBehaviour
 
     public void OnMusicBtnClick()
     {
-        _settings.isMusicAllowed = !_settings.isMusicAllowed;
-        musImg.sprite = _settings.isMusicAllowed ? musOnSpr : musOffSpr;
+        _audioSettings.isMusicAllowed = !_audioSettings.isMusicAllowed;
+        musImg.sprite = _audioSettings.isMusicAllowed ? musOnSpr : musOffSpr;
         SetMenuMusicState();
-        File.WriteAllText(dataFilePath, JsonUtility.ToJson(_settings));
+        File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));
     }
 
     public void OnSFXBtnClick()
     {
-        _settings.isSFXAllowed = !_settings.isSFXAllowed;
-        sfxImg.sprite = _settings.isSFXAllowed ? sfxOnSpr : sfxOffSpr;
-        File.WriteAllText(dataFilePath, JsonUtility.ToJson(_settings));
+        _audioSettings.isSFXAllowed = !_audioSettings.isSFXAllowed;
+        sfxImg.sprite = _audioSettings.isSFXAllowed ? sfxOnSpr : sfxOffSpr;
+        File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));
     }
 
     private void SetMenuMusicState()
     {
-        if (_settings.isMusicAllowed)
+        if (_audioSettings.isMusicAllowed)
         {
             menuMusSRC.Play();
         }

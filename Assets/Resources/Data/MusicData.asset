@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad850cd32937403f853eb6043fd04112, type: 3}
   m_Name: MusicData
   m_EditorClassIdentifier: 
+  _settingsDataPath: /Resources/JSONData/Settings.json
   startMusic: {fileID: 0}
   backMusic: {fileID: 0}
   sfxMusic:
-    _step: {fileID: 8300000, guid: db2b24c43cc41514b85fb4a4950c1299, type: 3}
+    steps:
+    - {fileID: 8300000, guid: db2b24c43cc41514b85fb4a4950c1299, type: 3}
+    - {fileID: 8300000, guid: 14662fc30f12b7847929c0d90295de95, type: 3}
+    - {fileID: 8300000, guid: ed81a29d95a7c6843855e95917ff40ed, type: 3}

@@ -20,9 +20,9 @@ namespace Data
         private UIData _uiData;
         [SerializeField] private string musicDataPath;
         private MusicData _musicData;
-        [SerializeField] private TextAsset chosenWeapon;
+        [SerializeField] private string chosenWeaponDataPath;
 
-        public TextAsset ChosenWeapon => chosenWeapon;
+        public string ChosenWeapon => File.ReadAllText(Application.dataPath + chosenWeaponDataPath);
 
         public MusicData MusicData
         {
