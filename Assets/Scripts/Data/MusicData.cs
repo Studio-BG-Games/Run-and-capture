@@ -27,7 +27,12 @@ namespace Data
         public struct SFXMusic
         {
             [SerializeField] private List<AudioClip> steps;
-
+            [SerializeField] private List<AudioClip> captures;
+            [SerializeField] private AudioClip hardCapture;
+            [SerializeField] private AudioClip death;
+            public List<AudioClip> Captures => captures;
             public List<AudioClip> Step => steps;
+            public AudioClip HardCapture => hardCapture;
+            public AudioClip Death => death;
         }
     }

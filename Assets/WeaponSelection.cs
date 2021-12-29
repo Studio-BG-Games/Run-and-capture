@@ -15,6 +15,13 @@ public class WeaponSelection : MonoBehaviour
 
     private void Awake()
     {
+        var dataPah = Application.persistentDataPath + "/" + dataFilePath;
+        if (!File.Exists(dataPah))
+        {
+            FileStream stream = new FileStream(dataPah, FileMode.Create);
+            using StreamWriter writer = new StreamWriter(stream);
+            writer.Write(JsonUtility.ToJson(data.WeaponsList[0]));
+        }
         _buttons = new List<Button>();
         data.WeaponsList.ForEach(x =>
         {

@@ -7,6 +7,7 @@ using HexFiled;
 using UnityEngine;
 using Weapons;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 
 namespace Units
@@ -30,7 +31,7 @@ namespace Units
         private Vector2 _direction;
         private BarCanvas _barCanvas;
         private bool _isHardToCapture;
-       
+        private bool _isCapturing;
 
 
         public bool IsBusy => _isBusy;
@@ -46,6 +47,7 @@ namespace Units
             _hexGrid = hexGrid;
             _isBusy = false;
             _isHardToCapture = false;
+            _isCapturing = false;
         }
 
         public void Move(HexDirection direction)
@@ -62,10 +64,9 @@ namespace Units
                 _unitView.RegenMana(_mana);
                 DoTransit(direction);
             }
-            
+
             else if (_mana - _hexGrid.HexCaptureCost >= 0)
             {
-                
                 _mana -= _hexGrid.HexCaptureCost;
                 _unitView.RegenMana(_mana);
                 UpdateBarCanvas();
@@ -76,8 +77,10 @@ namespace Units
         private void DoTransit(HexDirection direction)
         {
             _isBusy = true;
+            _isCapturing = _data.color != _cell.GetNeighbor(direction).Color;
             _cell = _cell.GetNeighbor(direction);
-            RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x, (_cell.transform.position - _instance.transform.position).normalized.z));
+            RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x,
+                (_cell.transform.position - _instance.transform.position).normalized.z));
             _animator.SetTrigger("Move");
             _animator.SetBool("isMoving", _isBusy);
             _instance.transform.DOMove(_cell.transform.position, _animLength.Move);
@@ -87,7 +90,7 @@ namespace Units
         {
             _cell.PaintHex(_data.color);
         }
-        
+
         private void SetAnimLength()
         {
             AnimationClip[] clips = _animator.runtimeAnimatorController.animationClips;
@@ -127,10 +130,10 @@ namespace Units
                 _barCanvas = _unitView.BarCanvas.GetComponent<BarCanvas>();
                 _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex);
                 SetAnimLength();
+                MusicController.Instance.AddAudioSource(_instance);
                 _mana = _data.maxMana;
                 _hp = _data.maxHP;
                 SetUpActions();
-                
             }
         }
 
@@ -144,14 +147,23 @@ namespace Units
         {
             _isBusy = false;
             _animator.SetBool("isMoving", _isBusy);
+            if(!_isCapturing)
+            {
+                _isHardToCapture = false;   
+                return;
+            }
             if (_isHardToCapture)
             {
-                _unitView.HardCaptureHex();
+                _unitView.HardCaptureHex(_cell);
             }
             else
             {
+                var capturesMusic = MusicController.Instance.MusicData.SfxMusic.Captures;
+                MusicController.Instance.PlayerAudioClip(capturesMusic[Random.Range(0, capturesMusic.Count - 1)],
+                    _cell.gameObject);
                 CaptureHex();
             }
+
             _isHardToCapture = false;
         }
 
@@ -215,6 +227,8 @@ namespace Units
             _unitView.OnHit -= Damage;
             _isAlive = false;
             _animator.SetTrigger("Death");
+            MusicController.Instance.PlayerAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, _instance);
+            MusicController.Instance.RemoveAudioSource(_instance);
         }
 
 
@@ -225,14 +239,13 @@ namespace Units
                 _isBusy = true;
                 if (!_direction.Equals(Vector2.zero))
                     RotateUnit(_direction);
-                
+
                 _animator.SetTrigger("Attack");
             }
         }
 
         private void RotateUnit(Vector2 direction)
         {
-            
             _unitView.transform.DOLookAt(new Vector3(direction.x, 0, direction.y) + _unitView.transform.position,
                 0.1f);
         }

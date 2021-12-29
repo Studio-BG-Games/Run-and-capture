@@ -37,7 +37,6 @@ namespace Controller
                     controllers.Add(cameraControl);
                     player.onPlayerSpawned += cameraControl.InitCameraControl;
                     player.onPlayerSpawned += MusicController.Instance.AddAudioListener;
-                    player.onPlayerSpawned += MusicController.Instance.AddAudioSource;
                     units.Add(player);
                 }
                 else

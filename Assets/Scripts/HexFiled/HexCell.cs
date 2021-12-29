@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace HexFiled
 {
@@ -13,12 +14,13 @@ namespace HexFiled
         private UnitColor _color;
         private MeshRenderer _renderer;
         private Dictionary<UnitColor, CellColor> _cellColor;
-        
+
         public UnitColor Color => _color;
 
         private void Awake()
         {
             _renderer = GetComponent<MeshRenderer>();
+            MusicController.Instance.AddAudioSource(gameObject);
             _color = UnitColor.GREY;
         }
 
@@ -41,16 +43,19 @@ namespace HexFiled
         public void PaintHex(UnitColor color)
         {
             if (color == _color) return;
-            if(color == UnitColor.GREY)
+            if (color == UnitColor.GREY)
             {
                 _renderer.material.mainTexture = _cellColor[color].Texture;
                 _color = color;
                 return;
             }
+
             _renderer.material.mainTexture = _cellColor[color].Texture;
             onHexPainted?.Invoke(this);
             _color = color;
             Instantiate(_cellColor[color].VFXPrefab, transform);
+           
+
         }
     }
 }

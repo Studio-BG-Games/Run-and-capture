@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Data;
 using DG.Tweening;
+using HexFiled;
 using UnityEngine;
 using UnityEngine.UI;
 using Weapons;
@@ -44,7 +46,7 @@ public class UnitView : MonoBehaviour
         _capureHex = captureHex;
     }
 
-    public void HardCaptureHex()
+    public void HardCaptureHex(HexCell cell)
     {
         captureBar.gameObject.SetActive(true);
         _sequence = DOTween.Sequence();
@@ -53,8 +55,11 @@ public class UnitView : MonoBehaviour
             _capureHex.Invoke();
             captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
             captureBar.gameObject.SetActive(false);
+            MusicController.Instance.PlayerAudioClip(MusicController.Instance.MusicData.SfxMusic.HardCapture,
+                cell.gameObject);
         }));
     }
+    
 
     public void StopHardCature()
     {
