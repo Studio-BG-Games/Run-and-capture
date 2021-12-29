@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using Chars;
 using DefaultNamespace.Weapons;
-using Runtime.Data;
 using UnityEngine;
 
 namespace Data
@@ -13,26 +12,45 @@ namespace Data
         private FieldData _fieldData;
         [SerializeField] private string cameraDataPath;
         private CameraData _cameraData;
-        [SerializeField] private string playerDataPath;
-        private PlayerData _playerData;
+        [SerializeField] private string unitDataPath;
+        private UnitData _unitData;
         [SerializeField] private string weaponDataPath;
         private WeaponsData _weaponData;
-        [SerializeField] private string enemyDataPath;
-        private EnemyData _enemyData;
+        [SerializeField] private string uiDataPath;
+        private UIData _uiData;
+        [SerializeField] private string musicDataPath;
+        private MusicData _musicData;
+        [SerializeField] private string chosenWeaponDataPath;
 
-        public EnemyData EnemyData
+        public string ChosenWeapon => File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath);
+
+        public MusicData MusicData
         {
             get
             {
-                if (_enemyData == null)
+                if (_musicData == null)
                 {
-                    _enemyData = Load<EnemyData>("Data/" + enemyDataPath);
+                    _musicData = Load<MusicData>("Data/" + musicDataPath);
                 }
 
-                return _enemyData;
+                return _musicData;
             }
         }
-        
+
+        public UIData UIData
+        {
+            get
+            {
+                if (_uiData == null)
+                {
+                    _uiData = Load<UIData>("Data/" + uiDataPath);
+                }
+
+                return _uiData;
+            }
+        }
+
+
         public WeaponsData WeaponsData
         {
             get
@@ -45,6 +63,7 @@ namespace Data
                 return _weaponData;
             }
         }
+
         public FieldData FieldData
         {
             get
@@ -71,16 +90,16 @@ namespace Data
             }
         }
 
-        public PlayerData PlayerData
+        public UnitData UnitData
         {
             get
             {
-                if (_playerData == null)
+                if (_unitData == null)
                 {
-                    _playerData = Load<PlayerData>("Data/" + playerDataPath);
+                    _unitData = Load<UnitData>("Data/" + unitDataPath);
                 }
 
-                return _playerData;
+                return _unitData;
             }
         }
 
@@ -88,5 +107,4 @@ namespace Data
         private static T Load<T>(string resourcesPath) where T : Object =>
             Resources.Load<T>(Path.ChangeExtension(resourcesPath, null));
     }
-    
 }

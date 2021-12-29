@@ -21,6 +21,7 @@ namespace DefaultNamespace
 
         private void Start()
         {
+            loadUI.GetComponent<Image>().DOFade(0f, 0f);
             _curLevel = _data.Levels[0];
             SetLevelImage();
             _percentText = loadUI.GetComponentInChildren<TMP_Text>();
@@ -51,12 +52,13 @@ namespace DefaultNamespace
 
         public void LoadLevel()
         {
-            loadUI.GetComponent<Image>().DOFade(1, 0.3f).OnComplete( () =>
+            loadUI.SetActive(true);
+            loadUI.GetComponent<Image>().DOFade(1f, 0.3f).OnComplete( () =>
             {
                 _isLoadingLevel = true;
                 _loadOpertion = SceneManager.LoadSceneAsync(_curLevel.sceneName);
-            });
-            loadUI.SetActive(true);
+            }).SetEase(Ease.InQuad);
+            
         }
 
         private void Update()
@@ -65,7 +67,7 @@ namespace DefaultNamespace
             {
                 float progressValue = Mathf.Clamp01(_loadOpertion.progress / 0.9f);
                
-                _percentText.text =  Mathf.Round(progressValue * 100) + "%";
+                _percentText.text =  Mathf.Round(progressValue * 100) + " %";
             }
         }
     }

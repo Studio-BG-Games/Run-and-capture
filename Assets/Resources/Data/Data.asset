@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fieldDataPath: FieldData
   cameraDataPath: CameraData
-  playerDataPath: PlayerData
+  unitDataPath: UnitsData
   weaponDataPath: WeaponsData
-  enemyDataPath: EnemyData
+  uiDataPath: UIData
+  musicDataPath: MusicData
+  chosenWeaponDataPath: ChosenWeapon.json
