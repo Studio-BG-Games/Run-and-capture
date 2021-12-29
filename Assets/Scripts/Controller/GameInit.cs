@@ -21,7 +21,7 @@ namespace Controller
             controllers.Add(hexGrid);
             
             UIController uiController = new UIController(data.UIData);
-            uiController.Spawn();
+            uiController.Spawn(); //TODO при паузе 
 
             Unit player;
             List<Unit> units = new List<Unit>();

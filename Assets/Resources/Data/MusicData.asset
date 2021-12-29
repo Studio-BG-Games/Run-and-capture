@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad850cd32937403f853eb6043fd04112, type: 3}
   m_Name: MusicData
   m_EditorClassIdentifier: 
-  _settingsDataPath: /Resources/JSONData/Settings.json
+  _settingsDataPath: AudioSettings.json
   startMusic: {fileID: 0}
   backMusic: {fileID: 0}
   sfxMusic:

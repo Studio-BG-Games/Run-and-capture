@@ -1,12 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Data;
-using DefaultNamespace;
-using DefaultNamespace.Weapons;
 using DG.Tweening;
-using DG.Tweening.Core;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Weapons;
@@ -97,6 +92,10 @@ public class UnitView : MonoBehaviour
     private void Step()
     {
         OnStep?.Invoke();
+    }
+
+    private void Land()
+    {
         MusicController.Instance.PlayerAudioClip(
             MusicController.Instance.MusicData.SfxMusic.Step[
                 Random.Range(0, MusicController.Instance.MusicData.SfxMusic.Step.Count - 1)], gameObject);

@@ -43,8 +43,10 @@ namespace Chars
 
         public void FixedExecute()
         {
+            
             if (!_unit.IsBusy && _moveJoystick.Direction != Vector2.zero)
             {
+                
                 _unit.Move(VectorToDirection(_moveJoystick.Direction.normalized));
             }
 
@@ -95,9 +97,9 @@ namespace Chars
         {
             if (_unit.IsAlive)
             {
-                _unit.UnitView.BarCanvas.transform.DOLookAt(
-                    _unit.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back, 0f,
-                    up: _camera.transform.rotation * Vector3.up);
+                _unit.UnitView.BarCanvas.transform.LookAt(
+                    _unit.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
+                    _camera.transform.rotation * Vector3.up);
             }
         }
     }

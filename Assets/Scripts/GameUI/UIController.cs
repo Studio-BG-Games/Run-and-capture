@@ -19,9 +19,11 @@ namespace GameUI
 
         public void Spawn()
         {
-           _playerControlView = Object.Instantiate(_uiData.PlayerControlView);
+            var canvasGroup = new GameObject("CanvasGroup");
+            canvasGroup.AddComponent<CanvasGroup>();
+            _playerControlView = Object.Instantiate(_uiData.PlayerControlView, canvasGroup.transform);
 
-           _uiData.ObjectsToSpawn.ForEach(x => Object.Instantiate(x));
+           _uiData.ObjectsToSpawn.ForEach(x => Object.Instantiate(x, canvasGroup.transform));
         }
     }
 }

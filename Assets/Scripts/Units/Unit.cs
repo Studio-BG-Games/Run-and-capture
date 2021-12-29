@@ -232,6 +232,7 @@ namespace Units
 
         private void RotateUnit(Vector2 direction)
         {
+            
             _unitView.transform.DOLookAt(new Vector3(direction.x, 0, direction.y) + _unitView.transform.position,
                 0.1f);
         }

@@ -20,7 +20,7 @@ namespace Data
         public AudioClip BackMusic => backMusic;
         public SFXMusic SfxMusic => sfxMusic;
 
-        public AudioSettings Settings => JsonUtility.FromJson<AudioSettings>(File.ReadAllText(Application.dataPath + _settingsDataPath));
+        public AudioSettings Settings => JsonUtility.FromJson<AudioSettings>(File.ReadAllText(Application.persistentDataPath + "/" + _settingsDataPath));
     }
 
     [Serializable]

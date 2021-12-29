@@ -3517,6 +3517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barCanvas: {fileID: 8614863231585036848}
   aimCanvas: {fileID: 8409302512724572423}
+  captureBar: {fileID: 0}
 --- !u!136 &2198464067484123790
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3853,12 +3854,12 @@ PrefabInstance:
     - target: {fileID: 5156761560679623958, guid: dec5dd0d644d5c548a53563e65837162,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1080
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5156761560679623958, guid: dec5dd0d644d5c548a53563e65837162,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1920
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5156761560679623958, guid: dec5dd0d644d5c548a53563e65837162,
         type: 3}
@@ -3903,7 +3904,7 @@ PrefabInstance:
     - target: {fileID: 5156761560679623958, guid: dec5dd0d644d5c548a53563e65837162,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5156761560679623958, guid: dec5dd0d644d5c548a53563e65837162,
         type: 3}
