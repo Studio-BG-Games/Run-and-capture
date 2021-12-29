@@ -51,10 +51,10 @@ namespace HexFiled
             }
 
             _renderer.material.mainTexture = _cellColor[color].Texture;
-            onHexPainted?.Invoke(this);
+            
             _color = color;
             Instantiate(_cellColor[color].VFXPrefab, transform);
-           
+            onHexPainted?.Invoke(this);
 
         }
     }

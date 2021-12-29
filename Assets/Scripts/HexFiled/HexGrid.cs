@@ -100,16 +100,16 @@ namespace HexFiled
                     }
                 }
             }
-        }
-// #if UNITY_EDITOR
-//             TMP_Text label = Object.Instantiate(_cellLabelPrefab, _gridCanvas.transform, false);
-//             label.rectTransform.anchoredPosition =
-//                 new Vector2(position.x, position.z);
-//             label.text = cell.coordinates.ToStringOnSeparateLines();
-// #endif
+        
+#if UNITY_EDITOR
+        TMP_Text label = Object.Instantiate(_cellLabelPrefab, _gridCanvas.transform, false);
+        label.rectTransform.anchoredPosition =
+        new Vector2(position.x, position.z);
+        label.text = cell.coordinates.ToStringOnSeparateLines();
+#endif
+    }
 
-
-        public void Init()
+    public void Init()
         {
             _cells = new HexCell[_height * _width];
 

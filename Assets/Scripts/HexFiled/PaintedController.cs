@@ -3,57 +3,43 @@ using UnityEngine;
 
 namespace HexFiled
 {
-    struct HexIterator
-    {
-        private HexCell _cell;
-        private HexCell _previous;
-        private bool _isVisited;
-
-
-        public HexIterator(HexCell cell, bool isVisited, HexCell previous)
-        {
-            _cell = cell;
-            _isVisited = isVisited;
-            _previous = previous;
-
-        }
-
-        public HexCell Cell => _cell;
-        public HexCell Previous => _previous;
-        public bool Isvisited => _isVisited;
-
-    }
+   
     public class PaintedController
     {
         public static Dictionary<UnitColor, HexCell> unitCurrentCell = new Dictionary<UnitColor, HexCell>();
 
+        private HexCell _cell;
 
         public void SetHexColors(HexCell cell)
         {
+            _cell = cell;
             List<HexCell> cells = new List<HexCell>();
 
             for(int i = 0 ; i < 6 ; i++)
             {
-                cells.Add(cell.GetNeighbor((HexDirection)i ));
+                cells.Add(cell.GetNeighbor((HexDirection)i));
             }
 
             var hexByColorDict = DifferentHexByColor(cells);
             foreach (var item in hexByColorDict)
             {
-                if(item.Value.Count > 0 && item.Key != UnitColor.GREY && item.Key != cell.Color)
+                if(item.Value.Count > 0 && item.Key != UnitColor.GREY && item.Key != cell.Color )
                 {
                     foreach(var cellNeighbour in item.Value)
                     {
-                        if(unitCurrentCell.ContainsKey(cell.Color))
+                        if(unitCurrentCell.ContainsKey(item.Key))
                         {
-                            var path = HasPath(cellNeighbour, unitCurrentCell[cell.Color]);
+                            var path = HasPath(cellNeighbour, unitCurrentCell[item.Key]);
                             if(!path.hasPath)
                             {
                                 path.field.ForEach(x => x.PaintHex(UnitColor.GREY));
                             }
-                                //Debug.Log("123");                            
                         }
                     }
+                }
+                else if (item.Key == UnitColor.GREY)
+                {
+                    
                 }
             }
 
@@ -89,7 +75,7 @@ namespace HexFiled
 
 
 
-            while(stackIteators.Count > 0 )
+            while(stackIteators.Count >= 0 )
             {
                 if(currentCell == end)
                     return ( true,  closedList);
@@ -112,6 +98,10 @@ namespace HexFiled
                 }
                 else
                 {
+                    if (stackIteators.Count == 0)
+                    {
+                        return ( false,   closedList);
+                    }
                     currentCell = stackIteators.Pop();
                 }
             }
