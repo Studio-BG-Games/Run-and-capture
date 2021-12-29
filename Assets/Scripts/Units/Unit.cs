@@ -89,6 +89,7 @@ namespace Units
         private void CaptureHex()
         {
             _cell.PaintHex(_data.color);
+            PaintedController.unitCurrentCell[_data.color] =_cell;
         }
 
         private void SetAnimLength()
@@ -118,8 +119,24 @@ namespace Units
                 _cell.PaintHex(_data.color);
                 for (int i = 0; i < 6; i++)
                 {
-                    _cell.GetNeighbor((HexDirection)i)?.PaintHex(_data.color);
+                    var neighbour = _cell.GetNeighbor((HexDirection)i);
+                    neighbour?.PaintHex(_data.color);
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        var neighbour1 = neighbour?.GetNeighbor((HexDirection)j);
+                        neighbour1?.PaintHex(_data.color);
+
+                        
+                        //.PaintHex(_data.color);
+                    }
+
+                    //.PaintHex(_data.color);
                 }
+
+                //
+                PaintedController.unitCurrentCell.Add(_data.color, _cell);
+                //
 
                 _instance = Object.Instantiate(_data.unitPrefa, _cell.transform.parent);
                 _instance.transform.localPosition = _cell.transform.localPosition;
