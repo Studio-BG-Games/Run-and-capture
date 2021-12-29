@@ -18,4 +18,4 @@ MonoBehaviour:
   weaponDataPath: WeaponsData
   uiDataPath: UIData
   musicDataPath: MusicData
-  chosenWeapon: {fileID: 4900000, guid: 45125a3db50f8da4386961cbf7cb7f0a, type: 3}
+  chosenWeaponDataPath: ChosenWeapon.json

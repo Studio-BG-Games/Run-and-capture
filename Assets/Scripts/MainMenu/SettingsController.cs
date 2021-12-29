@@ -1,7 +1,6 @@
 using System.IO;
 using DefaultNamespace;
 using DG.Tweening;
-using MainMenu;
 using UnityEngine;
 using UnityEngine.UI;
 using AudioSettings = MainMenu.AudioSettings;
@@ -10,27 +9,26 @@ public class SettingsController : MonoBehaviour
 {
     [SerializeField] private Sprite musOnSpr, musOffSpr, sfxOnSpr, sfxOffSpr;
     [SerializeField] private Image musImg, sfxImg;
-    [SerializeField] private AudioSource menuMusSRC;
+    [SerializeField] private AudioSource menuMusSrc;
     [SerializeField] private GameMenuData GameData;
     [SerializeField] private Transform targetSlideTransform;
     [SerializeField] private float slideTime;
     [SerializeField] private string dataFilePath;
     private bool _isActive = false;
-    private bool _isMusicAllowed = true;
-    private bool _isSFXAllowed = true;
     private AudioSettings _audioSettings;
     private Vector3 defailtPosition;
 
     private void Start()
     {
-        dataFilePath = Application.dataPath + dataFilePath;
-        
+        dataFilePath = Application.persistentDataPath + "/" + dataFilePath;
         if(File.Exists(dataFilePath))
             _audioSettings = JsonUtility.FromJson<AudioSettings>(File.ReadAllText(dataFilePath));
         else
         {
             _audioSettings = new AudioSettings(GameData);
-            File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));
+            FileStream stream = new FileStream(dataFilePath, FileMode.Create);
+            using StreamWriter writer = new StreamWriter(stream);
+            writer.Write(JsonUtility.ToJson(_audioSettings));
         }
         
         defailtPosition = transform.position;
@@ -74,11 +72,11 @@ public class SettingsController : MonoBehaviour
     {
         if (_audioSettings.isMusicAllowed)
         {
-            menuMusSRC.Play();
+            menuMusSrc.Play();
         }
         else
         {
-            menuMusSRC.Pause();
+            menuMusSrc.Pause();
         }
     }
 }

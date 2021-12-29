@@ -22,7 +22,7 @@ namespace Data
         private MusicData _musicData;
         [SerializeField] private string chosenWeaponDataPath;
 
-        public string ChosenWeapon => File.ReadAllText(Application.dataPath + chosenWeaponDataPath);
+        public string ChosenWeapon => File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath);
 
         public MusicData MusicData
         {
@@ -36,6 +36,7 @@ namespace Data
                 return _musicData;
             }
         }
+
         public UIData UIData
         {
             get
@@ -48,8 +49,8 @@ namespace Data
                 return _uiData;
             }
         }
-        
-        
+
+
         public WeaponsData WeaponsData
         {
             get
@@ -62,6 +63,7 @@ namespace Data
                 return _weaponData;
             }
         }
+
         public FieldData FieldData
         {
             get
@@ -105,5 +107,4 @@ namespace Data
         private static T Load<T>(string resourcesPath) where T : Object =>
             Resources.Load<T>(Path.ChangeExtension(resourcesPath, null));
     }
-    
 }
