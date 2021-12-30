@@ -24,6 +24,6 @@ public class WeaponView : MonoBehaviour
         go.AddComponent<VFXView>();
         MusicController.Instance.AddAudioSource(go);
         MusicController.Instance.RemoveAudioSource(gameObject);
-        MusicController.Instance.PlayerAudioClip(_weapon.hitSound, go);
+        MusicController.Instance.PlayAudioClip(_weapon.hitSound, go);
     }
 }

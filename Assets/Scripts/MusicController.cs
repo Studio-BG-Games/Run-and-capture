@@ -22,9 +22,16 @@ public class MusicController
         _data = data;
     }
 
-    public void PlayerAudioClip(AudioClip clip, GameObject source)
+    public void PlayAudioClip(AudioClip clip, GameObject source)
     {
         _sources[source].clip = clip;
+        _sources[source].volume = _data.Settings.isSFXAllowed ? 1f : 0f;
+        _sources[source].Play();
+    }
+
+    public void PlayRandomClip(List<AudioClip> clips, GameObject source)
+    {
+        _sources[source].clip = clips[Random.Range(0, clips.Count - 1)];
         _sources[source].volume = _data.Settings.isSFXAllowed ? 1f : 0f;
         _sources[source].Play();
     }
