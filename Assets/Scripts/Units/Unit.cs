@@ -119,19 +119,7 @@ namespace Units
                 _cell.PaintHex(_data.color);
                 for (int i = 0; i < 6; i++)
                 {
-                    var neighbour = _cell.GetNeighbor((HexDirection)i);
-                    neighbour?.PaintHex(_data.color);
-
-                    for (int j = 0; j < 6; j++)
-                    {
-                        var neighbour1 = neighbour?.GetNeighbor((HexDirection)j);
-                        neighbour1?.PaintHex(_data.color);
-
-                        
-                        //.PaintHex(_data.color);
-                    }
-
-                    //.PaintHex(_data.color);
+                    _cell.GetNeighbor((HexDirection)i)?.PaintHex(_data.color);
                 }
 
                 //

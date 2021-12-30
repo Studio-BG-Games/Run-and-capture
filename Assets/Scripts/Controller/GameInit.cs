@@ -52,9 +52,9 @@ namespace Controller
 
             hexGrid.OnGridLoaded += unitFactory.Spawn;
 
-            var paintedControler = new PaintedController();
+            var paintedController = new PaintedController();
 
-            hexGrid.OnHexPainted += paintedControler.SetHexColors;
+            hexGrid.OnHexPainted += paintedController.SetHexColors;
         }
 
         

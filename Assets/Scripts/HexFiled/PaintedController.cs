@@ -6,9 +6,14 @@ namespace HexFiled
    
     public class PaintedController
     {
-        public static Dictionary<UnitColor, HexCell> unitCurrentCell = new Dictionary<UnitColor, HexCell>();
+        public static Dictionary<UnitColor, HexCell> unitCurrentCell;
 
         private HexCell _cell;
+
+        public PaintedController()
+        {
+            unitCurrentCell = new Dictionary<UnitColor, HexCell>();
+        }
 
         public void SetHexColors(HexCell cell)
         {
