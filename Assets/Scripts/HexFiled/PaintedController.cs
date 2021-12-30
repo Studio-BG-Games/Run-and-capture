@@ -37,7 +37,7 @@ namespace HexFiled
                         }
                     }
                 }
-                else if (item.Key == UnitColor.GREY)
+                else if (item.Key != cell.Color)
                 {
                     
                 }
@@ -59,8 +59,54 @@ namespace HexFiled
                     resultDict.Add(cell.Color, new List<HexCell>{cell});
                 }
                 
-            } );
+            } 
+            );
             return resultDict;
+        }
+
+
+
+        private List<HexCell> FillRound(List<HexCell> cells)
+        {
+            List<HexCell> neighbourByColor = new List<HexCell>();
+            for (int i = 0; i < 6; i++)
+            {
+                var neighbour = _cell.GetNeighbor((HexDirection)i);
+                if(neighbour.Color == _cell.Color)
+                {
+                    neighbourByColor.Add(neighbour);
+                }
+            }
+
+            if(neighbourByColor.Count > 1 && neighbourByColor.Count < 6)
+            {
+                
+                var start = neighbourByColor[Random.Range(0, neighbourByColor.Count - 1)];
+                var end = neighbourByColor[Random.Range(0, neighbourByColor.Count - 1)];
+                neighbourByColor.Remove(start);
+                
+
+                var path = HasPath(start, end);
+                while(neighbourByColor.Count <= 0 && path.hasPath)
+                {
+                    start = neighbourByColor[Random.Range(0, neighbourByColor.Count - 1)];
+                    end = neighbourByColor[Random.Range(0, neighbourByColor.Count - 1)];
+                    neighbourByColor.Remove(start);
+                    path = HasPath(start, end);     
+                }
+
+                if(!path.hasPath)
+                {
+
+                }
+
+                foreach (var cell in cells)
+                {
+                    
+                }                
+            }
+
+
         }
 
         private ( bool hasPath , List<HexCell> field ) HasPath(HexCell start, HexCell end)
@@ -73,6 +119,7 @@ namespace HexFiled
 
             closedList.Add(currentCell);
 
+            closedList.Add(_cell);
 
 
             while(stackIteators.Count >= 0 )
