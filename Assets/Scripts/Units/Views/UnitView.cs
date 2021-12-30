@@ -50,7 +50,7 @@ public class UnitView : MonoBehaviour
     {
         captureBar.gameObject.SetActive(true);
         _sequence = DOTween.Sequence();
-        _sequence.Append(captureBar.DOFillAmount(1f, 3f).OnComplete(() =>
+        _sequence.Append(captureBar.DOFillAmount(1f, 0f).OnComplete(() =>
         {
             _capureHex.Invoke();
             captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);

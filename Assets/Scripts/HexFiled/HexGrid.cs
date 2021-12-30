@@ -101,6 +101,7 @@ namespace HexFiled
                 }
             }
 
+
 #if UNITY_EDITOR
             TMP_Text label = Object.Instantiate(_cellLabelPrefab, _gridCanvas.transform, false);
             label.rectTransform.anchoredPosition =
@@ -109,7 +110,8 @@ namespace HexFiled
 #endif
         }
 
-        public void Init()
+
+    public void Init()
         {
             _cells = new HexCell[_height * _width];
 
