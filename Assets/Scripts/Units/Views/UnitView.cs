@@ -55,7 +55,7 @@ public class UnitView : MonoBehaviour
             _capureHex.Invoke();
             captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
             captureBar.gameObject.SetActive(false);
-            MusicController.Instance.PlayerAudioClip(MusicController.Instance.MusicData.SfxMusic.HardCapture,
+            MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                 cell.gameObject);
         }));
     }
@@ -101,9 +101,8 @@ public class UnitView : MonoBehaviour
 
     private void Land()
     {
-        MusicController.Instance.PlayerAudioClip(
-            MusicController.Instance.MusicData.SfxMusic.Step[
-                Random.Range(0, MusicController.Instance.MusicData.SfxMusic.Step.Count - 1)], gameObject);
+        MusicController.Instance.PlayRandomClip(
+            MusicController.Instance.MusicData.SfxMusic.Step, gameObject);
     }
 
     private void AttackEnd()

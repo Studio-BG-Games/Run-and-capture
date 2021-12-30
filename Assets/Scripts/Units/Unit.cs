@@ -1,7 +1,6 @@
 ﻿using System;
 using Chars;
 using Data;
-using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
 using UnityEngine;
@@ -163,12 +162,12 @@ namespace Units
             }
             else
             {
-                var capturesMusic = MusicController.Instance.MusicData.SfxMusic.Captures;
-                MusicController.Instance.PlayerAudioClip(capturesMusic[Random.Range(0, capturesMusic.Count - 1)],
-                    _cell.gameObject);
+                
                 CaptureHex();
+                MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
+                    _cell.gameObject);
             }
-
+            
             _isHardToCapture = false;
         }
 
@@ -190,7 +189,7 @@ namespace Units
                 _instance.transform.forward + _instance.transform.position + new Vector3(0, 2),
                 _instance.transform.rotation);
             MusicController.Instance.AddAudioSource(ball);
-            MusicController.Instance.PlayerAudioClip(_weapon.shotSound, ball);
+            MusicController.Instance.PlayAudioClip(_weapon.shotSound, ball);
             ball.AddComponent<WeaponView>().SetWeapon(_weapon);
             ball.transform.DOMove(
                     new Vector3(_direction.normalized.x,
@@ -232,7 +231,7 @@ namespace Units
             _unitView.OnHit -= Damage;
             _isAlive = false;
             _animator.SetTrigger("Death");
-            MusicController.Instance.PlayerAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, _instance);
+            MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, _instance);
             MusicController.Instance.RemoveAudioSource(_instance);
         }
 
@@ -268,7 +267,6 @@ namespace Units
             {
                 Death();
             }
-
             _hp -= dmg;
             UpdateBarCanvas();
         }

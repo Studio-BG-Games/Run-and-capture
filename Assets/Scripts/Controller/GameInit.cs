@@ -55,8 +55,9 @@ namespace Controller
             var paintedController = new PaintedController();
 
             hexGrid.OnHexPainted += paintedController.SetHexColors;
-        }
 
+        }
+        
         
     }
 }
