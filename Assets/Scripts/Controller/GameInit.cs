@@ -51,8 +51,9 @@ namespace Controller
             var unitFactory = new UnitFactory(units);
 
             hexGrid.OnGridLoaded += unitFactory.Spawn;
+            
         }
-
+        
         
     }
 }
