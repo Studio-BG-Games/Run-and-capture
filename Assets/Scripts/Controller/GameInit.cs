@@ -51,10 +51,7 @@ namespace Controller
             var unitFactory = new UnitFactory(units);
 
             hexGrid.OnGridLoaded += unitFactory.Spawn;
-
-            var paintedController = new PaintedController();
-
-            hexGrid.OnHexPainted += paintedController.SetHexColors;
+            
         }
         
         
