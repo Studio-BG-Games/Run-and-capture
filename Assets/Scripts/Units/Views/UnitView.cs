@@ -50,9 +50,9 @@ public class UnitView : MonoBehaviour
     {
         captureBar.gameObject.SetActive(true);
         _sequence = DOTween.Sequence();
-        _sequence.Append(captureBar.DOFillAmount(1f, 0f).OnComplete(() =>
+        _sequence.Append(captureBar.DOFillAmount(1f, 0f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            _capureHex.Invoke();
+            _capureHex?.Invoke();
             captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
             captureBar.gameObject.SetActive(false);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,

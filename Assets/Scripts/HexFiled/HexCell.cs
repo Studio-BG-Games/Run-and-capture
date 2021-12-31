@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -24,6 +25,10 @@ namespace HexFiled
             _color = UnitColor.GREY;
         }
 
+        public List<HexCell> GetListNeighbours()
+        {
+            return neighbors.ToList();
+        }
         public void SetDictionary(Dictionary<UnitColor, CellColor> colors)
         {
             _cellColor = colors;

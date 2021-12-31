@@ -25,8 +25,8 @@ MonoBehaviour:
     maxHP: 100
   - isPlayer: 0
     spawnPos:
-      x: 0
-      z: 0
+      x: 3
+      z: 4
     unitPrefa: {fileID: 3762867976042010436, guid: d00f156879942114488e4db0689a3fb7,
       type: 3}
     color: 4
