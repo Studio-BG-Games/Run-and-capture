@@ -5791,7 +5791,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 512299828}
         m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
-        m_MethodName: OnMusicBtnClick
+        m_MethodName: OnMusicSliderValueChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9490,7 +9490,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 512299828}
         m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
-        m_MethodName: OnSFXBtnClick
+        m_MethodName: OnSFXSliderValueChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

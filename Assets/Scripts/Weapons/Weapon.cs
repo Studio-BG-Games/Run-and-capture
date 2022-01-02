@@ -6,7 +6,8 @@ namespace Weapons
     [Serializable]
     public struct Weapon
     {
-        public Sprite icon;
+        public string name;
+        public GameObject icon;
         public GameObject objectToThrow;
         public GameObject VFXGameObject;
         public int manaCost;

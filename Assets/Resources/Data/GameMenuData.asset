@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81207667cf84460b3021cdd48c1471d, type: 3}
   m_Name: GameMenuData
   m_EditorClassIdentifier: 
-  isMusicAllowed: 0
-  isSFXAllowed: 0
+  musicVolume: 1
+  sfxVolume: 1

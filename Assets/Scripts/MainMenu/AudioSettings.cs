@@ -6,13 +6,13 @@ namespace MainMenu
     [Serializable]
     public class AudioSettings
     {
-        public bool isMusicAllowed;
-        public bool isSFXAllowed;
+        public float musicVolume;
+        public float sfxVolume;
 
         public AudioSettings(GameMenuData data)
         {
-            isMusicAllowed = data.isMusicAllowed;
-            isSFXAllowed = data.isMusicAllowed;
+            musicVolume = data.musicVolume;
+            sfxVolume = data.sfxVolume;
         }
     }
 }
