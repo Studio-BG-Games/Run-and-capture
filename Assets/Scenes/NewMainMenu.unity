@@ -88770,7 +88770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuMusSrc: {fileID: 579284492}
   GameData: {fileID: 11400000, guid: 4828646b64dadac47a63b0be91a92517, type: 2}
-  dataFilePath: AduioSettings
+  dataFilePath: AudioSettings.json
   musicSlider: {fileID: 1813936035}
   sfxSlider: {fileID: 597565998}
   musicImage: {fileID: 1040137649}

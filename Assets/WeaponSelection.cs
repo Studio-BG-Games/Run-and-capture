@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using DefaultNamespace.Weapons;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Weapons;
 
@@ -11,6 +13,8 @@ public class WeaponSelection : MonoBehaviour
     [SerializeField] private WeaponIcon weaponIcon;
     [SerializeField] private Transform grid;
     [SerializeField] private string dataFilePath;
+    [SerializeField] private ChosenWeapon chosenWeapon;
+    private Action<Weapon> changeStats;
     private List<Button> _buttons;
 
     private void Awake()
@@ -22,6 +26,8 @@ public class WeaponSelection : MonoBehaviour
             using StreamWriter writer = new StreamWriter(stream);
             writer.Write(JsonUtility.ToJson(data.WeaponsList[0]));
         }
+
+        changeStats = chosenWeapon.ChangeChosenWeapon;
         _buttons = new List<Button>();
         data.WeaponsList.ForEach(x =>
         {
@@ -46,5 +52,6 @@ public class WeaponSelection : MonoBehaviour
         FileStream stream = new FileStream(Application.persistentDataPath + "/" + dataFilePath, FileMode.Create);
         using StreamWriter writer = new StreamWriter(stream);
         writer.Write(JsonUtility.ToJson(weapon));
+        changeStats?.Invoke(weapon);
     }
 }
