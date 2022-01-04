@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using Data;
 using DG.Tweening;
 using HexFiled;
+using Items;
+using Units;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Weapons;
 using Random = UnityEngine.Random;
@@ -32,11 +35,13 @@ public class UnitView : MonoBehaviour
     private Action _capureHex;
     private Sequence _sequence;
     private AudioSource _audioSource;
+    private Unit _unit;
 
     public GameObject BarCanvas => barCanvas;
     public GameObject AimCanvas => aimCanvas;
 
-    public void SetUp(Stack<ShotUIView> shots, Weapon weapon, Action regenMana, int manaRegen, Action captureHex)
+    public void SetUp(Stack<ShotUIView> shots, Weapon weapon, Action regenMana, int manaRegen, Action captureHex,
+        Unit unit)
     {
         _shootUIStack = shots;
         _weapon = weapon;
@@ -44,6 +49,7 @@ public class UnitView : MonoBehaviour
         _startRegen = regenMana;
         _manaRegen = manaRegen;
         _capureHex = captureHex;
+        _unit = unit;
     }
 
     public void HardCaptureHex(HexCell cell)
@@ -59,9 +65,9 @@ public class UnitView : MonoBehaviour
                 cell.gameObject);
         }));
     }
-    
 
-    public void StopHardCature()
+
+    public void StopHardCapture()
     {
         _sequence.Kill();
         captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
@@ -123,6 +129,14 @@ public class UnitView : MonoBehaviour
             OnHit?.Invoke(weaponView.Weapon.damage);
             other.transform.DOKill();
             Destroy(other.gameObject);
+        }
+
+        ItemView itemView = other.GetComponent<ItemView>();
+
+        if (itemView != null)
+        {
+            _unit.PickUpItem(itemView.PickUp(_unit));
+            Destroy(itemView.gameObject);
         }
     }
 

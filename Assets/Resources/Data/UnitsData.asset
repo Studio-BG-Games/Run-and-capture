@@ -23,6 +23,7 @@ MonoBehaviour:
     manaRegen: 5
     maxMana: 100
     maxHP: 100
+    inventoryCapacity: 4
   - isPlayer: 0
     spawnPos:
       x: 3
@@ -33,6 +34,7 @@ MonoBehaviour:
     manaRegen: 10
     maxMana: 100
     maxHP: 100
+    inventoryCapacity: 4
   - isPlayer: 0
     spawnPos:
       x: 3
@@ -43,3 +45,4 @@ MonoBehaviour:
     manaRegen: 10
     maxMana: 100
     maxHP: 100
+    inventoryCapacity: 4

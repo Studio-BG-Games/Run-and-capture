@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CamControl;
 using Chars;
-using Data;
-using DefaultNamespace;
 using GameUI;
 using HexFiled;
+using Items;
 using Units;
 using UnityEngine;
 using Weapons;
+using Random = UnityEngine.Random;
 
 namespace Controller
 {
@@ -19,10 +20,14 @@ namespace Controller
             new MusicController();
             MusicController.Instance.SetMusicData(data.MusicData);
             controllers.Add(hexGrid);
+
+           List<Type> types = 
+                new List<Type>() { typeof(Tower)  };
+            ItemFabric itemFabric = new ItemFabric(data.ItemsData, types);
+            controllers.Add(itemFabric);
             
             UIController uiController = new UIController(data.UIData);
-            uiController.Spawn(); //TODO при паузе 
-
+            uiController.Spawn(); //TODO при паузе Dotween ругается
             Unit player;
             List<Unit> units = new List<Unit>();
             data.UnitData.Units.ForEach(unit =>
@@ -30,7 +35,7 @@ namespace Controller
                 if (unit.isPlayer)
                 {
                     player = new Unit(unit, JsonUtility.FromJson<Weapon>(data.ChosenWeapon), hexGrid);
-                    PlayerControl playerControl = new PlayerControl(player, uiController.PlayerControlView);
+                    PlayerControl playerControl = new PlayerControl(player, uiController.PlayerControlView, uiController.PlayerInventoryView);
                     controllers.Add(playerControl);
                     CameraControl cameraControl =
                         new CameraControl(Camera.main, data.CameraData);
@@ -55,6 +60,8 @@ namespace Controller
             var paintedController = new PaintedController();
 
             hexGrid.OnHexPainted += paintedController.SetHexColors;
+
+            hexGrid.OnHexPainted += itemFabric.UpdateCellToOpenList;
 
         }
         

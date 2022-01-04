@@ -48,7 +48,6 @@ public class WeaponSelection : MonoBehaviour
 
     private void ChoseWeapon(Weapon weapon)
     {
-        _buttons.ForEach(x => x.image.color = Color.white);
         FileStream stream = new FileStream(Application.persistentDataPath + "/" + dataFilePath, FileMode.Create);
         using StreamWriter writer = new StreamWriter(stream);
         writer.Write(JsonUtility.ToJson(weapon));

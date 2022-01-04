@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Chars;
 using Data;
 using DG.Tweening;
 using HexFiled;
+using Items;
 using UnityEngine;
 using Weapons;
 using Object = UnityEngine.Object;
@@ -15,7 +17,7 @@ namespace Units
     {
         private bool _isAlive;
         private GameObject _instance;
-
+        private List<Item> _inventory;
         private AnimLength _animLength;
         private HexCell _cell;
         private HexGrid _hexGrid;
@@ -37,6 +39,8 @@ namespace Units
         public GameObject PlayerInstance => _instance;
         public UnitView UnitView => _unitView;
         public bool IsAlive => _isAlive;
+        public int InventoryCapacity => _data.inventoryCapacity;
+        public Action<Item> OnItemPickUp;
 
         public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
@@ -52,7 +56,7 @@ namespace Units
         public void Move(HexDirection direction)
         {
             if (!_cell.GetNeighbor(direction) || _isBusy) return;
-            _unitView.StopHardCature();
+            _unitView.StopHardCapture();
             if (_cell.GetNeighbor(direction).Color == _data.color)
             {
                 DoTransit(direction);
@@ -117,6 +121,7 @@ namespace Units
             {
                 _cell = _hexGrid.GetCellFromCoord(_data.spawnPos);
                 _cell.PaintHex(_data.color);
+                _inventory = new List<Item>();
                 for (int i = 0; i < 6; i++)
                 {
                     var neigh = _cell.GetNeighbor((HexDirection)i);
@@ -139,7 +144,7 @@ namespace Units
                 _animator = _instance.GetComponent<Animator>();
                 _unitView = _instance.GetComponent<UnitView>();
                 _barCanvas = _unitView.BarCanvas.GetComponent<BarCanvas>();
-                _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex);
+                _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex, this);
                 SetAnimLength();
                 MusicController.Instance.AddAudioSource(_instance);
                 _mana = _data.maxMana;
@@ -154,6 +159,14 @@ namespace Units
             UpdateBarCanvas();
         }
 
+        public void PickUpItem(Item item)
+        {
+            if (_inventory.Count < _data.inventoryCapacity)
+            {
+                _inventory.Add(item);
+                OnItemPickUp.Invoke(item);
+            }
+        }
         private void MoveEnd()
         {
             _isBusy = false;
@@ -266,6 +279,13 @@ namespace Units
             _unitView.AimCanvas.transform.LookAt(
                 new Vector3(direction.x, 0, direction.y) + _unitView.transform.position);
             _direction = direction;
+        }
+
+        public HexCell PlaceItemAim(HexDirection direction)
+        {
+            var cell = _cell.GetNeighbor(direction);
+            _unitView.AimCanvas.transform.LookAt(cell.transform);
+            return cell;
         }
 
         private void Damage(int dmg)

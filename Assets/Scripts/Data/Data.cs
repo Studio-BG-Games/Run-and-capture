@@ -20,10 +20,25 @@ namespace Data
         private UIData _uiData;
         [SerializeField] private string musicDataPath;
         private MusicData _musicData;
+        [SerializeField] private string itemDataPath;
+        private ItemsData _itemsData;
         [SerializeField] private string chosenWeaponDataPath;
 
         public string ChosenWeapon => File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath);
 
+        public ItemsData ItemsData
+        {
+            get
+            {
+                if (_itemsData == null)
+                {
+                    _itemsData = Load<ItemsData>("Data/" + itemDataPath);
+                }
+
+                return _itemsData;
+            }
+        }
+        
         public MusicData MusicData
         {
             get

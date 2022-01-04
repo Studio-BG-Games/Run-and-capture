@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Items;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,11 +13,14 @@ namespace HexFiled
         public Action<HexCell> onHexPainted;
 
         [SerializeField] private HexCell[] neighbors;
+        private Item _item;
         private UnitColor _color;
         private MeshRenderer _renderer;
         private Dictionary<UnitColor, CellColor> _cellColor;
 
         public UnitColor Color => _color;
+
+        public Item Item => _item;
 
         private void Awake()
         {
@@ -25,10 +29,17 @@ namespace HexFiled
             _color = UnitColor.GREY;
         }
 
+        public void SetItem(Item item)
+        {
+            _item = item == _item ? null : item;
+        }
+        
+
         public List<HexCell> GetListNeighbours()
         {
             return neighbors.ToList();
         }
+
         public void SetDictionary(Dictionary<UnitColor, CellColor> colors)
         {
             _cellColor = colors;
@@ -56,11 +67,10 @@ namespace HexFiled
             }
 
             _renderer.material.mainTexture = _cellColor[color].Texture;
-            
+
             _color = color;
             Instantiate(_cellColor[color].VFXPrefab, transform);
             onHexPainted?.Invoke(this);
-
         }
     }
 }
