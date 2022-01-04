@@ -201,7 +201,7 @@ namespace Units
             ball.transform.DOMove(
                     new Vector3(_direction.normalized.x,
                         0, _direction.normalized.y) * _weapon.disnatce * _hexGrid.HexDistance +
-                    _instance.transform.position + new Vector3(0, 2, 0),
+                    _instance.transform.position + new Vector3(0, 2, 0), // initiate
                     _weapon.speed)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => Object.Destroy(ball));
@@ -227,6 +227,8 @@ namespace Units
             float maxHp = _data.maxHP;
             float maxMana = _data.maxMana;
             _barCanvas.ManaBar.DOFillAmount(mana / maxMana, 0.5f).SetEase(Ease.InQuad);
+            //_barCanvas.ManaBar.value = 
+            //_unitView.RegenMana(10);
             _barCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
