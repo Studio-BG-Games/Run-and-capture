@@ -76,7 +76,7 @@ namespace GameUI
                         _freeButtons[i] = button;
                         break;
                     }
-
+                    button.onClick.RemoveAllListeners();
                     button.gameObject.SetActive(false);
                 }
                 else
