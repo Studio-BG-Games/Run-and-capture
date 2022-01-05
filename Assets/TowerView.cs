@@ -24,8 +24,9 @@ public class TowerView : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var unit = collision.gameObject.GetComponent<UnitView>();
-        if (unit != null && unit.Color != _color) 
+        if (unit != null && unit.Color != _color) //TODO какие-то проблемы с задием цвета
         {
+            weapon.SetModifiedDamage(0);
             _target = unit.gameObject;
             StartCoroutine(Shot());
         }
@@ -48,7 +49,7 @@ public class TowerView : MonoBehaviour
             var direction = DirectionHelper.DirectionTo(transform.position, _target.transform.position);
             var ball = Instantiate(weapon.objectToThrow,
                 transform.forward + transform.position + new Vector3(0, 2),
-                Quaternion.FromToRotation(transform.position, _target.transform.position));
+                Quaternion.LookRotation(direction));
 
             MusicController.Instance.AddAudioSource(ball);
             MusicController.Instance.PlayAudioClip(weapon.shotSound, ball);

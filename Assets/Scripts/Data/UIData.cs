@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Chars;
+using GameUI;
 using UnityEngine;
 
 namespace Data

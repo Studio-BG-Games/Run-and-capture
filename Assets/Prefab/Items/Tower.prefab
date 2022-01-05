@@ -95,19 +95,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db196e1099b97246bde07a348189567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon:
+  weapon:
     name: Tower
-    icon: {fileID: 4774919592469818776}
+    icon: {fileID: 0}
     objectToThrow: {fileID: 4746165193704193263, guid: 4e7523811a052fd46acf941fc69c8c98,
       type: 3}
     VFXGameObject: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
       type: 3}
-    manaCost: 0
-    damage: 10
+    modifiedDamage: 0
+    damage: 15
     speed: 10
-    disnatce: 10
-    reloadTime: 3
-    shots: 3
+    disnatce: 6
+    reloadTime: 6
+    shots: 4
     shotSound: {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
     hitSound: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
 --- !u!136 &5879628246065515362
