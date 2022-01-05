@@ -22,12 +22,14 @@ namespace Items
 
         public override void InstanceInvoke()
         {
-            throw new System.NotImplementedException();
+            Unit.UseItem(this);
         }
 
         public override void PlaceItem(HexCell cell)
         {
-            Object.Instantiate(Data.SpawnablePrefab, cell.transform.position, Quaternion.identity);
+            Unit.UseItem(this);
+            var obj = Object.Instantiate(Data.SpawnablePrefab, cell.transform.position, Quaternion.identity);
+            obj.AddComponent<TowerView>().SetUp(Unit.Color);
             OnItemUsed?.Invoke(this);
         }
     }

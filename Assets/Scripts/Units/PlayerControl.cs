@@ -1,6 +1,7 @@
 ﻿using System;
 using Controller;
 using Data;
+using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
 using Items;
@@ -85,8 +86,8 @@ namespace Chars
             
             if (!_unit.IsBusy && _moveJoystick.Direction != Vector2.zero)
             {
-                
-                _unit.Move(VectorToDirection(_moveJoystick.Direction.normalized));
+                _placeJoystick.gameObject.SetActive(false);
+                _unit.Move(DirectionHelper.VectorToDirection(_moveJoystick.Direction.normalized));
             }
 
             if (!_unit.IsBusy && _attackJoystick.isPressed)
@@ -97,46 +98,12 @@ namespace Chars
 
             if (!_unit.IsBusy && _placeJoystick.isPressed)
             {
-                _placeDirection = VectorToDirection(_placeJoystick.Direction.normalized);
+                _placeDirection = DirectionHelper.VectorToDirection(_placeJoystick.Direction.normalized);
                 _cellToPlace = _unit.PlaceItemAim(_placeDirection);
             }
         }
 
-        private static HexDirection VectorToDirection(Vector2 dir)
-        {
-            if (dir.x >= 0 && dir.y <= 1 && dir.x <= 1 && dir.y >= 0.5)
-            {
-                return HexDirection.NE;
-            }
-
-            if (Math.Abs(dir.x - 1f) < 0.2 && dir.y <= 0.5 && dir.y >= -0.5)
-            {
-                return HexDirection.E;
-            }
-
-            if (dir.x <= 1 && dir.y <= -0.5 && dir.x >= 0 && dir.y >= -1)
-            {
-                return HexDirection.SE;
-            }
-
-            if (dir.x <= 0 && dir.y >= -1 && dir.x >= -1 && dir.y <= -0.5)
-            {
-                return HexDirection.SW;
-            }
-
-            if (Math.Abs(dir.x - (-1f)) < 0.2 && dir.y >= -0.5 && dir.y <= 0.5)
-            {
-                return HexDirection.W;
-            }
-
-            if (dir.x >= -1 && dir.y >= 0.5 && dir.x <= 0 && dir.y <= 1)
-            {
-                return HexDirection.NW;
-            }
-
-            return HexDirection.W;
-        }
-
+       
 
         public void Execute()
         {

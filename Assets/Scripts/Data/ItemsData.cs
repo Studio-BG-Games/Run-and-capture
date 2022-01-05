@@ -27,6 +27,8 @@ namespace Data
         [SerializeField] private string type;
         [SerializeField] private Sprite icon;
         [SerializeField] private GameObject spawnablePrefab;
+        [SerializeField] private int[] values;
+        [SerializeField][Range(0,1)] private float spawnChance;
         public GameObject Prefab => prefab;
         public string Type => type;
 
@@ -35,5 +37,7 @@ namespace Data
         public GameObject SpawnablePrefab => spawnablePrefab;
 
         public bool IsInstanceUse => isInstantUse;
+        public int[] Values => values;
+        public float SpawnChance => spawnChance;
     }
 }

@@ -15,6 +15,7 @@ namespace Items
         protected Action<Item> OnItemUsed;
 
         public bool IsInstantUse => Data.IsInstanceUse;
+        public Sprite Icon => Data.Icon;
         protected Item(ItemInfo data)
         {
             Data = data;

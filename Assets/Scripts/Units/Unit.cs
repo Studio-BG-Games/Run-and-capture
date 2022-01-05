@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Chars;
 using Data;
+using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
 using Items;
@@ -33,12 +34,14 @@ namespace Units
         private BarCanvas _barCanvas;
         private bool _isHardToCapture;
         private bool _isCapturing;
+        private int _attackBonus;
+        private int _defenceBonus;
 
 
         public bool IsBusy => _isBusy;
-        public GameObject PlayerInstance => _instance;
         public UnitView UnitView => _unitView;
         public bool IsAlive => _isAlive;
+        public UnitColor Color => _data.color;
         public int InventoryCapacity => _data.inventoryCapacity;
         public Action<Item> OnItemPickUp;
 
@@ -53,6 +56,28 @@ namespace Units
             _isCapturing = false;
         }
 
+        public void SetAttackBonus(int duration, int value)
+        {
+            TimerHelper.Instance.StartTimer(StopAttackBonus, duration);
+            _weapon.SetModifiedDamage(value);
+        }
+
+        private void StopAttackBonus()
+        {
+            _weapon.SetModifiedDamage(0);
+        }
+        
+        public void SetDefenceBonus(int duration, int value)
+        {
+            TimerHelper.Instance.StartTimer(StopDefenceBonus, duration);
+            _defenceBonus = value;
+        }
+
+        private void StopDefenceBonus()
+        {
+            _defenceBonus = 0;
+        }
+        
         public void Move(HexDirection direction)
         {
             if (!_cell.GetNeighbor(direction) || _isBusy) return;
@@ -159,13 +184,22 @@ namespace Units
             UpdateBarCanvas();
         }
 
-        public void PickUpItem(Item item)
+        public bool PickUpItem(ItemView itemView)
         {
             if (_inventory.Count < _data.inventoryCapacity)
             {
+                var item = itemView.PickUp(this);
                 _inventory.Add(item);
                 OnItemPickUp.Invoke(item);
+                return true;
             }
+
+            return false;
+        }
+
+        public void UseItem(Item item)
+        {
+            _inventory.Remove(item);
         }
         private void MoveEnd()
         {
@@ -213,7 +247,7 @@ namespace Units
             ball.AddComponent<WeaponView>().SetWeapon(_weapon);
             ball.transform.DOMove(
                     new Vector3(_direction.normalized.x,
-                        0, _direction.normalized.y) * _weapon.disnatce * _hexGrid.HexDistance +
+                        0, _direction.normalized.y) * _weapon.disnatce * HexGrid.HexDistance +
                     _instance.transform.position + new Vector3(0, 2, 0),
                     _weapon.speed)
                 .SetEase(Ease.Linear)
@@ -290,12 +324,21 @@ namespace Units
 
         private void Damage(int dmg)
         {
-            if (_hp - dmg <= 0f)
+            
+            if (_defenceBonus == 0 && _hp - dmg <= 0f)
             {
                 Death();
             }
 
-            _hp -= dmg;
+            if (_defenceBonus > 0)
+            {
+                _defenceBonus -= dmg;
+            }
+            else
+            {
+                _hp -= dmg;
+            }
+            
             UpdateBarCanvas();
         }
     }

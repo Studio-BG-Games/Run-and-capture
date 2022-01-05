@@ -46,6 +46,7 @@ public class PlayerInventoryView : MonoBehaviour
         var button = _freeButtons.Dequeue();
         _dictionary.Add(item, button);
         button.gameObject.SetActive(true);
+        button.image.sprite = item.Icon;
         button.onClick.AddListener(() =>
         {
             if (item.IsInstantUse)
@@ -59,6 +60,7 @@ public class PlayerInventoryView : MonoBehaviour
                 item.Invoke(SwitchButton);
                 OnItemInvoked?.Invoke(item);
             }
+
         });
         
         

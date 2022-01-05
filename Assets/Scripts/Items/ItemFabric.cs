@@ -49,13 +49,17 @@ namespace Items
                     .ToList();
                 time = Time.time;
                 var cell = _openList[Random.Range(0, _openList.Count - 1)];
-                
+
                 while (closedList.Contains(cell) || cell.Item != null)
                 {
                     cell = _openList[Random.Range(0, _openList.Count - 1)];
                 }
-                
-                var type = _itemTypes[Random.Range(0, _itemTypes.Count - 1)];
+
+                var type = GetWeightedType();
+                while (type == null)
+                {
+                    type = GetWeightedType();
+                }
                 var info = _itemInfos[type.ToString().Replace("Items.", "")];
                 var obj = (Item)Activator.CreateInstance(type, info);
 
@@ -66,6 +70,21 @@ namespace Items
                 cell.SetItem(obj);
                 _spawnTime = Random.Range(_data.SpawnTime.from, _data.SpawnTime.to);
             }
+        }
+
+        private Type GetWeightedType()
+        {
+            float randomNum = Random.Range(1, 101)/100f;
+            List<Type> possibleTypes = new List<Type>();
+
+            _itemTypes.ForEach(type =>
+            {
+                if (_itemInfos[type.ToString().Replace("Items.", "")].SpawnChance >= randomNum)
+                {
+                    possibleTypes.Add(type);
+                }
+            });
+            return possibleTypes.Count > 0 ? possibleTypes[Random.Range(0, possibleTypes.Count - 1)] : null;
         }
     }
 }

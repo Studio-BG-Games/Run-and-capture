@@ -16,7 +16,6 @@ namespace HexFiled
         private Item _item;
         private UnitColor _color;
         private MeshRenderer _renderer;
-        private Dictionary<UnitColor, CellColor> _cellColor;
 
         public UnitColor Color => _color;
 
@@ -39,11 +38,7 @@ namespace HexFiled
         {
             return neighbors.ToList();
         }
-
-        public void SetDictionary(Dictionary<UnitColor, CellColor> colors)
-        {
-            _cellColor = colors;
-        }
+        
 
         public HexCell GetNeighbor(HexDirection direction)
         {
@@ -61,15 +56,15 @@ namespace HexFiled
             if (color == _color) return;
             if (color == UnitColor.GREY)
             {
-                _renderer.material.mainTexture = _cellColor[color].Texture;
+                _renderer.material.mainTexture = HexGrid.Colors[color].Texture;
                 _color = color;
                 return;
             }
 
-            _renderer.material.mainTexture = _cellColor[color].Texture;
+            _renderer.material.mainTexture = HexGrid.Colors[color].Texture;
 
             _color = color;
-            Instantiate(_cellColor[color].VFXPrefab, transform);
+            Instantiate(HexGrid.Colors[color].VFXPrefab, transform);
             onHexPainted?.Invoke(this);
         }
     }

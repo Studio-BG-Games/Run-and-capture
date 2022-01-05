@@ -39,6 +39,7 @@ public class UnitView : MonoBehaviour
 
     public GameObject BarCanvas => barCanvas;
     public GameObject AimCanvas => aimCanvas;
+    public UnitColor Color => _unit.Color;
 
     public void SetUp(Stack<ShotUIView> shots, Weapon weapon, Action regenMana, int manaRegen, Action captureHex,
         Unit unit)
@@ -126,16 +127,15 @@ public class UnitView : MonoBehaviour
         WeaponView weaponView = other.GetComponent<WeaponView>();
         if (weaponView != null)
         {
-            OnHit?.Invoke(weaponView.Weapon.damage);
+            OnHit?.Invoke(weaponView.Weapon.modifiedDamage);
             other.transform.DOKill();
             Destroy(other.gameObject);
         }
 
         ItemView itemView = other.GetComponent<ItemView>();
 
-        if (itemView != null)
+        if (itemView != null && _unit.PickUpItem(itemView))
         {
-            _unit.PickUpItem(itemView.PickUp(_unit));
             Destroy(itemView.gameObject);
         }
     }

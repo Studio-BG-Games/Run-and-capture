@@ -13,12 +13,26 @@ MonoBehaviour:
   m_Name: ItemData
   m_EditorClassIdentifier: 
   itemInfos:
-  - prefab: {fileID: 3197816592181874056, guid: 2704c4f795b0d7748a3e3fa53be4d893,
-      type: 3}
+  - prefab: {fileID: 919132149155446097, guid: 4166c606d638610418dc9ead794d697b, type: 3}
     isInstantUse: 0
     type: Tower
     icon: {fileID: 21300000, guid: 543c4732bd2d47a41bdbbf2156eb358c, type: 3}
-    spawnablePrefab: {fileID: 1175122412763585952, guid: ca39954219550f949aeeecf95f25f3d1,
+    spawnablePrefab: {fileID: 4774919592469818776, guid: 0dbed8f974ba44a42af9d8fcae504ce0,
       type: 3}
+    values: 
+  - prefab: {fileID: 3197816592181874056, guid: 2704c4f795b0d7748a3e3fa53be4d893,
+      type: 3}
+    isInstantUse: 1
+    type: AttackBonus
+    icon: {fileID: 21300000, guid: caf8bc0311dd2fc4ca1528a82a063754, type: 3}
+    spawnablePrefab: {fileID: 0}
+    values: 030000000f000000
+  - prefab: {fileID: 8639522512577941448, guid: 7b6a7f64e52da514d88aa97ad8f863df,
+      type: 3}
+    isInstantUse: 1
+    type: DefenceBonus
+    icon: {fileID: 21300000, guid: 35be128594dcdce48b5d8e5317b38ed9, type: 3}
+    spawnablePrefab: {fileID: 0}
+    values: 0a0000001e000000
   fromTimeSpawn: 3
   toTimeSpawn: 10
