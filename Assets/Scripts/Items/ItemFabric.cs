@@ -52,13 +52,13 @@ namespace Items
 
                 while (closedList.Contains(cell) || cell.Item != null)
                 {
-                    cell = _openList[Random.Range(0, _openList.Count - 1)];
+                    return;
                 }
 
                 var type = GetWeightedType();
                 while (type == null)
                 {
-                    type = GetWeightedType();
+                    return;
                 }
                 var info = _itemInfos[type.ToString().Replace("Items.", "")];
                 var obj = (Item)Activator.CreateInstance(type, info);
