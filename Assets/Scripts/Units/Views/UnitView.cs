@@ -149,7 +149,7 @@ public class UnitView : MonoBehaviour
             if(Time.deltaTime < _weapon.reloadTime)
             {
                 StopCoroutine(_previosReload);
-                _previosReload = null;                            
+                _previosReload = null;
             }
             _previosReload = StartCoroutine(Reload());    
             
