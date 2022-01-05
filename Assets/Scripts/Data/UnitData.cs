@@ -24,5 +24,6 @@ namespace Data
         public int manaRegen;
         public int maxMana;
         public int maxHP;
+        public int inventoryCapacity;
     }
 }
