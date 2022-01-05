@@ -66,7 +66,7 @@ namespace Units
         {
             _weapon.SetModifiedDamage(0);
         }
-        
+
         public void SetDefenceBonus(int duration, int value)
         {
             TimerHelper.Instance.StartTimer(StopDefenceBonus, duration);
@@ -77,7 +77,7 @@ namespace Units
         {
             _defenceBonus = 0;
         }
-        
+
         public void Move(HexDirection direction)
         {
             if (!_cell.GetNeighbor(direction) || _isBusy) return;
@@ -169,7 +169,8 @@ namespace Units
                 _animator = _instance.GetComponent<Animator>();
                 _unitView = _instance.GetComponent<UnitView>();
                 _barCanvas = _unitView.BarCanvas.GetComponent<BarCanvas>();
-                _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex, this);
+                _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex,
+                    this);
                 SetAnimLength();
                 MusicController.Instance.AddAudioSource(_instance);
                 _mana = _data.maxMana;
@@ -201,6 +202,7 @@ namespace Units
         {
             _inventory.Remove(item);
         }
+
         private void MoveEnd()
         {
             _isBusy = false;
@@ -274,6 +276,8 @@ namespace Units
             float maxHp = _data.maxHP;
             float maxMana = _data.maxMana;
             _barCanvas.ManaBar.DOFillAmount(mana / maxMana, 0.5f).SetEase(Ease.InQuad);
+            //_barCanvas.ManaBar.value = 
+            //_unitView.RegenMana(10);
             _barCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
@@ -324,7 +328,6 @@ namespace Units
 
         private void Damage(int dmg)
         {
-            
             if (_defenceBonus == 0 && _hp - dmg <= 0f)
             {
                 Death();
@@ -338,7 +341,7 @@ namespace Units
             {
                 _hp -= dmg;
             }
-            
+
             UpdateBarCanvas();
         }
     }
