@@ -175,7 +175,7 @@ public class UnitView : MonoBehaviour
 
     private IEnumerator Regen()
     {
-        if (_mana >= 100) //TODO если пользовать ману во время регенерации, то мана не тратится.
+        if (_mana >= 100) 
         {
             yield break;
         }
