@@ -26,8 +26,9 @@ namespace Controller
             new MusicController();
             MusicController.Instance.SetMusicData(data.MusicData);
             controllers.Add(hexGrid);
-
-
+            
+            data.WeaponsData.WeaponsList.ForEach(x => x.SetModifiedDamage(0));
+            
             ItemFabric itemFabric = new ItemFabric(data.ItemsData, SetUpItems());
             controllers.Add(itemFabric);
 
@@ -39,7 +40,9 @@ namespace Controller
             {
                 if (unit.isPlayer)
                 {
-                    player = new Unit(unit, JsonUtility.FromJson<Weapon>(data.ChosenWeapon), hexGrid);
+                    var weapon = JsonUtility.FromJson<Weapon>(data.ChosenWeapon);
+                    weapon.SetModifiedDamage(0);
+                    player = new Unit(unit, weapon, hexGrid);
                     PlayerControl playerControl = new PlayerControl(player, uiController.PlayerControlView,
                         uiController.PlayerInventoryView);
                     controllers.Add(playerControl);
