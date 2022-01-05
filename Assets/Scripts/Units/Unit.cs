@@ -66,7 +66,7 @@ namespace Units
         {
             _weapon.SetModifiedDamage(0);
         }
-        
+
         public void SetDefenceBonus(int duration, int value)
         {
             TimerHelper.Instance.StartTimer(StopDefenceBonus, duration);
@@ -77,7 +77,7 @@ namespace Units
         {
             _defenceBonus = 0;
         }
-        
+
         public void Move(HexDirection direction)
         {
             if (!_cell.GetNeighbor(direction) || _isBusy) return;
@@ -169,7 +169,8 @@ namespace Units
                 _animator = _instance.GetComponent<Animator>();
                 _unitView = _instance.GetComponent<UnitView>();
                 _barCanvas = _unitView.BarCanvas.GetComponent<BarCanvas>();
-                _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex, this);
+                _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex,
+                    this);
                 SetAnimLength();
                 MusicController.Instance.AddAudioSource(_instance);
                 _mana = _data.maxMana;
@@ -201,6 +202,7 @@ namespace Units
         {
             _inventory.Remove(item);
         }
+
         private void MoveEnd()
         {
             _isBusy = false;
@@ -247,13 +249,8 @@ namespace Units
             ball.AddComponent<WeaponView>().SetWeapon(_weapon);
             ball.transform.DOMove(
                     new Vector3(_direction.normalized.x,
-<<<<<<< HEAD
-                        0, _direction.normalized.y) * _weapon.disnatce * _hexGrid.HexDistance +
-                    _instance.transform.position + new Vector3(0, 2, 0), // initiate
-=======
                         0, _direction.normalized.y) * _weapon.disnatce * HexGrid.HexDistance +
                     _instance.transform.position + new Vector3(0, 2, 0),
->>>>>>> Alexei
                     _weapon.speed)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => Object.Destroy(ball));
@@ -331,7 +328,6 @@ namespace Units
 
         private void Damage(int dmg)
         {
-            
             if (_defenceBonus == 0 && _hp - dmg <= 0f)
             {
                 Death();
@@ -345,7 +341,7 @@ namespace Units
             {
                 _hp -= dmg;
             }
-            
+
             UpdateBarCanvas();
         }
     }
