@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b06259b938024e6e8a1f34610d0b60db, type: 3}
+  m_Name: WeaponsData
+  m_EditorClassIdentifier: 
+  _weapons:
+  - name: StandartAttac
+    icon: {fileID: 3777131139682951229, guid: dcb79c5472cbd5f4eb050a4acc4b197e, type: 3}
+    objectToThrow: {fileID: 4746165193704193263, guid: 4e7523811a052fd46acf941fc69c8c98,
+      type: 3}
+    VFXGameObject: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
+      type: 3}
+    manaCost: 10
+    damage: 10
+    speed: 1
+    disnatce: 5
+    reloadTime: 3
+    shots: 3
+    shotSound: {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
+    hitSound: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
+  - name: Laser
+    icon: {fileID: 3777131139682951229, guid: e85f2abe991b09140ac9b67cf8cb24a1, type: 3}
+    objectToThrow: {fileID: 7219588875883387333, guid: ab214974cd498df42867306700ba5fd2,
+      type: 3}
+    VFXGameObject: {fileID: 8715260329460421181, guid: e0388f43a34de79458c79763de903ffb,
+      type: 3}
+    manaCost: 15
+    damage: 30
+    speed: 0.5
+    disnatce: 3
+    reloadTime: 3
+    shots: 5
+    shotSound: {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
+    hitSound: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
