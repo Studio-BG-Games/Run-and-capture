@@ -28,6 +28,9 @@ public class UnitView : MonoBehaviour
     private Action _startRegen;
     private Coroutine _previosRegen;
     private Coroutine _previosReload;
+    //
+    private WaitForSeconds regenTick = new WaitForSeconds(0.5f);
+        //
     private int _mana;
     private Action _capureHex;
     private Sequence _sequence;
@@ -50,9 +53,9 @@ public class UnitView : MonoBehaviour
     {
         captureBar.gameObject.SetActive(true);
         _sequence = DOTween.Sequence();
-        _sequence.Append(captureBar.DOFillAmount(1f, 0f).OnComplete(() =>
+        _sequence.Append(captureBar.DOFillAmount(1f, 0f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            _capureHex.Invoke();
+            _capureHex?.Invoke();
             captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
             captureBar.gameObject.SetActive(false);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
@@ -85,13 +88,17 @@ public class UnitView : MonoBehaviour
 
     public void RegenMana(int mana)
     {
+        
         if (_previosRegen != null)
         {
             StopCoroutine(_previosRegen);
         }
 
         _mana = mana;
+        //_startRegen.Invoke();  
         _previosRegen = StartCoroutine(Regen());
+
+        //return _mana;
     }
 
     private void Step()
@@ -132,9 +139,24 @@ public class UnitView : MonoBehaviour
         yield return new WaitForSeconds(_weapon.reloadTime);
         if (_toReloadStack.Count == 0) yield break;
         var shot = _toReloadStack.Pop();
-        shot.Switch();
-        _shootUIStack.Push(shot);
-        StartCoroutine(Reload());
+        
+        // _shootUIStack.Push(shot);
+            shot.Switch();
+            _shootUIStack.Push(shot);       
+                      
+        foreach (var item in _toReloadStack)
+        {
+            if(Time.deltaTime < _weapon.reloadTime)
+            {
+                StopCoroutine(_previosReload);
+                _previosReload = null;
+            }
+            _previosReload = StartCoroutine(Reload());    
+            
+        }
+
+        
+
     }
 
     private IEnumerator Regen()
@@ -144,9 +166,17 @@ public class UnitView : MonoBehaviour
             yield break;
         }
 
-        yield return new WaitForSeconds(1f);
-        _mana += _manaRegen;
-        _startRegen.Invoke();
-        StartCoroutine(Regen());
+
+        yield return new WaitForSeconds(2f);
+        while(_mana < 100)
+        {
+            _mana += _manaRegen;
+            _startRegen.Invoke();            
+        }
+
+        //StartCoroutine(Regen());
+        _previosRegen = null;
+
+
     }
 }

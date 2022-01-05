@@ -77,7 +77,9 @@ namespace Units
         {
             _isBusy = true;
             _isCapturing = _data.color != _cell.GetNeighbor(direction).Color;
+            var previousCell = _cell;
             _cell = _cell.GetNeighbor(direction);
+            PaintedController.UnitCurrentCell[_data.color] = (previousCell, _cell);
             RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x,
                 (_cell.transform.position - _instance.transform.position).normalized.z));
             _animator.SetTrigger("Move");
@@ -88,7 +90,6 @@ namespace Units
         private void CaptureHex()
         {
             _cell.PaintHex(_data.color);
-            PaintedController.unitCurrentCell[_data.color] =_cell;
         }
 
         private void SetAnimLength()
@@ -118,11 +119,17 @@ namespace Units
                 _cell.PaintHex(_data.color);
                 for (int i = 0; i < 6; i++)
                 {
-                    _cell.GetNeighbor((HexDirection)i)?.PaintHex(_data.color);
+                    var neigh = _cell.GetNeighbor((HexDirection)i);
+                    neigh?.PaintHex(_data.color);
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        neigh?.GetNeighbor((HexDirection)j)?.PaintHex(_data.color);
+                    }
                 }
 
                 //
-                PaintedController.unitCurrentCell.Add(_data.color, _cell);
+                PaintedController.UnitCurrentCell.Add(_data.color, (null, _cell));
                 //
 
                 _instance = Object.Instantiate(_data.unitPrefa, _cell.transform.parent);
@@ -151,23 +158,23 @@ namespace Units
         {
             _isBusy = false;
             _animator.SetBool("isMoving", _isBusy);
-            if(!_isCapturing)
+            if (!_isCapturing)
             {
-                _isHardToCapture = false;   
+                _isHardToCapture = false;
                 return;
             }
+
             if (_isHardToCapture)
             {
                 _unitView.HardCaptureHex(_cell);
             }
             else
             {
-                
                 CaptureHex();
                 MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                     _cell.gameObject);
             }
-            
+
             _isHardToCapture = false;
         }
 
@@ -194,7 +201,7 @@ namespace Units
             ball.transform.DOMove(
                     new Vector3(_direction.normalized.x,
                         0, _direction.normalized.y) * _weapon.disnatce * _hexGrid.HexDistance +
-                    _instance.transform.position + new Vector3(0, 2, 0),
+                    _instance.transform.position + new Vector3(0, 2, 0), // initiate
                     _weapon.speed)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => Object.Destroy(ball));
@@ -220,6 +227,8 @@ namespace Units
             float maxHp = _data.maxHP;
             float maxMana = _data.maxMana;
             _barCanvas.ManaBar.DOFillAmount(mana / maxMana, 0.5f).SetEase(Ease.InQuad);
+            //_barCanvas.ManaBar.value = 
+            //_unitView.RegenMana(10);
             _barCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
@@ -267,6 +276,7 @@ namespace Units
             {
                 Death();
             }
+
             _hp -= dmg;
             UpdateBarCanvas();
         }

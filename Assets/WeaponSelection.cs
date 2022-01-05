@@ -26,13 +26,15 @@ public class WeaponSelection : MonoBehaviour
         data.WeaponsList.ForEach(x =>
         {
             var go = Instantiate(weaponIcon, grid);
-            go.Button.image.sprite = x.icon;
+            var icon = Instantiate(x.icon, go.Icon.transform);
+            icon.transform.localPosition = Vector3.zero;
             go.DamageText.text = x.damage.ToString();
             go.ReloadText.text = x.reloadTime.ToString();
+            go.ShotsCount.text = x.shots.ToString();
+            go.WeaponTitle.text = x.name;
             go.Button.onClick.AddListener(() =>
             {
                 ChoseWeapon(x);
-                go.Button.image.color = Color.cyan;
             });
             _buttons.Add(go.Button);
         });
