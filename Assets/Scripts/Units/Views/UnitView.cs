@@ -29,7 +29,7 @@ public class UnitView : MonoBehaviour
     private Coroutine _previosRegen;
     private Coroutine _previosReload;
     //
-    //private WaitForSeconds regenTick = new WaitForSeconds(0.5f);
+    private WaitForSeconds regenTick = new WaitForSeconds(0.5f);
         //
     private int _mana;
     private Action _capureHex;
@@ -139,10 +139,24 @@ public class UnitView : MonoBehaviour
         yield return new WaitForSeconds(_weapon.reloadTime);
         if (_toReloadStack.Count == 0) yield break;
         var shot = _toReloadStack.Pop();
-        shot.Switch();
-        _shootUIStack.Push(shot);
-        StartCoroutine(Reload());
-        _previosReload = null;
+        
+        // _shootUIStack.Push(shot);
+            shot.Switch();
+            _shootUIStack.Push(shot);       
+                      
+        foreach (var item in _toReloadStack)
+        {
+            if(Time.deltaTime < _weapon.reloadTime)
+            {
+                StopCoroutine(_previosReload);
+                _previosReload = null;                            
+            }
+            _previosReload = StartCoroutine(Reload());    
+            
+        }
+
+        
+
     }
 
     private IEnumerator Regen()
