@@ -32,12 +32,14 @@ public class GameMenuView : MonoBehaviour
     
     private void ShowMenu()
     {
+        DOTween.PauseAll();
         menu.SetActive(true);
         Time.timeScale = 0f;
     }
 
     private void HideMenu()
     {
+        DOTween.PlayAll();
         Time.timeScale = 1f;
         menu.SetActive(false);
     }

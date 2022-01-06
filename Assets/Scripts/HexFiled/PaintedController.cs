@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Data;
 using UnityEngine;
 
@@ -27,44 +28,28 @@ namespace HexFiled
             var hexByColorDict = DifferentHexByColor(cells);
             foreach (var item in hexByColorDict)
             {
-                if (item.Value.Count > 0 && item.Key != UnitColor.GREY && item.Key != cell.Color)
-                {
-                    foreach (var cellNeighbour in item.Value)
-                    {
-                        if (UnitCurrentCell.ContainsKey(item.Key))
-                        {
-                            var path = HasPath(cellNeighbour, UnitCurrentCell[item.Key].curent);
-                            if (!path.hasPath)
-                            {
-                                path.field.ForEach(x => x.PaintHex(UnitColor.GREY));
-                            }
-                        }
-                    }
-                }
                 if (item.Key == cell.Color && item.Value.Count >= 2 && item.Value.Count < 6 &&
-                         UnitCurrentCell.ContainsKey(cell.Color))
+                    UnitCurrentCell.ContainsKey(cell.Color))
                 {
                     HexDirection direction = new HexDirection();
-                    HexDirection openDirection = new HexDirection();
-                    HexDirection closeDirection = new HexDirection();
                     for (int i = 0; i < 6; i++)
                     {
                         var neighbour = UnitCurrentCell[cell.Color].previos.GetNeighbor((HexDirection)i);
-                        
+
                         if (neighbour == UnitCurrentCell[cell.Color].curent)
                         {
                             direction = (HexDirection)i;
                         }
                     }
-                    
-                    openDirection = direction.PlusSixtyDeg();
-                    closeDirection = direction.MinusSixtyDeg();
-                    
 
-                    var path = HasPath(
+                    var openDirection = direction.PlusSixtyDeg();
+                    var closeDirection = direction.MinusSixtyDeg();
+
+
+                    var path = Round(
                         UnitCurrentCell[cell.Color].previos.GetNeighbor(closeDirection),
                         UnitCurrentCell[cell.Color].previos.GetNeighbor(openDirection)
-                        );
+                    );
 
                     if (!path.hasPath)
                     {
@@ -72,7 +57,7 @@ namespace HexFiled
                     }
                     else
                     {
-                        path = HasPath(
+                        path = Round(
                             UnitCurrentCell[cell.Color].previos.GetNeighbor(openDirection),
                             UnitCurrentCell[cell.Color].previos.GetNeighbor(closeDirection)
                         );
@@ -82,8 +67,22 @@ namespace HexFiled
                         }
                     }
                 }
+
+                if (item.Value.Count > 0 && item.Key != UnitColor.GREY && item.Key != cell.Color)
+                {
+                    foreach (var path in from cellNeighbour in item.Value
+                             where UnitCurrentCell.ContainsKey(item.Key)
+                             select HasPath(cellNeighbour, UnitCurrentCell[item.Key].curent)
+                             into path
+                             where !path.hasPath
+                             select path)
+                    {
+                        path.field.ForEach(x => x.PaintHex(UnitColor.GREY));
+                    }
+                }
             }
         }
+
 
         private Dictionary<UnitColor, List<HexCell>> DifferentHexByColor(List<HexCell> cellsList)
         {
@@ -102,59 +101,40 @@ namespace HexFiled
             return resultDict;
         }
 
-        private ( bool hasPath, List<HexCell> field ) HasPath(HexCell start, HexCell end)
+        private (bool hasPath, List<HexCell> field) Round(HexCell start, HexCell end)
         {
+            if (start.Color == _cell.Color || end.Color == _cell.Color)
+            {
+                return (true, null);
+            }
+
             List<HexCell> closedList = new List<HexCell>();
             HexCell currentCell = start;
 
-            Stack<HexCell> stackIteators = new Stack<HexCell>();
-            stackIteators.Push(currentCell);
+            Stack<HexCell> stackIterators = new Stack<HexCell>();
+            stackIterators.Push(currentCell);
 
             closedList.Add(currentCell);
 
-
-            while (stackIteators.Count >= 0)
+            while (stackIterators.Count >= 0)
             {
                 if (currentCell == end)
                     return (true, closedList);
 
                 List<HexCell> openList = new List<HexCell>();
-                if(end.Color != UnitColor.GREY)
+
+                foreach (var neighbour in currentCell.GetListNeighbours())
                 {
-                    if (end.Color != start.Color)
+                    if (neighbour == null)
                     {
                         return (true, null);
                     }
-                    for (int i = 0; i < 6; i++)
-                    {
-                        HexCell neighbour = currentCell.GetNeighbor((HexDirection)i);
-                        if (neighbour == null)
-                        {
-                            return (true, null);
-                        }
 
-                        if (!closedList.Contains(neighbour) && neighbour.Color == start.Color)
-                        {
-                            openList.Add(neighbour);
-                        }
-                    }
-                }
-                else
-                {
-                   
-                    for (int i = 0; i < 6; i++)
+                    if (closedList.Contains(neighbour) || neighbour.Color == _cell.Color) continue;
+                    openList.Add(neighbour);
+                    if (neighbour.GetListNeighbours().Contains(end))
                     {
-                        HexCell neighbour = currentCell.GetNeighbor((HexDirection)i);
-                        if (neighbour == null)
-                        {
-                            return (true, null);
-                        }
-
-                        if (!closedList.Contains(neighbour) && 
-                            neighbour.Color != _cell.Color)
-                        {
-                            openList.Add(neighbour);
-                        }
+                        return (true, null);
                     }
                 }
 
@@ -162,16 +142,81 @@ namespace HexFiled
                 {
                     currentCell = openList[Random.Range(0, openList.Count - 1)];
                     closedList.Add(currentCell);
-                    stackIteators.Push(currentCell);
+                    stackIterators.Push(currentCell);
                 }
                 else
                 {
-                    if (stackIteators.Count == 0)
+                    if (stackIterators.Count == 0)
                     {
                         return (false, closedList);
                     }
 
-                    currentCell = stackIteators.Pop();
+                    currentCell = stackIterators.Pop();
+                }
+
+                if (currentCell.GetListNeighbours().Contains(end))
+                {
+                    return (true, null);
+                }
+            }
+
+            return (false, closedList);
+        }
+
+        private ( bool hasPath, List<HexCell> field ) HasPath(HexCell start, HexCell end)
+        {
+            if (start.Color == _cell.Color || end.Color == _cell.Color)
+            {
+                return (true, null);
+            }
+
+            List<HexCell> closedList = new List<HexCell>();
+            HexCell currentCell = start;
+
+            Stack<HexCell> stackIterators = new Stack<HexCell>();
+            stackIterators.Push(currentCell);
+
+            closedList.Add(currentCell);
+
+
+            while (stackIterators.Count >= 0)
+            {
+                if (currentCell == end)
+                    return (true, null);
+
+                List<HexCell> openList = new List<HexCell>();
+
+                foreach (var neighbour in currentCell.GetListNeighbours())
+                {
+                    if (neighbour == null)
+                    {
+                        return (true, null);
+                    }
+
+
+                    if (closedList.Contains(neighbour) || neighbour.Color != start.Color) continue;
+                    openList.Add(neighbour);
+                    if (neighbour.GetListNeighbours().Contains(end))
+                    {
+                        return (true, null);
+                    }
+                }
+
+
+                if (openList.Count > 0)
+                {
+                    currentCell = openList[Random.Range(0, openList.Count - 1)];
+                    closedList.Add(currentCell);
+                    stackIterators.Push(currentCell);
+                }
+                else
+                {
+                    if (stackIterators.Count == 0)
+                    {
+                        return (false, closedList);
+                    }
+
+                    currentCell = stackIterators.Pop();
                 }
 
                 if (currentCell.GetListNeighbours().Contains(end))

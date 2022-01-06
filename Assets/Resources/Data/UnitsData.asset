@@ -20,9 +20,10 @@ MonoBehaviour:
     unitPrefa: {fileID: 7527582019267571087, guid: f102085e8bc4cad4992d43b84dee1055,
       type: 3}
     color: 3
-    manaRegen: 5
+    manaRegen: 1
     maxMana: 100
     maxHP: 100
+    inventoryCapacity: 4
   - isPlayer: 0
     spawnPos:
       x: 3
@@ -33,6 +34,7 @@ MonoBehaviour:
     manaRegen: 10
     maxMana: 100
     maxHP: 100
+    inventoryCapacity: 4
   - isPlayer: 0
     spawnPos:
       x: 3
@@ -43,3 +45,4 @@ MonoBehaviour:
     manaRegen: 10
     maxMana: 100
     maxHP: 100
+    inventoryCapacity: 4
