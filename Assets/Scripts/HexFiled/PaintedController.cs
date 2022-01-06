@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Data;
-using UnityEngine;
+using DefaultNamespace;
+using Units;
+using Random = UnityEngine.Random;
 
 namespace HexFiled
 {
@@ -75,7 +78,8 @@ namespace HexFiled
                              where !path.hasPath
                              select path)
                     {
-                        path.field.ForEach(x => x.PaintHex(UnitColor.GREY));
+                        TryPaintHexList(path, UnitColor.GREY);
+                        
                     }
                 }
             }
@@ -86,7 +90,14 @@ namespace HexFiled
         {
             if (!path.hasPath)
             {
-                path.field.ForEach(y => y.PaintHex(color));
+                List<Action<UnitColor>> actions = new List<Action<UnitColor>>();
+                
+               path.field.ForEach(x =>
+               {
+                   actions.Add(x.PaintHex);
+               });
+               
+               TimerHelper.Instance.StartTimer(actions, 0.05f, color);
             }
 
             return path.hasPath;

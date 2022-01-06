@@ -64,6 +64,8 @@ namespace HexFiled
             _renderer.material.mainTexture = HexGrid.Colors[color].Texture;
 
             _color = color;
+            MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
+                gameObject);
             Instantiate(HexGrid.Colors[color].VFXPrefab, transform);
             onHexPainted?.Invoke(this);
         }
