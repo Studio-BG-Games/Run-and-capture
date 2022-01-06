@@ -7,21 +7,25 @@ using AudioSettings = MainMenu.AudioSettings;
 
 public class SettingsController : MonoBehaviour
 {
-    [SerializeField] private Sprite musOnSpr, musOffSpr, sfxOnSpr, sfxOffSpr;
-    [SerializeField] private Image musImg, sfxImg;
     [SerializeField] private AudioSource menuMusSrc;
     [SerializeField] private GameMenuData GameData;
-    [SerializeField] private Transform targetSlideTransform;
-    [SerializeField] private float slideTime;
     [SerializeField] private string dataFilePath;
-    private bool _isActive = false;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Image musicImage;
+    [SerializeField] private Sprite musicOnSprite;
+    [SerializeField] private Sprite musicOffSprite;
+    
+    [SerializeField] private Image sfxImage;
+    [SerializeField] private Sprite sfxOnSprite;
+    [SerializeField] private Sprite sfxOffSprite;
+    
     private AudioSettings _audioSettings;
-    private Vector3 defailtPosition;
 
     private void Start()
     {
         dataFilePath = Application.persistentDataPath + "/" + dataFilePath;
-        if(File.Exists(dataFilePath))
+        if (File.Exists(dataFilePath))
             _audioSettings = JsonUtility.FromJson<AudioSettings>(File.ReadAllText(dataFilePath));
         else
         {
@@ -30,53 +34,42 @@ public class SettingsController : MonoBehaviour
             using StreamWriter writer = new StreamWriter(stream);
             writer.Write(JsonUtility.ToJson(_audioSettings));
         }
+
+        musicSlider.value = _audioSettings.musicVolume;
+        sfxSlider.value = _audioSettings.sfxVolume;
         
-        defailtPosition = transform.position;
-        SetMenuMusicState();
+        musicSlider.onValueChanged.AddListener(x => OnMusicSliderValueChanged());
+        sfxSlider.onValueChanged.AddListener(x => OnSFXSliderValueChanged());
+
         UpdateVisuals();
+        SetMenuMusicState();
+        gameObject.SetActive(false);
     }
 
     private void UpdateVisuals()
     {
-        musImg.sprite = _audioSettings.isMusicAllowed ? musOnSpr : musOffSpr;
-        sfxImg.sprite = _audioSettings.isSFXAllowed ? sfxOnSpr : sfxOffSpr;
+        musicImage.sprite = _audioSettings.musicVolume == 0f ? musicOffSprite : musicOnSprite;
+        
+        sfxImage.sprite = _audioSettings.sfxVolume == 0f ? sfxOffSprite : sfxOnSprite;
     }
 
-    public void OnSettingsBtnClick()
+    public void OnMusicSliderValueChanged()
     {
-        _isActive = !_isActive;
-        SlideSettings();
-    }
-
-    private void SlideSettings()
-    {
-        transform.DOMove(_isActive ? targetSlideTransform.position : defailtPosition, slideTime);
-    }
-
-    public void OnMusicBtnClick()
-    {
-        _audioSettings.isMusicAllowed = !_audioSettings.isMusicAllowed;
-        musImg.sprite = _audioSettings.isMusicAllowed ? musOnSpr : musOffSpr;
+        _audioSettings.musicVolume = musicSlider.value;
         SetMenuMusicState();
         File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));
+        UpdateVisuals();
     }
 
-    public void OnSFXBtnClick()
+    public void OnSFXSliderValueChanged()
     {
-        _audioSettings.isSFXAllowed = !_audioSettings.isSFXAllowed;
-        sfxImg.sprite = _audioSettings.isSFXAllowed ? sfxOnSpr : sfxOffSpr;
+        _audioSettings.sfxVolume = sfxSlider.value;
         File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));
+        UpdateVisuals();
     }
 
     private void SetMenuMusicState()
     {
-        if (_audioSettings.isMusicAllowed)
-        {
-            menuMusSrc.Play();
-        }
-        else
-        {
-            menuMusSrc.Pause();
-        }
+        menuMusSrc.volume = musicSlider.value;
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Items;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,13 +11,20 @@ namespace HexFiled
     {
         public HexCoordinates coordinates;
         public Action<HexCell> onHexPainted;
+        
+        public float gCost;
+        public float hCost;
+        public float fCost;
+        public HexCell parent;
 
         [SerializeField] private HexCell[] neighbors;
+        private Item _item;
         private UnitColor _color;
         private MeshRenderer _renderer;
-        private Dictionary<UnitColor, CellColor> _cellColor;
 
         public UnitColor Color => _color;
+
+        public Item Item => _item;
 
         private void Awake()
         {
@@ -24,10 +33,17 @@ namespace HexFiled
             _color = UnitColor.GREY;
         }
 
-        public void SetDictionary(Dictionary<UnitColor, CellColor> colors)
+        public void SetItem(Item item)
         {
-            _cellColor = colors;
+            _item = item == _item ? null : item;
         }
+        
+
+        public List<HexCell> GetListNeighbours()
+        {
+            return neighbors.ToList();
+        }
+        
 
         public HexCell GetNeighbor(HexDirection direction)
         {
@@ -45,17 +61,18 @@ namespace HexFiled
             if (color == _color) return;
             if (color == UnitColor.GREY)
             {
-                _renderer.material.mainTexture = _cellColor[color].Texture;
+                _renderer.material.mainTexture = HexGrid.Colors[color].Texture;
                 _color = color;
                 return;
             }
 
-            _renderer.material.mainTexture = _cellColor[color].Texture;
-            onHexPainted?.Invoke(this);
-            _color = color;
-            Instantiate(_cellColor[color].VFXPrefab, transform);
-           
+            _renderer.material.mainTexture = HexGrid.Colors[color].Texture;
 
+            _color = color;
+            MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
+                gameObject);
+            Instantiate(HexGrid.Colors[color].VFXPrefab, transform);
+            onHexPainted?.Invoke(this);
         }
     }
 }

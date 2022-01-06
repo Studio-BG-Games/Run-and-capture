@@ -17,14 +17,16 @@ namespace HexFiled
         private HexCell[] _cells;
         private Canvas _gridCanvas;
         private GameObject _baseGameObject;
-        private Dictionary<UnitColor, CellColor> _colors;
-        private float _hexDistance;
+        private static Dictionary<UnitColor, CellColor> _colors;
+        private static float _hexDistance;
         private int _hexCaptureCost;
 
-        public float HexDistance => _hexDistance;
+        public static float HexDistance => _hexDistance;
         public Action<HexCell> OnHexPainted;
         public Action OnGridLoaded;
         public int HexCaptureCost => _hexCaptureCost;
+
+        public static Dictionary<UnitColor, CellColor> Colors => _colors;
 
         public HexGrid(FieldData fieldData)
         {
@@ -63,7 +65,6 @@ namespace HexFiled
             position.z = z * (HexMetrics.outerRadius * 1.5f);
             var cellGO = Object.Instantiate(_cellPrefab);
             HexCell cell = _cells[i] = cellGO.GetComponent<HexCell>();
-            cell.SetDictionary(_colors);
             cell.PaintHex(UnitColor.GREY);
             cell.transform.SetParent(_baseGameObject.transform, false);
             cell.transform.localPosition = position;
@@ -100,16 +101,18 @@ namespace HexFiled
                     }
                 }
             }
+
+
+#if UNITY_EDITOR
+            TMP_Text label = Object.Instantiate(_cellLabelPrefab, _gridCanvas.transform, false);
+            label.rectTransform.anchoredPosition =
+                new Vector2(position.x, position.z);
+            label.text = cell.coordinates.ToStringOnSeparateLines();
+#endif
         }
-// #if UNITY_EDITOR
-//             TMP_Text label = Object.Instantiate(_cellLabelPrefab, _gridCanvas.transform, false);
-//             label.rectTransform.anchoredPosition =
-//                 new Vector2(position.x, position.z);
-//             label.text = cell.coordinates.ToStringOnSeparateLines();
-// #endif
 
 
-        public void Init()
+    public void Init()
         {
             _cells = new HexCell[_height * _width];
 

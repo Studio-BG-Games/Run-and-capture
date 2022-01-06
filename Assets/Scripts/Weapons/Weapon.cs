@@ -6,10 +6,11 @@ namespace Weapons
     [Serializable]
     public struct Weapon
     {
-        public Sprite icon;
+        public string name;
+        public GameObject icon;
         public GameObject objectToThrow;
         public GameObject VFXGameObject;
-        public int manaCost;
+        public int modifiedDamage;
         public int damage;
         public float speed;
         public int disnatce;
@@ -17,5 +18,10 @@ namespace Weapons
         public int shots;
         public AudioClip shotSound;
         public AudioClip hitSound;
+
+        public void SetModifiedDamage(int bonus)
+        {
+            modifiedDamage = damage + bonus;
+        }
     }
 }
