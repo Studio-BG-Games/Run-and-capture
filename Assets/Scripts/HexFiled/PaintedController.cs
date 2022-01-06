@@ -46,26 +46,24 @@ namespace HexFiled
                     var closeDirection = direction.MinusSixtyDeg();
 
 
-                    var path = Round(
-                        UnitCurrentCell[cell.Color].previos.GetNeighbor(closeDirection),
-                        UnitCurrentCell[cell.Color].previos.GetNeighbor(openDirection)
-                    );
+                    if (TryPaintHexList(Round(
+                                UnitCurrentCell[cell.Color].previos.GetNeighbor(closeDirection),
+                                UnitCurrentCell[cell.Color].previos.GetNeighbor(openDirection)),
+                            cell.Color))
+                    {
+                        TryPaintHexList(Round(
+                                UnitCurrentCell[cell.Color].previos.GetNeighbor(openDirection),
+                                UnitCurrentCell[cell.Color].previos.GetNeighbor(closeDirection)),
+                            cell.Color);
+                    }
 
-                    if (!path.hasPath)
+                    cell.GetListNeighbours().ForEach(x =>
                     {
-                        path.field.ForEach(x => x.PaintHex(cell.Color));
-                    }
-                    else
-                    {
-                        path = Round(
-                            UnitCurrentCell[cell.Color].previos.GetNeighbor(openDirection),
-                            UnitCurrentCell[cell.Color].previos.GetNeighbor(closeDirection)
-                        );
-                        if (!path.hasPath)
+                        if (x.Color == UnitColor.GREY)
                         {
-                            path.field.ForEach(x => x.PaintHex(cell.Color));
+                            TryPaintHexList(Round(x, null), cell.Color);
                         }
-                    }
+                    });
                 }
 
                 if (item.Value.Count > 0 && item.Key != UnitColor.GREY && item.Key != cell.Color)
@@ -83,6 +81,16 @@ namespace HexFiled
             }
         }
 
+
+        private bool TryPaintHexList((bool hasPath, List<HexCell> field) path, UnitColor color)
+        {
+            if (!path.hasPath)
+            {
+                path.field.ForEach(y => y.PaintHex(color));
+            }
+
+            return path.hasPath;
+        }
 
         private Dictionary<UnitColor, List<HexCell>> DifferentHexByColor(List<HexCell> cellsList)
         {
@@ -103,7 +111,7 @@ namespace HexFiled
 
         private (bool hasPath, List<HexCell> field) Round(HexCell start, HexCell end)
         {
-            if (start.Color == _cell.Color || end.Color == _cell.Color)
+            if (start == null || start.Color == _cell.Color)
             {
                 return (true, null);
             }
@@ -118,7 +126,7 @@ namespace HexFiled
 
             while (stackIterators.Count >= 0)
             {
-                if (currentCell == end)
+                if (end != null && currentCell == end)
                     return (true, closedList);
 
                 List<HexCell> openList = new List<HexCell>();
