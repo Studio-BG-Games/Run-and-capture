@@ -18,6 +18,7 @@ namespace Items
         public override void InstanceInvoke()
         {
             Unit.SetAttackBonus(Data.Values[0], Data.Values[1]);
+            Unit.UseItem(this);
         }
 
         public override void PlaceItem(HexCell cell)

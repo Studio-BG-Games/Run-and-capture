@@ -27,7 +27,7 @@ MonoBehaviour:
     type: AttackBonus
     icon: {fileID: 21300000, guid: caf8bc0311dd2fc4ca1528a82a063754, type: 3}
     spawnablePrefab: {fileID: 0}
-    values: 030000000f000000
+    values: 0300000064000000
     spawnChance: 0.516
   - prefab: {fileID: 8639522512577941448, guid: 7b6a7f64e52da514d88aa97ad8f863df,
       type: 3}

@@ -31,9 +31,7 @@ public class UnitView : MonoBehaviour
     private Action _startRegen;
     private Coroutine _previosRegen;
     private Coroutine _previosReload;
-    //
-    private WaitForSeconds regenTick = new WaitForSeconds(0.5f);
-        //
+  
     private int _mana;
     private Action _capureHex;
     private Sequence _sequence;
@@ -175,7 +173,7 @@ public class UnitView : MonoBehaviour
 
     private IEnumerator Regen()
     {
-        if (_mana >= 100) //TODO если пользовать ману во время регенерации, то мана не тратится.
+        if (_mana >= 100) 
         {
             yield break;
         }
