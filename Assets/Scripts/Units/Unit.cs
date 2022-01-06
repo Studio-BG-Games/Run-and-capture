@@ -220,8 +220,7 @@ namespace Units
             else
             {
                 CaptureHex();
-                MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
-                    _cell.gameObject);
+                
             }
 
             _isHardToCapture = false;
