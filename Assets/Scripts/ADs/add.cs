@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
-//using UnityEditor.PackageManager.Requests;
+using UnityEditor.PackageManager.Requests;
 
 public class add : MonoBehaviour
 {
@@ -17,19 +17,27 @@ public class add : MonoBehaviour
         _request = new AdRequest.Builder().Build();
         _ad.LoadAd(_request);
         _ad.OnUserEarnedReward += HandleUser;
+        //
+    }
+    private void Start() {
         ShowAd();
+        _ad.OnUserEarnedReward -= HandleUser;
     }
 
     private void HandleUser(object sender, Reward reward)
     {
-        
+        return;
     }
 
-    private void ShowAd()
+    public void ShowAd()
     {
         if (_ad.IsLoaded())
         {
             _ad.Show();
         }
+    }
+
+    private void OnDisable() {
+        //_ad.OnUserEarnedReward -= HandleUser;
     }
 }
