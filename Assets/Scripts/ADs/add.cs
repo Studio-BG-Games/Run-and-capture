@@ -21,7 +21,6 @@ public class add : MonoBehaviour
     }
     private void Start() {
         ShowAd();
-        _ad.OnUserEarnedReward -= HandleUser;
     }
 
     private void HandleUser(object sender, Reward reward)

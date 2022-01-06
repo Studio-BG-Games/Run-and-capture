@@ -27,7 +27,7 @@ namespace GameUI
             canvasGroup.AddComponent<CanvasGroup>();
             _playerControlView = Object.Instantiate(_uiData.PlayerControlView, canvasGroup.transform);
             _inventoryView = Object.Instantiate(_uiData.InventoryView, canvasGroup.transform);
-            _add = Object.Instantiate(_uiData.Add, canvasGroup.transform);
+            //_add = Object.Instantiate(_uiData.Add, canvasGroup.transform);
             
             _uiData.ObjectsToSpawn.ForEach(x => Object.Instantiate(x, canvasGroup.transform));
         }
