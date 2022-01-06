@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Data;
 using DefaultNamespace;
-using Units;
 using Random = UnityEngine.Random;
 
 namespace HexFiled
@@ -62,7 +60,7 @@ namespace HexFiled
 
                     cell.GetListNeighbours().ForEach(x =>
                     {
-                        if (x.Color == UnitColor.GREY)
+                        if (x != null && x.Color == UnitColor.GREY)
                         {
                             TryPaintHexList(Round(x, null), cell.Color);
                         }
@@ -79,7 +77,6 @@ namespace HexFiled
                              select path)
                     {
                         TryPaintHexList(path, UnitColor.GREY);
-                        
                     }
                 }
             }
@@ -91,13 +88,10 @@ namespace HexFiled
             if (!path.hasPath)
             {
                 List<Action<UnitColor>> actions = new List<Action<UnitColor>>();
-                
-               path.field.ForEach(x =>
-               {
-                   actions.Add(x.PaintHex);
-               });
-               
-               TimerHelper.Instance.StartTimer(actions, 0.05f, color);
+
+                path.field.ForEach(x => actions.Add(x.PaintHex));
+
+                TimerHelper.Instance.StartTimer(actions, 0.05f, color);
             }
 
             return path.hasPath;

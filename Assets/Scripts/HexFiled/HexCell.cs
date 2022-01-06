@@ -11,6 +11,11 @@ namespace HexFiled
     {
         public HexCoordinates coordinates;
         public Action<HexCell> onHexPainted;
+        
+        public float gCost;
+        public float hCost;
+        public float fCost;
+        public HexCell parent;
 
         [SerializeField] private HexCell[] neighbors;
         private Item _item;

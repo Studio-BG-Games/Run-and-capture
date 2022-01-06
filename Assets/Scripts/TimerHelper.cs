@@ -10,14 +10,12 @@ namespace DefaultNamespace
         private static TimerHelper _instance;
 
         public static TimerHelper Instance => _instance;
-        public static List<Action> OnCorutineEndedList;
 
         private void Start()
         {
             if (_instance == null)
             {
                 _instance = this;
-                OnCorutineEndedList = new List<Action>();
             }
             else
             {
@@ -42,13 +40,13 @@ namespace DefaultNamespace
         IEnumerator Timer(Action action, float time)
         {
             yield return new WaitForSeconds(time);
-            action.Invoke();
+            action?.Invoke();
         }
         
         IEnumerator Timer<T>(Action<T> action, float time, T param)
         {
             yield return new WaitForSeconds(time);
-            action.Invoke(param);
+            action?.Invoke(param);
         }
         
         IEnumerator Timer<T>(List<Action<T>> actions, float time, T param)
@@ -56,7 +54,7 @@ namespace DefaultNamespace
             foreach (var action in actions)
             {
                 yield return new WaitForSeconds(time);
-                action.Invoke(param);
+                action?.Invoke(param);
             }
         }
     }
