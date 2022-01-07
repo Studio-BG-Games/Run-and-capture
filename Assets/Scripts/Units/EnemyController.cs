@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Data;
+using DefaultNamespace.AI;
 using DG.Tweening;
 using Runtime.Controller;
 using Units;
@@ -16,6 +17,7 @@ namespace Chars
         {
             _enemy = enemy;
             _camera = Camera.main;
+            
             
         }
         

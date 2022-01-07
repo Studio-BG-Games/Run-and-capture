@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using HexFiled;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace AI
 {
     public static class Pathfinding
     {
-        public static List<HexCell> FindPath(HexCell startTile, HexCell endTile, List<HexCell> allTiles)
+        public static Queue<HexCell> FindPath(HexCell startTile, HexCell endTile, List<HexCell> allTiles)
         {
             foreach (var tile in allTiles)
             {            
@@ -89,17 +90,16 @@ namespace AI
         //     return adjacentNodes;
         // }
 
-        private static List<HexCell> GetPathForNode(HexCell pathNode)
+        private static Queue<HexCell> GetPathForNode(HexCell pathNode)
         {
-            var result = new List<HexCell>();
+            var result = new Queue<HexCell>();
             var currentNode = pathNode;
             while (currentNode != null)
             {
-                result.Add(currentNode);
+                result.Enqueue(currentNode);
                 currentNode = currentNode.parent;
             }
-            result.Reverse();
-            //Debug.Log("path found");
+            
             return result;
         }
 
