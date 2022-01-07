@@ -27,8 +27,12 @@ public class AdsMob : MonoBehaviour
     {
         //ExtraLife life; 
         int lifeCount = ExtraLife.lifeCount;
-        ShowAd();
+        //ShowAd();
         lifeCount += 1;
+        ExtraLife.lifeCount = lifeCount;
+        ExtraLife life = FindObjectOfType<ExtraLife>();
+        life.health += 1;
+        
 
     }
 
@@ -41,6 +45,6 @@ public class AdsMob : MonoBehaviour
     }
 
     private void OnDisable() {
-        //_ad.OnUserEarnedReward -= HandleUser;
+        _ad.OnUserEarnedReward -= HandleUser;
     }
 }
