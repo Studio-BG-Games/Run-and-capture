@@ -5,7 +5,7 @@ using UnityEngine;
 using GoogleMobileAds.Api;
 using UnityEditor.PackageManager.Requests;
 
-public class add : MonoBehaviour
+public class AdsMob : MonoBehaviour
 {
     private string _revardUnitId = "ca-app-pub-3940256099942544/5224354917";
     private RewardedAd _ad;
@@ -19,13 +19,17 @@ public class add : MonoBehaviour
         _ad.OnUserEarnedReward += HandleUser;
         //
     }
-    private void Start() {
-        ShowAd();
-    }
+    // private void Start() {
+    //     ShowAd();
+    // }
 
     private void HandleUser(object sender, Reward reward)
     {
-        return;
+        //ExtraLife life; 
+        int lifeCount = ExtraLife.lifeCount;
+        ShowAd();
+        lifeCount += 1;
+
     }
 
     public void ShowAd()
