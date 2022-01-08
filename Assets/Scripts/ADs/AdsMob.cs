@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 using UnityEditor.PackageManager.Requests;
+using HexFiled;
 
 public class AdsMob : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class AdsMob : MonoBehaviour
         ExtraLife.lifeCount = lifeCount;
         ExtraLife life = FindObjectOfType<ExtraLife>();
         life.health += 1;
-        
+        Respawn(life.gameObject);
 
     }
 
@@ -43,6 +44,27 @@ public class AdsMob : MonoBehaviour
             _ad.Show();
         }
     }
+
+    public void Respawn(GameObject player)
+    {
+        List<HexCell> cells = new List<HexCell>(FindObjectsOfType<HexCell>());
+        // for (int i = 0; i < cells.Count; i++)
+        // {
+
+        // }
+        foreach (var cell in cells)
+        {
+            if(cell.Color == UnitColor.GREY)
+            {
+                var randomCell = UnityEngine.Random.Range(0, cells.Count);
+                Vector3 respawnPosition = cells[randomCell].transform.position;
+                player = FindObjectOfType<ExtraLife>().gameObject;
+                player.transform.position = respawnPosition;
+            }
+        }
+    }
+
+
 
     private void OnDisable() {
         _ad.OnUserEarnedReward -= HandleUser;

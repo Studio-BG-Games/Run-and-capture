@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HexFiled;
 
 public class ExtraLife : MonoBehaviour
 {
@@ -31,10 +32,30 @@ public class ExtraLife : MonoBehaviour
         if(lifeCount > 0)
         {
             canvasPref.gameObject.SetActive(false);
+            //Respawn();
             Time.timeScale = 1f;
         }
 
     }
+    
+    // public void Respawn()
+    // {
+    //     List<HexCell> cells = new List<HexCell>(FindObjectsOfType<HexCell>());
+    //     // for (int i = 0; i < cells.Count; i++)
+    //     // {
+
+    //     // }
+    //     foreach (var cell in cells)
+    //     {
+    //         if(cell.Color == UnitColor.GREY)
+    //         {
+    //             var randomCell = Random.Range(0, cells.Count);
+    //             Vector3 respawnPosition = cells[randomCell].transform.position;
+    //             GameObject player = FindObjectOfType<ExtraLife>().gameObject;
+    //             player.transform.position = respawnPosition;
+    //         }
+    //     }
+    // }
 
     // public void AddLIfe(int count)
     // {
