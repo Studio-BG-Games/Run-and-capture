@@ -38,13 +38,14 @@ namespace Units
         private int _defenceBonus;
 
 
-        public bool IsBusy => _isBusy;
+        public bool IsBusy { get =>  _isBusy; set => _isBusy = value; }
         public UnitView UnitView => _unitView;
         public bool IsAlive => _isAlive;
         public UnitColor Color => _data.color;
         public int InventoryCapacity => _data.inventoryCapacity;
         public Action<Item> OnItemPickUp;
         public Action<Unit> OnDeath; 
+        public BarCanvas BarCanvas => _barCanvas;
 
         public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
@@ -109,7 +110,7 @@ namespace Units
             _isCapturing = _data.color != _cell.GetNeighbor(direction).Color;
             var previousCell = _cell;
             _cell = _cell.GetNeighbor(direction);
-            PaintedController.UnitCurrentCell[_data.color] = (previousCell, _cell);
+            HexManager.UnitCurrentCell[_data.color] = ( _cell, this );
             RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x,
                 (_cell.transform.position - _instance.transform.position).normalized.z));
             _animator.SetTrigger("Move");
@@ -160,7 +161,7 @@ namespace Units
                 }
 
                 //
-                PaintedController.UnitCurrentCell.Add(_data.color, (null, _cell));
+                HexManager.UnitCurrentCell.Add(_data.color, (_cell, this));
                 //
 
                 _instance = Object.Instantiate(_data.unitPrefa, _cell.transform.parent);

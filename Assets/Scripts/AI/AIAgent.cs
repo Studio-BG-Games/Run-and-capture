@@ -25,7 +25,7 @@ namespace DefaultNamespace.AI
             _enemy.OnDeath += AgentDeath;
         }
 
-        private void AgentDeath()
+        private void AgentDeath(Unit unit)
         {
             AIManager.Instance.RemoveAgent(this);
         }

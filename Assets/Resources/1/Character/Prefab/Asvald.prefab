@@ -2937,7 +2937,6 @@ GameObject:
   - component: {fileID: 8989822822968797088}
   - component: {fileID: 8911891366586862002}
   - component: {fileID: 3288245434296440335}
-  - component: {fileID: 8454664948868524491}
   m_Layer: 0
   m_Name: Asvald
   m_TagString: Untagged
@@ -3013,7 +3012,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barCanvas: {fileID: 5591725933991455353}
   aimCanvas: {fileID: 2334695180834975480}
-  captureBar: {fileID: 3265669888403619595}
 --- !u!136 &8911891366586862002
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3044,21 +3042,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &8454664948868524491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7527582019267571087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2f89853800f934f8dce9a6635a97bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasPref: {fileID: 2000339881314694206, guid: 5460da0df497ae94aace59d1caf7cbdb,
-    type: 3}
-  health: 1
 --- !u!1 &7550162364350684268
 GameObject:
   m_ObjectHideFlags: 0
@@ -3971,18 +3954,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2192210941540280859}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3265669888403619595 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3692302203462554896, guid: dec5dd0d644d5c548a53563e65837162,
-    type: 3}
-  m_PrefabInstance: {fileID: 2192210941540280859}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4606608419032177277
 PrefabInstance:
   m_ObjectHideFlags: 0
