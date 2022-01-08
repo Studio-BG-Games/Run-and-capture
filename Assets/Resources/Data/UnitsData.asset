@@ -37,8 +37,8 @@ MonoBehaviour:
     inventoryCapacity: 4
   - isPlayer: 0
     spawnPos:
-      x: 3
-      z: 10
+      x: -1
+      z: 42
     unitPrefa: {fileID: 742650227762578155, guid: 97b4a76c55741764e880b63d6e1514a9,
       type: 3}
     color: 0

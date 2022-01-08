@@ -103,10 +103,10 @@ MonoBehaviour:
     VFXGameObject: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
       type: 3}
     modifiedDamage: 0
-    damage: 15
-    speed: 10
+    damage: 100
+    speed: 1
     disnatce: 6
-    reloadTime: 6
+    reloadTime: 1
     shots: 4
     shotSound: {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
     hitSound: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
@@ -120,7 +120,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 31.906784
-  m_Height: 63.813572
+  m_Radius: 30
+  m_Height: 60
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

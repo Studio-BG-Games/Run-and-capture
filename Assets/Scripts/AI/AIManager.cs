@@ -40,6 +40,7 @@ namespace AI
             _agents = new List<AIAgent>();
             _pathToPatrol = new Dictionary<AIAgent, Queue<HexCell>>();
             Instance = this;
+            HexManager.agents = new Dictionary<GameObject, AIAgent>();
         }
 
         public void AddAgent(AIAgent agent)

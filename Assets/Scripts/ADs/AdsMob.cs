@@ -35,15 +35,13 @@ public class AdsMob : MonoBehaviour
     private void HandleUser(object sender, Reward reward)
     {
         //ExtraLife life; 
-        int lifeCount = ExtraLife.lifeCount;
+       
         //ShowAd();
-        lifeCount += 1;
-        ExtraLife.lifeCount = lifeCount;
-        ExtraLife life = FindObjectOfType<ExtraLife>();
-        life.health += 1;
+        
+        
 
         //Respawn(life.gameObject);
-        _player.Spawn();
+        _player.Spawn(HexManager.CellByColor[UnitColor.GREY][Random.Range(0, HexManager.CellByColor[UnitColor.GREY].Count - 1)].coordinates);
 
     }
 
@@ -87,8 +85,7 @@ public class AdsMob : MonoBehaviour
             }
         }
     }
-
-
+    
 
     private void OnDisable() {
         _ad.OnUserEarnedReward -= HandleUser;

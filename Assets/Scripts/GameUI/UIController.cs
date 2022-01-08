@@ -28,7 +28,7 @@ namespace GameUI
             _playerControlView = Object.Instantiate(_uiData.PlayerControlView, canvasGroup.transform);
             _inventoryView = Object.Instantiate(_uiData.InventoryView, canvasGroup.transform);
 
-            _adsMob = Object.Instantiate(_uiData.Add, canvasGroup.transform);
+            _adsMob = Object.Instantiate(_uiData.AdsMob, canvasGroup.transform);
             //_add.enabled = false;
             
             _uiData.ObjectsToSpawn.ForEach(x => Object.Instantiate(x, canvasGroup.transform));

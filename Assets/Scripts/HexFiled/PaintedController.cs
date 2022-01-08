@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using DefaultNamespace;
 using Units;
 using Random = UnityEngine.Random;
 
@@ -19,20 +17,17 @@ namespace HexFiled
 
         public void CheckDeath(HexCell cell)
         {
-            foreach (var cells in HexManager.UnitCurrentCell)
+            foreach (var cells in HexManager.UnitCurrentCell.Where(cells => HexManager.CellByColor[cells.Key].Count < 2 || (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color)))
             {
-                if (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color)
-                {
-                    cells.Value.unit.Death();
-                }
+                cells.Value.unit.Death();
             }
         }
         public void SetHexColors(HexCell cell)
         {
             _cell = cell;
-            List<HexCell> cells = new List<HexCell>();
+            var cells = new List<HexCell>();
 
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
             {
                 cells.Add(cell.GetNeighbor((HexDirection)i));
             }
@@ -48,7 +43,9 @@ namespace HexFiled
                     {
                         if (x != null && x.Color != cell.Color)
                         {
-                            PaintHexList(Round(x, null), cell.Color);
+                            var path = Round(x, null);
+                            if(!path.hasPath)
+                                HexManager.PaintHexList(path.field, cell.Color);
                         }
                     });
                 }
@@ -62,24 +59,15 @@ namespace HexFiled
                              where !path.hasPath
                              select path)
                     {
-                        PaintHexList(path, UnitColor.GREY);
+                        if(!path.hasPath)
+                            HexManager.PaintHexList(path.field, UnitColor.GREY);
                     }
                 }
             }
         }
 
 
-        private void PaintHexList((bool hasPath, List<HexCell> field) path, UnitColor color)
-        {
-            if (path.hasPath) return;
-            
-            List<Action<UnitColor>> actions = new List<Action<UnitColor>>();
-
-            path.field.ForEach(x => actions.Add(x.PaintHex));
-
-            TimerHelper.Instance.StartTimer(actions, 0.05f, color);
-
-        }
+       
 
         private Dictionary<UnitColor, List<HexCell>> DifferentHexByColor(List<HexCell> cellsList)
         {

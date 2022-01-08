@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Timers;
+using AI;
 using CamControl;
 using Chars;
 using DefaultNamespace;
+using DefaultNamespace.AI;
 using GameUI;
 using HexFiled;
 using Items;
@@ -20,6 +22,8 @@ namespace Controller
         public GameInit(Controllers controllers, Data.Data data)
         {
 
+            AIManager aiManager = new AIManager();
+            controllers.Add(aiManager);
             new GameObject("Timer").AddComponent<TimerHelper>();
             
             var hexGrid = new HexGrid(data.FieldData);
@@ -62,10 +66,13 @@ namespace Controller
                     var enemyController = new EnemyController(unit, enemy);
                     controllers.Add(enemyController);
                     units.Add(enemy);
+                    AIAgent agent = new AIAgent(unit, enemy);
+                    aiManager.AddAgent(agent);
+                    enemy.onPlayerSpawned += agent.InitAgent;
                 }
             });
 
-            var unitFactory = new UnitFactory(units);
+            var unitFactory = new UnitFactory(units, hexGrid);
 
             hexGrid.OnGridLoaded += unitFactory.Spawn;
 
@@ -74,6 +81,7 @@ namespace Controller
             hexGrid.OnHexPainted += paintedController.SetHexColors;
 
             hexGrid.OnHexPainted += itemFabric.UpdateCellToOpenList;
+            hexGrid.OnHexPainted += paintedController.CheckDeath;
         }
 
         private List<Type> SetUpItems()

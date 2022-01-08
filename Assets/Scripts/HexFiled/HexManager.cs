@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using AI;
+using DefaultNamespace;
 using DefaultNamespace.AI;
 using Units;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace HexFiled
 {
@@ -21,7 +24,7 @@ namespace HexFiled
                 var tmp = end;
                 do
                 {
-                    end = tmp.Neighbors[Random.Range(0, 5)];
+                    end = tmp.Neighbors[Random.Range(0, 6)];
                     itters++;
                 } while (end == null && itters < 5);
 
@@ -33,80 +36,18 @@ namespace HexFiled
             }
             
         }
+
+        public static void PaintHexList(List<HexCell> field, UnitColor color)
+        {
+
+            List<Action<UnitColor>> actions = new List<Action<UnitColor>>();
+
+            field.ForEach(x => actions.Add(x.PaintHex));
+
+            TimerHelper.Instance.StartTimer(actions, 0.05f, color);
+
+        }
         
-        // public  static ( bool hasPath, List<HexCell> field ) HasPath(UnitColor color)
-        // {
-        //     var start = UnitCurrentCell[color];
-        //     var end = start;
-        //     List<HexCell> neighboursCells = new List<HexCell>();
-        //     while (end.Color == color)
-        //     {
-        //         neighboursCells.AddRange(end.Neighbors);
-        //         neighboursCells.ForEach(cell =>
-        //         {
-        //             if (cell.Color != color)
-        //             {
-        //                 end = cell;
-        //             }
-        //         });
-        //     }
-        //
-        //     List<HexCell> closedList = new List<HexCell>();
-        //     HexCell currentCell = start;
-        //
-        //     Stack<HexCell> stackIterators = new Stack<HexCell>();
-        //     stackIterators.Push(currentCell);
-        //
-        //     closedList.Add(currentCell);
-        //
-        //
-        //     while (stackIterators.Count >= 0)
-        //     {
-        //         if (currentCell == end)
-        //             return (true, null);
-        //
-        //         List<HexCell> openList = new List<HexCell>();
-        //
-        //         foreach (var neighbour in currentCell.GetListNeighbours())
-        //         {
-        //             if (neighbour == null)
-        //             {
-        //                 return (true, null);
-        //             }
-        //
-        //
-        //             if (closedList.Contains(neighbour) || neighbour.Color != start.Color) continue;
-        //             openList.Add(neighbour);
-        //             if (neighbour.GetListNeighbours().Contains(end))
-        //             {
-        //                 return (true, null);
-        //             }
-        //         }
-        //
-        //
-        //         if (openList.Count > 0)
-        //         {
-        //             currentCell = openList[Random.Range(0, openList.Count - 1)];
-        //             closedList.Add(currentCell);
-        //             stackIterators.Push(currentCell);
-        //         }
-        //         else
-        //         {
-        //             if (stackIterators.Count == 0)
-        //             {
-        //                 return (false, closedList);
-        //             }
-        //
-        //             currentCell = stackIterators.Pop();
-        //         }
-        //
-        //         if (currentCell.GetListNeighbours().Contains(end))
-        //         {
-        //             return (true, null);
-        //         }
-        //     }
-        //
-        //     return (false, closedList);
-        // }
+       
     }
 }

@@ -19,4 +19,4 @@ MonoBehaviour:
     type: 3}
   inventoryView: {fileID: 1527356263590969195, guid: ff3bc3b17ddefd14eb798b22cf0a854f,
     type: 3}
-  _add: {fileID: 7017227080055577099, guid: 1328a0e1e252d60408278772275bf560, type: 3}
+  adsMob: {fileID: 7017227080055577099, guid: 1328a0e1e252d60408278772275bf560, type: 3}

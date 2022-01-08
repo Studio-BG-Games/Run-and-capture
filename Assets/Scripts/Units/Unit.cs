@@ -47,6 +47,8 @@ namespace Units
         public Action<Unit> OnDeath; 
         public BarCanvas BarCanvas => _barCanvas;
 
+        public UnitInfo Data => _data;
+
         public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
             _weapon = weapon;
@@ -82,7 +84,8 @@ namespace Units
 
         public void Move(HexDirection direction)
         {
-            if (!_cell.GetNeighbor(direction) || _isBusy) return;
+            if (!_cell.GetNeighbor(direction) || _isBusy || _cell.GetNeighbor(direction).Color != UnitColor.GREY &&
+                HexManager.UnitCurrentCell[_cell.GetNeighbor(direction).Color].cell == _cell.GetNeighbor(direction)) return;
             _unitView.StopHardCapture();
             if (_cell.GetNeighbor(direction).Color == _data.color)
             {
@@ -142,11 +145,11 @@ namespace Units
             }
         }
 
-        public void Spawn()
+        public void Spawn(HexCoordinates hexCoordinates)
         {
             if (!_isAlive)
             {
-                _cell = _hexGrid.GetCellFromCoord(_data.spawnPos);
+                _cell = _hexGrid.GetCellFromCoord(hexCoordinates);
                 _cell.PaintHex(_data.color);
                 _inventory = new List<Item>();
                 for (int i = 0; i < 6; i++)
@@ -166,7 +169,7 @@ namespace Units
 
                 _instance = Object.Instantiate(_data.unitPrefa, _cell.transform.parent);
                 _instance.transform.localPosition = _cell.transform.localPosition;
-                onPlayerSpawned?.Invoke(_instance);
+               
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
                 _unitView = _instance.GetComponent<UnitView>();
@@ -178,6 +181,7 @@ namespace Units
                 _mana = _data.maxMana;
                 _hp = _data.maxHP;
                 SetUpActions();
+                onPlayerSpawned?.Invoke(_instance);
             }
         }
 
@@ -289,10 +293,13 @@ namespace Units
             _unitView.OnAttack -= Attacking;
             _unitView.OnHit -= Damage;
             _isAlive = false;
+            HexManager.UnitCurrentCell.Remove(Color);
             _animator.SetTrigger("Death");
             OnDeath?.Invoke(this);
             MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, _instance);
             MusicController.Instance.RemoveAudioSource(_instance);
+            HexManager.PaintHexList(HexManager.CellByColor[Color], UnitColor.GREY);
+            Object.Destroy(_instance);
         }
 
 
