@@ -5,6 +5,7 @@ using UnityEngine;
 using GoogleMobileAds.Api;
 using UnityEditor.PackageManager.Requests;
 using HexFiled;
+using Random = UnityEngine.Random;
 
 public class AdsMob : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class AdsMob : MonoBehaviour
         ExtraLife.lifeCount = lifeCount;
         ExtraLife life = FindObjectOfType<ExtraLife>();
         life.health += 1;
+
         Respawn(life.gameObject);
 
     }
@@ -47,7 +49,8 @@ public class AdsMob : MonoBehaviour
 
     public void Respawn(GameObject player)
     {
-        List<HexCell> cells = new List<HexCell>(FindObjectsOfType<HexCell>());
+        List<HexCell> cells = new List<HexCell>();
+        //cells.AddRange();
         // for (int i = 0; i < cells.Count; i++)
         // {
 
@@ -56,10 +59,15 @@ public class AdsMob : MonoBehaviour
         {
             if(cell.Color == UnitColor.GREY)
             {
-                var randomCell = UnityEngine.Random.Range(0, cells.Count);
+                var randomCell = Random.Range(0, cells.Count);
                 Vector3 respawnPosition = cells[randomCell].transform.position;
+                //cells[randomCell].Color = UnitColor.YELLOW;
                 player = FindObjectOfType<ExtraLife>().gameObject;
                 player.transform.position = respawnPosition;
+                if(player.transform.position == respawnPosition)
+                {
+                    //cell.Color = UnitColor.YELLOW;
+                }
             }
         }
     }

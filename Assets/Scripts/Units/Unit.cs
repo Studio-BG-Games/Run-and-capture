@@ -44,6 +44,7 @@ namespace Units
         public UnitColor Color => _data.color;
         public int InventoryCapacity => _data.inventoryCapacity;
         public Action<Item> OnItemPickUp;
+        public Action<Unit> OnDeath; 
 
         public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
@@ -280,7 +281,7 @@ namespace Units
             _barCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
-        private void Death()
+        public void Death()
         {
             _unitView.OnStep -= MoveEnd;
             _unitView.OnAttackEnd -= AttackEnd;
@@ -288,6 +289,7 @@ namespace Units
             _unitView.OnHit -= Damage;
             _isAlive = false;
             _animator.SetTrigger("Death");
+            OnDeath?.Invoke(this);
             MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, _instance);
             MusicController.Instance.RemoveAudioSource(_instance);
         }
