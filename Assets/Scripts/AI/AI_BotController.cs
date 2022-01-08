@@ -10,7 +10,7 @@
 // {
 //     public bool isAIActive = true;
 //
-//     public BotState botState = BotState.Patrol;
+//     public AIManager.BotState botState = AIManager.BotState.Patrol;
 //     public Vector2 leftInput, rightInput;
 //
 //     public float agressiveTime = 5f;
@@ -95,7 +95,7 @@
 //         Bonus chosenBonus;
 //         chosenBonus = _playerBonuses.attackBonuses[UnityEngine.Random.Range(0, _playerBonuses.attackBonuses.Count)];
 //
-//         botState = BotState.AttackBonusUsage;
+//         botState = AIManager.BotState.AttackBonusUsage;
 //         isUseBonusEnabled = false;
 //         _actionTriggerSystem.TriggerAction(targetTile, chosenBonus.bonusAction);
 //         _currentBonus = chosenBonus;
@@ -182,7 +182,7 @@
 //         }
 //         if (_currentFollowingPath!=null)
 //         {
-//             botState = BotState.Patrol;
+//             botState = AIManager.BotState.Patrol;
 //             _triesToCalculatePath = 0;
 //         }
 //
@@ -210,27 +210,27 @@
 //     private void CheckBotState()
 //     {
 //         //Debug.Log("CheckState");
-//         BotState newBotState;
+//         AIManager.BotState newBotState;
 //         if (CanPlaceProtectBonus())
 //         {
-//             newBotState = BotState.ProtectBonusUsage;
+//             newBotState = AIManager.BotState.ProtectBonusUsage;
 //         }
 //         else if (IsBonusDetected())
 //         {
-//             newBotState = BotState.CollectingBonus;
+//             newBotState = AIManager.BotState.CollectingBonus;
 //             //Debug.Log("CollectBonus");
 //         }
 //         else if (IsEnemyEnabledForAttack())
 //         {
-//             newBotState = BotState.Attack;
+//             newBotState = AIManager.BotState.Attack;
 //         }
 //         else if (IsEnemyCloseOrRude())
 //         {
-//             newBotState = BotState.Agressive;
+//             newBotState = AIManager.BotState.Agressive;
 //         }
 //         else
 //         {
-//             newBotState = BotState.Patrol;
+//             newBotState = AIManager.BotState.Patrol;
 //         }
 //
 //         SetNewBotState(newBotState);
@@ -240,7 +240,7 @@
 //     private bool CanPlaceProtectBonus()
 //     {
 //         
-//         if (botState == BotState.ProtectBonusUsage || botState == BotState.AttackBonusUsage)
+//         if (botState == AIManager.BotState.ProtectBonusUsage || botState == AIManager.BotState.AttackBonusUsage)
 //         {
 //             return false;
 //         }
@@ -270,7 +270,7 @@
 //     private bool IsBonusDetected()
 //     {
 //         //Debug.Log("Detect bonus");
-//         if (botState == BotState.CollectingBonus)
+//         if (botState == AIManager.BotState.CollectingBonus)
 //         {
 //             return false;
 //         }
@@ -292,7 +292,7 @@
 //         return false;
 //     }
 //
-//     private bool SetNewBotState(BotState newState)
+//     private bool SetNewBotState(AIManager.BotState newState)
 //     {
 //         if (botState != newState)
 //         {
@@ -309,7 +309,7 @@
 //     {
 //         if (isAttackedOnce)
 //             return false;
-//         if (botState != BotState.Attack && _attackEnergyController.IsReady())
+//         if (botState != AIManager.BotState.Attack && _attackEnergyController.IsReady())
 //         {
 //             foreach (PlayerState enemy in _playerState.enemies)
 //             {
@@ -369,7 +369,7 @@
 //     {
 //         if (isAttackedOnce)
 //             return false;
-//         if (botState == BotState.Patrol && _attackEnergyController.IsReady())
+//         if (botState == AIManager.BotState.Patrol && _attackEnergyController.IsReady())
 //         {
 //             foreach (PlayerState enemy in _playerState.enemies)
 //             {
@@ -400,24 +400,24 @@
 //         return false;
 //     }
 //
-//     private void SetBehaviour(BotState state)
+//     private void SetBehaviour(AIManager.BotState state)
 //     {
 //         //leftInput = Vector2.zero;
 //         switch (state)
 //         {
-//             case BotState.Patrol:
+//             case AIManager.BotState.Patrol:
 //                 MoveAlongPath();
 //                 break;
-//             case BotState.Agressive:
+//             case AIManager.BotState.Agressive:
 //                 MoveToEnemy(_currentEnemy);
 //                 break;
-//             case BotState.Attack:
+//             case AIManager.BotState.Attack:
 //                 AttackEnemy(_currentEnemy);
 //                 break;
-//             case BotState.CollectingBonus:
+//             case AIManager.BotState.CollectingBonus:
 //                 MoveToBonus(_currentTargetTile);
 //                 break;
-//             case BotState.ProtectBonusUsage:
+//             case AIManager.BotState.ProtectBonusUsage:
 //                 PlaceProtectBonus(_playerState.currentTile);
 //                 break;
 //         }

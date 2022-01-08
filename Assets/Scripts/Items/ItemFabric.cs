@@ -45,7 +45,7 @@ namespace Items
         {
             if (Time.time - time >= _spawnTime)
             {
-                List<HexCell> closedList = PaintedController.UnitCurrentCell.Select(unitCells => unitCells.Value.curent)
+                List<HexCell> closedList = HexManager.UnitCurrentCell.Select(unitCells => unitCells.Value.cell)
                     .ToList();
                 time = Time.time;
                 var cell = _openList[Random.Range(0, _openList.Count - 1)];

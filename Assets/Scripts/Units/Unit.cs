@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Chars;
 using Data;
 using DefaultNamespace;
+using DefaultNamespace.AI;
 using DG.Tweening;
 using HexFiled;
 using Items;
 using UnityEngine;
 using Weapons;
 using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 
 namespace Units
@@ -23,6 +23,8 @@ namespace Units
         private HexCell _cell;
         private HexGrid _hexGrid;
         public Action<GameObject> onPlayerSpawned;
+        public Action OnDeath;
+
         private Animator _animator;
         private UnitView _unitView;
         private bool _isBusy;
@@ -37,8 +39,14 @@ namespace Units
         private int _attackBonus;
         private int _defenceBonus;
 
+        public BarCanvas BarCanvas => _barCanvas;
 
-        public bool IsBusy => _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => _isBusy = value;
+        }
+
         public UnitView UnitView => _unitView;
         public bool IsAlive => _isAlive;
         public UnitColor Color => _data.color;
@@ -80,8 +88,12 @@ namespace Units
 
         public void Move(HexDirection direction)
         {
-            if (!_cell.GetNeighbor(direction) || _isBusy) return;
-            _unitView.StopHardCapture();
+            if (!_cell.GetNeighbor(direction)
+                || _isBusy
+                || (_cell.GetNeighbor(direction).Color != UnitColor.GREY
+                    && _cell.GetNeighbor(direction) ==
+                    HexManager.UnitCurrentCell[_cell.GetNeighbor(direction).Color].cell)) return;
+
             if (_cell.GetNeighbor(direction).Color == _data.color)
             {
                 DoTransit(direction);
@@ -106,9 +118,8 @@ namespace Units
         {
             _isBusy = true;
             _isCapturing = _data.color != _cell.GetNeighbor(direction).Color;
-            var previousCell = _cell;
             _cell = _cell.GetNeighbor(direction);
-            PaintedController.UnitCurrentCell[_data.color] = (previousCell, _cell);
+            HexManager.UnitCurrentCell[_data.color] = (_cell, this);
             RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x,
                 (_cell.transform.position - _instance.transform.position).normalized.z));
             _animator.SetTrigger("Move");
@@ -159,12 +170,12 @@ namespace Units
                 }
 
                 //
-                PaintedController.UnitCurrentCell.Add(_data.color, (null, _cell));
+                HexManager.UnitCurrentCell.Add(_data.color, (_cell, this));
                 //
 
                 _instance = Object.Instantiate(_data.unitPrefa, _cell.transform.parent);
                 _instance.transform.localPosition = _cell.transform.localPosition;
-                onPlayerSpawned?.Invoke(_instance);
+
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
                 _unitView = _instance.GetComponent<UnitView>();
@@ -175,6 +186,7 @@ namespace Units
                 MusicController.Instance.AddAudioSource(_instance);
                 _mana = _data.maxMana;
                 _hp = _data.maxHP;
+                onPlayerSpawned?.Invoke(_instance);
                 SetUpActions();
             }
         }
@@ -220,7 +232,6 @@ namespace Units
             else
             {
                 CaptureHex();
-                
             }
 
             _isHardToCapture = false;
@@ -280,7 +291,7 @@ namespace Units
             _barCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
-        private void Death()
+        public void Death()
         {
             _unitView.OnStep -= MoveEnd;
             _unitView.OnAttackEnd -= AttackEnd;
@@ -288,6 +299,7 @@ namespace Units
             _unitView.OnHit -= Damage;
             _isAlive = false;
             _animator.SetTrigger("Death");
+            OnDeath.Invoke();
             MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, _instance);
             MusicController.Instance.RemoveAudioSource(_instance);
         }
