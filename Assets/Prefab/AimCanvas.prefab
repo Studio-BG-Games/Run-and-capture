@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4155610655756139463}
   - component: {fileID: 3748583951425988394}
   - component: {fileID: 6763014501615571600}
-  - component: {fileID: 5390111712102929048}
   m_Layer: 5
   m_Name: AimCanvas
   m_TagString: Untagged
@@ -101,23 +100,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5390111712102929048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2273039178377770117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6650f022a8987a34e8da86d910b6e277, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  shotPrefab: {fileID: 9204531176590517796, guid: 74ba0f2e00eb74a4882dcf82bb66bb3f,
-    type: 3}
-  grid: {fileID: 0}
 --- !u!1 &4408587040574959135
 GameObject:
   m_ObjectHideFlags: 0

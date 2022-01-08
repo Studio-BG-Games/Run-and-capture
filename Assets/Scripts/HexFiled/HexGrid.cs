@@ -112,8 +112,9 @@ namespace HexFiled
         }
 
 
-    public void Init()
+        public void Init()
         {
+            HexManager.CellByColor = new Dictionary<UnitColor, List<HexCell>>();
             _cells = new HexCell[_height * _width];
 
             for (int z = 0, i = 0; z < _height; z++)

@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barCanvas: {fileID: 268172662505640299}
   aimCanvas: {fileID: 1011384888140022260}
-  captureBar: {fileID: 0}
+  captureBar: {fileID: 7165383102699947033}
 --- !u!136 &1900872271281143359
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3857,15 +3857,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}
---- !u!224 &1904133429405396096 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 859777855380249073, guid: 09a0317cbdff9fa479a18c9e20743a8e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1261672157705434481}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1011384888140022260 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1261672157705434481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1904133429405396096 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 859777855380249073, guid: 09a0317cbdff9fa479a18c9e20743a8e,
     type: 3}
   m_PrefabInstance: {fileID: 1261672157705434481}
   m_PrefabAsset: {fileID: 0}
@@ -4005,3 +4005,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5786347879975309577}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7165383102699947033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3692302203462554896, guid: dec5dd0d644d5c548a53563e65837162,
+    type: 3}
+  m_PrefabInstance: {fileID: 5786347879975309577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

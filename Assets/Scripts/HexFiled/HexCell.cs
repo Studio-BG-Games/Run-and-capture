@@ -22,6 +22,7 @@ namespace HexFiled
         private UnitColor _color;
         private MeshRenderer _renderer;
 
+        public HexCell[] Neighbors => neighbors;
         public UnitColor Color => _color;
 
         public Item Item => _item;
@@ -31,6 +32,14 @@ namespace HexFiled
             _renderer = GetComponent<MeshRenderer>();
             MusicController.Instance.AddAudioSource(gameObject);
             _color = UnitColor.GREY;
+            if (!HexManager.CellByColor.ContainsKey(_color))
+            {
+                HexManager.CellByColor.Add(_color, new List<HexCell>(){this});
+            }
+            else
+            {
+                HexManager.CellByColor[_color].Add(this);
+            }
         }
 
         public void SetItem(Item item)
@@ -69,6 +78,16 @@ namespace HexFiled
             _renderer.material.mainTexture = HexGrid.Colors[color].Texture;
 
             _color = color;
+            
+            if (!HexManager.CellByColor.ContainsKey(_color))
+            {
+                HexManager.CellByColor.Add(_color, new List<HexCell>(){this});
+            }
+            else
+            {
+                HexManager.CellByColor[_color].Add(this);
+            }
+            
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                 gameObject);
             Instantiate(HexGrid.Colors[color].VFXPrefab, transform);

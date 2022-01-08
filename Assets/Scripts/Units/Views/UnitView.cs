@@ -21,7 +21,6 @@ public class UnitView : MonoBehaviour
     public Action<int> OnHit;
     [SerializeField] private GameObject barCanvas;
     [SerializeField] private GameObject aimCanvas;
-    [SerializeField] private Image captureBar;
 
 
     private Stack<ShotUIView> _shootUIStack;
@@ -56,13 +55,15 @@ public class UnitView : MonoBehaviour
 
     public void HardCaptureHex(HexCell cell)
     {
-        captureBar.gameObject.SetActive(true);
+        _unit.IsBusy = true;
+        
+        _unit.BarCanvas.CaptureBar.gameObject.SetActive(true);
         _sequence = DOTween.Sequence();
-        _sequence.Append(captureBar.DOFillAmount(1f, 0f).SetEase(Ease.Linear).OnComplete(() =>
+        _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, 0f).SetEase(Ease.Linear).OnComplete(() =>
         {
             _capureHex?.Invoke();
-            captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
-            captureBar.gameObject.SetActive(false);
+            _unit.BarCanvas.CaptureBar.DOFillAmount(0f, 1f).SetEase(Ease.Linear).OnComplete(()=>_unit.IsBusy = false);
+            _unit.BarCanvas.CaptureBar.gameObject.SetActive(false);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                 cell.gameObject);
         }));
@@ -72,8 +73,9 @@ public class UnitView : MonoBehaviour
     public void StopHardCapture()
     {
         _sequence.Kill();
-        captureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
-        captureBar.gameObject.SetActive(false);
+        _unit.BarCanvas.CaptureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
+        _unit.BarCanvas.CaptureBar.gameObject.SetActive(false);
+        _unit.IsBusy = false;
     }
 
     public bool Shoot()
