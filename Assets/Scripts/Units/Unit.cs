@@ -111,7 +111,6 @@ namespace Units
         {
             _isBusy = true;
             _isCapturing = _data.color != _cell.GetNeighbor(direction).Color;
-            var previousCell = _cell;
             _cell = _cell.GetNeighbor(direction);
             HexManager.UnitCurrentCell[_data.color] = ( _cell, this );
             RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x,
@@ -123,6 +122,10 @@ namespace Units
 
         private void CaptureHex()
         {
+            if (_data.isPlayer)
+            {
+                Debug.Log("Player");
+            }
             _cell.PaintHex(_data.color);
         }
 
@@ -156,11 +159,7 @@ namespace Units
                 {
                     var neigh = _cell.GetNeighbor((HexDirection)i);
                     neigh?.PaintHex(_data.color);
-
-                    for (int j = 0; j < 6; j++)
-                    {
-                        neigh?.GetNeighbor((HexDirection)j)?.PaintHex(_data.color);
-                    }
+                    
                 }
 
                 //
@@ -213,9 +212,9 @@ namespace Units
         {
             _isBusy = false;
             _animator.SetBool("isMoving", _isBusy);
+            
             if (!_isCapturing)
             {
-                _isHardToCapture = false;
                 return;
             }
 

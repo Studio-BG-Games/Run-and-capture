@@ -15,8 +15,10 @@ namespace AI
         private List<AIAgent> _agents;
         private int _triesToCalculatePath = 0;
         private int _maxTriesToCalculatePath = 5;
-        private Dictionary<AIAgent, Queue<HexCell>> _pathToPatrol;
+       
         private static AIManager _instance;
+
+        
 
         public static AIManager Instance
         {
@@ -27,10 +29,9 @@ namespace AI
         public AIManager(List<AIAgent> agents)
         {
             _agents = agents;
-            _pathToPatrol = new Dictionary<AIAgent, Queue<HexCell>>();
+            
             agents.ForEach(agent =>
             {
-                _pathToPatrol.Add(agent, new Queue<HexCell>());
                 SetBehaviour(BotState.Patrol, agent);
             });
         }
@@ -38,7 +39,7 @@ namespace AI
         public AIManager()
         {
             _agents = new List<AIAgent>();
-            _pathToPatrol = new Dictionary<AIAgent, Queue<HexCell>>();
+            
             Instance = this;
             HexManager.agents = new Dictionary<GameObject, AIAgent>();
         }
@@ -59,29 +60,29 @@ namespace AI
         
         private void InitAI(AIAgent agent)
         {
-            _pathToPatrol.Add(agent, new Queue<HexCell>());
             SetBehaviour(BotState.Patrol, agent);
         }
 
         private void StartPatrolBehaviour(AIAgent agent)
         {
-            HexManager.GetNearestDifferCell(agent.Enemy.Color, _pathToPatrol[agent]);
-            while (_pathToPatrol[agent] == null && _triesToCalculatePath < _maxTriesToCalculatePath)
+            HexManager.GetNearestDifferCell(agent.Enemy.Color, agent.currentPath);
+            while (agent.currentPath.Count == 0 && _triesToCalculatePath < _maxTriesToCalculatePath)
             {
-                HexManager.GetNearestDifferCell(agent.Enemy.Color, _pathToPatrol[agent]);
+                HexManager.GetNearestDifferCell(agent.Enemy.Color, agent.currentPath);
                 _triesToCalculatePath++;
             }
 
-            MoveAlongPath(agent);
+            _triesToCalculatePath = 0;
+            
         }
 
 
-        private void SetBehaviour(BotState state, AIAgent agent)
+        public void SetBehaviour(BotState state, AIAgent agent)
         {
             switch (state)
             {
                 case BotState.Patrol:
-                    MoveAlongPath(agent);
+                    StartPatrolBehaviour(agent);
                     break;
                 case BotState.Agressive:
                     // MoveToEnemy(_currentEnemy);
@@ -104,30 +105,26 @@ namespace AI
             }
         }
 
-        private void MoveAlongPath(AIAgent agent)
-        {
-            //Debug.Log("try to move next point");
-            if (_pathToPatrol != null && _pathToPatrol[agent].Count > 0) //recalculate existing path or start anew one
-            {
-                var start = HexManager.UnitCurrentCell[agent.Enemy.Color].cell.transform.position;
-                var end = _pathToPatrol[agent].Dequeue().transform.position;
-                var dir = DirectionHelper.DirectionTo(start, end);
-                agent.Move(new Vector2(dir.x, dir.z));
-            }
-            else
-            {
-                StartPatrolBehaviour(agent);
-            }
-        }
+        // private void MoveAlongPath(AIAgent agent)
+        // {
+        //     //Debug.Log("try to move next point");
+        //     if (_pathToPatrol != null && _pathToPatrol[agent].Count > 0) //recalculate existing path or start anew one
+        //     {
+        //         var start = HexManager.UnitCurrentCell[agent.Enemy.Color].cell.transform.position;
+        //         var end = _pathToPatrol[agent].Dequeue().transform.position;
+        //         var dir = DirectionHelper.DirectionTo(start, end);
+        //         agent.Move(new Vector2(dir.x, dir.z));
+        //     }
+        //     else
+        //     {
+        //         StartPatrolBehaviour(agent);
+        //     }
+        // }
 
 
         public void FixedExecute()
         {
-            for (int i = 0; i < _pathToPatrol.Count; i++)
-            {
-                if (!_agents[i].Enemy.IsBusy)
-                    SetBehaviour(BotState.Patrol, _agents[i]);
-            }
+            
         }
     }
 

@@ -171,15 +171,9 @@ namespace HexFiled
 
                 List<HexCell> openList = new List<HexCell>();
 
-                foreach (var neighbour in currentCell.GetListNeighbours())
+                foreach (var neighbour in currentCell.GetListNeighbours()
+                             .Where(neighbour =>  neighbour != null && !closedList.Contains(neighbour) && neighbour.Color == start.Color))
                 {
-                    if (neighbour == null)
-                    {
-                        return (true, null);
-                    }
-
-
-                    if (closedList.Contains(neighbour) || neighbour.Color != start.Color) continue;
                     openList.Add(neighbour);
                     if (neighbour.GetListNeighbours().Contains(end))
                     {

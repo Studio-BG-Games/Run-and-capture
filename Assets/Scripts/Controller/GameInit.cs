@@ -66,9 +66,8 @@ namespace Controller
                     var enemyController = new EnemyController(unit, enemy);
                     controllers.Add(enemyController);
                     units.Add(enemy);
-                    AIAgent agent = new AIAgent(unit, enemy);
-                    aiManager.AddAgent(agent);
-                    enemy.onPlayerSpawned += agent.InitAgent;
+                    AIAgent agent = new AIAgent(unit, enemy, aiManager);
+                    controllers.Add(agent);
                 }
             });
 

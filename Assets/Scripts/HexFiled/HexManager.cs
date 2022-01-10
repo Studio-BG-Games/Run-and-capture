@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AI;
 using DefaultNamespace;
 using DefaultNamespace.AI;
@@ -15,16 +16,27 @@ namespace HexFiled
         public static Dictionary<UnitColor, List<HexCell>> CellByColor;
         public static Dictionary<GameObject, AIAgent> agents;
 
-        public static void GetNearestDifferCell(UnitColor color, Queue<HexCell> path)
+        public static void GetNearestDifferCell(UnitColor color, Queue<HexDirection> path)
         {
             HexCell end = UnitCurrentCell[color].cell;
             var itters = 0;
+            var neighbours = end.GetListNeighbours().Where(cell => cell != null && cell.Color != color).ToList();
+            if (neighbours.Any())
+            {
+                var dir = DirectionHelper.DirectionTo(end.transform.position,
+                    neighbours[Random.Range(0, neighbours.Count)].transform.position);
+                path.Enqueue(DirectionHelper.VectorToDirection(new Vector2(dir.x, dir.z)));
+                return;
+            }
+            
             while (end.Color == color)
             {
                 var tmp = end;
+                var dir = HexDirection.E;
                 do
                 {
-                    end = tmp.Neighbors[Random.Range(0, 6)];
+                    dir = (HexDirection)Random.Range(0, 6);
+                    end = tmp.GetNeighbor(dir);
                     itters++;
                 } while (end == null && itters < 5);
 
@@ -32,7 +44,7 @@ namespace HexFiled
                 {
                     return;
                 }
-                path.Enqueue(end);
+                path.Enqueue(dir);
             }
             
         }

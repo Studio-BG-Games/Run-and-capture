@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AI;
 using Controller;
 using Data;
@@ -14,34 +15,45 @@ namespace DefaultNamespace.AI
     {
         private Unit _enemy;
         private Camera _camera;
+        private AIManager _manager;
+
+        public Queue<HexDirection> currentPath;
         public Action<AIAgent> OnAgentInited;
 
         public Unit Enemy => _enemy;
-        
-        public AIAgent(UnitInfo enemyInfo, Unit enemy)
+
+        public AIAgent(UnitInfo enemyInfo, Unit enemy, AIManager manager)
         {
+            currentPath = new Queue<HexDirection>();
             _enemy = enemy;
             _camera = Camera.main;
             _enemy.OnDeath += AgentDeath;
+            enemy.onPlayerSpawned += InitAgent;
+            _manager = manager;
         }
 
         private void AgentDeath(Unit unit)
         {
             AIManager.Instance.RemoveAgent(this);
         }
-        public void InitAgent(GameObject unit)
+
+        private void InitAgent(GameObject unit)
         {
+            _manager.AddAgent(this);
             HexManager.agents.Add(unit, this);
             OnAgentInited?.Invoke(this);
         }
-
-        public void Move(Vector2 direction)
-        {
-            _enemy.Move(DirectionHelper.VectorToDirection(direction));
-        }
+        
         public void FixedExecute()
         {
-            //throw new System.NotImplementedException();
+            if (currentPath.Count > 0 && !_enemy.IsBusy)
+            {
+                _enemy.Move(currentPath.Dequeue());
+            }
+            else if(currentPath.Count == 0)
+            {
+                _manager.SetBehaviour(BotState.Patrol, this);
+            }
         }
 
         public void Execute()

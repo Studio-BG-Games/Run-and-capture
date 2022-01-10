@@ -59,7 +59,7 @@ public class UnitView : MonoBehaviour
         
         _unit.BarCanvas.CaptureBar.gameObject.SetActive(true);
         _sequence = DOTween.Sequence();
-        _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, 0f).SetEase(Ease.Linear).OnComplete(() =>
+        _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, 1f).SetEase(Ease.Linear).OnComplete(() =>
         {
             _capureHex?.Invoke();
             _unit.BarCanvas.CaptureBar.DOFillAmount(0f, 1f).SetEase(Ease.Linear).OnComplete(()=>_unit.IsBusy = false);
@@ -67,6 +67,7 @@ public class UnitView : MonoBehaviour
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                 cell.gameObject);
         }));
+        _sequence.Play();
     }
 
 
