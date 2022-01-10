@@ -27,6 +27,7 @@ namespace Controller
 
             var hexGrid = new HexGrid(data.FieldData);
             new MusicController();
+            new VFXController(data.VFXData);
             MusicController.Instance.SetMusicData(data.MusicData);
             controllers.Add(hexGrid);
             

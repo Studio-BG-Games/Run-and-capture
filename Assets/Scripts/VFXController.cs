@@ -20,5 +20,19 @@ namespace DefaultNamespace
             Instance ??= this;
             _data = data;
         }
+
+        public GameObject PlayEffect(GameObject effect, Vector3 pos)
+        {
+            var obj = Object.Instantiate(effect, pos, effect.transform.rotation);
+            obj.AddComponent<VFXView>();
+            return obj;
+        }
+        
+        public GameObject PlayEffect(GameObject effect, Transform pos)
+        {
+            var obj = Object.Instantiate(effect, pos.position, pos.rotation);
+            obj.AddComponent<VFXView>();
+            return obj;
+        }
     }
 }

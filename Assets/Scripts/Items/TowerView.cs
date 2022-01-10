@@ -65,21 +65,7 @@ public class TowerView : MonoBehaviour
                 yield return null;
             }
             var direction = DirectionHelper.DirectionTo(transform.position, _target.transform.position);
-            var ball = Instantiate(weapon.objectToThrow,
-                transform.forward + transform.position + new Vector3(0, 1),
-                Quaternion.LookRotation(direction));
-
-            MusicController.Instance.AddAudioSource(ball);
-            MusicController.Instance.PlayAudioClip(weapon.shotSound, ball);
-
-            ball.AddComponent<WeaponView>().SetWeapon(weapon);
-            ball.transform.DOMove(
-                    new Vector3(direction.x,
-                        0, direction.z) * weapon.disnatce * HexGrid.HexDistance +
-                    transform.position + new Vector3(0, 1, 0),
-                    weapon.speed)
-                .SetEase(Ease.Linear)
-                .OnComplete(() => Destroy(ball));
+           weapon.Fire(transform, new Vector2(direction.x, direction.z));
         }
     }
 }

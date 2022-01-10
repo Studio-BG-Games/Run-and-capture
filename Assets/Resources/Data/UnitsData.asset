@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UnitsData
   m_EditorClassIdentifier: 
   _units:
-  - isPlayer: 0
+  - isPlayer: 1
     spawnPos:
       x: 19
       z: 4

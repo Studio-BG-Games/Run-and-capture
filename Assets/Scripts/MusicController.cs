@@ -49,6 +49,7 @@ public class MusicController
 
     public void RemoveAudioSource(GameObject gameObject)
     {
-        _sources.Remove(gameObject);
+        if(_sources.ContainsKey(gameObject))
+            _sources.Remove(gameObject);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace;
 using Items;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -30,7 +31,6 @@ namespace HexFiled
         private void Awake()
         {
             _renderer = GetComponent<MeshRenderer>();
-            MusicController.Instance.AddAudioSource(gameObject);
             _color = UnitColor.GREY;
             if (!HexManager.CellByColor.ContainsKey(_color))
             {
@@ -88,9 +88,12 @@ namespace HexFiled
                 HexManager.CellByColor[_color].Add(this);
             }
             
-            MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
-                gameObject);
-            Instantiate(HexGrid.Colors[color].VFXPrefab, transform);
+            
+            
+            var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[color].VFXPrefab, transform.position + new Vector3(0,0.1f,0));
+            MusicController.Instance.AddAudioSource(vfx);
+            MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures, vfx);
+            
             onHexPainted?.Invoke(this);
         }
     }

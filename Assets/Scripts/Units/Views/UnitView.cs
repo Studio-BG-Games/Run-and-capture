@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Data;
+using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
 using Items;
@@ -117,7 +118,7 @@ public class UnitView : MonoBehaviour
             MusicController.Instance.MusicData.SfxMusic.Step, gameObject);
     }
 
-    private void AttackEnd()
+    private void AttackEnd() // Методы выполняемые из аниматора
     {
         OnAttackEnd?.Invoke();
     }
@@ -133,6 +134,10 @@ public class UnitView : MonoBehaviour
         if (weaponView != null)
         {
             OnHit?.Invoke(weaponView.Weapon.modifiedDamage);
+            var vfx = VFXController.Instance.PlayEffect(weaponView.Weapon.VFXGameObject, weaponView.transform);
+            MusicController.Instance.AddAudioSource(vfx);
+            MusicController.Instance.PlayAudioClip(weaponView.Weapon.hitSound, vfx);
+            
             other.transform.DOKill();
             Destroy(other.gameObject);
         }
