@@ -86,6 +86,9 @@ namespace Units
         {
             if (!_cell.GetNeighbor(direction) || _isBusy || _cell.GetNeighbor(direction).Color != UnitColor.GREY &&
                 HexManager.UnitCurrentCell[_cell.GetNeighbor(direction).Color].cell == _cell.GetNeighbor(direction)) return;
+            
+            if( _mana - _hexGrid.HexCaptureCost <= 0 && _cell.GetNeighbor(direction).Color != Color) return;
+            
             _unitView.StopHardCapture();
             if (_cell.GetNeighbor(direction).Color == _data.color)
             {
@@ -161,10 +164,8 @@ namespace Units
                     neigh?.PaintHex(_data.color);
                     
                 }
-
-                //
+                
                 HexManager.UnitCurrentCell.Add(_data.color, (_cell, this));
-                //
 
                 _instance = Object.Instantiate(_data.unitPrefa, _cell.transform.parent);
                 _instance.transform.localPosition = _cell.transform.localPosition;
@@ -172,7 +173,7 @@ namespace Units
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
                 _unitView = _instance.GetComponent<UnitView>();
-                _barCanvas = _unitView.BarCanvas.GetComponent<BarCanvas>();
+                _barCanvas = _unitView.BarCanvas;
                 _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex,
                     this);
                 SetAnimLength();

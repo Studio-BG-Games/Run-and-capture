@@ -19,7 +19,7 @@ public class UnitView : MonoBehaviour
     public Action OnAttackEnd;
     public Action OnAttack;
     public Action<int> OnHit;
-    [SerializeField] private GameObject barCanvas;
+    [SerializeField] private BarCanvas barCanvas;
     [SerializeField] private GameObject aimCanvas;
 
 
@@ -30,14 +30,14 @@ public class UnitView : MonoBehaviour
     private Action _startRegen;
     private Coroutine _previosRegen;
     private Coroutine _previosReload;
-  
+
     private int _mana;
     private Action _capureHex;
     private Sequence _sequence;
     private AudioSource _audioSource;
     private Unit _unit;
 
-    public GameObject BarCanvas => barCanvas;
+    public BarCanvas BarCanvas => barCanvas;
     public GameObject AimCanvas => aimCanvas;
     public UnitColor Color => _unit.Color;
 
@@ -56,14 +56,14 @@ public class UnitView : MonoBehaviour
     public void HardCaptureHex(HexCell cell)
     {
         _unit.IsBusy = true;
-        
-        _unit.BarCanvas.CaptureBar.gameObject.SetActive(true);
+
+        barCanvas.CaptureBack.SetActive(true);
         _sequence = DOTween.Sequence();
         _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, 1f).SetEase(Ease.Linear).OnComplete(() =>
         {
             _capureHex?.Invoke();
-            _unit.BarCanvas.CaptureBar.DOFillAmount(0f, 1f).SetEase(Ease.Linear).OnComplete(()=>_unit.IsBusy = false);
-            _unit.BarCanvas.CaptureBar.gameObject.SetActive(false);
+            _unit.BarCanvas.CaptureBar.DOFillAmount(0f, 1f).SetEase(Ease.Linear).OnComplete(() => _unit.IsBusy = false);
+            barCanvas.CaptureBack.SetActive(false);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                 cell.gameObject);
         }));
@@ -74,8 +74,8 @@ public class UnitView : MonoBehaviour
     public void StopHardCapture()
     {
         _sequence.Kill();
-        _unit.BarCanvas.CaptureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
-        _unit.BarCanvas.CaptureBar.gameObject.SetActive(false);
+        barCanvas.CaptureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
+        _unit.BarCanvas.CaptureBack.SetActive(false);
         _unit.IsBusy = false;
     }
 
@@ -96,17 +96,13 @@ public class UnitView : MonoBehaviour
 
     public void RegenMana(int mana)
     {
-        
         if (_previosRegen != null)
         {
             StopCoroutine(_previosRegen);
         }
 
         _mana = mana;
-        //_startRegen.Invoke();  
         _previosRegen = StartCoroutine(Regen());
-
-        //return _mana;
     }
 
     private void Step()
@@ -150,48 +146,42 @@ public class UnitView : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        if (_toReloadStack.Count == 0) yield break; //TODO При частой стрльбе перезарядка работает некорректно 
+        if (_toReloadStack.Count == 0) yield break; 
         yield return new WaitForSeconds(_weapon.reloadTime);
         if (_toReloadStack.Count == 0) yield break;
         var shot = _toReloadStack.Pop();
-        
-        // _shootUIStack.Push(shot);
-            shot.Switch();
-            _shootUIStack.Push(shot);       
-                      
+
+        shot.Switch();
+        _shootUIStack.Push(shot);
+
         foreach (var item in _toReloadStack)
         {
-            if(Time.deltaTime < _weapon.reloadTime)
+            if (Time.deltaTime < _weapon.reloadTime)
             {
                 StopCoroutine(_previosReload);
                 _previosReload = null;
             }
-            _previosReload = StartCoroutine(Reload());    
-            
+
+            _previosReload = StartCoroutine(Reload());
         }
-
-        
-
     }
 
     private IEnumerator Regen()
     {
-        if (_mana >= 100) 
+        if (_mana >= 100)
         {
             yield break;
         }
 
 
-        yield return new WaitForSeconds(2f);
-        while(_mana < 100)
+        yield return new WaitForSeconds(1f);
+        if (_mana < 100)
         {
             _mana += _manaRegen;
-            _startRegen.Invoke();            
+            _startRegen.Invoke();
         }
 
-        //StartCoroutine(Regen());
-        _previosRegen = null;
-
-
+        //
+        _previosRegen = StartCoroutine(Regen());;
     }
 }

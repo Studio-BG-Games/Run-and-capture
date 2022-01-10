@@ -20,7 +20,7 @@ MonoBehaviour:
     unitPrefa: {fileID: 7527582019267571087, guid: f102085e8bc4cad4992d43b84dee1055,
       type: 3}
     color: 3
-    manaRegen: 1
+    manaRegen: 5
     maxMana: 100
     maxHP: 100
     inventoryCapacity: 4
@@ -31,7 +31,7 @@ MonoBehaviour:
     unitPrefa: {fileID: 3762867976042010436, guid: d00f156879942114488e4db0689a3fb7,
       type: 3}
     color: 4
-    manaRegen: 10
+    manaRegen: 5
     maxMana: 100
     maxHP: 100
     inventoryCapacity: 4
@@ -42,7 +42,7 @@ MonoBehaviour:
     unitPrefa: {fileID: 742650227762578155, guid: 97b4a76c55741764e880b63d6e1514a9,
       type: 3}
     color: 0
-    manaRegen: 10
+    manaRegen: 5
     maxMana: 100
     maxHP: 100
     inventoryCapacity: 4

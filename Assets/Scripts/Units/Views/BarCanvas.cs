@@ -11,12 +11,15 @@ public class BarCanvas : MonoBehaviour
     [SerializeField] private ShotUIView shotPrefab;
     [SerializeField] private GameObject grid;
     [SerializeField] private Image captureBar;
+    [SerializeField] private GameObject captureBack;
 
     public Image HealthBar => healthBar;
     public Image ManaBar => manaBar;
     public ShotUIView ShotUIView => shotPrefab;
 
     public Image CaptureBar => captureBar;
+
+    public GameObject CaptureBack => captureBack;
 
     public Stack<ShotUIView> SpawnShotUI(int count)
     {

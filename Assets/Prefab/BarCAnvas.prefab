@@ -421,6 +421,7 @@ MonoBehaviour:
     type: 3}
   grid: {fileID: 3185331048183402439}
   captureBar: {fileID: 3113562572513926796}
+  captureBack: {fileID: 3936950508401920806}
 --- !u!1 &6201783996967795459
 GameObject:
   m_ObjectHideFlags: 0
