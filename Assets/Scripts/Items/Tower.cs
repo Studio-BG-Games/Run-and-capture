@@ -28,8 +28,8 @@ namespace Items
         public override void PlaceItem(HexCell cell)
         {
             Unit.UseItem(this);
-            var obj = Object.Instantiate(Data.SpawnablePrefab, cell.transform.position, Quaternion.identity);
-            obj.AddComponent<TowerView>().SetUp(Unit.Color);
+            var obj = Object.Instantiate(Data.SpawnablePrefab, cell.transform.position + Data.SpawnablePrefab.transform.position, Quaternion.identity);
+            obj.GetComponent<TowerView>().SetUp(Unit.Color);
             OnItemUsed?.Invoke(this);
         }
     }

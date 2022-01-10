@@ -50,6 +50,34 @@ namespace Controller
             return this;
         }
 
+        public void Remove(IController controller)
+        {
+            if (controller is IInitialization initializeController)
+            {
+                _initializeControllers.Remove(initializeController);
+            }
+
+            if (controller is IExecute executeController)
+            {
+                _executeControllers.Remove(executeController);
+            }
+
+            if (controller is ILateExecute lateExecuteController)
+            {
+                _lateControllers.Remove(lateExecuteController);
+            }
+            
+            if (controller is ICleanup cleanupController)
+            {
+                _cleanupControllers.Remove(cleanupController);
+            }
+
+            if (controller is IFixedExecute fixedExecute)
+            {
+                _fixedExecuteControllers.Remove(fixedExecute);
+            }
+        }
+
         public void Execute()
         {
             _executeControllers?.ForEach(x => x.Execute());

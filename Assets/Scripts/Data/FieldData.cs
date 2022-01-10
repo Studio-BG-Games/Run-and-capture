@@ -11,7 +11,8 @@ namespace Data
         public int width = 6;
         public int height = 6;
         public int hexCaptureManaCost;
-
+        public int hexHardCaptureManaCost;
+        public float hexHardCaptureTime;
         public GameObject cellPrefab;
         public TMP_Text cellLabelPrefab;
         public GameObject CoordinatesCanvas;

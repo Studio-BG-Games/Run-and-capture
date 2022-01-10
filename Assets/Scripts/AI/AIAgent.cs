@@ -5,6 +5,7 @@ using Controller;
 using Data;
 using DG.Tweening;
 using HexFiled;
+using Items;
 using Runtime.Controller;
 using Units;
 using UnityEngine;
@@ -30,11 +31,17 @@ namespace DefaultNamespace.AI
             _enemy.OnDeath += AgentDeath;
             enemy.onPlayerSpawned += InitAgent;
             _manager = manager;
+            enemy.OnItemPickUp += PickUpItem;
         }
 
+        private void PickUpItem(Item item)
+        {
+            
+        }
         private void AgentDeath(Unit unit)
         {
             AIManager.Instance.RemoveAgent(this);
+            
         }
 
         private void InitAgent(GameObject unit)

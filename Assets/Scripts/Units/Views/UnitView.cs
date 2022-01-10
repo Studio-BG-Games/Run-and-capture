@@ -36,13 +36,14 @@ public class UnitView : MonoBehaviour
     private Sequence _sequence;
     private AudioSource _audioSource;
     private Unit _unit;
+    private float _hardCaptureTime;
 
     public BarCanvas BarCanvas => barCanvas;
     public GameObject AimCanvas => aimCanvas;
     public UnitColor Color => _unit.Color;
 
     public void SetUp(Stack<ShotUIView> shots, Weapon weapon, Action regenMana, int manaRegen, Action captureHex,
-        Unit unit)
+        Unit unit, float hardCaptureTime)
     {
         _shootUIStack = shots;
         _weapon = weapon;
@@ -51,6 +52,7 @@ public class UnitView : MonoBehaviour
         _manaRegen = manaRegen;
         _capureHex = captureHex;
         _unit = unit;
+        _hardCaptureTime = hardCaptureTime;
     }
 
     public void HardCaptureHex(HexCell cell)
@@ -59,10 +61,9 @@ public class UnitView : MonoBehaviour
 
         barCanvas.CaptureBack.SetActive(true);
         _sequence = DOTween.Sequence();
-        _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, 1f).SetEase(Ease.Linear).OnComplete(() =>
+        _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, _hardCaptureTime).SetEase(Ease.Linear).OnComplete(() =>
         {
             _capureHex?.Invoke();
-            _unit.BarCanvas.CaptureBar.DOFillAmount(0f, 1f).SetEase(Ease.Linear).OnComplete(() => _unit.IsBusy = false);
             barCanvas.CaptureBack.SetActive(false);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                 cell.gameObject);
@@ -76,7 +77,7 @@ public class UnitView : MonoBehaviour
         _sequence.Kill();
         barCanvas.CaptureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
         _unit.BarCanvas.CaptureBack.SetActive(false);
-        _unit.IsBusy = false;
+        
     }
 
     public bool Shoot()
@@ -172,16 +173,12 @@ public class UnitView : MonoBehaviour
         {
             yield break;
         }
-
-
-        yield return new WaitForSeconds(1f);
-        if (_mana < 100)
+        
+        while (_mana < 100)
         {
+            yield return new WaitForSeconds(1f);
             _mana += _manaRegen;
             _startRegen.Invoke();
         }
-
-        //
-        _previosRegen = StartCoroutine(Regen());;
     }
 }

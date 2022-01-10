@@ -24,8 +24,7 @@ namespace Controller
 
             AIManager aiManager = new AIManager();
             controllers.Add(aiManager);
-            new GameObject("Timer").AddComponent<TimerHelper>();
-            
+
             var hexGrid = new HexGrid(data.FieldData);
             new MusicController();
             MusicController.Instance.SetMusicData(data.MusicData);
@@ -68,6 +67,7 @@ namespace Controller
                     units.Add(enemy);
                     AIAgent agent = new AIAgent(unit, enemy, aiManager);
                     controllers.Add(agent);
+                    enemy.OnDeath += x => {controllers.Remove(agent);};
                 }
             });
 

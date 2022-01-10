@@ -9,11 +9,11 @@ namespace HexFiled
         [SerializeField] private UnitColor _unitColor;
         [SerializeField] private Texture _texture;
         [SerializeField] private GameObject _vfxPrefab;
-        [SerializeField] private Texture _buildinTexture;
+        [SerializeField] private Material _buildinMaterial;
 
         public UnitColor UnitColor => _unitColor;
         public Texture Texture => _texture;
-        public Texture BuildingTexture => _buildinTexture;
+        public Material BuildingMaterial => _buildinMaterial;
         public GameObject VFXPrefab => _vfxPrefab;
         
         

@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: ItemData
   m_EditorClassIdentifier: 
   itemInfos:
-  - prefab: {fileID: 919132149155446097, guid: 4166c606d638610418dc9ead794d697b, type: 3}
+  - prefab: {fileID: 3197816592181874056, guid: f0b68f1afd77d7741a0fe8ff5ba25a77,
+      type: 3}
     isInstantUse: 0
     type: Tower
     icon: {fileID: 21300000, guid: 543c4732bd2d47a41bdbbf2156eb358c, type: 3}
-    spawnablePrefab: {fileID: 4774919592469818776, guid: 0dbed8f974ba44a42af9d8fcae504ce0,
+    spawnablePrefab: {fileID: 3496656575117217171, guid: 38edd53c7f09f41409153241c78268f9,
       type: 3}
     values: 
     spawnChance: 1

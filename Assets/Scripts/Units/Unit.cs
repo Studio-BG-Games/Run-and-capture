@@ -87,8 +87,8 @@ namespace Units
             if (!_cell.GetNeighbor(direction) || _isBusy || _cell.GetNeighbor(direction).Color != UnitColor.GREY &&
                 HexManager.UnitCurrentCell[_cell.GetNeighbor(direction).Color].cell == _cell.GetNeighbor(direction)) return;
             
-            if( _mana - _hexGrid.HexCaptureCost <= 0 && _cell.GetNeighbor(direction).Color != Color) return;
-            
+            if(_data.isPlayer)
+                Debug.Log("Player");
             _unitView.StopHardCapture();
             if (_cell.GetNeighbor(direction).Color == _data.color)
             {
@@ -96,16 +96,14 @@ namespace Units
             }
             else if (_cell.GetNeighbor(direction).Color != UnitColor.GREY)
             {
+                if( _mana - _hexGrid.HexHardCaptureCost <= 0) return;
                 _isHardToCapture = true;
-                _unitView.RegenMana(_mana);
                 DoTransit(direction);
             }
 
             else if (_mana - _hexGrid.HexCaptureCost >= 0)
             {
-                _mana -= _hexGrid.HexCaptureCost;
-                _unitView.RegenMana(_mana);
-                UpdateBarCanvas();
+                if( _mana - _hexGrid.HexHardCaptureCost <= 0) return;
                 DoTransit(direction);
             }
         }
@@ -125,10 +123,18 @@ namespace Units
 
         private void CaptureHex()
         {
-            if (_data.isPlayer)
+            if (_isHardToCapture)
             {
-                Debug.Log("Player");
+                _mana -= _hexGrid.HexHardCaptureCost;
             }
+            else
+            {
+                _mana -= _hexGrid.HexCaptureCost;
+            }
+            _unitView.RegenMana(_mana);
+            UpdateBarCanvas();
+            _isBusy = false;
+            _isHardToCapture = false;
             _cell.PaintHex(_data.color);
         }
 
@@ -144,6 +150,9 @@ namespace Units
                         break;
                     case "Attack":
                         _animLength.Attack = clip.length;
+                        break;
+                    case "Dead":
+                        _animLength.Death = clip.length;
                         break;
                     default:
                         break;
@@ -175,7 +184,7 @@ namespace Units
                 _unitView = _instance.GetComponent<UnitView>();
                 _barCanvas = _unitView.BarCanvas;
                 _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex,
-                    this);
+                    this, _hexGrid.HardCaptureTime);
                 SetAnimLength();
                 MusicController.Instance.AddAudioSource(_instance);
                 _mana = _data.maxMana;
@@ -197,7 +206,7 @@ namespace Units
             {
                 var item = itemView.PickUp(this);
                 _inventory.Add(item);
-                OnItemPickUp.Invoke(item);
+                OnItemPickUp?.Invoke(item);
                 return true;
             }
 
@@ -281,8 +290,6 @@ namespace Units
             float maxHp = _data.maxHP;
             float maxMana = _data.maxMana;
             _barCanvas.ManaBar.DOFillAmount(mana / maxMana, 0.5f).SetEase(Ease.InQuad);
-            //_barCanvas.ManaBar.value = 
-            //_unitView.RegenMana(10);
             _barCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
@@ -295,11 +302,12 @@ namespace Units
             _isAlive = false;
             HexManager.UnitCurrentCell.Remove(Color);
             _animator.SetTrigger("Death");
+            TimerHelper.Instance.StartTimer(()=>{Object.Destroy(_instance);}, _animLength.Death);
             OnDeath?.Invoke(this);
             MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, _instance);
             MusicController.Instance.RemoveAudioSource(_instance);
             HexManager.PaintHexList(HexManager.CellByColor[Color], UnitColor.GREY);
-            Object.Destroy(_instance);
+            
         }
 
 

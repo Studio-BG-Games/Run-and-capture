@@ -9,19 +9,19 @@ namespace DefaultNamespace
     {
         private static TimerHelper _instance;
 
-        public static TimerHelper Instance => _instance;
-
-        private void Start()
+        public static TimerHelper Instance
         {
-            if (_instance == null)
+            get
             {
-                _instance = this;
-            }
-            else
-            {
-                Destroy(this);
+                if (_instance == null)
+                {
+                    _instance = new GameObject("Timer").AddComponent<TimerHelper>();
+                }
+
+                return _instance;
             }
         }
+        
 
         public void StartTimer(Action action, float time)
         {

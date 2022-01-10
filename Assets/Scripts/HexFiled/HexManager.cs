@@ -32,7 +32,7 @@ namespace HexFiled
             while (end.Color == color)
             {
                 var tmp = end;
-                var dir = HexDirection.E;
+                HexDirection dir;
                 do
                 {
                     dir = (HexDirection)Random.Range(0, 6);
