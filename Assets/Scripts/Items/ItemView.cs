@@ -8,7 +8,8 @@ namespace Items
     public class ItemView : MonoBehaviour
     {
         private Item _item;
-        
+
+        public Item Item => _item;
 
         public void SetUp(Item item)
         {
@@ -16,11 +17,11 @@ namespace Items
             Rotate();
         }
 
-        public Item PickUp(Unit unit)
+        public ItemView PickUp(Unit unit)
         {
             transform.DOKill();
             _item.PickUp(unit);
-            return _item;
+            return this;
         }
 
         private void Rotate()

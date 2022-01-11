@@ -18,7 +18,7 @@ namespace Items
         public GameObject IconPrefab => iconPrefab;
 
         protected Unit Unit;
-        protected Action<Item> OnItemUsed;
+        protected Action OnItemUsed;
 
         public UnitColor Color => Unit.Color;
 

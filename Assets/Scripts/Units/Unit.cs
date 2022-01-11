@@ -222,11 +222,11 @@ namespace Units
             UpdateBarCanvas();
         }
 
-        public bool PickUpItem(ItemView itemView)
+        public bool PickUpItem(Item item)
         {
             if (_inventory.Count < _data.inventoryCapacity)
             {
-                var item = itemView.PickUp(this);
+                item.PickUp(this);
                 _inventory.Add(item);
                 OnItemPickUp?.Invoke(item);
                 return true;

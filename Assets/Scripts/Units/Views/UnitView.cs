@@ -144,7 +144,7 @@ public class UnitView : MonoBehaviour
 
         ItemView itemView = other.GetComponent<ItemView>();
 
-        if (itemView != null && _unit.PickUpItem(itemView))
+        if (itemView != null && _unit.PickUpItem(itemView.Item))
         {
             Destroy(itemView.gameObject);
         }

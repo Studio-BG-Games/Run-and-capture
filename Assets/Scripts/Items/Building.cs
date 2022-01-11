@@ -14,7 +14,7 @@ namespace Items
 
         [SerializeField] private GameObject buildingPrefab;
         
-        public void Invoke(Action<Item> action)
+        public void Invoke(Action action)
         {
             Unit.UseItem(this);
             OnItemUsed += action;
@@ -27,7 +27,7 @@ namespace Items
             var obj = SpawnHelper.Spawn(buildingPrefab, cell.transform.position + buildingPrefab.transform.position);
             obj.GetComponent<TowerView>().SetUp(Unit.Color);
             cell.Building =  obj.GetComponent<TowerView>();
-            OnItemUsed?.Invoke(this);
+            OnItemUsed?.Invoke();
         }
     }
 }

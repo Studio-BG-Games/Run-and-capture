@@ -69,18 +69,22 @@ namespace Items
         private int GetWeightedItemIndex()
         {
             float randomNum = Random.Range(1, 101)/100f;
-            List<ItemInfos> possibleTypes = new List<ItemInfos>();
-
+            int[] possibleTypes = new int[_data.ItemInfos.Count];
+            var i = 0;
+            var j = 0;
             _data.ItemInfos.ForEach(item =>
             {
+                
                 if (item.SpawnChance >= randomNum)
                 {
-                    possibleTypes.Add(item);
+                    possibleTypes[j++] = i;
                 }
+
+                ++i;
             });
-            if (possibleTypes.Count > 0)
+            if (j > 0)
             {
-                return Random.Range(0, possibleTypes.Count - 1);
+                return possibleTypes[Random.Range(0, j - 1)];
             }
 
             return -1;

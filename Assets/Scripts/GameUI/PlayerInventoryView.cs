@@ -15,19 +15,20 @@ namespace GameUI
 
         private List<Button> _buttons;
         private Button[] _freeButtons;
-        private Dictionary<Item, Button> _dictionary;
+        private Dictionary<Button, Item> _dictionary;
 
 
         public void SetUpUI(int inventoryCapacity)
         {
             _buttons = new List<Button>();
-            _dictionary = new Dictionary<Item, Button>();
+            _dictionary = new Dictionary<Button, Item>();
             _freeButtons = new Button[inventoryCapacity];
             for (int i = 0; i < inventoryCapacity; i++)
             {
                 var itemGo = Instantiate(item, grid.transform);
                 var button = itemGo.GetComponentInChildren<Button>();
                 _buttons.Add(button);
+                _dictionary.Add(button, null);
                 button.gameObject.SetActive(false);
             }
 
@@ -35,10 +36,10 @@ namespace GameUI
             _buttons.ForEach(button => _freeButtons[j++] = button);
         }
 
-        private void SwitchButton(Item item)
+        private void SwitchButton(Button button)
         {
-            var button = _dictionary[item];
-            _dictionary.Remove(item);
+            var item = _dictionary[button];
+            
             button.gameObject.SetActive(false);
             for (int i = 0; i < _freeButtons.Length; i++)
             {
@@ -61,7 +62,7 @@ namespace GameUI
 
             if (button == null)
                 return;
-            _dictionary.Add(item, button);
+            _dictionary[button] = item;
             button.gameObject.SetActive(true);
             button.image.sprite = item.Icon;
             button.onClick.AddListener(() =>
@@ -83,7 +84,8 @@ namespace GameUI
                         break;
                     }
                     case Building _building:
-                        _building.Invoke(SwitchButton);
+                        _building.Invoke(() => SwitchButton(button));
+                        
                         OnBuildingInvoked?.Invoke(_building);
                         break;
                 }
