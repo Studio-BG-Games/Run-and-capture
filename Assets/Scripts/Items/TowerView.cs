@@ -23,15 +23,14 @@ public class TowerView : MonoBehaviour
     private UnitColor _color;
     private GameObject _target;
     [SerializeField] private Weapon weapon;
-    [SerializeField] private SkinnedMeshRenderer _meshRenderer;
     [SerializeField] private List<Crystal> crystals;
-    
 
+    public UnitColor Color => _color;
 
     public void SetUp(UnitColor unitColor)
     {
         _color = unitColor;
-        _meshRenderer.material = HexGrid.Colors[unitColor].BuildingMaterial;
+        
         crystals.First(x => x.UnitColor == unitColor).GameObject.SetActive(true);
         var capsule = gameObject.AddComponent<CapsuleCollider>();
         capsule.radius = weapon.disnatce * HexGrid.HexDistance;

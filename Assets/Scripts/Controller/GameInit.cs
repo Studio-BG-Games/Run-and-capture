@@ -81,12 +81,12 @@ namespace Controller
             hexGrid.OnHexPainted += paintedController.SetHexColors;
 
             hexGrid.OnHexPainted += itemFabric.UpdateCellToOpenList;
-            hexGrid.OnHexPainted += paintedController.CheckDeath;
+            hexGrid.OnHexPainted += paintedController.CheckDeathOrDestroy;
         }
 
         private List<Type> SetUpItems()
         {
-            return new List<Type>() { typeof(Tower), typeof(AttackBonus), typeof(DefenceBonus) };
+            return new List<Type>() { typeof(Building), typeof(AttackBonus), typeof(DefenceBonus) };
         }
     }
 }

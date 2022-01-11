@@ -56,7 +56,7 @@ namespace HexFiled
 
             field.ForEach(x => actions.Add(x.PaintHex));
 
-            TimerHelper.Instance.StartTimer(actions, 0.05f, color);
+            TimerHelper.Instance.StartTimer(actions, 0.01f, color);
 
         }
         

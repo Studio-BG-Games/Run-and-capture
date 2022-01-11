@@ -26,6 +26,7 @@ namespace HexFiled
 
         public int HexHardCaptureCost => _fieldData.hexHardCaptureManaCost;
         public float HardCaptureTime => _fieldData.hexHardCaptureTime;
+        
 
         public static Dictionary<UnitColor, CellColor> Colors => _colors;
         

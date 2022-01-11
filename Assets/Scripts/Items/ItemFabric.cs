@@ -50,13 +50,13 @@ namespace Items
                 time = Time.time;
                 var cell = _openList[Random.Range(0, _openList.Count - 1)];
 
-                while (closedList.Contains(cell) || cell.Item != null)
+                if (closedList.Contains(cell) || cell.Item != null)
                 {
                     return;
                 }
 
                 var type = GetWeightedType();
-                while (type == null)
+                if (type == null)
                 {
                     return;
                 }

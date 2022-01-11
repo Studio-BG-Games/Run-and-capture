@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Units;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace HexFiled
@@ -15,11 +17,18 @@ namespace HexFiled
             HexManager.UnitCurrentCell = new Dictionary<UnitColor, (HexCell cell, Unit unit)>();
         }
 
-        public void CheckDeath(HexCell cell)
+        public void CheckDeathOrDestroy(HexCell cell)
         {
-            foreach (var cells in HexManager.UnitCurrentCell.Where(cells => HexManager.CellByColor[cells.Key].Count < 2 || (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color)))
+            foreach (var cells in HexManager.UnitCurrentCell
+                         .Where(cells => HexManager.CellByColor[cells.Key].Count < 2 || (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color)))
             {
                 cells.Value.unit.Death();
+            }
+
+            if (cell.Building != null && cell.Building.Color != cell.Color)
+            {
+              
+                
             }
         }
         public void SetHexColors(HexCell cell)

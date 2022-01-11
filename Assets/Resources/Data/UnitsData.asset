@@ -21,7 +21,7 @@ MonoBehaviour:
       type: 3}
     color: 3
     manaRegen: 10
-    maxMana: 100
+    maxMana: 10000000
     maxHP: 100
     inventoryCapacity: 4
   - isPlayer: 0

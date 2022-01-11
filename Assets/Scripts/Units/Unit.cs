@@ -295,9 +295,12 @@ namespace Units
             _isAlive = false;
             HexManager.UnitCurrentCell.Remove(Color);
             _animator.SetTrigger("Death");
-            TimerHelper.Instance.StartTimer(() => { Object.Destroy(_instance); }, _animLength.Death);
+            var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[Color].VFXDeathPrefab,
+                _instance.transform.position);
+            vfx.GetComponent<VFXView>().OnPlayEnd += () => Object.Destroy(_instance);
             OnDeath?.Invoke(this);
-            MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, _instance);
+            MusicController.Instance.AddAudioSource(vfx);
+            MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, vfx);
             MusicController.Instance.RemoveAudioSource(_instance);
             HexManager.PaintHexList(HexManager.CellByColor[Color], UnitColor.GREY);
         }

@@ -7,10 +7,11 @@ using Object = UnityEngine.Object;
 
 namespace Items
 {
-    public class Tower : Item
+    
+    public class Building : Item
     {
         
-        public Tower(ItemInfo data) : base(data)
+        public Building(ItemInfo data) : base(data)
         {
             
         }
@@ -30,6 +31,7 @@ namespace Items
             Unit.UseItem(this);
             var obj = Object.Instantiate(Data.SpawnablePrefab, cell.transform.position + Data.SpawnablePrefab.transform.position, Quaternion.identity);
             obj.GetComponent<TowerView>().SetUp(Unit.Color);
+            cell.Building =  obj.GetComponent<TowerView>();
             OnItemUsed?.Invoke(this);
         }
     }

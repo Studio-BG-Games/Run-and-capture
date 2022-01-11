@@ -4,6 +4,7 @@ using System.Linq;
 using DefaultNamespace;
 using Items;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace HexFiled
@@ -27,6 +28,19 @@ namespace HexFiled
         public UnitColor Color => _color;
 
         public Item Item => _item;
+        private TowerView _towerView;
+
+        public TowerView Building
+        {
+            get => _towerView;
+            set
+            {
+                if (_towerView != null)
+                {
+                    _towerView = value;
+                }
+            }
+        }
 
         private void Awake()
         {
@@ -76,7 +90,7 @@ namespace HexFiled
             }
 
             _renderer.material.mainTexture = HexGrid.Colors[color].Texture;
-
+            var previousColor = _color;
             _color = color;
             
             if (!HexManager.CellByColor.ContainsKey(_color))
@@ -85,12 +99,14 @@ namespace HexFiled
             }
             else
             {
+                if(previousColor != UnitColor.GREY && HexManager.CellByColor[previousColor].Remove(this))
+                {
+                   Debug.Log("Repainted");
+                }
                 HexManager.CellByColor[_color].Add(this);
             }
             
-            
-            
-            var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[color].VFXPrefab, transform.position + new Vector3(0,0.1f,0));
+            var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[color].VFXCellCapturePrefab, transform.position + new Vector3(0,0.1f,0));
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures, vfx);
             
