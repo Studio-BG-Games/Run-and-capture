@@ -33,7 +33,7 @@ namespace Controller
             
             data.WeaponsData.WeaponsList.ForEach(x => x.SetModifiedDamage(0));
             
-            ItemFabric itemFabric = new ItemFabric(data.ItemsData, SetUpItems());
+            ItemFabric itemFabric = new ItemFabric(data.ItemsData);
             controllers.Add(itemFabric);
 
             UIController uiController = new UIController(data.UIData);
@@ -86,7 +86,7 @@ namespace Controller
 
         private List<Type> SetUpItems()
         {
-            return new List<Type>() { typeof(Building), typeof(AttackBonus), typeof(DefenceBonus) };
+            return new List<Type>() { typeof(Building), typeof(Bonus)};
         }
     }
 }

@@ -15,15 +15,13 @@ namespace Items
         private ItemsData _data;
         private List<HexCell> _openList;
         private List<Type> _itemTypes;
-        private Dictionary<string, ItemInfo> _itemInfos;
+        
         private float _spawnTime;
         private float time;
 
-        public ItemFabric(ItemsData data, List<Type> dictionary)
+        public ItemFabric(ItemsData data)
         {
-            _itemInfos = new Dictionary<string, ItemInfo>();
-            data.ItemInfos.ForEach(info => { _itemInfos.Add(info.Type, info); });
-            _itemTypes = dictionary;
+
             _data = data;
             _openList = new List<HexCell>();
             _spawnTime = Random.Range(data.SpawnTime.from, data.SpawnTime.to);
@@ -55,36 +53,37 @@ namespace Items
                     return;
                 }
 
-                var type = GetWeightedType();
-                if (type == null)
+                var i = GetWeightedItemIndex();
+                if (i < 0)
                 {
                     return;
                 }
-                var info = _itemInfos[type.ToString().Replace("Items.", "")];
-                var obj = (Item)Activator.CreateInstance(type, info);
 
-                var go = obj.Spawn(cell);
-                go.AddComponent<CapsuleCollider>().isTrigger = true;
-                var itemView = go.AddComponent<ItemView>();
-                itemView.SetUp(obj);
-                cell.SetItem(obj);
+
+                _data.ItemInfos[i].Item.Spawn(cell);
+                cell.SetItem(_data.ItemInfos[i].Item);
                 _spawnTime = Random.Range(_data.SpawnTime.from, _data.SpawnTime.to);
             }
         }
 
-        private Type GetWeightedType()
+        private int GetWeightedItemIndex()
         {
             float randomNum = Random.Range(1, 101)/100f;
-            List<Type> possibleTypes = new List<Type>();
+            List<ItemInfos> possibleTypes = new List<ItemInfos>();
 
-            _itemTypes.ForEach(type =>
+            _data.ItemInfos.ForEach(item =>
             {
-                if (_itemInfos[type.ToString().Replace("Items.", "")].SpawnChance >= randomNum)
+                if (item.SpawnChance >= randomNum)
                 {
-                    possibleTypes.Add(type);
+                    possibleTypes.Add(item);
                 }
             });
-            return possibleTypes.Count > 0 ? possibleTypes[Random.Range(0, possibleTypes.Count - 1)] : null;
+            if (possibleTypes.Count > 0)
+            {
+                return Random.Range(0, possibleTypes.Count - 1);
+            }
+
+            return -1;
         }
     }
 }

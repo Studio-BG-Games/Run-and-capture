@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Chars;
 using Data;
 using DefaultNamespace;
@@ -65,7 +66,22 @@ namespace Units
             _isCapturing = false;
         }
 
-        public void SetAttackBonus(int duration, int value)
+        public void SetUpBonus(float duration, int value, BonusType type)
+        {
+            switch (type)
+            {
+                case BonusType.Attack:
+                    SetAttackBonus(duration, value);
+                    break;
+                case BonusType.Defence:
+                    SetDefenceBonus(duration, value);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void SetAttackBonus(float duration, int value)
         {
             TimerHelper.Instance.StartTimer(StopAttackBonus, duration);
             _weapon.SetModifiedDamage(value);
@@ -76,7 +92,7 @@ namespace Units
             _weapon.SetModifiedDamage(0);
         }
 
-        public void SetDefenceBonus(int duration, int value)
+        private void SetDefenceBonus(float duration, int value)
         {
             TimerHelper.Instance.StartTimer(StopDefenceBonus, duration);
             _defenceBonus = value;

@@ -11,7 +11,7 @@ namespace GameUI
         [SerializeField] private GameObject item;
         [SerializeField] private GameObject grid;
 
-        public Action<Item> OnItemInvoked;
+        public Action<Building> OnBuildingInvoked;
 
         private List<Button> _buttons;
         private Button[] _freeButtons;
@@ -66,23 +66,26 @@ namespace GameUI
             button.image.sprite = item.Icon;
             button.onClick.AddListener(() =>
             {
-                if (item.IsInstantUse)
+                switch (item)
                 {
-                    button.onClick.RemoveAllListeners();
-                    item.InstanceInvoke();
-                    for (int i = 0; i < _freeButtons.Length; i++)
+                    case Bonus _bonus:
                     {
-                        if (_freeButtons[i] != null) continue;
-                        _freeButtons[i] = button;
+                        button.onClick.RemoveAllListeners();
+                        _bonus.Invoke();
+                        for (int i = 0; i < _freeButtons.Length; i++)
+                        {
+                            if (_freeButtons[i] != null) continue;
+                            _freeButtons[i] = button;
+                            break;
+                        }
+                        button.onClick.RemoveAllListeners();
+                        button.gameObject.SetActive(false);
                         break;
                     }
-                    button.onClick.RemoveAllListeners();
-                    button.gameObject.SetActive(false);
-                }
-                else
-                {
-                    item.Invoke(SwitchButton);
-                    OnItemInvoked?.Invoke(item);
+                    case Building _building:
+                        _building.Invoke(SwitchButton);
+                        OnBuildingInvoked?.Invoke(_building);
+                        break;
                 }
             });
         }

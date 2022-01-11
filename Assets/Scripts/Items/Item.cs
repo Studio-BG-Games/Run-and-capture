@@ -1,5 +1,6 @@
 ﻿using System;
 using Data;
+using DefaultNamespace;
 using HexFiled;
 using Units;
 using UnityEngine;
@@ -8,42 +9,30 @@ using Object = UnityEngine.Object;
 
 namespace Items
 {
-    public abstract class Item : IDisposable
+    public abstract class Item : ScriptableObject
     {
         private GameObject _instance;
-        
-        protected ItemInfo Data;
+        [SerializeField] private GameObject iconPrefab;
+        [SerializeField] private Sprite icon;
+        public Sprite Icon => icon;
+        public GameObject IconPrefab => iconPrefab;
+
         protected Unit Unit;
         protected Action<Item> OnItemUsed;
 
-        public bool IsInstantUse => Data.IsInstanceUse;
-        public Sprite Icon => Data.Icon;
         public UnitColor Color => Unit.Color;
-        protected Item(ItemInfo data)
+
+        public GameObject Spawn(HexCell cell)
         {
-            Data = data;
+            var obj = SpawnHelper.Spawn(iconPrefab, cell.transform.position + new Vector3(0, 1, 0));
+            obj.AddComponent<ItemView>().SetUp(this);
+            obj.AddComponent<CapsuleCollider>().isTrigger = true;
+            return obj;
         }
 
         public void PickUp(Unit unit)
         {
             Unit = unit;
-        }
-
-        public GameObject Spawn(HexCell cell)
-        {
-            _instance = Object.Instantiate(Data.Prefab, cell.transform.position + new Vector3(0, 1, 0),
-                Quaternion.identity);
-            return _instance;
-        }
-        
-
-        public abstract void Invoke(Action<Item> item);
-        public abstract void InstanceInvoke();
-        public abstract void PlaceItem(HexCell cell);
-
-        public void Dispose()
-        {
-            Object.Destroy(_instance);
         }
     }
 }

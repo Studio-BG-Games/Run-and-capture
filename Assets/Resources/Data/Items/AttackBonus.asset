@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b016eba27de41629261b965b3e2be0c, type: 3}
+  m_Name: AttackBonus
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 3197816592181874056, guid: 2704c4f795b0d7748a3e3fa53be4d893,
+    type: 3}
+  icon: {fileID: 21300000, guid: caf8bc0311dd2fc4ca1528a82a063754, type: 3}
+  duration: 3
+  value: 100
+  type: 0
