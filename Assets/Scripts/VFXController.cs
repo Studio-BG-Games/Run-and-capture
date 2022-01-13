@@ -28,9 +28,16 @@ namespace DefaultNamespace
             return obj;
         }
         
-        public GameObject PlayEffect(GameObject effect, Transform pos)
+        public GameObject PlayEffect(GameObject effect, Vector3 pos, Quaternion quaternion)
         {
-            var obj = Object.Instantiate(effect, pos.position, pos.rotation);
+            var obj = Object.Instantiate(effect, pos, quaternion);
+            obj.AddComponent<VFXView>();
+            return obj;
+        }
+
+        public GameObject PlayEffect(GameObject effect, Transform parent)
+        {
+            var obj = Object.Instantiate(effect, parent);
             obj.AddComponent<VFXView>();
             return obj;
         }

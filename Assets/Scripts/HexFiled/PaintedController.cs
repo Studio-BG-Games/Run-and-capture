@@ -19,12 +19,13 @@ namespace HexFiled
 
         public void CheckDeathOrDestroy(HexCell cell)
         {
+            List<Unit> unitsToDeath = new List<Unit>();
             foreach (var cells in HexManager.UnitCurrentCell
                          .Where(cells => HexManager.CellByColor[cells.Key].Count < 2 || (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color)))
             {
-                cells.Value.unit.Death();
+                unitsToDeath.Add(cells.Value.unit);
             }
-
+            unitsToDeath.ForEach(x => x.Death());
             if (cell.Building != null && cell.Building.Color != cell.Color)
             {
               
@@ -34,14 +35,11 @@ namespace HexFiled
         public void SetHexColors(HexCell cell)
         {
             _cell = cell;
-            var cells = new List<HexCell>();
+            
+            
+            
 
-            for (var i = 0; i < 6; i++)
-            {
-                cells.Add(cell.GetNeighbor((HexDirection)i));
-            }
-
-            var hexByColorDict = DifferentHexByColor(cells);
+            var hexByColorDict = DifferentHexByColor(cell.GetListNeighbours());
             foreach (var item in hexByColorDict)
             {
                 if (item.Key == cell.Color && item.Value.Count >= 2 && item.Value.Count < 6 &&
@@ -59,18 +57,17 @@ namespace HexFiled
                     });
                 }
 
-                if (item.Value.Count > 0 && item.Key != UnitColor.GREY && item.Key != cell.Color)
+                if (item.Value.Count >= 2 && item.Key != UnitColor.GREY && item.Key != cell.Color)
                 {
-                    foreach (var path in from cellNeighbour in item.Value
-                             where HexManager.UnitCurrentCell.ContainsKey(item.Key)
-                             select HasPath(cellNeighbour, HexManager.UnitCurrentCell[item.Key].cell)
-                             into path
-                             where !path.hasPath
-                             select path)
+                    item.Value.ForEach(neighbour =>
                     {
-                        if(!path.hasPath)
-                            HexManager.PaintHexList(path.field, UnitColor.GREY);
-                    }
+                        var (hasPath, field) = HasPath(neighbour, HexManager.UnitCurrentCell[neighbour.Color].cell);
+                        if (!hasPath)
+                        {
+                            field.ForEach(x => x.PaintHex(UnitColor.GREY));
+                        }
+                    });
+                    
                 }
             }
         }
@@ -178,17 +175,9 @@ namespace HexFiled
                 if (currentCell == end)
                     return (true, null);
 
-                List<HexCell> openList = new List<HexCell>();
-
-                foreach (var neighbour in currentCell.GetListNeighbours()
-                             .Where(neighbour =>  neighbour != null && !closedList.Contains(neighbour) && neighbour.Color == start.Color))
-                {
-                    openList.Add(neighbour);
-                    if (neighbour.GetListNeighbours().Contains(end))
-                    {
-                        return (true, null);
-                    }
-                }
+                List<HexCell> openList = currentCell.GetListNeighbours()
+                    .Where(neighbour => neighbour != null && !closedList.Contains(neighbour) && neighbour.Color == start.Color)
+                    .ToList();
 
 
                 if (openList.Count > 0)

@@ -7,6 +7,7 @@ namespace DefaultNamespace
 {
     public class TimerHelper : MonoBehaviour
     {
+        [SerializeField] private float scale;
         private static TimerHelper _instance;
 
         public static TimerHelper Instance
@@ -21,7 +22,11 @@ namespace DefaultNamespace
                 return _instance;
             }
         }
-        
+
+        public void SetTimerScale()
+        {
+            Time.timeScale = scale;
+        }
 
         public void StartTimer(Action action, float time)
         {

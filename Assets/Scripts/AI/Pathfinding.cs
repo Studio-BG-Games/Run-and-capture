@@ -1,114 +1,118 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using HexFiled;
-using UnityEngine;
 
 namespace AI
 {
     public static class Pathfinding
     {
-        public static Queue<HexCell> FindPath(HexCell startTile, HexCell endTile, List<HexCell> allTiles)
+        public static void FindPath(HexCell startTile, HexCell endTile, Queue<HexDirection> path)
         {
-            foreach (var tile in allTiles)
-            {            
-                tile.gCost = 0f;
-                tile.hCost = 0f;
-                tile.fCost = 0f;
-            
-            }
+            var foundPathIter = 0;
+            var currentTile = startTile;
 
-            var tileOffset = HexGrid.HexDistance;
-            var openNodes = new List<HexCell>();
-            var closedNodes = new List<HexCell>();
-
-            startTile.gCost = 0f;
-            startTile.hCost = Vector3.Distance(startTile.transform.position, endTile.transform.position);
-            startTile.fCost = startTile.gCost + startTile.hCost;
-            startTile.parent = null;
-            openNodes.Add(startTile);
-
-            while (openNodes.Count > 0)
+            if (startTile == null || endTile == null)
             {
-                var currentNode = openNodes[0]; //looking for lowest value node
-                foreach (var node in openNodes)
+                return;
+            }
+            while (foundPathIter < 3 && currentTile == null)
+            {
+                
+                if (currentTile.coordinates.Z == endTile.coordinates.Z)
                 {
-                    if (node.fCost < currentNode.fCost)
+                    if (currentTile.coordinates.X < endTile.coordinates.X)
                     {
-                        currentNode = node;
+                        path.Enqueue(HexDirection.E);
+                        currentTile = currentTile.GetNeighbor(HexDirection.E);
+                    }
+
+                    else if (currentTile.coordinates.X > endTile.coordinates.X)
+                    {
+                        path.Enqueue(HexDirection.W);
+                        currentTile = currentTile.GetNeighbor(HexDirection.W);
                     }
                 }
 
-                if (currentNode == endTile)
+                else if (currentTile.coordinates.Y == endTile.coordinates.Y)
                 {
-                    return GetPathForNode(currentNode);
-                }
-
-                openNodes.Remove(currentNode);
-                closedNodes.Add(currentNode);
-                //Debug.Log(currentNode.name);
-                foreach (HexCell newNode in currentNode.GetListNeighbours())
-                {
-                    if (newNode)
+                    if (currentTile.coordinates.X > endTile.coordinates.X)
                     {
-                        if (closedNodes.Contains(newNode))
-                        {
-                            continue;                        
-                        }                    
-                        if (!openNodes.Contains(newNode))
-                        {
-                            SetNodeParams(newNode, currentNode, endTile, tileOffset);
-                            openNodes.Add(newNode);
-                        }
-                        else 
-                        {
-                            if (currentNode.gCost + tileOffset < newNode.gCost)
-                            {
-                                newNode.gCost = currentNode.gCost + tileOffset;
-                                newNode.parent = currentNode;
-                                newNode.fCost = newNode.gCost + newNode.hCost;
-                            }
-                        }
+                        path.Enqueue(HexDirection.NW);
+                        currentTile = currentTile.GetNeighbor(HexDirection.NW);
+                    }
+                    else if (currentTile.coordinates.X < endTile.coordinates.X)
+                    {
+                        path.Enqueue(HexDirection.SE);
+                        currentTile = currentTile.GetNeighbor(HexDirection.SE);
                     }
                 }
+
+                else if (currentTile.coordinates.X == endTile.coordinates.X)
+                {
+                    if (currentTile.coordinates.Y > endTile.coordinates.Y)
+                    {
+                        path.Enqueue(HexDirection.NE);
+                        currentTile = currentTile.GetNeighbor(HexDirection.NE);
+                    }
+                    else if (currentTile.coordinates.Y < endTile.coordinates.Y)
+                    {
+                        path.Enqueue(HexDirection.SW);
+                        currentTile = currentTile.GetNeighbor(HexDirection.SW);
+                    }
+                }
+
+                else
+                {
+                    if (Math.Abs(currentTile.coordinates.X - endTile.coordinates.X) < Math.Abs(currentTile.coordinates.Y - endTile.coordinates.Y))
+                    {
+                        if (Math.Abs(currentTile.coordinates.X - endTile.coordinates.X) <
+                            Math.Abs(currentTile.coordinates.Z - endTile.coordinates.Z))
+                        {
+                            var dir = currentTile.coordinates.X > endTile.coordinates.X
+                                ? HexDirection.E
+                                : HexDirection.W;
+                            path.Enqueue(dir);
+                            currentTile = currentTile.GetNeighbor(dir);
+                        }
+                        else
+                        {
+                            var dir = currentTile.coordinates.Z > endTile.coordinates.Z
+                                ? HexDirection.SW
+                                : HexDirection.NE;
+                            path.Enqueue(dir);
+                            currentTile = currentTile.GetNeighbor(dir);
+                        }
+                    }
+                    else
+                    {
+                        if (Math.Abs(currentTile.coordinates.Y - endTile.coordinates.Y) <
+                            Math.Abs(currentTile.coordinates.Z - endTile.coordinates.Z))
+                        {
+                            var dir = currentTile.coordinates.Y > endTile.coordinates.Y
+                                ? HexDirection.SE
+                                : HexDirection.NW;
+                            path.Enqueue(dir);
+                            currentTile = currentTile.GetNeighbor(dir);
+                        }
+                        else
+                        {
+                            var dir = currentTile.coordinates.Z > endTile.coordinates.Z
+                                ? HexDirection.SW
+                                : HexDirection.NE;
+                            path.Enqueue(dir);
+                            currentTile = currentTile.GetNeighbor(dir);
+                        }
+                    }
+
+                }
+                if (currentTile == endTile)
+                {
+                    return;
+                }
+
+                foundPathIter++;
             }
-            Debug.Log("path not found");
-            return null;
         }
-
-        // private static List<TileInfo> GetAdjacentNodes(TileInfo currentNode)
-        // {
-        //     var allAjacentTiles = currentNode.Cell.GetListNeighbours();
-        //     List<TileInfo> adjacentNodes = new List<TileInfo>();
-        //
-        //     foreach (TileInfo tile in allAjacentTiles)
-        //     {
-        //         if (tile.canMove)
-        //         {
-        //             adjacentNodes.Add(tile);
-        //         }            
-        //     }
-        //     return adjacentNodes;
-        // }
-
-        private static Queue<HexCell> GetPathForNode(HexCell pathNode)
-        {
-            var result = new Queue<HexCell>();
-            var currentNode = pathNode;
-            while (currentNode != null)
-            {
-                result.Enqueue(currentNode);
-                currentNode = currentNode.parent;
-            }
-            
-            return result;
-        }
-
-        private static void SetNodeParams(HexCell currentNode, HexCell parrentNode, HexCell endNode, float nodeOffset)
-        {
-            currentNode.parent = parrentNode;
-            currentNode.gCost = currentNode.parent.gCost + nodeOffset;
-            currentNode.hCost = Vector3.Distance(currentNode.transform.position, endNode.transform.position);
-            currentNode.fCost = currentNode.gCost + currentNode.hCost;
-        }
+        
     }
 }

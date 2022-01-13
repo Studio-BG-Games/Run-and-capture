@@ -5,7 +5,6 @@ using Controller;
 using Data;
 using DG.Tweening;
 using HexFiled;
-using Items;
 using Runtime.Controller;
 using Units;
 using UnityEngine;
@@ -17,11 +16,14 @@ namespace DefaultNamespace.AI
         private Unit _enemy;
         private Camera _camera;
         private AIManager _manager;
-
+        private BotState curentState;
         public Queue<HexDirection> currentPath;
         public Action<AIAgent> OnAgentInited;
+        private Vector2 _attackDirection;
 
         public Unit Enemy => _enemy;
+
+        public BotState CurentState => curentState;
 
         public AIAgent(UnitInfo enemyInfo, Unit enemy, AIManager manager)
         {
@@ -31,17 +33,13 @@ namespace DefaultNamespace.AI
             _enemy.OnDeath += AgentDeath;
             enemy.onPlayerSpawned += InitAgent;
             _manager = manager;
-            enemy.OnItemPickUp += PickUpItem;
         }
 
-        private void PickUpItem(Item item)
-        {
-            
-        }
+        
         private void AgentDeath(Unit unit)
         {
             AIManager.Instance.RemoveAgent(this);
-            
+            currentPath.Clear();
         }
 
         private void InitAgent(GameObject unit)
@@ -50,16 +48,33 @@ namespace DefaultNamespace.AI
             HexManager.agents.Add(unit, this);
             OnAgentInited?.Invoke(this);
         }
+
+        public void AttackTarget(Vector2 direction)
+        {
+            _attackDirection = direction;
+            
+        }
         
         public void FixedExecute()
         {
+            if (curentState == BotState.Attack && !_enemy.IsBusy)
+            {
+                _enemy.Aim(_attackDirection);
+                _enemy.StartAttack();
+                curentState = _manager.GetNewBehaviour(this);
+            }
             if (currentPath.Count > 0 && !_enemy.IsBusy)
             {
-                _enemy.Move(currentPath.Dequeue());
+                var dir = currentPath.Dequeue();
+                while (HexManager.UnitCurrentCell[_enemy.Color].cell.GetNeighbor(dir) == null)
+                {
+                    dir = dir.PlusSixtyDeg();
+                }
+                _enemy.Move(dir);
             }
-            else if(currentPath.Count == 0)
+            if(currentPath.Count == 0 && !_enemy.IsBusy)
             {
-                _manager.SetBehaviour(BotState.Patrol, this);
+                curentState = _manager.GetNewBehaviour(this);
             }
         }
 

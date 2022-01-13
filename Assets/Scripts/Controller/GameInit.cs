@@ -6,6 +6,7 @@ using CamControl;
 using Chars;
 using DefaultNamespace;
 using DefaultNamespace.AI;
+using DG.Tweening;
 using GameUI;
 using HexFiled;
 using Items;
@@ -23,8 +24,6 @@ namespace Controller
         {
 
             AIManager aiManager = new AIManager();
-            controllers.Add(aiManager);
-
             var hexGrid = new HexGrid(data.FieldData);
             new MusicController();
             new VFXController(data.VFXData);

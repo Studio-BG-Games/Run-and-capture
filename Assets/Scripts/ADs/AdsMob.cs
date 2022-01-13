@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GoogleMobileAds.Api;
-using UnityEditor.PackageManager.Requests;
+// using GoogleMobileAds.Api;
 using HexFiled;
 using Random = UnityEngine.Random;
 using Units;
@@ -11,20 +8,20 @@ using UnityEngine.UI;
 
 public class AdsMob : MonoBehaviour
 {
-    private string _revardUnitId = "ca-app-pub-3940256099942544/5224354917";
-    private RewardedAd _ad;
-    private AdRequest _request;
+    // private string _revardUnitId = "ca-app-pub-3940256099942544/5224354917";
+    // private RewardedAd _ad;
+    // private AdRequest _request;
     private Unit _player;
     [SerializeField] private Button button;
     [SerializeField] private GameObject canvas;
 
     private void OnEnable()
     {
-        _ad = new RewardedAd(_revardUnitId);
-        _request = new AdRequest.Builder().Build();
-        _ad.LoadAd(_request);
-        _ad.OnUserEarnedReward += HandleUser;
-        button.onClick.AddListener(() => ShowAd()) ;
+        // _ad = new RewardedAd(_revardUnitId);
+        // _request = new AdRequest.Builder().Build();
+        // _ad.LoadAd(_request);
+        // _ad.OnUserEarnedReward += HandleUser;
+        button.onClick.AddListener(Spawn) ;
         canvas.SetActive(false);
         //
     }
@@ -32,27 +29,28 @@ public class AdsMob : MonoBehaviour
     //     ShowAd();
     // }
 
-    private void HandleUser(object sender, Reward reward)
-    {
-        //ExtraLife life; 
-       
-        //ShowAd();
-        
-        
+    // private void HandleUser(object sender, Reward reward)
+    // {
+    //     
+    //     _player.Spawn(HexManager.CellByColor[UnitColor.GREY][Random.Range(0, HexManager.CellByColor[UnitColor.GREY].Count - 1)].coordinates);
+    //     canvas.SetActive(false);
+    //
+    // }
 
-        //Respawn(life.gameObject);
+    private void Spawn()
+    {
         _player.Spawn(HexManager.CellByColor[UnitColor.GREY][Random.Range(0, HexManager.CellByColor[UnitColor.GREY].Count - 1)].coordinates);
-
+        canvas.SetActive(false);
     }
 
-    public void ShowAd()
-    {
-        //_player = player;
-        if (_ad.IsLoaded())
-        {
-            _ad.Show();
-        }
-    }
+    // public void ShowAd()
+    // {
+    //     //_player = player;
+    //     if (_ad.IsLoaded())
+    //     {
+    //         _ad.Show();
+    //     }
+    // }
 
     public void ShowCanvas(Unit player)
     {
@@ -87,7 +85,7 @@ public class AdsMob : MonoBehaviour
     }
     
 
-    private void OnDisable() {
-        _ad.OnUserEarnedReward -= HandleUser;
-    }
+    // private void OnDisable() {
+    //     _ad.OnUserEarnedReward -= HandleUser;
+    // }
 }

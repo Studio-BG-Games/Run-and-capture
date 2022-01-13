@@ -33,6 +33,7 @@ namespace Items
         public void PickUp(Unit unit)
         {
             Unit = unit;
+            
         }
     }
 }

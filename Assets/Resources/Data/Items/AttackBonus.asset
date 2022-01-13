@@ -18,3 +18,5 @@ MonoBehaviour:
   duration: 3
   value: 100
   type: 0
+  usisngVFX: {fileID: 1392949555731818751, guid: 6ecc4cfe7c2b47744b3ba73509f18a5d,
+    type: 3}

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Linq;
 using Chars;
 using Data;
 using DefaultNamespace;
@@ -10,7 +10,6 @@ using Items;
 using UnityEngine;
 using Weapons;
 using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 
 namespace Units
@@ -38,6 +37,9 @@ namespace Units
         private int _attackBonus;
         private int _defenceBonus;
 
+        public int AttackBonus => _attackBonus;
+
+        public int DefenceBonus => _defenceBonus;
 
         public bool IsBusy
         {
@@ -52,9 +54,11 @@ namespace Units
         public Action<Item> OnItemPickUp;
         public Action<Unit> OnDeath;
         public BarCanvas BarCanvas => _barCanvas;
-
+        public GameObject Instance => _instance;
         public UnitInfo Data => _data;
-
+        public int Mana => _mana;
+        public int Hp => _hp;
+        public List<Item> Inventory => _inventory;
         public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
             _weapon = weapon;
@@ -71,37 +75,19 @@ namespace Units
             switch (type)
             {
                 case BonusType.Attack:
-                    SetAttackBonus(duration, value);
+                    TimerHelper.Instance.StartTimer(() =>  _weapon.SetModifiedDamage(0), duration);
+                    _weapon.SetModifiedDamage(value);
                     break;
                 case BonusType.Defence:
-                    SetDefenceBonus(duration, value);
+                    TimerHelper.Instance.StartTimer(()=>  _defenceBonus = 0, duration);
+                    _defenceBonus = value;
                     break;
                 default:
                     break;
             }
         }
-
-        private void SetAttackBonus(float duration, int value)
-        {
-            TimerHelper.Instance.StartTimer(StopAttackBonus, duration);
-            _weapon.SetModifiedDamage(value);
-        }
-
-        private void StopAttackBonus()
-        {
-            _weapon.SetModifiedDamage(0);
-        }
-
-        private void SetDefenceBonus(float duration, int value)
-        {
-            TimerHelper.Instance.StartTimer(StopDefenceBonus, duration);
-            _defenceBonus = value;
-        }
-
-        private void StopDefenceBonus()
-        {
-            _defenceBonus = 0;
-        }
+        
+        
 
         public void Move(HexDirection direction)
         {
@@ -212,6 +198,7 @@ namespace Units
                 _mana = _data.maxMana;
                 _hp = _data.maxHP;
                 SetUpActions();
+                _weapon.SetModifiedDamage(0);
                 onPlayerSpawned?.Invoke(_instance);
             }
         }
@@ -272,7 +259,7 @@ namespace Units
         {
             if (_direction.Equals(Vector2.zero))
             {
-                _direction = new Vector2(_unitView.transform.forward.x, _unitView.transform.forward.z);
+                _direction = new Vector2(_unitView.transform.forward.x, _unitView.transform.forward.z); //TODO автовыстрел
                 Aim(_direction);
             }
 
@@ -313,12 +300,12 @@ namespace Units
             _animator.SetTrigger("Death");
             var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[Color].VFXDeathPrefab,
                 _instance.transform.position);
-            vfx.GetComponent<VFXView>().OnPlayEnd += () => Object.Destroy(_instance);
+            TimerHelper.Instance.StartTimer(() => Object.Destroy(_instance), _animLength.Death);
             OnDeath?.Invoke(this);
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, vfx);
             MusicController.Instance.RemoveAudioSource(_instance);
-            HexManager.PaintHexList(HexManager.CellByColor[Color], UnitColor.GREY);
+            HexManager.PaintHexList(HexManager.CellByColor[Color].ToList(), UnitColor.GREY);
         }
 
 

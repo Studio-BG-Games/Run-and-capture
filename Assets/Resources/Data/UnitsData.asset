@@ -21,7 +21,7 @@ MonoBehaviour:
       type: 3}
     color: 3
     manaRegen: 10
-    maxMana: 10000000
+    maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4
   - isPlayer: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
       type: 3}
     color: 4
     manaRegen: 10
-    maxMana: 100
+    maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4
   - isPlayer: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
       type: 3}
     color: 0
     manaRegen: 10
-    maxMana: 100
+    maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4
   - isPlayer: 0
@@ -54,6 +54,6 @@ MonoBehaviour:
       type: 3}
     color: 1
     manaRegen: 10
-    maxMana: 100
+    maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4

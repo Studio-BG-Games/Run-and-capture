@@ -134,7 +134,7 @@ public class UnitView : MonoBehaviour
         if (weaponView != null)
         {
             OnHit?.Invoke(weaponView.Weapon.modifiedDamage);
-            var vfx = VFXController.Instance.PlayEffect(weaponView.Weapon.VFXGameObject, weaponView.transform);
+            var vfx = VFXController.Instance.PlayEffect(weaponView.Weapon.VFXGameObject, weaponView.transform.position, weaponView.transform.rotation);
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(weaponView.Weapon.hitSound, vfx);
             
@@ -146,6 +146,7 @@ public class UnitView : MonoBehaviour
 
         if (itemView != null && _unit.PickUpItem(itemView.Item))
         {
+            ItemFabric.Items.Remove(itemView.gameObject);
             Destroy(itemView.gameObject);
         }
     }

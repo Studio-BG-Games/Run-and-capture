@@ -82,29 +82,19 @@ namespace HexFiled
         public void PaintHex(UnitColor color)
         {
             if (color == _color) return;
-            if (color == UnitColor.GREY)
+            
+            if (!HexManager.CellByColor.ContainsKey(color))
             {
-                _renderer.material.mainTexture = HexGrid.Colors[color].Texture;
-                _color = color;
-                return;
+                HexManager.CellByColor.Add(color, new List<HexCell>(){this});
             }
 
             _renderer.material.mainTexture = HexGrid.Colors[color].Texture;
             var previousColor = _color;
+            HexManager.CellByColor[previousColor].Remove(this);
             _color = color;
+            HexManager.CellByColor[_color].Add(this);
             
-            if (!HexManager.CellByColor.ContainsKey(_color))
-            {
-                HexManager.CellByColor.Add(_color, new List<HexCell>(){this});
-            }
-            else
-            {
-                if(previousColor != UnitColor.GREY && HexManager.CellByColor[previousColor].Remove(this))
-                {
-                   Debug.Log("Repainted");
-                }
-                HexManager.CellByColor[_color].Add(this);
-            }
+            if(color == UnitColor.GREY) return;
             
             var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[color].VFXCellCapturePrefab, transform.position + new Vector3(0,0.1f,0));
             MusicController.Instance.AddAudioSource(vfx);

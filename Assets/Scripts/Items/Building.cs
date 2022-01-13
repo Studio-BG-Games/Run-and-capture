@@ -1,10 +1,7 @@
 ﻿using System;
-using Data;
 using DefaultNamespace;
 using HexFiled;
 using UnityEngine;
-using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace Items
 {
