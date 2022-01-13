@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299045fa19935a34d9edca91d5d77b22, type: 3}
+  m_Name: DefenceBonusItem
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 8639522512577941448, guid: 7b6a7f64e52da514d88aa97ad8f863df,
+    type: 3}
+  icon: {fileID: 21300000, guid: ef4f09043626c634a86d095be3a55257, type: 3}
+  duration: 15
+  value: 50
+  type: 0
+  usisngVFX: {fileID: 413716222248834417, guid: 5290ce7f3e2c9c641b90f0d62ae2cb36,
+    type: 3}

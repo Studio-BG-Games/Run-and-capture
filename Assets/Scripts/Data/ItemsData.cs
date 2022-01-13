@@ -10,34 +10,27 @@ namespace Data
     public class ItemsData : ScriptableObject
     {
         [SerializeField]
-        private List<ItemInfo> itemInfos;
+        private List<ItemInfos> items;
 
         [SerializeField] private float fromTimeSpawn;
         [SerializeField] private float toTimeSpawn;
 
-        public List<ItemInfo> ItemInfos => itemInfos;
+        public List<ItemInfos> ItemInfos => items;
         public (float from, float to) SpawnTime => (fromTimeSpawn, toTimeSpawn);
     }
 
     [Serializable]
-    public struct ItemInfo
+    public struct ItemInfos
     {
-        [SerializeField] private GameObject prefab;
-        [SerializeField] private bool isInstantUse;
-        [SerializeField] private string type;
-        [SerializeField] private Sprite icon;
-        [SerializeField] private GameObject spawnablePrefab;
-        [SerializeField] private int[] values;
-        [SerializeField][Range(0,1)] private float spawnChance;
-        public GameObject Prefab => prefab;
-        public string Type => type;
+        [SerializeField] private Item item;
+        
+        
+        [SerializeField][Range(0,1)] private float _spawnChance;
 
-        public Sprite Icon => icon;
-
-        public GameObject SpawnablePrefab => spawnablePrefab;
-
-        public bool IsInstanceUse => isInstantUse;
-        public int[] Values => values;
-        public float SpawnChance => spawnChance;
+        public Item Item => item;
+        
+        
+        public float SpawnChance => _spawnChance;
     }
+   
 }

@@ -24,5 +24,5 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d657487da1404a34f835a7631432b835, type: 3}
     - {fileID: 8300000, guid: 5481b8f08252dd7499af6b48ad6c5354, type: 3}
     - {fileID: 8300000, guid: 2b1056532f20f3248910d138da8358b9, type: 3}
-    hardCapture: {fileID: 8300000, guid: 72cf5153f4959df4eb30db3dc01d4e24, type: 3}
+    hardCapture: {fileID: 8300000, guid: d657487da1404a34f835a7631432b835, type: 3}
     death: {fileID: 8300000, guid: 158e2b6cd6cdcba49bc9f9c1cb29d84b, type: 3}

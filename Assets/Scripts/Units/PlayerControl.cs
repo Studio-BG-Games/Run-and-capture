@@ -23,7 +23,7 @@ namespace Chars
         private Vector2 _attackDircetion;
         private HexDirection _placeDirection;
         private PlayerInventoryView _inventoryView;
-        private Item _itemToPlace;
+        private Building _itemToPlace;
         private HexCell _cellToPlace;
         
 
@@ -43,13 +43,13 @@ namespace Chars
             inventoryView.SetUpUI(unit.InventoryCapacity);
             _unit.OnItemPickUp += PickUp;
             _inventoryView = inventoryView;
-            inventoryView.OnItemInvoked += AimPlaceItem;
+            inventoryView.OnBuildingInvoked += AimPlaceItem;
             _placeJoystick.OnTouchDown += AimCanvas;
             _placeJoystick.OnTouchUp += PlaceItem;
 
         }
 
-        private void AimPlaceItem(Item item)
+        private void AimPlaceItem(Building item)
         {
             if (!_unit.IsBusy)
             {

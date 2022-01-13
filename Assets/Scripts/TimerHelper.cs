@@ -7,22 +7,25 @@ namespace DefaultNamespace
 {
     public class TimerHelper : MonoBehaviour
     {
+        [SerializeField] private float scale;
         private static TimerHelper _instance;
 
-        public static TimerHelper Instance => _instance;
-        public static List<Action> OnCorutineEndedList;
-
-        private void Start()
+        public static TimerHelper Instance
         {
-            if (_instance == null)
+            get
             {
-                _instance = this;
-                OnCorutineEndedList = new List<Action>();
+                if (_instance == null)
+                {
+                    _instance = new GameObject("Timer").AddComponent<TimerHelper>();
+                }
+
+                return _instance;
             }
-            else
-            {
-                Destroy(this);
-            }
+        }
+
+        public void SetTimerScale()
+        {
+            Time.timeScale = scale;
         }
 
         public void StartTimer(Action action, float time)
@@ -42,13 +45,13 @@ namespace DefaultNamespace
         IEnumerator Timer(Action action, float time)
         {
             yield return new WaitForSeconds(time);
-            action.Invoke();
+            action?.Invoke();
         }
         
         IEnumerator Timer<T>(Action<T> action, float time, T param)
         {
             yield return new WaitForSeconds(time);
-            action.Invoke(param);
+            action?.Invoke(param);
         }
         
         IEnumerator Timer<T>(List<Action<T>> actions, float time, T param)
@@ -56,7 +59,7 @@ namespace DefaultNamespace
             foreach (var action in actions)
             {
                 yield return new WaitForSeconds(time);
-                action.Invoke(param);
+                action?.Invoke(param);
             }
         }
     }

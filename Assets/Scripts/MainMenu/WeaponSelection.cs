@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using DefaultNamespace.Weapons;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using Weapons;
 

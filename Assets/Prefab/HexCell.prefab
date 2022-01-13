@@ -49,7 +49,10 @@ MonoBehaviour:
   coordinates:
     x: 0
     z: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  parent: {fileID: 0}
   neighbors:
   - {fileID: 0}
   - {fileID: 0}

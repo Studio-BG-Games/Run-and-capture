@@ -22,10 +22,23 @@ namespace Data
         private MusicData _musicData;
         [SerializeField] private string itemDataPath;
         private ItemsData _itemsData;
+        [SerializeField] private string vfxDataPath;
+        private VFXData _vfxData;
         [SerializeField] private string chosenWeaponDataPath;
 
         public string ChosenWeapon => File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath);
 
+        public VFXData VFXData  {
+            get
+            {
+                if (_vfxData == null)
+                {
+                    _vfxData = Load<VFXData>("Data/" + vfxDataPath);
+                }
+
+                return _vfxData;
+            }
+        }
         public ItemsData ItemsData
         {
             get
