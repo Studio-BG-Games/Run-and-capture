@@ -56,7 +56,7 @@ namespace Controller
                     player.onPlayerSpawned += MusicController.Instance.AddAudioListener;
                     units.Add(player);
 
-                    player.OnDeath += uiController.AdsMob.ShowCanvas;
+                    //player.OnDeath += uiController.AdsMob.ShowCanvas;
                 }
                 else
                 {
