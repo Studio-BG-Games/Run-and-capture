@@ -11,9 +11,12 @@ namespace Data
         [SerializeField] private List<GameObject> _objectsToSpawn;
         [SerializeField] private PlayerControlView joystickView;
         [SerializeField] private PlayerInventoryView inventoryView;
+        [SerializeField] private AdsMob adsMob;
         public List<GameObject> ObjectsToSpawn => _objectsToSpawn;
         public PlayerControlView PlayerControlView => joystickView;
 
         public PlayerInventoryView InventoryView => inventoryView;
+
+        public AdsMob AdsMob => adsMob;
     }
 }

@@ -10,31 +10,31 @@ namespace HexFiled
 {
     public class HexGrid : IInitialization
     {
-        private int _width;
-        private int _height;
-        private GameObject _cellPrefab;
-        private TMP_Text _cellLabelPrefab;
+        
         private HexCell[] _cells;
         private Canvas _gridCanvas;
         private GameObject _baseGameObject;
-        private static Dictionary<UnitColor, CellColor> _colors;
-        private static float _hexDistance;
-        private int _hexCaptureCost;
+        private FieldData _fieldData;
 
         public static float HexDistance => _hexDistance;
         public Action<HexCell> OnHexPainted;
         public Action OnGridLoaded;
-        public int HexCaptureCost => _hexCaptureCost;
+        
+        private static Dictionary<UnitColor, CellColor> _colors;
+        private static float _hexDistance;
+        public int HexCaptureCost => _fieldData.hexCaptureManaCost;
+
+        public int HexHardCaptureCost => _fieldData.hexHardCaptureManaCost;
+        public float HardCaptureTime => _fieldData.hexHardCaptureTime;
+        
 
         public static Dictionary<UnitColor, CellColor> Colors => _colors;
+        
 
         public HexGrid(FieldData fieldData)
         {
-            _hexCaptureCost = fieldData.hexCaptureManaCost;
-            _width = fieldData.width;
-            _height = fieldData.height;
-            _cellPrefab = fieldData.cellPrefab;
-            _cellLabelPrefab = fieldData.cellLabelPrefab;
+            _fieldData = fieldData;
+            
             _baseGameObject = new GameObject("HexGrid");
             _colors = new Dictionary<UnitColor, CellColor>(fieldData.colors.Count);
             foreach (var color in fieldData.colors)
@@ -57,13 +57,13 @@ namespace HexFiled
         }
 
 
-        void CreateCell(int x, int z, int i)
+        private void CreateCell(int x, int z, int i)
         {
             Vector3 position;
             position.x = (x + z * 0.5f - z / 2) * (HexMetrics.innerRadius * 2f);
             position.y = 0f;
             position.z = z * (HexMetrics.outerRadius * 1.5f);
-            var cellGO = Object.Instantiate(_cellPrefab);
+            var cellGO = Object.Instantiate(_fieldData.cellPrefab);
             HexCell cell = _cells[i] = cellGO.GetComponent<HexCell>();
             cell.PaintHex(UnitColor.GREY);
             cell.transform.SetParent(_baseGameObject.transform, false);
@@ -80,31 +80,31 @@ namespace HexFiled
             {
                 if ((z & 1) == 0)
                 {
-                    cell.SetNeighbor(HexDirection.SE, _cells[i - _width]);
+                    cell.SetNeighbor(HexDirection.SE, _cells[i - _fieldData.width]);
                     if (x > 0)
                     {
-                        cell.SetNeighbor(HexDirection.SW, _cells[i - _width - 1]);
+                        cell.SetNeighbor(HexDirection.SW, _cells[i - _fieldData.width - 1]);
                     }
                 }
                 else
                 {
-                    cell.SetNeighbor(HexDirection.SW, _cells[i - _width]);
+                    cell.SetNeighbor(HexDirection.SW, _cells[i - _fieldData.width]);
                     if (_hexDistance == 0f)
                     {
                         _hexDistance = Vector3.Distance(cell.transform.position,
                             cell.GetNeighbor(HexDirection.SW).transform.position);
                     }
 
-                    if (x < _width - 1)
+                    if (x < _fieldData.width - 1)
                     {
-                        cell.SetNeighbor(HexDirection.SE, _cells[i - _width + 1]);
+                        cell.SetNeighbor(HexDirection.SE, _cells[i - _fieldData.width + 1]);
                     }
                 }
             }
 
 
 #if UNITY_EDITOR
-            TMP_Text label = Object.Instantiate(_cellLabelPrefab, _gridCanvas.transform, false);
+            TMP_Text label = Object.Instantiate(_fieldData.cellLabelPrefab, _gridCanvas.transform, false);
             label.rectTransform.anchoredPosition =
                 new Vector2(position.x, position.z);
             label.text = cell.coordinates.ToStringOnSeparateLines();
@@ -112,13 +112,14 @@ namespace HexFiled
         }
 
 
-    public void Init()
+        public void Init()
         {
-            _cells = new HexCell[_height * _width];
+            HexManager.CellByColor = new Dictionary<UnitColor, List<HexCell>>();
+            _cells = new HexCell[_fieldData.height * _fieldData.width];
 
-            for (int z = 0, i = 0; z < _height; z++)
+            for (int z = 0, i = 0; z < _fieldData.height; z++)
             {
-                for (int x = 0; x < _width; x++)
+                for (int x = 0; x < _fieldData.width; x++)
                 {
                     CreateCell(x, z, i++);
                 }

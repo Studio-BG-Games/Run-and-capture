@@ -12,18 +12,17 @@ namespace Items
 {
     public class ItemFabric : IExecute
     {
+        public static Dictionary<GameObject, HexCell> Items;
         private ItemsData _data;
         private List<HexCell> _openList;
         private List<Type> _itemTypes;
-        private Dictionary<string, ItemInfo> _itemInfos;
+        
         private float _spawnTime;
         private float time;
 
-        public ItemFabric(ItemsData data, List<Type> dictionary)
+        public ItemFabric(ItemsData data)
         {
-            _itemInfos = new Dictionary<string, ItemInfo>();
-            data.ItemInfos.ForEach(info => { _itemInfos.Add(info.Type, info); });
-            _itemTypes = dictionary;
+            Items = new Dictionary<GameObject, HexCell>();
             _data = data;
             _openList = new List<HexCell>();
             _spawnTime = Random.Range(data.SpawnTime.from, data.SpawnTime.to);
@@ -45,46 +44,51 @@ namespace Items
         {
             if (Time.time - time >= _spawnTime)
             {
-                List<HexCell> closedList = PaintedController.UnitCurrentCell.Select(unitCells => unitCells.Value.curent)
+                List<HexCell> closedList = HexManager.UnitCurrentCell.Select(unitCells => unitCells.Value.cell)
                     .ToList();
                 time = Time.time;
                 var cell = _openList[Random.Range(0, _openList.Count - 1)];
 
-                while (closedList.Contains(cell) || cell.Item != null)
+                if (closedList.Contains(cell) || cell.Item != null)
                 {
                     return;
                 }
 
-                var type = GetWeightedType();
-                while (type == null)
+                var i = GetWeightedItemIndex();
+                if (i < 0)
                 {
                     return;
                 }
-                var info = _itemInfos[type.ToString().Replace("Items.", "")];
-                var obj = (Item)Activator.CreateInstance(type, info);
 
-                var go = obj.Spawn(cell);
-                go.AddComponent<CapsuleCollider>().isTrigger = true;
-                var itemView = go.AddComponent<ItemView>();
-                itemView.SetUp(obj);
-                cell.SetItem(obj);
+
+                Items.Add(_data.ItemInfos[i].Item.Spawn(cell), cell);
+                cell.SetItem(_data.ItemInfos[i].Item);
                 _spawnTime = Random.Range(_data.SpawnTime.from, _data.SpawnTime.to);
             }
         }
 
-        private Type GetWeightedType()
+        private int GetWeightedItemIndex()
         {
             float randomNum = Random.Range(1, 101)/100f;
-            List<Type> possibleTypes = new List<Type>();
-
-            _itemTypes.ForEach(type =>
+            int[] possibleTypes = new int[_data.ItemInfos.Count];
+            var i = 0;
+            var j = 0;
+            _data.ItemInfos.ForEach(item =>
             {
-                if (_itemInfos[type.ToString().Replace("Items.", "")].SpawnChance >= randomNum)
+                
+                if (item.SpawnChance >= randomNum)
                 {
-                    possibleTypes.Add(type);
+                    possibleTypes[j++] = i;
                 }
+
+                ++i;
             });
-            return possibleTypes.Count > 0 ? possibleTypes[Random.Range(0, possibleTypes.Count - 1)] : null;
+            if (j > 0)
+            {
+                return possibleTypes[Random.Range(0, j - 1)];
+            }
+
+            return -1;
         }
     }
 }

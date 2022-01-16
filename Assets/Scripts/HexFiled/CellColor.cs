@@ -8,13 +8,14 @@ namespace HexFiled
     {
         [SerializeField] private UnitColor _unitColor;
         [SerializeField] private Texture _texture;
-        [SerializeField] private GameObject _vfxPrefab;
-        [SerializeField] private Texture _buildinTexture;
+        [SerializeField] private GameObject _vfxCellCapturePrefab;
+        [SerializeField] private GameObject _vfxDeathPrefab;
+        
 
         public UnitColor UnitColor => _unitColor;
         public Texture Texture => _texture;
-        public Texture BuildingTexture => _buildinTexture;
-        public GameObject VFXPrefab => _vfxPrefab;
+        public GameObject VFXDeathPrefab => _vfxDeathPrefab;
+        public GameObject VFXCellCapturePrefab => _vfxCellCapturePrefab;
         
         
 

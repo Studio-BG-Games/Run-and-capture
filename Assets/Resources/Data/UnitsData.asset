@@ -15,13 +15,13 @@ MonoBehaviour:
   _units:
   - isPlayer: 1
     spawnPos:
-      x: 9
-      z: 10
+      x: 19
+      z: 4
     unitPrefa: {fileID: 7527582019267571087, guid: f102085e8bc4cad4992d43b84dee1055,
       type: 3}
     color: 3
-    manaRegen: 1
-    maxMana: 100
+    manaRegen: 10
+    maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4
   - isPlayer: 0
@@ -32,17 +32,28 @@ MonoBehaviour:
       type: 3}
     color: 4
     manaRegen: 10
-    maxMana: 100
+    maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4
   - isPlayer: 0
     spawnPos:
-      x: 3
-      z: 10
+      x: -1
+      z: 42
     unitPrefa: {fileID: 742650227762578155, guid: 97b4a76c55741764e880b63d6e1514a9,
       type: 3}
     color: 0
     manaRegen: 10
-    maxMana: 100
+    maxMana: 1000
+    maxHP: 100
+    inventoryCapacity: 4
+  - isPlayer: 0
+    spawnPos:
+      x: -17
+      z: 40
+    unitPrefa: {fileID: 8887939040951305984, guid: 1a81dbbd6ef62324491d9f58654ebe4b,
+      type: 3}
+    color: 1
+    manaRegen: 10
+    maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4

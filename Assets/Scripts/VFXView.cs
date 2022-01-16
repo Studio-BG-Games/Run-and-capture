@@ -6,6 +6,8 @@ namespace DefaultNamespace
     public class VFXView : MonoBehaviour
     {
         private ParticleSystem _system;
+        public Action OnPlayEnd;
+
         private void Start()
         {
             _system = GetComponent<ParticleSystem>();
@@ -14,15 +16,12 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            if (_system.isStopped)
+            if (_system != null && !_system.IsAlive())
             {
+                MusicController.Instance.RemoveAudioSource(gameObject);
+                OnPlayEnd?.Invoke();
                 Destroy(gameObject);
             }
-        }
-
-        private void OnDestroy()
-        {
-            MusicController.Instance.RemoveAudioSource(gameObject);
         }
     }
 }

@@ -4,14 +4,14 @@ namespace Chars
 {
     public class PlayerControlView : MonoBehaviour
     {
-        [SerializeField] private FloatingJoystick moveJoystick;
-        [SerializeField] private FloatingJoystick attackJoystick;
-        [SerializeField] private FloatingJoystick placeJoystick;
+        [SerializeField] private Joystick moveJoystick;
+        [SerializeField] private Joystick attackJoystick;
+        [SerializeField] private Joystick placeJoystick;
         
 
-        public FloatingJoystick MoveJoystick => moveJoystick;
-        public FloatingJoystick AttackJoystick => attackJoystick;
+        public Joystick MoveJoystick => moveJoystick;
+        public Joystick AttackJoystick => attackJoystick;
 
-        public FloatingJoystick PlaceJoystick => placeJoystick;
+        public Joystick PlaceJoystick => placeJoystick;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Chars;
 using Data;
 using DefaultNamespace;
@@ -9,7 +10,6 @@ using Items;
 using UnityEngine;
 using Weapons;
 using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 
 namespace Units
@@ -37,14 +37,28 @@ namespace Units
         private int _attackBonus;
         private int _defenceBonus;
 
+        public int AttackBonus => _attackBonus;
 
-        public bool IsBusy => _isBusy;
+        public int DefenceBonus => _defenceBonus;
+
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => _isBusy = value;
+        }
+
         public UnitView UnitView => _unitView;
         public bool IsAlive => _isAlive;
         public UnitColor Color => _data.color;
         public int InventoryCapacity => _data.inventoryCapacity;
         public Action<Item> OnItemPickUp;
-
+        public Action<Unit> OnDeath;
+        public BarCanvas BarCanvas => _barCanvas;
+        public GameObject Instance => _instance;
+        public UnitInfo Data => _data;
+        public int Mana => _mana;
+        public int Hp => _hp;
+        public List<Item> Inventory => _inventory;
         public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
             _weapon = weapon;
@@ -56,31 +70,33 @@ namespace Units
             _isCapturing = false;
         }
 
-        public void SetAttackBonus(int duration, int value)
+        public void SetUpBonus(float duration, int value, BonusType type)
         {
-            TimerHelper.Instance.StartTimer(StopAttackBonus, duration);
-            _weapon.SetModifiedDamage(value);
+            switch (type)
+            {
+                case BonusType.Attack:
+                    TimerHelper.Instance.StartTimer(() =>  _weapon.SetModifiedDamage(0), duration);
+                    _weapon.SetModifiedDamage(value);
+                    break;
+                case BonusType.Defence:
+                    TimerHelper.Instance.StartTimer(()=>  _defenceBonus = 0, duration);
+                    _defenceBonus = value;
+                    break;
+                default:
+                    break;
+            }
         }
-
-        private void StopAttackBonus()
-        {
-            _weapon.SetModifiedDamage(0);
-        }
-
-        public void SetDefenceBonus(int duration, int value)
-        {
-            TimerHelper.Instance.StartTimer(StopDefenceBonus, duration);
-            _defenceBonus = value;
-        }
-
-        private void StopDefenceBonus()
-        {
-            _defenceBonus = 0;
-        }
+        
+        
 
         public void Move(HexDirection direction)
         {
-            if (!_cell.GetNeighbor(direction) || _isBusy) return;
+            if (!_cell.GetNeighbor(direction) || _isBusy || _cell.GetNeighbor(direction).Color != UnitColor.GREY &&
+                HexManager.UnitCurrentCell[_cell.GetNeighbor(direction).Color].cell ==
+                _cell.GetNeighbor(direction)) return;
+
+            if (_data.isPlayer)
+                Debug.Log("Player");
             _unitView.StopHardCapture();
             if (_cell.GetNeighbor(direction).Color == _data.color)
             {
@@ -88,16 +104,14 @@ namespace Units
             }
             else if (_cell.GetNeighbor(direction).Color != UnitColor.GREY)
             {
+                if (_mana - _hexGrid.HexHardCaptureCost <= 0) return;
                 _isHardToCapture = true;
-                _unitView.RegenMana(_mana);
                 DoTransit(direction);
             }
 
             else if (_mana - _hexGrid.HexCaptureCost >= 0)
             {
-                _mana -= _hexGrid.HexCaptureCost;
-                _unitView.RegenMana(_mana);
-                UpdateBarCanvas();
+                if (_mana - _hexGrid.HexHardCaptureCost <= 0) return;
                 DoTransit(direction);
             }
         }
@@ -106,9 +120,8 @@ namespace Units
         {
             _isBusy = true;
             _isCapturing = _data.color != _cell.GetNeighbor(direction).Color;
-            var previousCell = _cell;
             _cell = _cell.GetNeighbor(direction);
-            PaintedController.UnitCurrentCell[_data.color] = (previousCell, _cell);
+            HexManager.UnitCurrentCell[_data.color] = (_cell, this);
             RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x,
                 (_cell.transform.position - _instance.transform.position).normalized.z));
             _animator.SetTrigger("Move");
@@ -118,6 +131,19 @@ namespace Units
 
         private void CaptureHex()
         {
+            if (_isHardToCapture)
+            {
+                _mana -= _hexGrid.HexHardCaptureCost;
+            }
+            else
+            {
+                _mana -= _hexGrid.HexCaptureCost;
+            }
+
+            _unitView.RegenMana(_mana);
+            UpdateBarCanvas();
+            _isBusy = false;
+            _isHardToCapture = false;
             _cell.PaintHex(_data.color);
         }
 
@@ -134,48 +160,46 @@ namespace Units
                     case "Attack":
                         _animLength.Attack = clip.length;
                         break;
+                    case "Dead":
+                        _animLength.Death = clip.length;
+                        break;
                     default:
                         break;
                 }
             }
         }
 
-        public void Spawn()
+        public void Spawn(HexCoordinates hexCoordinates)
         {
             if (!_isAlive)
             {
-                _cell = _hexGrid.GetCellFromCoord(_data.spawnPos);
+                _cell = _hexGrid.GetCellFromCoord(hexCoordinates);
                 _cell.PaintHex(_data.color);
                 _inventory = new List<Item>();
                 for (int i = 0; i < 6; i++)
                 {
                     var neigh = _cell.GetNeighbor((HexDirection)i);
                     neigh?.PaintHex(_data.color);
-
-                    for (int j = 0; j < 6; j++)
-                    {
-                        neigh?.GetNeighbor((HexDirection)j)?.PaintHex(_data.color);
-                    }
                 }
 
-                //
-                PaintedController.UnitCurrentCell.Add(_data.color, (null, _cell));
-                //
+                HexManager.UnitCurrentCell.Add(_data.color, (_cell, this));
 
                 _instance = Object.Instantiate(_data.unitPrefa, _cell.transform.parent);
                 _instance.transform.localPosition = _cell.transform.localPosition;
-                onPlayerSpawned?.Invoke(_instance);
+
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
                 _unitView = _instance.GetComponent<UnitView>();
-                _barCanvas = _unitView.BarCanvas.GetComponent<BarCanvas>();
+                _barCanvas = _unitView.BarCanvas;
                 _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex,
-                    this);
+                    this, _hexGrid.HardCaptureTime);
                 SetAnimLength();
                 MusicController.Instance.AddAudioSource(_instance);
                 _mana = _data.maxMana;
                 _hp = _data.maxHP;
                 SetUpActions();
+                _weapon.SetModifiedDamage(0);
+                onPlayerSpawned?.Invoke(_instance);
             }
         }
 
@@ -185,13 +209,13 @@ namespace Units
             UpdateBarCanvas();
         }
 
-        public bool PickUpItem(ItemView itemView)
+        public bool PickUpItem(Item item)
         {
             if (_inventory.Count < _data.inventoryCapacity)
             {
-                var item = itemView.PickUp(this);
+                item.PickUp(this);
                 _inventory.Add(item);
-                OnItemPickUp.Invoke(item);
+                OnItemPickUp?.Invoke(item);
                 return true;
             }
 
@@ -207,9 +231,9 @@ namespace Units
         {
             _isBusy = false;
             _animator.SetBool("isMoving", _isBusy);
+
             if (!_isCapturing)
             {
-                _isHardToCapture = false;
                 return;
             }
 
@@ -220,8 +244,6 @@ namespace Units
             else
             {
                 CaptureHex();
-                MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
-                    _cell.gameObject);
             }
 
             _isHardToCapture = false;
@@ -237,23 +259,11 @@ namespace Units
         {
             if (_direction.Equals(Vector2.zero))
             {
-                _direction = new Vector2(_unitView.transform.forward.x, _unitView.transform.forward.z);
+                _direction = new Vector2(_unitView.transform.forward.x, _unitView.transform.forward.z); //TODO автовыстрел
                 Aim(_direction);
             }
 
-            var ball = Object.Instantiate(_weapon.objectToThrow,
-                _instance.transform.forward + _instance.transform.position + new Vector3(0, 2),
-                _instance.transform.rotation);
-            MusicController.Instance.AddAudioSource(ball);
-            MusicController.Instance.PlayAudioClip(_weapon.shotSound, ball);
-            ball.AddComponent<WeaponView>().SetWeapon(_weapon);
-            ball.transform.DOMove(
-                    new Vector3(_direction.normalized.x,
-                        0, _direction.normalized.y) * _weapon.disnatce * HexGrid.HexDistance +
-                    _instance.transform.position + new Vector3(0, 2, 0),
-                    _weapon.speed)
-                .SetEase(Ease.Linear)
-                .OnComplete(() => Object.Destroy(ball));
+            _weapon.Fire(_instance.transform, _direction);
         }
 
         private void SetUpActions()
@@ -276,21 +286,26 @@ namespace Units
             float maxHp = _data.maxHP;
             float maxMana = _data.maxMana;
             _barCanvas.ManaBar.DOFillAmount(mana / maxMana, 0.5f).SetEase(Ease.InQuad);
-            //_barCanvas.ManaBar.value = 
-            //_unitView.RegenMana(10);
             _barCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
-        private void Death()
+        public void Death()
         {
             _unitView.OnStep -= MoveEnd;
             _unitView.OnAttackEnd -= AttackEnd;
             _unitView.OnAttack -= Attacking;
             _unitView.OnHit -= Damage;
             _isAlive = false;
+            HexManager.UnitCurrentCell.Remove(Color);
             _animator.SetTrigger("Death");
-            MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, _instance);
+            var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[Color].VFXDeathPrefab,
+                _instance.transform.position);
+            TimerHelper.Instance.StartTimer(() => Object.Destroy(_instance), _animLength.Death);
+            OnDeath?.Invoke(this);
+            MusicController.Instance.AddAudioSource(vfx);
+            MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, vfx);
             MusicController.Instance.RemoveAudioSource(_instance);
+            HexManager.PaintHexList(HexManager.CellByColor[Color].ToList(), UnitColor.GREY);
         }
 
 

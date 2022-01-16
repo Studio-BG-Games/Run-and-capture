@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Timers;
+using AI;
 using CamControl;
 using Chars;
 using DefaultNamespace;
+using DefaultNamespace.AI;
+using DG.Tweening;
 using GameUI;
 using HexFiled;
 using Items;
@@ -20,16 +23,16 @@ namespace Controller
         public GameInit(Controllers controllers, Data.Data data)
         {
 
-            new GameObject("Timer").AddComponent<TimerHelper>();
-            
+            AIManager aiManager = new AIManager();
             var hexGrid = new HexGrid(data.FieldData);
             new MusicController();
+            new VFXController(data.VFXData);
             MusicController.Instance.SetMusicData(data.MusicData);
             controllers.Add(hexGrid);
             
             data.WeaponsData.WeaponsList.ForEach(x => x.SetModifiedDamage(0));
             
-            ItemFabric itemFabric = new ItemFabric(data.ItemsData, SetUpItems());
+            ItemFabric itemFabric = new ItemFabric(data.ItemsData);
             controllers.Add(itemFabric);
 
             UIController uiController = new UIController(data.UIData);
@@ -52,6 +55,8 @@ namespace Controller
                     player.onPlayerSpawned += cameraControl.InitCameraControl;
                     player.onPlayerSpawned += MusicController.Instance.AddAudioListener;
                     units.Add(player);
+
+                    player.OnDeath += uiController.AdsMob.ShowCanvas;
                 }
                 else
                 {
@@ -60,10 +65,13 @@ namespace Controller
                     var enemyController = new EnemyController(unit, enemy);
                     controllers.Add(enemyController);
                     units.Add(enemy);
+                    AIAgent agent = new AIAgent(unit, enemy, aiManager);
+                    controllers.Add(agent);
+                    enemy.OnDeath += x => {controllers.Remove(agent);};
                 }
             });
 
-            var unitFactory = new UnitFactory(units);
+            var unitFactory = new UnitFactory(units, hexGrid);
 
             hexGrid.OnGridLoaded += unitFactory.Spawn;
 
@@ -72,11 +80,12 @@ namespace Controller
             hexGrid.OnHexPainted += paintedController.SetHexColors;
 
             hexGrid.OnHexPainted += itemFabric.UpdateCellToOpenList;
+            hexGrid.OnHexPainted += paintedController.CheckDeathOrDestroy;
         }
 
         private List<Type> SetUpItems()
         {
-            return new List<Type>() { typeof(Tower), typeof(AttackBonus), typeof(DefenceBonus) };
+            return new List<Type>() { typeof(Building), typeof(Bonus)};
         }
     }
 }
