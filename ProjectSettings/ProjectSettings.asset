@@ -616,7 +616,8 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    7: AH_SCRIPT_ALLOW
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
