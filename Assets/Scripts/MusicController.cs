@@ -16,7 +16,7 @@ public class MusicController
         Instance ??= this;
         _sources = new Dictionary<GameObject, AudioSource>();
     }
-        
+
     public void SetMusicData(MusicData data)
     {
         _data = data;
@@ -31,9 +31,11 @@ public class MusicController
 
     public void PlayRandomClip(List<AudioClip> clips, GameObject source)
     {
-        _sources[source].clip = clips[Random.Range(0, clips.Count - 1)];
-        _sources[source].volume = _data.Settings.sfxVolume;
-        _sources[source].Play();
+        if (!_sources.TryGetValue(source, out var value)) return;
+        
+        value.clip = clips[Random.Range(0, clips.Count - 1)];
+        value.volume = _data.Settings.sfxVolume;
+        value.Play();
     }
 
     public void AddAudioListener(GameObject gameObject)
@@ -49,7 +51,7 @@ public class MusicController
 
     public void RemoveAudioSource(GameObject gameObject)
     {
-        if(_sources.ContainsKey(gameObject))
+        if (_sources.ContainsKey(gameObject))
             _sources.Remove(gameObject);
     }
 }

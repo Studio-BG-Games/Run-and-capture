@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using MainMenu;
-using MK.Toon;
 using UnityEngine;
 using AudioSettings = MainMenu.AudioSettings;
 

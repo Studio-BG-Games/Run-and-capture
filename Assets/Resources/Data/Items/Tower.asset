@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23a091c5733400f8f0092a4c0f33c6e, type: 3}
   m_Name: Tower
   m_EditorClassIdentifier: 
-  iconPrefab: {fileID: 3197816592181874056, guid: f0b68f1afd77d7741a0fe8ff5ba25a77,
-    type: 3}
+  iconPrefab: {fileID: 3197816592181874056, guid: 2704c4f795b0d7748a3e3fa53be4d893, type: 3}
   icon: {fileID: 21300000, guid: b7771b47a72ca7947bf18f664e53a983, type: 3}
-  buildingPrefab: {fileID: 3496656575117217171, guid: 38edd53c7f09f41409153241c78268f9,
-    type: 3}
+  buildingPrefab: {fileID: 3496656575117217171, guid: 38edd53c7f09f41409153241c78268f9, type: 3}

@@ -16,9 +16,9 @@ namespace Chars
     public class PlayerControl : IFixedExecute, IExecute
     {
         private Unit _unit;
-        private FloatingJoystick _moveJoystick;
-        private FloatingJoystick _attackJoystick;
-        private FloatingJoystick _placeJoystick;
+        private Joystick _moveJoystick;
+        private Joystick _attackJoystick;
+        private Joystick _placeJoystick;
         private Camera _camera;
         private Vector2 _attackDircetion;
         private HexDirection _placeDirection;
@@ -38,13 +38,14 @@ namespace Chars
             _camera = Camera.main;
             
             _attackJoystick.OnTouchUp += DoAttack;
-            _attackJoystick.OnTouchDown += AimCanvas;
+            _attackJoystick.OnDrug += AimCanvas;
             
             inventoryView.SetUpUI(unit.InventoryCapacity);
             _unit.OnItemPickUp += PickUp;
             _inventoryView = inventoryView;
             inventoryView.OnBuildingInvoked += AimPlaceItem;
-            _placeJoystick.OnTouchDown += AimCanvas;
+            
+            _placeJoystick.OnDrug += PlaceItemAim;
             _placeJoystick.OnTouchUp += PlaceItem;
 
         }
@@ -76,10 +77,21 @@ namespace Chars
             _unit.StartAttack();
         }
         
-        private void AimCanvas()
+        private void AimCanvas(Vector2 attackDir)
         {
             if (!_unit.IsBusy)
+            {
                 _unit.UnitView.AimCanvas.SetActive(true);
+                _unit.Aim(attackDir);
+            }
+        }
+
+        private void PlaceItemAim(Vector2 placeDir)
+        {
+            if (!_unit.IsBusy)
+            {
+                _cellToPlace = _unit.PlaceItemAim(DirectionHelper.VectorToDirection(placeDir.normalized));
+            }
         }
 
         public void FixedExecute()
@@ -90,18 +102,7 @@ namespace Chars
                 _placeJoystick.gameObject.SetActive(false);
                 _unit.Move(DirectionHelper.VectorToDirection(_moveJoystick.Direction.normalized));
             }
-
-            if (!_unit.IsBusy && _attackJoystick.isPressed)
-            {
-                _attackDircetion = _attackJoystick.Direction.normalized;
-                _unit.Aim(_attackDircetion);
-            }
-
-            if (!_unit.IsBusy && _placeJoystick.isPressed)
-            {
-                _placeDirection = DirectionHelper.VectorToDirection(_placeJoystick.Direction.normalized);
-                _cellToPlace = _unit.PlaceItemAim(_placeDirection);
-            }
+            
         }
 
        

@@ -2,7 +2,7 @@ using HexFiled;
 using TMPro;
 using UnityEngine;
 
-#if UNITY_EDITOR
+
 
 
 public class Score : MonoBehaviour
@@ -27,4 +27,3 @@ public class Score : MonoBehaviour
         _text.text += sum;
     }
 }
-#endif

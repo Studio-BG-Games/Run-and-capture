@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -34,17 +32,22 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     [SerializeField] protected RectTransform background = null;
     [SerializeField] private RectTransform handle = null;
-    [HideInInspector] public Action<Vector3> OnPadDrag; 
     private RectTransform baseRect = null;
 
+    public Action OnTouchUp;
+    public Action OnTouchDown;
+    public Action<Vector2> OnDrug;
+    
     private Canvas canvas;
     private Camera cam;
+    private bool _isPressed;
+
+    public bool IsPressed => _isPressed;
 
     private Vector2 input = Vector2.zero;
 
     protected virtual void Start()
     {
-        //IsTouchedUP = true;
         HandleRange = handleRange;
         DeadZone = deadZone;
         baseRect = GetComponent<RectTransform>();
@@ -58,11 +61,14 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         handle.anchorMax = center;
         handle.pivot = center;
         handle.anchoredPosition = Vector2.zero;
+        _isPressed = false;
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
         OnDrag(eventData);
+        OnTouchDown?.Invoke();
+        _isPressed = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -77,7 +83,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         FormatInput();
         HandleInput(input.magnitude, input.normalized, radius, cam);
         handle.anchoredPosition = input * radius * handleRange;
-        OnPadDrag?.Invoke(Direction);
+        OnDrug?.Invoke(Direction);
     }
 
     protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
@@ -136,8 +142,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public virtual void OnPointerUp(PointerEventData eventData)
     {
         input = Vector2.zero;
-        handle.anchoredPosition = Vector2.zero;       
-
+        handle.anchoredPosition = Vector2.zero;
+        OnTouchUp?.Invoke();
+        _isPressed = false;
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)

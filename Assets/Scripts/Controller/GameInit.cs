@@ -23,10 +23,10 @@ namespace Controller
         public GameInit(Controllers controllers, Data.Data data)
         {
 
-            AIManager aiManager = new AIManager();
+            new AIManager(data.AIData);
             var hexGrid = new HexGrid(data.FieldData);
             new MusicController();
-            new VFXController(data.VFXData);
+            new VFXController();
             MusicController.Instance.SetMusicData(data.MusicData);
             controllers.Add(hexGrid);
             
@@ -65,7 +65,7 @@ namespace Controller
                     var enemyController = new EnemyController(unit, enemy);
                     controllers.Add(enemyController);
                     units.Add(enemy);
-                    AIAgent agent = new AIAgent(unit, enemy, aiManager);
+                    AIAgent agent = new AIAgent(unit, enemy);
                     controllers.Add(agent);
                     enemy.OnDeath += x => {controllers.Remove(agent);};
                 }

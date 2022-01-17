@@ -19,4 +19,5 @@ MonoBehaviour:
   uiDataPath: UIData
   musicDataPath: MusicData
   itemDataPath: ItemData
+  aiDataPath: AIData
   chosenWeaponDataPath: ChosenWeapon.json
