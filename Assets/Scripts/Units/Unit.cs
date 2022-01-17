@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AI;
 using Chars;
 using Data;
 using DefaultNamespace;
@@ -59,6 +60,8 @@ namespace Units
         public int Mana => _mana;
         public int Hp => _hp;
         public List<Item> Inventory => _inventory;
+        public Weapon Weapon => _weapon;
+
         public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
             _weapon = weapon;
@@ -75,26 +78,25 @@ namespace Units
             switch (type)
             {
                 case BonusType.Attack:
-                    TimerHelper.Instance.StartTimer(() =>  _weapon.SetModifiedDamage(0), duration);
+                    TimerHelper.Instance.StartTimer(() => _weapon.SetModifiedDamage(0), duration);
                     _weapon.SetModifiedDamage(value);
                     break;
                 case BonusType.Defence:
-                    TimerHelper.Instance.StartTimer(()=>  _defenceBonus = 0, duration);
+                    TimerHelper.Instance.StartTimer(() => _defenceBonus = 0, duration);
                     _defenceBonus = value;
                     break;
                 default:
                     break;
             }
         }
-        
-        
+
 
         public void Move(HexDirection direction)
         {
             if (!_cell.GetNeighbor(direction) || _isBusy || _cell.GetNeighbor(direction).Color != UnitColor.GREY &&
                 (!HexManager.UnitCurrentCell.TryGetValue(_cell.GetNeighbor(direction).Color, out var value)
                  || value.cell == _cell.GetNeighbor(direction))) return;
-            
+
             _unitView.StopHardCapture();
             if (_cell.GetNeighbor(direction).Color == _data.color)
             {
@@ -255,11 +257,8 @@ namespace Units
 
         private void Attacking()
         {
-            if (_direction.Equals(Vector2.zero))
-            {
-                _direction = new Vector2(_unitView.transform.forward.x, _unitView.transform.forward.z); //TODO автовыстрел
-                Aim(_direction);
-            }
+            Aim(_direction);
+
 
             _weapon.Fire(_instance.transform, _direction);
         }
@@ -312,9 +311,22 @@ namespace Units
             if (!_isBusy && _unitView.Shoot())
             {
                 _isBusy = true;
-                if (!_direction.Equals(Vector2.zero))
-                    RotateUnit(_direction);
-
+                if (_direction.Equals(Vector2.zero))
+                {
+                    var enemy = AIManager.GetNearestUnit(_weapon.disnatce, this);
+                    if (enemy == null)
+                        _direction =
+                            new Vector2(_unitView.transform.forward.x, _unitView.transform.forward.z);
+                    else
+                    {
+                        var dir = DirectionHelper.DirectionTo(_instance.transform.position,
+                            enemy.Instance.transform.position);
+                        _direction = new Vector2(dir.x, dir.z);
+                        RotateUnit(_direction);
+                    
+                    }
+                }
+                
                 _animator.SetTrigger("Attack");
             }
         }
@@ -350,8 +362,10 @@ namespace Units
             {
                 _defenceBonus -= dmg;
             }
+           
             else
             {
+                SetUpBonus(0,0, BonusType.Defence);
                 _hp -= dmg;
             }
 

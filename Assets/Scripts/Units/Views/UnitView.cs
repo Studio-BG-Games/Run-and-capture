@@ -42,6 +42,7 @@ public class UnitView : MonoBehaviour
     public BarCanvas BarCanvas => barCanvas;
     public GameObject AimCanvas => aimCanvas;
     public UnitColor Color => _unit.Color;
+    public int AvailableShots => _shootUIStack.Count;
 
     public void SetUp(Stack<ShotUIView> shots, Weapon weapon, Action regenMana, int manaRegen, Action captureHex,
         Unit unit, float hardCaptureTime)

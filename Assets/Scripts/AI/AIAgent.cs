@@ -13,26 +13,25 @@ namespace DefaultNamespace.AI
 {
     public class AIAgent : IFixedExecute, IExecute
     {
-        private Unit _enemy;
+        private Unit _unit;
         private Camera _camera;
-        private AIManager _manager;
         private BotState curentState;
         public Queue<HexDirection> currentPath;
         public Action<AIAgent> OnAgentInited;
         private Vector2 _attackDirection;
 
-        public Unit Enemy => _enemy;
+        public Unit Unit => _unit;
 
         public BotState CurentState => curentState;
 
-        public AIAgent(UnitInfo enemyInfo, Unit enemy, AIManager manager)
+        public AIAgent(UnitInfo enemyInfo, Unit unit)
         {
             currentPath = new Queue<HexDirection>();
-            _enemy = enemy;
+            _unit = unit;
             _camera = Camera.main;
-            _enemy.OnDeath += AgentDeath;
-            enemy.onPlayerSpawned += InitAgent;
-            _manager = manager;
+            _unit.OnDeath += AgentDeath;
+            unit.onPlayerSpawned += InitAgent;
+            
         }
 
         
@@ -44,7 +43,7 @@ namespace DefaultNamespace.AI
 
         private void InitAgent(GameObject unit)
         {
-            _manager.AddAgent(this);
+            AIManager.Instance.AddAgent(this);
             HexManager.agents.Add(unit, this);
             OnAgentInited?.Invoke(this);
         }
@@ -57,33 +56,33 @@ namespace DefaultNamespace.AI
         
         public void FixedExecute()
         {
-            if (curentState == BotState.Attack && !_enemy.IsBusy)
+            if (curentState == BotState.Attack && !_unit.IsBusy)
             {
-                _enemy.Aim(_attackDirection);
-                _enemy.StartAttack();
-                curentState = _manager.GetNewBehaviour(this);
+                _unit.Aim(_attackDirection);
+                _unit.StartAttack();
+                curentState = AIManager.Instance.GetNewBehaviour(this);
             }
-            if (currentPath.Count > 0 && !_enemy.IsBusy)
+            if (currentPath.Count > 0 && !_unit.IsBusy)
             {
                 var dir = currentPath.Dequeue();
-                while (HexManager.UnitCurrentCell[_enemy.Color].cell.GetNeighbor(dir) == null)
+                while (HexManager.UnitCurrentCell[_unit.Color].cell.GetNeighbor(dir) == null)
                 {
                     dir = dir.PlusSixtyDeg();
                 }
-                _enemy.Move(dir);
+                _unit.Move(dir);
             }
-            if(currentPath.Count == 0 && !_enemy.IsBusy)
+            if(currentPath.Count == 0 && !_unit.IsBusy)
             {
-                curentState = _manager.GetNewBehaviour(this);
+                curentState = AIManager.Instance.GetNewBehaviour(this);
             }
         }
 
         public void Execute()
         {
-            if (_enemy.UnitView != null)
+            if (_unit.UnitView != null)
             {
-                _enemy.UnitView.BarCanvas.transform.DOLookAt(
-                    _enemy.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back, 0f,
+                _unit.UnitView.BarCanvas.transform.DOLookAt(
+                    _unit.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back, 0f,
                     up: _camera.transform.rotation * Vector3.up);
             }
         }
