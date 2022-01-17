@@ -15,7 +15,7 @@ namespace AI
             {
                 return;
             }
-            while (foundPathIter < 3 && currentTile == null)
+            while (foundPathIter < 3 && currentTile != null)
             {
                 
                 if (currentTile.coordinates.Z == endTile.coordinates.Z)

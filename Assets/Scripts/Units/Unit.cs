@@ -92,11 +92,9 @@ namespace Units
         public void Move(HexDirection direction)
         {
             if (!_cell.GetNeighbor(direction) || _isBusy || _cell.GetNeighbor(direction).Color != UnitColor.GREY &&
-                HexManager.UnitCurrentCell[_cell.GetNeighbor(direction).Color].cell ==
-                _cell.GetNeighbor(direction)) return;
-
-            if (_data.isPlayer)
-                Debug.Log("Player");
+                (!HexManager.UnitCurrentCell.TryGetValue(_cell.GetNeighbor(direction).Color, out var value)
+                 || value.cell == _cell.GetNeighbor(direction))) return;
+            
             _unitView.StopHardCapture();
             if (_cell.GetNeighbor(direction).Color == _data.color)
             {
