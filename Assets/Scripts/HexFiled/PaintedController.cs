@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Units;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace HexFiled
@@ -28,8 +29,7 @@ namespace HexFiled
             unitsToDeath.ForEach(x => x.Death());
             if (cell.Building != null && cell.Building.Color != cell.Color)
             {
-              
-                
+                Object.Destroy(cell.Building);
             }
         }
         public void SetHexColors(HexCell cell)

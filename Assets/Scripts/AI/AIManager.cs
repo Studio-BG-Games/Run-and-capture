@@ -1,24 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using Controller;
 using Data;
 using DefaultNamespace;
 using DefaultNamespace.AI;
 using HexFiled;
 using Items;
-using Runtime.Controller;
 using Units;
 using UnityEngine;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace AI
 {
     public class AIManager
     {
-        private List<AIAgent> _agents;
         private int _triesToCalculatePath = 0;
         private int _maxTriesToCalculatePath = 5;
         private AIData _data;
@@ -35,7 +30,6 @@ namespace AI
 
         public AIManager(AIData data)
         {
-            _agents = new List<AIAgent>();
             _data = data;
             Instance = this;
             HexManager.agents = new Dictionary<GameObject, AIAgent>();
@@ -43,14 +37,11 @@ namespace AI
 
         public void AddAgent(AIAgent agent)
         {
-            _agents.Add(agent);
-
             agent.OnAgentInited += InitAI;
         }
 
         public void RemoveAgent(AIAgent agent)
         {
-            _agents.Remove(agent);
             agent.OnAgentInited -= InitAI;
         }
 
@@ -73,13 +64,31 @@ namespace AI
 
         public static Unit GetNearestUnit(int cellDist, Unit agent)
         {
-            return (from unit in HexManager.UnitCurrentCell
-                where unit.Key != agent.Color &&
-                      Vector3.Distance(unit.Value.unit.Instance.transform.position,
-                          agent.Instance.transform.position) <= cellDist * HexGrid.HexDistance
-                select unit.Value.unit).FirstOrDefault();
+            List<(float dist, Unit unit)> res = new List<(float, Unit)>();
+            try
+            {
+                foreach (var color in (UnitColor[])Enum.GetValues(typeof(UnitColor)))
+                {
+                    if (HexManager.UnitCurrentCell.ContainsKey(color) &&
+                         HexManager.UnitCurrentCell[color] != (null, null) &&
+                        Vector3.Distance(HexManager.UnitCurrentCell[color].unit.Instance.transform.position,
+                            agent.Instance.transform.position) <= cellDist * HexGrid.HexDistance
+                        && HexManager.UnitCurrentCell[color].unit.Color != agent.Color)
+                    {
+                        res.Add((Vector3.Distance(HexManager.UnitCurrentCell[color].unit.Instance.transform.position,
+                            agent.Instance.transform.position), HexManager.UnitCurrentCell[color].unit));
+                    }
+                }
+
+                return res.Count > 0 ? res.OrderBy(x => x.Item1).First().unit : null;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message + " " + agent.Color + " ");
+                return null;
+            }
         }
-        
+
 
         public BotState GetNewBehaviour(AIAgent agent)
         {

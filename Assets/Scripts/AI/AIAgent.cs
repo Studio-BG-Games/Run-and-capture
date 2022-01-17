@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace DefaultNamespace.AI
 {
-    public class AIAgent : IFixedExecute, IExecute
+    public class AIAgent : IFixedExecute
     {
         private Unit _unit;
         private Camera _camera;
@@ -77,14 +77,6 @@ namespace DefaultNamespace.AI
             }
         }
 
-        public void Execute()
-        {
-            if (_unit.UnitView != null)
-            {
-                _unit.UnitView.BarCanvas.transform.DOLookAt(
-                    _unit.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back, 0f,
-                    up: _camera.transform.rotation * Vector3.up);
-            }
-        }
+       
     }
 }

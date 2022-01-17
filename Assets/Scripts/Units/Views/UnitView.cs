@@ -97,15 +97,11 @@ public class UnitView : MonoBehaviour
         return true;
     }
 
-    public void RegenMana(int mana)
+    public void RegenMana()
     {
-        if (_previosRegen != null)
-        {
-            StopCoroutine(_previosRegen);
-        }
-
-        _mana = mana;
-        _previosRegen = StartCoroutine(Regen());
+       
+        _mana = _unit.Mana;
+        StartCoroutine(Regen());
     }
 
     private void Step()
@@ -176,12 +172,12 @@ public class UnitView : MonoBehaviour
 
     private IEnumerator Regen()
     {
-        if (_mana >= 100)
+        if (_mana >= _unit.Data.maxMana)
         {
             yield break;
         }
         
-        while (_mana < 100)
+        while (_mana < _unit.Data.maxHP)
         {
             yield return new WaitForSeconds(1f);
             _mana += _manaRegen;

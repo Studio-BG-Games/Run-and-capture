@@ -22,18 +22,17 @@ namespace Controller
     {
         public GameInit(Controllers controllers, Data.Data data)
         {
-
             new AIManager(data.AIData);
             var hexGrid = new HexGrid(data.FieldData);
             new MusicController();
             new VFXController();
             MusicController.Instance.SetMusicData(data.MusicData);
             controllers.Add(hexGrid);
-            
+
             data.WeaponsData.WeaponsList.ForEach(x => x.SetModifiedDamage(0));
-            
+
             ItemFabric itemFabric = new ItemFabric(data.ItemsData);
-            controllers.Add(itemFabric);
+            hexGrid.OnGridLoaded += () => controllers.Add(itemFabric);
 
             UIController uiController = new UIController(data.UIData);
             uiController.Spawn(); //TODO при паузе Dotween ругается
@@ -45,6 +44,7 @@ namespace Controller
                 {
                     var weapon = JsonUtility.FromJson<Weapon>(data.ChosenWeapon);
                     weapon.SetModifiedDamage(0);
+
                     player = new Unit(unit, weapon, hexGrid);
                     PlayerControl playerControl = new PlayerControl(player, uiController.PlayerControlView,
                         uiController.PlayerInventoryView);
@@ -52,8 +52,12 @@ namespace Controller
                     CameraControl cameraControl =
                         new CameraControl(Camera.main, data.CameraData);
                     controllers.Add(cameraControl);
+
+                    player.onPlayerSpawned += p => controllers.Add(playerControl);
+
+                    player.OnDeath += unit1 => controllers.Remove(playerControl);
+
                     player.onPlayerSpawned += cameraControl.InitCameraControl;
-                    player.onPlayerSpawned += MusicController.Instance.AddAudioListener;
                     units.Add(player);
 
                     player.OnDeath += uiController.AdsMob.ShowCanvas;
@@ -66,8 +70,8 @@ namespace Controller
                     controllers.Add(enemyController);
                     units.Add(enemy);
                     AIAgent agent = new AIAgent(unit, enemy);
-                    controllers.Add(agent);
-                    enemy.OnDeath += x => {controllers.Remove(agent);};
+                    //controllers.Add(agent);
+                    enemy.OnDeath += x => { controllers.Remove(agent); };
                 }
             });
 
@@ -85,7 +89,7 @@ namespace Controller
 
         private List<Type> SetUpItems()
         {
-            return new List<Type>() { typeof(Building), typeof(Bonus)};
+            return new List<Type>() { typeof(Building), typeof(Bonus) };
         }
     }
 }

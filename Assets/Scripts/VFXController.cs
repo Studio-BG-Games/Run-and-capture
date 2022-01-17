@@ -11,12 +11,12 @@ namespace DefaultNamespace
             get => _instance;
             private set => _instance = value;
         }
-
-       
+        
 
         public VFXController()
         {
             Instance ??= this;
+            
         }
 
         public GameObject PlayEffect(GameObject effect, Vector3 pos)

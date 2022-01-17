@@ -8,5 +8,10 @@ namespace DefaultNamespace
         {
            return Object.Instantiate(gameObject, pos, Quaternion.identity);
         }
+        
+        public static GameObject Spawn(GameObject gameObject, Vector3 pos, GameObject parrant)
+        {
+            return Object.Instantiate(gameObject, pos, Quaternion.identity, parrant.transform);
+        }
     }
 }

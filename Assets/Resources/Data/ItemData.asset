@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - item: {fileID: 11400000, guid: e7adbedb55c5db341a823370b696f709, type: 2}
-    _spawnChance: 0.681
+    _spawnChance: 0.486
   - item: {fileID: 11400000, guid: 62849ddbcd32e834887aac5eb3d98db0, type: 2}
-    _spawnChance: 0.873
+    _spawnChance: 0.766
   - item: {fileID: 11400000, guid: ef628c3158b0ea34bb919ca105507009, type: 2}
-    _spawnChance: 0.767
+    _spawnChance: 0.918
   - item: {fileID: 0}
     _spawnChance: 0
   fromTimeSpawn: 2.93

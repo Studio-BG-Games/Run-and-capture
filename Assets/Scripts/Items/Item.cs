@@ -1,6 +1,7 @@
 ﻿using System;
 using Data;
 using DefaultNamespace;
+using DG.Tweening;
 using HexFiled;
 using Units;
 using UnityEngine;
@@ -20,18 +21,20 @@ namespace Items
         protected Unit Unit;
         protected Action OnItemUsed;
 
+        
         public UnitColor Color => Unit.Color;
 
-        public GameObject Spawn(HexCell cell)
+        public GameObject Spawn(HexCell cell, GameObject parrant)
         {
-            var obj = SpawnHelper.Spawn(iconPrefab, cell.transform.position + new Vector3(0, 1, 0));
-            obj.AddComponent<ItemView>().SetUp(this);
-            obj.AddComponent<CapsuleCollider>().isTrigger = true;
-            return obj;
+            _instance = SpawnHelper.Spawn(iconPrefab, cell.transform.position + new Vector3(0, 1, 0), parrant);
+            _instance.AddComponent<ItemView>().SetUp(this);
+            _instance.AddComponent<CapsuleCollider>().isTrigger = true;
+            return _instance;
         }
 
         public void PickUp(Unit unit)
         {
+            
             Unit = unit;
             
         }

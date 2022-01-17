@@ -15,28 +15,36 @@ MonoBehaviour:
   _weapons:
   - name: StandartAttac
     icon: {fileID: 3777131139682951229, guid: e85f2abe991b09140ac9b67cf8cb24a1, type: 3}
-    objectToThrow: {fileID: 4746165193704193263, guid: 4e7523811a052fd46acf941fc69c8c98,
-      type: 3}
-    VFXGameObject: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889,
-      type: 3}
+    objectToThrow: {fileID: 4746165193704193263, guid: 4e7523811a052fd46acf941fc69c8c98, type: 3}
+    VFXGameObject: {fileID: 2957420090356197408, guid: 5d1244f7b80cadd428a70173a01ce889, type: 3}
     modifiedDamage: 0
-    damage: 10
+    damage: 30
     speed: 1
-    disnatce: 5
+    disnatce: 7
     reloadTime: 3
     shots: 3
     shotSound: {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
     hitSound: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
   - name: Laser
     icon: {fileID: 3777131139682951229, guid: dcb79c5472cbd5f4eb050a4acc4b197e, type: 3}
-    objectToThrow: {fileID: 7219588875883387333, guid: ab214974cd498df42867306700ba5fd2,
-      type: 3}
-    VFXGameObject: {fileID: 8715260329460421181, guid: e0388f43a34de79458c79763de903ffb,
-      type: 3}
+    objectToThrow: {fileID: 7219588875883387333, guid: ab214974cd498df42867306700ba5fd2, type: 3}
+    VFXGameObject: {fileID: 8715260329460421181, guid: e0388f43a34de79458c79763de903ffb, type: 3}
     modifiedDamage: 0
     damage: 30
     speed: 0.5
-    disnatce: 3
+    disnatce: 5
+    reloadTime: 3
+    shots: 5
+    shotSound: {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}
+    hitSound: {fileID: 8300000, guid: 6c42231c18643dc4d9d8f8d15bc4735b, type: 3}
+  - name: Laser
+    icon: {fileID: 3777131139682951229, guid: dcb79c5472cbd5f4eb050a4acc4b197e, type: 3}
+    objectToThrow: {fileID: 7219588875883387333, guid: ab214974cd498df42867306700ba5fd2, type: 3}
+    VFXGameObject: {fileID: 8715260329460421181, guid: e0388f43a34de79458c79763de903ffb, type: 3}
+    modifiedDamage: 0
+    damage: 30
+    speed: 0.5
+    disnatce: 5
     reloadTime: 3
     shots: 5
     shotSound: {fileID: 8300000, guid: 9ea918c6c23577f4e885a8490d2f2046, type: 3}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Data;
 using Runtime.Controller;
 using TMPro;
@@ -48,12 +49,9 @@ namespace HexFiled
 
         public HexCell GetCellFromCoord(HexCoordinates coordinates)
         {
-            var i = 0;
-            while (!_cells[i++].coordinates.Equals(coordinates))
-            {
-            }
 
-            return _cells[i - 1];
+            return _cells.First(cell => cell.coordinates.Equals(coordinates));
+             
         }
 
 
