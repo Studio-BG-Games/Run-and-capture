@@ -13,7 +13,7 @@ namespace Items
         
         public void Invoke(Action action)
         {
-            Unit.UseItem(this);
+            
             OnItemUsed += action;
         }
 

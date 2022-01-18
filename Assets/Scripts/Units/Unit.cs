@@ -96,7 +96,7 @@ namespace Units
         public void Move(HexDirection direction)
         {
             if (_cell.GetNeighbor(direction) == null || _isBusy ||
-                (_cell.GetNeighbor(direction).Color != Color 
+                (_cell.GetNeighbor(direction).Color != Color
                  && HexManager.UnitCurrentCell.TryGetValue(_cell.GetNeighbor(direction).Color, out var value)
                  && value.cell.coordinates.Equals(_cell.GetNeighbor(direction).coordinates))) return;
 
@@ -124,8 +124,8 @@ namespace Units
         {
             _isBusy = true;
             _isCapturing = _data.color != _cell.GetNeighbor(direction).Color;
-            HexManager.UnitCurrentCell[_data.color] = (_cell, this);
             _cell = _cell.GetNeighbor(direction);
+            HexManager.UnitCurrentCell[_data.color] = (_cell, this);
             RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x,
                 (_cell.transform.position - _instance.transform.position).normalized.z));
             _animator.SetTrigger("Move");
@@ -211,10 +211,7 @@ namespace Units
 
         private void RegenMana()
         {
-            if (_mana + _data.manaRegen > _data.maxMana)
-                _mana = _data.maxMana;
-            else
-                _mana += _data.manaRegen;
+            _mana += _data.manaRegen;
             UpdateBarCanvas();
         }
 
@@ -316,8 +313,6 @@ namespace Units
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, vfx);
             MusicController.Instance.RemoveAudioSource(_instance);
-            HexManager.CellByColor[Color].ToList().ForEach(cell => cell.PaintHex(UnitColor.GREY));
-            HexManager.CellByColor.Remove(Color);
         }
 
 

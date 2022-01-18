@@ -1,0 +1,1 @@
+{"name":"StandartAttac","icon":{"instanceID":28808},"objectToThrow":{"instanceID":21604},"VFXGameObject":{"instanceID":21378},"modifiedDamage":0,"damage":10,"speed":1.0,"disnatce":5,"reloadTime":3.0,"shots":3,"shotSound":{"instanceID":18618},"hitSound":{"instanceID":19910}}

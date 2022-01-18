@@ -18,6 +18,15 @@ namespace HexFiled
             HexManager.UnitCurrentCell = new Dictionary<UnitColor, (HexCell cell, Unit unit)>();
         }
 
+        public void PaintOnDeath(Unit unit)
+        {
+            for (var i = 0; i < HexManager.CellByColor[unit.Color].Count; i++)
+            {
+                HexManager.CellByColor[unit.Color][i].PaintHex(UnitColor.GREY);
+            }
+
+            HexManager.CellByColor.Remove(unit.Color);
+        }
         public void CheckDeathOrDestroy(HexCell cell)
         {
             List<Unit> unitsToDeath = new List<Unit>();

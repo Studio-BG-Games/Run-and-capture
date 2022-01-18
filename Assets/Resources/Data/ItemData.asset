@@ -19,7 +19,7 @@ MonoBehaviour:
     _spawnChance: 0.766
   - item: {fileID: 11400000, guid: ef628c3158b0ea34bb919ca105507009, type: 2}
     _spawnChance: 0.918
-  - item: {fileID: 0}
-    _spawnChance: 0
+  - item: {fileID: 11400000, guid: ef628c3158b0ea34bb919ca105507009, type: 2}
+    _spawnChance: 0.918
   fromTimeSpawn: 2.93
   toTimeSpawn: 10

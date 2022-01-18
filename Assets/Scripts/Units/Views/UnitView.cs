@@ -139,6 +139,11 @@ public class UnitView : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+       
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         ItemView itemView = other.GetComponent<ItemView>();
 
         if (itemView != null && _unit.PickUpItem(itemView.Item))
@@ -177,7 +182,7 @@ public class UnitView : MonoBehaviour
             yield break;
         }
         
-        while (_mana < _unit.Data.maxHP)
+        while (_mana < _unit.Data.maxMana)
         {
             yield return new WaitForSeconds(1f);
             _mana += _manaRegen;

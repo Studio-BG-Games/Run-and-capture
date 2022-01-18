@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Timers;
+﻿using System.Collections.Generic;
 using AI;
 using CamControl;
 using Chars;
 using DefaultNamespace;
 using DefaultNamespace.AI;
-using DG.Tweening;
 using GameUI;
 using HexFiled;
 using Items;
 using Units;
 using UnityEngine;
 using Weapons;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Controller
@@ -28,6 +24,7 @@ namespace Controller
             new VFXController();
             MusicController.Instance.SetMusicData(data.MusicData);
             controllers.Add(hexGrid);
+            var paintedController = new PaintedController();
 
             data.WeaponsData.WeaponsList.ForEach(x => x.SetModifiedDamage(0));
 
@@ -61,6 +58,7 @@ namespace Controller
                     units.Add(player);
 
                     player.OnDeath += uiController.AdsMob.ShowCanvas;
+                    player.OnDeath += paintedController.PaintOnDeath;
                 }
                 else
                 {
@@ -70,26 +68,21 @@ namespace Controller
                     controllers.Add(enemyController);
                     units.Add(enemy);
                     AIAgent agent = new AIAgent(unit, enemy);
-                    //controllers.Add(agent);
+                    controllers.Add(agent);
                     enemy.OnDeath += x => { controllers.Remove(agent); };
+                    enemy.OnDeath += paintedController.PaintOnDeath;
                 }
+                
             });
 
             var unitFactory = new UnitFactory(units, hexGrid);
 
             hexGrid.OnGridLoaded += unitFactory.Spawn;
-
-            var paintedController = new PaintedController();
-
+            
             hexGrid.OnHexPainted += paintedController.SetHexColors;
-
             hexGrid.OnHexPainted += itemFabric.UpdateCellToOpenList;
             hexGrid.OnHexPainted += paintedController.CheckDeathOrDestroy;
         }
-
-        private List<Type> SetUpItems()
-        {
-            return new List<Type>() { typeof(Building), typeof(Bonus) };
-        }
+        
     }
 }
