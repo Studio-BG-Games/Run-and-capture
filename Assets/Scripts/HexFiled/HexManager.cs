@@ -24,7 +24,7 @@ namespace HexFiled
             if (neighbours.Any())
             {
                 var dir = DirectionHelper.DirectionTo(end.transform.position,
-                    neighbours[Random.Range(0, neighbours.Count)].transform.position);
+                    neighbours[Random.Range(0, neighbours.Count - 1)].transform.position);
                 path.Enqueue(DirectionHelper.VectorToDirection(new Vector2(dir.x, dir.z)));
                 return;
             }
@@ -40,7 +40,7 @@ namespace HexFiled
                     itters++;
                 } while (end == null && itters < 5);
 
-                if (itters >= 5)
+                if (itters >= 3)
                 {
                     return;
                 }

@@ -13,7 +13,7 @@ using Object = UnityEngine.Object;
 
 namespace Chars
 {
-    public class PlayerControl : IFixedExecute, IExecute
+    public class PlayerControl : IFixedExecute
     {
         private Unit _unit;
         private Joystick _moveJoystick;
@@ -62,10 +62,14 @@ namespace Chars
         private void PlaceItem()
         {
             _unit.UnitView.AimCanvas.SetActive(false);
-            
+            _placeJoystick.gameObject.SetActive(false);
+            if (_cellToPlace == null)
+            {
+                return;
+            }
             _itemToPlace.PlaceItem(_cellToPlace);
             
-            _placeJoystick.gameObject.SetActive(false);
+            
         }
         private void PickUp(Item item)
         {
@@ -90,7 +94,8 @@ namespace Chars
         {
             if (!_unit.IsBusy)
             {
-                _cellToPlace = _unit.PlaceItemAim(DirectionHelper.VectorToDirection(placeDir.normalized));
+                _unit.UnitView.AimCanvas.SetActive(true);
+                _cellToPlace = _unit.PlaceItemAim(DirectionHelper.VectorToDirection(placeDir));
             }
         }
 
@@ -105,16 +110,6 @@ namespace Chars
             
         }
 
-       
-
-        public void Execute()
-        {
-            if (_unit.IsAlive)
-            {
-                _unit.UnitView.BarCanvas.transform.LookAt(
-                    _unit.UnitView.BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
-                    _camera.transform.rotation * Vector3.up);
-            }
-        }
+        
     }
 }

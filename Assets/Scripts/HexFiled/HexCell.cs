@@ -14,17 +14,13 @@ namespace HexFiled
         public HexCoordinates coordinates;
         public Action<HexCell> onHexPainted;
         
-        public float gCost;
-        public float hCost;
-        public float fCost;
-        public HexCell parent;
+        
 
         [SerializeField] private HexCell[] neighbors;
         private Item _item;
         private UnitColor _color;
         private MeshRenderer _renderer;
-
-        public HexCell[] Neighbors => neighbors;
+        
         public UnitColor Color => _color;
 
         public Item Item => _item;

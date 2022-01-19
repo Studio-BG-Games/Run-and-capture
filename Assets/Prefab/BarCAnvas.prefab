@@ -65,8 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4039628871920856409, guid: bcfec907e0672ed45b69575096b4a1c2,
-    type: 3}
+  m_Sprite: {fileID: -4039628871920856409, guid: bcfec907e0672ed45b69575096b4a1c2, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -138,7 +137,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 5
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 0.5, y: 0.2}
@@ -211,8 +210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8254845973784877126, guid: bcfec907e0672ed45b69575096b4a1c2,
-    type: 3}
+  m_Sprite: {fileID: -8254845973784877126, guid: bcfec907e0672ed45b69575096b4a1c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -288,8 +286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5455261514569519910, guid: bcfec907e0672ed45b69575096b4a1c2,
-    type: 3}
+  m_Sprite: {fileID: -5455261514569519910, guid: bcfec907e0672ed45b69575096b4a1c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -313,7 +310,7 @@ GameObject:
   - component: {fileID: 1271697267505620599}
   - component: {fileID: 482855193181693567}
   m_Layer: 5
-  m_Name: BarCAnvas
+  m_Name: BarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,7 +382,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1271697267505620599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,8 +414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 7888535169076749686}
   manaBar: {fileID: 9185818537322146330}
-  shotPrefab: {fileID: 9204531176590517796, guid: 74ba0f2e00eb74a4882dcf82bb66bb3f,
-    type: 3}
+  shotPrefab: {fileID: 9204531176590517796, guid: 74ba0f2e00eb74a4882dcf82bb66bb3f, type: 3}
   grid: {fileID: 3185331048183402439}
   captureBar: {fileID: 3113562572513926796}
   captureBack: {fileID: 3936950508401920806}
@@ -488,8 +484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8254845973784877126, guid: bcfec907e0672ed45b69575096b4a1c2,
-    type: 3}
+  m_Sprite: {fileID: -8254845973784877126, guid: bcfec907e0672ed45b69575096b4a1c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -564,8 +559,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7745828531039951331, guid: bcfec907e0672ed45b69575096b4a1c2,
-    type: 3}
+  m_Sprite: {fileID: -7745828531039951331, guid: bcfec907e0672ed45b69575096b4a1c2, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -640,8 +634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4039628871920856409, guid: bcfec907e0672ed45b69575096b4a1c2,
-    type: 3}
+  m_Sprite: {fileID: -4039628871920856409, guid: bcfec907e0672ed45b69575096b4a1c2, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1

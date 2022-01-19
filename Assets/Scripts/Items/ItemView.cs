@@ -9,7 +9,13 @@ namespace Items
     {
         private Item _item;
 
+        public string itemName;
         public Item Item => _item;
+
+        private void Start()
+        {
+            itemName = _item.name;
+        }
 
         public void SetUp(Item item)
         {
@@ -17,19 +23,17 @@ namespace Items
             Rotate();
         }
 
-        public ItemView PickUp(Unit unit)
+        private void OnDestroy()
         {
             transform.DOKill();
-            _item.PickUp(unit);
-            return this;
         }
 
         private void Rotate()
         {
-            
-            transform.DORotate(transform.rotation.eulerAngles + new Vector3(0,10,0), 0.1f)
-                .SetEase(Ease.Linear)
-                .OnComplete(Rotate);
+
+            transform.DORotate(transform.rotation.eulerAngles + new Vector3(0, 10, 0), 0.1f)
+                .SetEase(Ease.InQuad)
+                .SetLoops(-1, LoopType.Incremental);
         }
     }
 }

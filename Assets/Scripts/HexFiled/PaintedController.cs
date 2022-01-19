@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Units;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace HexFiled
@@ -17,6 +18,15 @@ namespace HexFiled
             HexManager.UnitCurrentCell = new Dictionary<UnitColor, (HexCell cell, Unit unit)>();
         }
 
+        public void PaintOnDeath(Unit unit)
+        {
+            for (var i = 0; i < HexManager.CellByColor[unit.Color].Count; i++)
+            {
+                HexManager.CellByColor[unit.Color][i].PaintHex(UnitColor.GREY);
+            }
+
+            HexManager.CellByColor.Remove(unit.Color);
+        }
         public void CheckDeathOrDestroy(HexCell cell)
         {
             List<Unit> unitsToDeath = new List<Unit>();
@@ -28,8 +38,7 @@ namespace HexFiled
             unitsToDeath.ForEach(x => x.Death());
             if (cell.Building != null && cell.Building.Color != cell.Color)
             {
-              
-                
+                Object.Destroy(cell.Building);
             }
         }
         public void SetHexColors(HexCell cell)
