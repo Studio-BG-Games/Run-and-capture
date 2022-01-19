@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -23,6 +24,7 @@ namespace DefaultNamespace
             }
         }
 
+       [EditorButton]
         public void SetTimerScale()
         {
             Time.timeScale = scale;

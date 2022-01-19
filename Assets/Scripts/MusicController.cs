@@ -41,11 +41,13 @@ public class MusicController
     public void AddAudioListener(GameObject gameObject)
     {
         _audioListener = gameObject.AddComponent<AudioListener>();
+
     }
 
     public void AddAudioSource(GameObject gameObject)
     {
         var source = gameObject.AddComponent<AudioSource>();
+        
         _sources.Add(gameObject, source);
     }
 

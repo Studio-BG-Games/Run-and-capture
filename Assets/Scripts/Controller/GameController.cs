@@ -1,6 +1,4 @@
-﻿using System;
-using Runtime.Controller;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Controller
 {
@@ -14,6 +12,7 @@ namespace Controller
             _controllers = new Controllers();
             new GameInit(_controllers, data);
             _controllers.Awake();
+            
         }
 
         private void Start()
