@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace DefaultNamespace
 {
@@ -7,6 +8,8 @@ namespace DefaultNamespace
     {
         private ParticleSystem _system;
         public Action OnPlayEnd;
+        private Action OnTime;
+        private float timeInvoke;
 
         private void Start()
         {
@@ -14,6 +17,12 @@ namespace DefaultNamespace
             
         }
 
+        public void OnTimeInvoke(float time, Action action)
+        {
+            timeInvoke = time;
+            OnTime += action;
+        }
+        
         private void Update()
         {
             if (_system != null && !_system.IsAlive())
@@ -21,6 +30,11 @@ namespace DefaultNamespace
                 MusicController.Instance.RemoveAudioSource(gameObject);
                 OnPlayEnd?.Invoke();
                 Destroy(gameObject);
+            }
+
+            if (timeInvoke > 0f && Math.Abs(_system.time - timeInvoke) < Time.deltaTime)
+            {
+                OnTime?.Invoke();
             }
         }
     }

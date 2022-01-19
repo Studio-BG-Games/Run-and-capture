@@ -20,7 +20,6 @@ namespace Items
 
         protected Unit Unit;
         protected Action OnItemUsed;
-
         
         public UnitColor Color => Unit.Color;
 

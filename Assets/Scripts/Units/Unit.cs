@@ -63,6 +63,9 @@ namespace Units
         public List<Item> Inventory => _inventory;
         public Weapon Weapon => _weapon;
 
+        public Animator Animator => _animator;
+
+
         public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
             _camera = Camera.main;
@@ -339,7 +342,7 @@ namespace Units
             _animator.SetTrigger("Attack");
         }
 
-        private void RotateUnit(Vector2 direction)
+        public void RotateUnit(Vector2 direction)
         {
             _unitView.transform.DOLookAt(new Vector3(direction.x, 0, direction.y) + _unitView.transform.position,
                 0.1f).onUpdate += () => BarCanvas.transform.LookAt(

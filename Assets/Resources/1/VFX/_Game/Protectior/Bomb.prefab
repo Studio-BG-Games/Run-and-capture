@@ -4738,6 +4738,7 @@ GameObject:
   - component: {fileID: 6736513976124970964}
   - component: {fileID: 6736513976126722542}
   - component: {fileID: 6736513976104981120}
+  - component: {fileID: 254311947008733808}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -9562,6 +9563,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &254311947008733808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736513976106828952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfb2f14a56c34dcb80031c2336b24f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100
+  hit: {fileID: 2307028534112872116, guid: 79d768bf87aadec478a5722da8c6d516, type: 3}
+  timeHit: 1.8
 --- !u!1 &6736513976106878902
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,8 @@ namespace GameUI
         [SerializeField] private GameObject item;
         [SerializeField] private GameObject grid;
 
-        public Action<Building> OnBuildingInvoked;
+        public Action<Item> OnBuildingInvoked;
+        
 
         private List<Button> _buttons;
         private Button[] _freeButtons;
@@ -38,7 +39,6 @@ namespace GameUI
 
         private void SwitchButton(Button button)
         {
-            var item = _dictionary[button];
             
             button.gameObject.SetActive(false);
             for (int i = 0; i < _freeButtons.Length; i++)
@@ -69,10 +69,10 @@ namespace GameUI
             {
                 switch (item)
                 {
-                    case Bonus _bonus:
+                    case Bonus bonus:
                     {
                         button.onClick.RemoveAllListeners();
-                        _bonus.Invoke();
+                        bonus.Invoke();
                         for (int i = 0; i < _freeButtons.Length; i++)
                         {
                             if (_freeButtons[i] != null) continue;
@@ -83,10 +83,13 @@ namespace GameUI
                         button.gameObject.SetActive(false);
                         break;
                     }
-                    case Building _building:
-                        _building.Invoke(() => SwitchButton(button));
-                        
-                        OnBuildingInvoked?.Invoke(_building);
+                    case Building building:
+                        building.Invoke(() => SwitchButton(button));
+                        OnBuildingInvoked?.Invoke(building);
+                        break;
+                    case CaptureAbility ability:
+                        ability.Invoke(() => SwitchButton(button));
+                        OnBuildingInvoked?.Invoke(ability);
                         break;
                 }
             });
