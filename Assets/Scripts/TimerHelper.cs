@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class TimerHelper : MonoBehaviour
     {
-        [SerializeField] private float scale;
+        
         private static TimerHelper _instance;
 
         public static TimerHelper Instance
@@ -23,7 +24,8 @@ namespace DefaultNamespace
             }
         }
 
-        public void SetTimerScale()
+       [EditorButton]
+        public void SetTimerScale(float scale)
         {
             Time.timeScale = scale;
         }
