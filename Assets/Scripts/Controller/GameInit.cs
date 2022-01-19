@@ -57,7 +57,7 @@ namespace Controller
                     player.onPlayerSpawned += cameraControl.InitCameraControl;
                     units.Add(player);
 
-                    player.OnDeath += uiController.AdsMob.ShowCanvas;
+                   // player.OnDeath += uiController.AdsMob.ShowCanvas;
                     player.OnDeath += paintedController.PaintOnDeath;
                 }
                 else

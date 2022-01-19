@@ -83,7 +83,7 @@ namespace Chars
         
         private void AimCanvas(Vector2 attackDir)
         {
-            if (!_unit.IsBusy)
+            if (!_unit.IsBusy || _attackJoystick.enabled)
             {
                 _unit.UnitView.AimCanvas.SetActive(true);
                 _unit.Aim(attackDir);

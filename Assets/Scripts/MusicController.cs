@@ -26,6 +26,7 @@ public class MusicController
     {
         _sources[source].clip = clip;
         _sources[source].volume = _data.Settings.sfxVolume;
+        _sources[source].spatialBlend = 1f;
         _sources[source].Play();
     }
 
@@ -35,6 +36,7 @@ public class MusicController
         
         value.clip = clips[Random.Range(0, clips.Count - 1)];
         value.volume = _data.Settings.sfxVolume;
+        value.spatialBlend = 1f;
         value.Play();
     }
 
