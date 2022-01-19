@@ -8,7 +8,7 @@ namespace DefaultNamespace
 {
     public class TimerHelper : MonoBehaviour
     {
-        [SerializeField] private float scale;
+        
         private static TimerHelper _instance;
 
         public static TimerHelper Instance
@@ -25,7 +25,7 @@ namespace DefaultNamespace
         }
 
        [EditorButton]
-        public void SetTimerScale()
+        public void SetTimerScale(float scale)
         {
             Time.timeScale = scale;
         }
