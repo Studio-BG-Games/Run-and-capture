@@ -1,8 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Units;
-using UnityEngine;
+using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace HexFiled
@@ -17,6 +17,18 @@ namespace HexFiled
             HexManager.UnitCurrentCell = new Dictionary<UnitColor, (HexCell cell, Unit unit)>();
         }
 
+        public void PaintOnDeath(Unit unit)
+        {
+            HexManager.PaintHexList(HexManager.CellByColor[unit.Color], UnitColor.GREY);
+#if UNITY_EDITOR
+            
+
+            if (HexManager.UnitCurrentCell.Count == 1)
+            {
+                SceneManager.LoadScene(1);
+            }
+#endif
+        }
         public void CheckDeathOrDestroy(HexCell cell)
         {
             List<Unit> unitsToDeath = new List<Unit>();
@@ -28,15 +40,12 @@ namespace HexFiled
             unitsToDeath.ForEach(x => x.Death());
             if (cell.Building != null && cell.Building.Color != cell.Color)
             {
-              
-                
+                Object.Destroy(cell.Building);
             }
         }
         public void SetHexColors(HexCell cell)
         {
             _cell = cell;
-            
-            
             
 
             var hexByColorDict = DifferentHexByColor(cell.GetListNeighbours());
@@ -52,7 +61,7 @@ namespace HexFiled
                         {
                             var path = Round(x, null);
                             if(!path.hasPath)
-                                HexManager.PaintHexList(path.field, cell.Color);
+                                HexManager.PaintHexList(path.field, cell.Color, 0.05f);
                         }
                     });
                 }
@@ -61,6 +70,10 @@ namespace HexFiled
                 {
                     item.Value.ForEach(neighbour =>
                     {
+                        if (!HexManager.UnitCurrentCell.TryGetValue(neighbour.Color, out var value))
+                        {
+                            return;
+                        }
                         var (hasPath, field) = HasPath(neighbour, HexManager.UnitCurrentCell[neighbour.Color].cell);
                         if (!hasPath)
                         {

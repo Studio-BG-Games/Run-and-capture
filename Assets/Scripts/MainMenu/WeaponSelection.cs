@@ -37,10 +37,7 @@ public class WeaponSelection : MonoBehaviour
             go.ReloadText.text = x.reloadTime.ToString();
             go.ShotsCount.text = x.shots.ToString();
             go.WeaponTitle.text = x.name;
-            go.Button.onClick.AddListener(() =>
-            {
-                ChoseWeapon(x);
-            });
+            go.Button.onClick.AddListener(() => ChoseWeapon(x));
             _buttons.Add(go.Button);
         });
     }

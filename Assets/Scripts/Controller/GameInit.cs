@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Timers;
+﻿using System.Collections.Generic;
 using AI;
 using CamControl;
 using Chars;
 using DefaultNamespace;
 using DefaultNamespace.AI;
-using DG.Tweening;
 using GameUI;
 using HexFiled;
 using Items;
 using Units;
 using UnityEngine;
 using Weapons;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Controller
@@ -22,18 +18,18 @@ namespace Controller
     {
         public GameInit(Controllers controllers, Data.Data data)
         {
-
-            AIManager aiManager = new AIManager();
+            new AIManager(data.AIData);
             var hexGrid = new HexGrid(data.FieldData);
             new MusicController();
-            new VFXController(data.VFXData);
+            new VFXController();
             MusicController.Instance.SetMusicData(data.MusicData);
             controllers.Add(hexGrid);
-            
+            var paintedController = new PaintedController();
+
             data.WeaponsData.WeaponsList.ForEach(x => x.SetModifiedDamage(0));
-            
+
             ItemFabric itemFabric = new ItemFabric(data.ItemsData);
-            controllers.Add(itemFabric);
+            hexGrid.OnGridLoaded += () => controllers.Add(itemFabric);
 
             UIController uiController = new UIController(data.UIData);
             uiController.Spawn(); //TODO при паузе Dotween ругается
@@ -45,6 +41,7 @@ namespace Controller
                 {
                     var weapon = JsonUtility.FromJson<Weapon>(data.ChosenWeapon);
                     weapon.SetModifiedDamage(0);
+
                     player = new Unit(unit, weapon, hexGrid);
                     PlayerControl playerControl = new PlayerControl(player, uiController.PlayerControlView,
                         uiController.PlayerInventoryView);
@@ -52,11 +49,16 @@ namespace Controller
                     CameraControl cameraControl =
                         new CameraControl(Camera.main, data.CameraData);
                     controllers.Add(cameraControl);
+
+                    player.onPlayerSpawned += p => controllers.Add(playerControl);
+
+                    player.OnDeath += unit1 => controllers.Remove(playerControl);
+
                     player.onPlayerSpawned += cameraControl.InitCameraControl;
-                    player.onPlayerSpawned += MusicController.Instance.AddAudioListener;
                     units.Add(player);
 
                     player.OnDeath += uiController.AdsMob.ShowCanvas;
+                    player.OnDeath += paintedController.PaintOnDeath;
                 }
                 else
                 {
@@ -65,27 +67,22 @@ namespace Controller
                     var enemyController = new EnemyController(unit, enemy);
                     controllers.Add(enemyController);
                     units.Add(enemy);
-                    AIAgent agent = new AIAgent(unit, enemy, aiManager);
-                    controllers.Add(agent);
-                    enemy.OnDeath += x => {controllers.Remove(agent);};
+                    AIAgent agent = new AIAgent(unit, enemy);
+                    enemy.onPlayerSpawned += x =>  controllers.Add(agent);
+                    enemy.OnDeath += x => { controllers.Remove(agent); };
+                    enemy.OnDeath += paintedController.PaintOnDeath;
                 }
+                
             });
 
             var unitFactory = new UnitFactory(units, hexGrid);
 
             hexGrid.OnGridLoaded += unitFactory.Spawn;
-
-            var paintedController = new PaintedController();
-
+            
             hexGrid.OnHexPainted += paintedController.SetHexColors;
-
             hexGrid.OnHexPainted += itemFabric.UpdateCellToOpenList;
             hexGrid.OnHexPainted += paintedController.CheckDeathOrDestroy;
         }
-
-        private List<Type> SetUpItems()
-        {
-            return new List<Type>() { typeof(Building), typeof(Bonus)};
-        }
+        
     }
 }

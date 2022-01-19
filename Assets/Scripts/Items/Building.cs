@@ -13,7 +13,7 @@ namespace Items
         
         public void Invoke(Action action)
         {
-            Unit.UseItem(this);
+            
             OnItemUsed += action;
         }
 
@@ -22,7 +22,8 @@ namespace Items
         {
             Unit.UseItem(this);
             var obj = SpawnHelper.Spawn(buildingPrefab, cell.transform.position + buildingPrefab.transform.position);
-            obj.GetComponent<TowerView>().SetUp(Unit.Color);
+            obj.GetComponent<TowerView>()?.SetUp(Unit.Color);
+            obj.GetComponent<BombView>()?.SetUp(Unit);
             cell.Building =  obj.GetComponent<TowerView>();
             OnItemUsed?.Invoke();
         }

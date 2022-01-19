@@ -17,12 +17,9 @@ MonoBehaviour:
   hexCaptureManaCost: 10
   hexHardCaptureManaCost: 20
   hexHardCaptureTime: 1
-  cellPrefab: {fileID: 1661242500252451528, guid: bcea5b4a96735bd4b936f8f3fefcc688,
-    type: 3}
-  cellLabelPrefab: {fileID: 3836123284387241147, guid: efd47cbd22ddfee4aa2b1391914116fc,
-    type: 3}
-  CoordinatesCanvas: {fileID: 4726489279989878083, guid: f31e0880dd078104bb31dc0fd7ef9f19,
-    type: 3}
+  cellPrefab: {fileID: 1661242500252451528, guid: bcea5b4a96735bd4b936f8f3fefcc688, type: 3}
+  cellLabelPrefab: {fileID: 3836123284387241147, guid: efd47cbd22ddfee4aa2b1391914116fc, type: 3}
+  CoordinatesCanvas: {fileID: 4726489279989878083, guid: f31e0880dd078104bb31dc0fd7ef9f19, type: 3}
   colors:
   - _unitColor: 2
     _texture: {fileID: 2800000, guid: 983242f4b4db7a841af48234cf0021b8, type: 3}
@@ -30,25 +27,17 @@ MonoBehaviour:
     _vfxDeathPrefab: {fileID: 0}
   - _unitColor: 0
     _texture: {fileID: 2800000, guid: 0298dfcb0756f534a9a125d510461c7a, type: 3}
-    _vfxCellCapturePrefab: {fileID: 8021195855904498788, guid: 2f6d0540c8fd7bb46b356ff86962379c,
-      type: 3}
-    _vfxDeathPrefab: {fileID: 8483527721606052447, guid: fd7fc481b936cf84a90d2d01d83e9b06,
-      type: 3}
+    _vfxCellCapturePrefab: {fileID: 8021195855904498788, guid: 2f6d0540c8fd7bb46b356ff86962379c, type: 3}
+    _vfxDeathPrefab: {fileID: 8483527721606052447, guid: fd7fc481b936cf84a90d2d01d83e9b06, type: 3}
   - _unitColor: 1
     _texture: {fileID: 2800000, guid: 3b75368df991b164583e8cede390e24e, type: 3}
-    _vfxCellCapturePrefab: {fileID: 442387583353148024, guid: 53959bc898e9a644daad0282881d596a,
-      type: 3}
-    _vfxDeathPrefab: {fileID: 730781534364879866, guid: 15620662117187f419d41032a4267445,
-      type: 3}
+    _vfxCellCapturePrefab: {fileID: 442387583353148024, guid: 53959bc898e9a644daad0282881d596a, type: 3}
+    _vfxDeathPrefab: {fileID: 730781534364879866, guid: 15620662117187f419d41032a4267445, type: 3}
   - _unitColor: 3
     _texture: {fileID: 2800000, guid: 1a76a79d5a83143479c76f4f37c4b896, type: 3}
-    _vfxCellCapturePrefab: {fileID: 5732852186060375560, guid: 54d847a18c62f57479c53469d4398ceb,
-      type: 3}
-    _vfxDeathPrefab: {fileID: 7140011676602114744, guid: 6d9f179a27798c248b3c35df9139eb85,
-      type: 3}
+    _vfxCellCapturePrefab: {fileID: 5732852186060375560, guid: 54d847a18c62f57479c53469d4398ceb, type: 3}
+    _vfxDeathPrefab: {fileID: 7140011676602114744, guid: 6d9f179a27798c248b3c35df9139eb85, type: 3}
   - _unitColor: 4
     _texture: {fileID: 2800000, guid: 779719648deedb4478ddebb3b81751ef, type: 3}
-    _vfxCellCapturePrefab: {fileID: 1651852338557341938, guid: fa6c1fc3da7c8d24c85a88b00cf598d4,
-      type: 3}
-    _vfxDeathPrefab: {fileID: 4578021055421768374, guid: b2b879dd7ca552a408d4349691d2c8df,
-      type: 3}
+    _vfxCellCapturePrefab: {fileID: 1651852338557341938, guid: fa6c1fc3da7c8d24c85a88b00cf598d4, type: 3}
+    _vfxDeathPrefab: {fileID: 4578021055421768374, guid: b2b879dd7ca552a408d4349691d2c8df, type: 3}

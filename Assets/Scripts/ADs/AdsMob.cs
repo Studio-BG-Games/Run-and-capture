@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 // using GoogleMobileAds.Api;
 using HexFiled;
@@ -41,6 +42,7 @@ public class AdsMob : MonoBehaviour
     {
         _player.Spawn(HexManager.CellByColor[UnitColor.GREY][Random.Range(0, HexManager.CellByColor[UnitColor.GREY].Count - 1)].coordinates);
         canvas.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     // public void ShowAd()
@@ -55,6 +57,7 @@ public class AdsMob : MonoBehaviour
     public void ShowCanvas(Unit player)
     {
         _player = player;
+        Time.timeScale = 0f;
         canvas.SetActive(true);
     }
 

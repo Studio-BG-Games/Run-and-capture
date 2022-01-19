@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Data;
 using DefaultNamespace;
 using DG.Tweening;
@@ -31,21 +32,27 @@ public class UnitView : MonoBehaviour
     private Action _startRegen;
     private Coroutine _previosRegen;
     private Coroutine _previosReload;
-
+    private Dictionary<string, Action> animActionDic;
     private int _mana;
     private Action _capureHex;
     private Sequence _sequence;
     private AudioSource _audioSource;
     private Unit _unit;
     private float _hardCaptureTime;
+    private Action onSupperJump;
 
     public BarCanvas BarCanvas => barCanvas;
     public GameObject AimCanvas => aimCanvas;
     public UnitColor Color => _unit.Color;
+    public int AvailableShots => _shootUIStack.Count;
+    
+
+    public Dictionary<string, Action> AnimActionDic => animActionDic;
 
     public void SetUp(Stack<ShotUIView> shots, Weapon weapon, Action regenMana, int manaRegen, Action captureHex,
         Unit unit, float hardCaptureTime)
     {
+        animActionDic = new Dictionary<string, Action> { { "SuperJump", onSupperJump } };
         _shootUIStack = shots;
         _weapon = weapon;
         _toReloadStack = new Stack<ShotUIView>();
@@ -96,15 +103,11 @@ public class UnitView : MonoBehaviour
         return true;
     }
 
-    public void RegenMana(int mana)
+    public void RegenMana()
     {
-        if (_previosRegen != null)
-        {
-            StopCoroutine(_previosRegen);
-        }
-
-        _mana = mana;
-        _previosRegen = StartCoroutine(Regen());
+       
+        _mana = _unit.Mana;
+        StartCoroutine(Regen());
     }
 
     private void Step()
@@ -128,6 +131,15 @@ public class UnitView : MonoBehaviour
         OnAttack?.Invoke();
     }
 
+    private void SuperAttack()
+    {
+        for (var i = 0; i < animActionDic.Count; i++)
+        {
+            var item = animActionDic.ElementAt(i);
+            item.Value?.Invoke();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         WeaponView weaponView = other.GetComponent<WeaponView>();
@@ -142,6 +154,11 @@ public class UnitView : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+       
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         ItemView itemView = other.GetComponent<ItemView>();
 
         if (itemView != null && _unit.PickUpItem(itemView.Item))
@@ -175,12 +192,12 @@ public class UnitView : MonoBehaviour
 
     private IEnumerator Regen()
     {
-        if (_mana >= 100)
+        if (_mana >= _unit.Data.maxMana)
         {
             yield break;
         }
         
-        while (_mana < 100)
+        while (_mana < _unit.Data.maxMana)
         {
             yield return new WaitForSeconds(1f);
             _mana += _manaRegen;

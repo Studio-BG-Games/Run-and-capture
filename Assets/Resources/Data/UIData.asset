@@ -15,8 +15,6 @@ MonoBehaviour:
   _objectsToSpawn:
   - {fileID: 5336165614562949988, guid: b65a64902764f84428e8a07b071bad15, type: 3}
   - {fileID: 5296751824488078361, guid: 7305318dc10267546b643a42c7c21af3, type: 3}
-  joystickView: {fileID: 4385872142190176059, guid: 4df6913b39f4979429158c344680d83f,
-    type: 3}
-  inventoryView: {fileID: 1527356263590969195, guid: ff3bc3b17ddefd14eb798b22cf0a854f,
-    type: 3}
-  adsMob: {fileID: 7017227080055577099, guid: 1328a0e1e252d60408278772275bf560, type: 3}
+  joystickView: {fileID: 4385872142190176059, guid: 4df6913b39f4979429158c344680d83f, type: 3}
+  inventoryView: {fileID: 1527356263590969195, guid: ff3bc3b17ddefd14eb798b22cf0a854f, type: 3}
+  adsMob: {fileID: 3306115827101638291, guid: 829cf0211d46b58489f4cb061c784378, type: 3}

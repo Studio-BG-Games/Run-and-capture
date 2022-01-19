@@ -16,12 +16,13 @@ namespace Items
         private ItemsData _data;
         private List<HexCell> _openList;
         private List<Type> _itemTypes;
-        
+        private GameObject _itemParrant;
         private float _spawnTime;
         private float time;
 
         public ItemFabric(ItemsData data)
         {
+            _itemParrant = new GameObject("Items");
             Items = new Dictionary<GameObject, HexCell>();
             _data = data;
             _openList = new List<HexCell>();
@@ -47,6 +48,10 @@ namespace Items
                 List<HexCell> closedList = HexManager.UnitCurrentCell.Select(unitCells => unitCells.Value.cell)
                     .ToList();
                 time = Time.time;
+                if (_openList.Count == 0)
+                {
+                    return;
+                }
                 var cell = _openList[Random.Range(0, _openList.Count - 1)];
 
                 if (closedList.Contains(cell) || cell.Item != null)
@@ -61,7 +66,7 @@ namespace Items
                 }
 
 
-                Items.Add(_data.ItemInfos[i].Item.Spawn(cell), cell);
+                Items.Add(_data.ItemInfos[i].Item.Spawn(cell, _itemParrant), cell);
                 cell.SetItem(_data.ItemInfos[i].Item);
                 _spawnTime = Random.Range(_data.SpawnTime.from, _data.SpawnTime.to);
             }

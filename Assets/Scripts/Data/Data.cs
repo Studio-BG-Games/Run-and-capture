@@ -22,21 +22,22 @@ namespace Data
         private MusicData _musicData;
         [SerializeField] private string itemDataPath;
         private ItemsData _itemsData;
-        [SerializeField] private string vfxDataPath;
-        private VFXData _vfxData;
+        [SerializeField] private string aiDataPath;
+        private AIData _aiData;
         [SerializeField] private string chosenWeaponDataPath;
 
         public string ChosenWeapon => File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath);
 
-        public VFXData VFXData  {
+        public AIData AIData
+        {
             get
             {
-                if (_vfxData == null)
+                if (_aiData == null)
                 {
-                    _vfxData = Load<VFXData>("Data/" + vfxDataPath);
+                    _aiData = Load<AIData>("Data/" + aiDataPath);
                 }
 
-                return _vfxData;
+                return _aiData;
             }
         }
         public ItemsData ItemsData
