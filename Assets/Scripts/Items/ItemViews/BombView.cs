@@ -24,7 +24,7 @@ namespace Items
         {
             var enemy = collision.gameObject.GetComponent<UnitView>();
 
-            if (enemy != null && enemy.Color == _unit.Color)
+            if (enemy != null && enemy.Color != _unit.Color)
             {
                 
                 var vfx = VFXController.Instance.PlayEffect(hit, transform.position, Quaternion.identity);
