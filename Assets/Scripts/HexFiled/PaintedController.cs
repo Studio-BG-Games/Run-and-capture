@@ -20,10 +20,14 @@ namespace HexFiled
         public void PaintOnDeath(Unit unit)
         {
             HexManager.PaintHexList(HexManager.CellByColor[unit.Color], UnitColor.GREY);
+#if UNITY_EDITOR
+            
+
             if (HexManager.UnitCurrentCell.Count == 1)
             {
                 SceneManager.LoadScene(1);
             }
+#endif
         }
         public void CheckDeathOrDestroy(HexCell cell)
         {
