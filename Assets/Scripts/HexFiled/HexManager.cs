@@ -18,7 +18,11 @@ namespace HexFiled
 
         public static void GetNearestDifferCell(UnitColor color, Queue<HexDirection> path)
         {
-            HexCell end = UnitCurrentCell[color].cell;
+            if (!UnitCurrentCell.TryGetValue(color, out var unit))
+            {
+                return;
+            }
+            HexCell end = unit.cell;
             var itters = 0;
             var neighbours = end.GetListNeighbours().Where(cell => cell != null && cell.Color != color).ToList();
             if (neighbours.Any())
@@ -49,17 +53,24 @@ namespace HexFiled
             
         }
 
-        public static void PaintHexList(List<HexCell> field, UnitColor color)
+        public static void PaintHexList(List<HexCell> field, UnitColor color, float time)
         {
 
             List<Action<UnitColor>> actions = new List<Action<UnitColor>>();
 
             field.ForEach(x => actions.Add(x.PaintHex));
 
-            TimerHelper.Instance.StartTimer(actions, 0.01f, color);
+            TimerHelper.Instance.StartTimer(actions, time, color);
 
         }
-        
-       
+
+        public static void PaintHexList(List<HexCell> field, UnitColor color)
+        {
+            List<HexCell> cells = new List<HexCell>();
+            
+            cells.AddRange(field);
+            
+            cells.ForEach(x => x.PaintHex(color));
+        }
     }
 }

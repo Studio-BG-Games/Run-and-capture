@@ -20,7 +20,6 @@ namespace Items
 
         protected Unit Unit;
         protected Action OnItemUsed;
-
         
         public UnitColor Color => Unit.Color;
 
@@ -34,9 +33,7 @@ namespace Items
 
         public void PickUp(Unit unit)
         {
-            
             Unit = unit;
-            
         }
     }
 }

@@ -72,7 +72,7 @@ namespace HexFiled
         public void SetNeighbor(HexDirection direction, HexCell cell)
         {
             neighbors[(int)direction] = cell;
-            cell.neighbors[(int)direction.Opposite()] = this;
+            cell.neighbors[(int)direction.Back()] = this;
         }
 
         public void PaintHex(UnitColor color)

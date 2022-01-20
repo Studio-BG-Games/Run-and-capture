@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Units;
-using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -20,12 +19,15 @@ namespace HexFiled
 
         public void PaintOnDeath(Unit unit)
         {
-            for (var i = 0; i < HexManager.CellByColor[unit.Color].Count; i++)
-            {
-                HexManager.CellByColor[unit.Color][i].PaintHex(UnitColor.GREY);
-            }
+            HexManager.PaintHexList(HexManager.CellByColor[unit.Color], UnitColor.GREY);
+#if UNITY_EDITOR
+            
 
-            HexManager.CellByColor.Remove(unit.Color);
+            if (HexManager.UnitCurrentCell.Count == 1)
+            {
+                SceneManager.LoadScene(1);
+            }
+#endif
         }
         public void CheckDeathOrDestroy(HexCell cell)
         {
@@ -45,8 +47,6 @@ namespace HexFiled
         {
             _cell = cell;
             
-            
-            
 
             var hexByColorDict = DifferentHexByColor(cell.GetListNeighbours());
             foreach (var item in hexByColorDict)
@@ -61,7 +61,7 @@ namespace HexFiled
                         {
                             var path = Round(x, null);
                             if(!path.hasPath)
-                                HexManager.PaintHexList(path.field, cell.Color);
+                                HexManager.PaintHexList(path.field, cell.Color, 0.05f);
                         }
                     });
                 }
@@ -70,6 +70,10 @@ namespace HexFiled
                 {
                     item.Value.ForEach(neighbour =>
                     {
+                        if (!HexManager.UnitCurrentCell.TryGetValue(neighbour.Color, out var value))
+                        {
+                            return;
+                        }
                         var (hasPath, field) = HasPath(neighbour, HexManager.UnitCurrentCell[neighbour.Color].cell);
                         if (!hasPath)
                         {

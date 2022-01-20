@@ -68,7 +68,7 @@ namespace Controller
                     controllers.Add(enemyController);
                     units.Add(enemy);
                     AIAgent agent = new AIAgent(unit, enemy);
-                    controllers.Add(agent);
+                    enemy.onPlayerSpawned += x =>  controllers.Add(agent);
                     enemy.OnDeath += x => { controllers.Remove(agent); };
                     enemy.OnDeath += paintedController.PaintOnDeath;
                 }
