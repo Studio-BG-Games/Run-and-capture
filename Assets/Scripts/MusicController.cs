@@ -51,6 +51,7 @@ public class MusicController
         var source = gameObject.AddComponent<AudioSource>();
         
         _sources.Add(gameObject, source);
+        source.spatialBlend = 1f;
     }
 
     public void RemoveAudioSource(GameObject gameObject)
