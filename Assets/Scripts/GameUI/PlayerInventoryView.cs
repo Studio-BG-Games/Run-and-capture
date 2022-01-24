@@ -11,9 +11,9 @@ namespace GameUI
         [SerializeField] private GameObject item;
         [SerializeField] private GameObject grid;
 
-        public Action<Item> OnBuildingInvoked;
-        
+        public event Action<Item> OnBuildingInvoked;
 
+        private List<GameObject> itemsGo; 
         private List<Button> _buttons;
         private Button[] _freeButtons;
         private Dictionary<Button, Item> _dictionary;
@@ -21,12 +21,20 @@ namespace GameUI
 
         public void SetUpUI(int inventoryCapacity)
         {
-            _buttons = new List<Button>();
             _dictionary = new Dictionary<Button, Item>();
+            if (_buttons != null && _buttons.Count > 0)
+            {
+               itemsGo.ForEach(Destroy);
+            }
+
+            itemsGo = new List<GameObject>();
+            _buttons = new List<Button>();
+            
             _freeButtons = new Button[inventoryCapacity];
             for (int i = 0; i < inventoryCapacity; i++)
             {
                 var itemGo = Instantiate(item, grid.transform);
+                itemsGo.Add(itemGo);
                 var button = itemGo.GetComponentInChildren<Button>();
                 _buttons.Add(button);
                 _dictionary.Add(button, null);
@@ -39,7 +47,7 @@ namespace GameUI
 
         private void SwitchButton(Button button)
         {
-            
+            button.onClick.RemoveAllListeners();
             button.gameObject.SetActive(false);
             for (int i = 0; i < _freeButtons.Length; i++)
             {

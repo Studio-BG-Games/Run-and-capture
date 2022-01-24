@@ -30,7 +30,7 @@ namespace Items
         public void Invoke(Action action)
         {
             OnItemUsed += action;
-            if(_aimInstance == null)
+            if(_aimInstance == null || !_aimInstance.activeSelf)
                 _aimInstance = Object.Instantiate(aimCanvas, Unit.Instance.transform);
             else
             {

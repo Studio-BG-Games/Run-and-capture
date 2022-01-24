@@ -70,7 +70,7 @@ namespace AI
                 foreach (var color in (UnitColor[])Enum.GetValues(typeof(UnitColor)))
                 {
                     if (HexManager.UnitCurrentCell.ContainsKey(color) &&
-                         HexManager.UnitCurrentCell[color] != (null, null) &&
+                        HexManager.UnitCurrentCell[color] != (null, null) &&
                         Vector3.Distance(HexManager.UnitCurrentCell[color].unit.Instance.transform.position,
                             agent.Instance.transform.position) <= cellDist * HexGrid.HexDistance
                         && HexManager.UnitCurrentCell[color].unit.Color != agent.Color)
@@ -224,8 +224,9 @@ namespace AI
 
         private void MoveToBonus(AIAgent agent)
         {
-            Pathfinding.FindPath(HexManager.UnitCurrentCell[agent.Unit.Color].cell, GetNearestItem(agent).hex,
-                agent.currentPath);
+            if (HexManager.UnitCurrentCell.TryGetValue(agent.Unit.Color, out var value))
+                Pathfinding.FindPath(value.cell, GetNearestItem(agent).hex,
+                    agent.currentPath);
         }
 
         private void AttackEnemy(AIAgent agent)

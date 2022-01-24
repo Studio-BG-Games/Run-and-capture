@@ -12,7 +12,7 @@ namespace HexFiled
     public class HexCell : MonoBehaviour
     {
         public HexCoordinates coordinates;
-        public Action<HexCell> onHexPainted;
+        public event Action<HexCell> OnHexPainted;
         
         
 
@@ -96,7 +96,7 @@ namespace HexFiled
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures, vfx);
             
-            onHexPainted?.Invoke(this);
+            OnHexPainted?.Invoke(this);
         }
     }
 }

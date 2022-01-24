@@ -8,7 +8,6 @@ using AudioSettings = MainMenu.AudioSettings;
 public class SettingsController : MonoBehaviour
 {
     [SerializeField] private AudioSource menuMusSrc;
-    [SerializeField] private GameMenuData GameData;
     [SerializeField] private string dataFilePath;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
@@ -29,10 +28,12 @@ public class SettingsController : MonoBehaviour
             _audioSettings = JsonUtility.FromJson<AudioSettings>(File.ReadAllText(dataFilePath));
         else
         {
-            _audioSettings = new AudioSettings(GameData);
+            _audioSettings = new AudioSettings(1f, 1f);
             FileStream stream = new FileStream(dataFilePath, FileMode.Create);
             using StreamWriter writer = new StreamWriter(stream);
             writer.Write(JsonUtility.ToJson(_audioSettings));
+            stream.Close();
+            writer.Close();
         }
 
         musicSlider.value = _audioSettings.musicVolume;
@@ -53,7 +54,7 @@ public class SettingsController : MonoBehaviour
         sfxImage.sprite = _audioSettings.sfxVolume == 0f ? sfxOffSprite : sfxOnSprite;
     }
 
-    public void OnMusicSliderValueChanged()
+    private void OnMusicSliderValueChanged()
     {
         _audioSettings.musicVolume = musicSlider.value;
         SetMenuMusicState();
@@ -61,7 +62,7 @@ public class SettingsController : MonoBehaviour
         UpdateVisuals();
     }
 
-    public void OnSFXSliderValueChanged()
+    private void OnSFXSliderValueChanged()
     {
         _audioSettings.sfxVolume = sfxSlider.value;
         File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));

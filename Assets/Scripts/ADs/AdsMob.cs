@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Timers;
+using Chars;
+using Data;
 using UnityEngine;
 // using GoogleMobileAds.Api;
 using HexFiled;
@@ -12,7 +14,8 @@ public class AdsMob : MonoBehaviour
     // private string _revardUnitId = "ca-app-pub-3940256099942544/5224354917";
     // private RewardedAd _ad;
     // private AdRequest _request;
-    private Unit _player;
+    private UnitInfo _player;
+    private UnitFactory _factory;
     [SerializeField] private Button button;
     [SerializeField] private GameObject canvas;
 
@@ -40,7 +43,13 @@ public class AdsMob : MonoBehaviour
 
     private void Spawn()
     {
-        _player.Spawn(HexManager.CellByColor[UnitColor.GREY][Random.Range(0, HexManager.CellByColor[UnitColor.GREY].Count - 1)].coordinates);
+        var player = _player;
+        player.spawnPos =
+            HexManager.CellByColor[UnitColor.GREY][Random.Range(0, HexManager.CellByColor[UnitColor.GREY].Count - 1)]
+                .coordinates;
+        
+        _factory.Spawn(player);
+        
         canvas.SetActive(false);
         Time.timeScale = 1f;
     }
@@ -54,8 +63,9 @@ public class AdsMob : MonoBehaviour
     //     }
     // }
 
-    public void ShowCanvas(Unit player)
+    public void ShowCanvas(UnitInfo player, UnitFactory factory)
     {
+        _factory = factory;
         _player = player;
         Time.timeScale = 0f;
         canvas.SetActive(true);

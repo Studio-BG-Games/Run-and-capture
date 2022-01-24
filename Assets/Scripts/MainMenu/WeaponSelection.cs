@@ -47,6 +47,7 @@ public class WeaponSelection : MonoBehaviour
         FileStream stream = new FileStream(Application.persistentDataPath + "/" + dataFilePath, FileMode.Create);
         using StreamWriter writer = new StreamWriter(stream);
         writer.Write(JsonUtility.ToJson(weapon));
+        stream.Close();
         changeStats?.Invoke(weapon);
     }
 }

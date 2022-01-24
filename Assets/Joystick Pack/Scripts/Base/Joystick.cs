@@ -34,9 +34,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     [SerializeField] private RectTransform handle = null;
     private RectTransform baseRect = null;
 
-    public Action OnTouchUp;
-    public Action OnTouchDown;
-    public Action<Vector2> OnDrug;
+    public event Action OnTouchUp;
+    public event Action OnTouchDown;
+    public event Action<Vector2> OnDrug;
     
     private Canvas canvas;
     private Camera cam;

@@ -24,7 +24,7 @@ namespace Units
         private AnimLength _animLength;
         private HexCell _cell;
         private HexGrid _hexGrid;
-        public Action<GameObject> onPlayerSpawned;
+        public event Action<GameObject> OnPlayerSpawned;
         private Animator _animator;
         private UnitView _unitView;
         private bool _isBusy;
@@ -53,8 +53,8 @@ namespace Units
         public bool IsAlive => _isAlive;
         public UnitColor Color => _data.color;
         public int InventoryCapacity => _data.inventoryCapacity;
-        public Action<Item> OnItemPickUp;
-        public Action<Unit> OnDeath;
+        public event Action<Item> OnItemPickUp;
+        public event Action<Unit> OnDeath;
         public BarCanvas BarCanvas => _barCanvas;
         public GameObject Instance => _instance;
         public UnitInfo Data => _data;
@@ -208,7 +208,7 @@ namespace Units
                     BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
                     _camera.transform.rotation * Vector3.up);
                 _isBusy = false;
-                onPlayerSpawned?.Invoke(_instance);
+                OnPlayerSpawned?.Invoke(_instance);
             }
         }
 

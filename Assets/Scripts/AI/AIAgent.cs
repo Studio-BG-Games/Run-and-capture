@@ -30,7 +30,7 @@ namespace DefaultNamespace.AI
             _unit = unit;
             _camera = Camera.main;
             _unit.OnDeath += AgentDeath;
-            unit.onPlayerSpawned += InitAgent;
+            unit.OnPlayerSpawned += InitAgent;
             
         }
 

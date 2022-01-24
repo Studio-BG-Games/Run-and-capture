@@ -20,14 +20,14 @@ namespace HexFiled
         public void PaintOnDeath(Unit unit)
         {
             HexManager.PaintHexList(HexManager.CellByColor[unit.Color], UnitColor.GREY);
-#if UNITY_EDITOR
-            
-
-            if (HexManager.UnitCurrentCell.Count == 1)
-            {
-                SceneManager.LoadScene(1);
-            }
-#endif
+// #if UNITY_EDITOR
+//             
+//
+//             if (HexManager.UnitCurrentCell.Count == 1)
+//             {
+//                 SceneManager.LoadScene(1);
+//             }
+// #endif
         }
         public void CheckDeathOrDestroy(HexCell cell)
         {
@@ -40,7 +40,7 @@ namespace HexFiled
             unitsToDeath.ForEach(x => x.Death());
             if (cell.Building != null && cell.Building.Color != cell.Color)
             {
-                Object.Destroy(cell.Building);
+                Object.Destroy(cell.Building.gameObject);
             }
         }
         public void SetHexColors(HexCell cell)
