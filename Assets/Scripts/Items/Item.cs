@@ -15,6 +15,10 @@ namespace Items
         private GameObject _instance;
         [SerializeField] private GameObject iconPrefab;
         [SerializeField] private Sprite icon;
+        [SerializeField] private bool isInvokeOnPickUp = false;
+
+        public bool IsInvokeOnPickUp => isInvokeOnPickUp;
+
         public Sprite Icon => icon;
         public GameObject IconPrefab => iconPrefab;
 
@@ -31,7 +35,7 @@ namespace Items
             return _instance;
         }
 
-        public void PickUp(UnitColor color)
+        public virtual void PickUp(UnitColor color)
         {
             if (HexManager.UnitCurrentCell.TryGetValue(color, out var value))
                 Unit = value.unit;

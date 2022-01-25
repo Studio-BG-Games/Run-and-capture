@@ -161,13 +161,18 @@ public class UnitView : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         ItemView itemView = other.GetComponent<ItemView>();
-
-        if (itemView != null && _unit.PickUpItem(itemView.Item) && !itemView.pickedUp)
+        if(itemView != null && itemView.Item.IsInvokeOnPickUp)
         {
-            itemView.pickedUp = true;
+            
             ItemFabric.Items.Remove(itemView.gameObject);
+            itemView.Item.PickUp(_unit.Color);
             Destroy(itemView.gameObject);
-        }
+            return;
+        };
+        if(itemView == null || itemView.pickedUp || !_unit.PickUpItem(itemView.Item)) return;
+        itemView.pickedUp = true;
+        ItemFabric.Items.Remove(itemView.gameObject);
+        Destroy(itemView.gameObject);
     }
 
     private IEnumerator Reload()

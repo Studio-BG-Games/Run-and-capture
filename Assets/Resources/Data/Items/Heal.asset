@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b016eba27de41629261b965b3e2be0c, type: 3}
-  m_Name: DefenceBonus
+  m_Name: Heal
   m_EditorClassIdentifier: 
   iconPrefab: {fileID: 8639522512577941448, guid: 7b6a7f64e52da514d88aa97ad8f863df, type: 3}
-  icon: {fileID: 21300000, guid: ef4f09043626c634a86d095be3a55257, type: 3}
-  duration: 15
+  icon: {fileID: 0}
+  isInvokeOnPickUp: 1
+  duration: 0
   value: 50
-  type: 1
-  usisngVFX: {fileID: 413716222248834417, guid: 16c569599a231e34589b111487546b37, type: 3}
+  type: 2
+  usisngVFX: {fileID: 2206085988447087323, guid: d353016f44d2f164e9e0cbfae078e7c4, type: 3}

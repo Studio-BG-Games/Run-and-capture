@@ -21,8 +21,10 @@ MonoBehaviour:
     _spawnChance: 0.721
   - item: {fileID: 11400000, guid: f824f23273de8df429d37f10b51f9a6f, type: 2}
     _spawnChance: 0.83
+  - item: {fileID: 11400000, guid: 98f59e15ea7ad2d47b2e3ffd67e2a650, type: 2}
+    _spawnChance: 0.927
   - item: {fileID: 11400000, guid: 133e523fdd159754e8bf8927faec5b0f, type: 2}
-    _spawnChance: 0.75
+    _spawnChance: 0.756
   - item: {fileID: 11400000, guid: 133e523fdd159754e8bf8927faec5b0f, type: 2}
     _spawnChance: 0.756
   fromTimeSpawn: 2.93

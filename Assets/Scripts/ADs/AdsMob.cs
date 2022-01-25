@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using System.Timers;
 using Chars;
 using Data;
 using UnityEngine;
 // using GoogleMobileAds.Api;
 using HexFiled;
 using Random = UnityEngine.Random;
-using Units;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AdsMob : MonoBehaviour
@@ -16,7 +15,8 @@ public class AdsMob : MonoBehaviour
     // private AdRequest _request;
     private UnitInfo _player;
     private UnitFactory _factory;
-    [SerializeField] private Button button;
+    [SerializeField] private Button buttonContinue;
+    [SerializeField] private Button buttonExit;
     [SerializeField] private GameObject canvas;
 
     private void OnEnable()
@@ -25,8 +25,13 @@ public class AdsMob : MonoBehaviour
         // _request = new AdRequest.Builder().Build();
         // _ad.LoadAd(_request);
         // _ad.OnUserEarnedReward += HandleUser;
-        button.onClick.AddListener(Spawn) ;
+        buttonContinue.onClick.AddListener(Spawn);
         canvas.SetActive(false);
+        buttonExit.onClick.AddListener(() =>
+        {
+            buttonExit.onClick.RemoveAllListeners(); 
+            SceneManager.LoadScene(0);
+        });
         //
     }
     // private void Start() {
@@ -47,11 +52,12 @@ public class AdsMob : MonoBehaviour
         player.spawnPos =
             HexManager.CellByColor[UnitColor.GREY][Random.Range(0, HexManager.CellByColor[UnitColor.GREY].Count - 1)]
                 .coordinates;
-        
+
         _factory.Spawn(player);
-        
+
         canvas.SetActive(false);
         Time.timeScale = 1f;
+        buttonContinue.onClick.RemoveAllListeners();
     }
 
     // public void ShowAd()
@@ -67,8 +73,9 @@ public class AdsMob : MonoBehaviour
     {
         _factory = factory;
         _player = player;
-        Time.timeScale = 0f;
         canvas.SetActive(true);
+        Time.timeScale = 0f;
+        
     }
 
     public void Respawn(GameObject player)
@@ -81,7 +88,7 @@ public class AdsMob : MonoBehaviour
         // }
         foreach (var cell in cells)
         {
-            if(cell.Color == UnitColor.GREY)
+            if (cell.Color == UnitColor.GREY)
             {
                 var randomCell = Random.Range(0, cells.Count);
                 Vector3 respawnPosition = cells[randomCell].transform.position;
@@ -89,14 +96,14 @@ public class AdsMob : MonoBehaviour
                 player = FindObjectOfType<ExtraLife>().gameObject;
 
                 player.transform.position = respawnPosition;
-                if(player.transform.position == respawnPosition)
+                if (player.transform.position == respawnPosition)
                 {
                     //cell.Color = UnitColor.YELLOW;
                 }
             }
         }
     }
-    
+
 
     // private void OnDisable() {
     //     _ad.OnUserEarnedReward -= HandleUser;

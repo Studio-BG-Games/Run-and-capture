@@ -90,6 +90,8 @@ namespace Units
                     TimerHelper.Instance.StartTimer(() => _defenceBonus = 0, duration);
                     _defenceBonus = value;
                     break;
+                case BonusType.Heal:
+                    break;
                 default:
                     break;
             }
@@ -376,12 +378,17 @@ namespace Units
             {
                 Death();
             }
+            
+            if (_hp - dmg > _data.maxHP)
+            {
+                _hp = _data.maxHP;
+            }
 
             if (_defenceBonus > 0)
             {
                 return;
             }
-
+            
             SetUpBonus(0, 0, BonusType.Defence);
             _hp -= dmg;
 

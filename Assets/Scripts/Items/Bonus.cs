@@ -9,7 +9,8 @@ namespace Items
     public enum BonusType
     {
         Attack,
-        Defence
+        Defence,
+        Heal
     }
 
     [CreateAssetMenu(fileName = "BonusItem", menuName = "Item/Bonus")]
@@ -21,6 +22,20 @@ namespace Items
         [SerializeField] private GameObject usisngVFX;
 
         public BonusType Type => type;
+
+        public override void PickUp(UnitColor color)
+        {
+            if(type != BonusType.Heal)
+                base.PickUp(color);
+            else
+            {
+                Unit = HexManager.UnitCurrentCell[color].unit;
+                VFXController.Instance.PlayEffect(usisngVFX, Unit.Instance.transform);
+                Unit.UnitView.OnHit.Invoke(-value);
+                
+            }
+        }
+
         public void Invoke()
         {
             Unit.SetUpBonus(duration, value, type);
