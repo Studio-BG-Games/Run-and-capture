@@ -25,8 +25,7 @@ namespace Controller
             MusicController.Instance.SetMusicData(data.MusicData);
             
             var paintedController = new PaintedController();
-
-            data.WeaponsData.WeaponsList.ForEach(x => x.SetModifiedDamage(0));
+            
 
             ItemFabric itemFabric = new ItemFabric(data.ItemsData);
             hexGrid.OnGridLoaded += () => controllers.Add(itemFabric);

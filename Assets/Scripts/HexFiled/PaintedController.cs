@@ -31,16 +31,16 @@ namespace HexFiled
         }
         public void CheckDeathOrDestroy(HexCell cell)
         {
-            List<Unit> unitsToDeath = new List<Unit>();
-            foreach (var cells in HexManager.UnitCurrentCell
-                         .Where(cells => HexManager.CellByColor[cells.Key].Count < 2 || (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color)))
+            HexManager.UnitCurrentCell
+                .Where(cells
+                    => HexManager.CellByColor[cells.Key].Count < 2
+                       || (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color))
+                .Select(cells => cells.Value.unit)
+                .ToList().ForEach(x => x.Death());
+          
+            if (cell.Building != null)
             {
-                unitsToDeath.Add(cells.Value.unit);
-            }
-            unitsToDeath.ForEach(x => x.Death());
-            if (cell.Building != null && cell.Building.Color != cell.Color)
-            {
-                Object.Destroy(cell.Building.gameObject);
+                Object.Destroy(cell.Building);
             }
         }
         public void SetHexColors(HexCell cell)

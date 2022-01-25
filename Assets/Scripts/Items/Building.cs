@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using DefaultNamespace;
 using HexFiled;
 using UnityEngine;
@@ -11,9 +12,9 @@ namespace Items
 
         [SerializeField] private GameObject buildingPrefab;
         
+        
         public void Invoke(Action action)
         {
-            
             OnItemUsed += action;
         }
 
@@ -24,8 +25,9 @@ namespace Items
             var obj = SpawnHelper.Spawn(buildingPrefab, cell.transform.position + buildingPrefab.transform.position);
             obj.GetComponent<TowerView>()?.SetUp(Unit.Color);
             obj.GetComponent<BombView>()?.SetUp(Unit);
-            cell.Building =  obj.GetComponent<TowerView>();
-            OnItemUsed?.Invoke();
+            cell.Building =  obj;
+            OnItemUsed.Invoke();
+            OnItemUsed = null;
         }
     }
 }

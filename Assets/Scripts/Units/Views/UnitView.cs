@@ -2,24 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Data;
 using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
 using Items;
 using Units;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 using Weapons;
-using Random = UnityEngine.Random;
 
 
 public class UnitView : MonoBehaviour
 {
-    public Action OnStep;
-    public Action OnAttackEnd;
-    public Action OnAttack;
+    public event Action OnStep;
+    public event Action OnAttackEnd;
+    public event Action OnAttack;
     public Action<int> OnHit;
     [SerializeField] private BarCanvas barCanvas;
     [SerializeField] private GameObject aimCanvas;
@@ -34,12 +30,13 @@ public class UnitView : MonoBehaviour
     private Coroutine _previosReload;
     private Dictionary<string, Action> animActionDic;
     private int _mana;
-    private Action _capureHex;
+    private event Action CaptureHex;
     private Sequence _sequence;
     private AudioSource _audioSource;
     private Unit _unit;
     private float _hardCaptureTime;
     private Action onSupperJump;
+    private Coroutine _previousRegenCoroutine;
 
     public BarCanvas BarCanvas => barCanvas;
     public GameObject AimCanvas => aimCanvas;
@@ -58,7 +55,7 @@ public class UnitView : MonoBehaviour
         _toReloadStack = new Stack<ShotUIView>();
         _startRegen = regenMana;
         _manaRegen = manaRegen;
-        _capureHex = captureHex;
+        CaptureHex = captureHex;
         _unit = unit;
         _hardCaptureTime = hardCaptureTime;
     }
@@ -71,7 +68,7 @@ public class UnitView : MonoBehaviour
         _sequence = DOTween.Sequence();
         _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, _hardCaptureTime).SetEase(Ease.Linear).OnComplete(() =>
         {
-            _capureHex?.Invoke();
+            CaptureHex?.Invoke();
             barCanvas.CaptureBack.SetActive(false);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                 cell.gameObject);
@@ -107,7 +104,11 @@ public class UnitView : MonoBehaviour
     {
        
         _mana = _unit.Mana;
-        StartCoroutine(Regen());
+        if (_previosRegen != null)
+        {
+            StopCoroutine(_previosRegen);
+        }
+        _previosRegen = StartCoroutine(Regen());
     }
 
     private void Step()

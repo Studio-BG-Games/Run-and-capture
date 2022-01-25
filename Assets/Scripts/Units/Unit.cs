@@ -222,7 +222,7 @@ namespace Units
         {
             if (_inventory.Count < _data.inventoryCapacity)
             {
-                item.PickUp(this);
+                item.PickUp(_data.color);
                 _inventory.Add(item);
                 OnItemPickUp?.Invoke(item);
                 return true;
@@ -312,7 +312,7 @@ namespace Units
                 Object.Destroy(_instance);
                 OnDeath?.Invoke(this);
             }, _animLength.Death);
-
+            _inventory.ForEach(x => x.Dispose());
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, vfx);
             MusicController.Instance.RemoveAudioSource(_instance);
@@ -379,14 +379,11 @@ namespace Units
 
             if (_defenceBonus > 0)
             {
-                _defenceBonus -= dmg;
+                return;
             }
 
-            else
-            {
-                SetUpBonus(0, 0, BonusType.Defence);
-                _hp -= dmg;
-            }
+            SetUpBonus(0, 0, BonusType.Defence);
+            _hp -= dmg;
 
             UpdateBarCanvas();
         }

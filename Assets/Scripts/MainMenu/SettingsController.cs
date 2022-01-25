@@ -25,14 +25,23 @@ public class SettingsController : MonoBehaviour
     {
         dataFilePath = Application.persistentDataPath + "/" + dataFilePath;
         if (File.Exists(dataFilePath))
+        {
             _audioSettings = JsonUtility.FromJson<AudioSettings>(File.ReadAllText(dataFilePath));
+            if (_audioSettings == null)
+            {
+                _audioSettings = new AudioSettings(1f, 1f);
+                FileStream stream = new FileStream(dataFilePath, FileMode.Create);
+                using StreamWriter writer = new StreamWriter(stream);
+                writer.Write(JsonUtility.ToJson(_audioSettings));
+                writer.Close();
+            }
+        }
         else
         {
             _audioSettings = new AudioSettings(1f, 1f);
             FileStream stream = new FileStream(dataFilePath, FileMode.Create);
             using StreamWriter writer = new StreamWriter(stream);
             writer.Write(JsonUtility.ToJson(_audioSettings));
-            stream.Close();
             writer.Close();
         }
 

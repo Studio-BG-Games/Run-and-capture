@@ -178,7 +178,7 @@ namespace AI
         private void UseBonus(AIAgent agent, BonusType type)
         {
             var attack = agent.Unit.Inventory.Where(x => x is Bonus bonus && bonus.Type == type).ToList();
-            if (attack.Count == 0)
+            if (attack.Count == 0 || !agent.Unit.IsAlive)
             {
                 GetNewBehaviour(agent);
                 return;

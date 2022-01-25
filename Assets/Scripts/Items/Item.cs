@@ -10,7 +10,7 @@ using Object = UnityEngine.Object;
 
 namespace Items
 {
-    public abstract class Item : ScriptableObject
+    public abstract class Item : ScriptableObject, IDisposable
     {
         private GameObject _instance;
         [SerializeField] private GameObject iconPrefab;
@@ -31,9 +31,15 @@ namespace Items
             return _instance;
         }
 
-        public void PickUp(Unit unit)
+        public void PickUp(UnitColor color)
         {
-            Unit = unit;
+            if (HexManager.UnitCurrentCell.TryGetValue(color, out var value))
+                Unit = value.unit;
+        }
+
+        public void Dispose()
+        {
+            OnItemUsed = null;
         }
     }
 }
