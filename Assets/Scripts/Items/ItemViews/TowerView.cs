@@ -20,6 +20,7 @@ public class TowerView : MonoBehaviour
         public GameObject GameObject => _gameObject;
         public UnitColor UnitColor => _unitColor;
     }
+
     private UnitColor _color;
     private GameObject _target;
     [SerializeField] private Weapon weapon;
@@ -30,7 +31,7 @@ public class TowerView : MonoBehaviour
     public void SetUp(UnitColor unitColor)
     {
         _color = unitColor;
-        
+
         crystals.First(x => x.UnitColor == unitColor).GameObject.SetActive(true);
         var capsule = gameObject.AddComponent<CapsuleCollider>();
         capsule.radius = weapon.disnatce * HexGrid.HexDistance;
@@ -40,7 +41,7 @@ public class TowerView : MonoBehaviour
     {
         var unit = collision.gameObject.GetComponent<UnitView>();
         if (unit == null || unit.Color == _color) return;
-        
+
         weapon.SetModifiedDamage(0);
         _target = unit.gameObject;
         StartCoroutine(Shot());
@@ -56,6 +57,8 @@ public class TowerView : MonoBehaviour
 
     private IEnumerator Shot()
     {
+        var direction = DirectionHelper.DirectionTo(transform.position, _target.transform.position);
+        weapon.Fire(transform, new Vector2(direction.x, direction.z));
         while (_target != null)
         {
             yield return new WaitForSecondsRealtime(weapon.reloadTime);
@@ -63,8 +66,9 @@ public class TowerView : MonoBehaviour
             {
                 yield return null;
             }
-            var direction = DirectionHelper.DirectionTo(transform.position, _target.transform.position);
-           weapon.Fire(transform, new Vector2(direction.x, direction.z));
+
+            direction = DirectionHelper.DirectionTo(transform.position, _target.transform.position);
+            weapon.Fire(transform, new Vector2(direction.x, direction.z));
         }
     }
 }

@@ -8,12 +8,14 @@ namespace Items
     public class ItemView : MonoBehaviour
     {
         private Item _item;
-
+        public bool pickedUp;
         public string itemName;
         public Item Item => _item;
 
+        
         private void Start()
         {
+            pickedUp = false;
             itemName = _item.name;
         }
 

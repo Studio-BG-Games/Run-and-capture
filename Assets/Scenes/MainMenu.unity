@@ -88567,7 +88567,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuMusSrc: {fileID: 579284492}
-  GameData: {fileID: 11400000, guid: 4828646b64dadac47a63b0be91a92517, type: 2}
   dataFilePath: AudioSettings.json
   musicSlider: {fileID: 1813936035}
   sfxSlider: {fileID: 597565998}
@@ -90448,7 +90447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a1096b8f57ae441c79e465d788fbf0dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfbbb50429ab9184586ed1ed5bea1b80, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -117268,7 +117267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 228b09b7fa1c5455eab8432a85fac4ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98553777ef2a2724d8a457fb60c04299, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

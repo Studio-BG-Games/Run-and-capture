@@ -25,12 +25,13 @@ namespace Items
         [SerializeField] private string animName;
         private GameObject _aimInstance;
         private HexDirection _direction;
+        
 
 
         public void Invoke(Action action)
         {
             OnItemUsed += action;
-            if(_aimInstance == null)
+            if(_aimInstance == null || !_aimInstance.activeSelf)
                 _aimInstance = Object.Instantiate(aimCanvas, Unit.Instance.transform);
             else
             {
@@ -76,6 +77,7 @@ namespace Items
             
             OnItemUsed?.Invoke();
             Unit.UnitView.AnimActionDic[animName] -= DoPaint;
+            OnItemUsed = null;
         }
 
         public void UseAbility()

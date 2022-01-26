@@ -15,6 +15,8 @@ MonoBehaviour:
   _objectsToSpawn:
   - {fileID: 5336165614562949988, guid: b65a64902764f84428e8a07b071bad15, type: 3}
   - {fileID: 5296751824488078361, guid: 7305318dc10267546b643a42c7c21af3, type: 3}
+  _canvas: {fileID: 3022236851805642197, guid: 682042d5dd3e7d94bbe2a67ec2c1245a, type: 3}
   joystickView: {fileID: 4385872142190176059, guid: 4df6913b39f4979429158c344680d83f, type: 3}
   inventoryView: {fileID: 1527356263590969195, guid: ff3bc3b17ddefd14eb798b22cf0a854f, type: 3}
-  adsMob: {fileID: 3306115827101638291, guid: 829cf0211d46b58489f4cb061c784378, type: 3}
+  adsMob: {fileID: 4936557783008875079, guid: dc329921d00a27f4480b6ef5cda0a822, type: 3}
+  cheatMenu: {fileID: 791049004453965678, guid: 33deb58e3852451419239c8df4119f91, type: 3}

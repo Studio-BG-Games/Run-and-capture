@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using AI;
 using Chars;
 using Data;
@@ -21,10 +19,11 @@ namespace Units
         private bool _isAlive;
         private GameObject _instance;
         private List<Item> _inventory;
+        private List<Item> _inventoryDefence;
         private AnimLength _animLength;
         private HexCell _cell;
         private HexGrid _hexGrid;
-        public Action<GameObject> onPlayerSpawned;
+        public event Action<GameObject> OnPlayerSpawned;
         private Animator _animator;
         private UnitView _unitView;
         private bool _isBusy;
@@ -53,14 +52,15 @@ namespace Units
         public bool IsAlive => _isAlive;
         public UnitColor Color => _data.color;
         public int InventoryCapacity => _data.inventoryCapacity;
-        public Action<Item> OnItemPickUp;
-        public Action<Unit> OnDeath;
+        public event Action<Item> OnItemPickUp;
+        public event Action<Unit> OnDeath;
         public BarCanvas BarCanvas => _barCanvas;
         public GameObject Instance => _instance;
         public UnitInfo Data => _data;
         public int Mana => _mana;
         public int Hp => _hp;
         public List<Item> Inventory => _inventory;
+        public List<Item> InventoryDefence => _inventoryDefence;
         public Weapon Weapon => _weapon;
 
         public Animator Animator => _animator;
@@ -89,6 +89,8 @@ namespace Units
                 case BonusType.Defence:
                     TimerHelper.Instance.StartTimer(() => _defenceBonus = 0, duration);
                     _defenceBonus = value;
+                    break;
+                case BonusType.Heal:
                     break;
                 default:
                     break;
@@ -185,7 +187,7 @@ namespace Units
                 _cell.PaintHex(_data.color);
                 _cell.GetListNeighbours().ForEach(x => x?.PaintHex(Color));
                 _inventory = new List<Item>();
-
+                _inventoryDefence = new List<Item>();
 
                 HexManager.UnitCurrentCell.Add(_data.color, (_cell, this));
 
@@ -208,7 +210,7 @@ namespace Units
                     BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
                     _camera.transform.rotation * Vector3.up);
                 _isBusy = false;
-                onPlayerSpawned?.Invoke(_instance);
+                OnPlayerSpawned?.Invoke(_instance);
             }
         }
 
@@ -220,13 +222,32 @@ namespace Units
 
         public bool PickUpItem(Item item)
         {
-            if (_inventory.Count < _data.inventoryCapacity)
+            switch (item.Type)
             {
-                item.PickUp(this);
-                _inventory.Add(item);
-                OnItemPickUp?.Invoke(item);
-                return true;
+                case ItemType.ATTACK:
+                    if (_inventory.Count < _data.inventoryCapacity / 2)
+                    {
+                        item.PickUp(_data.color);
+                        _inventory.Add(item);
+                        OnItemPickUp?.Invoke(item);
+                        return true;
+                    }
+
+                    break;
+                case ItemType.DEFENCE:
+                    if (_inventoryDefence.Count < _data.inventoryCapacity / 2)
+                    {
+                        item.PickUp(_data.color);
+                        _inventoryDefence.Add(item);
+                        OnItemPickUp?.Invoke(item);
+                        return true;
+                    }
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
+
 
             return false;
         }
@@ -312,7 +333,7 @@ namespace Units
                 Object.Destroy(_instance);
                 OnDeath?.Invoke(this);
             }, _animLength.Death);
-
+            _inventory.ForEach(x => x.Dispose());
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, vfx);
             MusicController.Instance.RemoveAudioSource(_instance);
@@ -377,16 +398,18 @@ namespace Units
                 Death();
             }
 
-            if (_defenceBonus > 0)
+            if (_hp - dmg > _data.maxHP)
             {
-                _defenceBonus -= dmg;
+                _hp = _data.maxHP;
             }
 
-            else
+            if (_defenceBonus > 0)
             {
-                SetUpBonus(0, 0, BonusType.Defence);
-                _hp -= dmg;
+                return;
             }
+
+            SetUpBonus(0, 0, BonusType.Defence);
+            _hp -= dmg;
 
             UpdateBarCanvas();
         }

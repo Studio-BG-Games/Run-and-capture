@@ -20,25 +20,25 @@ namespace HexFiled
         public void PaintOnDeath(Unit unit)
         {
             HexManager.PaintHexList(HexManager.CellByColor[unit.Color], UnitColor.GREY);
-#if UNITY_EDITOR
-            
-
-            if (HexManager.UnitCurrentCell.Count == 1)
-            {
-                SceneManager.LoadScene(1);
-            }
-#endif
+// #if UNITY_EDITOR
+//             
+//
+//             if (HexManager.UnitCurrentCell.Count == 1)
+//             {
+//                 SceneManager.LoadScene(1);
+//             }
+// #endif
         }
         public void CheckDeathOrDestroy(HexCell cell)
         {
-            List<Unit> unitsToDeath = new List<Unit>();
-            foreach (var cells in HexManager.UnitCurrentCell
-                         .Where(cells => HexManager.CellByColor[cells.Key].Count < 2 || (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color)))
-            {
-                unitsToDeath.Add(cells.Value.unit);
-            }
-            unitsToDeath.ForEach(x => x.Death());
-            if (cell.Building != null && cell.Building.Color != cell.Color)
+            HexManager.UnitCurrentCell
+                .Where(cells
+                    => HexManager.CellByColor[cells.Key].Count < 2
+                       || (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color))
+                .Select(cells => cells.Value.unit)
+                .ToList().ForEach(x => x.Death());
+          
+            if (cell.Building != null)
             {
                 Object.Destroy(cell.Building);
             }

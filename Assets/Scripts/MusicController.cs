@@ -47,7 +47,7 @@ public class MusicController
     public void AddAudioSource(GameObject gameObject)
     {
         var source = gameObject.AddComponent<AudioSource>();
-        
+        source.spatialBlend = 1f;
         _sources.Add(gameObject, source);
     }
 
