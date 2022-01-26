@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Chars;
 using DefaultNamespace.Weapons;
 using UnityEngine;
 using Weapons;

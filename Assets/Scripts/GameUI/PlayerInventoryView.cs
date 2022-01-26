@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Items;
 using Units;
 using UnityEngine;
@@ -14,80 +15,66 @@ namespace GameUI
 
         public event Action<Item> OnBuildingInvoked;
 
-        private List<GameObject> itemsGo; 
+        private List<GameObject> itemsGo;
         private List<Button> _buttons;
-        private Button[] _freeButtons;
-        private Dictionary<Button, Item> _dictionary;
+        private List<Button> _buttonsDefence;
 
 
         public void SetUpUI(int inventoryCapacity)
         {
-            _dictionary = new Dictionary<Button, Item>();
             if (_buttons != null && _buttons.Count > 0)
             {
-               itemsGo.ForEach(Destroy);
+                itemsGo.ForEach(Destroy);
             }
 
             itemsGo = new List<GameObject>();
             _buttons = new List<Button>();
-            
-            _freeButtons = new Button[inventoryCapacity];
-            for (int i = 0; i < inventoryCapacity; i++)
+            _buttonsDefence = new List<Button>();
+
+            SetUpButtons(inventoryCapacity / 2, _buttons);
+            SetUpButtons(inventoryCapacity / 2, _buttonsDefence);
+        }
+
+        private void SetUpButtons(int count, List<Button> buttons)
+        {
+            for (int i = 0; i < count; i++)
             {
                 var itemGo = Instantiate(item, grid.transform);
                 itemsGo.Add(itemGo);
                 var button = itemGo.GetComponentInChildren<Button>();
-                _buttons.Add(button);
-                _dictionary.Add(button, null);
+                buttons.Add(button);
                 button.gameObject.SetActive(false);
             }
-
-            var j = 0;
-            _buttons.ForEach(button => _freeButtons[j++] = button);
         }
 
         private void SwitchButton(Button button)
         {
             button.onClick.RemoveAllListeners();
             button.gameObject.SetActive(false);
-            for (int i = 0; i < _freeButtons.Length; i++)
-            {
-                if (_freeButtons[i] != null) continue;
-                _freeButtons[i] = button;
-                break;
-            }
         }
 
-        public void PickUpItem(Item item)
+        public void PickUpItem(Item Item)
         {
-            Button button = null;
-            for (int i = 0; i < _freeButtons.Length; i++)
+            var button = Item.Type switch
             {
-                if (_freeButtons[i] == null) continue;
-                button = _freeButtons[i];
-                _freeButtons[i] = null;
-                break;
-            }
+                ItemType.ATTACK => _buttons.First(x => !x.IsActive()),
+                ItemType.DEFENCE => _buttonsDefence.First(x => !x.IsActive()),
+                _ => throw new ArgumentOutOfRangeException()
+            };
 
             if (button == null)
                 return;
-            _dictionary[button] = item;
             button.gameObject.SetActive(true);
-            button.image.sprite = item.Icon;
+            button.image.sprite = Item.Icon;
             button.onClick.AddListener(() =>
             {
-                switch (item)
+                switch (Item)
                 {
                     case Bonus bonus:
                     {
                         button.onClick.RemoveAllListeners();
                         bonus.Invoke();
-                        for (int i = 0; i < _freeButtons.Length; i++)
-                        {
-                            if (_freeButtons[i] != null) continue;
-                            _freeButtons[i] = button;
-                            break;
-                        }
+
                         button.onClick.RemoveAllListeners();
                         button.gameObject.SetActive(false);
                         break;

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23a091c5733400f8f0092a4c0f33c6e, type: 3}
   m_Name: Tower
   m_EditorClassIdentifier: 
-  iconPrefab: {fileID: 8639522512577941448, guid: 7b6a7f64e52da514d88aa97ad8f863df, type: 3}
   icon: {fileID: 21300000, guid: b7771b47a72ca7947bf18f664e53a983, type: 3}
+  isInvokeOnPickUp: 0
+  type: 1
   buildingPrefab: {fileID: 3496656575117217171, guid: 38edd53c7f09f41409153241c78268f9, type: 3}

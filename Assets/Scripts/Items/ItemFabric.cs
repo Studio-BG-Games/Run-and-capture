@@ -13,6 +13,7 @@ namespace Items
     public class ItemFabric : IExecute
     {
         public static Dictionary<GameObject, HexCell> Items;
+        public static Dictionary<ItemType, GameObject> itemIcon;
         private ItemsData _data;
         private List<HexCell> _openList;
         private List<Type> _itemTypes;
@@ -22,11 +23,16 @@ namespace Items
 
         public ItemFabric(ItemsData data)
         {
+            itemIcon = new Dictionary<ItemType, GameObject>();
             _itemParrant = new GameObject("Items");
             Items = new Dictionary<GameObject, HexCell>();
             _data = data;
             _openList = new List<HexCell>();
             _spawnTime = Random.Range(data.SpawnTime.from, data.SpawnTime.to);
+            data.Icons.ForEach(icon =>
+            {
+                itemIcon.Add(icon.Type, icon.Prefab);
+            });
         }
 
         public void UpdateCellToOpenList(HexCell cell)
@@ -65,8 +71,8 @@ namespace Items
                     return;
                 }
 
-
-                Items.Add(_data.ItemInfos[i].Item.Spawn(cell, _itemParrant), cell);
+                var item = _data.ItemInfos[i].Item;
+                Items.Add(item.Spawn(cell, _itemParrant, itemIcon[item.Type]), cell);
                 cell.SetItem(_data.ItemInfos[i].Item);
                 _spawnTime = Random.Range(_data.SpawnTime.from, _data.SpawnTime.to);
             }

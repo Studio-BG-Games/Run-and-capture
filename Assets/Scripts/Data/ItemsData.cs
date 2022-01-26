@@ -14,8 +14,12 @@ namespace Data
 
         [SerializeField] private float fromTimeSpawn;
         [SerializeField] private float toTimeSpawn;
+        [SerializeField] private List<ItemIcon> icons;
 
         public List<ItemInfos> ItemInfos => items;
+
+        public List<ItemIcon> Icons => icons;
+
         public (float from, float to) SpawnTime => (fromTimeSpawn, toTimeSpawn);
     }
 

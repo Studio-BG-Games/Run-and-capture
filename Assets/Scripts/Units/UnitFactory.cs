@@ -55,6 +55,8 @@ namespace Chars
                     _controllers.Add(playerControl);
                 };
 
+                _uiController.CheatMenu.SetPlayerNData(player, _data);
+                
                 player.OnDeath += unit1 => _controllers.Remove(playerControl);
                 player.OnDeath += u => playerControl.Dispose();
                 player.OnPlayerSpawned += cameraControl.InitCameraControl;

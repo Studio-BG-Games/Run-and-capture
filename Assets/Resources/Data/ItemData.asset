@@ -14,18 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - item: {fileID: 11400000, guid: e7adbedb55c5db341a823370b696f709, type: 2}
-    _spawnChance: 0.48
+    _spawnChance: 0.848
   - item: {fileID: 11400000, guid: 62849ddbcd32e834887aac5eb3d98db0, type: 2}
-    _spawnChance: 0.846
+    _spawnChance: 0.505
   - item: {fileID: 11400000, guid: ef628c3158b0ea34bb919ca105507009, type: 2}
     _spawnChance: 0.721
   - item: {fileID: 11400000, guid: f824f23273de8df429d37f10b51f9a6f, type: 2}
-    _spawnChance: 0.83
+    _spawnChance: 0.705
   - item: {fileID: 11400000, guid: 98f59e15ea7ad2d47b2e3ffd67e2a650, type: 2}
-    _spawnChance: 0.927
+    _spawnChance: 0.64
   - item: {fileID: 11400000, guid: 133e523fdd159754e8bf8927faec5b0f, type: 2}
-    _spawnChance: 0.756
+    _spawnChance: 0.833
   - item: {fileID: 11400000, guid: 133e523fdd159754e8bf8927faec5b0f, type: 2}
-    _spawnChance: 0.756
+    _spawnChance: 0.848
   fromTimeSpawn: 2.93
   toTimeSpawn: 10
+  icons:
+  - type: 0
+    prefab: {fileID: 3197816592181874056, guid: 2704c4f795b0d7748a3e3fa53be4d893, type: 3}
+  - type: 1
+    prefab: {fileID: 8639522512577941448, guid: 7b6a7f64e52da514d88aa97ad8f863df, type: 3}

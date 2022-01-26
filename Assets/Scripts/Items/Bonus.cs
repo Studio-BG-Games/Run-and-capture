@@ -1,6 +1,4 @@
-﻿using System;
-using Data;
-using DefaultNamespace;
+﻿using DefaultNamespace;
 using HexFiled;
 using UnityEngine;
 
@@ -18,14 +16,14 @@ namespace Items
     {
         [SerializeField] private float duration;
         [SerializeField] private int value;
-        [SerializeField] private BonusType type;
+        [SerializeField] private BonusType bonusType;
         [SerializeField] private GameObject usisngVFX;
 
-        public BonusType Type => type;
+        public BonusType BonusType => bonusType;
 
         public override void PickUp(UnitColor color)
         {
-            if(type != BonusType.Heal)
+            if(bonusType != BonusType.Heal)
                 base.PickUp(color);
             else
             {
@@ -38,7 +36,7 @@ namespace Items
 
         public void Invoke()
         {
-            Unit.SetUpBonus(duration, value, type);
+            Unit.SetUpBonus(duration, value, bonusType);
             var vfx = VFXController.Instance.PlayEffect(usisngVFX, Unit.Instance.transform);
             TimerHelper.Instance.StartTimer(() => Destroy(vfx), duration);
             Unit.UseItem(this);

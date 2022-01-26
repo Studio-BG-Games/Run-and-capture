@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23a091c5733400f8f0092a4c0f33c6e, type: 3}
   m_Name: Bomb
   m_EditorClassIdentifier: 
-  iconPrefab: {fileID: 8639522512577941448, guid: 7b6a7f64e52da514d88aa97ad8f863df, type: 3}
   icon: {fileID: 21300000, guid: 5a80ac41b33ef3f43945efa70e6dfdb0, type: 3}
+  isInvokeOnPickUp: 0
+  type: 1
   buildingPrefab: {fileID: 6736513976106828952, guid: 18fb35664a7886842aa1702160b555a8, type: 3}

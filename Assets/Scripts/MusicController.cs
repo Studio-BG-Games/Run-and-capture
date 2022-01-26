@@ -47,9 +47,7 @@ public class MusicController
     public void AddAudioSource(GameObject gameObject)
     {
         var source = gameObject.AddComponent<AudioSource>();
-        source.spread = 150;
-        source.minDistance = 2f;
-        source.spatialBlend = 0.7f;
+        source.spatialBlend = 1f;
         _sources.Add(gameObject, source);
     }
 

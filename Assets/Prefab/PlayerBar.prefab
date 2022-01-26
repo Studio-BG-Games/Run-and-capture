@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 1271697267505620599}
   - component: {fileID: 482855193181693567}
   m_Layer: 5
-  m_Name: BarCanvas
+  m_Name: PlayerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

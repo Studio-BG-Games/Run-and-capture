@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using AI;
 using Chars;
 using Data;
@@ -21,6 +19,7 @@ namespace Units
         private bool _isAlive;
         private GameObject _instance;
         private List<Item> _inventory;
+        private List<Item> _inventoryDefence;
         private AnimLength _animLength;
         private HexCell _cell;
         private HexGrid _hexGrid;
@@ -61,6 +60,7 @@ namespace Units
         public int Mana => _mana;
         public int Hp => _hp;
         public List<Item> Inventory => _inventory;
+        public List<Item> InventoryDefence => _inventoryDefence;
         public Weapon Weapon => _weapon;
 
         public Animator Animator => _animator;
@@ -187,7 +187,7 @@ namespace Units
                 _cell.PaintHex(_data.color);
                 _cell.GetListNeighbours().ForEach(x => x?.PaintHex(Color));
                 _inventory = new List<Item>();
-
+                _inventoryDefence = new List<Item>();
 
                 HexManager.UnitCurrentCell.Add(_data.color, (_cell, this));
 
@@ -222,13 +222,32 @@ namespace Units
 
         public bool PickUpItem(Item item)
         {
-            if (_inventory.Count < _data.inventoryCapacity)
+            switch (item.Type)
             {
-                item.PickUp(_data.color);
-                _inventory.Add(item);
-                OnItemPickUp?.Invoke(item);
-                return true;
+                case ItemType.ATTACK:
+                    if (_inventory.Count < _data.inventoryCapacity / 2)
+                    {
+                        item.PickUp(_data.color);
+                        _inventory.Add(item);
+                        OnItemPickUp?.Invoke(item);
+                        return true;
+                    }
+
+                    break;
+                case ItemType.DEFENCE:
+                    if (_inventoryDefence.Count < _data.inventoryCapacity / 2)
+                    {
+                        item.PickUp(_data.color);
+                        _inventoryDefence.Add(item);
+                        OnItemPickUp?.Invoke(item);
+                        return true;
+                    }
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
+
 
             return false;
         }
@@ -378,7 +397,7 @@ namespace Units
             {
                 Death();
             }
-            
+
             if (_hp - dmg > _data.maxHP)
             {
                 _hp = _data.maxHP;
@@ -388,7 +407,7 @@ namespace Units
             {
                 return;
             }
-            
+
             SetUpBonus(0, 0, BonusType.Defence);
             _hp -= dmg;
 

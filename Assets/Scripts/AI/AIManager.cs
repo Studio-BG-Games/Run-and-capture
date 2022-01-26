@@ -92,7 +92,7 @@ namespace AI
 
         public BotState GetNewBehaviour(AIAgent agent)
         {
-            var attack = agent.Unit.Inventory.Where(x => x is Bonus { Type: BonusType.Attack }).ToList();
+            var attack = agent.Unit.Inventory.Where(x => x is Bonus { BonusType: BonusType.Attack }).ToList();
             if (agent.CurentState is BotState.Attack && agent.Unit.AttackBonus == 0 && attack.Count > 0)
             {
                 SetBehaviour(BotState.AttackBonusUsage, agent);
@@ -130,7 +130,7 @@ namespace AI
                 return BotState.CollectingBonus;
             }
 
-            var protect = agent.Unit.Inventory.Where(x => x is Bonus { Type: BonusType.Defence }).ToList();
+            var protect = agent.Unit.Inventory.Where(x => x is Bonus { BonusType: BonusType.Defence }).ToList();
             if (protect.Count > 0 && agent.Unit.Hp <= agent.Unit.Data.maxHP * _data.PercentToUseProtectBonus &&
                 agent.Unit.DefenceBonus == 0)
             {
@@ -177,7 +177,7 @@ namespace AI
 
         private void UseBonus(AIAgent agent, BonusType type)
         {
-            var attack = agent.Unit.Inventory.Where(x => x is Bonus bonus && bonus.Type == type).ToList();
+            var attack = agent.Unit.Inventory.Where(x => x is Bonus bonus && bonus.BonusType == type).ToList();
             if (attack.Count == 0 || !agent.Unit.IsAlive)
             {
                 GetNewBehaviour(agent);
