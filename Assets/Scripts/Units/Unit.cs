@@ -23,7 +23,7 @@ namespace Units
         private AnimLength _animLength;
         private HexCell _cell;
         private HexGrid _hexGrid;
-        public event Action<GameObject> OnPlayerSpawned;
+        public event Action<Unit> OnPlayerSpawned;
         private Animator _animator;
         private UnitView _unitView;
         private bool _isBusy;
@@ -111,7 +111,7 @@ namespace Units
             {
                 DoTransit(direction);
             }
-            else if (_cell.GetNeighbor(direction).Color != UnitColor.GREY)
+            else if (_cell.GetNeighbor(direction).Color != UnitColor.Grey)
             {
                 if (_mana - _hexGrid.HexHardCaptureCost <= 0) return;
                 _isHardToCapture = true;
@@ -210,7 +210,7 @@ namespace Units
                     BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
                     _camera.transform.rotation * Vector3.up);
                 _isBusy = false;
-                OnPlayerSpawned?.Invoke(_instance);
+                OnPlayerSpawned?.Invoke(this);
             }
         }
 

@@ -2,10 +2,10 @@
 {
     public enum UnitColor
     {
-        GREEN,
-        RED,
-        GREY,
-        YELLOW,
-        BLUE
+        Green,
+        Red,
+        Grey,
+        Yellow,
+        Blue
     }
 }

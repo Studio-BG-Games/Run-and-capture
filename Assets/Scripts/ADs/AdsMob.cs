@@ -31,6 +31,7 @@ public class AdsMob : MonoBehaviour
         {
             buttonExit.onClick.RemoveAllListeners(); 
             SceneManager.LoadScene(0);
+            Time.timeScale = 1f;
         });
         //
     }
@@ -50,7 +51,7 @@ public class AdsMob : MonoBehaviour
     {
         var player = _player;
         player.spawnPos =
-            HexManager.CellByColor[UnitColor.GREY][Random.Range(0, HexManager.CellByColor[UnitColor.GREY].Count - 1)]
+            HexManager.CellByColor[UnitColor.Grey][Random.Range(0, HexManager.CellByColor[UnitColor.Grey].Count - 1)]
                 .coordinates;
 
         _factory.Spawn(player);
@@ -81,14 +82,14 @@ public class AdsMob : MonoBehaviour
     public void Respawn(GameObject player)
     {
         List<HexCell> cells = new List<HexCell>();
-        cells.AddRange(HexManager.CellByColor[UnitColor.GREY]);
+        cells.AddRange(HexManager.CellByColor[UnitColor.Grey]);
         // for (int i = 0; i < cells.Count; i++)
         // {
 
         // }
         foreach (var cell in cells)
         {
-            if (cell.Color == UnitColor.GREY)
+            if (cell.Color == UnitColor.Grey)
             {
                 var randomCell = Random.Range(0, cells.Count);
                 Vector3 respawnPosition = cells[randomCell].transform.position;

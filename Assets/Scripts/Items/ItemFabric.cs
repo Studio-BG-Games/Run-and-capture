@@ -37,7 +37,7 @@ namespace Items
 
         public void UpdateCellToOpenList(HexCell cell)
         {
-            if (cell.Color != UnitColor.GREY)
+            if (cell.Color != UnitColor.Grey)
             {
                 _openList.Add(cell);
             }
