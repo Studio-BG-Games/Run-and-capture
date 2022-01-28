@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 
 namespace HexFiled
 {
-    public class HexGrid : IInitialization
+    public class HexGrid 
     {
         
         private HexCell[] _cells;
@@ -18,8 +18,8 @@ namespace HexFiled
         private FieldData _fieldData;
 
         public static float HexDistance => _hexDistance;
-        public Action<HexCell> OnHexPainted;
-        public Action OnGridLoaded;
+        public event Action<HexCell> OnHexPainted;
+        public event Action OnGridLoaded;
         
         private static Dictionary<UnitColor, CellColor> _colors;
         private static float _hexDistance;
@@ -45,6 +45,8 @@ namespace HexFiled
 
             _gridCanvas = Object.Instantiate(fieldData.CoordinatesCanvas, _baseGameObject.transform)
                 .GetComponent<Canvas>();
+            HexManager.CellByColor = new Dictionary<UnitColor, List<HexCell>>();
+            _cells = new HexCell[_fieldData.height * _fieldData.width];
         }
 
         public HexCell GetCellFromCoord(HexCoordinates coordinates)
@@ -63,11 +65,11 @@ namespace HexFiled
             position.z = z * (HexMetrics.outerRadius * 1.5f);
             var cellGO = Object.Instantiate(_fieldData.cellPrefab);
             HexCell cell = _cells[i] = cellGO.GetComponent<HexCell>();
-            cell.PaintHex(UnitColor.GREY);
+            cell.PaintHex(UnitColor.Grey);
             cell.transform.SetParent(_baseGameObject.transform, false);
             cell.transform.localPosition = position;
             cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
-            cell.onHexPainted += OnHexPainted;
+            cell.OnHexPainted += OnHexPainted;
 
             if (x > 0)
             {
@@ -110,11 +112,9 @@ namespace HexFiled
         }
 
 
-        public void Init()
+        public void SpawnField()
         {
-            HexManager.CellByColor = new Dictionary<UnitColor, List<HexCell>>();
-            _cells = new HexCell[_fieldData.height * _fieldData.width];
-
+            
             for (int z = 0, i = 0; z < _fieldData.height; z++)
             {
                 for (int x = 0; x < _fieldData.width; x++)
@@ -123,7 +123,7 @@ namespace HexFiled
                 }
             }
 
-            OnGridLoaded.Invoke();
+            OnGridLoaded?.Invoke();
         }
     }
 }

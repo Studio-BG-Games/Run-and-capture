@@ -12,7 +12,7 @@ namespace HexFiled
     public class HexCell : MonoBehaviour
     {
         public HexCoordinates coordinates;
-        public Action<HexCell> onHexPainted;
+        public event Action<HexCell> OnHexPainted;
         
         
 
@@ -24,9 +24,9 @@ namespace HexFiled
         public UnitColor Color => _color;
 
         public Item Item => _item;
-        private TowerView _towerView;
+        private GameObject _towerView;
 
-        public TowerView Building
+        public GameObject Building
         {
             get => _towerView;
             set
@@ -41,7 +41,7 @@ namespace HexFiled
         private void Awake()
         {
             _renderer = GetComponent<MeshRenderer>();
-            _color = UnitColor.GREY;
+            _color = UnitColor.Grey;
             if (!HexManager.CellByColor.ContainsKey(_color))
             {
                 HexManager.CellByColor.Add(_color, new List<HexCell>(){this});
@@ -90,13 +90,13 @@ namespace HexFiled
             _color = color;
             HexManager.CellByColor[_color].Add(this);
             
-            if(color == UnitColor.GREY) return;
+            if(color == UnitColor.Grey) return;
             
             var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[color].VFXCellCapturePrefab, transform.position + new Vector3(0,0.1f,0));
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures, vfx);
             
-            onHexPainted?.Invoke(this);
+            OnHexPainted?.Invoke(this);
         }
     }
 }

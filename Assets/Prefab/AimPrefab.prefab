@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3748583951425988394}
   - component: {fileID: 6763014501615571600}
   m_Layer: 5
-  m_Name: AimCanvas
+  m_Name: AimPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

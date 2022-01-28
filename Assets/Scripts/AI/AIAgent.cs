@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace DefaultNamespace.AI
 {
-    public class AIAgent : IFixedExecute
+    public class AIAgent : IFixedExecute, IDisposable
     {
         private Unit _unit;
         private Camera _camera;
@@ -30,7 +30,7 @@ namespace DefaultNamespace.AI
             _unit = unit;
             _camera = Camera.main;
             _unit.OnDeath += AgentDeath;
-            unit.onPlayerSpawned += InitAgent;
+            unit.OnPlayerSpawned += InitAgent;
             
         }
 
@@ -41,10 +41,10 @@ namespace DefaultNamespace.AI
             currentPath.Clear();
         }
 
-        private void InitAgent(GameObject unit)
+        private void InitAgent(Unit unit)
         {
             AIManager.Instance.AddAgent(this);
-            HexManager.agents.Add(unit, this);
+            HexManager.agents.Add(unit.Instance, this);
             OnAgentInited?.Invoke(this);
         }
 
@@ -65,7 +65,11 @@ namespace DefaultNamespace.AI
             if (currentPath.Count > 0 && !_unit.IsBusy)
             {
                 var dir = currentPath.Dequeue();
-                while (HexManager.UnitCurrentCell[_unit.Color].cell.GetNeighbor(dir) == null)
+                if (!HexManager.UnitCurrentCell.TryGetValue(_unit.Color, out var value))
+                {
+                    return;
+                }
+                while (value.cell == null)
                 {
                     dir = dir.PlusSixtyDeg();
                 }
@@ -77,6 +81,9 @@ namespace DefaultNamespace.AI
             }
         }
 
-       
+
+        public void Dispose()
+        {
+        }
     }
 }

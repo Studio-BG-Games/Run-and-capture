@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DynamicJoystick : Joystick
 {
-    public float MoveThreshold { get { return moveThreshold; } set { moveThreshold = Mathf.Abs(value); } }
+    private float MoveThreshold
+    {
+        get { return moveThreshold; }
+        set { moveThreshold = Mathf.Abs(value); }
+    }
+
+    private Vector2 starPos;
 
     [SerializeField] private float moveThreshold = 1;
 
@@ -13,19 +20,21 @@ public class DynamicJoystick : Joystick
     {
         MoveThreshold = moveThreshold;
         base.Start();
-        background.gameObject.SetActive(false);
+        starPos = background.anchoredPosition;
+        FadeJoystick(false);
     }
 
     public override void OnPointerDown(PointerEventData eventData)
     {
         background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
-        background.gameObject.SetActive(true);
+        FadeJoystick(true);
         base.OnPointerDown(eventData);
     }
 
     public override void OnPointerUp(PointerEventData eventData)
     {
-        background.gameObject.SetActive(false);
+        FadeJoystick(false);
+        background.anchoredPosition = starPos;
         base.OnPointerUp(eventData);
     }
 
@@ -36,6 +45,7 @@ public class DynamicJoystick : Joystick
             Vector2 difference = normalised * (magnitude - moveThreshold) * radius;
             background.anchoredPosition += difference;
         }
+
         base.HandleInput(magnitude, normalised, radius, cam);
     }
 }

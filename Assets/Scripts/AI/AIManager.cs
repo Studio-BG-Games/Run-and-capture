@@ -70,7 +70,7 @@ namespace AI
                 foreach (var color in (UnitColor[])Enum.GetValues(typeof(UnitColor)))
                 {
                     if (HexManager.UnitCurrentCell.ContainsKey(color) &&
-                         HexManager.UnitCurrentCell[color] != (null, null) &&
+                        HexManager.UnitCurrentCell[color] != (null, null) &&
                         Vector3.Distance(HexManager.UnitCurrentCell[color].unit.Instance.transform.position,
                             agent.Instance.transform.position) <= cellDist * HexGrid.HexDistance
                         && HexManager.UnitCurrentCell[color].unit.Color != agent.Color)
@@ -92,7 +92,7 @@ namespace AI
 
         public BotState GetNewBehaviour(AIAgent agent)
         {
-            var attack = agent.Unit.Inventory.Where(x => x is Bonus { Type: BonusType.Attack }).ToList();
+            var attack = agent.Unit.Inventory.Where(x => x is Bonus { BonusType: BonusType.Attack }).ToList();
             if (agent.CurentState is BotState.Attack && agent.Unit.AttackBonus == 0 && attack.Count > 0)
             {
                 SetBehaviour(BotState.AttackBonusUsage, agent);
@@ -130,7 +130,7 @@ namespace AI
                 return BotState.CollectingBonus;
             }
 
-            var protect = agent.Unit.Inventory.Where(x => x is Bonus { Type: BonusType.Defence }).ToList();
+            var protect = agent.Unit.Inventory.Where(x => x is Bonus { BonusType: BonusType.Defence }).ToList();
             if (protect.Count > 0 && agent.Unit.Hp <= agent.Unit.Data.maxHP * _data.PercentToUseProtectBonus &&
                 agent.Unit.DefenceBonus == 0)
             {
@@ -177,8 +177,8 @@ namespace AI
 
         private void UseBonus(AIAgent agent, BonusType type)
         {
-            var attack = agent.Unit.Inventory.Where(x => x is Bonus bonus && bonus.Type == type).ToList();
-            if (attack.Count == 0)
+            var attack = agent.Unit.Inventory.Where(x => x is Bonus bonus && bonus.BonusType == type).ToList();
+            if (attack.Count == 0 || !agent.Unit.IsAlive)
             {
                 GetNewBehaviour(agent);
                 return;
@@ -224,8 +224,9 @@ namespace AI
 
         private void MoveToBonus(AIAgent agent)
         {
-            Pathfinding.FindPath(HexManager.UnitCurrentCell[agent.Unit.Color].cell, GetNearestItem(agent).hex,
-                agent.currentPath);
+            if (HexManager.UnitCurrentCell.TryGetValue(agent.Unit.Color, out var value))
+                Pathfinding.FindPath(value.cell, GetNearestItem(agent).hex,
+                    agent.currentPath);
         }
 
         private void AttackEnemy(AIAgent agent)

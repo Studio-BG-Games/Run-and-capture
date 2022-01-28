@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Chars;
 using DefaultNamespace.Weapons;
 using UnityEngine;
+using Weapons;
 
 namespace Data
 {
@@ -26,7 +26,8 @@ namespace Data
         private AIData _aiData;
         [SerializeField] private string chosenWeaponDataPath;
 
-        public string ChosenWeapon => File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath);
+        public Weapon ChosenWeapon =>
+            JsonUtility.FromJson<Weapon>(File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath));
 
         public AIData AIData
         {

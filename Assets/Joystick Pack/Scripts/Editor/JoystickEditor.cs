@@ -13,6 +13,9 @@ public class JoystickEditor : Editor
     private SerializedProperty snapY;
     protected SerializedProperty background;
     private SerializedProperty handle;
+    private SerializedProperty timeToFade;
+    private SerializedProperty transparency;
+    private SerializedProperty isToTranparency;
 
     protected Vector2 center = new Vector2(0.5f, 0.5f);
 
@@ -25,6 +28,9 @@ public class JoystickEditor : Editor
         snapY = serializedObject.FindProperty("snapY");
         background = serializedObject.FindProperty("background");
         handle = serializedObject.FindProperty("handle");
+        isToTranparency = serializedObject.FindProperty("isToTranparency");
+        timeToFade = serializedObject.FindProperty("timeToFade");
+        transparency = serializedObject.FindProperty("transparency");
     }
 
     public override void OnInspectorGUI()
@@ -54,6 +60,12 @@ public class JoystickEditor : Editor
         EditorGUILayout.PropertyField(axisOptions, new GUIContent("Axis Options", "Which axes the joystick uses."));
         EditorGUILayout.PropertyField(snapX, new GUIContent("Snap X", "Snap the horizontal input to a whole value."));
         EditorGUILayout.PropertyField(snapY, new GUIContent("Snap Y", "Snap the vertical input to a whole value."));
+        EditorGUILayout.PropertyField(isToTranparency, new GUIContent("IsTranperancy", "Pick, if joystick has to be visible tranparently while inactive"));
+        if (isToTranparency.boolValue)
+        {
+            EditorGUILayout.PropertyField(timeToFade, new GUIContent("Fade time", "Time to made joystick transparant"));
+            EditorGUILayout.PropertyField(transparency, new GUIContent("Transparency"));
+        }
     }
 
     protected virtual void DrawComponents()

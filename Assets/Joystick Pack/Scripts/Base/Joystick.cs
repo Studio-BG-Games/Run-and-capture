@@ -1,6 +1,8 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
@@ -33,10 +35,15 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     [SerializeField] protected RectTransform background = null;
     [SerializeField] private RectTransform handle = null;
     private RectTransform baseRect = null;
+    [SerializeField] private bool isToTranparency = false;
 
-    public Action OnTouchUp;
-    public Action OnTouchDown;
-    public Action<Vector2> OnDrug;
+    [SerializeField] private float timeToFade;
+    [SerializeField] private float transparency;
+
+
+    public event Action OnTouchUp;
+    public event Action OnTouchDown;
+    public event Action<Vector2> OnDrug;
     
     private Canvas canvas;
     private Camera cam;
@@ -156,6 +163,20 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             return localPoint - (background.anchorMax * baseRect.sizeDelta) + pivotOffset;
         }
         return Vector2.zero;
+    }
+
+    protected void FadeJoystick(bool isToTransparant)
+    {
+        if (!isToTransparant)
+        {
+            background.gameObject.GetComponent<Image>().DOFade(transparency, timeToFade);
+            handle.gameObject.GetComponent<Image>().DOFade(transparency, timeToFade);
+        }
+        else
+        {
+            background.gameObject.GetComponent<Image>().DOFade(1f, timeToFade);
+            handle.gameObject.GetComponent<Image>().DOFade(1f, timeToFade);
+        }
     }
 }
 

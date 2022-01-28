@@ -9,10 +9,10 @@ namespace MainMenu
         public float musicVolume;
         public float sfxVolume;
 
-        public AudioSettings(GameMenuData data)
+        public AudioSettings(float musicVolume, float sfxVolume)
         {
-            musicVolume = data.musicVolume;
-            sfxVolume = data.sfxVolume;
+            this.musicVolume = musicVolume;
+            this.sfxVolume = sfxVolume;
         }
     }
 }
