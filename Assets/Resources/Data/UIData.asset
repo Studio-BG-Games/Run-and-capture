@@ -18,5 +18,5 @@ MonoBehaviour:
   _canvas: {fileID: 3022236851805642197, guid: 682042d5dd3e7d94bbe2a67ec2c1245a, type: 3}
   joystickView: {fileID: 4385872142190176059, guid: 4df6913b39f4979429158c344680d83f, type: 3}
   inventoryView: {fileID: 1527356263590969195, guid: ff3bc3b17ddefd14eb798b22cf0a854f, type: 3}
-  adsMob: {fileID: 4936557783008875079, guid: dc329921d00a27f4480b6ef5cda0a822, type: 3}
+  adsMob: {fileID: 4936557783008875079, guid: 85d07d76a184d2446b7055ffc6293eeb, type: 3}
   cheatMenu: {fileID: 791049004453965678, guid: 33deb58e3852451419239c8df4119f91, type: 3}
