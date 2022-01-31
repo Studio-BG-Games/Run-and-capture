@@ -33,7 +33,7 @@ namespace HexFiled
         {
             HexManager.UnitCurrentCell
                 .Where(cells
-                    => HexManager.CellByColor[cells.Key].Count < 2
+                    => HexManager.CellByColor[cells.Key].Count < 3
                        || (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color))
                 .Select(cells => cells.Value.unit)
                 .ToList().ForEach(x => x.Death());
@@ -41,6 +41,11 @@ namespace HexFiled
             if (cell.Building != null)
             {
                 Object.Destroy(cell.Building);
+            }
+
+            if (cell.Item != null)
+            {
+                cell.Item.Despawn();
             }
         }
         public void SetHexColors(HexCell cell)

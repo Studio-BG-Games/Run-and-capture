@@ -15,7 +15,6 @@ namespace Items
         public static Dictionary<GameObject, HexCell> Items;
         public static Dictionary<ItemType, GameObject> itemIcon;
         private ItemsData _data;
-        private List<HexCell> _openList;
         private List<Type> _itemTypes;
         private GameObject _itemParrant;
         private float _spawnTime;
@@ -27,7 +26,6 @@ namespace Items
             _itemParrant = new GameObject("Items");
             Items = new Dictionary<GameObject, HexCell>();
             _data = data;
-            _openList = new List<HexCell>();
             _spawnTime = Random.Range(data.SpawnTime.from, data.SpawnTime.to);
             data.Icons.ForEach(icon =>
             {
@@ -35,30 +33,44 @@ namespace Items
             });
         }
 
-        public void UpdateCellToOpenList(HexCell cell)
-        {
-            if (cell.Color != UnitColor.Grey)
-            {
-                _openList.Add(cell);
-            }
-            else if (_openList.Contains(cell))
-            {
-                _openList.Remove(cell);
-            }
-        }
+       
 
         public void Execute()
         {
             if (Time.time - time >= _spawnTime)
             {
-                List<HexCell> closedList = HexManager.UnitCurrentCell.Select(unitCells => unitCells.Value.cell)
-                    .ToList();
+                List<HexCell> closedList = HexManager.UnitCurrentCell
+                    .Select(unitCells => unitCells.Value.cell)
+                    .ToList(); 
+                
+                foreach (var cellByColor 
+                         in HexManager.CellByColor
+                             .Where(cellByColor => cellByColor.Key != UnitColor.Grey))
+                {
+                    cellByColor.Value.ForEach(x =>
+                    {
+                        if (x.Building != null)
+                        {
+                            closedList.Add(x);
+                        }
+                    });
+                }
+
+                List<HexCell> openList = new List<HexCell>();
                 time = Time.time;
-                if (_openList.Count == 0)
+                foreach (var cellByColor 
+                         in HexManager.CellByColor
+                             .Where(cellByColor => cellByColor.Key != UnitColor.Grey))
+                {
+                    openList.AddRange(cellByColor.Value);
+                }
+                
+                    
+                if (HexManager.CellByColor.Count == 0)
                 {
                     return;
                 }
-                var cell = _openList[Random.Range(0, _openList.Count - 1)];
+                var cell = openList[Random.Range(0, openList.Count - 1)];
 
                 if (closedList.Contains(cell) || cell.Item != null)
                 {

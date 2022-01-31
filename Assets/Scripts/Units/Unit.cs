@@ -254,7 +254,12 @@ namespace Units
 
         public void UseItem(Item item)
         {
-            _inventory.Remove(item);
+            if(_inventory.Contains(item))
+                _inventory.Remove(item);
+            else
+            {
+                _inventoryDefence.Remove(item);
+            }
         }
 
         private void MoveEnd()

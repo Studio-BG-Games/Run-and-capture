@@ -73,7 +73,7 @@ namespace Chars
 
 
                 AIAgent agent = new AIAgent(unitInfo, enemy);
-                enemy.OnPlayerSpawned += x => _controllers.Add(agent);
+                //enemy.OnPlayerSpawned += x => _controllers.Add(agent);
                 enemy.OnDeath += x => { _controllers.Remove(agent); };
                 enemy.OnDeath += _paintedController.PaintOnDeath;
                 enemy.Spawn(unitInfo.spawnPos);

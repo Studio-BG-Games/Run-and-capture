@@ -4,8 +4,6 @@ using System.Linq;
 using DefaultNamespace;
 using Items;
 using UnityEngine;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 namespace HexFiled
 {
@@ -24,16 +22,16 @@ namespace HexFiled
         public UnitColor Color => _color;
 
         public Item Item => _item;
-        private GameObject _towerView;
+        private GameObject _building;
 
         public GameObject Building
         {
-            get => _towerView;
+            get => _building;
             set
             {
-                if (_towerView != null)
+                if (_building == null)
                 {
-                    _towerView = value;
+                    _building = value;
                 }
             }
         }

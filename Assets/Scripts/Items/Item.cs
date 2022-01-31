@@ -3,6 +3,7 @@ using DefaultNamespace;
 using HexFiled;
 using Units;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Items
 {
@@ -43,7 +44,7 @@ namespace Items
 
         public GameObject Spawn(HexCell cell, GameObject parent, GameObject iconPrefab)
         {
-            _instance = SpawnHelper.Spawn(iconPrefab, cell.transform.position + new Vector3(0, 1, 0), parent);
+            _instance = GameObject.Instantiate(iconPrefab, cell.transform.position + new Vector3(0, 1, 0),Quaternion.identity, parent.transform);
             _instance.AddComponent<ItemView>().SetUp(this);
             _instance.AddComponent<CapsuleCollider>().isTrigger = true;
             return _instance;
@@ -53,6 +54,11 @@ namespace Items
         {
             if (HexManager.UnitCurrentCell.TryGetValue(color, out var value))
                 Unit = value.unit;
+        }
+
+        public void Despawn()
+        {
+            Object.Destroy(_instance);
         }
 
         public void Dispose()

@@ -52,6 +52,7 @@ namespace Items
             var cell = HexManager.UnitCurrentCell[Unit.Color].cell.GetNeighbor(_direction);
              cell.PaintHex(Unit.Color);
             bool keepGoing = true;
+            var moveDir = _direction;
             itterationMove.ForEach(dir =>
             {
                 if (!keepGoing) return;
@@ -76,6 +77,7 @@ namespace Items
             });
             
             OnItemUsed?.Invoke();
+            Unit.Move(moveDir);
             Unit.UnitView.AnimActionDic[animName] -= DoPaint;
             OnItemUsed = null;
         }

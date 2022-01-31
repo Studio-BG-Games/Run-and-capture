@@ -9,6 +9,7 @@ using Object = UnityEngine.Object;
 
 namespace HexFiled
 {
+    [Serializable]
     public class HexGrid 
     {
         
@@ -35,7 +36,6 @@ namespace HexFiled
         public HexGrid(FieldData fieldData)
         {
             _fieldData = fieldData;
-            
             _baseGameObject = new GameObject("HexGrid");
             _colors = new Dictionary<UnitColor, CellColor>(fieldData.colors.Count);
             foreach (var color in fieldData.colors)
@@ -49,11 +49,31 @@ namespace HexFiled
             _cells = new HexCell[_fieldData.height * _fieldData.width];
         }
 
+        public HexGrid(int x, int y, GameObject hexPrefab, List<CellColor> cellColors, GameObject lablePrefab)
+        {
+            _colors = new Dictionary<UnitColor, CellColor>(cellColors.Count);
+            
+            _baseGameObject = new GameObject("HexGrid");
+            _fieldData = ScriptableObject.CreateInstance<FieldData>();
+            _fieldData.height = y;
+            _fieldData.width = x;
+            _fieldData.cellPrefab = hexPrefab;
+            _fieldData.CoordinatesCanvas = lablePrefab;
+
+            foreach (var color in cellColors)
+            {
+                _colors.Add(color.UnitColor, color);
+            }
+            
+            _gridCanvas = Object.Instantiate(_fieldData.CoordinatesCanvas, _baseGameObject.transform)
+                .GetComponent<Canvas>();
+            HexManager.CellByColor = new Dictionary<UnitColor, List<HexCell>>();
+            _cells = new HexCell[_fieldData.height * _fieldData.width];
+        }
+
         public HexCell GetCellFromCoord(HexCoordinates coordinates)
         {
-
             return _cells.First(cell => cell.coordinates.Equals(coordinates));
-             
         }
 
 
@@ -103,16 +123,16 @@ namespace HexFiled
             }
 
 
-#if UNITY_EDITOR
-            TMP_Text label = Object.Instantiate(_fieldData.cellLabelPrefab, _gridCanvas.transform, false);
-            label.rectTransform.anchoredPosition =
-                new Vector2(position.x, position.z);
-            label.text = cell.coordinates.ToStringOnSeparateLines();
-#endif
+// #if UNITY_EDITOR
+//             TMP_Text label = Object.Instantiate(_fieldData.cellLabelPrefab, _gridCanvas.transform, false);
+//             label.rectTransform.anchoredPosition =
+//                 new Vector2(position.x, position.z);
+//             label.text = cell.coordinates.ToStringOnSeparateLines();
+// #endif
         }
 
 
-        public void SpawnField()
+        public GameObject SpawnField()
         {
             
             for (int z = 0, i = 0; z < _fieldData.height; z++)
@@ -124,6 +144,7 @@ namespace HexFiled
             }
 
             OnGridLoaded?.Invoke();
+            return _baseGameObject;
         }
     }
 }
