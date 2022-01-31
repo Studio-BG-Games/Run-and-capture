@@ -5,11 +5,12 @@ using System.Linq;
 using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
+using Items;
 using Units;
 using UnityEngine;
 using Weapons;
 
-public class TowerView : MonoBehaviour
+public class TowerView : MonoBehaviour, ISetUp
 {
     [Serializable]
     internal struct Crystal
@@ -28,11 +29,11 @@ public class TowerView : MonoBehaviour
 
     public UnitColor Color => _color;
 
-    public void SetUp(UnitColor unitColor)
+    public void SetUp(Unit unit)
     {
-        _color = unitColor;
+        _color = unit.Color;
 
-        crystals.First(x => x.UnitColor == unitColor).GameObject.SetActive(true);
+        crystals.First(x => x.UnitColor == (unit.Color)).GameObject.SetActive(true);
         var capsule = gameObject.AddComponent<CapsuleCollider>();
         capsule.radius = weapon.disnatce * HexGrid.HexDistance;
     }
@@ -71,4 +72,6 @@ public class TowerView : MonoBehaviour
             weapon.Fire(transform, new Vector2(direction.x, direction.z));
         }
     }
+
+   
 }

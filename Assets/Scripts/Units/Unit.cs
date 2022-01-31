@@ -329,6 +329,7 @@ namespace Units
             _unitView.OnHit -= Damage;
             _isAlive = false;
             _isBusy = true;
+            HexManager.PaintHexList(HexManager.CellByColor[Color], UnitColor.Grey);
             HexManager.UnitCurrentCell.Remove(Color);
             _animator.SetTrigger("Death");
             var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[Color].VFXDeathPrefab,

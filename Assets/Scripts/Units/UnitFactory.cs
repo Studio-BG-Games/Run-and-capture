@@ -63,7 +63,7 @@ namespace Chars
                 player.OnDeath += unit => _uiController.CheatMenu.OnPlayerDeath();
                 
                 player.OnDeath += p => _uiController.AdsMob.ShowCanvas(unitInfo, this);
-                player.OnDeath += _paintedController.PaintOnDeath;
+                
                 player.Spawn(unitInfo.spawnPos);
             }
             else
@@ -75,7 +75,7 @@ namespace Chars
                 AIAgent agent = new AIAgent(unitInfo, enemy);
                 //enemy.OnPlayerSpawned += x => _controllers.Add(agent);
                 enemy.OnDeath += x => { _controllers.Remove(agent); };
-                enemy.OnDeath += _paintedController.PaintOnDeath;
+                
                 enemy.Spawn(unitInfo.spawnPos);
             }
         }

@@ -20,10 +20,10 @@ namespace Items
         public void PlaceItem(HexCell cell)
         {
             Unit.UseItem(this);
-            var obj = GameObject.Instantiate(buildingPrefab,
+            var obj = Instantiate(buildingPrefab,
                 cell.transform.position + buildingPrefab.transform.position, Quaternion.identity);
-            obj.GetComponent<TowerView>()?.SetUp(Unit.Color);
-            obj.GetComponent<BombView>()?.SetUp(Unit);
+            obj.GetComponent<ISetUp>().SetUp(Unit);
+            
             cell.Building = obj;
             OnItemUsed.Invoke();
             OnItemUsed = null;

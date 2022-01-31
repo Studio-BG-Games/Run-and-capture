@@ -15,13 +15,21 @@ namespace HexFiled
         
 
         [SerializeField] private HexCell[] neighbors;
-        private Item _item;
+        [SerializeField] private Item _item;
         private UnitColor _color;
         private MeshRenderer _renderer;
         
         public UnitColor Color => _color;
 
-        public Item Item => _item;
+        public Item Item
+        {
+            get => _item;
+            set
+            {
+                if (_item == null)
+                    _item = value;
+            }
+        }
         private GameObject _building;
 
         public GameObject Building
@@ -50,10 +58,7 @@ namespace HexFiled
             }
         }
 
-        public void SetItem(Item item)
-        {
-            _item = item == _item ? null : item;
-        }
+       
         
 
         public List<HexCell> GetListNeighbours()
@@ -87,14 +92,14 @@ namespace HexFiled
             HexManager.CellByColor[previousColor].Remove(this);
             _color = color;
             HexManager.CellByColor[_color].Add(this);
-            
+            OnHexPainted?.Invoke(this);
             if(color == UnitColor.Grey) return;
             
             var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[color].VFXCellCapturePrefab, transform.position + new Vector3(0,0.1f,0));
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures, vfx);
             
-            OnHexPainted?.Invoke(this);
+            
         }
     }
 }

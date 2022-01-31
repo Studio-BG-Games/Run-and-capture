@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Items
 {
-    public class BombView : MonoBehaviour
+    public class BombView : MonoBehaviour, ISetUp
     {
         [SerializeField] private int damage;
         [SerializeField] private GameObject hit;

@@ -123,12 +123,12 @@ namespace HexFiled
             }
 
 
-// #if UNITY_EDITOR
-//             TMP_Text label = Object.Instantiate(_fieldData.cellLabelPrefab, _gridCanvas.transform, false);
-//             label.rectTransform.anchoredPosition =
-//                 new Vector2(position.x, position.z);
-//             label.text = cell.coordinates.ToStringOnSeparateLines();
-// #endif
+#if UNITY_EDITOR
+            TMP_Text label = Object.Instantiate(_fieldData.cellLabelPrefab, _gridCanvas.transform, false);
+            label.rectTransform.anchoredPosition =
+                new Vector2(position.x, position.z);
+            label.text = cell.coordinates.ToStringOnSeparateLines();
+#endif
         }
 
 

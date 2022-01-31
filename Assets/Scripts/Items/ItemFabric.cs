@@ -85,7 +85,7 @@ namespace Items
 
                 var item = _data.ItemInfos[i].Item;
                 Items.Add(item.Spawn(cell, _itemParrant, itemIcon[item.Type]), cell);
-                cell.SetItem(_data.ItemInfos[i].Item);
+                
                 _spawnTime = Random.Range(_data.SpawnTime.from, _data.SpawnTime.to);
             }
         }

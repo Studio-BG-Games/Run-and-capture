@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using DefaultNamespace;
 using HexFiled;
 using Units;
@@ -30,7 +31,7 @@ namespace Items
         [SerializeField] private Sprite icon;
         [SerializeField] private bool isInvokeOnPickUp = false;
         [SerializeField] private ItemType type;
-
+        
         public ItemType Type => type;
 
         public bool IsInvokeOnPickUp => isInvokeOnPickUp;
@@ -46,6 +47,7 @@ namespace Items
         {
             _instance = GameObject.Instantiate(iconPrefab, cell.transform.position + new Vector3(0, 1, 0),Quaternion.identity, parent.transform);
             _instance.AddComponent<ItemView>().SetUp(this);
+            cell.Item = this;
             _instance.AddComponent<CapsuleCollider>().isTrigger = true;
             return _instance;
         }

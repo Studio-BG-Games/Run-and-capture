@@ -17,18 +17,7 @@ namespace HexFiled
             HexManager.UnitCurrentCell = new Dictionary<UnitColor, (HexCell cell, Unit unit)>();
         }
 
-        public void PaintOnDeath(Unit unit)
-        {
-            HexManager.PaintHexList(HexManager.CellByColor[unit.Color], UnitColor.Grey);
-// #if UNITY_EDITOR
-//             
-//
-//             if (HexManager.UnitCurrentCell.Count == 1)
-//             {
-//                 SceneManager.LoadScene(1);
-//             }
-// #endif
-        }
+        
         public void CheckDeathOrDestroy(HexCell cell)
         {
             HexManager.UnitCurrentCell
