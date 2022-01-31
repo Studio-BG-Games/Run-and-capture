@@ -41,10 +41,10 @@ namespace DefaultNamespace.AI
             currentPath.Clear();
         }
 
-        private void InitAgent(GameObject unit)
+        private void InitAgent(Unit unit)
         {
             AIManager.Instance.AddAgent(this);
-            HexManager.agents.Add(unit, this);
+            HexManager.agents.Add(unit.Instance, this);
             OnAgentInited?.Invoke(this);
         }
 

@@ -41,7 +41,7 @@ namespace HexFiled
         private void Awake()
         {
             _renderer = GetComponent<MeshRenderer>();
-            _color = UnitColor.GREY;
+            _color = UnitColor.Grey;
             if (!HexManager.CellByColor.ContainsKey(_color))
             {
                 HexManager.CellByColor.Add(_color, new List<HexCell>(){this});
@@ -90,7 +90,7 @@ namespace HexFiled
             _color = color;
             HexManager.CellByColor[_color].Add(this);
             
-            if(color == UnitColor.GREY) return;
+            if(color == UnitColor.Grey) return;
             
             var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[color].VFXCellCapturePrefab, transform.position + new Vector3(0,0.1f,0));
             MusicController.Instance.AddAudioSource(vfx);

@@ -30,7 +30,7 @@ namespace GameUI
             PlayerInventoryView = Object.Instantiate(_uiData.InventoryView, canvasGroup.transform);
             _uiData.ObjectsToSpawn.ForEach(x => Object.Instantiate(x, canvasGroup.transform));
             CheatMenu = Object.Instantiate(_uiData.CheatMenu, canvasGroup.transform);
-            AdsMob = Object.Instantiate(_uiData.AdsMob, canvasGroup.transform);
+            //AdsMob = Object.Instantiate(_uiData.AdsMob, canvasGroup.transform);
             
         }
     }

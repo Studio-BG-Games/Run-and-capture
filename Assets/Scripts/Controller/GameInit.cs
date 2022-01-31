@@ -23,7 +23,7 @@ namespace Controller
             new MusicController();
             new VFXController();
             MusicController.Instance.SetMusicData(data.MusicData);
-            
+            Time.timeScale = 1f;
             var paintedController = new PaintedController();
             
 

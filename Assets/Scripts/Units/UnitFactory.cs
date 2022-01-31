@@ -54,13 +54,14 @@ namespace Chars
                         _uiController.PlayerInventoryView);
                     _controllers.Add(playerControl);
                 };
-
-                _uiController.CheatMenu.SetPlayerNData(player, _data);
                 
+
+                player.OnPlayerSpawned += unit => _uiController.CheatMenu.SetPlayerNData(unit, _data);
                 player.OnDeath += unit1 => _controllers.Remove(playerControl);
                 player.OnDeath += u => playerControl.Dispose();
-                player.OnPlayerSpawned += cameraControl.InitCameraControl;
-
+                player.OnPlayerSpawned += unit => cameraControl.InitCameraControl(unit.Instance);
+                player.OnDeath += unit => _uiController.CheatMenu.OnPlayerDeath();
+                
                 player.OnDeath += p => _uiController.AdsMob.ShowCanvas(unitInfo, this);
                 player.OnDeath += _paintedController.PaintOnDeath;
                 player.Spawn(unitInfo.spawnPos);

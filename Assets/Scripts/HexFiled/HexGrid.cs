@@ -65,7 +65,7 @@ namespace HexFiled
             position.z = z * (HexMetrics.outerRadius * 1.5f);
             var cellGO = Object.Instantiate(_fieldData.cellPrefab);
             HexCell cell = _cells[i] = cellGO.GetComponent<HexCell>();
-            cell.PaintHex(UnitColor.GREY);
+            cell.PaintHex(UnitColor.Grey);
             cell.transform.SetParent(_baseGameObject.transform, false);
             cell.transform.localPosition = position;
             cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);

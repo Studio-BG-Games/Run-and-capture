@@ -19,7 +19,7 @@ namespace HexFiled
 
         public void PaintOnDeath(Unit unit)
         {
-            HexManager.PaintHexList(HexManager.CellByColor[unit.Color], UnitColor.GREY);
+            HexManager.PaintHexList(HexManager.CellByColor[unit.Color], UnitColor.Grey);
 // #if UNITY_EDITOR
 //             
 //
@@ -66,7 +66,7 @@ namespace HexFiled
                     });
                 }
 
-                if (item.Value.Count >= 2 && item.Key != UnitColor.GREY && item.Key != cell.Color)
+                if (item.Value.Count >= 2 && item.Key != UnitColor.Grey && item.Key != cell.Color)
                 {
                     item.Value.ForEach(neighbour =>
                     {
@@ -77,7 +77,7 @@ namespace HexFiled
                         var (hasPath, field) = HasPath(neighbour, HexManager.UnitCurrentCell[neighbour.Color].cell);
                         if (!hasPath)
                         {
-                            field.ForEach(x => x.PaintHex(UnitColor.GREY));
+                            field.ForEach(x => x.PaintHex(UnitColor.Grey));
                         }
                     });
                     
