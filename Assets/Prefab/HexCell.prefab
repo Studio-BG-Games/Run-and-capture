@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2395323453841137154
 Transform:
@@ -49,10 +49,6 @@ MonoBehaviour:
   coordinates:
     x: 0
     z: 0
-  gCost: 0
-  hCost: 0
-  fCost: 0
-  parent: {fileID: 0}
   neighbors:
   - {fileID: 0}
   - {fileID: 0}
