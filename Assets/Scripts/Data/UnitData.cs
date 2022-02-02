@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Chars;
 using HexFiled;
 using UnityEngine;
@@ -10,8 +11,17 @@ namespace Data
     public class UnitData : ScriptableObject
     {
         [SerializeField] private List<UnitInfo> _units;
+        [SerializeField] private BarCanvas playerBarCanvas;
+        [SerializeField] private BarCanvas botBarCanvas;
+        [SerializeField] private GameObject attackAimCanvas;
+
+        public GameObject AttackAimCanvas => attackAimCanvas;
 
         public List<UnitInfo> Units => _units;
+
+        public BarCanvas PlayerBarCanvas => playerBarCanvas;
+
+        public BarCanvas BotBarCanvas => botBarCanvas;
     }
 
     [Serializable]

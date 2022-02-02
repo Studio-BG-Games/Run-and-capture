@@ -9,6 +9,7 @@ using Items;
 using Units;
 using UnityEngine;
 using Weapons;
+using Object = UnityEngine.Object;
 
 
 public class UnitView : MonoBehaviour
@@ -17,8 +18,8 @@ public class UnitView : MonoBehaviour
     public event Action OnAttackEnd;
     public event Action OnAttack;
     public Action<int> OnHit;
-    [SerializeField] private BarCanvas barCanvas;
-    [SerializeField] private GameObject aimCanvas;
+    private BarCanvas _barCanvas;
+    private GameObject _aimCanvas;
 
 
     private Stack<ShotUIView> _shootUIStack;
@@ -38,19 +39,31 @@ public class UnitView : MonoBehaviour
     private Action onSupperJump;
     private Coroutine _previousRegenCoroutine;
 
-    public BarCanvas BarCanvas => barCanvas;
-    public GameObject AimCanvas => aimCanvas;
+    public BarCanvas BarCanvas => _barCanvas;
+    public GameObject AimCanvas => _aimCanvas;
     public UnitColor Color => _unit.Color;
     public int AvailableShots => _shootUIStack.Count;
     
 
+
     public Dictionary<string, Action> AnimActionDic => animActionDic;
 
-    public void SetUp(Stack<ShotUIView> shots, Weapon weapon, Action regenMana, int manaRegen, Action captureHex,
+    public void SetBar(BarCanvas barCanvas, GameObject aimCanvas)
+    {
+        _barCanvas = Instantiate(barCanvas, _unit.Instance.transform);
+        _aimCanvas = Instantiate(aimCanvas, _unit.Instance.transform);
+        _shootUIStack = _barCanvas.SpawnShotUI(_weapon.shots);
+        _aimCanvas.SetActive(false);
+        _barCanvas.transform.LookAt(
+            BarCanvas.transform.position + Camera.main.transform.rotation * Vector3.back,
+            Camera.main.transform.rotation * Vector3.up);
+    }
+
+    public void SetUp(Weapon weapon, Action regenMana, int manaRegen, Action captureHex,
         Unit unit, float hardCaptureTime)
     {
         animActionDic = new Dictionary<string, Action> { { "SuperJump", onSupperJump } };
-        _shootUIStack = shots;
+        
         _weapon = weapon;
         _toReloadStack = new Stack<ShotUIView>();
         _startRegen = regenMana;
@@ -62,17 +75,18 @@ public class UnitView : MonoBehaviour
 
     public void HardCaptureHex(HexCell cell)
     {
-        _unit.IsBusy = true;
+        
 
-        barCanvas.CaptureBack.SetActive(true);
+        _barCanvas.CaptureBack.SetActive(true);
         _sequence = DOTween.Sequence();
-        _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, _hardCaptureTime).SetEase(Ease.Linear).OnComplete(() =>
-        {
-            CaptureHex?.Invoke();
-            barCanvas.CaptureBack.SetActive(false);
-            MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
-                cell.gameObject);
-        }));
+        _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, _hardCaptureTime).SetEase(Ease.Linear).OnComplete(
+            () =>
+            {
+                CaptureHex?.Invoke();
+                _barCanvas.CaptureBack.SetActive(false);
+                MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
+                    cell.gameObject);
+            }));
         _sequence.Play();
     }
 
@@ -80,9 +94,9 @@ public class UnitView : MonoBehaviour
     public void StopHardCapture()
     {
         _sequence.Kill();
-        barCanvas.CaptureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
-        _unit.BarCanvas.CaptureBack.SetActive(false);
         
+        _barCanvas.CaptureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
+        _unit.BarCanvas.CaptureBack.SetActive(false);
     }
 
     public bool Shoot()
@@ -102,12 +116,12 @@ public class UnitView : MonoBehaviour
 
     public void RegenMana()
     {
-       
         _mana = _unit.Mana;
         if (_previosRegen != null)
         {
             StopCoroutine(_previosRegen);
         }
+
         _previosRegen = StartCoroutine(Regen());
     }
 
@@ -147,29 +161,21 @@ public class UnitView : MonoBehaviour
         if (weaponView != null)
         {
             OnHit?.Invoke(weaponView.Weapon.modifiedDamage);
-            var vfx = VFXController.Instance.PlayEffect(weaponView.Weapon.VFXGameObject, weaponView.transform.position, weaponView.transform.rotation);
+            var vfx = VFXController.Instance.PlayEffect(weaponView.Weapon.VFXGameObject, weaponView.transform.position,
+                weaponView.transform.rotation);
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(weaponView.Weapon.hitSound, vfx);
-            
+
             other.transform.DOKill();
             Destroy(other.gameObject);
         }
-
-       
     }
 
     private void OnTriggerStay(Collider other)
     {
         ItemView itemView = other.GetComponent<ItemView>();
-        if(itemView != null && itemView.Item.IsInvokeOnPickUp)
-        {
-            
-            ItemFabric.Items.Remove(itemView.gameObject);
-            itemView.Item.PickUp(_unit.Color);
-            Destroy(itemView.gameObject);
-            return;
-        };
-        if(itemView == null || itemView.pickedUp || !_unit.PickUpItem(itemView.Item)) return;
+        
+        if (itemView == null || itemView.pickedUp || !_unit.PickUpItem(itemView.Item)) return;
         itemView.pickedUp = true;
         ItemFabric.Items.Remove(itemView.gameObject);
         Destroy(itemView.gameObject);
@@ -177,7 +183,7 @@ public class UnitView : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        if (_toReloadStack.Count == 0) yield break; 
+        if (_toReloadStack.Count == 0) yield break;
         yield return new WaitForSeconds(_weapon.reloadTime);
         if (_toReloadStack.Count == 0) yield break;
         var shot = _toReloadStack.Pop();
@@ -203,7 +209,7 @@ public class UnitView : MonoBehaviour
         {
             yield break;
         }
-        
+
         while (_mana < _unit.Data.maxMana)
         {
             yield return new WaitForSeconds(1f);

@@ -25,27 +25,31 @@ namespace Items
         [SerializeField] private string animName;
         private GameObject _aimInstance;
         private HexDirection _direction;
-        
+      
 
 
         public void Invoke(Action action)
         {
-            OnItemUsed += action;
+            OnItemUsed ??= action;
+
             if(_aimInstance == null || !_aimInstance.activeSelf)
                 _aimInstance = Object.Instantiate(aimCanvas, Unit.Instance.transform);
-            else
-            {
-                _aimInstance.SetActive(true);
-            }
+            _aimInstance.SetActive(false);
         }
 
         public void Aim(HexDirection direction)
         {
+            _aimInstance.SetActive(true);
             _aimInstance.transform.LookAt(HexManager.UnitCurrentCell[Unit.Color].cell
                 .GetNeighbor(direction).transform);
             _direction = direction;
         }
 
+        public void DeAim()
+        {
+            _aimInstance.SetActive(false);
+        }
+        
         private void DoPaint()
         {
             Unit.UseItem(this);
@@ -77,18 +81,21 @@ namespace Items
             });
             
             OnItemUsed?.Invoke();
-            Unit.Move(moveDir);
+            
+            
             Unit.UnitView.AnimActionDic[animName] -= DoPaint;
             OnItemUsed = null;
         }
 
         public void UseAbility()
         {
+            
             var cell = HexManager.UnitCurrentCell[Unit.Color].cell.GetNeighbor(_direction);
             Unit.RotateUnit(new Vector2((cell.transform.position - Unit.Instance.transform.position).normalized.x,
                 (cell.transform.position - Unit.Instance.transform.position).normalized.z));
             Unit.Animator.SetTrigger(animName);
             _aimInstance.SetActive(false);
+            Unit.SetCell(_direction);
             Unit.UnitView.AnimActionDic[animName] += DoPaint;
         }
     }

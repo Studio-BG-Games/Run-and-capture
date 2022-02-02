@@ -53,3 +53,6 @@ MonoBehaviour:
     maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4
+  playerBarCanvas: {fileID: 482855193181693567, guid: dec5dd0d644d5c548a53563e65837162, type: 3}
+  botBarCanvas: {fileID: 482855193181693567, guid: 1af9afdbdd132df4989c826eb6cb6562, type: 3}
+  attackAimCanvas: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}

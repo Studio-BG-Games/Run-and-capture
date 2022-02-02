@@ -24,7 +24,7 @@ namespace DefaultNamespace
             }
         }
 
-       //[EditorButton]
+       [EditorButton]
         public void SetTimerScale(float scale)
         {
             Time.timeScale = scale;

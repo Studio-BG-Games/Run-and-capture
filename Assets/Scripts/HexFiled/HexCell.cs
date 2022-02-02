@@ -24,11 +24,7 @@ namespace HexFiled
         public Item Item
         {
             get => _item;
-            set
-            {
-                if (_item == null)
-                    _item = value;
-            }
+            set => _item = _item == null ? value : null;
         }
         private GameObject _building;
 
@@ -57,8 +53,6 @@ namespace HexFiled
                 HexManager.CellByColor[_color].Add(this);
             }
         }
-
-       
         
 
         public List<HexCell> GetListNeighbours()

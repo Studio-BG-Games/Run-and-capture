@@ -225,6 +225,7 @@ namespace AI
         private void MoveToBonus(AIAgent agent)
         {
             if (HexManager.UnitCurrentCell.TryGetValue(agent.Unit.Color, out var value))
+                
                 Pathfinding.FindPath(value.cell, GetNearestItem(agent).hex,
                     agent.currentPath);
         }

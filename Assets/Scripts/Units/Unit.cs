@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AI;
 using Chars;
 using Data;
@@ -32,7 +33,7 @@ namespace Units
         private int _mana;
         private Weapon _weapon;
         private Vector2 _direction;
-        private BarCanvas _barCanvas;
+
         private bool _isHardToCapture;
         private bool _isCapturing;
         private int _defenceBonus;
@@ -50,11 +51,14 @@ namespace Units
 
         public UnitView UnitView => _unitView;
         public bool IsAlive => _isAlive;
+
+        public bool IsHardToCapture => _isHardToCapture;
+
         public UnitColor Color => _data.color;
         public int InventoryCapacity => _data.inventoryCapacity;
         public event Action<Item> OnItemPickUp;
         public event Action<Unit> OnDeath;
-        public BarCanvas BarCanvas => _barCanvas;
+        public BarCanvas BarCanvas => _unitView.BarCanvas;
         public GameObject Instance => _instance;
         public UnitInfo Data => _data;
         public int Mana => _mana;
@@ -97,16 +101,27 @@ namespace Units
             }
         }
 
+        public void Retreet(HexDirection dir)
+        {
+            if (!_isCapturing) return;
+            var openList = _cell.GetListNeighbours().Where(x => x.Color == _data.color).ToList();
+            if (openList.Contains(_cell.GetNeighbor(dir)))
+            {
+                _isBusy = false;
+                _isHardToCapture = false;
+                _unitView.StopHardCapture();
+                Move(dir);
+            }
+        }
 
         public void Move(HexDirection direction)
         {
-            if (_cell.GetNeighbor(direction) == null || _isBusy ||
+            if (_cell.GetNeighbor(direction) == null || _isBusy || _isHardToCapture ||
                 (_cell.GetNeighbor(direction).Color != Color
                  && HexManager.UnitCurrentCell.TryGetValue(_cell.GetNeighbor(direction).Color, out var value)
                  && value.cell.coordinates.Equals(_cell.GetNeighbor(direction).coordinates))) return;
 
 
-            _unitView.StopHardCapture();
             if (_cell.GetNeighbor(direction).Color == _data.color)
             {
                 DoTransit(direction);
@@ -136,6 +151,14 @@ namespace Units
             _animator.SetTrigger("Move");
             _animator.SetBool("isMoving", _isBusy);
             _instance.transform.DOMove(_cell.transform.position, _animLength.Move);
+        }
+
+        public void SetCell(HexDirection direction)
+        {
+            _isBusy = true;
+            _cell = _cell.GetNeighbor(direction);
+            _instance.transform.DOMove(_cell.transform.position, _animLength.SuperJump)
+                .OnComplete(() => _isBusy = false);
         }
 
         private void CaptureHex()
@@ -173,6 +196,9 @@ namespace Units
                     case "Dead":
                         _animLength.Death = clip.length;
                         break;
+                    case "Super_Attack":
+                        _animLength.SuperJump = clip.length;
+                        break;
                     default:
                         break;
                 }
@@ -197,8 +223,9 @@ namespace Units
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
                 _unitView = _instance.GetComponent<UnitView>();
-                _barCanvas = _unitView.BarCanvas;
-                _unitView.SetUp(_barCanvas.SpawnShotUI(_weapon.shots), _weapon, RegenMana, _data.manaRegen, CaptureHex,
+
+
+                _unitView.SetUp(_weapon, RegenMana, _data.manaRegen, CaptureHex,
                     this, _hexGrid.HardCaptureTime);
                 SetAnimLength();
                 MusicController.Instance.AddAudioSource(_instance);
@@ -206,9 +233,7 @@ namespace Units
                 _hp = _data.maxHP;
                 SetUpActions();
                 _weapon.SetModifiedDamage(0);
-                BarCanvas.transform.LookAt(
-                    BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
-                    _camera.transform.rotation * Vector3.up);
+
                 _isBusy = false;
                 OnPlayerSpawned?.Invoke(this);
             }
@@ -230,6 +255,7 @@ namespace Units
                         item.PickUp(_data.color);
                         _inventory.Add(item);
                         OnItemPickUp?.Invoke(item);
+                        _cell.Item = null;
                         return true;
                     }
 
@@ -240,21 +266,21 @@ namespace Units
                         item.PickUp(_data.color);
                         _inventoryDefence.Add(item);
                         OnItemPickUp?.Invoke(item);
+                        _cell.Item = null;
                         return true;
                     }
-
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
-
+            
+            
             return false;
         }
 
         public void UseItem(Item item)
         {
-            if(_inventory.Contains(item))
+            if (_inventory.Contains(item))
                 _inventory.Remove(item);
             else
             {
@@ -280,8 +306,6 @@ namespace Units
             {
                 CaptureHex();
             }
-
-            _isHardToCapture = false;
         }
 
         private void AttackEnd()
@@ -317,8 +341,8 @@ namespace Units
             float mana = _mana;
             float maxHp = _data.maxHP;
             float maxMana = _data.maxMana;
-            _barCanvas.ManaBar.DOFillAmount(mana / maxMana, 0.5f).SetEase(Ease.InQuad);
-            _barCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
+            BarCanvas.ManaBar.DOFillAmount(mana / maxMana, 0.5f).SetEase(Ease.InQuad);
+            BarCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
         public void Death()
