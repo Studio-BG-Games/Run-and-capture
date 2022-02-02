@@ -10,26 +10,26 @@ namespace AI
         {
             var foundPathIter = 0;
             var currentTile = startTile;
+            var previoustile = currentTile;
 
             if (startTile == null || endTile == null)
             {
                 return;
             }
+
             while (foundPathIter < 3 && currentTile != null)
             {
-                
+                HexDirection dir = HexDirection.E;
                 if (currentTile.coordinates.Z == endTile.coordinates.Z)
                 {
                     if (currentTile.coordinates.X < endTile.coordinates.X)
                     {
-                        path.Enqueue(HexDirection.E);
-                        currentTile = currentTile.GetNeighbor(HexDirection.E);
+                        dir = HexDirection.E;
                     }
 
                     else if (currentTile.coordinates.X > endTile.coordinates.X)
                     {
-                        path.Enqueue(HexDirection.W);
-                        currentTile = currentTile.GetNeighbor(HexDirection.W);
+                        dir = HexDirection.W;
                     }
                 }
 
@@ -37,13 +37,11 @@ namespace AI
                 {
                     if (currentTile.coordinates.X > endTile.coordinates.X)
                     {
-                        path.Enqueue(HexDirection.NW);
-                        currentTile = currentTile.GetNeighbor(HexDirection.NW);
+                        dir = HexDirection.NW;
                     }
                     else if (currentTile.coordinates.X < endTile.coordinates.X)
                     {
-                        path.Enqueue(HexDirection.SE);
-                        currentTile = currentTile.GetNeighbor(HexDirection.SE);
+                        dir = HexDirection.SE;
                     }
                 }
 
@@ -51,36 +49,33 @@ namespace AI
                 {
                     if (currentTile.coordinates.Y > endTile.coordinates.Y)
                     {
-                        path.Enqueue(HexDirection.NE);
-                        currentTile = currentTile.GetNeighbor(HexDirection.NE);
+                        dir = HexDirection.NE;
                     }
                     else if (currentTile.coordinates.Y < endTile.coordinates.Y)
                     {
-                        path.Enqueue(HexDirection.SW);
-                        currentTile = currentTile.GetNeighbor(HexDirection.SW);
+                        dir = HexDirection.SW;
                     }
                 }
 
                 else
                 {
-                    if (Math.Abs(currentTile.coordinates.X - endTile.coordinates.X) < Math.Abs(currentTile.coordinates.Y - endTile.coordinates.Y))
+                    if (Math.Abs(currentTile.coordinates.X - endTile.coordinates.X) <
+                        Math.Abs(currentTile.coordinates.Y - endTile.coordinates.Y))
                     {
                         if (Math.Abs(currentTile.coordinates.X - endTile.coordinates.X) <
                             Math.Abs(currentTile.coordinates.Z - endTile.coordinates.Z))
                         {
-                            var dir = currentTile.coordinates.X > endTile.coordinates.X
+                            dir = currentTile.coordinates.X > endTile.coordinates.X
                                 ? HexDirection.E
                                 : HexDirection.W;
-                            path.Enqueue(dir);
-                            currentTile = currentTile.GetNeighbor(dir);
+                           
                         }
                         else
                         {
-                            var dir = currentTile.coordinates.Z > endTile.coordinates.Z
+                            dir = currentTile.coordinates.Z > endTile.coordinates.Z
                                 ? HexDirection.SW
                                 : HexDirection.NE;
-                            path.Enqueue(dir);
-                            currentTile = currentTile.GetNeighbor(dir);
+                            
                         }
                     }
                     else
@@ -88,31 +83,38 @@ namespace AI
                         if (Math.Abs(currentTile.coordinates.Y - endTile.coordinates.Y) <
                             Math.Abs(currentTile.coordinates.Z - endTile.coordinates.Z))
                         {
-                            var dir = currentTile.coordinates.Y > endTile.coordinates.Y
+                            dir = currentTile.coordinates.Y > endTile.coordinates.Y
                                 ? HexDirection.SE
                                 : HexDirection.NW;
-                            path.Enqueue(dir);
-                            currentTile = currentTile.GetNeighbor(dir);
+                            
                         }
                         else
                         {
-                            var dir = currentTile.coordinates.Z > endTile.coordinates.Z
+                            dir = currentTile.coordinates.Z > endTile.coordinates.Z
                                 ? HexDirection.SW
                                 : HexDirection.NE;
-                            path.Enqueue(dir);
-                            currentTile = currentTile.GetNeighbor(dir);
+                            
                         }
                     }
-
                 }
+
                 if (currentTile == endTile)
                 {
                     return;
                 }
 
+
+
+
+                while (currentTile.GetNeighbor(dir) == null)
+                {
+                    dir = dir.PlusSixtyDeg();
+                }
+
+                currentTile = currentTile.GetNeighbor(dir);
+                path.Enqueue(dir);
                 foundPathIter++;
             }
         }
-        
     }
 }

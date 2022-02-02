@@ -4,8 +4,6 @@ using System.Linq;
 using DefaultNamespace;
 using Items;
 using UnityEngine;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 namespace HexFiled
 {
@@ -17,23 +15,27 @@ namespace HexFiled
         
 
         [SerializeField] private HexCell[] neighbors;
-        private Item _item;
+        [SerializeField] private Item _item;
         private UnitColor _color;
         private MeshRenderer _renderer;
         
         public UnitColor Color => _color;
 
-        public Item Item => _item;
-        private GameObject _towerView;
+        public Item Item
+        {
+            get => _item;
+            set => _item = _item == null ? value : null;
+        }
+        private GameObject _building;
 
         public GameObject Building
         {
-            get => _towerView;
+            get => _building;
             set
             {
-                if (_towerView != null)
+                if (_building == null)
                 {
-                    _towerView = value;
+                    _building = value;
                 }
             }
         }
@@ -50,11 +52,6 @@ namespace HexFiled
             {
                 HexManager.CellByColor[_color].Add(this);
             }
-        }
-
-        public void SetItem(Item item)
-        {
-            _item = item == _item ? null : item;
         }
         
 
@@ -89,14 +86,14 @@ namespace HexFiled
             HexManager.CellByColor[previousColor].Remove(this);
             _color = color;
             HexManager.CellByColor[_color].Add(this);
-            
+            OnHexPainted?.Invoke(this);
             if(color == UnitColor.Grey) return;
             
             var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[color].VFXCellCapturePrefab, transform.position + new Vector3(0,0.1f,0));
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures, vfx);
             
-            OnHexPainted?.Invoke(this);
+            
         }
     }
 }

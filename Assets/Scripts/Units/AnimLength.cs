@@ -5,5 +5,6 @@ namespace Chars
         public float Move;
         public float Attack;
         public float Death;
+        public float SuperJump;
     }
 }

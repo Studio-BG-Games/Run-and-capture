@@ -58,7 +58,7 @@ public class AdsMob : MonoBehaviour
 
         canvas.SetActive(false);
         Time.timeScale = 1f;
-        buttonContinue.onClick.RemoveAllListeners();
+       
     }
 
     // public void ShowAd()

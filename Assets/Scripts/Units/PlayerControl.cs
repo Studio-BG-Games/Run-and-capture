@@ -22,11 +22,14 @@ namespace Chars
         private Joystick _placeJoystick;
         private UnitView _unitView;
         private Vector2 _attackDircetion;
-       
+
+        private bool returnedMoveJoystick = false;
+
         private PlayerInventoryView _inventoryView;
         private Item _itemToPlace;
         private HexCell _cellToPlace;
 
+        private int _aimCount = 0;
 
         public PlayerControl(Unit unit, PlayerControlView joyView, PlayerInventoryView inventoryView)
         {
@@ -59,12 +62,18 @@ namespace Chars
 
         private void PlaceItem()
         {
-            if(!_unit.IsAlive) return;
+            if (!_unit.IsAlive) return;
+            _attackJoystick.gameObject.SetActive(true);
+            _placeJoystick.gameObject.SetActive(false);
+            if (_aimCount == 2)
+            {
+                return;
+            }
+
             switch (_itemToPlace)
             {
                 case Building building:
                     _unitView.AimCanvas.SetActive(false);
-                    _placeJoystick.gameObject.SetActive(false);
                     if (_cellToPlace == null)
                     {
                         return;
@@ -74,10 +83,8 @@ namespace Chars
                     break;
                 case CaptureAbility ability:
                     ability.UseAbility();
-                    _placeJoystick.gameObject.SetActive(false);
                     break;
             }
-            _attackJoystick.gameObject.SetActive(true);
         }
 
         private void PickUp(Item item)
@@ -88,13 +95,27 @@ namespace Chars
         private void DoAttack()
         {
             _unitView.AimCanvas.SetActive(false);
-            _unit.StartAttack();
+            if (_aimCount == 0 || _aimCount > 1)
+                _unit.StartAttack();
+            _aimCount = 0;
         }
 
         private void AimCanvas(Vector2 attackDir)
         {
             if (_unit.IsBusy || !_unit.IsAlive) return;
-            
+            if (attackDir.Equals(Vector2.zero))
+            {
+                _unitView.AimCanvas.SetActive(false);
+                _unit.Aim(attackDir);
+                if (_aimCount > 0)
+                {
+                    _aimCount = 1;
+                }
+
+                return;
+            }
+
+            _aimCount++;
             _unitView.AimCanvas.SetActive(true);
             _unit.Aim(attackDir);
         }
@@ -103,25 +124,70 @@ namespace Chars
         {
             if (_unit.IsBusy || !_unit.IsAlive) return;
 
+            if (placeDir.Equals(Vector2.zero))
+            {
+                _aimCount = -1;
+            }
+
             switch (_itemToPlace)
             {
                 case Building building:
+                    if (_aimCount == -1)
+                    {
+                        _aimCount = 2;
+                        _unitView.AimCanvas.SetActive(false);
+                        return;
+                    }
+
                     _unitView.AimCanvas.SetActive(true);
-                    _cellToPlace = _unit.PlaceItemAim(DirectionHelper.VectorToDirection(placeDir));
+                    _cellToPlace = _unit.PlaceItemAim(DirectionHelper.VectorToDirection(placeDir.normalized));
+                    _aimCount = 1;
                     break;
                 case CaptureAbility ability:
-                    ability.Aim(DirectionHelper.VectorToDirection(placeDir));
+                    if (_aimCount == -1)
+                    {
+                        _aimCount = 2;
+                        ability.DeAim();
+                        return;
+                    }
+
+                    ability.Aim(DirectionHelper.VectorToDirection(placeDir.normalized));
+                    _aimCount = 1;
                     break;
             }
-            
-           
         }
 
         public void FixedExecute()
         {
-            if (!_unit.IsBusy && _unit.IsAlive && _moveJoystick.Direction != Vector2.zero)
+            if (_moveJoystick.Direction.normalized.Equals(Vector2.zero) || _unit.IsHardToCapture)
+                returnedMoveJoystick = _unit.IsHardToCapture;
+
+            if (!_unit.IsAlive || _moveJoystick.Direction == Vector2.zero) return;
+
+            if (_placeJoystick.gameObject.activeSelf)
             {
                 _placeJoystick.gameObject.SetActive(false);
+                switch (_itemToPlace)
+                {
+                    case CaptureAbility ability:
+                        ability.DeAim();
+                        break;
+                    case Building building:
+                        _unitView.AimCanvas.SetActive(false);
+                        break;
+                }
+            }
+
+            if (!_attackJoystick.gameObject.activeSelf)
+                _attackJoystick.gameObject.SetActive(true);
+
+            if (_unit.IsHardToCapture && returnedMoveJoystick)
+            {
+                _unit.Retreet(DirectionHelper.VectorToDirection(_moveJoystick.Direction.normalized));
+                returnedMoveJoystick = false;
+            }
+            else
+            {
                 _unit.Move(DirectionHelper.VectorToDirection(_moveJoystick.Direction.normalized));
             }
         }

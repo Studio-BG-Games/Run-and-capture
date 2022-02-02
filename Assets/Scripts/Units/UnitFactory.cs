@@ -19,7 +19,6 @@ namespace Chars
         private readonly Data.Data _data;
         private readonly Controllers _controllers;
         private readonly UIController _uiController;
-        private readonly PaintedController _paintedController;
 
         public UnitFactory(HexGrid grid, Data.Data data, UIController uiController, PaintedController paintedController,
             Controllers controllers)
@@ -28,7 +27,6 @@ namespace Chars
             _data = data;
             _chosenWeapon = data.ChosenWeapon;
             _uiController = uiController;
-            _paintedController = paintedController;
             _controllers = controllers;
         }
 
@@ -55,7 +53,7 @@ namespace Chars
                     _controllers.Add(playerControl);
                 };
                 
-
+                
                 player.OnPlayerSpawned += unit => _uiController.CheatMenu.SetPlayerNData(unit, _data);
                 player.OnDeath += unit1 => _controllers.Remove(playerControl);
                 player.OnDeath += u => playerControl.Dispose();
@@ -63,20 +61,23 @@ namespace Chars
                 player.OnDeath += unit => _uiController.CheatMenu.OnPlayerDeath();
                 
                 player.OnDeath += p => _uiController.AdsMob.ShowCanvas(unitInfo, this);
-                player.OnDeath += _paintedController.PaintOnDeath;
+                
                 player.Spawn(unitInfo.spawnPos);
+                player.UnitView.SetBar(_data.UnitData.PlayerBarCanvas, _data.UnitData.AttackAimCanvas);
             }
             else
             {
                 var enemy = new Unit(unitInfo,
                     _data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid);
-
-
+                
+                
                 AIAgent agent = new AIAgent(unitInfo, enemy);
                 enemy.OnPlayerSpawned += x => _controllers.Add(agent);
                 enemy.OnDeath += x => { _controllers.Remove(agent); };
-                enemy.OnDeath += _paintedController.PaintOnDeath;
+                
                 enemy.Spawn(unitInfo.spawnPos);
+                
+                enemy.UnitView.SetBar(_data.UnitData.BotBarCanvas, _data.UnitData.AttackAimCanvas);
             }
         }
     }

@@ -39,7 +39,6 @@ namespace Controller
             hexGrid.OnGridLoaded += () => unitFactory.SpawnList(data.UnitData.Units);
             
             hexGrid.OnHexPainted += paintedController.SetHexColors;
-            hexGrid.OnHexPainted += itemFabric.UpdateCellToOpenList;
             hexGrid.OnHexPainted += paintedController.CheckDeathOrDestroy;
             hexGrid.SpawnField();
         }
