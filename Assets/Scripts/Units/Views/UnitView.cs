@@ -175,10 +175,11 @@ public class UnitView : MonoBehaviour
     {
         ItemView itemView = other.GetComponent<ItemView>();
         
-        if (itemView == null || itemView.pickedUp || !_unit.PickUpItem(itemView.Item)) return;
+        if (itemView == null || itemView.pickedUp || !_unit.CanPickUpItem(itemView.Item)) return;
         itemView.pickedUp = true;
+        itemView.Item.PickUp(_unit);
         ItemFabric.Items.Remove(itemView.gameObject);
-        Destroy(itemView.gameObject);
+        
     }
 
     private IEnumerator Reload()

@@ -22,6 +22,7 @@ namespace Chars
         private Joystick _placeJoystick;
         private UnitView _unitView;
         private Vector2 _attackDircetion;
+        private HexDirection previousDir;
 
         private bool returnedMoveJoystick = false;
 
@@ -159,8 +160,11 @@ namespace Chars
 
         public void FixedExecute()
         {
-            if (_moveJoystick.Direction.normalized.Equals(Vector2.zero) || _unit.IsHardToCapture)
+            if ((previousDir != DirectionHelper.VectorToDirection(_moveJoystick.Direction.normalized) ||
+                 _moveJoystick.isJoysticDirectionZero) && _unit.IsHardToCapture)
+            {
                 returnedMoveJoystick = _unit.IsHardToCapture;
+            }
 
             if (!_unit.IsAlive || _moveJoystick.Direction == Vector2.zero) return;
 
@@ -190,6 +194,8 @@ namespace Chars
             {
                 _unit.Move(DirectionHelper.VectorToDirection(_moveJoystick.Direction.normalized));
             }
+
+            previousDir = DirectionHelper.VectorToDirection(_moveJoystick.Direction.normalized);
         }
 
         public void Dispose()

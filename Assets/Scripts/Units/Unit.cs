@@ -245,6 +245,30 @@ namespace Units
             UpdateBarCanvas();
         }
 
+        public bool CanPickUpItem(Item item)
+        {
+            switch (item.Type)
+            {
+                case ItemType.ATTACK:
+                    if (_inventory.Count < _data.inventoryCapacity / 2)
+                    {
+                        return true;
+                    }
+
+                    break;
+                case ItemType.DEFENCE:
+                    if (_inventoryDefence.Count < _data.inventoryCapacity / 2)
+                    {
+                        return true;
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+                
+            }
+            return false;
+        }
+
         public bool PickUpItem(Item item)
         {
             switch (item.Type)
@@ -252,7 +276,6 @@ namespace Units
                 case ItemType.ATTACK:
                     if (_inventory.Count < _data.inventoryCapacity / 2)
                     {
-                        item.PickUp(_data.color);
                         _inventory.Add(item);
                         OnItemPickUp?.Invoke(item);
                         _cell.Item = null;
@@ -263,18 +286,18 @@ namespace Units
                 case ItemType.DEFENCE:
                     if (_inventoryDefence.Count < _data.inventoryCapacity / 2)
                     {
-                        item.PickUp(_data.color);
                         _inventoryDefence.Add(item);
                         OnItemPickUp?.Invoke(item);
                         _cell.Item = null;
                         return true;
                     }
+
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
-            
+
+
             return false;
         }
 
