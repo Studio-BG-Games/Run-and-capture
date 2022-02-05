@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using DefaultNamespace;
 using HexFiled;
+using Items.ItemViews;
 using Units;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -29,13 +30,10 @@ namespace Items
     {
         private GameObject _instance;
         [SerializeField] private Sprite icon;
-        [SerializeField] private bool isInvokeOnPickUp = false;
         [SerializeField] private ItemType type;
 
         public ItemType Type => type;
-
-        public bool IsInvokeOnPickUp => isInvokeOnPickUp;
-
+        
         public Sprite Icon => icon;
 
         protected Unit Unit;
@@ -62,7 +60,7 @@ namespace Items
 
         public void Despawn()
         {
-            Object.Destroy(_instance);
+            Destroy(_instance.gameObject);
         }
 
         public void Dispose()

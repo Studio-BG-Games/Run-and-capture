@@ -37,11 +37,8 @@ namespace HexFiled
         {
             _fieldData = fieldData;
             _baseGameObject = new GameObject("HexGrid");
-            _colors = new Dictionary<UnitColor, CellColor>(fieldData.colors.Count);
-            foreach (var color in fieldData.colors)
-            {
-                _colors.Add(color.UnitColor, color);
-            }
+            _colors = fieldData.colors.ToDictionary(x => x.UnitColor, x => x);
+            
 
             _gridCanvas = Object.Instantiate(fieldData.CoordinatesCanvas, _baseGameObject.transform)
                 .GetComponent<Canvas>();
@@ -85,7 +82,7 @@ namespace HexFiled
             position.z = z * (HexMetrics.outerRadius * 1.5f);
             var cellGO = Object.Instantiate(_fieldData.cellPrefab);
             HexCell cell = _cells[i] = cellGO.GetComponent<HexCell>();
-            cell.PaintHex(UnitColor.Grey);
+            cell.PaintHex(UnitColor.Grey, true);
             cell.transform.SetParent(_baseGameObject.transform, false);
             cell.transform.localPosition = position;
             cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);

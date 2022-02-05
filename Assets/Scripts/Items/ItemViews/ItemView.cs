@@ -1,9 +1,7 @@
-﻿using System;
-using DG.Tweening;
-using Units;
+﻿using DG.Tweening;
 using UnityEngine;
 
-namespace Items
+namespace Items.ItemViews
 {
     public class ItemView : MonoBehaviour
     {
@@ -12,16 +10,12 @@ namespace Items
         public string itemName;
         public Item Item => _item;
 
-        
-        private void Start()
-        {
-            pickedUp = false;
-            itemName = _item.name;
-        }
 
         public void SetUp(Item item)
         {
             _item = item;
+            pickedUp = false;
+            itemName = _item.name;
             Rotate();
         }
 
@@ -32,10 +26,16 @@ namespace Items
 
         private void Rotate()
         {
-
             transform.DORotate(transform.rotation.eulerAngles + new Vector3(0, 10, 0), 0.1f)
                 .SetEase(Ease.InQuad)
-                .SetLoops(-1, LoopType.Incremental);
+                .SetLoops(-1, LoopType.Incremental)
+                .OnUpdate(() =>
+                {
+                    if (pickedUp)
+                    {
+                        Destroy(gameObject);
+                    }
+                });
         }
     }
 }

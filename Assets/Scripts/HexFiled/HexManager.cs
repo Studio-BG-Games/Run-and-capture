@@ -56,7 +56,7 @@ namespace HexFiled
         public static void PaintHexList(List<HexCell> field, UnitColor color, float time)
         {
 
-            List<Action<UnitColor>> actions = new List<Action<UnitColor>>();
+            List<Action<UnitColor, bool>> actions = new List<Action<UnitColor, bool>>();
 
             field.ForEach(x => actions.Add(x.PaintHex));
 
@@ -70,7 +70,7 @@ namespace HexFiled
             
             cells.AddRange(field);
             
-            cells.ForEach(x => x.PaintHex(color));
+            cells.ForEach(x => x.PaintHex(color, true));
         }
     }
 }

@@ -8,7 +8,7 @@ namespace DefaultNamespace
 {
     public class HexMapEditor : MonoBehaviour
     {
-        [SerializeField] private List<CellColor> cellColors;
+        
         [SerializeField] private GameObject hexPrefab;
         [SerializeField] private GameObject labelPrefab;
 
@@ -26,7 +26,7 @@ namespace DefaultNamespace
                 Destroy(fieldBaseGameObject);
             }
 
-            hexGrid = new HexGrid(x, y, hexPrefab, cellColors, labelPrefab);
+            
             WriteToBinaryFile("HexField", hexGrid);
             fieldBaseGameObject = hexGrid.SpawnField();
         }

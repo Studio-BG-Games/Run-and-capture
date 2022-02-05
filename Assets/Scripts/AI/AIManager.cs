@@ -124,13 +124,15 @@ namespace AI
             var item = GetNearestItem(agent);
             if (((item.dist > 0 && item.dist <= _data.DistaceToCollectBonus) ||
                  agent.Unit.Mana <= agent.Unit.Data.maxMana * _data.ManaPercentToCollectBonus) &&
-                agent.Unit.Inventory.Count < agent.Unit.InventoryCapacity)
+                (item.hex.Item.Type == ItemType.DEFENCE
+                    ? agent.Unit.InventoryDefence.Count
+                    : agent.Unit.Inventory.Count) < agent.Unit.InventoryCapacity / 2)
             {
                 SetBehaviour(BotState.CollectingBonus, agent);
                 return BotState.CollectingBonus;
             }
 
-            var protect = agent.Unit.Inventory.Where(x => x is Bonus { BonusType: BonusType.Defence }).ToList();
+            var protect = agent.Unit.InventoryDefence.Where(x => x is Bonus { BonusType: BonusType.Defence }).ToList();
             if (protect.Count > 0 && agent.Unit.Hp <= agent.Unit.Data.maxHP * _data.PercentToUseProtectBonus &&
                 agent.Unit.DefenceBonus == 0)
             {

@@ -1,8 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Units;
-using UnityEngine.SceneManagement;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace HexFiled
@@ -17,79 +16,41 @@ namespace HexFiled
         }
 
 
-        public void CheckDeathOrDestroy(HexCell cell)
-        {
-            HexManager.UnitCurrentCell
-                .Where(cells
-                    => HexManager.CellByColor[cells.Key].Count < 3
-                       || (cells.Value.cell == cell && cells.Value.unit.Color != cell.Color))
-                .Select(cells => cells.Value.unit)
-                .ToList().ForEach(x => x.Death());
-
-            if (cell.Building != null)
-            {
-                Object.Destroy(cell.Building);
-            }
-
-            if (cell.Item != null)
-            {
-                cell.Item.Despawn();
-            }
-        }
-
         public void SetHexColors(HexCell cell)
         {
             _cell = cell;
 
 
-            var hexByColorDict = DifferentHexByColor(cell.GetListNeighbours());
-            foreach (var item in hexByColorDict)
+            var hexByColorDict = Enum.GetValues(typeof(UnitColor)).Cast<UnitColor>().ToDictionary(color => color,
+                color => cell.GetListNeighbours().Where(x => x != null && x.Color == color).ToList());
+
+            cell.GetListNeighbours().Where(x => x != null && x.Color != cell.Color).ToList().ForEach(neighbour =>
             {
-                if (item.Key == cell.Color && item.Value.Count >= 2 && item.Value.Count < 6 &&
-                    HexManager.UnitCurrentCell.ContainsKey(cell.Color))
+                if (hexByColorDict.TryGetValue(neighbour.Color, out var value) &&
+                    value.Count >= 2 && value.Count < 6)
                 {
-                    cell.GetListNeighbours().ForEach(x =>
+                    value.ForEach(x =>
                     {
-                        if (x != null && x.Color != cell.Color)
+                        var path = Round(x, null);
+                        if (!path.hasPath)
                         {
-                            var path = Round(x, null);
-                            if (!path.hasPath)
-                                HexManager.PaintHexList(path.field, cell.Color, 0.05f);
+                            HexManager.PaintHexList(path.field, cell.Color, 0.05f);
                         }
                     });
                 }
 
-                if (item.Value.Count >= 2 && item.Key != UnitColor.Grey && item.Key != cell.Color)
-                {
-                    item.Value.ForEach(neighbour =>
-                    {
-                        if (HexManager.UnitCurrentCell.TryGetValue(item.Key, out var unitCel) &&
-                            !HasPath(neighbour, unitCel.cell, out var path).hasPath)
-                        {
-                            HexManager.PaintHexList(path.field, UnitColor.Grey);
-                        }
-                    });
-                }
-            }
-        }
 
-
-        private Dictionary<UnitColor, List<HexCell>> DifferentHexByColor(List<HexCell> cellsList)
-        {
-            Dictionary<UnitColor, List<HexCell>> resultDict = new Dictionary<UnitColor, List<HexCell>>();
-            cellsList.ForEach(cell =>
-            {
-                if (cell != null && resultDict.ContainsKey(cell.Color))
+                if (neighbour.Color != UnitColor.Grey
+                    && HexManager.UnitCurrentCell.TryGetValue(neighbour.Color, out var unit)
+                    && hexByColorDict.TryGetValue(neighbour.Color, out var cells)
+                    && cells.Count >= 2 && cells.Count < 5
+                    && !HasPath(neighbour, unit.cell, out var path))
                 {
-                    resultDict[cell.Color].Add(cell);
-                }
-                else if (cell != null)
-                {
-                    resultDict.Add(cell.Color, new List<HexCell> { cell });
+                    HexManager.PaintHexList(path, UnitColor.Grey);
                 }
             });
-            return resultDict;
         }
+
 
         private (bool hasPath, List<HexCell> field) Round(HexCell start, HexCell end)
         {
@@ -153,13 +114,13 @@ namespace HexFiled
             return (false, closedList);
         }
 
-        private ( bool hasPath, List<HexCell> field ) HasPath(HexCell start, HexCell end,
-            out ( bool hasPath, List<HexCell> field ) value)
+        private bool HasPath(HexCell start, HexCell end,
+            out List<HexCell> value)
         {
             if (start.Color == _cell.Color || end.Color == _cell.Color)
             {
-                value = (true, null);
-                return (true, null);
+                value = null;
+                return true;
             }
 
             List<HexCell> closedList = new List<HexCell>();
@@ -170,13 +131,12 @@ namespace HexFiled
 
             closedList.Add(currentCell);
 
-
             while (stackIterators.Count >= 0)
             {
                 if (currentCell == end)
                 {
-                    value = (true, null);
-                    return (true, null);
+                    value = null;
+                    return true;
                 }
 
                 List<HexCell> openList = currentCell.GetListNeighbours()
@@ -195,8 +155,8 @@ namespace HexFiled
                 {
                     if (stackIterators.Count == 0)
                     {
-                        value = (false, closedList);
-                        return (false, closedList);
+                        value = closedList;
+                        return false;
                     }
 
                     currentCell = stackIterators.Pop();
@@ -204,13 +164,13 @@ namespace HexFiled
 
                 if (currentCell.GetListNeighbours().Contains(end))
                 {
-                    value = (true, null);
-                    return (true, null);
+                    value = null;
+                    return true;
                 }
             }
 
-            value = (false, closedList);
-            return (false, closedList);
+            value = closedList;
+            return false;
         }
     }
 }

@@ -6,6 +6,7 @@ using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
 using Items;
+using Items.ItemViews;
 using Units;
 using UnityEngine;
 using Weapons;
