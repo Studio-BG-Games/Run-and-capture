@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d4ee04b4d04d47ad8f932a004c1728, type: 3}
+  m_Name: Rocket
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: f591ebc6dc1028948aa740d86f44adb9, type: 3}
+  type: 0
+  _weapon:
+    name: Rocket
+    icon: {fileID: 0}
+    objectToThrow: {fileID: 5503245665281670417, guid: 857de15730a382b48a9d497d078336cd, type: 3}
+    VFXGameObject: {fileID: 8032726150168125150, guid: 65c8920b6d1553a4d885992e8f7dff6a, type: 3}
+    modifiedDamage: 0
+    damage: 100
+    speed: 1
+    disnatce: 10
+    reloadTime: 1
+    shots: 1
+    shotSound: {fileID: 0}
+    hitSound: {fileID: 0}
+  _aimGameObject: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}

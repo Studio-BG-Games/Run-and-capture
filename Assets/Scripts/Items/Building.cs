@@ -13,6 +13,7 @@ namespace Items
 
         public void Invoke(Action action)
         {
+            if(_action != null) return;
             _action = action;
             OnItemUsed += _action;
         }

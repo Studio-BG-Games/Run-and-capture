@@ -10,6 +10,7 @@ namespace HexFiled
     public class HexCell : MonoBehaviour
     {
         public HexCoordinates coordinates;
+        public int index;
         public event Action<HexCell> OnHexPainted;
 
 
@@ -40,11 +41,19 @@ namespace HexFiled
             }
         }
 
+        public SerializibleHexCell ToSerializibleHexCell()
+        {
+            SerializibleHexCell cell = new SerializibleHexCell();
+            cell.HexCoordinates = coordinates;
+            cell.index = index;
+            return cell;
+        }
+
         private void Awake()
         {
             _renderer = GetComponent<MeshRenderer>();
             _color = UnitColor.Grey;
-            
+            if (HexManager.CellByColor == null) return;
             if (!HexManager.CellByColor.ContainsKey(_color))
             {
                 HexManager.CellByColor.Add(_color, new List<HexCell>() { this });
@@ -69,8 +78,14 @@ namespace HexFiled
 
         public void SetNeighbor(HexDirection direction, HexCell cell)
         {
+            neighbors ??= new HexCell[6];
+            
             neighbors[(int)direction] = cell;
+            
+            if (cell == null) return;
+            cell.neighbors ??= new HexCell[6];
             cell.neighbors[(int)direction.Back()] = this;
+            cell.neighbors ??= new HexCell[6];
         }
 
         public void PaintHex(UnitColor color, bool isSetting = false)
@@ -83,9 +98,9 @@ namespace HexFiled
             }
 
             _renderer.material.mainTexture = HexGrid.Colors[color].Texture;
-            
+
             HexManager.CellByColor[_color].Remove(this);
-            
+
             _color = color;
             HexManager.CellByColor[_color].Add(this);
             if (!isSetting)

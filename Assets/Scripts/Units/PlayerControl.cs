@@ -85,6 +85,9 @@ namespace Chars
                 case CaptureAbility ability:
                     ability.UseAbility();
                     break;
+                case SpecialWeapon weapon:
+                    weapon.Fire();
+                    break;
             }
         }
 
@@ -151,9 +154,11 @@ namespace Chars
                         ability.DeAim();
                         return;
                     }
-
                     ability.Aim(DirectionHelper.VectorToDirection(placeDir.normalized));
                     _aimCount = 1;
+                    break;
+                case SpecialWeapon weapon:
+                    weapon.Aim(DirectionHelper.VectorToDirection(placeDir.normalized));
                     break;
             }
         }
@@ -178,6 +183,9 @@ namespace Chars
                         break;
                     case Building building:
                         _unitView.AimCanvas.SetActive(false);
+                        break;
+                    case SpecialWeapon weapon:
+                        weapon.DeAim();
                         break;
                 }
             }

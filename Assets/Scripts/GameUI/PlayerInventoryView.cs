@@ -87,6 +87,10 @@ namespace GameUI
                         ability.Invoke(() => SwitchButton(button));
                         OnBuildingInvoked?.Invoke(ability);
                         break;
+                    case SpecialWeapon specialWeapon:
+                        specialWeapon.Invoke(() => SwitchButton(button));
+                        OnBuildingInvoked?.Invoke(specialWeapon);
+                        break;
                 }
             });
         }
