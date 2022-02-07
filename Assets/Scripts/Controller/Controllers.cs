@@ -3,7 +3,7 @@ using Runtime.Controller;
 
 namespace Controller
 {
-    public class Controllers : IExecute, IInitialization, ILateExecute, ICleanup
+    public class Controllers : IExecute, IInitialization, ILateExecute, ICleanup, IFixedExecute, IAwake
     {
         private readonly List<IInitialization> _initializeControllers;
         private readonly List<IExecute> _executeControllers;

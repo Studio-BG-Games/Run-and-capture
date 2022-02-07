@@ -104,14 +104,15 @@ namespace Units
         public void Retreet(HexDirection dir)
         {
             if (!_isCapturing) return;
-            var openList = _cell.GetListNeighbours().Where(x => x.Color == _data.color).ToList();
-            if (openList.Contains(_cell.GetNeighbor(dir)))
+            var openList = _cell.GetListNeighbours().Where(x => x != null && x.Color == _data.color).ToList();
+            if (!openList.Contains(_cell.GetNeighbor(dir)))
             {
-                _isBusy = false;
-                _isHardToCapture = false;
-                _unitView.StopHardCapture();
-                Move(dir);
+                return;
             }
+            _isBusy = false;
+            _isHardToCapture = false;
+            _unitView.StopHardCapture();
+            Move(dir);
         }
 
         public void Move(HexDirection direction)
@@ -210,19 +211,24 @@ namespace Units
             if (!_isAlive)
             {
                 _cell = _hexGrid.GetCellFromCoord(hexCoordinates);
-                _cell.PaintHex(_data.color);
-                _cell.GetListNeighbours().ForEach(x => x?.PaintHex(Color));
+                _cell.PaintHex(_data.color, true);
+                _cell.GetListNeighbours().ForEach(x =>
+                {
+                    x?.PaintHex(Color, true);
+                    
+                });
                 _inventory = new List<Item>();
                 _inventoryDefence = new List<Item>();
 
                 HexManager.UnitCurrentCell.Add(_data.color, (_cell, this));
 
                 _instance = Object.Instantiate(_data.unitPrefa, _cell.transform.parent);
+                
                 _instance.transform.localPosition = _cell.transform.localPosition;
 
                 _isAlive = true;
                 _animator = _instance.GetComponent<Animator>();
-                _unitView = _instance.GetComponent<UnitView>();
+                _unitView = _instance.AddComponent<UnitView>();
 
 
                 _unitView.SetUp(_weapon, RegenMana, _data.manaRegen, CaptureHex,
@@ -245,6 +251,30 @@ namespace Units
             UpdateBarCanvas();
         }
 
+        public bool CanPickUpItem(Item item)
+        {
+            switch (item.Type)
+            {
+                case ItemType.ATTACK:
+                    if (_inventory.Count < _data.inventoryCapacity / 2)
+                    {
+                        return true;
+                    }
+
+                    break;
+                case ItemType.DEFENCE:
+                    if (_inventoryDefence.Count < _data.inventoryCapacity / 2)
+                    {
+                        return true;
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+                
+            }
+            return false;
+        }
+
         public bool PickUpItem(Item item)
         {
             switch (item.Type)
@@ -252,7 +282,6 @@ namespace Units
                 case ItemType.ATTACK:
                     if (_inventory.Count < _data.inventoryCapacity / 2)
                     {
-                        item.PickUp(_data.color);
                         _inventory.Add(item);
                         OnItemPickUp?.Invoke(item);
                         _cell.Item = null;
@@ -263,18 +292,18 @@ namespace Units
                 case ItemType.DEFENCE:
                     if (_inventoryDefence.Count < _data.inventoryCapacity / 2)
                     {
-                        item.PickUp(_data.color);
                         _inventoryDefence.Add(item);
                         OnItemPickUp?.Invoke(item);
                         _cell.Item = null;
                         return true;
                     }
+
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
-            
+
+
             return false;
         }
 
@@ -438,7 +467,7 @@ namespace Units
                 return;
             }
 
-            SetUpBonus(0, 0, BonusType.Defence);
+            
             _hp -= dmg;
 
             UpdateBarCanvas();

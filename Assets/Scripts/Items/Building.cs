@@ -9,11 +9,13 @@ namespace Items
     public class Building : Item
     {
         [SerializeField] private GameObject buildingPrefab;
-
+        private Action _action;
 
         public void Invoke(Action action)
         {
-            OnItemUsed += action;
+            if(_action != null) return;
+            _action = action;
+            OnItemUsed += _action;
         }
 
 
@@ -26,7 +28,7 @@ namespace Items
             
             cell.Building = obj;
             OnItemUsed.Invoke();
-            OnItemUsed = null;
+            OnItemUsed = _action;
         }
     }
 }

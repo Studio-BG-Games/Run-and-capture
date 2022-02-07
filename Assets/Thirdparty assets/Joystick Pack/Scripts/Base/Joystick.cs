@@ -44,6 +44,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public event Action OnTouchUp;
     public event Action OnTouchDown;
     public event Action<Vector2> OnDrug;
+    public bool isJoysticDirectionZero;
     
     private Canvas canvas;
     private Camera cam;
@@ -90,6 +91,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         FormatInput();
         HandleInput(input.magnitude, input.normalized, radius, cam);
         handle.anchoredPosition = input * radius * handleRange;
+        isJoysticDirectionZero = Direction.Equals(Vector2.zero);
+        
         OnDrug?.Invoke(Direction);
     }
 

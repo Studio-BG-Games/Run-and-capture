@@ -15,6 +15,7 @@ public class DynamicJoystick : Joystick
     private Vector2 starPos;
 
     [SerializeField] private float moveThreshold = 1;
+    [SerializeField] private float returnDuration = 0.5f;
 
     protected override void Start()
     {
@@ -26,6 +27,7 @@ public class DynamicJoystick : Joystick
 
     public override void OnPointerDown(PointerEventData eventData)
     {
+        background.DOComplete();
         background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
         FadeJoystick(true);
         base.OnPointerDown(eventData);
@@ -34,7 +36,8 @@ public class DynamicJoystick : Joystick
     public override void OnPointerUp(PointerEventData eventData)
     {
         FadeJoystick(false);
-        background.anchoredPosition = starPos;
+        background.DOAnchorPos(starPos, returnDuration);
+       
         base.OnPointerUp(eventData);
     }
 

@@ -28,6 +28,7 @@ namespace Data
     public struct UnitInfo
     {
         public bool isPlayer;
+        public bool isAI;
         public HexCoordinates spawnPos;
         public GameObject unitPrefa;
         public UnitColor color;

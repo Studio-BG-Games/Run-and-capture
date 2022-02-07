@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using DefaultNamespace;
 using HexFiled;
+using Items.ItemViews;
 using Units;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -29,13 +30,10 @@ namespace Items
     {
         private GameObject _instance;
         [SerializeField] private Sprite icon;
-        [SerializeField] private bool isInvokeOnPickUp = false;
         [SerializeField] private ItemType type;
-        
+
         public ItemType Type => type;
-
-        public bool IsInvokeOnPickUp => isInvokeOnPickUp;
-
+        
         public Sprite Icon => icon;
 
         protected Unit Unit;
@@ -45,22 +43,24 @@ namespace Items
 
         public GameObject Spawn(HexCell cell, GameObject parent, GameObject iconPrefab)
         {
-            _instance = GameObject.Instantiate(iconPrefab, cell.transform.position + new Vector3(0, 1, 0),Quaternion.identity, parent.transform);
+            _instance = GameObject.Instantiate(iconPrefab, cell.transform.position + new Vector3(0, 1, 0),
+                Quaternion.identity, parent.transform);
             _instance.AddComponent<ItemView>().SetUp(this);
             cell.Item = this;
             _instance.AddComponent<CapsuleCollider>().isTrigger = true;
             return _instance;
         }
 
-        public virtual void PickUp(UnitColor color)
+        public virtual void PickUp(Unit unit)
         {
-            if (HexManager.UnitCurrentCell.TryGetValue(color, out var value))
-                Unit = value.unit;
+            Unit = unit;
+            unit.PickUpItem(this);
+            Despawn();
         }
 
         public void Despawn()
         {
-            Object.Destroy(_instance);
+            Destroy(_instance.gameObject);
         }
 
         public void Dispose()

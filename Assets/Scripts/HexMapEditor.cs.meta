@@ -5,7 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - hexPrefab: {fileID: 1661242500252451528, guid: bcea5b4a96735bd4b936f8f3fefcc688, type: 3}
-  - labelPrefab: {fileID: 4726489279989878083, guid: f31e0880dd078104bb31dc0fd7ef9f19, type: 3}
+  - labelPrefab: {fileID: 3836123284387241147, guid: efd47cbd22ddfee4aa2b1391914116fc, type: 3}
+  - gridCanvas: {fileID: 4726489279989878083, guid: f31e0880dd078104bb31dc0fd7ef9f19, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

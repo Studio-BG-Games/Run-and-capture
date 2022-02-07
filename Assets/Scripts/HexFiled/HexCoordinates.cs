@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace HexFiled
 {
 	[System.Serializable]
-	public struct HexCoordinates {
+	public struct HexCoordinates : IComparable<HexCoordinates> {
 
 		[SerializeField]
 		private int x, z;
@@ -44,6 +45,10 @@ namespace HexFiled
 			return new HexCoordinates(x - z / 2, z);
 		}
 
+		public static (int x, int z) ToOffsetCoordinates(HexCoordinates coordinates)
+		{
+			return (coordinates.X + coordinates.Z / 2, coordinates.Z);
+		}
 		public static HexCoordinates FromPosition (Vector3 position) {
 			float x = position.x / (HexMetrics.innerRadius * 2f);
 			float y = -x;
@@ -72,12 +77,18 @@ namespace HexFiled
 			return new HexCoordinates(iX, iZ);
 		}
 
-		public static Vector3 ToPosition (HexCoordinates position) {
+		public static Vector3 ToPosition(HexCoordinates position) {
 			
+			/*
+			position.x = (x + z * 0.5f - z / 2) * (HexMetrics.innerRadius * 2f);
+            position.y = 0f;
+            position.z = z * (HexMetrics.outerRadius * 1.5f);
+                */
+			var hexPos = ToOffsetCoordinates(position);
 			Vector3 pos;
-			pos.x = (position.x + position.z * 0.5f - position.z / 2) * (HexMetrics.innerRadius * 2f);
+			pos.x = (hexPos.x + hexPos.z * 0.5f - hexPos.z / 2) * (HexMetrics.innerRadius * 2f);
 			pos.y = 0f;
-			pos.z = position.z * (HexMetrics.outerRadius * 1.5f);
+			pos.z = hexPos.z * (HexMetrics.outerRadius * 1.5f);
 			
 			return pos;
 		}
@@ -86,8 +97,17 @@ namespace HexFiled
 			       X.ToString() + ", " + Y.ToString() + ", " + Z.ToString() + ")";
 		}
 
+		
+
 		public string ToStringOnSeparateLines () {
 			return X.ToString() + "\n" + Y.ToString() + "\n" + Z.ToString();
+		}
+
+		public int CompareTo(HexCoordinates other)
+		{
+			var xComparison = x.CompareTo(other.X);
+			if (xComparison != 0) return xComparison;
+			return z.CompareTo(other.Z);
 		}
 	}
 }

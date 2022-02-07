@@ -42,6 +42,10 @@ namespace DefaultNamespace
         public void StartTimer<T>(List<Action<T>> actions, float time, T param)
         {
             StartCoroutine(Timer(actions, time,  param));
+        } 
+        public void StartTimer<T>(List<Action<T, bool>> actions, float time, T param)
+        {
+            StartCoroutine(Timer(actions, time,  param));
         }
         
         IEnumerator Timer(Action action, float time)
@@ -62,6 +66,14 @@ namespace DefaultNamespace
             {
                 yield return new WaitForSeconds(time);
                 action?.Invoke(param);
+            }
+        } 
+        IEnumerator Timer<T>(List<Action<T, bool>> actions, float time, T param)
+        {
+            foreach (var action in actions)
+            {
+                yield return new WaitForSeconds(time);
+                action?.Invoke(param, true);
             }
         }
     }

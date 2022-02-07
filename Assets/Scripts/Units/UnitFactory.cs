@@ -69,12 +69,14 @@ namespace Chars
             {
                 var enemy = new Unit(unitInfo,
                     _data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid);
-                
-                
-                AIAgent agent = new AIAgent(unitInfo, enemy);
-                enemy.OnPlayerSpawned += x => _controllers.Add(agent);
-                enemy.OnDeath += x => { _controllers.Remove(agent); };
-                
+
+                if (unitInfo.isAI)
+                {
+                    AIAgent agent = new AIAgent(unitInfo, enemy);
+                    enemy.OnPlayerSpawned += x => _controllers.Add(agent);
+                    enemy.OnDeath += x => { _controllers.Remove(agent); };
+                }
+
                 enemy.Spawn(unitInfo.spawnPos);
                 
                 enemy.UnitView.SetBar(_data.UnitData.BotBarCanvas, _data.UnitData.AttackAimCanvas);

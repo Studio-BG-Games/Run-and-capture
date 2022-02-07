@@ -39,7 +39,7 @@ namespace Controller
             hexGrid.OnGridLoaded += () => unitFactory.SpawnList(data.UnitData.Units);
             
             hexGrid.OnHexPainted += paintedController.SetHexColors;
-            hexGrid.OnHexPainted += paintedController.CheckDeathOrDestroy;
+
             hexGrid.SpawnField();
         }
         

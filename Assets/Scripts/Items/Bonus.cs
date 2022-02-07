@@ -1,5 +1,6 @@
 ﻿using DefaultNamespace;
 using HexFiled;
+using Units;
 using UnityEngine;
 
 namespace Items
@@ -21,16 +22,16 @@ namespace Items
 
         public BonusType BonusType => bonusType;
 
-        public override void PickUp(UnitColor color)
+        public override void PickUp(Unit unit)
         {
             if(bonusType != BonusType.Heal)
-                base.PickUp(color);
+                base.PickUp(unit);
             else
             {
-                Unit = HexManager.UnitCurrentCell[color].unit;
+                Unit = unit;
                 VFXController.Instance.PlayEffect(usisngVFX, Unit.Instance.transform);
                 Unit.UnitView.OnHit.Invoke(-value);
-                
+                Despawn();
             }
         }
 
