@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using DefaultNamespace.Weapons;
+using Data;
 using UnityEngine;
 using UnityEngine.UI;
 using Weapons;

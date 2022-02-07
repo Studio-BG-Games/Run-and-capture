@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae8c093a7fd99146b219ab2eb5f6d9b, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
+  levelName: Level 1
   fieldDataPath: FieldData
   cameraDataPath: CameraData
   unitDataPath: UnitsData

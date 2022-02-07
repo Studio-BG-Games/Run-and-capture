@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using HexFiled;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Purchasing.MiniJSON;
 using Object = UnityEngine.Object;
 
 namespace DefaultNamespace
@@ -23,7 +23,7 @@ namespace DefaultNamespace
     public class SerializibleHexCell
     {
         public HexCoordinates HexCoordinates;
-        public int index;
+        public (int x, int z, int i) index;
     }
 
 
@@ -32,6 +32,13 @@ namespace DefaultNamespace
         [SerializeField] private GameObject hexPrefab;
         [SerializeField] private TMP_Text labelPrefab;
         [SerializeField] private GameObject gridCanvas;
+        [SerializeField] private string levelName;
+        [SerializeField, ListDrawerSettings(
+             CustomAddFunction = "NewLevel",
+             CustomRemoveIndexFunction = "RemoveLevel"
+         )] private List<string> levels;
+
+        [SerializeField] private string pathToMap;
 
         private GameObject gridCanvasInstance;
         private HexCell[] _cells;
@@ -44,7 +51,12 @@ namespace DefaultNamespace
         private GameObject labelCanvas;
 
 
-        [EditorButton]
+        private void OnEnable()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Button("Draw Map")]
         private void DrawMap(int x, int y)
         {
             if (fieldBaseGameObject != null)
@@ -67,16 +79,14 @@ namespace DefaultNamespace
             SpawnField();
         }
 
-        [EditorButton]
+        [Button("Load Map")]
         private void LoadMap(string fileName)
         {
-            if (File.Exists(Application.persistentDataPath
-                            + $"/{fileName}.dat"))
+            if (File.Exists($"{pathToMap}/{fileName}.dat"))
             {
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream file =
-                    File.Open(Application.persistentDataPath
-                              + $"/{fileName}.dat", FileMode.Open);
+                    File.Open($"{pathToMap}/{fileName}.dat", FileMode.Open);
                 GridToSave data = (GridToSave)bf.Deserialize(file);
                 file.Close();
 
@@ -85,7 +95,7 @@ namespace DefaultNamespace
                     DestroyImmediate(fieldBaseGameObject);
                 }
 
-                if (gridCanvasInstance == null)
+                if (gridCanvasInstance != null)
                 {
                     DestroyImmediate(gridCanvasInstance);
                 }
@@ -100,9 +110,7 @@ namespace DefaultNamespace
 
                 foreach (var cell in data.cells)
                 {
-                    if (cell == null)
-                        continue;
-                    CreateCell(cell.HexCoordinates.X, cell.HexCoordinates.Z, cell.index);
+                    CreateCell(cell.index.x, cell.index.z, cell.index.i);
                 }
 
                 Debug.Log("Game data loaded!");
@@ -113,15 +121,17 @@ namespace DefaultNamespace
                 Debug.LogError("There is no save data!");
         }
 
-        [EditorButton]
-        void SaveGrid(string fileName)
+        
+        void SaveGrid()
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(Application.persistentDataPath
-                                          + $"/{fileName}.dat");
+            FileStream file = File.Create($"{pathToMap}/{levelName}.dat");
             GridToSave data = new GridToSave();
             var tmp = new List<SerializibleHexCell>();
-            _cells.ToList().ForEach(cell => { tmp.Add(cell == null ? null : cell.ToSerializibleHexCell()); });
+            _cells.ToList().Where(x => x != null).ToList().ForEach(cell =>
+            {
+                tmp.Add(cell == null ? null : cell.ToSerializibleHexCell());
+            });
 
             data.cells = tmp.ToArray();
             data.width = _width;
@@ -133,13 +143,21 @@ namespace DefaultNamespace
         }
 
 
-        public static T ReadFromBinaryFile<T>(string filePath)
+        private void NewLevel()
         {
-            using (Stream stream = File.Open(filePath, FileMode.Open))
-            {
-                var binaryFormatter = new BinaryFormatter();
-                return (T)binaryFormatter.Deserialize(stream);
-            }
+            SaveGrid();
+            levels.Add(levelName);
+            levelName = "";
+            
+            DestroyImmediate(gridCanvasInstance);
+            DestroyImmediate(fieldBaseGameObject);
+            
+        }
+
+        private void RemoveLevel(int i)
+        {
+            File.Delete($"{pathToMap}/{levels[i]}.dat");
+            levels.RemoveAt(i);
         }
 
         void Update()
@@ -185,7 +203,9 @@ namespace DefaultNamespace
             cell.transform.SetParent(fieldBaseGameObject.transform, false);
             cell.transform.localPosition = position;
 
-            cell.index = i;
+            cell.index.i = i;
+            cell.index.x = x;
+            cell.index.z = z;
 
             if (x > 0)
             {

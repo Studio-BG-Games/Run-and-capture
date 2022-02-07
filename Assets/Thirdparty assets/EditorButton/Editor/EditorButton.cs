@@ -14,7 +14,7 @@ using System.Reflection;
 #if UNITY_EDITOR
 [CustomEditor(typeof (MonoBehaviour), true)]
 [CanEditMultipleObjects]
-public class EditorButton : Editor
+public class EditorButton : UnityEditor.Editor
 {
 	class EditorButtonState {
 		public bool opened;

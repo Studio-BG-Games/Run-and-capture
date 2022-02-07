@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using DefaultNamespace.Weapons;
+using UnityEditor;
 using UnityEngine;
 using Weapons;
 
@@ -8,23 +8,28 @@ namespace Data
     [CreateAssetMenu(fileName = "Data", menuName = "Data/Data")]
     public class Data : ScriptableObject
     {
-        [SerializeField] private string fieldDataPath;
+       
+
+        public string levelName;
+        [SerializeField] private string fieldDataPath = "FieldData";
         private FieldData _fieldData;
-        [SerializeField] private string cameraDataPath;
+        [SerializeField] private string cameraDataPath = "CameraData";
         private CameraData _cameraData;
-        [SerializeField] private string unitDataPath;
+        [SerializeField] private string unitDataPath = "UnitsData";
         private UnitData _unitData;
-        [SerializeField] private string weaponDataPath;
+        [SerializeField] private string weaponDataPath = "WeaponsData";
         private WeaponsData _weaponData;
-        [SerializeField] private string uiDataPath;
+        [SerializeField] private string uiDataPath = "UIData";
         private UIData _uiData;
-        [SerializeField] private string musicDataPath;
+        [SerializeField] private string musicDataPath = "MusicData";
         private MusicData _musicData;
-        [SerializeField] private string itemDataPath;
+        [SerializeField] private string itemDataPath = "ItemData";
         private ItemsData _itemsData;
-        [SerializeField] private string aiDataPath;
+        [SerializeField] private string aiDataPath = "AIData";
         private AIData _aiData;
-        [SerializeField] private string chosenWeaponDataPath;
+        [SerializeField] private string chosenWeaponDataPath = "ChosenWeapon.json";
+
+        private string pathToLevel => "Data/" + levelName + "/";
 
         public Weapon ChosenWeapon =>
             JsonUtility.FromJson<Weapon>(File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath));
@@ -35,32 +40,33 @@ namespace Data
             {
                 if (_aiData == null)
                 {
-                    _aiData = Load<AIData>("Data/" + aiDataPath);
+                    _aiData = Load<AIData>(pathToLevel + aiDataPath);
                 }
 
                 return _aiData;
             }
         }
+
         public ItemsData ItemsData
         {
             get
             {
                 if (_itemsData == null)
                 {
-                    _itemsData = Load<ItemsData>("Data/" + itemDataPath);
+                    _itemsData = Load<ItemsData>(pathToLevel + itemDataPath);
                 }
 
                 return _itemsData;
             }
         }
-        
+
         public MusicData MusicData
         {
             get
             {
                 if (_musicData == null)
                 {
-                    _musicData = Load<MusicData>("Data/" + musicDataPath);
+                    _musicData = Load<MusicData>(pathToLevel + musicDataPath);
                 }
 
                 return _musicData;
@@ -73,7 +79,7 @@ namespace Data
             {
                 if (_uiData == null)
                 {
-                    _uiData = Load<UIData>("Data/" + uiDataPath);
+                    _uiData = Load<UIData>(pathToLevel + uiDataPath);
                 }
 
                 return _uiData;
@@ -87,7 +93,7 @@ namespace Data
             {
                 if (_weaponData == null)
                 {
-                    _weaponData = Load<WeaponsData>("Data/" + weaponDataPath);
+                    _weaponData = Load<WeaponsData>(pathToLevel + weaponDataPath);
                 }
 
                 return _weaponData;
@@ -100,7 +106,7 @@ namespace Data
             {
                 if (_fieldData == null)
                 {
-                    _fieldData = Load<FieldData>("Data/" + fieldDataPath);
+                    _fieldData = Load<FieldData>(pathToLevel + fieldDataPath);
                 }
 
                 return _fieldData;
@@ -113,7 +119,7 @@ namespace Data
             {
                 if (_cameraData == null)
                 {
-                    _cameraData = Load<CameraData>("Data/" + cameraDataPath);
+                    _cameraData = Load<CameraData>(pathToLevel + cameraDataPath);
                 }
 
                 return _cameraData;
@@ -126,7 +132,7 @@ namespace Data
             {
                 if (_unitData == null)
                 {
-                    _unitData = Load<UnitData>("Data/" + unitDataPath);
+                    _unitData = Load<UnitData>(pathToLevel + unitDataPath);
                 }
 
                 return _unitData;

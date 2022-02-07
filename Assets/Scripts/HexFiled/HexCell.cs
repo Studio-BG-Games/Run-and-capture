@@ -10,7 +10,7 @@ namespace HexFiled
     public class HexCell : MonoBehaviour
     {
         public HexCoordinates coordinates;
-        public int index;
+        public (int x, int z, int i) index;
         public event Action<HexCell> OnHexPainted;
 
 
@@ -85,7 +85,7 @@ namespace HexFiled
             if (cell == null) return;
             cell.neighbors ??= new HexCell[6];
             cell.neighbors[(int)direction.Back()] = this;
-            cell.neighbors ??= new HexCell[6];
+            
         }
 
         public void PaintHex(UnitColor color, bool isSetting = false)

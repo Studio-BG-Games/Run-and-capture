@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Data;
-using Runtime.Controller;
 using TMPro;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -37,7 +36,7 @@ namespace HexFiled
         {
             _fieldData = fieldData;
             _baseGameObject = new GameObject("HexGrid");
-            _colors = fieldData.colors.ToDictionary(x => x.UnitColor, x => x);
+            _colors = fieldData.colors;
             
 
             _gridCanvas = Object.Instantiate(fieldData.CoordinatesCanvas, _baseGameObject.transform)
@@ -46,27 +45,7 @@ namespace HexFiled
             _cells = new HexCell[_fieldData.height * _fieldData.width];
         }
 
-        public HexGrid(int x, int y, GameObject hexPrefab, List<CellColor> cellColors, GameObject lablePrefab)
-        {
-            _colors = new Dictionary<UnitColor, CellColor>(cellColors.Count);
-            
-            _baseGameObject = new GameObject("HexGrid");
-            _fieldData = ScriptableObject.CreateInstance<FieldData>();
-            _fieldData.height = y;
-            _fieldData.width = x;
-            _fieldData.cellPrefab = hexPrefab;
-            _fieldData.CoordinatesCanvas = lablePrefab;
-
-            foreach (var color in cellColors)
-            {
-                _colors.Add(color.UnitColor, color);
-            }
-            
-            _gridCanvas = Object.Instantiate(_fieldData.CoordinatesCanvas, _baseGameObject.transform)
-                .GetComponent<Canvas>();
-            HexManager.CellByColor = new Dictionary<UnitColor, List<HexCell>>();
-            _cells = new HexCell[_fieldData.height * _fieldData.width];
-        }
+       
 
         public HexCell GetCellFromCoord(HexCoordinates coordinates)
         {

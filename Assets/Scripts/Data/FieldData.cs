@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using HexFiled;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
 namespace Data
 {
     [CreateAssetMenu(fileName = "FieldData", menuName = "Data/Field Data")]
-    public class FieldData : ScriptableObject
+    public class FieldData : SerializedScriptableObject
     {
         public int width = 6;
         public int height = 6;
@@ -16,6 +17,6 @@ namespace Data
         public GameObject cellPrefab;
         public TMP_Text cellLabelPrefab;
         public GameObject CoordinatesCanvas;
-        public List<CellColor> colors;
+        public Dictionary<UnitColor, CellColor> colors;
     }
 }
