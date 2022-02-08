@@ -41,9 +41,9 @@ namespace HexFiled
             }
         }
 
-        public SerializibleHexCell ToSerializibleHexCell()
+        public SerializableHexCell ToSerializibleHexCell()
         {
-            SerializibleHexCell cell = new SerializibleHexCell();
+            SerializableHexCell cell = new SerializableHexCell();
             cell.HexCoordinates = coordinates;
             cell.index = index;
             return cell;
