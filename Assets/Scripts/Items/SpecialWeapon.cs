@@ -43,6 +43,7 @@ namespace Items
             var cell = HexManager.UnitCurrentCell[Unit.Color].cell.GetNeighbor(_direction);
             Unit.RotateUnit(new Vector2((cell.transform.position - Unit.Instance.transform.position).normalized.x,
                 (cell.transform.position - Unit.Instance.transform.position).normalized.z));
+            _weapon.objectToThrow.GetComponent<ISetUp>().SetUp(Unit);
             _aimInstance.SetActive(false);
             var dir = DirectionHelper.DirectionTo(Unit.Instance.transform.position, cell.transform.position);
             _weapon.Fire(Unit.Instance.transform, new Vector2(dir.x, dir.z));

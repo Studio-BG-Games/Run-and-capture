@@ -206,11 +206,12 @@ namespace Units
             }
         }
 
-        public void Spawn(HexCoordinates hexCoordinates)
+        public void Spawn(HexCoordinates hexCoordinates, HexCell spawnCell = null)
         {
             if (!_isAlive)
             {
-                _cell = _hexGrid.GetCellFromCoord(hexCoordinates);
+                _cell = spawnCell != null ? spawnCell : _hexGrid.GetCellFromCoord(hexCoordinates);
+                
                 _cell.PaintHex(_data.color, true);
                 _cell.GetListNeighbours().ForEach(x =>
                 {
@@ -309,7 +310,7 @@ namespace Units
 
         public void UseItem(Item item)
         {
-            if (_inventory.Contains(item))
+            if (item.Type == ItemType.ATTACK)
                 _inventory.Remove(item);
             else
             {

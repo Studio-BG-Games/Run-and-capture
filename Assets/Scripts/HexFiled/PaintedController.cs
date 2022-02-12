@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Units;
 using Random = UnityEngine.Random;
 
@@ -16,7 +17,7 @@ namespace HexFiled
         }
 
 
-        public void SetHexColors(HexCell cell)
+        public async void SetHexColors(HexCell cell)
         {
             _cell = cell;
 
@@ -24,38 +25,44 @@ namespace HexFiled
             var hexByColorDict = Enum.GetValues(typeof(UnitColor)).Cast<UnitColor>().ToDictionary(color => color,
                 color => cell.GetListNeighbours().Where(x => x != null && x.Color == color).ToList());
 
-            cell.GetListNeighbours().Where(x => x != null && x.Color != cell.Color).ToList().ForEach(neighbour =>
+
+            var neighbours = cell.GetListNeighbours().Where(x => x != null && x.Color != cell.Color).ToArray();
+
+            foreach (var neighbour in neighbours)
             {
                 if (hexByColorDict.TryGetValue(neighbour.Color, out var value) &&
                     value.Count >= 2 && value.Count < 6)
                 {
-                    value.ForEach(x =>
+                    foreach (var hex in value)
                     {
-                        var path = Round(x, null);
+                        
+                        var path = await Round(hex, null);
                         if (!path.hasPath)
                         {
-                            HexManager.PaintHexList(path.field, cell.Color, 0.05f);
+                            HexManager.PaintHexList(path.field, cell.Color, 0.005f);
                         }
-                    });
+                    }
                 }
 
 
                 if (neighbour.Color != UnitColor.Grey
                     && HexManager.UnitCurrentCell.TryGetValue(neighbour.Color, out var unit)
                     && hexByColorDict.TryGetValue(neighbour.Color, out var cells)
-                    && cells.Count >= 2 && cells.Count < 5
-                    && !HasPath(neighbour, unit.cell, out var path))
+                    && cells.Count >= 2 && cells.Count < 5)
                 {
-                    HexManager.PaintHexList(path, UnitColor.Grey);
+                    var path = await HasPath(neighbour, unit.cell);
+                    if (!path.hasPath)
+                        HexManager.PaintHexList(path.field, UnitColor.Grey);
                 }
-            });
+            }
         }
 
 
-        private (bool hasPath, List<HexCell> field) Round(HexCell start, HexCell end)
+        private async Task<(bool hasPath, List<HexCell> field)> Round(HexCell start, HexCell end)
         {
             if (start == null || start.Color == _cell.Color)
             {
+                await Task.CompletedTask;
                 return (true, null);
             }
 
@@ -78,6 +85,7 @@ namespace HexFiled
                 {
                     if (neighbour == null)
                     {
+                        await Task.CompletedTask;
                         return (true, null);
                     }
 
@@ -85,6 +93,7 @@ namespace HexFiled
                     openList.Add(neighbour);
                     if (neighbour.GetListNeighbours().Contains(end))
                     {
+                        await Task.CompletedTask;
                         return (true, null);
                     }
                 }
@@ -99,6 +108,7 @@ namespace HexFiled
                 {
                     if (stackIterators.Count == 0)
                     {
+                        await Task.CompletedTask;
                         return (false, closedList);
                     }
 
@@ -107,20 +117,21 @@ namespace HexFiled
 
                 if (currentCell.GetListNeighbours().Contains(end))
                 {
+                    await Task.CompletedTask;
                     return (true, null);
                 }
             }
 
+            await Task.CompletedTask;
             return (false, closedList);
         }
 
-        private bool HasPath(HexCell start, HexCell end,
-            out List<HexCell> value)
+        private async Task<(bool hasPath, List<HexCell> field)> HasPath(HexCell start, HexCell end)
         {
             if (start.Color == _cell.Color || end.Color == _cell.Color)
             {
-                value = null;
-                return true;
+                await Task.CompletedTask;
+                return (true, null);
             }
 
             List<HexCell> closedList = new List<HexCell>();
@@ -135,8 +146,8 @@ namespace HexFiled
             {
                 if (currentCell == end)
                 {
-                    value = null;
-                    return true;
+                    await Task.CompletedTask;
+                    return (true, null);
                 }
 
                 List<HexCell> openList = currentCell.GetListNeighbours()
@@ -155,8 +166,8 @@ namespace HexFiled
                 {
                     if (stackIterators.Count == 0)
                     {
-                        value = closedList;
-                        return false;
+                        await Task.CompletedTask;
+                        return (false, closedList);
                     }
 
                     currentCell = stackIterators.Pop();
@@ -164,13 +175,13 @@ namespace HexFiled
 
                 if (currentCell.GetListNeighbours().Contains(end))
                 {
-                    value = null;
-                    return true;
+                    await Task.CompletedTask;
+                    return (true, null);
                 }
             }
 
-            value = closedList;
-            return false;
+            await Task.CompletedTask;
+            return (false, closedList);
         }
     }
 }

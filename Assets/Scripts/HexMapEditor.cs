@@ -1,45 +1,25 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text.RegularExpressions;
 using HexFiled;
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DefaultNamespace
+
+#if UNITY_EDITOR
+
+namespace Editor
 {
-    [Serializable]
-    public class GridToSave
-    {
-        public SerializableHexCell[] cells;
-
-        public int height;
-
-        public int width;
-        
-    }
-
-    [Serializable]
-    public class SerializableHexCell
-    {
-        public HexCoordinates HexCoordinates;
-
-        public (int x, int z, int i) index;
-    }
-
-
-    public class HexMapEditor : MonoBehaviour
+    public class HexMapEditor : SerializedMonoBehaviour
     {
         [SerializeField] private GameObject hexPrefab;
         [SerializeField] private TMP_Text labelPrefab;
         [SerializeField] private GameObject gridCanvas;
         [SerializeField] private string levelName;
+
 
         [SerializeField, ListDrawerSettings(
              CustomAddFunction = "NewLevel",
@@ -50,9 +30,9 @@ namespace DefaultNamespace
         [SerializeField] private string pathToMap;
 
         private GameObject _gridCanvasInstance;
-        private HexCell[] _cells;
-        private int _width;
-        private int _height;
+        [SerializeField] private HexCell[] _cells;
+        [SerializeField, HideInInspector] private int _width;
+        [SerializeField, HideInInspector] private int _height;
 
         private Color activeColor;
         private GameObject _fieldBaseGameObject;
@@ -71,27 +51,19 @@ namespace DefaultNamespace
             _cells = new HexCell[x * y];
             _width = x;
             _height = y;
-
+            
             SpawnField();
         }
 
-        [Button("Load Map")]
-        private void OpenLoadWindow()
+
+        #region Load Map
+
+        public void LoadMap(string fileName)
         {
-            LoadMapWindows.OpenWindow(this);
-        }
-
-
-        private void LoadMap(string fileName)
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream fs = new FileStream(fileName,
-                FileMode.Open);
-
-            GridToSave data = (GridToSave)bf.Deserialize(fs);
-
-
-            fs.Close();
+            
+            GridToSave data = JsonUtility.FromJson<GridToSave>(File.ReadAllText($"{fileName}/map.dat"));
+            
+            
             DestroyImmediate(_fieldBaseGameObject != null ? _fieldBaseGameObject : GameObject.Find("HexGrid"));
 
             DestroyImmediate(_gridCanvasInstance != null ? _gridCanvasInstance : GameObject.Find("CoordCanvas(Clone)"));
@@ -101,12 +73,22 @@ namespace DefaultNamespace
             _fieldBaseGameObject = new GameObject("HexField");
             _height = data.height;
             _width = data.width;
-            _cells = new HexCell[_width * _height];
+            _cells = new HexCell[_height * _width];
 
 
+            var buildings = new List<GameObject>();
+            Directory.GetFiles($"{fileName}/Buildings", "*.prefab", SearchOption.AllDirectories)
+                .ToList().ForEach(building =>
+                {
+                    var go = PrefabUtility.LoadPrefabContents(building);
+                    go.name = go.name.Replace("(Clone)", "");
+                    go.name = go.name.Replace("Buildings\\", "");
+                    buildings.Add(go);
+                });
             foreach (var cell in data.cells)
             {
-                CreateCell(cell.index.x, cell.index.z, cell.index.i);
+                var building = buildings.Find(x => x.name == $"({cell.x}, {cell.z}, {cell.i})");
+                CreateCell(cell, building);
             }
 
             GameObject.FindGameObjectsWithTag("Save").Where(x =>
@@ -114,11 +96,8 @@ namespace DefaultNamespace
                     !x.GetComponent<HexMapEditor>() && !x.GetComponent<HexCell>() && x.name != "Hex Cell Label(Clone)")
                 .ToList().ForEach(DestroyImmediate);
 
-            Regex rx = new Regex(@"\b[\\]\w+.dat\b",
-                RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            MatchCollection matchedAuthors = rx.Matches(fileName);  
-            var mapName = fileName.Replace(matchedAuthors[0].Value, "");
-            Directory.GetFiles($"{mapName}/Enviroment", "*.prefab", SearchOption.AllDirectories).ToList().ForEach(x =>
+
+            Directory.GetFiles($"{fileName}/Enviroment", "*.prefab", SearchOption.AllDirectories).ToList().ForEach(x =>
             {
                 var prefab = x.Replace("\\", "/");
                 var go = PrefabUtility.LoadPrefabContents(prefab);
@@ -126,23 +105,50 @@ namespace DefaultNamespace
                 instance.name = go.name.Replace("(Clone)", "");
                 instance.tag = "Save";
             });
-            
+
+            AssetDatabase.Refresh();
             Debug.Log("Game data loaded!");
         }
 
+        #endregion
 
         [Button("Save", ButtonSizes.Gigantic)]
-        void SaveGrid()
+
+        #region Save Map
+
+        private void SaveMap()
         {
             Directory.CreateDirectory($"{pathToMap}/{levelName}");
             Directory.CreateDirectory($"{pathToMap}/{levelName}/Enviroment");
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create($"{pathToMap}/{levelName}/{levelName}.dat");
+            Directory.CreateDirectory($"{pathToMap}/{levelName}/Buildings");
+            
             GridToSave data = new GridToSave();
+
+            DirectoryInfo dir = new DirectoryInfo($"{pathToMap}/{levelName}/Enviroment/");
+
+            foreach (FileInfo f in dir.GetFiles())
+            {
+                f.Delete();
+            }
+
+            dir = new DirectoryInfo($"{pathToMap}/{levelName}/Buildings/");
+
+            foreach (FileInfo f in dir.GetFiles())
+            {
+                f.Delete();
+            }
+
             var tmp = new List<SerializableHexCell>();
             _cells.ToList().Where(x => x != null).ToList().ForEach(cell =>
             {
-                tmp.Add(cell == null ? null : cell.ToSerializibleHexCell());
+                var scell = ToSerializibleHexCell(cell);
+                tmp.Add(scell);
+
+                if (cell.BuildingInstance != null)
+                {
+                    PrefabUtility.SaveAsPrefabAsset(cell.BuildingInstance,
+                        $"{pathToMap}/{levelName}/Buildings/({scell.x}, {scell.z}, {scell.i}).prefab");
+                }
             });
 
 
@@ -151,7 +157,7 @@ namespace DefaultNamespace
                     !x.GetComponent<HexMapEditor>() && !x.GetComponent<HexCell>() && x.name != "Hex Cell Label(Clone)")
                 .ToList().ForEach(x =>
                 {
-                    if(File.Exists($"{pathToMap}/{levelName}/Enviroment/{x.name}.prefab"))
+                    if (File.Exists($"{pathToMap}/{levelName}/Enviroment/{x.name}.prefab"))
                         File.Delete($"{pathToMap}/{levelName}/Enviroment/{x.name}.prefab");
                     PrefabUtility.SaveAsPrefabAsset(x, $"{pathToMap}/{levelName}/Enviroment/{x.name}.prefab");
                 });
@@ -159,18 +165,36 @@ namespace DefaultNamespace
             data.cells = tmp.ToArray();
             data.width = _width;
             data.height = _height;
+            if (File.Exists($"{pathToMap}/{levelName}/map.dat"))
+            {
+                File.Delete($"{pathToMap}/{levelName}/map.dat");
+            }
 
-
-            bf.Serialize(file, data);
-            file.Close();
-
+            File.Create($"{pathToMap}/{levelName}/map.dat").Close();
+            File.WriteAllText($"{pathToMap}/{levelName}/map.dat", JsonUtility.ToJson(data));
+            
+            AssetDatabase.Refresh();
             Debug.Log("Game data saved!");
         }
 
+        #endregion
+
+        private SerializableHexCell ToSerializibleHexCell(HexCell cell)
+        {
+            var scell = new SerializableHexCell
+            {
+                x = cell.index.x,
+                z = cell.index.z,
+                i = cell.index.i,
+                IsSpawnPos = cell.isSpawnPos
+            };
+
+            return scell;
+        }
 
         private void NewLevel()
         {
-            SaveGrid();
+            SaveMap();
             levels.Add(levelName);
             levelName = "";
 
@@ -204,24 +228,25 @@ namespace DefaultNamespace
             }
         }
 
-        private void CreateCell(int x, int z, int i, bool isHexCoord = false)
+        private void CreateCell(SerializableHexCell scell, GameObject building)
         {
             Vector3 position;
-            var cellGO = Object.Instantiate(hexPrefab);
+            var x = scell.x;
+            var z = scell.z;
+            var i = scell.i;
+
+            var cellGO = Instantiate(hexPrefab);
             HexCell cell = _cells[i] = cellGO.AddComponent<HexCell>();
-            if (isHexCoord)
-            {
-                HexCoordinates coordinates = new HexCoordinates(x, z);
-                position = HexCoordinates.ToPosition(coordinates);
-                (x, z) = HexCoordinates.ToOffsetCoordinates(coordinates);
-            }
-            else
-            {
-                position.x = (x + z * 0.5f - z / 2) * (HexMetrics.innerRadius * 2f);
-                position.y = 0f;
-                position.z = z * (HexMetrics.outerRadius * 1.5f);
-                cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
-            }
+
+            cell.Building = building;
+            cell.isSpawnPos = scell.IsSpawnPos;
+            
+
+            cell.SetBuilding();
+            position.x = (x + z * 0.5f - z / 2) * (HexMetrics.innerRadius * 2f);
+            position.y = 0f;
+            position.z = z * (HexMetrics.outerRadius * 1.5f);
+            cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
 
 
             cell.transform.SetParent(_fieldBaseGameObject.transform, false);
@@ -272,59 +297,14 @@ namespace DefaultNamespace
             {
                 for (int x = 0; x < _width; x++)
                 {
-                    CreateCell(x, z, i++);
+                    var scell = new SerializableHexCell();
+                    scell.x = x;
+                    scell.z = z;
+                    scell.i = i++;
+                    CreateCell(scell, null);
                 }
-            }
-        }
-
-        private class LoadMapWindows : OdinEditorWindow
-        {
-            public static void OpenWindow(HexMapEditor editor)
-            {
-                var loadMapWindow = GetWindow<LoadMapWindows>();
-                loadMapWindow.Show();
-                loadMapWindow.MapsList = new List<Maps>();
-                List<string> pathes = new List<string>();
-
-                pathes = Directory.GetFiles("Assets/Resources/Maps", "*.dat", SearchOption.AllDirectories).ToList();
-                pathes.ForEach(x => { loadMapWindow.MapsList.Add(new Maps(x, editor, DeleteMap)); });
-            }
-
-            [TableList(IsReadOnly = true, DrawScrollView = false, AlwaysExpanded = true, HideToolbar = true)]
-            public List<Maps> MapsList;
-
-            private static void DeleteMap(Maps maps)
-            {
-                GetWindow<LoadMapWindows>().MapsList.Remove(maps);
-            }
-
-            public class Maps
-            {
-                private HexMapEditor _editor;
-                private Action<Maps> OnMapDeleted;
-
-                public Maps(string path, HexMapEditor editor, Action<Maps> onMapDeleted)
-                {
-                    this.path = path;
-                    _editor = editor;
-                    OnMapDeleted += onMapDeleted;
-                }
-
-                [Button("Load")]
-                public void LoadMap()
-                {
-                    _editor.LoadMap(path);
-                }
-
-                [Button("Remove")]
-                public void RemoveMap()
-                {
-                    File.Delete(path);
-                    OnMapDeleted.Invoke(this);
-                }
-
-                [InlineProperty()] public string path;
             }
         }
     }
 }
+#endif

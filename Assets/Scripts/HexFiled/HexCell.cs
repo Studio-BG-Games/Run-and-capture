@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Data;
 using DefaultNamespace;
 using Items;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace HexFiled
@@ -12,14 +15,29 @@ namespace HexFiled
         public HexCoordinates coordinates;
         public (int x, int z, int i) index;
         public event Action<HexCell> OnHexPainted;
-
+        public bool isSpawnPos;
+        [HideInInspector] public GameObject BuildingInstance;
 
         [SerializeField] private HexCell[] neighbors;
         [SerializeField] private Item _item;
+        [SerializeField, AssetsOnly] public GameObject Building;
+
+
+        private Dictionary<BuildingKeys, GameObject> buildings =>
+            Resources.Load<DefaultLists>(Path.ChangeExtension("Data/Defaults.asset", null)).Buildings;
+
         private UnitColor _color;
         private MeshRenderer _renderer;
 
         public UnitColor Color => _color;
+
+        private void OnDrawGizmos()
+        {
+            if (isSpawnPos)
+            {
+                Gizmos.DrawIcon(transform.position + new Vector3(0,1,0),"Spawner.png", true);
+            }
+        }
 
         public Item Item
         {
@@ -27,32 +45,27 @@ namespace HexFiled
             set => _item = value;
         }
 
-        private GameObject _building;
 
-        public GameObject Building
+        [Button("Set Building", ButtonSizes.Gigantic)]
+        public void SetBuilding()
         {
-            get => _building;
-            set
+            if (BuildingInstance != null)
             {
-                if (_building == null)
-                {
-                    _building = value;
-                }
+                DestroyImmediate(Building);
+            }
+
+            if (Building != null)
+            {
+                BuildingInstance = Instantiate(Building, transform);
             }
         }
 
-        public SerializableHexCell ToSerializibleHexCell()
-        {
-            SerializableHexCell cell = new SerializableHexCell();
-            cell.HexCoordinates = coordinates;
-            cell.index = index;
-            return cell;
-        }
 
         private void Awake()
         {
             _renderer = GetComponent<MeshRenderer>();
             _color = UnitColor.Grey;
+
             if (HexManager.CellByColor == null) return;
             if (!HexManager.CellByColor.ContainsKey(_color))
             {
@@ -79,13 +92,12 @@ namespace HexFiled
         public void SetNeighbor(HexDirection direction, HexCell cell)
         {
             neighbors ??= new HexCell[6];
-            
+
             neighbors[(int)direction] = cell;
-            
+
             if (cell == null) return;
             cell.neighbors ??= new HexCell[6];
             cell.neighbors[(int)direction.Back()] = this;
-            
         }
 
         public void PaintHex(UnitColor color, bool isSetting = false)
@@ -106,9 +118,9 @@ namespace HexFiled
             if (!isSetting)
                 OnHexPainted?.Invoke(this);
 
-            if (_building != null)
+            if (BuildingInstance != null)
             {
-                Destroy(_building);
+                Destroy(BuildingInstance);
             }
 
             HexManager.UnitCurrentCell

@@ -32,13 +32,15 @@ namespace Items
         {
             OnItemUsed ??= action;
 
-            if(_aimInstance == null || !_aimInstance.activeSelf)
+            if(_aimInstance == null)
                 _aimInstance = Object.Instantiate(aimCanvas, Unit.Instance.transform);
             _aimInstance.SetActive(false);
         }
 
         public void Aim(HexDirection direction)
         {
+            if(_aimInstance == null)
+                _aimInstance = Object.Instantiate(aimCanvas, Unit.Instance.transform);
             _aimInstance.SetActive(true);
             _aimInstance.transform.LookAt(HexManager.UnitCurrentCell[Unit.Color].cell
                 .GetNeighbor(direction).transform);

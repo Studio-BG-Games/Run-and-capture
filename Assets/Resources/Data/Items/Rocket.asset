@@ -17,7 +17,7 @@ MonoBehaviour:
   _weapon:
     name: Rocket
     icon: {fileID: 0}
-    objectToThrow: {fileID: 5503245665281670417, guid: 857de15730a382b48a9d497d078336cd, type: 3}
+    objectToThrow: {fileID: 662838864788327244, guid: 4ae54c1263fd76148b1888c9e05f1d48, type: 3}
     VFXGameObject: {fileID: 8032726150168125150, guid: 65c8920b6d1553a4d885992e8f7dff6a, type: 3}
     modifiedDamage: 0
     damage: 100

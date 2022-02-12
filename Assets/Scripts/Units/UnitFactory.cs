@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using CamControl;
 using Controller;
 using Data;
@@ -32,11 +33,23 @@ namespace Chars
 
         public void SpawnList(List<UnitInfo> units)
         {
-            units.ForEach(Spawn);
+            units.ForEach(x => Spawn(x));
         }
 
-        public void Spawn(UnitInfo unitInfo)
+        public void Spawn(UnitInfo unitInfo, HexCell spawnHex = null)
         {
+            HexCell spawnPos;
+            if (spawnHex == null)
+            {
+                spawnPos = _hexGrid.spawnPoses.ToList().FirstOrDefault(x => x.isSpawnPos);
+                if (spawnPos == null)
+                    return;
+            }
+            else
+            {
+                spawnPos = spawnHex;
+            }
+
             if (unitInfo.isPlayer)
             {
                 var player = new Unit(unitInfo, _chosenWeapon, _hexGrid);
@@ -61,8 +74,9 @@ namespace Chars
                 player.OnDeath += unit => _uiController.CheatMenu.OnPlayerDeath();
                 
                 player.OnDeath += p => _uiController.AdsMob.ShowCanvas(unitInfo, this);
-                
-                player.Spawn(unitInfo.spawnPos);
+               
+                player.Spawn(spawnPos.coordinates, spawnPos);
+                spawnPos.isSpawnPos = false;
                 player.UnitView.SetBar(_data.UnitData.PlayerBarCanvas, _data.UnitData.AttackAimCanvas);
             }
             else
@@ -77,7 +91,8 @@ namespace Chars
                     enemy.OnDeath += x => { _controllers.Remove(agent); };
                 }
 
-                enemy.Spawn(unitInfo.spawnPos);
+                enemy.Spawn(spawnPos.coordinates, spawnPos);
+                spawnPos.isSpawnPos = false;
                 
                 enemy.UnitView.SetBar(_data.UnitData.BotBarCanvas, _data.UnitData.AttackAimCanvas);
             }

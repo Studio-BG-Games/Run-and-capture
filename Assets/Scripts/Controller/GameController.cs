@@ -11,6 +11,7 @@ namespace Controller
         {
             _controllers = new Controllers();
             new GameInit(_controllers, data);
+           
             _controllers.Awake();
             
         }
@@ -38,6 +39,7 @@ namespace Controller
         private void OnDestroy()
         {
             _controllers.Cleanup();
+            
         }
     }
 }

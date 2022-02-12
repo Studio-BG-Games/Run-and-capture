@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Data;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
@@ -27,7 +26,7 @@ namespace Editor
         
 
         [MenuItem("Tools/Level Settings")]
-        private static void OpenWindow()
+        public static void OpenWindow()
         {
             GetWindow<LevelSettings>().Show();
         }
@@ -64,6 +63,7 @@ namespace Editor
             _createNewLevel = new CreateNewLevel();
             var tree = new OdinMenuTree();
             tree.Add("New Level", _createNewLevel);
+            tree.Add("Default Lists",new Defaults());
             var pathes = Resources.LoadAll<Data.Data>("Data/");
             pathes.ForEach(x =>
             {
@@ -74,6 +74,25 @@ namespace Editor
             return tree;
         }
 
+        private class Defaults
+        {
+            public Defaults()
+            {
+                def = Resources.Load<DefaultLists>("Data/Defaults");
+                if (def == null)
+                {
+                    def = CreateInstance<DefaultLists>();
+                    AssetDatabase.CreateAsset(def, "Assets/Resources/Data/Defaults.asset");
+                    AssetDatabase.SaveAssets();
+                }
+            }
+
+            [InlineEditor(ObjectFieldMode = InlineEditorObjectFieldModes.Boxed, Expanded = true, DrawHeader = false)]
+            public DefaultLists def;
+
+        }
+        
+        
         private class CreateNewLevel
         {
             public CreateNewLevel()
