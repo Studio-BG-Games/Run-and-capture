@@ -76,8 +76,7 @@ public class UnitView : MonoBehaviour
 
     public void HardCaptureHex(HexCell cell)
     {
-        
-
+        _unit.BarCanvas.CaptureBar.DOFillAmount(0f, 0);
         _barCanvas.CaptureBack.SetActive(true);
         _sequence = DOTween.Sequence();
         _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, _hardCaptureTime).SetEase(Ease.Linear).OnComplete(
@@ -87,6 +86,7 @@ public class UnitView : MonoBehaviour
                 _barCanvas.CaptureBack.SetActive(false);
                 MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                     cell.gameObject);
+               
             }));
         _sequence.Play();
     }

@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 
 namespace HexFiled
 {
-    [Serializable]
+    
     public class HexGrid
     {
         private HexCell[] _cells;

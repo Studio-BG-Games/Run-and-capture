@@ -1,5 +1,6 @@
 using System;
 using DefaultNamespace;
+using DG.Tweening;
 using HexFiled;
 using UnityEngine;
 using Weapons;
@@ -12,6 +13,7 @@ namespace Items
     {
         [SerializeField] private Weapon _weapon;
         [SerializeField] private GameObject _aimGameObject;
+        [SerializeField] private float lifeTime;
 
         private GameObject _aimInstance;
         private HexDirection _direction;
@@ -43,10 +45,15 @@ namespace Items
             var cell = HexManager.UnitCurrentCell[Unit.Color].cell.GetNeighbor(_direction);
             Unit.RotateUnit(new Vector2((cell.transform.position - Unit.Instance.transform.position).normalized.x,
                 (cell.transform.position - Unit.Instance.transform.position).normalized.z));
+            _weapon.SetModifiedDamage(0);
             _weapon.objectToThrow.GetComponent<ISetUp>().SetUp(Unit);
             _aimInstance.SetActive(false);
             var dir = DirectionHelper.DirectionTo(Unit.Instance.transform.position, cell.transform.position);
             _weapon.Fire(Unit.Instance.transform, new Vector2(dir.x, dir.z));
+            TimerHelper.Instance.StartTimer(() =>
+            {
+                _weapon.DestroyBall();
+            }, lifeTime);
             OnItemUsed?.Invoke();
         }
     }

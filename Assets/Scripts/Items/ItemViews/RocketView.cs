@@ -28,7 +28,8 @@ namespace Items.ItemViews
         {
             Rockets[_color].SetActive(true);
             listUnits = new List<GameObject>();
-            listUnits.AddRange(HexManager.UnitCurrentCell.Where(x => x.Key != _color).ToList().Select(x => x.Value.unit.Instance));
+            listUnits.AddRange(HexManager.UnitCurrentCell.Where(x => x.Key != _color).ToList()
+                .Select(x => x.Value.unit.Instance));
             listUnits.Sort((x, y) =>
                 Vector3.Distance(x.transform.position, _unit.transform.position).CompareTo(
                     Vector3.Distance(y.transform.position, _unit.transform.position)));
@@ -41,7 +42,9 @@ namespace Items.ItemViews
                 GetNearestUnit();
                 transform.DOKill();
                 transform.LookAt(listUnits.First().transform);
-                transform.DOMove(listUnits.First().transform.position, Vector3.Distance(listUnits.First().transform.position, _unit.transform.position)*0.2f).SetEase(Ease.Linear);
+                transform.DOMove(listUnits.First().transform.position,
+                        Vector3.Distance(listUnits.First().transform.position, _unit.transform.position) * 0.2f)
+                    .SetEase(Ease.Linear);
             }
         }
     }
