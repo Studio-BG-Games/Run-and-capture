@@ -46,15 +46,14 @@ namespace Weapons
                 .SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
-                    var vfx = VFXController.Instance.PlayEffect(tmpThis.VFXGameObject, localBall.transform.position, localBall.transform.rotation);
-                    MusicController.Instance.AddAudioSource(vfx);
-                    MusicController.Instance.PlayAudioClip(tmpThis.hitSound, vfx);
-                    Object.Destroy(localBall);
+                    tmpThis.DestroyBall();
                 });
         }
 
         public void DestroyBall()
         {
+            if(ball == null)
+                return;
             var vfx = VFXController.Instance.PlayEffect(VFXGameObject, ball.transform.position, ball.transform.rotation);
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(hitSound, vfx);

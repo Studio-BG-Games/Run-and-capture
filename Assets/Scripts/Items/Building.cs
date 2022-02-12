@@ -26,7 +26,8 @@ namespace Items
                 cell.transform.position + buildingPrefab.transform.position, Quaternion.identity);
             obj.GetComponent<ISetUp>().SetUp(Unit);
             
-            cell.Building = obj;
+            cell.Building = buildingPrefab;
+            cell.BuildingInstance = obj;
             OnItemUsed.Invoke();
             OnItemUsed = _action;
         }

@@ -25,7 +25,7 @@ MonoBehaviour:
     maxHP: 100
     inventoryCapacity: 4
   - isPlayer: 0
-    isAI: 1
+    isAI: 0
     spawnPos:
       x: 3
       z: 4
@@ -36,7 +36,7 @@ MonoBehaviour:
     maxHP: 100
     inventoryCapacity: 4
   - isPlayer: 0
-    isAI: 1
+    isAI: 0
     spawnPos:
       x: -1
       z: 42
@@ -47,7 +47,7 @@ MonoBehaviour:
     maxHP: 100
     inventoryCapacity: 4
   - isPlayer: 0
-    isAI: 1
+    isAI: 0
     spawnPos:
       x: -17
       z: 40

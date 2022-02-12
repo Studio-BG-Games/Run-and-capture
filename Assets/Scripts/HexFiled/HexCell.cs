@@ -22,9 +22,7 @@ namespace HexFiled
         [SerializeField] private Item _item;
         [SerializeField, AssetsOnly] public GameObject Building;
 
-
-        private Dictionary<BuildingKeys, GameObject> buildings =>
-            Resources.Load<DefaultLists>(Path.ChangeExtension("Data/Defaults.asset", null)).Buildings;
+        
 
         private UnitColor _color;
         private MeshRenderer _renderer;
@@ -51,7 +49,7 @@ namespace HexFiled
         {
             if (BuildingInstance != null)
             {
-                DestroyImmediate(Building);
+                DestroyImmediate(BuildingInstance);
             }
 
             if (Building != null)
@@ -60,6 +58,7 @@ namespace HexFiled
             }
         }
 
+        
 
         private void Awake()
         {

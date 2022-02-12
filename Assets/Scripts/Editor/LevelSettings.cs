@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Data;
+using Items;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
+using Sirenix.Serialization;
 using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
@@ -61,9 +65,11 @@ namespace Editor
         protected override OdinMenuTree BuildMenuTree()
         {
             _createNewLevel = new CreateNewLevel();
-            var tree = new OdinMenuTree();
-            tree.Add("New Level", _createNewLevel);
-            tree.Add("Default Lists",new Defaults());
+            var tree = new OdinMenuTree
+            {
+                { "New Level", _createNewLevel },
+                { "Items", new ItemList() }
+            };
             var pathes = Resources.LoadAll<Data.Data>("Data/");
             pathes.ForEach(x =>
             {
@@ -74,39 +80,74 @@ namespace Editor
             return tree;
         }
 
-        private class Defaults
+        
+        
+        private class ItemList
         {
-            public Defaults()
+            public ItemList()
             {
-                def = Resources.Load<DefaultLists>("Data/Defaults");
-                if (def == null)
-                {
-                    def = CreateInstance<DefaultLists>();
-                    AssetDatabase.CreateAsset(def, "Assets/Resources/Data/Defaults.asset");
-                    AssetDatabase.SaveAssets();
-                }
+                items = Resources.LoadAll<Item>("Data/Items").ToList();
+            }
+            [OdinSerialize] public NewItem Type;
+            
+            [InlineEditor(Expanded = true), ListDrawerSettings(HideAddButton = true, CustomRemoveElementFunction = "RemoveItem")] public List<Item> items;
+
+            
+            private void RemoveItem(Item item)
+            {
+                var path = AssetDatabase.GetAssetPath(item);
+                var metaPath = path.Replace(".asset", ".asset.meta");
+                File.Delete(path);
+                File.Delete(metaPath);
+                AssetDatabase.Refresh();
             }
 
-            [InlineEditor(ObjectFieldMode = InlineEditorObjectFieldModes.Boxed, Expanded = true, DrawHeader = false)]
-            public DefaultLists def;
-
+            internal enum ItemType
+            {
+                Bonus,
+                Building,
+                CaptureAbility,
+                SpecialWeapon
+            }
+            [Serializable]
+            internal class NewItem
+            {
+                public ItemType Type;
+                public string ItemName;
+                
+                [Button("Add Item")]
+                private void AddItem()
+                {
+                    Item item = Type switch
+                    {
+                        ItemType.Bonus => CreateInstance<Bonus>(),
+                        ItemType.Building => CreateInstance<Building>(),
+                        ItemType.CaptureAbility => CreateInstance<CaptureAbility>(),
+                        ItemType.SpecialWeapon => CreateInstance<SpecialWeapon>(),
+                        _ => throw new ArgumentOutOfRangeException(nameof(Type), Type, null)
+                    };
+                    AssetDatabase.CreateAsset(item,$"Assets/Resources/Data/Items/{ItemName}.asset");
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
+                }
+            }
         }
-        
-        
         private class CreateNewLevel
         {
             public CreateNewLevel()
             {
                 data = ScriptableObject.CreateInstance<Data.Data>();
-                datas = new List<ScriptableObject>();
-                datas.Add(ScriptableObject.CreateInstance<AIData>());
-                datas.Add(ScriptableObject.CreateInstance<CameraData>());
-                datas.Add(ScriptableObject.CreateInstance<FieldData>());
-                datas.Add(ScriptableObject.CreateInstance<ItemsData>());
-                datas.Add(ScriptableObject.CreateInstance<MusicData>());
-                datas.Add(ScriptableObject.CreateInstance<UIData>());
-                datas.Add(ScriptableObject.CreateInstance<UnitData>());
-                datas.Add(ScriptableObject.CreateInstance<WeaponsData>());
+                datas = new List<ScriptableObject>
+                {
+                    ScriptableObject.CreateInstance<AIData>(),
+                    ScriptableObject.CreateInstance<CameraData>(),
+                    ScriptableObject.CreateInstance<FieldData>(),
+                    ScriptableObject.CreateInstance<ItemsData>(),
+                    ScriptableObject.CreateInstance<MusicData>(),
+                    ScriptableObject.CreateInstance<UIData>(),
+                    ScriptableObject.CreateInstance<UnitData>(),
+                    ScriptableObject.CreateInstance<WeaponsData>()
+                };
             }
 
            

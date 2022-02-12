@@ -117,10 +117,10 @@ namespace Units
 
         public void Move(HexDirection direction)
         {
-            if (_cell.GetNeighbor(direction) == null || _isBusy || _isHardToCapture ||
+            if ( _cell.GetNeighbor(direction) == null || _cell.GetNeighbor(direction).BuildingInstance !=null  || _isBusy || _isHardToCapture ||
                 (_cell.GetNeighbor(direction).Color != Color
                  && HexManager.UnitCurrentCell.TryGetValue(_cell.GetNeighbor(direction).Color, out var value)
-                 && value.cell.coordinates.Equals(_cell.GetNeighbor(direction).coordinates))) return;
+                 && value.cell.Equals(_cell.GetNeighbor(direction)))) return;
 
 
             if (_cell.GetNeighbor(direction).Color == _data.color)
@@ -383,13 +383,15 @@ namespace Units
             _unitView.OnHit -= Damage;
             _isAlive = false;
             _isBusy = true;
-            HexManager.PaintHexList(HexManager.CellByColor[Color], UnitColor.Grey);
             HexManager.UnitCurrentCell.Remove(Color);
+            var hexToPaint = HexManager.CellByColor[Color];
             _animator.SetTrigger("Death");
             var vfx = VFXController.Instance.PlayEffect(HexGrid.Colors[Color].VFXDeathPrefab,
                 _instance.transform.position);
             TimerHelper.Instance.StartTimer(() =>
             {
+                HexManager.PaintHexList(hexToPaint, UnitColor.Grey);
+                
                 Object.Destroy(_instance);
                 OnDeath?.Invoke(this);
             }, _animLength.Death);

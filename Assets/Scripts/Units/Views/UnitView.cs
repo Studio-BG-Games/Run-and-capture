@@ -33,7 +33,6 @@ public class UnitView : MonoBehaviour
     private Dictionary<string, Action> animActionDic;
     private int _mana;
     private event Action CaptureHex;
-    private Sequence _sequence;
     private AudioSource _audioSource;
     private Unit _unit;
     private float _hardCaptureTime;
@@ -78,8 +77,8 @@ public class UnitView : MonoBehaviour
     {
         _unit.BarCanvas.CaptureBar.DOFillAmount(0f, 0);
         _barCanvas.CaptureBack.SetActive(true);
-        _sequence = DOTween.Sequence();
-        _sequence.Append(_unit.BarCanvas.CaptureBar.DOFillAmount(1f, _hardCaptureTime).SetEase(Ease.Linear).OnComplete(
+        
+        _unit.BarCanvas.CaptureBar.DOFillAmount(1f, _hardCaptureTime).SetEase(Ease.Linear).OnComplete(
             () =>
             {
                 CaptureHex?.Invoke();
@@ -87,14 +86,14 @@ public class UnitView : MonoBehaviour
                 MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                     cell.gameObject);
                
-            }));
-        _sequence.Play();
+            });
+        
     }
 
 
     public void StopHardCapture()
     {
-        _sequence.Kill();
+        _barCanvas.CaptureBar.DOKill();
         
         _barCanvas.CaptureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
         _unit.BarCanvas.CaptureBack.SetActive(false);

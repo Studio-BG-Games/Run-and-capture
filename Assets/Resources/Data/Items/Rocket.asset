@@ -19,7 +19,7 @@ MonoBehaviour:
     icon: {fileID: 0}
     objectToThrow: {fileID: 662838864788327244, guid: 4ae54c1263fd76148b1888c9e05f1d48, type: 3}
     VFXGameObject: {fileID: 8032726150168125150, guid: 65c8920b6d1553a4d885992e8f7dff6a, type: 3}
-    modifiedDamage: 0
+    modifiedDamage: 100
     damage: 100
     speed: 1
     disnatce: 10
@@ -28,3 +28,4 @@ MonoBehaviour:
     shotSound: {fileID: 0}
     hitSound: {fileID: 0}
   _aimGameObject: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}
+  lifeTime: 3

@@ -64,7 +64,7 @@ public class AdsMob : MonoBehaviour
                 var randomCell = Random.Range(0, cells.Count);
                 Vector3 respawnPosition = cells[randomCell].transform.position;
 
-                player = FindObjectOfType<ExtraLife>().gameObject;
+                
 
                 player.transform.position = respawnPosition;
                 if (player.transform.position == respawnPosition)

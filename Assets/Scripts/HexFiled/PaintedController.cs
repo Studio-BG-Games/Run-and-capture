@@ -31,7 +31,9 @@ namespace HexFiled
             foreach (var neighbour in neighbours)
             {
                 if (hexByColorDict.TryGetValue(neighbour.Color, out var value) &&
-                    value.Count >= 2 && value.Count < 6)
+                    hexByColorDict.TryGetValue(cell.Color, out var hexCells) &&
+                    hexCells.Count >= 2 &&
+                    value.Count < 6)
                 {
                     foreach (var hex in value)
                     {
@@ -48,7 +50,7 @@ namespace HexFiled
                 if (neighbour.Color != UnitColor.Grey
                     && HexManager.UnitCurrentCell.TryGetValue(neighbour.Color, out var unit)
                     && hexByColorDict.TryGetValue(neighbour.Color, out var cells)
-                    && cells.Count >= 2 && cells.Count < 5)
+                    && cells.Count >= 2 && cells.Count < 6)
                 {
                     var path = await HasPath(neighbour, unit.cell);
                     if (!path.hasPath)
@@ -128,7 +130,7 @@ namespace HexFiled
 
         private async Task<(bool hasPath, List<HexCell> field)> HasPath(HexCell start, HexCell end)
         {
-            if (start.Color == _cell.Color || end.Color == _cell.Color)
+            if (start.Color == _cell.Color)
             {
                 await Task.CompletedTask;
                 return (true, null);
