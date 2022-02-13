@@ -30,23 +30,23 @@ public class UnitView : MonoBehaviour
     private Action _startRegen;
     private Coroutine _previosRegen;
     private Coroutine _previosReload;
-    private Dictionary<string, Action> animActionDic;
+    private Dictionary<string, Action<Unit>> animActionDic;
     private int _mana;
     private event Action CaptureHex;
     private AudioSource _audioSource;
     private Unit _unit;
     private float _hardCaptureTime;
-    private Action onSupperJump;
+    private Action<Unit> onSupperJump;
     private Coroutine _previousRegenCoroutine;
 
     public BarCanvas BarCanvas => _barCanvas;
     public GameObject AimCanvas => _aimCanvas;
     public UnitColor Color => _unit.Color;
     public int AvailableShots => _shootUIStack.Count;
-    
 
+    public Unit Unit => _unit;
 
-    public Dictionary<string, Action> AnimActionDic => animActionDic;
+    public Dictionary<string, Action<Unit>> AnimActionDic => animActionDic;
 
     public void SetBar(BarCanvas barCanvas, GameObject aimCanvas)
     {
@@ -62,7 +62,7 @@ public class UnitView : MonoBehaviour
     public void SetUp(Weapon weapon, Action regenMana, int manaRegen, Action captureHex,
         Unit unit, float hardCaptureTime)
     {
-        animActionDic = new Dictionary<string, Action> { { "SuperJump", onSupperJump } };
+        animActionDic = new Dictionary<string, Action<Unit>> { { "SuperJump", onSupperJump } };
         
         _weapon = weapon;
         _toReloadStack = new Stack<ShotUIView>();
@@ -151,7 +151,7 @@ public class UnitView : MonoBehaviour
         for (var i = 0; i < animActionDic.Count; i++)
         {
             var item = animActionDic.ElementAt(i);
-            item.Value?.Invoke();
+            item.Value?.Invoke(Unit);
         }
     }
 

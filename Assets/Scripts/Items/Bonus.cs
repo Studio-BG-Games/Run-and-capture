@@ -9,7 +9,8 @@ namespace Items
     {
         Attack,
         Defence,
-        Heal
+        Heal,
+        Magnet
     }
 
     [CreateAssetMenu(fileName = "BonusItem", menuName = "Item/Bonus")]
@@ -28,19 +29,18 @@ namespace Items
                 base.PickUp(unit);
             else
             {
-                Unit = unit;
                 VFXController.Instance.PlayEffect(usisngVFX, Unit.Instance.transform);
                 Unit.UnitView.OnHit.Invoke(-value);
                 Despawn();
             }
         }
 
-        public void Invoke()
+        public void Invoke(Unit unit)
         {
-            Unit.SetUpBonus(duration, value, bonusType);
-            var vfx = VFXController.Instance.PlayEffect(usisngVFX, Unit.Instance.transform);
+            unit.SetUpBonus(duration, value, bonusType);
+            var vfx = VFXController.Instance.PlayEffect(usisngVFX, unit.Instance.transform);
             TimerHelper.Instance.StartTimer(() => Destroy(vfx), duration);
-            Unit.UseItem(this);
+            unit.UseItem(this);
         }
     }
 }

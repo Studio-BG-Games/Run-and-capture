@@ -138,11 +138,7 @@ namespace Data
                 return _unitData;
             }
         }
-
-        public void UnLoadData()
-        {
-            Resources.UnloadAsset(_fieldData);
-        }
+        
 
         private static T Load<T>(string resourcesPath) where T : Object =>
             Resources.Load<T>(Path.ChangeExtension(resourcesPath, null));

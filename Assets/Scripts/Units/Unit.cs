@@ -96,6 +96,9 @@ namespace Units
                     break;
                 case BonusType.Heal:
                     break;
+                case BonusType.Magnet:
+                    
+                    break;
                 default:
                     break;
             }
@@ -231,7 +234,7 @@ namespace Units
                 _animator = _instance.GetComponent<Animator>();
                 _unitView = _instance.AddComponent<UnitView>();
 
-
+                
                 _unitView.SetUp(_weapon, RegenMana, _data.manaRegen, CaptureHex,
                     this, _hexGrid.HardCaptureTime);
                 SetAnimLength();

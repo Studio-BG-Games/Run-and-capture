@@ -15,6 +15,8 @@ namespace Items
         DEFENCE
     }
 
+   
+
     [Serializable]
     public struct ItemIcon
     {
@@ -37,7 +39,7 @@ namespace Items
         public Sprite Icon => icon;
 
         protected Unit Unit;
-        protected Action OnItemUsed;
+        protected Action<Unit> OnItemUsed;
 
         public UnitColor Color => Unit.Color;
 
@@ -53,7 +55,7 @@ namespace Items
 
         public virtual void PickUp(Unit unit)
         {
-            Unit = unit;
+            
             unit.PickUpItem(this);
             Despawn();
         }

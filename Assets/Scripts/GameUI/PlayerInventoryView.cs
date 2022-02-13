@@ -13,20 +13,22 @@ namespace GameUI
         [SerializeField] private GameObject item;
         [SerializeField] private GameObject grid;
 
-        public event Action<Item> OnBuildingInvoked;
+        public event Action<Unit,Item> OnBuildingInvoked;
 
         private List<GameObject> itemsGo;
         private List<Button> _buttons;
         private List<Button> _buttonsDefence;
+        private Unit _unit;
 
 
-        public void SetUpUI(int inventoryCapacity)
+        public void SetUpUI(int inventoryCapacity, Unit unit)
         {
             if (_buttons != null && _buttons.Count > 0)
             {
                 itemsGo.ForEach(Destroy);
             }
 
+            _unit = unit;
             itemsGo = new List<GameObject>();
             _buttons = new List<Button>();
             _buttonsDefence = new List<Button>();
@@ -73,23 +75,27 @@ namespace GameUI
                     case Bonus bonus:
                     {
                         button.onClick.RemoveAllListeners();
-                        bonus.Invoke();
+                        bonus.Invoke(_unit);
 
                         button.onClick.RemoveAllListeners();
                         button.gameObject.SetActive(false);
                         break;
                     }
                     case Building building:
-                        building.Invoke(() => SwitchButton(button));
-                        OnBuildingInvoked?.Invoke(building);
+                        building.Invoke((u) => SwitchButton(button));
+                        OnBuildingInvoked?.Invoke(_unit, building);
                         break;
                     case CaptureAbility ability:
-                        ability.Invoke(() => SwitchButton(button));
-                        OnBuildingInvoked?.Invoke(ability);
+                        ability.Invoke((u) => SwitchButton(button));
+                        OnBuildingInvoked?.Invoke(_unit, ability);
                         break;
                     case SpecialWeapon specialWeapon:
-                        specialWeapon.Invoke(() => SwitchButton(button));
-                        OnBuildingInvoked?.Invoke(specialWeapon);
+                        specialWeapon.Invoke((u) => SwitchButton(button));
+                        OnBuildingInvoked?.Invoke(_unit,specialWeapon);
+                        break;
+                    case SwitchingPlaces switchingPlaces:
+                        switchingPlaces.Invoke((u) => SwitchButton(button));
+                        OnBuildingInvoked?.Invoke(_unit, switchingPlaces);
                         break;
                 }
             });

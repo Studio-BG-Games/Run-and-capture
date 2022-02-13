@@ -37,29 +37,27 @@ namespace Editor
 
         protected override void OnBeginDrawEditors()
         {
-            OdinMenuTreeSelection selection = this.MenuTree.Selection;
-            if(selection.SelectedValue == null)
+            var selection = this.MenuTree.Selection;
+            if (selection.SelectedValue != null) return;
+            SirenixEditorGUI.BeginHorizontalToolbar();
             {
-                SirenixEditorGUI.BeginHorizontalToolbar();
+                GUILayout.FlexibleSpace();
+                if (SirenixEditorGUI.ToolbarButton("Delete"))
                 {
-                    GUILayout.FlexibleSpace();
-                    if (SirenixEditorGUI.ToolbarButton("Delete"))
+
+                    string levelName = selection[0].Name;
+                    var data = new List<string>();
+                    Resources.LoadAll<ScriptableObject>($"Data/{levelName}").ForEach(x =>
                     {
+                        data.Add(AssetDatabase.GetAssetPath(x));
+                    });
+                    data.ToArray().ForEach(x => AssetDatabase.DeleteAsset(x));
 
-                        string levelName = selection[0].Name;
-                        var data = new List<string>();
-                        Resources.LoadAll<ScriptableObject>($"Data/{levelName}").ForEach(x =>
-                        {
-                            data.Add(AssetDatabase.GetAssetPath(x));
-                        });
-                        data.ToArray().ForEach(x => AssetDatabase.DeleteAsset(x));
-
-                        Directory.Delete($"Assets/Resources/Data/{levelName}");
-                        AssetDatabase.SaveAssets();
-                    }
+                    Directory.Delete($"Assets/Resources/Data/{levelName}");
+                    AssetDatabase.SaveAssets();
                 }
-                SirenixEditorGUI.EndHorizontalToolbar();
             }
+            SirenixEditorGUI.EndHorizontalToolbar();
         }
 
         protected override OdinMenuTree BuildMenuTree()
@@ -81,8 +79,7 @@ namespace Editor
         }
 
         
-        
-        private class ItemList
+        internal class ItemList
         {
             public ItemList()
             {
@@ -96,9 +93,9 @@ namespace Editor
             private void RemoveItem(Item item)
             {
                 var path = AssetDatabase.GetAssetPath(item);
-                var metaPath = path.Replace(".asset", ".asset.meta");
+                
                 File.Delete(path);
-                File.Delete(metaPath);
+                File.Delete($"{path}.meta");
                 AssetDatabase.Refresh();
             }
 
@@ -132,21 +129,21 @@ namespace Editor
                 }
             }
         }
-        private class CreateNewLevel
+        internal class CreateNewLevel
         {
             public CreateNewLevel()
             {
-                data = ScriptableObject.CreateInstance<Data.Data>();
+                data = CreateInstance<Data.Data>();
                 datas = new List<ScriptableObject>
                 {
-                    ScriptableObject.CreateInstance<AIData>(),
-                    ScriptableObject.CreateInstance<CameraData>(),
-                    ScriptableObject.CreateInstance<FieldData>(),
-                    ScriptableObject.CreateInstance<ItemsData>(),
-                    ScriptableObject.CreateInstance<MusicData>(),
-                    ScriptableObject.CreateInstance<UIData>(),
-                    ScriptableObject.CreateInstance<UnitData>(),
-                    ScriptableObject.CreateInstance<WeaponsData>()
+                    CreateInstance<AIData>(),
+                    CreateInstance<CameraData>(),
+                    CreateInstance<FieldData>(),
+                    CreateInstance<ItemsData>(),
+                    CreateInstance<MusicData>(),
+                    CreateInstance<UIData>(),
+                    CreateInstance<UnitData>(),
+                    CreateInstance<WeaponsData>()
                 };
             }
 

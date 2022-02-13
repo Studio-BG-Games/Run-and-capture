@@ -44,24 +44,24 @@ namespace Chars
             _attackJoystick.OnTouchUp += DoAttack;
             _attackJoystick.OnDrug += AimCanvas;
 
-            inventoryView.SetUpUI(unit.InventoryCapacity);
+            inventoryView.SetUpUI(unit.InventoryCapacity, unit);
             _unit.OnItemPickUp += PickUp;
             _inventoryView = inventoryView;
             inventoryView.OnBuildingInvoked += AimPlaceItem;
 
-            _placeJoystick.OnDrug += PlaceItemAim;
-            _placeJoystick.OnTouchUp += PlaceItem;
+            _placeJoystick.OnDrug += AbilityAim;
+            _placeJoystick.OnTouchUp += UseAbility;
         }
 
-        private void AimPlaceItem(Item item)
+        private void AimPlaceItem(Unit unit, Item item)
         {
-            if (_unit.IsBusy || !_unit.IsAlive) return;
+            if (unit.IsBusy || !unit.IsAlive) return;
             _attackJoystick.gameObject.SetActive(false);
             _placeJoystick.gameObject.SetActive(true);
             _itemToPlace = item;
         }
 
-        private void PlaceItem()
+        private void UseAbility()
         {
             if (!_unit.IsAlive) return;
             _attackJoystick.gameObject.SetActive(true);
@@ -80,13 +80,13 @@ namespace Chars
                         return;
                     }
 
-                    building.PlaceItem(_cellToPlace);
+                    building.PlaceItem(_cellToPlace, _unit);
                     break;
                 case CaptureAbility ability:
-                    ability.UseAbility();
+                    ability.UseAbility(_unit);
                     break;
                 case SpecialWeapon weapon:
-                    weapon.Fire();
+                    weapon.Fire(_unit);
                     break;
             }
         }
@@ -124,7 +124,7 @@ namespace Chars
             _unit.Aim(attackDir);
         }
 
-        private void PlaceItemAim(Vector2 placeDir)
+        private void AbilityAim(Vector2 placeDir)
         {
             if (_unit.IsBusy || !_unit.IsAlive) return;
 
@@ -159,6 +159,9 @@ namespace Chars
                     break;
                 case SpecialWeapon weapon:
                     weapon.Aim(DirectionHelper.VectorToDirection(placeDir.normalized));
+                    break;
+                case SwitchingPlaces switchingPlaces:
+                    switchingPlaces.Aim(placeDir.normalized);
                     break;
             }
         }
@@ -210,8 +213,8 @@ namespace Chars
         {
             _attackJoystick.OnTouchUp -= DoAttack;
             _attackJoystick.OnDrug -= AimCanvas;
-            _placeJoystick.OnDrug -= PlaceItemAim;
-            _placeJoystick.OnTouchUp -= PlaceItem;
+            _placeJoystick.OnDrug -= AbilityAim;
+            _placeJoystick.OnTouchUp -= UseAbility;
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DefaultNamespace;
 using HexFiled;
+using Units;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -28,7 +29,7 @@ namespace Items
       
 
 
-        public void Invoke(Action action)
+        public void Invoke(Action<Unit> action)
         {
             OnItemUsed ??= action;
 
@@ -52,7 +53,7 @@ namespace Items
             _aimInstance.SetActive(false);
         }
         
-        private void DoPaint()
+        private void DoPaint(Unit unit)
         {
             Unit.UseItem(this);
             var cell = HexManager.UnitCurrentCell[Unit.Color].cell.GetNeighbor(_direction);
@@ -82,23 +83,23 @@ namespace Items
                 cell.PaintHex(Unit.Color);
             });
             
-            OnItemUsed?.Invoke();
+            OnItemUsed?.Invoke(unit);
             
             
             Unit.UnitView.AnimActionDic[animName] -= DoPaint;
             OnItemUsed = null;
         }
 
-        public void UseAbility()
+        public void UseAbility(Unit unit)
         {
             
-            var cell = HexManager.UnitCurrentCell[Unit.Color].cell.GetNeighbor(_direction);
-            Unit.RotateUnit(new Vector2((cell.transform.position - Unit.Instance.transform.position).normalized.x,
-                (cell.transform.position - Unit.Instance.transform.position).normalized.z));
-            Unit.Animator.SetTrigger(animName);
+            var cell = HexManager.UnitCurrentCell[unit.Color].cell.GetNeighbor(_direction);
+            unit.RotateUnit(new Vector2((cell.transform.position - unit.Instance.transform.position).normalized.x,
+                (cell.transform.position - unit.Instance.transform.position).normalized.z));
+            unit.Animator.SetTrigger(animName);
             _aimInstance.SetActive(false);
-            Unit.SetCell(_direction);
-            Unit.UnitView.AnimActionDic[animName] += DoPaint;
+            unit.SetCell(_direction);
+            unit.UnitView.AnimActionDic[animName] += DoPaint;
         }
     }
 }

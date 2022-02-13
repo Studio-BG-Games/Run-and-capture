@@ -2,6 +2,7 @@ using System;
 using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
+using Units;
 using UnityEngine;
 using Weapons;
 using Object = UnityEngine.Object;
@@ -18,7 +19,7 @@ namespace Items
         private GameObject _aimInstance;
         private HexDirection _direction;
 
-        public void Invoke(Action action)
+        public void Invoke(Action<Unit> action)
         {
             OnItemUsed ??= action;
             
@@ -40,18 +41,18 @@ namespace Items
             _aimInstance.SetActive(false);
         }
 
-        public void Fire()
+        public void Fire(Unit unit)
         {
-            OnItemUsed?.Invoke();
-            Unit.UseItem(this);
-            var cell = HexManager.UnitCurrentCell[Unit.Color].cell.GetNeighbor(_direction);
-            Unit.RotateUnit(new Vector2((cell.transform.position - Unit.Instance.transform.position).normalized.x,
-                (cell.transform.position - Unit.Instance.transform.position).normalized.z));
+            OnItemUsed?.Invoke(unit);
+            unit.UseItem(this);
+            var cell = HexManager.UnitCurrentCell[unit.Color].cell.GetNeighbor(_direction);
+            unit.RotateUnit(new Vector2((cell.transform.position - unit.Instance.transform.position).normalized.x,
+                (cell.transform.position - unit.Instance.transform.position).normalized.z));
             _weapon.SetModifiedDamage(0);
-            _weapon.objectToThrow.GetComponent<ISetUp>().SetUp(Unit);
+            _weapon.objectToThrow.GetComponent<ISetUp>().SetUp(unit);
             _aimInstance.SetActive(false);
-            var dir = DirectionHelper.DirectionTo(Unit.Instance.transform.position, cell.transform.position);
-            _weapon.Fire(Unit.Instance.transform, new Vector2(dir.x, dir.z));
+            var dir = DirectionHelper.DirectionTo(unit.Instance.transform.position, cell.transform.position);
+            _weapon.Fire(unit.Instance.transform, new Vector2(dir.x, dir.z));
             TimerHelper.Instance.StartTimer(() =>
             {
                 _weapon.DestroyBall();

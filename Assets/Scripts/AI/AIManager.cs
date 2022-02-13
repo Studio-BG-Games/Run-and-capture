@@ -186,7 +186,7 @@ namespace AI
                 return;
             }
 
-            ((Bonus)attack.First()).Invoke();
+            ((Bonus)attack.First()).Invoke(agent.Unit);
         }
 
         private void Retreet(AIAgent agent)

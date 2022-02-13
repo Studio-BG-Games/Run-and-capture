@@ -1,6 +1,7 @@
 ﻿using System;
 using DefaultNamespace;
 using HexFiled;
+using Units;
 using UnityEngine;
 
 namespace Items
@@ -9,9 +10,9 @@ namespace Items
     public class Building : Item
     {
         [SerializeField] private GameObject buildingPrefab;
-        private Action _action;
+        private Action<Unit> _action;
 
-        public void Invoke(Action action)
+        public void Invoke(Action<Unit> action)
         {
             if(_action != null) return;
             _action = action;
@@ -19,16 +20,16 @@ namespace Items
         }
 
 
-        public void PlaceItem(HexCell cell)
+        public void PlaceItem(HexCell cell, Unit unit)
         {
-            Unit.UseItem(this);
+            unit.UseItem(this);
             var obj = Instantiate(buildingPrefab,
                 cell.transform.position + buildingPrefab.transform.position, Quaternion.identity);
-            obj.GetComponent<ISetUp>().SetUp(Unit);
+            obj.GetComponent<ISetUp>().SetUp(unit);
             
             cell.Building = buildingPrefab;
             cell.BuildingInstance = obj;
-            OnItemUsed.Invoke();
+            OnItemUsed.Invoke(unit);
             OnItemUsed = _action;
         }
     }
