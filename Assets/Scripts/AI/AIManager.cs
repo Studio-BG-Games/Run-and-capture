@@ -124,7 +124,7 @@ namespace AI
             var item = GetNearestItem(agent);
             if (((item.dist > 0 && item.dist <= _data.DistaceToCollectBonus) ||
                  agent.Unit.Mana <= agent.Unit.Data.maxMana * _data.ManaPercentToCollectBonus) &&
-                (item.hex.Item.Type == ItemType.DEFENCE
+                (item.hex.Item.Item.Type == ItemType.DEFENCE
                     ? agent.Unit.InventoryDefence.Count
                     : agent.Unit.Inventory.Count) < agent.Unit.InventoryCapacity / 2)
             {

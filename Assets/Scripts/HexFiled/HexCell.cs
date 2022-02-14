@@ -5,6 +5,7 @@ using System.Linq;
 using Data;
 using DefaultNamespace;
 using Items;
+using Items.ItemViews;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace HexFiled
         [HideInInspector] public GameObject BuildingInstance;
 
         [SerializeField] private HexCell[] neighbors;
-        [SerializeField] private Item _item;
+        [SerializeField] private ItemView _item;
         [SerializeField, AssetsOnly] public GameObject Building;
 
         
@@ -37,7 +38,7 @@ namespace HexFiled
             }
         }
 
-        public Item Item
+        public ItemView Item
         {
             get => _item;
             set => _item = value;

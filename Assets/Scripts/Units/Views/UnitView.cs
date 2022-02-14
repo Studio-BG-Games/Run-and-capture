@@ -177,7 +177,7 @@ public class UnitView : MonoBehaviour
         
         if (itemView == null || itemView.pickedUp || !_unit.CanPickUpItem(itemView.Item)) return;
         itemView.pickedUp = true;
-        itemView.Item.PickUp(_unit);
+        itemView.PickUp(Unit);
         ItemFabric.Items.Remove(itemView.gameObject);
         
     }

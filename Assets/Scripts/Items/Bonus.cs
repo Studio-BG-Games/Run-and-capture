@@ -23,18 +23,12 @@ namespace Items
         [SerializeField] private GameObject usisngVFX;
 
         public BonusType BonusType => bonusType;
+        
 
-        public override void PickUp(Unit unit)
-        {
-            if(bonusType != BonusType.Heal)
-                base.PickUp(unit);
-            else
-            {
-                VFXController.Instance.PlayEffect(usisngVFX, Unit.Instance.transform);
-                Unit.UnitView.OnHit.Invoke(-value);
-                Despawn();
-            }
-        }
+        public int Value => value;
+
+        public GameObject UsisngVFX => usisngVFX;
+
 
         public void Invoke(Unit unit)
         {

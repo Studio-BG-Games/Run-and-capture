@@ -39,35 +39,22 @@ namespace Items
         
         public Sprite Icon => icon;
 
-        protected Unit Unit;
+       
         protected Action<Unit> OnItemUsed;
 
-        public UnitColor Color => Unit.Color;
+        
 
         public GameObject Spawn(HexCell cell, GameObject parent, GameObject iconPrefab)
         {
             _instance = GameObject.Instantiate(iconPrefab, cell.transform.position + new Vector3(0, 1, 0),
                 Quaternion.identity, parent.transform);
-            _instance.AddComponent<ItemView>().SetUp(this);
-            cell.Item = this;
+            var view = _instance.AddComponent<ItemView>();
+            view.SetUp(this);
+            cell.Item = view;
             _instance.AddComponent<CapsuleCollider>().isTrigger = true;
             return _instance;
         }
-
-        public virtual void PickUp(Unit unit)
-        {
-            _instance.transform.DOMove(unit.UnitView.transform.position, 0.1f).OnComplete(() =>
-            {
-                unit.PickUpItem(this);
-                Despawn();
-            });
-           
-        }
-
-        public void Despawn()
-        {
-            Destroy(_instance.gameObject);
-        }
+        
 
         public void Dispose()
         {

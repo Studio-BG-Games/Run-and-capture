@@ -135,7 +135,8 @@ namespace Units
                  && value.cell.Equals(_cell.GetNeighbor(direction)))) return;
 
 
-            if (_cell.GetNeighbor(direction).Color == _data.color || _cell.GetNeighbor(direction).Color == _easyCaptureColor)
+            if (_cell.GetNeighbor(direction).Color == _data.color ||
+                (_cell.GetNeighbor(direction).Color == _easyCaptureColor && _easyCaptureColor != UnitColor.Grey))
             {
                 DoTransit(direction);
             }
@@ -211,9 +212,10 @@ namespace Units
                 {
                     _mana -= _hexGrid.HexCaptureCost;
                 }
-
-                UnitView.RegenMana();
             }
+
+            UnitView.RegenMana();
+            
 
             UpdateBarCanvas();
             IsBusy = false;

@@ -64,6 +64,11 @@ namespace Items
 
         public void UseAbility(Unit unit, Unit chosenUnit)
         {
+            if (unit == null)
+            {
+                DeAim();
+                return;
+            }
             unit.UseItem(this);
             DeAim();
             OnItemUsed?.Invoke(unit);

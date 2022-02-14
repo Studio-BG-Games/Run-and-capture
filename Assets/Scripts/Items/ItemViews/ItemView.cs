@@ -1,4 +1,6 @@
-﻿using DG.Tweening;
+﻿using DefaultNamespace;
+using DG.Tweening;
+using Units;
 using UnityEngine;
 
 namespace Items.ItemViews
@@ -19,10 +21,28 @@ namespace Items.ItemViews
             Rotate();
         }
 
-        private void OnDestroy()
+        public void PickUp(Unit unit)
+        {
+            if (_item is Bonus { BonusType: BonusType.Heal } bonus)
+            {
+                VFXController.Instance.PlayEffect(bonus.UsisngVFX, unit.Instance.transform);
+                unit.UnitView.OnHit.Invoke(-bonus.Value);
+                Despawn();
+                return;
+            }
+            transform.DOMove(unit.UnitView.transform.position, 0.1f).OnComplete(() =>
+            {
+                unit.PickUpItem(_item);
+                Despawn();
+            });
+        }
+
+        public void Despawn()
         {
             transform.DOKill();
+            Destroy(gameObject);
         }
+        
 
         private void Rotate()
         {

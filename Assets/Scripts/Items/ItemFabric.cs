@@ -49,7 +49,7 @@ namespace Items
                 {
                     cellByColor.Value.ForEach(x =>
                     {
-                        if (x.Building != null)
+                        if (x.Building != null && x.Item != null)
                         {
                             closedList.Add(x);
                         }

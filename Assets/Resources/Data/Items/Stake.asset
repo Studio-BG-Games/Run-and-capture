@@ -15,3 +15,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: c455216bc89f6c54d90211b86a5cf0e6, type: 3}
   type: 0
   buildingPrefab: {fileID: 9125080148727291347, guid: 5663dbcf605325241b40bc2afd5b6647, type: 3}
+  isVisiting: 1
