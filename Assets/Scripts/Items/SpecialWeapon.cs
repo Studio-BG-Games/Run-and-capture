@@ -19,19 +19,19 @@ namespace Items
         private GameObject _aimInstance;
         private HexDirection _direction;
 
-        public void Invoke(Action<Unit> action)
+        public void Invoke(Action<Unit> action, Unit unit)
         {
             OnItemUsed ??= action;
             
             if(_aimInstance == null || !_aimInstance.activeSelf)
-                _aimInstance = Object.Instantiate(_aimGameObject, Unit.Instance.transform);
+                _aimInstance = Object.Instantiate(_aimGameObject, unit.Instance.transform);
             _aimInstance.SetActive(false);
         }
         
-        public void Aim(HexDirection direction)
+        public void Aim(HexDirection direction, Unit unit)
         {
             _aimInstance.SetActive(true);
-            _aimInstance.transform.LookAt(HexManager.UnitCurrentCell[Unit.Color].cell
+            _aimInstance.transform.LookAt(HexManager.UnitCurrentCell[unit.Color].cell
                 .GetNeighbor(direction).transform);
             _direction = direction;
         }
@@ -52,7 +52,7 @@ namespace Items
             _weapon.objectToThrow.GetComponent<ISetUp>().SetUp(unit);
             _aimInstance.SetActive(false);
             var dir = DirectionHelper.DirectionTo(unit.Instance.transform.position, cell.transform.position);
-            _weapon.Fire(unit.Instance.transform, new Vector2(dir.x, dir.z));
+            _weapon.Fire(unit.Instance.transform, new Vector2(dir.x, dir.z), unit);
             TimerHelper.Instance.StartTimer(() =>
             {
                 _weapon.DestroyBall();

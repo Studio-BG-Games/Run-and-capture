@@ -10,7 +10,8 @@ namespace Items
         Attack,
         Defence,
         Heal,
-        Magnet
+        Magnet,
+        Mana
     }
 
     [CreateAssetMenu(fileName = "BonusItem", menuName = "Item/Bonus")]

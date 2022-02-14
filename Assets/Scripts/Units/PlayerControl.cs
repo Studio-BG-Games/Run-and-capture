@@ -30,6 +30,7 @@ namespace Chars
         private Item _itemToPlace;
         private HexCell _cellToPlace;
 
+        private Unit chosenUnit;
         private int _aimCount = 0;
 
         public PlayerControl(Unit unit, PlayerControlView joyView, PlayerInventoryView inventoryView)
@@ -87,6 +88,9 @@ namespace Chars
                     break;
                 case SpecialWeapon weapon:
                     weapon.Fire(_unit);
+                    break;
+                case SwitchingPlaces switchingPlaces:
+                    switchingPlaces.UseAbility(_unit, chosenUnit);
                     break;
             }
         }
@@ -154,14 +158,18 @@ namespace Chars
                         ability.DeAim();
                         return;
                     }
-                    ability.Aim(DirectionHelper.VectorToDirection(placeDir.normalized));
+                    ability.Aim(DirectionHelper.VectorToDirection(placeDir.normalized), _unit);
                     _aimCount = 1;
                     break;
                 case SpecialWeapon weapon:
-                    weapon.Aim(DirectionHelper.VectorToDirection(placeDir.normalized));
+                    weapon.Aim(DirectionHelper.VectorToDirection(placeDir.normalized), _unit);
                     break;
                 case SwitchingPlaces switchingPlaces:
-                    switchingPlaces.Aim(placeDir.normalized);
+                    switchingPlaces.Aim(placeDir.normalized, _unit, out var unit);
+                    if (unit != null)
+                    {
+                        chosenUnit = unit;
+                    }
                     break;
             }
         }
@@ -190,6 +198,10 @@ namespace Chars
                     case SpecialWeapon weapon:
                         weapon.DeAim();
                         break;
+                    case SwitchingPlaces place:
+                        place.DeAim();
+                        break;
+                    
                 }
             }
 

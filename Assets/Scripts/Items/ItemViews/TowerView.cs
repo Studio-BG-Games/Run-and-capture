@@ -59,7 +59,7 @@ public class TowerView : MonoBehaviour, ISetUp
     private IEnumerator Shot()
     {
         var direction = DirectionHelper.DirectionTo(transform.position, _target.transform.position);
-        weapon.Fire(transform, new Vector2(direction.x, direction.z));
+        weapon.Fire(transform, new Vector2(direction.x, direction.z), HexManager.UnitCurrentCell[_color].unit);
         while (_target != null)
         {
             yield return new WaitForSecondsRealtime(weapon.reloadTime);
@@ -69,7 +69,7 @@ public class TowerView : MonoBehaviour, ISetUp
             }
 
             direction = DirectionHelper.DirectionTo(transform.position, _target.transform.position);
-            weapon.Fire(transform, new Vector2(direction.x, direction.z));
+            weapon.Fire(transform, new Vector2(direction.x, direction.z), HexManager.UnitCurrentCell[_color].unit);
         }
     }
 

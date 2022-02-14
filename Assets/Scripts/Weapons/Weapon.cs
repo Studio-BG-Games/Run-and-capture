@@ -2,6 +2,7 @@
 using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
+using Units;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -29,7 +30,7 @@ namespace Weapons
             modifiedDamage = damage + bonus;
         }
 
-        public void Fire(Transform start, Vector2 direction)
+        public void Fire(Transform start, Vector2 direction, Unit unit)
         {
             ball = Object.Instantiate(objectToThrow,
                 start.forward + start.transform.position + new Vector3(0, 2),
@@ -37,7 +38,7 @@ namespace Weapons
 
             MusicController.Instance.AddAudioSource(ball);
             MusicController.Instance.PlayAudioClip(shotSound, ball);
-            ball.AddComponent<WeaponView>().SetWeapon(this);
+            ball.AddComponent<WeaponView>().SetWeapon(this, unit);
             Weapon tmpThis = this;
             GameObject localBall = ball;
             localBall.transform.DOMove(new Vector3(direction.normalized.x,

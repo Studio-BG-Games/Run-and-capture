@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23a091c5733400f8f0092a4c0f33c6e, type: 3}
+  m_Name: Stake
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: c455216bc89f6c54d90211b86a5cf0e6, type: 3}
+  type: 0
+  buildingPrefab: {fileID: 9125080148727291347, guid: 5663dbcf605325241b40bc2afd5b6647, type: 3}

@@ -10,13 +10,12 @@ namespace Items
     public class Building : Item
     {
         [SerializeField] private GameObject buildingPrefab;
-        private Action<Unit> _action;
+        [SerializeField] private bool isVisiting = false;
+        
 
         public void Invoke(Action<Unit> action)
         {
-            if(_action != null) return;
-            _action = action;
-            OnItemUsed += _action;
+            OnItemUsed += action;
         }
 
 
@@ -26,11 +25,14 @@ namespace Items
             var obj = Instantiate(buildingPrefab,
                 cell.transform.position + buildingPrefab.transform.position, Quaternion.identity);
             obj.GetComponent<ISetUp>().SetUp(unit);
-            
-            cell.Building = buildingPrefab;
-            cell.BuildingInstance = obj;
+            if (!isVisiting)
+            {
+                cell.Building = buildingPrefab;
+                cell.BuildingInstance = obj;
+            }
+
             OnItemUsed.Invoke(unit);
-            OnItemUsed = _action;
+            OnItemUsed = null;
         }
     }
 }

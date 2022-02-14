@@ -49,6 +49,7 @@ namespace HexFiled
 
                 if (neighbour.Color != UnitColor.Grey
                     && HexManager.UnitCurrentCell.TryGetValue(neighbour.Color, out var unit)
+                    && !unit.unit.IsStaned
                     && hexByColorDict.TryGetValue(neighbour.Color, out var cells)
                     && cells.Count >= 2 && cells.Count < 6)
                 {

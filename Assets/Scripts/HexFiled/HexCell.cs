@@ -124,8 +124,7 @@ namespace HexFiled
 
             HexManager.UnitCurrentCell
                 .Where(cells
-                    => HexManager.CellByColor[cells.Key].Count < 3
-                       || (cells.Value.cell == this && cells.Value.unit.Color != Color))
+                    => HexManager.CellByColor[cells.Key].Count < 3 && !cells.Value.unit.IsStaned)
                 .Select(cells => cells.Value.unit)
                 .ToList().ForEach(x => x.Death());
 

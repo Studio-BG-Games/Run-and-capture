@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using DefaultNamespace;
+using DG.Tweening;
 using HexFiled;
 using Items.ItemViews;
 using Units;
@@ -55,9 +56,12 @@ namespace Items
 
         public virtual void PickUp(Unit unit)
         {
-            
-            unit.PickUpItem(this);
-            Despawn();
+            _instance.transform.DOMove(unit.UnitView.transform.position, 0.1f).OnComplete(() =>
+            {
+                unit.PickUpItem(this);
+                Despawn();
+            });
+           
         }
 
         public void Despawn()

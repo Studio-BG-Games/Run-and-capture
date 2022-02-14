@@ -35,6 +35,10 @@ namespace DefaultNamespace
 
         public GameObject PlayEffect(GameObject effect, Transform parent)
         {
+            if (effect == null)
+            {
+                return null;
+            }
             var obj = Object.Instantiate(effect, parent);
             obj.AddComponent<VFXView>();
             return obj;

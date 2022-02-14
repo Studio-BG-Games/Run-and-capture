@@ -28,14 +28,7 @@ namespace Items.ItemViews
         {
             transform.DORotate(transform.rotation.eulerAngles + new Vector3(0, 10, 0), 0.1f)
                 .SetEase(Ease.InQuad)
-                .SetLoops(-1, LoopType.Incremental)
-                .OnUpdate(() =>
-                {
-                    if (pickedUp)
-                    {
-                        Destroy(gameObject);
-                    }
-                });
+                .SetLoops(-1, LoopType.Incremental);
         }
     }
 }

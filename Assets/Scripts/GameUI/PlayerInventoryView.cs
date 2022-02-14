@@ -51,8 +51,15 @@ namespace GameUI
 
         private void SwitchButton(Button button)
         {
+            if(button == null)
+                return;
             button.onClick.RemoveAllListeners();
             button.gameObject.SetActive(false);
+        }
+
+        private void OnDestroy()
+        {
+            OnBuildingInvoked = null;
         }
 
         public void PickUpItem(Item Item)
@@ -86,15 +93,15 @@ namespace GameUI
                         OnBuildingInvoked?.Invoke(_unit, building);
                         break;
                     case CaptureAbility ability:
-                        ability.Invoke((u) => SwitchButton(button));
+                        ability.Invoke((u) => SwitchButton(button), _unit);
                         OnBuildingInvoked?.Invoke(_unit, ability);
                         break;
                     case SpecialWeapon specialWeapon:
-                        specialWeapon.Invoke((u) => SwitchButton(button));
+                        specialWeapon.Invoke((u) => SwitchButton(button), _unit);
                         OnBuildingInvoked?.Invoke(_unit,specialWeapon);
                         break;
                     case SwitchingPlaces switchingPlaces:
-                        switchingPlaces.Invoke((u) => SwitchButton(button));
+                        switchingPlaces.Invoke((u) => SwitchButton(button), _unit);
                         OnBuildingInvoked?.Invoke(_unit, switchingPlaces);
                         break;
                 }

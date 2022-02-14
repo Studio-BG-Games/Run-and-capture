@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d99aa6a656431c98bbf98460ff38a1, type: 3}
   m_Name: SwitchingPlaces
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: d199e42b29875f641b7670cd48338056, type: 3}
+  icon: {fileID: 21300000, guid: 73bf16e0e348ce24394ffea7e72936fd, type: 3}
   type: 0
   aimCanvas: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  time: 3

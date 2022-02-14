@@ -29,21 +29,21 @@ namespace Items
       
 
 
-        public void Invoke(Action<Unit> action)
+        public void Invoke(Action<Unit> action, Unit unit)
         {
             OnItemUsed ??= action;
 
             if(_aimInstance == null)
-                _aimInstance = Object.Instantiate(aimCanvas, Unit.Instance.transform);
+                _aimInstance = Object.Instantiate(aimCanvas, unit.Instance.transform);
             _aimInstance.SetActive(false);
         }
 
-        public void Aim(HexDirection direction)
+        public void Aim(HexDirection direction, Unit unit)
         {
             if(_aimInstance == null)
-                _aimInstance = Object.Instantiate(aimCanvas, Unit.Instance.transform);
+                _aimInstance = Object.Instantiate(aimCanvas, unit.Instance.transform);
             _aimInstance.SetActive(true);
-            _aimInstance.transform.LookAt(HexManager.UnitCurrentCell[Unit.Color].cell
+            _aimInstance.transform.LookAt(HexManager.UnitCurrentCell[unit.Color].cell
                 .GetNeighbor(direction).transform);
             _direction = direction;
         }
@@ -55,9 +55,9 @@ namespace Items
         
         private void DoPaint(Unit unit)
         {
-            Unit.UseItem(this);
-            var cell = HexManager.UnitCurrentCell[Unit.Color].cell.GetNeighbor(_direction);
-             cell.PaintHex(Unit.Color);
+            unit.UseItem(this);
+            var cell = HexManager.UnitCurrentCell[unit.Color].cell.GetNeighbor(_direction);
+             cell.PaintHex(unit.Color);
             bool keepGoing = true;
             var moveDir = _direction;
             itterationMove.ForEach(dir =>
@@ -80,13 +80,13 @@ namespace Items
                 }
 
                 cell = cell.GetNeighbor(_direction);
-                cell.PaintHex(Unit.Color);
+                cell.PaintHex(unit.Color);
             });
             
             OnItemUsed?.Invoke(unit);
             
             
-            Unit.UnitView.AnimActionDic[animName] -= DoPaint;
+            unit.UnitView.AnimActionDic[animName] -= DoPaint;
             OnItemUsed = null;
         }
 
@@ -98,7 +98,7 @@ namespace Items
                 (cell.transform.position - unit.Instance.transform.position).normalized.z));
             unit.Animator.SetTrigger(animName);
             _aimInstance.SetActive(false);
-            unit.SetCell(_direction);
+            unit.SetCell(cell);
             unit.UnitView.AnimActionDic[animName] += DoPaint;
         }
     }
