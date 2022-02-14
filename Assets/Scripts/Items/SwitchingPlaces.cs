@@ -58,18 +58,19 @@ namespace Items
             }
 
             Debug.DrawRay(ray.origin,
-                ray.direction * hit.distance, UnityEngine.Color.red);
+                ray.direction * hit.distance, UnityEngine.Color.red, 10f);
         }
 
 
         public void UseAbility(Unit unit, Unit chosenUnit)
         {
-            if (unit == null)
+            if (chosenUnit == null || unit.isSwitched)
             {
                 DeAim();
                 return;
             }
             unit.UseItem(this);
+            unit.isSwitched = true;
             DeAim();
             OnItemUsed?.Invoke(unit);
             chosenUnit.IsBusy = true;
@@ -81,6 +82,7 @@ namespace Items
             chosenUnit.SetCell(unitCell, true);
             TimerHelper.Instance.StartTimer(() =>
             {
+                unit.isSwitched = false;
                 chosenUnit.SetCell(choseUnitCell, true, true);
                 unit.SetCell(unitCell, true);
                 chosenUnit.IsStaned = false;

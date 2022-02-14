@@ -13,7 +13,7 @@ namespace GameUI
         [SerializeField] private GameObject item;
         [SerializeField] private GameObject grid;
 
-        public event Action<Unit,Item> OnBuildingInvoked;
+        public event Action<Unit, Item> OnBuildingInvoked;
 
         private List<GameObject> itemsGo;
         private List<Button> _buttons;
@@ -51,7 +51,7 @@ namespace GameUI
 
         private void SwitchButton(Button button)
         {
-            if(button == null)
+            if (button == null)
                 return;
             button.onClick.RemoveAllListeners();
             button.gameObject.SetActive(false);
@@ -98,7 +98,7 @@ namespace GameUI
                         break;
                     case SpecialWeapon specialWeapon:
                         specialWeapon.Invoke((u) => SwitchButton(button), _unit);
-                        OnBuildingInvoked?.Invoke(_unit,specialWeapon);
+                        OnBuildingInvoked?.Invoke(_unit, specialWeapon);
                         break;
                     case SwitchingPlaces switchingPlaces:
                         switchingPlaces.Invoke((u) => SwitchButton(button), _unit);

@@ -15,7 +15,7 @@ namespace Items
 
         public void Invoke(Action<Unit> action)
         {
-            OnItemUsed += action;
+            
         }
 
 

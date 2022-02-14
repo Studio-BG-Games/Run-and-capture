@@ -63,9 +63,18 @@ namespace Items
             unit.UseItem(this);
             HexManager.UnitCurrentCell[unit.Color].cell.PaintHex(unit.Color);
             var cell = HexManager.UnitCurrentCell[unit.Color].cell.GetNeighbor(_direction);
+            OnItemUsed?.Invoke(unit);
+
+            unit.UnitView.AnimActionDic[animName] -= DoPaint;
+            OnItemUsed = null;
+            if (cell == null)
+            {
+                return;
+            }
             cell.PaintHex(unit.Color);
             bool keepGoing = true;
-            var moveDir = _direction;
+            
+            
             itterationMove.ForEach(dir =>
             {
                 if (!keepGoing) return;
@@ -89,11 +98,7 @@ namespace Items
                 cell.PaintHex(unit.Color);
             });
             
-            OnItemUsed?.Invoke(unit);
-            
-            
-            unit.UnitView.AnimActionDic[animName] -= DoPaint;
-            OnItemUsed = null;
+           
         }
 
         public void UseAbility(Unit unit)

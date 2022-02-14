@@ -39,6 +39,7 @@ namespace Units
         private UnitColor _easyCaptureColor;
         
         public bool IsStaned;
+        public bool isSwitched;
         public int AttackBonus => _weapon.modifiedDamage - _weapon.damage;
 
         
@@ -424,7 +425,8 @@ namespace Units
                 _instance.transform.position);
             TimerHelper.Instance.StartTimer(() =>
             {
-                HexManager.PaintHexList(hexToPaint, UnitColor.Grey);
+                
+                HexManager.PaintHexList(hexToPaint.Where(x => x.Color == Color).ToList(), UnitColor.Grey);
 
                 Object.Destroy(_instance);
                 OnDeath?.Invoke(this);
