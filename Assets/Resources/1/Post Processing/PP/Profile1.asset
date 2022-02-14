@@ -18,7 +18,7 @@ MonoBehaviour:
     value: 1
   gradingMode:
     overrideState: 0
-    value: 0
+    value: 1
   externalLut:
     overrideState: 0
     value: {fileID: 0}
@@ -56,10 +56,10 @@ MonoBehaviour:
     value: 0
   tint:
     overrideState: 0
-    value: 32
+    value: 0
   colorFilter:
-    overrideState: 1
-    value: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+    overrideState: 0
+    value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     overrideState: 0
     value: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
     value: {x: 0.85616064, y: 0.9286924, z: 1, w: -0.16632016}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 0.94629073, z: 0.9835593, w: -0.02417393}
+    value: {x: 1, y: 0.94629073, z: 0.9835593, w: -0.18711017}
   gain:
     overrideState: 1
     value: {x: 0.9080492, y: 0.97848916, z: 1, w: 0.041580036}
@@ -748,7 +748,7 @@ MonoBehaviour:
       - 0.984375
       - 0.9921875
   hueVsHueCurve:
-    overrideState: 1
+    overrideState: 0
     value:
       curve:
         serializedVersion: 2
