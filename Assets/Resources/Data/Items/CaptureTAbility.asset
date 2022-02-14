@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461496314fe84e509ae72dd06538b62c, type: 3}
   m_Name: CaptureTAbility
   m_EditorClassIdentifier: 
-  iconPrefab: {fileID: 3197816592181874056, guid: 2704c4f795b0d7748a3e3fa53be4d893, type: 3}
   icon: {fileID: 21300000, guid: 543c4732bd2d47a41bdbbf2156eb358c, type: 3}
+  type: 0
   aimCanvas: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}
-  itterationMove: 000000000000000000000000040000000500000001000000
+  itterationMove: 0000000000000000040000000500000001000000
   animName: SuperJump

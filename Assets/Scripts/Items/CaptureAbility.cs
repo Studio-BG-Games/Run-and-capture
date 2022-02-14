@@ -43,8 +43,13 @@ namespace Items
             if(_aimInstance == null)
                 _aimInstance = Object.Instantiate(aimCanvas, unit.Instance.transform);
             _aimInstance.SetActive(true);
-            _aimInstance.transform.LookAt(HexManager.UnitCurrentCell[unit.Color].cell
-                .GetNeighbor(direction).transform);
+            var cell = HexManager.UnitCurrentCell[unit.Color].cell
+                .GetNeighbor(direction);
+            if (cell == null)
+            {
+                return;
+            }
+            _aimInstance.transform.LookAt(cell.transform);
             _direction = direction;
         }
 
@@ -56,8 +61,9 @@ namespace Items
         private void DoPaint(Unit unit)
         {
             unit.UseItem(this);
+            HexManager.UnitCurrentCell[unit.Color].cell.PaintHex(unit.Color);
             var cell = HexManager.UnitCurrentCell[unit.Color].cell.GetNeighbor(_direction);
-             cell.PaintHex(unit.Color);
+            cell.PaintHex(unit.Color);
             bool keepGoing = true;
             var moveDir = _direction;
             itterationMove.ForEach(dir =>
@@ -94,6 +100,11 @@ namespace Items
         {
             
             var cell = HexManager.UnitCurrentCell[unit.Color].cell.GetNeighbor(_direction);
+            if (cell == null)
+            {
+                DeAim();
+                return;
+            }
             unit.RotateUnit(new Vector2((cell.transform.position - unit.Instance.transform.position).normalized.x,
                 (cell.transform.position - unit.Instance.transform.position).normalized.z));
             unit.Animator.SetTrigger(animName);
