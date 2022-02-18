@@ -13,27 +13,27 @@ namespace GameUI
         [SerializeField] private GameObject item;
         [SerializeField] private GameObject grid;
 
-        public event Action<Unit, Item> OnBuildingInvoked;
+        public event Action<ItemContainer> OnBuildingInvoked;
 
         private List<GameObject> itemsGo;
-        private List<Button> _buttons;
+        private List<Button> _buttonsAttack;
         private List<Button> _buttonsDefence;
         private Unit _unit;
 
 
         public void SetUpUI(int inventoryCapacity, Unit unit)
         {
-            if (_buttons != null && _buttons.Count > 0)
+            if (_buttonsAttack != null && _buttonsAttack.Count > 0)
             {
                 itemsGo.ForEach(Destroy);
             }
 
             _unit = unit;
             itemsGo = new List<GameObject>();
-            _buttons = new List<Button>();
+            _buttonsAttack = new List<Button>();
             _buttonsDefence = new List<Button>();
 
-            SetUpButtons(inventoryCapacity / 2, _buttons);
+            SetUpButtons(inventoryCapacity / 2, _buttonsAttack);
             SetUpButtons(inventoryCapacity / 2, _buttonsDefence);
         }
 
@@ -62,11 +62,11 @@ namespace GameUI
             OnBuildingInvoked = null;
         }
 
-        public void PickUpItem(Item Item)
+        public void PickUpItem(ItemContainer Item)
         {
-            var button = Item.Type switch
+            var button = Item.Item.Type switch
             {
-                ItemType.ATTACK => _buttons.First(x => !x.IsActive()),
+                ItemType.ATTACK => _buttonsAttack.First(x => !x.IsActive()),
                 ItemType.DEFENCE => _buttonsDefence.First(x => !x.IsActive()),
                 _ => throw new ArgumentOutOfRangeException()
             };
@@ -74,10 +74,10 @@ namespace GameUI
             if (button == null)
                 return;
             button.gameObject.SetActive(true);
-            button.image.sprite = Item.Icon;
+            button.image.sprite = Item.Item.Icon;
             button.onClick.AddListener(() =>
             {
-                switch (Item)
+                switch (Item.Item)
                 {
                     case Bonus bonus:
                     {
@@ -89,20 +89,24 @@ namespace GameUI
                         break;
                     }
                     case Building building:
-                        building.Invoke((u) => SwitchButton(button));
-                        OnBuildingInvoked?.Invoke(_unit, building);
+                        Item.OnItemUsed += () => SwitchButton(button);
+                        building.Invoke(Item);
+                        OnBuildingInvoked?.Invoke(Item);
                         break;
                     case CaptureAbility ability:
-                        ability.Invoke((u) => SwitchButton(button), _unit);
-                        OnBuildingInvoked?.Invoke(_unit, ability);
+                        Item.OnItemUsed += () => SwitchButton(button);
+                        ability.Invoke(Item);
+                        OnBuildingInvoked?.Invoke(Item);
                         break;
                     case SpecialWeapon specialWeapon:
-                        specialWeapon.Invoke((u) => SwitchButton(button), _unit);
-                        OnBuildingInvoked?.Invoke(_unit, specialWeapon);
+                        Item.OnItemUsed += () => SwitchButton(button);
+                        specialWeapon.Invoke(Item);
+                        OnBuildingInvoked?.Invoke(Item);
                         break;
                     case SwitchingPlaces switchingPlaces:
-                        switchingPlaces.Invoke((u) => SwitchButton(button), _unit);
-                        OnBuildingInvoked?.Invoke(_unit, switchingPlaces);
+                        Item.OnItemUsed += () => SwitchButton(button);
+                        switchingPlaces.Invoke(Item);
+                        OnBuildingInvoked?.Invoke(Item);
                         break;
                 }
             });

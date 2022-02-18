@@ -137,6 +137,7 @@ MonoBehaviour:
       Data: 
   _unit: {fileID: 0}
   _color: 0
+  speed: 0.1
 --- !u!136 &7385595456525671967
 CapsuleCollider:
   m_ObjectHideFlags: 0

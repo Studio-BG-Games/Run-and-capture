@@ -17,4 +17,4 @@ MonoBehaviour:
   duration: 4
   value: 4
   bonusType: 3
-  usisngVFX: {fileID: 0}
+  usisngVFX: {fileID: 5605842015688550160, guid: 6316606d61f85ac489c287fb99d0e008, type: 3}

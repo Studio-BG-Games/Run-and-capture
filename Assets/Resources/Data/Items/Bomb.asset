@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bomb
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 5a80ac41b33ef3f43945efa70e6dfdb0, type: 3}
-  isInvokeOnPickUp: 0
   type: 1
   buildingPrefab: {fileID: 6736513976106828952, guid: 18fb35664a7886842aa1702160b555a8, type: 3}
+  isVisiting: 0
+  aimCanvas: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}

@@ -1,0 +1,650 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1700d9ee2ab4d8e8ac1b551b7c93ce8, type: 3}
+  m_Name: FieldData
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: colors
+      Entry: 6
+      Data: 
+  enviroment:
+  - {fileID: 6899111088767572749, guid: a25279a05a242784e943563e6f70bc65, type: 3}
+  - {fileID: 1926454186, guid: ef0170e70965e7f46a1a0d4edf4627a1, type: 3}
+  buildings:
+  - {fileID: 788472192, guid: cc20e28cdf3e7104b99074add5dece53, type: 3}
+  Field:
+    cells:
+    - x: 0
+      z: 0
+      i: 0
+      IsSpawnPos: 0
+    - x: 1
+      z: 0
+      i: 1
+      IsSpawnPos: 0
+    - x: 2
+      z: 0
+      i: 2
+      IsSpawnPos: 0
+    - x: 3
+      z: 0
+      i: 3
+      IsSpawnPos: 0
+    - x: 4
+      z: 0
+      i: 4
+      IsSpawnPos: 0
+    - x: 5
+      z: 0
+      i: 5
+      IsSpawnPos: 0
+    - x: 6
+      z: 0
+      i: 6
+      IsSpawnPos: 0
+    - x: 7
+      z: 0
+      i: 7
+      IsSpawnPos: 0
+    - x: 8
+      z: 0
+      i: 8
+      IsSpawnPos: 0
+    - x: 9
+      z: 0
+      i: 9
+      IsSpawnPos: 0
+    - x: 0
+      z: 1
+      i: 10
+      IsSpawnPos: 0
+    - x: 1
+      z: 1
+      i: 11
+      IsSpawnPos: 0
+    - x: 2
+      z: 1
+      i: 12
+      IsSpawnPos: 0
+    - x: 3
+      z: 1
+      i: 13
+      IsSpawnPos: 0
+    - x: 4
+      z: 1
+      i: 14
+      IsSpawnPos: 0
+    - x: 5
+      z: 1
+      i: 15
+      IsSpawnPos: 0
+    - x: 6
+      z: 1
+      i: 16
+      IsSpawnPos: 0
+    - x: 7
+      z: 1
+      i: 17
+      IsSpawnPos: 1
+    - x: 8
+      z: 1
+      i: 18
+      IsSpawnPos: 0
+    - x: 9
+      z: 1
+      i: 19
+      IsSpawnPos: 0
+    - x: 0
+      z: 2
+      i: 20
+      IsSpawnPos: 0
+    - x: 1
+      z: 2
+      i: 21
+      IsSpawnPos: 0
+    - x: 2
+      z: 2
+      i: 22
+      IsSpawnPos: 0
+    - x: 3
+      z: 2
+      i: 23
+      IsSpawnPos: 1
+    - x: 4
+      z: 2
+      i: 24
+      IsSpawnPos: 0
+    - x: 5
+      z: 2
+      i: 25
+      IsSpawnPos: 0
+    - x: 6
+      z: 2
+      i: 26
+      IsSpawnPos: 0
+    - x: 7
+      z: 2
+      i: 27
+      IsSpawnPos: 0
+    - x: 8
+      z: 2
+      i: 28
+      IsSpawnPos: 0
+    - x: 0
+      z: 3
+      i: 30
+      IsSpawnPos: 0
+    - x: 1
+      z: 3
+      i: 31
+      IsSpawnPos: 0
+    - x: 2
+      z: 3
+      i: 32
+      IsSpawnPos: 0
+    - x: 3
+      z: 3
+      i: 33
+      IsSpawnPos: 0
+    - x: 4
+      z: 3
+      i: 34
+      IsSpawnPos: 0
+    - x: 5
+      z: 3
+      i: 35
+      IsSpawnPos: 0
+    - x: 6
+      z: 3
+      i: 36
+      IsSpawnPos: 0
+    - x: 7
+      z: 3
+      i: 37
+      IsSpawnPos: 0
+    - x: 2
+      z: 4
+      i: 42
+      IsSpawnPos: 0
+    - x: 3
+      z: 4
+      i: 43
+      IsSpawnPos: 0
+    - x: 4
+      z: 4
+      i: 44
+      IsSpawnPos: 0
+    - x: 5
+      z: 4
+      i: 45
+      IsSpawnPos: 0
+    - x: 6
+      z: 4
+      i: 46
+      IsSpawnPos: 0
+    - x: 7
+      z: 4
+      i: 47
+      IsSpawnPos: 0
+    - x: 2
+      z: 5
+      i: 52
+      IsSpawnPos: 0
+    - x: 3
+      z: 5
+      i: 53
+      IsSpawnPos: 0
+    - x: 4
+      z: 5
+      i: 54
+      IsSpawnPos: 0
+    - x: 5
+      z: 5
+      i: 55
+      IsSpawnPos: 0
+    - x: 4
+      z: 6
+      i: 64
+      IsSpawnPos: 0
+    - x: 5
+      z: 6
+      i: 65
+      IsSpawnPos: 0
+    - x: 6
+      z: 6
+      i: 66
+      IsSpawnPos: 0
+    - x: 3
+      z: 7
+      i: 73
+      IsSpawnPos: 0
+    - x: 4
+      z: 7
+      i: 74
+      IsSpawnPos: 0
+    - x: 5
+      z: 7
+      i: 75
+      IsSpawnPos: 0
+    - x: 6
+      z: 7
+      i: 76
+      IsSpawnPos: 0
+    - x: 7
+      z: 7
+      i: 77
+      IsSpawnPos: 0
+    - x: 0
+      z: 8
+      i: 80
+      IsSpawnPos: 0
+    - x: 3
+      z: 8
+      i: 83
+      IsSpawnPos: 0
+    - x: 4
+      z: 8
+      i: 84
+      IsSpawnPos: 0
+    - x: 5
+      z: 8
+      i: 85
+      IsSpawnPos: 0
+    - x: 6
+      z: 8
+      i: 86
+      IsSpawnPos: 0
+    - x: 7
+      z: 8
+      i: 87
+      IsSpawnPos: 0
+    - x: 8
+      z: 8
+      i: 88
+      IsSpawnPos: 0
+    - x: 0
+      z: 9
+      i: 90
+      IsSpawnPos: 0
+    - x: 2
+      z: 9
+      i: 92
+      IsSpawnPos: 0
+    - x: 3
+      z: 9
+      i: 93
+      IsSpawnPos: 0
+    - x: 4
+      z: 9
+      i: 94
+      IsSpawnPos: 0
+    - x: 5
+      z: 9
+      i: 95
+      IsSpawnPos: 0
+    - x: 6
+      z: 9
+      i: 96
+      IsSpawnPos: 0
+    - x: 7
+      z: 9
+      i: 97
+      IsSpawnPos: 0
+    - x: 8
+      z: 9
+      i: 98
+      IsSpawnPos: 0
+    - x: 9
+      z: 9
+      i: 99
+      IsSpawnPos: 0
+    - x: 0
+      z: 10
+      i: 100
+      IsSpawnPos: 0
+    - x: 1
+      z: 10
+      i: 101
+      IsSpawnPos: 0
+    - x: 2
+      z: 10
+      i: 102
+      IsSpawnPos: 0
+    - x: 3
+      z: 10
+      i: 103
+      IsSpawnPos: 0
+    - x: 4
+      z: 10
+      i: 104
+      IsSpawnPos: 0
+    - x: 6
+      z: 10
+      i: 106
+      IsSpawnPos: 0
+    - x: 7
+      z: 10
+      i: 107
+      IsSpawnPos: 0
+    - x: 8
+      z: 10
+      i: 108
+      IsSpawnPos: 0
+    - x: 9
+      z: 10
+      i: 109
+      IsSpawnPos: 0
+    - x: 0
+      z: 11
+      i: 110
+      IsSpawnPos: 0
+    - x: 1
+      z: 11
+      i: 111
+      IsSpawnPos: 0
+    - x: 2
+      z: 11
+      i: 112
+      IsSpawnPos: 0
+    - x: 3
+      z: 11
+      i: 113
+      IsSpawnPos: 0
+    - x: 6
+      z: 11
+      i: 116
+      IsSpawnPos: 0
+    - x: 7
+      z: 11
+      i: 117
+      IsSpawnPos: 0
+    - x: 8
+      z: 11
+      i: 118
+      IsSpawnPos: 0
+    - x: 9
+      z: 11
+      i: 119
+      IsSpawnPos: 0
+    - x: 0
+      z: 12
+      i: 120
+      IsSpawnPos: 0
+    - x: 1
+      z: 12
+      i: 121
+      IsSpawnPos: 0
+    - x: 2
+      z: 12
+      i: 122
+      IsSpawnPos: 0
+    - x: 3
+      z: 12
+      i: 123
+      IsSpawnPos: 0
+    - x: 7
+      z: 12
+      i: 127
+      IsSpawnPos: 0
+    - x: 8
+      z: 12
+      i: 128
+      IsSpawnPos: 0
+    - x: 9
+      z: 12
+      i: 129
+      IsSpawnPos: 0
+    - x: 0
+      z: 13
+      i: 130
+      IsSpawnPos: 0
+    - x: 1
+      z: 13
+      i: 131
+      IsSpawnPos: 0
+    - x: 2
+      z: 13
+      i: 132
+      IsSpawnPos: 0
+    - x: 3
+      z: 13
+      i: 133
+      IsSpawnPos: 0
+    - x: 6
+      z: 13
+      i: 136
+      IsSpawnPos: 0
+    - x: 7
+      z: 13
+      i: 137
+      IsSpawnPos: 0
+    - x: 8
+      z: 13
+      i: 138
+      IsSpawnPos: 0
+    - x: 9
+      z: 13
+      i: 139
+      IsSpawnPos: 0
+    - x: 0
+      z: 14
+      i: 140
+      IsSpawnPos: 0
+    - x: 1
+      z: 14
+      i: 141
+      IsSpawnPos: 0
+    - x: 2
+      z: 14
+      i: 142
+      IsSpawnPos: 0
+    - x: 3
+      z: 14
+      i: 143
+      IsSpawnPos: 0
+    - x: 4
+      z: 14
+      i: 144
+      IsSpawnPos: 0
+    - x: 7
+      z: 14
+      i: 147
+      IsSpawnPos: 0
+    - x: 8
+      z: 14
+      i: 148
+      IsSpawnPos: 0
+    - x: 9
+      z: 14
+      i: 149
+      IsSpawnPos: 0
+    - x: 0
+      z: 15
+      i: 150
+      IsSpawnPos: 0
+    - x: 1
+      z: 15
+      i: 151
+      IsSpawnPos: 0
+    - x: 2
+      z: 15
+      i: 152
+      IsSpawnPos: 0
+    - x: 3
+      z: 15
+      i: 153
+      IsSpawnPos: 0
+    - x: 4
+      z: 15
+      i: 154
+      IsSpawnPos: 0
+    - x: 7
+      z: 15
+      i: 157
+      IsSpawnPos: 0
+    - x: 8
+      z: 15
+      i: 158
+      IsSpawnPos: 0
+    - x: 9
+      z: 15
+      i: 159
+      IsSpawnPos: 0
+    - x: 0
+      z: 16
+      i: 160
+      IsSpawnPos: 0
+    - x: 1
+      z: 16
+      i: 161
+      IsSpawnPos: 0
+    - x: 2
+      z: 16
+      i: 162
+      IsSpawnPos: 0
+    - x: 3
+      z: 16
+      i: 163
+      IsSpawnPos: 0
+    - x: 4
+      z: 16
+      i: 164
+      IsSpawnPos: 0
+    - x: 7
+      z: 16
+      i: 167
+      IsSpawnPos: 0
+    - x: 8
+      z: 16
+      i: 168
+      IsSpawnPos: 0
+    - x: 9
+      z: 16
+      i: 169
+      IsSpawnPos: 0
+    - x: 0
+      z: 17
+      i: 170
+      IsSpawnPos: 0
+    - x: 1
+      z: 17
+      i: 171
+      IsSpawnPos: 1
+    - x: 2
+      z: 17
+      i: 172
+      IsSpawnPos: 0
+    - x: 3
+      z: 17
+      i: 173
+      IsSpawnPos: 0
+    - x: 6
+      z: 17
+      i: 176
+      IsSpawnPos: 0
+    - x: 7
+      z: 17
+      i: 177
+      IsSpawnPos: 0
+    - x: 8
+      z: 17
+      i: 178
+      IsSpawnPos: 1
+    - x: 9
+      z: 17
+      i: 179
+      IsSpawnPos: 0
+    - x: 0
+      z: 18
+      i: 180
+      IsSpawnPos: 0
+    - x: 1
+      z: 18
+      i: 181
+      IsSpawnPos: 0
+    - x: 2
+      z: 18
+      i: 182
+      IsSpawnPos: 0
+    - x: 3
+      z: 18
+      i: 183
+      IsSpawnPos: 0
+    - x: 6
+      z: 18
+      i: 186
+      IsSpawnPos: 0
+    - x: 7
+      z: 18
+      i: 187
+      IsSpawnPos: 0
+    - x: 8
+      z: 18
+      i: 188
+      IsSpawnPos: 0
+    - x: 9
+      z: 18
+      i: 189
+      IsSpawnPos: 0
+    - x: 0
+      z: 19
+      i: 190
+      IsSpawnPos: 0
+    - x: 1
+      z: 19
+      i: 191
+      IsSpawnPos: 0
+    - x: 2
+      z: 19
+      i: 192
+      IsSpawnPos: 0
+    - x: 5
+      z: 19
+      i: 195
+      IsSpawnPos: 0
+    - x: 6
+      z: 19
+      i: 196
+      IsSpawnPos: 0
+    - x: 7
+      z: 19
+      i: 197
+      IsSpawnPos: 0
+    - x: 8
+      z: 19
+      i: 198
+      IsSpawnPos: 0
+    - x: 9
+      z: 19
+      i: 199
+      IsSpawnPos: 0
+    height: 20
+    width: 10
+  isSimpleField: 0
+  width: 6
+  height: 6
+  spawnFields: []
+  levelPath: Assets/Resources/Maps\Level 1
+  hexCaptureManaCost: 0
+  hexHardCaptureManaCost: 0
+  hexHardCaptureTime: 0
+  cellPrefab: {fileID: 1661242500252451528, guid: bcea5b4a96735bd4b936f8f3fefcc688, type: 3}
+  cellLabelPrefab: {fileID: 3836123284387241147, guid: efd47cbd22ddfee4aa2b1391914116fc, type: 3}
+  CoordinatesCanvas: {fileID: 4726489279989878083, guid: f31e0880dd078104bb31dc0fd7ef9f19, type: 3}

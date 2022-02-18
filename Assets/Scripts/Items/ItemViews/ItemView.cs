@@ -32,7 +32,9 @@ namespace Items.ItemViews
             }
             transform.DOMove(unit.UnitView.transform.position + new Vector3(0,1,0), 0.1f).OnComplete(() =>
             {
-                unit.PickUpItem(_item);
+                ItemContainer itemContainer = new ItemContainer(Item, this, unit);
+                unit.PickUpItem(itemContainer);
+                
                 Despawn();
             });
         }

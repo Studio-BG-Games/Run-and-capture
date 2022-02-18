@@ -29,7 +29,7 @@ namespace Items
         public GameObject Prefab => prefab;
     }
 
-    public abstract class Item : ScriptableObject, IDisposable
+    public abstract class Item : ScriptableObject
     {
         private GameObject _instance;
         [SerializeField] private Sprite icon;
@@ -39,9 +39,11 @@ namespace Items
         
         public Sprite Icon => icon;
 
-       
-        protected Action<Unit> OnItemUsed;
 
+        public virtual void Invoke(ItemContainer container)
+        {
+            
+        }
         
 
         public GameObject Spawn(HexCell cell, GameObject parent, GameObject iconPrefab)
@@ -55,10 +57,6 @@ namespace Items
             return _instance;
         }
         
-
-        public void Dispose()
-        {
-            OnItemUsed = null;
-        }
+        
     }
 }

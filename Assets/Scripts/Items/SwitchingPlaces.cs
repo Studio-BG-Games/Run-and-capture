@@ -13,48 +13,46 @@ namespace Items
         [SerializeField] private GameObject aimCanvas;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float time;
-        private GameObject _aimInstance;
-        private HexDirection _direction;
-
-
-        public void Invoke(Action<Unit> action, Unit unit)
+        
+        
+        public override void Invoke(ItemContainer container)
         {
-            if (!unit.IsPlayer)
+            if (!container.Unit.IsPlayer)
             {
                 return;
             }
 
-            OnItemUsed ??= action;
+            
 
-            if (_aimInstance == null)
-                _aimInstance = Object.Instantiate(aimCanvas, unit.Instance.transform);
-            _aimInstance.SetActive(false);
+            if (container.AimInstance == null)
+                container.AimInstance = Object.Instantiate(aimCanvas, container.Unit.Instance.transform);
+            container.AimInstance.SetActive(false);
         }
 
-        public void Aim(Vector2 direction, Unit unit, out Unit chosenUnit)
+        public void Aim(Vector2 direction, ItemContainer container)
         {
-            if (unit.IsPlayer)
+            if (container.Unit.IsPlayer)
             {
-                if (_aimInstance == null)
-                    _aimInstance = Object.Instantiate(aimCanvas, unit.Instance.transform);
-                _aimInstance.SetActive(true);
-                _aimInstance.transform.LookAt(
-                    new Vector3(direction.x, 0, direction.y) + unit.Instance.transform.position);
+                if (container.AimInstance == null)
+                    container.AimInstance = Object.Instantiate(aimCanvas, container.Unit.Instance.transform);
+                container.AimInstance.SetActive(true);
+                container.AimInstance.transform.LookAt(
+                    new Vector3(direction.x, 0, direction.y) + container.Unit.Instance.transform.position);
             }
 
             RaycastHit hit;
-            Ray ray = new Ray(unit.Instance.transform.position + new Vector3(0, 1f, 0),
+            Ray ray = new Ray(container.Unit.Instance.transform.position + new Vector3(0, 1f, 0),
                 new Vector3(direction.x, 0, direction.y));
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
             {
                 Debug.Log($"Aimed {hit.collider.gameObject.name}");
-                chosenUnit = hit.collider.gameObject.GetComponent<UnitView>().Unit;
+                container.Value = hit.collider.gameObject.GetComponent<UnitView>().Unit;
             }
 
             else
             {
-                chosenUnit = null;
+                container.Value = null;
             }
 
             Debug.DrawRay(ray.origin,
@@ -62,37 +60,34 @@ namespace Items
         }
 
 
-        public void UseAbility(Unit unit, Unit chosenUnit)
+        public void UseAbility(ItemContainer container)
         {
-            if (chosenUnit == null || unit.isSwitched)
+            if (container.Value == null || container.Unit.isSwitched)
             {
-                DeAim();
+                container.DeAim();
                 return;
             }
-            unit.UseItem(this);
-            unit.isSwitched = true;
-            DeAim();
-            OnItemUsed?.Invoke(unit);
-            chosenUnit.IsBusy = true;
-            chosenUnit.IsStaned = true;
-            var unitCell = HexManager.UnitCurrentCell[unit.Color].cell;
-            var choseUnitCell = HexManager.UnitCurrentCell[chosenUnit.Color].cell;
-            unit.SetCell(choseUnitCell, true, true);
-            unit.SetEasyColor(chosenUnit.Color, time);
-            chosenUnit.SetCell(unitCell, true);
+            container.Unit.UseItem(this);
+            container.Unit.isSwitched = true;
+            container.DeAim();
+            container.OnItemUsed?.Invoke();
+            container.Value.IsBusy = true;
+            container.Value.IsStaned = true;
+            var unitCell = HexManager.UnitCurrentCell[container.Unit.Color].cell;
+            var choseUnitCell = HexManager.UnitCurrentCell[container.Value.Color].cell;
+            container.Unit.SetCell(choseUnitCell, true, true);
+            container.Unit.SetEasyColor(container.Value.Color, time);
+            container.Value.SetCell(unitCell, true);
             TimerHelper.Instance.StartTimer(() =>
             {
-                unit.isSwitched = false;
-                chosenUnit.SetCell(choseUnitCell, true, true);
-                unit.SetCell(unitCell, true);
-                chosenUnit.IsStaned = false;
-                chosenUnit.IsBusy = false;
+                container.Unit.isSwitched = false;
+                container.Value.SetCell(choseUnitCell, true, true);
+                container.Unit.SetCell(unitCell, true);
+                container.Value.IsStaned = false;
+                container.Value.IsBusy = false;
             }, time);
         }
 
-        public void DeAim()
-        {
-            _aimInstance.SetActive(false);
-        }
+        
     }
 }

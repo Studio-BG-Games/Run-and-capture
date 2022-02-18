@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -24,7 +24,7 @@ namespace DefaultNamespace
             }
         }
 
-       [EditorButton]
+       [Button("Set Time Scale")]
         public void SetTimerScale(float scale)
         {
             Time.timeScale = scale;

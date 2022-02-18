@@ -24,15 +24,15 @@ namespace Weapons
         public AudioClip shotSound;
         public AudioClip hitSound;
 
-        private GameObject ball;
+      
         public void SetModifiedDamage(int bonus)
         {
             modifiedDamage = damage + bonus;
         }
 
-        public void Fire(Transform start, Vector2 direction, Unit unit)
+        public GameObject Fire(Transform start, Vector2 direction, Unit unit)
         {
-            ball = Object.Instantiate(objectToThrow,
+            var ball = Object.Instantiate(objectToThrow,
                 start.forward + start.transform.position + new Vector3(0, 2),
                 start.rotation);
 
@@ -41,25 +41,24 @@ namespace Weapons
             ball.AddComponent<WeaponView>().SetWeapon(this, unit);
             Weapon tmpThis = this;
             GameObject localBall = ball;
+            Weapon tmpThis1 = this;
             localBall.transform.DOMove(new Vector3(direction.normalized.x,
-                                       0, direction.normalized.y) * tmpThis.disnatce * HexGrid.HexDistance +
-                                   start.position + new Vector3(0, 2, 0), tmpThis.speed)
+                                           0, direction.normalized.y) * tmpThis.disnatce * HexGrid.HexDistance +
+                                       start.position + new Vector3(0, 2, 0), tmpThis.speed)
                 .SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
-                    tmpThis.DestroyBall();
+                    if(ball == null)
+                        return;
+                    var vfx = VFXController.Instance.PlayEffect(tmpThis1.VFXGameObject, ball.transform.position, Quaternion.identity);
+                    MusicController.Instance.AddAudioSource(vfx);
+                    MusicController.Instance.PlayAudioClip(tmpThis1.hitSound, vfx);
+                    ball.transform.DOKill();
+                    Object.Destroy(ball);
                 });
+            return ball;
         }
 
-        public void DestroyBall()
-        {
-            if(ball == null)
-                return;
-            var vfx = VFXController.Instance.PlayEffect(VFXGameObject, ball.transform.position, ball.transform.rotation);
-            MusicController.Instance.AddAudioSource(vfx);
-            MusicController.Instance.PlayAudioClip(hitSound, vfx);
-            ball.transform.DOKill();
-            Object.Destroy(ball);
-        }
+    
     }
 }

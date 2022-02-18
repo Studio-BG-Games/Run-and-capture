@@ -3,6 +3,7 @@ using DefaultNamespace;
 using HexFiled;
 using Units;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Items
 {
@@ -11,28 +12,54 @@ namespace Items
     {
         [SerializeField] private GameObject buildingPrefab;
         [SerializeField] private bool isVisiting = false;
+        [SerializeField] private GameObject aimCanvas;
         
 
-        public void Invoke(Action<Unit> action)
+        public override void Invoke(ItemContainer container)
         {
+
+            if (container.AimInstance == null)
+            {
+                container.AimInstance = Object.Instantiate(aimCanvas, container.Unit.Instance.transform);
+            }
+            container.AimInstance.SetActive(false);
+        }
+        
+        public void Aim(HexDirection direction, ItemContainer container)
+        {
+            if (container.AimInstance == null)
+            {
+                container.AimInstance = Object.Instantiate(aimCanvas, container.Unit.Instance.transform);
+            }
+            container.AimInstance.SetActive(true);
             
+            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell
+                .GetNeighbor(direction);
+            if (cell == null)
+            {
+                return;
+            }
+            container.AimInstance.transform.LookAt(cell.transform);
+            container.Direction = direction;
         }
 
 
-        public void PlaceItem(HexCell cell, Unit unit)
+        public void PlaceItem(ItemContainer container)
         {
-            unit.UseItem(this);
+            container.Unit.UseItem(this);
+            container.DeAim();
+            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.Direction);
             var obj = Instantiate(buildingPrefab,
                 cell.transform.position + buildingPrefab.transform.position, Quaternion.identity);
-            obj.GetComponent<ISetUp>().SetUp(unit);
+            obj.GetComponent<ISetUp>().SetUp(container.Unit);
             if (!isVisiting)
             {
                 cell.Building = buildingPrefab;
                 cell.BuildingInstance = obj;
             }
 
-            OnItemUsed.Invoke(unit);
-            OnItemUsed = null;
+            container.OnItemUsed.Invoke();
+            
         }
     }
 }

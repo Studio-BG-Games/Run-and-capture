@@ -18,8 +18,8 @@ namespace Units
     public class Unit
     {
         private GameObject _instance;
-        private List<Item> _inventory;
-        private List<Item> _inventoryDefence;
+        private List<ItemContainer> _inventory;
+        private List<ItemContainer> _inventoryDefence;
         private AnimLength _animLength;
         private HexCell _cell;
         private HexGrid _hexGrid;
@@ -56,15 +56,15 @@ namespace Units
 
         public UnitColor Color => _data.color;
         public int InventoryCapacity => _data.inventoryCapacity;
-        public event Action<Item> OnItemPickUp;
+        public event Action<ItemContainer> OnItemPickUp;
         public event Action<Unit> OnDeath;
         public BarCanvas BarCanvas => UnitView.BarCanvas;
         public GameObject Instance => _instance;
         public UnitInfo Data => _data;
         public int Mana => _mana;
         public int Hp => _hp;
-        public List<Item> Inventory => _inventory;
-        public List<Item> InventoryDefence => _inventoryDefence;
+        public List<ItemContainer> Inventory => _inventory;
+        public List<ItemContainer> InventoryDefence => _inventoryDefence;
         public Weapon Weapon => _weapon;
         public bool IsPlayer => _data.isPlayer;
         public Animator Animator => _animator;
@@ -257,8 +257,8 @@ namespace Units
 
                 _cell.PaintHex(_data.color, true);
                 _cell.GetListNeighbours().ForEach(x => { x?.PaintHex(Color, true); });
-                _inventory = new List<Item>();
-                _inventoryDefence = new List<Item>();
+                _inventory = new List<ItemContainer>();
+                _inventoryDefence = new List<ItemContainer>();
 
                 HexManager.UnitCurrentCell.Add(_data.color, (_cell, this));
 
@@ -316,15 +316,14 @@ namespace Units
             return false;
         }
 
-        public void PickUpItem(Item item)
+        public void PickUpItem(ItemContainer item)
         {
-            switch (item.Type)
+            switch (item.Item.Type)
             {
                 case ItemType.ATTACK:
                     if (_inventory.Count < _data.inventoryCapacity / 2)
                     {
                         _inventory.Add(item);
-                        OnItemPickUp?.Invoke(item);
                         _cell.Item = null;
                     }
 
@@ -333,7 +332,6 @@ namespace Units
                     if (_inventoryDefence.Count < _data.inventoryCapacity / 2)
                     {
                         _inventoryDefence.Add(item);
-                        OnItemPickUp?.Invoke(item);
                         _cell.Item = null;
                     }
 
@@ -341,15 +339,20 @@ namespace Units
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            OnItemPickUp?.Invoke(item);
         }
 
         public void UseItem(Item item)
         {
             if (item.Type == ItemType.ATTACK)
-                _inventory.Remove(item);
+            {
+                var i = _inventory.First(i => i.Item == item);
+                _inventory.Remove(i);
+            }
             else
             {
-                _inventoryDefence.Remove(item);
+                var i = _inventoryDefence.First(i => i.Item == item);
+                _inventoryDefence.Remove(i);
             }
         }
 
@@ -431,7 +434,7 @@ namespace Units
                 Object.Destroy(_instance);
                 OnDeath?.Invoke(this);
             }, _animLength.Death);
-            _inventory.ForEach(x => x.Dispose());
+            
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, vfx);
             MusicController.Instance.RemoveAudioSource(_instance);

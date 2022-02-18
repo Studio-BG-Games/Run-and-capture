@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d802c0065ac04effbd7685b3eddc7574, type: 3}
+  m_Name: UIData
+  m_EditorClassIdentifier: 
+  _objectsToSpawn: []
+  _canvas: {fileID: 3022236851805642197, guid: 682042d5dd3e7d94bbe2a67ec2c1245a, type: 3}
+  joystickView: {fileID: 4385872142190176059, guid: 4df6913b39f4979429158c344680d83f, type: 3}
+  inventoryView: {fileID: 1527356263590969195, guid: ff3bc3b17ddefd14eb798b22cf0a854f, type: 3}
+  adsMob: {fileID: 3306115827101638291, guid: 829cf0211d46b58489f4cb061c784378, type: 3}
+  cheatMenu: {fileID: 791049004453965678, guid: 33deb58e3852451419239c8df4119f91, type: 3}

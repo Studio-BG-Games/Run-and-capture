@@ -24,98 +24,99 @@ namespace Items
         [SerializeField] private GameObject aimCanvas;
         [SerializeField] private List<Angls> itterationMove;
         [SerializeField] private string animName;
-        private GameObject _aimInstance;
-        private HexDirection _direction;
-      
 
 
-        public void Invoke(Action<Unit> action, Unit unit)
+        public override void Invoke(ItemContainer container)
         {
-            OnItemUsed ??= action;
+           
 
-            if(_aimInstance == null)
-                _aimInstance = Object.Instantiate(aimCanvas, unit.Instance.transform);
-            _aimInstance.SetActive(false);
+            if (container.AimInstance == null)
+            {
+                container.AimInstance = Object.Instantiate(aimCanvas, container.Unit.Instance.transform);
+            }
+            container.AimInstance.SetActive(false);
         }
+        
 
-        public void Aim(HexDirection direction, Unit unit)
+        public void Aim(HexDirection direction, ItemContainer container)
         {
-            if(_aimInstance == null)
-                _aimInstance = Object.Instantiate(aimCanvas, unit.Instance.transform);
-            _aimInstance.SetActive(true);
-            var cell = HexManager.UnitCurrentCell[unit.Color].cell
+            if (container.AimInstance == null)
+            {
+                container.AimInstance = Object.Instantiate(aimCanvas, container.Unit.Instance.transform);
+            }
+            container.AimInstance.SetActive(true);
+            
+            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell
                 .GetNeighbor(direction);
             if (cell == null)
             {
                 return;
             }
-            _aimInstance.transform.LookAt(cell.transform);
-            _direction = direction;
+            container.AimInstance.transform.LookAt(cell.transform);
+            container.Direction = direction;
         }
 
-        public void DeAim()
-        {
-            _aimInstance.SetActive(false);
-        }
         
-        private void DoPaint(Unit unit)
+        
+        private void DoPaint(ItemContainer container)
         {
-            unit.UseItem(this);
-            HexManager.UnitCurrentCell[unit.Color].cell.PaintHex(unit.Color);
-            var cell = HexManager.UnitCurrentCell[unit.Color].cell.GetNeighbor(_direction);
-            OnItemUsed?.Invoke(unit);
+            container.Unit.UseItem(this);
+            HexManager.UnitCurrentCell[container.Unit.Color].cell.PaintHex(container.Unit.Color);
+            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.Direction);
+            container.OnItemUsed?.Invoke();
 
-            unit.UnitView.AnimActionDic[animName] -= DoPaint;
-            OnItemUsed = null;
+            container.Unit.UnitView.AnimActionDic[animName] = null;
+            
+            container.OnItemUsed = null;
             if (cell == null)
             {
                 return;
             }
-            cell.PaintHex(unit.Color);
+            cell.PaintHex(container.Unit.Color);
             bool keepGoing = true;
             
             
             itterationMove.ForEach(dir =>
             {
                 if (!keepGoing) return;
-                _direction = dir switch
+                container.Direction = dir switch
                 {
-                    Angls.FORWARD => _direction,
-                    Angls.PLUS60 => _direction.PlusSixtyDeg(),
-                    Angls.MINUS60 => _direction.MinusSixtyDeg(),
-                    Angls.PLUS120 => _direction.Plus120Deg(),
-                    Angls.MINUS120 => _direction.Minus120Deg(),
-                    Angls.BACK => _direction.Back(),
+                    Angls.FORWARD => container.Direction,
+                    Angls.PLUS60 => container.Direction.PlusSixtyDeg(),
+                    Angls.MINUS60 => container.Direction.MinusSixtyDeg(),
+                    Angls.PLUS120 => container.Direction.Plus120Deg(),
+                    Angls.MINUS120 => container.Direction.Minus120Deg(),
+                    Angls.BACK => container.Direction.Back(),
                     _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
                 };
-                if (cell.GetNeighbor(_direction) == null)
+                if (cell.GetNeighbor(container.Direction) == null)
                 {
                     keepGoing = false;
                     return;
                 }
 
-                cell = cell.GetNeighbor(_direction);
-                cell.PaintHex(unit.Color);
+                cell = cell.GetNeighbor(container.Direction);
+                cell.PaintHex(container.Unit.Color);
             });
             
            
         }
 
-        public void UseAbility(Unit unit)
+        public void UseAbility(ItemContainer container)
         {
             
-            var cell = HexManager.UnitCurrentCell[unit.Color].cell.GetNeighbor(_direction);
+            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.Direction);
             if (cell == null)
             {
-                DeAim();
+                container.DeAim();
                 return;
             }
-            unit.RotateUnit(new Vector2((cell.transform.position - unit.Instance.transform.position).normalized.x,
-                (cell.transform.position - unit.Instance.transform.position).normalized.z));
-            unit.Animator.SetTrigger(animName);
-            _aimInstance.SetActive(false);
-            unit.SetCell(cell);
-            unit.UnitView.AnimActionDic[animName] += DoPaint;
+            container.Unit.RotateUnit(new Vector2((cell.transform.position - container.Unit.Instance.transform.position).normalized.x,
+                (cell.transform.position - container.Unit.Instance.transform.position).normalized.z));
+            container.Unit.Animator.SetTrigger(animName);
+            container.DeAim();
+            container.Unit.SetCell(cell);
+            container.Unit.UnitView.AnimActionDic[animName] += () => DoPaint(container);
         }
     }
 }

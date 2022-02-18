@@ -17,6 +17,7 @@ namespace Items.ItemViews
         private List<GameObject> listUnits;
         [SerializeField] private GameObject _unit;
         [SerializeField] private UnitColor _color;
+        [SerializeField] private float speed;
 
         public void SetUp(Unit unit)
         {
@@ -43,7 +44,7 @@ namespace Items.ItemViews
                 transform.DOKill();
                 transform.LookAt(listUnits.First().transform);
                 transform.DOMove(listUnits.First().transform.position,
-                        Vector3.Distance(listUnits.First().transform.position, _unit.transform.position) * 0.2f)
+                        Vector3.Distance(listUnits.First().transform.position, _unit.transform.position) * speed)
                     .SetEase(Ease.Linear);
             }
         }

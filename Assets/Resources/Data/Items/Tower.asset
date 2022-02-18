@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Tower
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: b7771b47a72ca7947bf18f664e53a983, type: 3}
-  isInvokeOnPickUp: 0
   type: 1
   buildingPrefab: {fileID: 3496656575117217171, guid: 38edd53c7f09f41409153241c78268f9, type: 3}
+  isVisiting: 0
+  aimCanvas: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}

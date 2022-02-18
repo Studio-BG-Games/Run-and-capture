@@ -92,7 +92,7 @@ namespace AI
 
         public BotState GetNewBehaviour(AIAgent agent)
         {
-            var attack = agent.Unit.Inventory.Where(x => x is Bonus { BonusType: BonusType.Attack }).ToList();
+            var attack = agent.Unit.Inventory.Where(x => x.Item is Bonus { BonusType: BonusType.Attack }).ToList();
             if (agent.CurentState is BotState.Attack && agent.Unit.AttackBonus == 0 && attack.Count > 0)
             {
                 SetBehaviour(BotState.AttackBonusUsage, agent);
@@ -122,17 +122,21 @@ namespace AI
             }
 
             var item = GetNearestItem(agent);
-            if (((item.dist > 0 && item.dist <= _data.DistaceToCollectBonus) ||
-                 agent.Unit.Mana <= agent.Unit.Data.maxMana * _data.ManaPercentToCollectBonus) &&
-                (item.hex.Item.Item.Type == ItemType.DEFENCE
-                    ? agent.Unit.InventoryDefence.Count
-                    : agent.Unit.Inventory.Count) < agent.Unit.InventoryCapacity / 2)
+            if (item.hex != null)
             {
-                SetBehaviour(BotState.CollectingBonus, agent);
-                return BotState.CollectingBonus;
+                if ((item.dist <= _data.DistaceToCollectBonus ||
+                     agent.Unit.Mana <= agent.Unit.Data.maxMana * _data.ManaPercentToCollectBonus) &&
+                    (item.hex.Item.Item.Type == ItemType.DEFENCE
+                        ? agent.Unit.InventoryDefence.Count
+                        : agent.Unit.Inventory.Count) < agent.Unit.InventoryCapacity / 2)
+                {
+                    SetBehaviour(BotState.CollectingBonus, agent);
+                    return BotState.CollectingBonus;
+                }
             }
 
-            var protect = agent.Unit.InventoryDefence.Where(x => x is Bonus { BonusType: BonusType.Defence }).ToList();
+            var protect = agent.Unit.InventoryDefence.Where(x => x.Item is Bonus { BonusType: BonusType.Defence })
+                .ToList();
             if (protect.Count > 0 && agent.Unit.Hp <= agent.Unit.Data.maxHP * _data.PercentToUseProtectBonus &&
                 agent.Unit.DefenceBonus == 0)
             {
@@ -179,14 +183,14 @@ namespace AI
 
         private void UseBonus(AIAgent agent, BonusType type)
         {
-            var attack = agent.Unit.Inventory.Where(x => x is Bonus bonus && bonus.BonusType == type).ToList();
+            var attack = agent.Unit.Inventory.Where(x => x.Item is Bonus bonus && bonus.BonusType == type).ToList();
             if (attack.Count == 0 || !agent.Unit.IsAlive)
             {
                 GetNewBehaviour(agent);
                 return;
             }
 
-            ((Bonus)attack.First()).Invoke(agent.Unit);
+            ((Bonus)attack.First().Item).Invoke(agent.Unit);
         }
 
         private void Retreet(AIAgent agent)
@@ -227,7 +231,7 @@ namespace AI
         private void MoveToBonus(AIAgent agent)
         {
             if (HexManager.UnitCurrentCell.TryGetValue(agent.Unit.Color, out var value))
-                
+
                 Pathfinding.FindPath(value.cell, GetNearestItem(agent).hex,
                     agent.currentPath);
         }

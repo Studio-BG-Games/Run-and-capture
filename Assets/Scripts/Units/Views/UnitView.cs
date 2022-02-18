@@ -30,13 +30,13 @@ public class UnitView : MonoBehaviour
     private Action _startRegen;
     private Coroutine _previosRegen;
     private Coroutine _previosReload;
-    private Dictionary<string, Action<Unit>> animActionDic;
+    private Dictionary<string, Action> animActionDic;
     private int _mana;
     private event Action CaptureHex;
     private AudioSource _audioSource;
     private Unit _unit;
     private float _hardCaptureTime;
-    private Action<Unit> onSupperJump;
+    private Action onSupperJump;
     private Coroutine _previousRegenCoroutine;
 
     public BarCanvas BarCanvas => _barCanvas;
@@ -46,7 +46,7 @@ public class UnitView : MonoBehaviour
 
     public Unit Unit => _unit;
 
-    public Dictionary<string, Action<Unit>> AnimActionDic => animActionDic;
+    public Dictionary<string, Action> AnimActionDic => animActionDic;
 
     public void SetBar(BarCanvas barCanvas, GameObject aimCanvas)
     {
@@ -62,7 +62,7 @@ public class UnitView : MonoBehaviour
     public void SetUp(Weapon weapon, Action regenMana, int manaRegen, Action captureHex,
         Unit unit, float hardCaptureTime)
     {
-        animActionDic = new Dictionary<string, Action<Unit>> { { "SuperJump", onSupperJump } };
+        animActionDic = new Dictionary<string, Action> { { "SuperJump", onSupperJump } };
         
         _weapon = weapon;
         _toReloadStack = new Stack<ShotUIView>();
@@ -151,7 +151,7 @@ public class UnitView : MonoBehaviour
         for (var i = 0; i < animActionDic.Count; i++)
         {
             var item = animActionDic.ElementAt(i);
-            item.Value?.Invoke(Unit);
+            item.Value?.Invoke();
         }
     }
 
@@ -161,8 +161,9 @@ public class UnitView : MonoBehaviour
         if (weaponView != null)
         {
             OnHit?.Invoke(weaponView.Weapon.modifiedDamage);
-            var vfx = VFXController.Instance.PlayEffect(weaponView.Weapon.VFXGameObject, weaponView.transform.position,
-                weaponView.transform.rotation);
+            
+            var vfx = VFXController.Instance.PlayEffect(weaponView.Weapon.VFXGameObject, transform.position + new Vector3(0,2,0),
+                weaponView.Weapon.VFXGameObject.transform.rotation);
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(weaponView.Weapon.hitSound, vfx);
 
@@ -178,6 +179,7 @@ public class UnitView : MonoBehaviour
         if (itemView == null || itemView.pickedUp || !_unit.CanPickUpItem(itemView.Item)) return;
         itemView.pickedUp = true;
         itemView.PickUp(Unit);
+        
         ItemFabric.Items.Remove(itemView.gameObject);
         
     }

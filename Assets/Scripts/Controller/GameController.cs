@@ -2,6 +2,7 @@
 
 namespace Controller
 {
+  
     public class GameController : MonoBehaviour
     {
         [SerializeField] private Data.Data data;

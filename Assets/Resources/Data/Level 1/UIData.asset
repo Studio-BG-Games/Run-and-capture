@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: UIData
   m_EditorClassIdentifier: 
   _objectsToSpawn:
-  - {fileID: 5336165614562949988, guid: b65a64902764f84428e8a07b071bad15, type: 3}
   - {fileID: 5296751824488078361, guid: 7305318dc10267546b643a42c7c21af3, type: 3}
   _canvas: {fileID: 3022236851805642197, guid: 682042d5dd3e7d94bbe2a67ec2c1245a, type: 3}
   joystickView: {fileID: 4385872142190176059, guid: 4df6913b39f4979429158c344680d83f, type: 3}

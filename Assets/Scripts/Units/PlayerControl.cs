@@ -27,7 +27,7 @@ namespace Chars
         private bool returnedMoveJoystick = false;
 
         private PlayerInventoryView _inventoryView;
-        private Item _itemToPlace;
+        private ItemContainer _itemToPlace;
         private HexCell _cellToPlace;
 
         private Unit chosenUnit;
@@ -54,12 +54,12 @@ namespace Chars
             _placeJoystick.OnTouchUp += UseAbility;
         }
 
-        private void AimPlaceItem(Unit unit, Item item)
+        private void AimPlaceItem(ItemContainer container)
         {
-            if (unit.IsBusy || !unit.IsAlive) return;
+            if (_unit.IsBusy || !_unit.IsAlive) return;
             _attackJoystick.gameObject.SetActive(false);
             _placeJoystick.gameObject.SetActive(true);
-            _itemToPlace = item;
+            _itemToPlace = container;
         }
 
         private void UseAbility()
@@ -72,30 +72,24 @@ namespace Chars
                 return;
             }
 
-            switch (_itemToPlace)
+            switch (_itemToPlace.Item)
             {
                 case Building building:
-                    _unitView.AimCanvas.SetActive(false);
-                    if (_cellToPlace == null)
-                    {
-                        return;
-                    }
-
-                    building.PlaceItem(_cellToPlace, _unit);
+                    building.PlaceItem(_itemToPlace);
                     break;
                 case CaptureAbility ability:
-                    ability.UseAbility(_unit);
+                    ability.UseAbility(_itemToPlace);
                     break;
                 case SpecialWeapon weapon:
-                    weapon.Fire(_unit);
+                    weapon.Fire(_itemToPlace);
                     break;
                 case SwitchingPlaces switchingPlaces:
-                    switchingPlaces.UseAbility(_unit, chosenUnit);
+                    switchingPlaces.UseAbility(_itemToPlace);
                     break;
             }
         }
 
-        private void PickUp(Item item)
+        private void PickUp(ItemContainer item)
         {
             _inventoryView.PickUpItem(item);
         }
@@ -137,17 +131,17 @@ namespace Chars
                 _aimCount = -1;
             }
 
-            switch (_itemToPlace)
+            switch (_itemToPlace.Item)
             {
                 case Building building:
                     if (_aimCount == -1)
                     {
                         _aimCount = 2;
-                        _unitView.AimCanvas.SetActive(false);
+                        _itemToPlace.DeAim();
                         return;
                     }
 
-                    _unitView.AimCanvas.SetActive(true);
+                    building.Aim(DirectionHelper.VectorToDirection(placeDir.normalized), _itemToPlace);
                     _cellToPlace = _unit.PlaceItemAim(DirectionHelper.VectorToDirection(placeDir.normalized));
                     _aimCount = 1;
                     break;
@@ -155,20 +149,21 @@ namespace Chars
                     if (_aimCount == -1)
                     {
                         _aimCount = 2;
-                        ability.DeAim();
+                        _itemToPlace.DeAim();
                         return;
                     }
-                    ability.Aim(DirectionHelper.VectorToDirection(placeDir.normalized), _unit);
+
+                    ability.Aim(DirectionHelper.VectorToDirection(placeDir.normalized), _itemToPlace);
                     _aimCount = 1;
                     break;
                 case SpecialWeapon weapon:
-                    weapon.Aim(DirectionHelper.VectorToDirection(placeDir.normalized), _unit);
+                    weapon.Aim(_itemToPlace, DirectionHelper.VectorToDirection(placeDir.normalized));
                     break;
                 case SwitchingPlaces switchingPlaces:
-                    switchingPlaces.Aim(placeDir.normalized, _unit, out var unit);
-                    if (unit != null)
+                    switchingPlaces.Aim(placeDir.normalized, _itemToPlace);
+                    if (_itemToPlace.Value != null)
                     {
-                        chosenUnit = unit;
+                        chosenUnit = _itemToPlace.Value;
                     }
                     break;
             }
@@ -187,21 +182,20 @@ namespace Chars
             if (_placeJoystick.gameObject.activeSelf)
             {
                 _placeJoystick.gameObject.SetActive(false);
-                switch (_itemToPlace)
+                switch (_itemToPlace.Item)
                 {
                     case CaptureAbility ability:
-                        ability.DeAim();
+                        _itemToPlace.DeAim();
                         break;
                     case Building building:
-                        _unitView.AimCanvas.SetActive(false);
+                        _itemToPlace.DeAim();
                         break;
                     case SpecialWeapon weapon:
-                        weapon.DeAim();
+                        _itemToPlace.DeAim();
                         break;
                     case SwitchingPlaces place:
-                        place.DeAim();
+                        _itemToPlace.DeAim();
                         break;
-                    
                 }
             }
 
