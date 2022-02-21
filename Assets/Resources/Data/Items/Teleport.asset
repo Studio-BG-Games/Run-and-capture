@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23a091c5733400f8f0092a4c0f33c6e, type: 3}
+  m_Name: Teleport
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 694c97e212d73f24a92ca102203ae8f5, type: 3}
+  type: 1
+  buildingPrefab: {fileID: 7481913607665562401, guid: 073f07e242c09fe4782bb22f9d7eec4e, type: 3}
+  isVisiting: 1
+  isPlacableOnAnotherColor: 1
+  isVisible: 0
+  aimCanvas: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}

@@ -15,20 +15,176 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 2800000, guid: 0298dfcb0756f534a9a125d510461c7a, type: 3}
+    - {fileID: 8021195855904498788, guid: 2f6d0540c8fd7bb46b356ff86962379c, type: 3}
+    - {fileID: 8483527721606052447, guid: fd7fc481b936cf84a90d2d01d83e9b06, type: 3}
+    - {fileID: 2800000, guid: 3b75368df991b164583e8cede390e24e, type: 3}
+    - {fileID: 442387583353148024, guid: 53959bc898e9a644daad0282881d596a, type: 3}
+    - {fileID: 730781534364879866, guid: 15620662117187f419d41032a4267445, type: 3}
+    - {fileID: 2800000, guid: 983242f4b4db7a841af48234cf0021b8, type: 3}
+    - {fileID: 2800000, guid: 1a76a79d5a83143479c76f4f37c4b896, type: 3}
+    - {fileID: 5732852186060375560, guid: 54d847a18c62f57479c53469d4398ceb, type: 3}
+    - {fileID: 7140011676602114744, guid: 6d9f179a27798c248b3c35df9139eb85, type: 3}
+    - {fileID: 2800000, guid: 779719648deedb4478ddebb3b81751ef, type: 3}
+    - {fileID: 1651852338557341938, guid: fa6c1fc3da7c8d24c85a88b00cf598d4, type: 3}
+    - {fileID: 4578021055421768374, guid: b2b879dd7ca552a408d4349691d2c8df, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
     - Name: colors
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[HexFiled.UnitColor, Assembly-CSharp],[HexFiled.CellColor,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[HexFiled.UnitColor,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: HexFiled.CellColor, Assembly-CSharp
+    - Name: _texture
+      Entry: 10
+      Data: 0
+    - Name: _vfxCellCapturePrefab
+      Entry: 10
+      Data: 1
+    - Name: _vfxDeathPrefab
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: HexFiled.CellColor, Assembly-CSharp
+    - Name: _texture
+      Entry: 10
+      Data: 3
+    - Name: _vfxCellCapturePrefab
+      Entry: 10
+      Data: 4
+    - Name: _vfxDeathPrefab
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: HexFiled.CellColor, Assembly-CSharp
+    - Name: _texture
+      Entry: 10
+      Data: 6
+    - Name: _vfxCellCapturePrefab
       Entry: 6
       Data: 
+    - Name: _vfxDeathPrefab
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: HexFiled.CellColor, Assembly-CSharp
+    - Name: _texture
+      Entry: 10
+      Data: 7
+    - Name: _vfxCellCapturePrefab
+      Entry: 10
+      Data: 8
+    - Name: _vfxDeathPrefab
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: HexFiled.CellColor, Assembly-CSharp
+    - Name: _texture
+      Entry: 10
+      Data: 10
+    - Name: _vfxCellCapturePrefab
+      Entry: 10
+      Data: 11
+    - Name: _vfxDeathPrefab
+      Entry: 10
+      Data: 12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   enviroment:
-  - {fileID: 6899111088767572749, guid: a25279a05a242784e943563e6f70bc65, type: 3}
-  - {fileID: 1926454186, guid: ef0170e70965e7f46a1a0d4edf4627a1, type: 3}
+  - {fileID: 2093571681047417097, guid: a25279a05a242784e943563e6f70bc65, type: 3}
+  - {fileID: 477555786330678482, guid: ef0170e70965e7f46a1a0d4edf4627a1, type: 3}
   buildings:
-  - {fileID: 788472192, guid: cc20e28cdf3e7104b99074add5dece53, type: 3}
+  - {fileID: 542122809178595921, guid: cc20e28cdf3e7104b99074add5dece53, type: 3}
   Field:
     cells:
     - x: 0
@@ -638,8 +794,8 @@ MonoBehaviour:
     height: 20
     width: 10
   isSimpleField: 0
-  width: 6
-  height: 6
+  width: 10
+  height: 20
   spawnFields: []
   levelPath: Assets/Resources/Maps\Level 1
   hexCaptureManaCost: 0

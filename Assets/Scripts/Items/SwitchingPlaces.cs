@@ -50,10 +50,7 @@ namespace Items
                 container.Value = hit.collider.gameObject.GetComponent<UnitView>().Unit;
             }
 
-            else
-            {
-                container.Value = null;
-            }
+            
 
             Debug.DrawRay(ray.origin,
                 ray.direction * hit.distance, UnityEngine.Color.red, 10f);

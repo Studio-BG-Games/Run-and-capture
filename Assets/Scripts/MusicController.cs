@@ -24,6 +24,8 @@ public class MusicController
 
     public void PlayAudioClip(AudioClip clip, GameObject source)
     {
+        if(clip == null)
+            return;
         _sources[source].clip = clip;
         _sources[source].volume = _data.Settings.sfxVolume;
         _sources[source].spatialBlend = 1f;

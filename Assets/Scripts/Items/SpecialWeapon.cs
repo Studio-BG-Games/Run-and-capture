@@ -2,6 +2,7 @@ using System;
 using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
+using Sirenix.OdinInspector;
 using Units;
 using UnityEngine;
 using Weapons;
@@ -14,7 +15,8 @@ namespace Items
     {
         [SerializeField] private Weapon _weapon;
         [SerializeField] private GameObject _aimGameObject;
-        [SerializeField] private float lifeTime;
+        [SerializeField] private bool isLifeByTime = true;
+        [SerializeField, ShowIf("isLifeByTime")] private float lifeTime;
         
 
 
@@ -47,17 +49,24 @@ namespace Items
             _weapon.objectToThrow.GetComponent<ISetUp>().SetUp(container.Unit);
             container.DeAim();
             var dir = DirectionHelper.DirectionTo(container.Unit.Instance.transform.position, cell.transform.position);
-            var ball = _weapon.Fire(container.Unit.Instance.transform, new Vector2(dir.x, dir.z), container.Unit);
             TimerHelper.Instance.StartTimer(() =>
             {
-                if(ball == null)
-                    return;
-                var vfx = VFXController.Instance.PlayEffect(_weapon.VFXGameObject, ball.transform.position, Quaternion.identity);
-                MusicController.Instance.AddAudioSource(vfx);
-                MusicController.Instance.PlayAudioClip(_weapon.hitSound, vfx);
-                ball.transform.DOKill();
-                Object.Destroy(ball);
-            }, lifeTime);
+                var ball = _weapon.Fire(container.Unit.Instance.transform, new Vector2(dir.x, dir.z), container.Unit);
+                if (isLifeByTime)
+                {
+                    TimerHelper.Instance.StartTimer(() =>
+                    {
+                        if (ball == null)
+                            return;
+                        var vfx = VFXController.Instance.PlayEffect(_weapon.VFXGameObject, ball.transform.position,
+                            Quaternion.identity);
+                        MusicController.Instance.AddAudioSource(vfx);
+                        MusicController.Instance.PlayAudioClip(_weapon.hitSound, vfx);
+                        ball.transform.DOKill();
+                        Object.Destroy(ball);
+                    }, lifeTime);
+                }
+            }, 0.1f);
             
         }
     }

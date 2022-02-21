@@ -19,6 +19,7 @@ public class ToolBarController : MonoBehaviour, IEndDragHandler
     
     private ScrollRect scrollRect;
     private int currentMenu;
+    private static readonly int IsSelected = Animator.StringToHash("IsSelected");
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class ToolBarController : MonoBehaviour, IEndDragHandler
             buttons[i++].onClick.AddListener(delegate { ScrollToMenu(con); });
         });
 
-
+        scrollRect.content.DOLocalMove(Vector3.zero, 0f);
         buttons[startPage].Select();
         buttons[startPage].onClick.Invoke();
         scrollRect.onValueChanged.AddListener(FixedScroll);
@@ -47,18 +48,22 @@ public class ToolBarController : MonoBehaviour, IEndDragHandler
         );
 
         scrollRect.content.DOLocalMove(result, duration).SetEase(ease);
+        if(buttons[currentMenu].gameObject.TryGetComponent(typeof(Animator), out var animator))
+            ((Animator)animator).SetBool("IsSelected", true);
         
     }
 
     private void FixedScroll(Vector2 vector2)
     {
         var step = 1f / (buttons.Count - 1);
+        
         currentMenu = (int)Math.Round(vector2.x / step);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        buttons[currentMenu].Select();
+        if(buttons[currentMenu].gameObject.TryGetComponent(typeof(Animator), out var animator))
+            ((Animator)animator).SetBool("IsSelected", true);
         ScrollToMenu(content[currentMenu]);
     }
 }

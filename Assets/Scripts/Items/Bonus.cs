@@ -11,7 +11,8 @@ namespace Items
         Defence,
         Heal,
         Magnet,
-        Mana
+        Mana,
+        Invisible
     }
 
     [CreateAssetMenu(fileName = "BonusItem", menuName = "Item/Bonus")]

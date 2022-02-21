@@ -14,6 +14,9 @@ namespace Data
         [SerializeField] private BarCanvas playerBarCanvas;
         [SerializeField] private BarCanvas botBarCanvas;
         [SerializeField] private GameObject attackAimCanvas;
+        
+
+       
 
         public GameObject AttackAimCanvas => attackAimCanvas;
 
@@ -36,5 +39,6 @@ namespace Data
         public int maxMana;
         public int maxHP;
         public int inventoryCapacity;
+        public Material InvisibleMaterial;
     }
 }

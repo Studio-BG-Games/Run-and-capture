@@ -67,18 +67,16 @@ namespace AI
             List<(float dist, Unit unit)> res = new List<(float, Unit)>();
             try
             {
-                foreach (var color in (UnitColor[])Enum.GetValues(typeof(UnitColor)))
-                {
-                    if (HexManager.UnitCurrentCell.ContainsKey(color) &&
-                        HexManager.UnitCurrentCell[color] != (null, null) &&
+                res.AddRange(from color in (UnitColor[])Enum.GetValues(typeof(UnitColor))
+                    where HexManager.UnitCurrentCell.ContainsKey(color) &&
+                          HexManager.UnitCurrentCell[color].unit.IsVisible &&
+                          HexManager.UnitCurrentCell[color] != (null, null) &&
+                          Vector3.Distance(HexManager.UnitCurrentCell[color].unit.Instance.transform.position,
+                              agent.Instance.transform.position) <= cellDist * HexGrid.HexDistance &&
+                          HexManager.UnitCurrentCell[color].unit.Color != agent.Color
+                    select (
                         Vector3.Distance(HexManager.UnitCurrentCell[color].unit.Instance.transform.position,
-                            agent.Instance.transform.position) <= cellDist * HexGrid.HexDistance
-                        && HexManager.UnitCurrentCell[color].unit.Color != agent.Color)
-                    {
-                        res.Add((Vector3.Distance(HexManager.UnitCurrentCell[color].unit.Instance.transform.position,
                             agent.Instance.transform.position), HexManager.UnitCurrentCell[color].unit));
-                    }
-                }
 
                 return res.Count > 0 ? res.OrderBy(x => x.Item1).First().unit : null;
             }

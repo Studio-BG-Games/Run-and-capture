@@ -104,6 +104,8 @@ MonoBehaviour:
   instanceDamage: 10
   timingDamage: 5
   time: 3
+  catchVfx: {fileID: 4559892431364156953, guid: cab1e68c0278a704ab28851408bdf6b9, type: 3}
+  destroed: {fileID: 7441209224152470803, guid: 111ad7b6e169d4546b40e187528fc1cf, type: 3}
 --- !u!1001 &5507685542420688607
 PrefabInstance:
   m_ObjectHideFlags: 0

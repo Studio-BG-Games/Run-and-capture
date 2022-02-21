@@ -1,0 +1,1545 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1700d9ee2ab4d8e8ac1b551b7c93ce8, type: 3}
+  m_Name: FieldData
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 2800000, guid: 0298dfcb0756f534a9a125d510461c7a, type: 3}
+    - {fileID: 8021195855904498788, guid: 2f6d0540c8fd7bb46b356ff86962379c, type: 3}
+    - {fileID: 8483527721606052447, guid: fd7fc481b936cf84a90d2d01d83e9b06, type: 3}
+    - {fileID: 2800000, guid: 3b75368df991b164583e8cede390e24e, type: 3}
+    - {fileID: 442387583353148024, guid: 53959bc898e9a644daad0282881d596a, type: 3}
+    - {fileID: 730781534364879866, guid: 15620662117187f419d41032a4267445, type: 3}
+    - {fileID: 2800000, guid: 983242f4b4db7a841af48234cf0021b8, type: 3}
+    - {fileID: 2800000, guid: 1a76a79d5a83143479c76f4f37c4b896, type: 3}
+    - {fileID: 5732852186060375560, guid: 54d847a18c62f57479c53469d4398ceb, type: 3}
+    - {fileID: 7140011676602114744, guid: 6d9f179a27798c248b3c35df9139eb85, type: 3}
+    - {fileID: 2800000, guid: 779719648deedb4478ddebb3b81751ef, type: 3}
+    - {fileID: 1651852338557341938, guid: fa6c1fc3da7c8d24c85a88b00cf598d4, type: 3}
+    - {fileID: 4578021055421768374, guid: b2b879dd7ca552a408d4349691d2c8df, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: colors
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[HexFiled.UnitColor, Assembly-CSharp],[HexFiled.CellColor,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[HexFiled.UnitColor,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: HexFiled.CellColor, Assembly-CSharp
+    - Name: _texture
+      Entry: 10
+      Data: 0
+    - Name: _vfxCellCapturePrefab
+      Entry: 10
+      Data: 1
+    - Name: _vfxDeathPrefab
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: HexFiled.CellColor, Assembly-CSharp
+    - Name: _texture
+      Entry: 10
+      Data: 3
+    - Name: _vfxCellCapturePrefab
+      Entry: 10
+      Data: 4
+    - Name: _vfxDeathPrefab
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: HexFiled.CellColor, Assembly-CSharp
+    - Name: _texture
+      Entry: 10
+      Data: 6
+    - Name: _vfxCellCapturePrefab
+      Entry: 6
+      Data: 
+    - Name: _vfxDeathPrefab
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: HexFiled.CellColor, Assembly-CSharp
+    - Name: _texture
+      Entry: 10
+      Data: 7
+    - Name: _vfxCellCapturePrefab
+      Entry: 10
+      Data: 8
+    - Name: _vfxDeathPrefab
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: HexFiled.CellColor, Assembly-CSharp
+    - Name: _texture
+      Entry: 10
+      Data: 10
+    - Name: _vfxCellCapturePrefab
+      Entry: 10
+      Data: 11
+    - Name: _vfxDeathPrefab
+      Entry: 10
+      Data: 12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  enviroment:
+  - {fileID: 790838432, guid: 94a74912784c02b459dbdcbe279a8859, type: 3}
+  buildings:
+  - {fileID: 210294423, guid: 1a0c5bd8183313740a7314324db914fa, type: 3}
+  Field:
+    cells:
+    - x: 0
+      z: 0
+      i: 0
+      IsSpawnPos: 0
+    - x: 1
+      z: 0
+      i: 1
+      IsSpawnPos: 0
+    - x: 2
+      z: 0
+      i: 2
+      IsSpawnPos: 0
+    - x: 3
+      z: 0
+      i: 3
+      IsSpawnPos: 0
+    - x: 4
+      z: 0
+      i: 4
+      IsSpawnPos: 0
+    - x: 5
+      z: 0
+      i: 5
+      IsSpawnPos: 0
+    - x: 6
+      z: 0
+      i: 6
+      IsSpawnPos: 0
+    - x: 10
+      z: 0
+      i: 10
+      IsSpawnPos: 0
+    - x: 11
+      z: 0
+      i: 11
+      IsSpawnPos: 0
+    - x: 12
+      z: 0
+      i: 12
+      IsSpawnPos: 0
+    - x: 13
+      z: 0
+      i: 13
+      IsSpawnPos: 0
+    - x: 14
+      z: 0
+      i: 14
+      IsSpawnPos: 0
+    - x: 15
+      z: 0
+      i: 15
+      IsSpawnPos: 0
+    - x: 16
+      z: 0
+      i: 16
+      IsSpawnPos: 0
+    - x: 17
+      z: 0
+      i: 17
+      IsSpawnPos: 0
+    - x: 18
+      z: 0
+      i: 18
+      IsSpawnPos: 0
+    - x: 19
+      z: 0
+      i: 19
+      IsSpawnPos: 0
+    - x: 0
+      z: 1
+      i: 20
+      IsSpawnPos: 0
+    - x: 1
+      z: 1
+      i: 21
+      IsSpawnPos: 0
+    - x: 2
+      z: 1
+      i: 22
+      IsSpawnPos: 0
+    - x: 3
+      z: 1
+      i: 23
+      IsSpawnPos: 0
+    - x: 4
+      z: 1
+      i: 24
+      IsSpawnPos: 0
+    - x: 5
+      z: 1
+      i: 25
+      IsSpawnPos: 0
+    - x: 6
+      z: 1
+      i: 26
+      IsSpawnPos: 0
+    - x: 9
+      z: 1
+      i: 29
+      IsSpawnPos: 0
+    - x: 10
+      z: 1
+      i: 30
+      IsSpawnPos: 0
+    - x: 11
+      z: 1
+      i: 31
+      IsSpawnPos: 0
+    - x: 12
+      z: 1
+      i: 32
+      IsSpawnPos: 0
+    - x: 13
+      z: 1
+      i: 33
+      IsSpawnPos: 0
+    - x: 14
+      z: 1
+      i: 34
+      IsSpawnPos: 0
+    - x: 15
+      z: 1
+      i: 35
+      IsSpawnPos: 0
+    - x: 16
+      z: 1
+      i: 36
+      IsSpawnPos: 0
+    - x: 17
+      z: 1
+      i: 37
+      IsSpawnPos: 0
+    - x: 18
+      z: 1
+      i: 38
+      IsSpawnPos: 0
+    - x: 19
+      z: 1
+      i: 39
+      IsSpawnPos: 0
+    - x: 0
+      z: 2
+      i: 40
+      IsSpawnPos: 0
+    - x: 1
+      z: 2
+      i: 41
+      IsSpawnPos: 0
+    - x: 2
+      z: 2
+      i: 42
+      IsSpawnPos: 1
+    - x: 3
+      z: 2
+      i: 43
+      IsSpawnPos: 0
+    - x: 4
+      z: 2
+      i: 44
+      IsSpawnPos: 0
+    - x: 5
+      z: 2
+      i: 45
+      IsSpawnPos: 0
+    - x: 6
+      z: 2
+      i: 46
+      IsSpawnPos: 0
+    - x: 7
+      z: 2
+      i: 47
+      IsSpawnPos: 0
+    - x: 10
+      z: 2
+      i: 50
+      IsSpawnPos: 0
+    - x: 11
+      z: 2
+      i: 51
+      IsSpawnPos: 0
+    - x: 12
+      z: 2
+      i: 52
+      IsSpawnPos: 0
+    - x: 13
+      z: 2
+      i: 53
+      IsSpawnPos: 0
+    - x: 14
+      z: 2
+      i: 54
+      IsSpawnPos: 0
+    - x: 15
+      z: 2
+      i: 55
+      IsSpawnPos: 0
+    - x: 16
+      z: 2
+      i: 56
+      IsSpawnPos: 0
+    - x: 17
+      z: 2
+      i: 57
+      IsSpawnPos: 0
+    - x: 18
+      z: 2
+      i: 58
+      IsSpawnPos: 1
+    - x: 19
+      z: 2
+      i: 59
+      IsSpawnPos: 0
+    - x: 0
+      z: 3
+      i: 60
+      IsSpawnPos: 0
+    - x: 1
+      z: 3
+      i: 61
+      IsSpawnPos: 0
+    - x: 2
+      z: 3
+      i: 62
+      IsSpawnPos: 0
+    - x: 3
+      z: 3
+      i: 63
+      IsSpawnPos: 0
+    - x: 4
+      z: 3
+      i: 64
+      IsSpawnPos: 0
+    - x: 5
+      z: 3
+      i: 65
+      IsSpawnPos: 0
+    - x: 6
+      z: 3
+      i: 66
+      IsSpawnPos: 0
+    - x: 7
+      z: 3
+      i: 67
+      IsSpawnPos: 0
+    - x: 10
+      z: 3
+      i: 70
+      IsSpawnPos: 0
+    - x: 11
+      z: 3
+      i: 71
+      IsSpawnPos: 0
+    - x: 12
+      z: 3
+      i: 72
+      IsSpawnPos: 0
+    - x: 13
+      z: 3
+      i: 73
+      IsSpawnPos: 0
+    - x: 14
+      z: 3
+      i: 74
+      IsSpawnPos: 0
+    - x: 15
+      z: 3
+      i: 75
+      IsSpawnPos: 0
+    - x: 16
+      z: 3
+      i: 76
+      IsSpawnPos: 0
+    - x: 17
+      z: 3
+      i: 77
+      IsSpawnPos: 0
+    - x: 18
+      z: 3
+      i: 78
+      IsSpawnPos: 0
+    - x: 19
+      z: 3
+      i: 79
+      IsSpawnPos: 0
+    - x: 0
+      z: 4
+      i: 80
+      IsSpawnPos: 0
+    - x: 1
+      z: 4
+      i: 81
+      IsSpawnPos: 0
+    - x: 2
+      z: 4
+      i: 82
+      IsSpawnPos: 0
+    - x: 3
+      z: 4
+      i: 83
+      IsSpawnPos: 0
+    - x: 4
+      z: 4
+      i: 84
+      IsSpawnPos: 0
+    - x: 5
+      z: 4
+      i: 85
+      IsSpawnPos: 0
+    - x: 11
+      z: 4
+      i: 91
+      IsSpawnPos: 0
+    - x: 12
+      z: 4
+      i: 92
+      IsSpawnPos: 0
+    - x: 13
+      z: 4
+      i: 93
+      IsSpawnPos: 0
+    - x: 14
+      z: 4
+      i: 94
+      IsSpawnPos: 0
+    - x: 15
+      z: 4
+      i: 95
+      IsSpawnPos: 0
+    - x: 16
+      z: 4
+      i: 96
+      IsSpawnPos: 0
+    - x: 17
+      z: 4
+      i: 97
+      IsSpawnPos: 0
+    - x: 18
+      z: 4
+      i: 98
+      IsSpawnPos: 0
+    - x: 19
+      z: 4
+      i: 99
+      IsSpawnPos: 0
+    - x: 0
+      z: 5
+      i: 100
+      IsSpawnPos: 0
+    - x: 1
+      z: 5
+      i: 101
+      IsSpawnPos: 0
+    - x: 2
+      z: 5
+      i: 102
+      IsSpawnPos: 0
+    - x: 11
+      z: 5
+      i: 111
+      IsSpawnPos: 0
+    - x: 12
+      z: 5
+      i: 112
+      IsSpawnPos: 0
+    - x: 13
+      z: 5
+      i: 113
+      IsSpawnPos: 0
+    - x: 14
+      z: 5
+      i: 114
+      IsSpawnPos: 0
+    - x: 15
+      z: 5
+      i: 115
+      IsSpawnPos: 0
+    - x: 16
+      z: 5
+      i: 116
+      IsSpawnPos: 0
+    - x: 17
+      z: 5
+      i: 117
+      IsSpawnPos: 0
+    - x: 18
+      z: 5
+      i: 118
+      IsSpawnPos: 0
+    - x: 19
+      z: 5
+      i: 119
+      IsSpawnPos: 0
+    - x: 0
+      z: 6
+      i: 120
+      IsSpawnPos: 0
+    - x: 12
+      z: 6
+      i: 132
+      IsSpawnPos: 0
+    - x: 13
+      z: 6
+      i: 133
+      IsSpawnPos: 0
+    - x: 14
+      z: 6
+      i: 134
+      IsSpawnPos: 0
+    - x: 15
+      z: 6
+      i: 135
+      IsSpawnPos: 0
+    - x: 16
+      z: 6
+      i: 136
+      IsSpawnPos: 0
+    - x: 17
+      z: 6
+      i: 137
+      IsSpawnPos: 0
+    - x: 18
+      z: 6
+      i: 138
+      IsSpawnPos: 0
+    - x: 19
+      z: 6
+      i: 139
+      IsSpawnPos: 0
+    - x: 3
+      z: 7
+      i: 143
+      IsSpawnPos: 0
+    - x: 4
+      z: 7
+      i: 144
+      IsSpawnPos: 0
+    - x: 12
+      z: 7
+      i: 152
+      IsSpawnPos: 0
+    - x: 13
+      z: 7
+      i: 153
+      IsSpawnPos: 0
+    - x: 14
+      z: 7
+      i: 154
+      IsSpawnPos: 0
+    - x: 15
+      z: 7
+      i: 155
+      IsSpawnPos: 0
+    - x: 16
+      z: 7
+      i: 156
+      IsSpawnPos: 0
+    - x: 17
+      z: 7
+      i: 157
+      IsSpawnPos: 0
+    - x: 18
+      z: 7
+      i: 158
+      IsSpawnPos: 0
+    - x: 19
+      z: 7
+      i: 159
+      IsSpawnPos: 0
+    - x: 1
+      z: 8
+      i: 161
+      IsSpawnPos: 0
+    - x: 2
+      z: 8
+      i: 162
+      IsSpawnPos: 0
+    - x: 3
+      z: 8
+      i: 163
+      IsSpawnPos: 0
+    - x: 4
+      z: 8
+      i: 164
+      IsSpawnPos: 0
+    - x: 5
+      z: 8
+      i: 165
+      IsSpawnPos: 0
+    - x: 13
+      z: 8
+      i: 173
+      IsSpawnPos: 0
+    - x: 14
+      z: 8
+      i: 174
+      IsSpawnPos: 0
+    - x: 15
+      z: 8
+      i: 175
+      IsSpawnPos: 0
+    - x: 16
+      z: 8
+      i: 176
+      IsSpawnPos: 0
+    - x: 17
+      z: 8
+      i: 177
+      IsSpawnPos: 0
+    - x: 18
+      z: 8
+      i: 178
+      IsSpawnPos: 0
+    - x: 19
+      z: 8
+      i: 179
+      IsSpawnPos: 0
+    - x: 0
+      z: 9
+      i: 180
+      IsSpawnPos: 0
+    - x: 1
+      z: 9
+      i: 181
+      IsSpawnPos: 0
+    - x: 2
+      z: 9
+      i: 182
+      IsSpawnPos: 0
+    - x: 3
+      z: 9
+      i: 183
+      IsSpawnPos: 0
+    - x: 4
+      z: 9
+      i: 184
+      IsSpawnPos: 0
+    - x: 5
+      z: 9
+      i: 185
+      IsSpawnPos: 0
+    - x: 12
+      z: 9
+      i: 192
+      IsSpawnPos: 0
+    - x: 13
+      z: 9
+      i: 193
+      IsSpawnPos: 0
+    - x: 14
+      z: 9
+      i: 194
+      IsSpawnPos: 0
+    - x: 15
+      z: 9
+      i: 195
+      IsSpawnPos: 0
+    - x: 16
+      z: 9
+      i: 196
+      IsSpawnPos: 0
+    - x: 17
+      z: 9
+      i: 197
+      IsSpawnPos: 0
+    - x: 18
+      z: 9
+      i: 198
+      IsSpawnPos: 0
+    - x: 19
+      z: 9
+      i: 199
+      IsSpawnPos: 0
+    - x: 0
+      z: 10
+      i: 200
+      IsSpawnPos: 0
+    - x: 1
+      z: 10
+      i: 201
+      IsSpawnPos: 0
+    - x: 2
+      z: 10
+      i: 202
+      IsSpawnPos: 0
+    - x: 3
+      z: 10
+      i: 203
+      IsSpawnPos: 0
+    - x: 4
+      z: 10
+      i: 204
+      IsSpawnPos: 0
+    - x: 5
+      z: 10
+      i: 205
+      IsSpawnPos: 0
+    - x: 6
+      z: 10
+      i: 206
+      IsSpawnPos: 0
+    - x: 11
+      z: 10
+      i: 211
+      IsSpawnPos: 0
+    - x: 12
+      z: 10
+      i: 212
+      IsSpawnPos: 0
+    - x: 13
+      z: 10
+      i: 213
+      IsSpawnPos: 0
+    - x: 14
+      z: 10
+      i: 214
+      IsSpawnPos: 0
+    - x: 15
+      z: 10
+      i: 215
+      IsSpawnPos: 0
+    - x: 16
+      z: 10
+      i: 216
+      IsSpawnPos: 0
+    - x: 17
+      z: 10
+      i: 217
+      IsSpawnPos: 0
+    - x: 18
+      z: 10
+      i: 218
+      IsSpawnPos: 0
+    - x: 19
+      z: 10
+      i: 219
+      IsSpawnPos: 0
+    - x: 0
+      z: 11
+      i: 220
+      IsSpawnPos: 0
+    - x: 1
+      z: 11
+      i: 221
+      IsSpawnPos: 0
+    - x: 2
+      z: 11
+      i: 222
+      IsSpawnPos: 0
+    - x: 3
+      z: 11
+      i: 223
+      IsSpawnPos: 0
+    - x: 4
+      z: 11
+      i: 224
+      IsSpawnPos: 0
+    - x: 5
+      z: 11
+      i: 225
+      IsSpawnPos: 0
+    - x: 9
+      z: 11
+      i: 229
+      IsSpawnPos: 0
+    - x: 10
+      z: 11
+      i: 230
+      IsSpawnPos: 0
+    - x: 11
+      z: 11
+      i: 231
+      IsSpawnPos: 0
+    - x: 12
+      z: 11
+      i: 232
+      IsSpawnPos: 0
+    - x: 13
+      z: 11
+      i: 233
+      IsSpawnPos: 0
+    - x: 14
+      z: 11
+      i: 234
+      IsSpawnPos: 0
+    - x: 15
+      z: 11
+      i: 235
+      IsSpawnPos: 0
+    - x: 16
+      z: 11
+      i: 236
+      IsSpawnPos: 0
+    - x: 17
+      z: 11
+      i: 237
+      IsSpawnPos: 0
+    - x: 18
+      z: 11
+      i: 238
+      IsSpawnPos: 0
+    - x: 19
+      z: 11
+      i: 239
+      IsSpawnPos: 0
+    - x: 0
+      z: 12
+      i: 240
+      IsSpawnPos: 0
+    - x: 1
+      z: 12
+      i: 241
+      IsSpawnPos: 0
+    - x: 2
+      z: 12
+      i: 242
+      IsSpawnPos: 0
+    - x: 3
+      z: 12
+      i: 243
+      IsSpawnPos: 0
+    - x: 4
+      z: 12
+      i: 244
+      IsSpawnPos: 0
+    - x: 5
+      z: 12
+      i: 245
+      IsSpawnPos: 0
+    - x: 6
+      z: 12
+      i: 246
+      IsSpawnPos: 0
+    - x: 7
+      z: 12
+      i: 247
+      IsSpawnPos: 0
+    - x: 8
+      z: 12
+      i: 248
+      IsSpawnPos: 0
+    - x: 9
+      z: 12
+      i: 249
+      IsSpawnPos: 0
+    - x: 10
+      z: 12
+      i: 250
+      IsSpawnPos: 0
+    - x: 11
+      z: 12
+      i: 251
+      IsSpawnPos: 0
+    - x: 12
+      z: 12
+      i: 252
+      IsSpawnPos: 0
+    - x: 13
+      z: 12
+      i: 253
+      IsSpawnPos: 0
+    - x: 14
+      z: 12
+      i: 254
+      IsSpawnPos: 0
+    - x: 15
+      z: 12
+      i: 255
+      IsSpawnPos: 0
+    - x: 16
+      z: 12
+      i: 256
+      IsSpawnPos: 0
+    - x: 17
+      z: 12
+      i: 257
+      IsSpawnPos: 0
+    - x: 18
+      z: 12
+      i: 258
+      IsSpawnPos: 0
+    - x: 19
+      z: 12
+      i: 259
+      IsSpawnPos: 0
+    - x: 0
+      z: 13
+      i: 260
+      IsSpawnPos: 0
+    - x: 1
+      z: 13
+      i: 261
+      IsSpawnPos: 0
+    - x: 2
+      z: 13
+      i: 262
+      IsSpawnPos: 0
+    - x: 3
+      z: 13
+      i: 263
+      IsSpawnPos: 0
+    - x: 4
+      z: 13
+      i: 264
+      IsSpawnPos: 0
+    - x: 5
+      z: 13
+      i: 265
+      IsSpawnPos: 0
+    - x: 6
+      z: 13
+      i: 266
+      IsSpawnPos: 0
+    - x: 7
+      z: 13
+      i: 267
+      IsSpawnPos: 0
+    - x: 8
+      z: 13
+      i: 268
+      IsSpawnPos: 0
+    - x: 9
+      z: 13
+      i: 269
+      IsSpawnPos: 0
+    - x: 10
+      z: 13
+      i: 270
+      IsSpawnPos: 0
+    - x: 11
+      z: 13
+      i: 271
+      IsSpawnPos: 0
+    - x: 12
+      z: 13
+      i: 272
+      IsSpawnPos: 0
+    - x: 13
+      z: 13
+      i: 273
+      IsSpawnPos: 0
+    - x: 14
+      z: 13
+      i: 274
+      IsSpawnPos: 0
+    - x: 15
+      z: 13
+      i: 275
+      IsSpawnPos: 0
+    - x: 16
+      z: 13
+      i: 276
+      IsSpawnPos: 0
+    - x: 17
+      z: 13
+      i: 277
+      IsSpawnPos: 0
+    - x: 18
+      z: 13
+      i: 278
+      IsSpawnPos: 0
+    - x: 19
+      z: 13
+      i: 279
+      IsSpawnPos: 0
+    - x: 0
+      z: 14
+      i: 280
+      IsSpawnPos: 0
+    - x: 1
+      z: 14
+      i: 281
+      IsSpawnPos: 0
+    - x: 2
+      z: 14
+      i: 282
+      IsSpawnPos: 0
+    - x: 3
+      z: 14
+      i: 283
+      IsSpawnPos: 0
+    - x: 4
+      z: 14
+      i: 284
+      IsSpawnPos: 0
+    - x: 5
+      z: 14
+      i: 285
+      IsSpawnPos: 0
+    - x: 6
+      z: 14
+      i: 286
+      IsSpawnPos: 0
+    - x: 7
+      z: 14
+      i: 287
+      IsSpawnPos: 0
+    - x: 8
+      z: 14
+      i: 288
+      IsSpawnPos: 0
+    - x: 9
+      z: 14
+      i: 289
+      IsSpawnPos: 0
+    - x: 10
+      z: 14
+      i: 290
+      IsSpawnPos: 0
+    - x: 11
+      z: 14
+      i: 291
+      IsSpawnPos: 0
+    - x: 12
+      z: 14
+      i: 292
+      IsSpawnPos: 0
+    - x: 13
+      z: 14
+      i: 293
+      IsSpawnPos: 0
+    - x: 14
+      z: 14
+      i: 294
+      IsSpawnPos: 0
+    - x: 15
+      z: 14
+      i: 295
+      IsSpawnPos: 0
+    - x: 16
+      z: 14
+      i: 296
+      IsSpawnPos: 0
+    - x: 17
+      z: 14
+      i: 297
+      IsSpawnPos: 0
+    - x: 18
+      z: 14
+      i: 298
+      IsSpawnPos: 0
+    - x: 19
+      z: 14
+      i: 299
+      IsSpawnPos: 0
+    - x: 0
+      z: 15
+      i: 300
+      IsSpawnPos: 0
+    - x: 1
+      z: 15
+      i: 301
+      IsSpawnPos: 0
+    - x: 2
+      z: 15
+      i: 302
+      IsSpawnPos: 0
+    - x: 3
+      z: 15
+      i: 303
+      IsSpawnPos: 0
+    - x: 4
+      z: 15
+      i: 304
+      IsSpawnPos: 0
+    - x: 5
+      z: 15
+      i: 305
+      IsSpawnPos: 0
+    - x: 6
+      z: 15
+      i: 306
+      IsSpawnPos: 0
+    - x: 7
+      z: 15
+      i: 307
+      IsSpawnPos: 0
+    - x: 8
+      z: 15
+      i: 308
+      IsSpawnPos: 0
+    - x: 9
+      z: 15
+      i: 309
+      IsSpawnPos: 0
+    - x: 10
+      z: 15
+      i: 310
+      IsSpawnPos: 0
+    - x: 11
+      z: 15
+      i: 311
+      IsSpawnPos: 0
+    - x: 12
+      z: 15
+      i: 312
+      IsSpawnPos: 0
+    - x: 13
+      z: 15
+      i: 313
+      IsSpawnPos: 0
+    - x: 14
+      z: 15
+      i: 314
+      IsSpawnPos: 0
+    - x: 15
+      z: 15
+      i: 315
+      IsSpawnPos: 0
+    - x: 16
+      z: 15
+      i: 316
+      IsSpawnPos: 0
+    - x: 17
+      z: 15
+      i: 317
+      IsSpawnPos: 0
+    - x: 18
+      z: 15
+      i: 318
+      IsSpawnPos: 0
+    - x: 19
+      z: 15
+      i: 319
+      IsSpawnPos: 0
+    - x: 0
+      z: 16
+      i: 320
+      IsSpawnPos: 0
+    - x: 1
+      z: 16
+      i: 321
+      IsSpawnPos: 0
+    - x: 2
+      z: 16
+      i: 322
+      IsSpawnPos: 0
+    - x: 3
+      z: 16
+      i: 323
+      IsSpawnPos: 0
+    - x: 4
+      z: 16
+      i: 324
+      IsSpawnPos: 0
+    - x: 5
+      z: 16
+      i: 325
+      IsSpawnPos: 0
+    - x: 6
+      z: 16
+      i: 326
+      IsSpawnPos: 0
+    - x: 7
+      z: 16
+      i: 327
+      IsSpawnPos: 0
+    - x: 8
+      z: 16
+      i: 328
+      IsSpawnPos: 0
+    - x: 9
+      z: 16
+      i: 329
+      IsSpawnPos: 0
+    - x: 10
+      z: 16
+      i: 330
+      IsSpawnPos: 0
+    - x: 11
+      z: 16
+      i: 331
+      IsSpawnPos: 0
+    - x: 12
+      z: 16
+      i: 332
+      IsSpawnPos: 0
+    - x: 13
+      z: 16
+      i: 333
+      IsSpawnPos: 0
+    - x: 14
+      z: 16
+      i: 334
+      IsSpawnPos: 0
+    - x: 15
+      z: 16
+      i: 335
+      IsSpawnPos: 0
+    - x: 16
+      z: 16
+      i: 336
+      IsSpawnPos: 0
+    - x: 17
+      z: 16
+      i: 337
+      IsSpawnPos: 0
+    - x: 18
+      z: 16
+      i: 338
+      IsSpawnPos: 0
+    - x: 19
+      z: 16
+      i: 339
+      IsSpawnPos: 0
+    - x: 0
+      z: 17
+      i: 340
+      IsSpawnPos: 0
+    - x: 1
+      z: 17
+      i: 341
+      IsSpawnPos: 1
+    - x: 2
+      z: 17
+      i: 342
+      IsSpawnPos: 0
+    - x: 3
+      z: 17
+      i: 343
+      IsSpawnPos: 0
+    - x: 4
+      z: 17
+      i: 344
+      IsSpawnPos: 0
+    - x: 5
+      z: 17
+      i: 345
+      IsSpawnPos: 0
+    - x: 6
+      z: 17
+      i: 346
+      IsSpawnPos: 0
+    - x: 7
+      z: 17
+      i: 347
+      IsSpawnPos: 0
+    - x: 8
+      z: 17
+      i: 348
+      IsSpawnPos: 0
+    - x: 9
+      z: 17
+      i: 349
+      IsSpawnPos: 0
+    - x: 10
+      z: 17
+      i: 350
+      IsSpawnPos: 0
+    - x: 11
+      z: 17
+      i: 351
+      IsSpawnPos: 0
+    - x: 12
+      z: 17
+      i: 352
+      IsSpawnPos: 0
+    - x: 13
+      z: 17
+      i: 353
+      IsSpawnPos: 0
+    - x: 14
+      z: 17
+      i: 354
+      IsSpawnPos: 0
+    - x: 15
+      z: 17
+      i: 355
+      IsSpawnPos: 0
+    - x: 16
+      z: 17
+      i: 356
+      IsSpawnPos: 0
+    - x: 17
+      z: 17
+      i: 357
+      IsSpawnPos: 1
+    - x: 18
+      z: 17
+      i: 358
+      IsSpawnPos: 0
+    - x: 19
+      z: 17
+      i: 359
+      IsSpawnPos: 0
+    - x: 0
+      z: 18
+      i: 360
+      IsSpawnPos: 0
+    - x: 1
+      z: 18
+      i: 361
+      IsSpawnPos: 0
+    - x: 2
+      z: 18
+      i: 362
+      IsSpawnPos: 0
+    - x: 3
+      z: 18
+      i: 363
+      IsSpawnPos: 0
+    - x: 4
+      z: 18
+      i: 364
+      IsSpawnPos: 0
+    - x: 5
+      z: 18
+      i: 365
+      IsSpawnPos: 0
+    - x: 6
+      z: 18
+      i: 366
+      IsSpawnPos: 0
+    - x: 7
+      z: 18
+      i: 367
+      IsSpawnPos: 0
+    - x: 8
+      z: 18
+      i: 368
+      IsSpawnPos: 0
+    - x: 9
+      z: 18
+      i: 369
+      IsSpawnPos: 0
+    - x: 10
+      z: 18
+      i: 370
+      IsSpawnPos: 0
+    - x: 11
+      z: 18
+      i: 371
+      IsSpawnPos: 0
+    - x: 12
+      z: 18
+      i: 372
+      IsSpawnPos: 0
+    - x: 13
+      z: 18
+      i: 373
+      IsSpawnPos: 0
+    - x: 14
+      z: 18
+      i: 374
+      IsSpawnPos: 0
+    - x: 15
+      z: 18
+      i: 375
+      IsSpawnPos: 0
+    - x: 16
+      z: 18
+      i: 376
+      IsSpawnPos: 0
+    - x: 17
+      z: 18
+      i: 377
+      IsSpawnPos: 0
+    - x: 18
+      z: 18
+      i: 378
+      IsSpawnPos: 0
+    - x: 19
+      z: 18
+      i: 379
+      IsSpawnPos: 0
+    - x: 0
+      z: 19
+      i: 380
+      IsSpawnPos: 0
+    - x: 1
+      z: 19
+      i: 381
+      IsSpawnPos: 0
+    - x: 2
+      z: 19
+      i: 382
+      IsSpawnPos: 0
+    - x: 3
+      z: 19
+      i: 383
+      IsSpawnPos: 0
+    - x: 4
+      z: 19
+      i: 384
+      IsSpawnPos: 0
+    - x: 5
+      z: 19
+      i: 385
+      IsSpawnPos: 0
+    - x: 6
+      z: 19
+      i: 386
+      IsSpawnPos: 0
+    - x: 7
+      z: 19
+      i: 387
+      IsSpawnPos: 0
+    - x: 8
+      z: 19
+      i: 388
+      IsSpawnPos: 0
+    - x: 9
+      z: 19
+      i: 389
+      IsSpawnPos: 0
+    - x: 10
+      z: 19
+      i: 390
+      IsSpawnPos: 0
+    - x: 11
+      z: 19
+      i: 391
+      IsSpawnPos: 0
+    - x: 12
+      z: 19
+      i: 392
+      IsSpawnPos: 0
+    - x: 13
+      z: 19
+      i: 393
+      IsSpawnPos: 0
+    - x: 14
+      z: 19
+      i: 394
+      IsSpawnPos: 0
+    - x: 15
+      z: 19
+      i: 395
+      IsSpawnPos: 0
+    - x: 16
+      z: 19
+      i: 396
+      IsSpawnPos: 0
+    - x: 17
+      z: 19
+      i: 397
+      IsSpawnPos: 0
+    - x: 18
+      z: 19
+      i: 398
+      IsSpawnPos: 0
+    - x: 19
+      z: 19
+      i: 399
+      IsSpawnPos: 0
+    height: 20
+    width: 20
+  isSimpleField: 0
+  width: 0
+  height: 0
+  spawnFields: []
+  levelPath: Assets/Resources/Maps\Level 3
+  hexCaptureManaCost: 0
+  hexHardCaptureManaCost: 0
+  hexHardCaptureTime: 0
+  cellPrefab: {fileID: 1661242500252451528, guid: bcea5b4a96735bd4b936f8f3fefcc688, type: 3}
+  cellLabelPrefab: {fileID: 3836123284387241147, guid: efd47cbd22ddfee4aa2b1391914116fc, type: 3}
+  CoordinatesCanvas: {fileID: 4726489279989878083, guid: f31e0880dd078104bb31dc0fd7ef9f19, type: 3}

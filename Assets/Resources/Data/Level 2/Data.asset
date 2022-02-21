@@ -15,7 +15,7 @@ MonoBehaviour:
   levelName: Level 2
   fieldDataPath: FieldData
   cameraDataPath: CameraData
-  unitDataPath: UnitsData
+  unitDataPath: UnitData
   weaponDataPath: WeaponsData
   uiDataPath: UIData
   musicDataPath: MusicData

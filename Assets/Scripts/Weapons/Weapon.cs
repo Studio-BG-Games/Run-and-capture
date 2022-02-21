@@ -33,7 +33,7 @@ namespace Weapons
         public GameObject Fire(Transform start, Vector2 direction, Unit unit)
         {
             var ball = Object.Instantiate(objectToThrow,
-                start.forward + start.transform.position + new Vector3(0, 2),
+                start.forward + start.transform.position + new Vector3(0, 1),
                 start.rotation);
 
             MusicController.Instance.AddAudioSource(ball);
@@ -44,15 +44,19 @@ namespace Weapons
             Weapon tmpThis1 = this;
             localBall.transform.DOMove(new Vector3(direction.normalized.x,
                                            0, direction.normalized.y) * tmpThis.disnatce * HexGrid.HexDistance +
-                                       start.position + new Vector3(0, 2, 0), tmpThis.speed)
+                                       start.position + new Vector3(0, 1, 0), tmpThis.speed)
                 .SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
                     if(ball == null)
                         return;
                     var vfx = VFXController.Instance.PlayEffect(tmpThis1.VFXGameObject, ball.transform.position, Quaternion.identity);
-                    MusicController.Instance.AddAudioSource(vfx);
-                    MusicController.Instance.PlayAudioClip(tmpThis1.hitSound, vfx);
+                    if (vfx != null)
+                    {
+                        MusicController.Instance.AddAudioSource(vfx);
+                        MusicController.Instance.PlayAudioClip(tmpThis1.hitSound, vfx);
+                    }
+
                     ball.transform.DOKill();
                     Object.Destroy(ball);
                 });

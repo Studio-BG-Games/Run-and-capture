@@ -15,7 +15,7 @@ namespace Data
         private FieldData _fieldData;
         [SerializeField] private string cameraDataPath = "CameraData";
         private CameraData _cameraData;
-        [SerializeField] private string unitDataPath = "UnitsData";
+        [SerializeField] private string unitDataPath = "UnitData";
         private UnitData _unitData;
         [SerializeField] private string weaponDataPath = "WeaponsData";
         private WeaponsData _weaponData;
@@ -31,8 +31,7 @@ namespace Data
 
         private string pathToLevel => "Data/" + levelName + "/";
 
-        public Weapon ChosenWeapon =>
-            JsonUtility.FromJson<Weapon>(File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath));
+        public Weapon ChosenWeapon => WeaponsData.WeaponsList[int.Parse(File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath))];
 
         public AIData AIData
         {

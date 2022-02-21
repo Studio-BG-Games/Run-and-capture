@@ -7,6 +7,7 @@ using DG.Tweening;
 using HexFiled;
 using Items;
 using Items.ItemViews;
+using Sirenix.Utilities;
 using Units;
 using UnityEngine;
 using Weapons;
@@ -38,6 +39,7 @@ public class UnitView : MonoBehaviour
     private float _hardCaptureTime;
     private Action onSupperJump;
     private Coroutine _previousRegenCoroutine;
+    private List<Material> _materials;
 
     public BarCanvas BarCanvas => _barCanvas;
     public GameObject AimCanvas => _aimCanvas;
@@ -63,7 +65,7 @@ public class UnitView : MonoBehaviour
         Unit unit, float hardCaptureTime)
     {
         animActionDic = new Dictionary<string, Action> { { "SuperJump", onSupperJump } };
-        
+        _materials = new List<Material>();
         _weapon = weapon;
         _toReloadStack = new Stack<ShotUIView>();
         _startRegen = regenMana;
@@ -73,11 +75,45 @@ public class UnitView : MonoBehaviour
         _hardCaptureTime = hardCaptureTime;
     }
 
+    public void SetInvisible(bool isVisible)
+    {
+        var i = 0;
+        transform.GetChilds().ForEach(x =>
+        {
+            if (x.gameObject.TryGetComponent(typeof(SkinnedMeshRenderer), out var mesh))
+            {
+                if (!isVisible)
+                {
+                    _materials.Add(((SkinnedMeshRenderer)mesh).material);
+                    ((SkinnedMeshRenderer)mesh).material = _unit.Data.InvisibleMaterial;
+                }
+                else
+                {
+                    ((SkinnedMeshRenderer)mesh).material = _materials[i++];
+                }
+            }
+
+            if (x.gameObject.TryGetComponent(typeof(MeshRenderer), out var mesh1))
+            {
+                if(!isVisible)
+                {
+                    _materials.Add(((MeshRenderer)mesh1).material);
+                    ((MeshRenderer)mesh1).material = _unit.Data.InvisibleMaterial;
+                }
+                else
+                {
+                    ((MeshRenderer)mesh1).material = _materials[i++];
+                }
+            }
+        });
+    }
+
+
     public void HardCaptureHex(HexCell cell)
     {
         _unit.BarCanvas.CaptureBar.DOFillAmount(0f, 0);
         _barCanvas.CaptureBack.SetActive(true);
-        
+
         _unit.BarCanvas.CaptureBar.DOFillAmount(1f, _hardCaptureTime).SetEase(Ease.Linear).OnComplete(
             () =>
             {
@@ -85,16 +121,14 @@ public class UnitView : MonoBehaviour
                 _barCanvas.CaptureBack.SetActive(false);
                 MusicController.Instance.PlayRandomClip(MusicController.Instance.MusicData.SfxMusic.Captures,
                     cell.gameObject);
-               
             });
-        
     }
 
 
     public void StopHardCapture()
     {
         _barCanvas.CaptureBar.DOKill();
-        
+
         _barCanvas.CaptureBar.DOFillAmount(0f, 0f).SetEase(Ease.Linear);
         _unit.BarCanvas.CaptureBack.SetActive(false);
     }
@@ -158,11 +192,12 @@ public class UnitView : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         WeaponView weaponView = other.GetComponent<WeaponView>();
-        if (weaponView != null)
+        if (weaponView != null && weaponView.Unit.Color != _unit.Color)
         {
             OnHit?.Invoke(weaponView.Weapon.modifiedDamage);
-            
-            var vfx = VFXController.Instance.PlayEffect(weaponView.Weapon.VFXGameObject, transform.position + new Vector3(0,2,0),
+
+            var vfx = VFXController.Instance.PlayEffect(weaponView.Weapon.VFXGameObject,
+                transform.position + new Vector3(0, 2, 0),
                 weaponView.Weapon.VFXGameObject.transform.rotation);
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(weaponView.Weapon.hitSound, vfx);
@@ -175,13 +210,12 @@ public class UnitView : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         ItemView itemView = other.GetComponent<ItemView>();
-        
+
         if (itemView == null || itemView.pickedUp || !_unit.CanPickUpItem(itemView.Item)) return;
         itemView.pickedUp = true;
         itemView.PickUp(Unit);
-        
+
         ItemFabric.Items.Remove(itemView.gameObject);
-        
     }
 
     private IEnumerator Reload()

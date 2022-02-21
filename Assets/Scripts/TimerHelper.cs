@@ -25,7 +25,7 @@ namespace DefaultNamespace
         }
 
        [Button("Set Time Scale")]
-        public void SetTimerScale(float scale)
+       public void SetTimerScale(float scale)
         {
             Time.timeScale = scale;
         }

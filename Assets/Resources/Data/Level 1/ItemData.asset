@@ -33,6 +33,12 @@ MonoBehaviour:
     _spawnChance: 0.622
   - item: {fileID: 11400000, guid: e32a04374dd43c34b8d0449d54fa1f19, type: 2}
     _spawnChance: 0.476
+  - item: {fileID: 11400000, guid: 63154442db756104a887f7797e24f42f, type: 2}
+    _spawnChance: 0.506
+  - item: {fileID: 11400000, guid: cf46b0c03a539904fae123094041206f, type: 2}
+    _spawnChance: 0.573
+  - item: {fileID: 11400000, guid: 073f7f4384580be42afeb22b159aaa84, type: 2}
+    _spawnChance: 0.429
   - item: {fileID: 11400000, guid: 133e523fdd159754e8bf8927faec5b0f, type: 2}
     _spawnChance: 0.833
   - item: {fileID: 11400000, guid: 133e523fdd159754e8bf8927faec5b0f, type: 2}

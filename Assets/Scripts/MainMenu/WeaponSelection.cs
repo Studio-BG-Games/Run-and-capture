@@ -12,8 +12,7 @@ public class WeaponSelection : MonoBehaviour
     [SerializeField] private WeaponIcon weaponIcon;
     [SerializeField] private Transform grid;
     [SerializeField] private string dataFilePath;
-    [SerializeField] private ChosenWeapon chosenWeapon;
-    private Action<Weapon> changeStats;
+
     private List<Button> _buttons;
 
     private void Awake()
@@ -23,30 +22,33 @@ public class WeaponSelection : MonoBehaviour
         {
             FileStream stream = new FileStream(dataPah, FileMode.Create);
             using StreamWriter writer = new StreamWriter(stream);
-            writer.Write(JsonUtility.ToJson(data.WeaponsList[0]));
+            writer.Write("0");
         }
 
-        changeStats = chosenWeapon.ChangeChosenWeapon;
+       
         _buttons = new List<Button>();
-        data.WeaponsList.ForEach(x =>
+        
+        for (var i = 0; i < data.WeaponsList.Count - 1; i++)
         {
             var go = Instantiate(weaponIcon, grid);
-            var icon = Instantiate(x.icon, go.Icon.transform);
+            var icon = Instantiate(data.WeaponsList[i].icon, go.Icon.transform);
             icon.transform.localPosition = Vector3.zero;
-            go.DamageText.text = x.damage.ToString();
-            go.ReloadText.text = x.reloadTime.ToString();
-            go.ShotsCount.text = x.shots.ToString();
-            go.WeaponTitle.text = x.name;
-            go.Button.onClick.AddListener(() => ChoseWeapon(x));
+            go.DamageText.text = data.WeaponsList[i].damage.ToString();
+            go.ReloadText.text = data.WeaponsList[i].reloadTime.ToString();
+            go.ShotsCount.text = data.WeaponsList[i].shots.ToString();
+            go.WeaponTitle.text = data.WeaponsList[i].name;
+            go.Button.onClick.AddListener(() => ChoseWeapon(i));
             _buttons.Add(go.Button);
-        });
+        }
+        
+       
     }
 
-    private void ChoseWeapon(Weapon weapon)
+    private void ChoseWeapon(int i)
     {
         FileStream stream = new FileStream(Application.persistentDataPath + "/" + dataFilePath, FileMode.Create);
         using StreamWriter writer = new StreamWriter(stream);
-        writer.Write(JsonUtility.ToJson(weapon));
-        changeStats?.Invoke(weapon);
+        writer.Write($"{i}");
+        
     }
 }

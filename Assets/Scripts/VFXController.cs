@@ -28,6 +28,8 @@ namespace DefaultNamespace
         
         public GameObject PlayEffect(GameObject effect, Vector3 pos, Quaternion quaternion)
         {
+            if (effect == null)
+                return null;
             var obj = Object.Instantiate(effect, pos, quaternion);
             obj.AddComponent<VFXView>();
             return obj;

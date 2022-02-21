@@ -8,6 +8,7 @@ using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
 using Items;
+using Sirenix.Utilities;
 using UnityEngine;
 using Weapons;
 using Object = UnityEngine.Object;
@@ -69,6 +70,11 @@ namespace Units
         public bool IsPlayer => _data.isPlayer;
         public Animator Animator => _animator;
 
+        public bool IsVisible
+        {
+            get;
+            private set;
+        }
 
         public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
@@ -107,9 +113,24 @@ namespace Units
                     _isInfiniteMana = true;
                     TimerHelper.Instance.StartTimer(() =>  _isInfiniteMana = false, duration);
                     break;
+                case BonusType.Invisible:
+                    IsVisible = false;
+                    UnitView.SetInvisible(IsVisible);
+                    TimerHelper.Instance.StartTimer(() =>
+                    {
+                        IsVisible = true;
+                        UnitView.SetInvisible(IsVisible);
+                    }, duration);
+                    break;
                 default:
                     break;
             }
+        }
+
+        public void SetTimeScale(float scale)
+        {
+            _animator.speed = scale;
+           
         }
 
         public void Retreet(HexDirection dir)
@@ -254,7 +275,7 @@ namespace Units
             if (!IsAlive)
             {
                 _cell = spawnCell != null ? spawnCell : _hexGrid.GetCellFromCoord(hexCoordinates);
-
+                IsVisible = true;
                 _cell.PaintHex(_data.color, true);
                 _cell.GetListNeighbours().ForEach(x => { x?.PaintHex(Color, true); });
                 _inventory = new List<ItemContainer>();

@@ -16,4 +16,6 @@ MonoBehaviour:
   type: 0
   buildingPrefab: {fileID: 9125080148727291347, guid: 5663dbcf605325241b40bc2afd5b6647, type: 3}
   isVisiting: 1
+  isPlacableOnAnotherColor: 1
+  isVisible: 0
   aimCanvas: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}

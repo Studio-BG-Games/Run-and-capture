@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f9814b967541eeaf31ef497d721a87, type: 3}
   m_Name: AIData
   m_EditorClassIdentifier: 
-  _distanceToAgr: 0
-  _percentToRetreet: 0
-  _percentToUseProtectBonus: 0
-  _manaPercentToCollectBonus: 0
-  _distaceToCollectBonus: 0
+  _distanceToAgr: 5
+  _percentToRetreet: 0.203
+  _percentToUseProtectBonus: 0.353
+  _manaPercentToCollectBonus: 0.245
+  _distaceToCollectBonus: 3

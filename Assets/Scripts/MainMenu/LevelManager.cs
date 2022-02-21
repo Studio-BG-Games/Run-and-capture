@@ -1,18 +1,18 @@
-﻿using System;
-using DG.Tweening;
-using MainMenu;
+﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace DefaultNamespace
+namespace MainMenu
 {
     public class LevelManager : MonoBehaviour
     {
         [SerializeField] private LevelData _data;
-        [SerializeField] private Image LevelImage;
+        [SerializeField] private LevelView LevelImage;
         [SerializeField] private GameObject loadUI;
+        [SerializeField] private Transform parantLevelView;
+        [SerializeField] private ScrollerPage _scrollerPage;
         private int index = 0;
         private TMP_Text _percentText;
         private bool _isLoadingLevel = false;
@@ -23,42 +23,32 @@ namespace DefaultNamespace
         {
             loadUI.GetComponent<Image>().DOFade(0f, 0f);
             _curLevel = _data.Levels[0];
-            SetLevelImage();
+            _data.Levels.ForEach(level =>
+            {
+                var lev = Object.Instantiate(LevelImage, parantLevelView);
+                lev.LevelImage.sprite = level.levelSprite;
+            });
+            
+            _scrollerPage.Init();
+            _scrollerPage.OnLevelChanged += SelectLevel;
             _percentText = loadUI.GetComponentInChildren<TMP_Text>();
         }
 
-        public void NextLevel()
+
+        private void SelectLevel(int curentMenu)
         {
-            if (index + 1 < _data.Levels.Count)
-            {
-                _curLevel = _data.Levels[++index];
-                SetLevelImage();
-            }
+            _curLevel = _data.Levels[curentMenu];
         }
         
-        public void PrevLevel()
-        {
-            if (index - 1 >= 0)
-            {
-                _curLevel = _data.Levels[--index];
-                SetLevelImage();
-            }
-        }
-
-        private void SetLevelImage()
-        {
-            LevelImage.sprite = _curLevel.levelSprite;
-        }
-
         public void LoadLevel()
         {
             loadUI.SetActive(true);
-            loadUI.GetComponent<Image>().DOFade(1f, 0.3f).OnComplete( () =>
+            loadUI.GetComponent<Image>().DOFade(1f, 0.3f).OnComplete(() =>
             {
-                _isLoadingLevel = true;
                 _loadOpertion = SceneManager.LoadSceneAsync(_curLevel.sceneName);
+                _isLoadingLevel = true;
             }).SetEase(Ease.InQuad);
-            
+            Debug.Log(_curLevel.sceneName);
         }
 
         private void Update()
@@ -66,8 +56,8 @@ namespace DefaultNamespace
             if (_isLoadingLevel && !_loadOpertion.isDone)
             {
                 float progressValue = Mathf.Clamp01(_loadOpertion.progress / 0.9f);
-               
-                _percentText.text =  Mathf.Round(progressValue * 100) + " %";
+
+                _percentText.text = Mathf.Round(progressValue * 100) + " %";
             }
         }
     }
