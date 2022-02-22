@@ -261,7 +261,7 @@ namespace Units
                     case "Dead":
                         _animLength.Death = clip.length;
                         break;
-                    case "Super_Attack":
+                    case "SuperAttack":
                         _animLength.SuperJump = clip.length;
                         break;
                     default:
@@ -406,7 +406,6 @@ namespace Units
         private void Attacking()
         {
             Aim(_direction);
-
 
             _weapon.Fire(_instance.transform, _direction, this);
         }

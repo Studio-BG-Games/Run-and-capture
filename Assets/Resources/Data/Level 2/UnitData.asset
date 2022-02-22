@@ -14,16 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _units:
   - isPlayer: 0
-    isAI: 0
+    isAI: 1
     spawnPos:
       x: 19
       z: 4
     unitPrefa: {fileID: 7527582019267571087, guid: f102085e8bc4cad4992d43b84dee1055, type: 3}
     color: 3
     manaRegen: 10
-    maxMana: 100
+    maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4
+    InvisibleMaterial: {fileID: 0}
   - isPlayer: 1
     isAI: 0
     spawnPos:
@@ -35,8 +36,9 @@ MonoBehaviour:
     maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4
+    InvisibleMaterial: {fileID: 0}
   - isPlayer: 0
-    isAI: 0
+    isAI: 1
     spawnPos:
       x: -1
       z: 42
@@ -46,8 +48,9 @@ MonoBehaviour:
     maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4
+    InvisibleMaterial: {fileID: 0}
   - isPlayer: 0
-    isAI: 0
+    isAI: 1
     spawnPos:
       x: -17
       z: 40
@@ -57,6 +60,7 @@ MonoBehaviour:
     maxMana: 1000
     maxHP: 100
     inventoryCapacity: 4
+    InvisibleMaterial: {fileID: 0}
   playerBarCanvas: {fileID: 482855193181693567, guid: dec5dd0d644d5c548a53563e65837162, type: 3}
   botBarCanvas: {fileID: 482855193181693567, guid: 1af9afdbdd132df4989c826eb6cb6562, type: 3}
   attackAimCanvas: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}

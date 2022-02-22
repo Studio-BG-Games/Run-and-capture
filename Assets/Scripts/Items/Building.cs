@@ -51,14 +51,14 @@ namespace Items
             }
 
             container.AimInstance.transform.LookAt(cell.transform);
-            container.Direction = direction;
+            container.HexDirection = direction;
         }
 
 
         public void PlaceItem(ItemContainer container)
         {
             container.DeAim();
-            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.Direction);
+            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.HexDirection);
             if (!isPlacableOnAnotherColor && cell.Color != container.Unit.Color)
             {
                 return;

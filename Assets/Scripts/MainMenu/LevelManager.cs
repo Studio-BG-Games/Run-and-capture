@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using DanielLochner.Assets.SimpleScrollSnap;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,8 +12,7 @@ namespace MainMenu
         [SerializeField] private LevelData _data;
         [SerializeField] private LevelView LevelImage;
         [SerializeField] private GameObject loadUI;
-        [SerializeField] private Transform parantLevelView;
-        [SerializeField] private ScrollerPage _scrollerPage;
+        [SerializeField] private SimpleScrollSnap _levelScroll;
         private int index = 0;
         private TMP_Text _percentText;
         private bool _isLoadingLevel = false;
@@ -23,14 +23,18 @@ namespace MainMenu
         {
             loadUI.GetComponent<Image>().DOFade(0f, 0f);
             _curLevel = _data.Levels[0];
+            var i = 0;
             _data.Levels.ForEach(level =>
             {
-                var lev = Object.Instantiate(LevelImage, parantLevelView);
+                
+                var lev = Object.Instantiate(LevelImage);
                 lev.LevelImage.sprite = level.levelSprite;
+                _levelScroll.Add(lev.gameObject, i++);
+               
+               
             });
-            
-            _scrollerPage.Init();
-            _scrollerPage.OnLevelChanged += SelectLevel;
+
+            _levelScroll.onPanelChanged.AddListener(() => SelectLevel(_levelScroll.CurrentPanel));
             _percentText = loadUI.GetComponentInChildren<TMP_Text>();
         }
 

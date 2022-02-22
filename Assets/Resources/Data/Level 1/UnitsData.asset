@@ -38,7 +38,7 @@ MonoBehaviour:
     inventoryCapacity: 4
     InvisibleMaterial: {fileID: 0}
   - isPlayer: 0
-    isAI: 0
+    isAI: 1
     spawnPos:
       x: -1
       z: 42
@@ -50,7 +50,7 @@ MonoBehaviour:
     inventoryCapacity: 4
     InvisibleMaterial: {fileID: 0}
   - isPlayer: 0
-    isAI: 0
+    isAI: 1
     spawnPos:
       x: -17
       z: 40

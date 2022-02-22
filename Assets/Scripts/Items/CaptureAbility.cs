@@ -53,7 +53,7 @@ namespace Items
                 return;
             }
             container.AimInstance.transform.LookAt(cell.transform);
-            container.Direction = direction;
+            container.HexDirection = direction;
         }
 
         
@@ -62,7 +62,7 @@ namespace Items
         {
             container.Unit.UseItem(this);
             HexManager.UnitCurrentCell[container.Unit.Color].cell.PaintHex(container.Unit.Color);
-            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.Direction);
+            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.HexDirection);
             container.OnItemUsed?.Invoke();
 
             container.Unit.UnitView.AnimActionDic[animName] = null;
@@ -79,23 +79,23 @@ namespace Items
             itterationMove.ForEach(dir =>
             {
                 if (!keepGoing) return;
-                container.Direction = dir switch
+                container.HexDirection = dir switch
                 {
-                    Angls.FORWARD => container.Direction,
-                    Angls.PLUS60 => container.Direction.PlusSixtyDeg(),
-                    Angls.MINUS60 => container.Direction.MinusSixtyDeg(),
-                    Angls.PLUS120 => container.Direction.Plus120Deg(),
-                    Angls.MINUS120 => container.Direction.Minus120Deg(),
-                    Angls.BACK => container.Direction.Back(),
+                    Angls.FORWARD => container.HexDirection,
+                    Angls.PLUS60 => container.HexDirection.PlusSixtyDeg(),
+                    Angls.MINUS60 => container.HexDirection.MinusSixtyDeg(),
+                    Angls.PLUS120 => container.HexDirection.Plus120Deg(),
+                    Angls.MINUS120 => container.HexDirection.Minus120Deg(),
+                    Angls.BACK => container.HexDirection.Back(),
                     _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
                 };
-                if (cell.GetNeighbor(container.Direction) == null)
+                if (cell.GetNeighbor(container.HexDirection) == null)
                 {
                     keepGoing = false;
                     return;
                 }
 
-                cell = cell.GetNeighbor(container.Direction);
+                cell = cell.GetNeighbor(container.HexDirection);
                 cell.PaintHex(container.Unit.Color);
             });
             
@@ -105,7 +105,7 @@ namespace Items
         public void UseAbility(ItemContainer container)
         {
             
-            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.Direction);
+            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.HexDirection);
             if (cell == null)
             {
                 container.DeAim();

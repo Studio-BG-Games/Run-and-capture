@@ -157,7 +157,7 @@ namespace Chars
                     _aimCount = 1;
                     break;
                 case SpecialWeapon weapon:
-                    weapon.Aim(_itemToPlace, DirectionHelper.VectorToDirection(placeDir.normalized));
+                    weapon.Aim(_itemToPlace, placeDir.normalized);
                     break;
                 case SwitchingPlaces switchingPlaces:
                     switchingPlaces.Aim(placeDir.normalized, _itemToPlace);

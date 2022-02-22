@@ -20,7 +20,9 @@ namespace Items
 
         public GameObject AimInstance { get; set; }
 
-        public HexDirection Direction { get; set; }
+        public HexDirection HexDirection { get; set; }
+        
+        public Vector2 Direction { get; set; }
 
         public Unit Value { get; set; }
 

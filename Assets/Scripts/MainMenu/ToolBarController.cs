@@ -2,68 +2,52 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using DanielLochner.Assets.SimpleScrollSnap;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(ScrollRect))]
-public class ToolBarController : MonoBehaviour, IEndDragHandler
-{
-    [SerializeField] private List<GameObject> content;
 
+public class ToolBarController : MonoBehaviour
+{
     [SerializeField] private List<Button> buttons;
-    [SerializeField] private int startPage;
-    [SerializeField] private float duration;
-    [SerializeField] private Ease ease;
-    
-    private ScrollRect scrollRect;
-    private int currentMenu;
-    private static readonly int IsSelected = Animator.StringToHash("IsSelected");
+    [SerializeField] private SimpleScrollSnap _scrollSnap;
+    [SerializeField] private bool hasHightlighter;
+
+    [SerializeField, ShowIf("hasHightlighter")]
+    private GameObject highLighter;
+
+    [SerializeField, ShowIf("highLighter")] private Ease ease;
+    [SerializeField, ShowIf("highLighter")] private float duration;
 
     private void Start()
     {
-        scrollRect = GetComponent<ScrollRect>();
-        var i = 0;
-        content.ForEach(con =>
+        for (var i = 0; i < buttons.Count; i++)
         {
-            buttons[i++].onClick.AddListener(delegate { ScrollToMenu(con); });
-        });
-
-        scrollRect.content.DOLocalMove(Vector3.zero, 0f);
-        buttons[startPage].Select();
-        buttons[startPage].onClick.Invoke();
-        scrollRect.onValueChanged.AddListener(FixedScroll);
+            var i1 = i;
+            buttons[i].onClick.AddListener(() =>
+            {
+                _scrollSnap.GoToPanel(i1);
+                buttons[i1].Select();
+                if (hasHightlighter)
+                {
+                    Highlight(buttons[i1].transform);
+                    _scrollSnap.onPanelChanged.AddListener(() =>
+                    {
+                        Highlight(buttons[_scrollSnap.CurrentPanel].transform); 
+                        buttons[_scrollSnap.CurrentPanel].Select();
+                    });
+                }
+            });
+        }
     }
 
-    private void ScrollToMenu(GameObject menu)
+    private void Highlight(Transform buttonTransform)
     {
-        Canvas.ForceUpdateCanvases();
-        
-        Vector2 viewportLocalPosition = scrollRect.viewport.localPosition;
-        Vector2 childLocalPosition = menu.transform.localPosition;
-        Vector2 result = new Vector2(
-            0 - (viewportLocalPosition.x + childLocalPosition.x),
-            0 - (viewportLocalPosition.y + childLocalPosition.y)
-        );
-
-        scrollRect.content.DOLocalMove(result, duration).SetEase(ease);
-        if(buttons[currentMenu].gameObject.TryGetComponent(typeof(Animator), out var animator))
-            ((Animator)animator).SetBool("IsSelected", true);
-        
-    }
-
-    private void FixedScroll(Vector2 vector2)
-    {
-        var step = 1f / (buttons.Count - 1);
-        
-        currentMenu = (int)Math.Round(vector2.x / step);
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        if(buttons[currentMenu].gameObject.TryGetComponent(typeof(Animator), out var animator))
-            ((Animator)animator).SetBool("IsSelected", true);
-        ScrollToMenu(content[currentMenu]);
+        highLighter.transform
+            .DOMove(new Vector3(buttonTransform.position.x, highLighter.transform.position.y, 0), duration)
+            .SetEase(ease);
     }
 }

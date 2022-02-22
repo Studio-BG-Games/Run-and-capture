@@ -29,11 +29,12 @@ namespace Items
         }
 
        
-        public void Aim(ItemContainer container, HexDirection direction)
+        public void Aim(ItemContainer container, Vector2 direction)
         {
+           
             container.AimInstance.SetActive(true);
-            container.AimInstance.transform.LookAt(HexManager.UnitCurrentCell[container.Unit.Color].cell
-                .GetNeighbor(container.Direction).transform);
+            container.AimInstance.transform.LookAt(
+                    new Vector3(direction.x, 0, direction.y) + container.Unit.UnitView.transform.position);
             container.Direction = direction;
         }
         
@@ -42,16 +43,15 @@ namespace Items
         {
             container.OnItemUsed.Invoke();
             container.Unit.UseItem(this);
-            var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.Direction);
-            container.Unit.RotateUnit(new Vector2((cell.transform.position - container.Unit.Instance.transform.position).normalized.x,
-                (cell.transform.position - container.Unit.Instance.transform.position).normalized.z));
+           
+            container.Unit.RotateUnit(container.Direction);
             _weapon.SetModifiedDamage(0);
             _weapon.objectToThrow.GetComponent<ISetUp>().SetUp(container.Unit);
             container.DeAim();
-            var dir = DirectionHelper.DirectionTo(container.Unit.Instance.transform.position, cell.transform.position);
+            
             TimerHelper.Instance.StartTimer(() =>
             {
-                var ball = _weapon.Fire(container.Unit.Instance.transform, new Vector2(dir.x, dir.z), container.Unit);
+                var ball = _weapon.Fire(container.Unit.Instance.transform, container.Direction, container.Unit);
                 if (isLifeByTime)
                 {
                     TimerHelper.Instance.StartTimer(() =>

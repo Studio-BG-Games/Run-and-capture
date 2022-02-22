@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d199e42b29875f641b7670cd48338056, type: 3}
   type: 0
   _weapon:
-    name: 
+    name: Arrow
     icon: {fileID: 0}
     objectToThrow: {fileID: 2042943928877261958, guid: 56c6150849a081a44ad553b57b8f2bd6, type: 3}
     VFXGameObject: {fileID: 0}
