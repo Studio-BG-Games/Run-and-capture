@@ -1,33 +1,41 @@
 using System.IO;
-using DefaultNamespace;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using AudioSettings = MainMenu.AudioSettings;
 
-public class SettingsController : MonoBehaviour
+namespace MainMenu
 {
-    [SerializeField] private AudioSource menuMusSrc;
-    [SerializeField] private string dataFilePath;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider sfxSlider;
-    [SerializeField] private Image musicImage;
-    [SerializeField] private Sprite musicOnSprite;
-    [SerializeField] private Sprite musicOffSprite;
-    
-    [SerializeField] private Image sfxImage;
-    [SerializeField] private Sprite sfxOnSprite;
-    [SerializeField] private Sprite sfxOffSprite;
-    
-    private AudioSettings _audioSettings;
-
-    private void Start()
+    public class SettingsController : MonoBehaviour
     {
-        dataFilePath = Application.persistentDataPath + "/" + dataFilePath;
-        if (File.Exists(dataFilePath))
+        [SerializeField] private AudioSource menuMusSrc;
+        [SerializeField] private string dataFilePath;
+        [SerializeField] private Slider musicSlider;
+        [SerializeField] private Slider sfxSlider;
+        [SerializeField] private Image musicImage;
+        [SerializeField] private Sprite musicOnSprite;
+        [SerializeField] private Sprite musicOffSprite;
+    
+        [SerializeField] private Image sfxImage;
+        [SerializeField] private Sprite sfxOnSprite;
+        [SerializeField] private Sprite sfxOffSprite;
+    
+        private AudioSettings _audioSettings;
+
+        private void Start()
         {
-            _audioSettings = JsonUtility.FromJson<AudioSettings>(File.ReadAllText(dataFilePath));
-            if (_audioSettings == null)
+            dataFilePath = Application.persistentDataPath + "/" + dataFilePath;
+            if (File.Exists(dataFilePath))
+            {
+                _audioSettings = JsonUtility.FromJson<AudioSettings>(File.ReadAllText(dataFilePath));
+                if (_audioSettings == null)
+                {
+                    _audioSettings = new AudioSettings(1f, 1f);
+                    FileStream stream = new FileStream(dataFilePath, FileMode.Create);
+                    using StreamWriter writer = new StreamWriter(stream);
+                    writer.Write(JsonUtility.ToJson(_audioSettings));
+                    writer.Close();
+                }
+            }
+            else
             {
                 _audioSettings = new AudioSettings(1f, 1f);
                 FileStream stream = new FileStream(dataFilePath, FileMode.Create);
@@ -35,51 +43,43 @@ public class SettingsController : MonoBehaviour
                 writer.Write(JsonUtility.ToJson(_audioSettings));
                 writer.Close();
             }
+
+            musicSlider.value = _audioSettings.musicVolume;
+            sfxSlider.value = _audioSettings.sfxVolume;
+        
+            musicSlider.onValueChanged.AddListener(x => OnMusicSliderValueChanged());
+            sfxSlider.onValueChanged.AddListener(x => OnSFXSliderValueChanged());
+
+            UpdateVisuals();
+            SetMenuMusicState();
+            gameObject.SetActive(false);
         }
-        else
+
+        private void UpdateVisuals()
         {
-            _audioSettings = new AudioSettings(1f, 1f);
-            FileStream stream = new FileStream(dataFilePath, FileMode.Create);
-            using StreamWriter writer = new StreamWriter(stream);
-            writer.Write(JsonUtility.ToJson(_audioSettings));
-            writer.Close();
+            musicImage.sprite = _audioSettings.musicVolume == 0f ? musicOffSprite : musicOnSprite;
+        
+            sfxImage.sprite = _audioSettings.sfxVolume == 0f ? sfxOffSprite : sfxOnSprite;
         }
 
-        musicSlider.value = _audioSettings.musicVolume;
-        sfxSlider.value = _audioSettings.sfxVolume;
-        
-        musicSlider.onValueChanged.AddListener(x => OnMusicSliderValueChanged());
-        sfxSlider.onValueChanged.AddListener(x => OnSFXSliderValueChanged());
+        private void OnMusicSliderValueChanged()
+        {
+            _audioSettings.musicVolume = musicSlider.value;
+            SetMenuMusicState();
+            File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));
+            UpdateVisuals();
+        }
 
-        UpdateVisuals();
-        SetMenuMusicState();
-        gameObject.SetActive(false);
-    }
+        private void OnSFXSliderValueChanged()
+        {
+            _audioSettings.sfxVolume = sfxSlider.value;
+            File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));
+            UpdateVisuals();
+        }
 
-    private void UpdateVisuals()
-    {
-        musicImage.sprite = _audioSettings.musicVolume == 0f ? musicOffSprite : musicOnSprite;
-        
-        sfxImage.sprite = _audioSettings.sfxVolume == 0f ? sfxOffSprite : sfxOnSprite;
-    }
-
-    private void OnMusicSliderValueChanged()
-    {
-        _audioSettings.musicVolume = musicSlider.value;
-        SetMenuMusicState();
-        File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));
-        UpdateVisuals();
-    }
-
-    private void OnSFXSliderValueChanged()
-    {
-        _audioSettings.sfxVolume = sfxSlider.value;
-        File.WriteAllText(dataFilePath, JsonUtility.ToJson(_audioSettings));
-        UpdateVisuals();
-    }
-
-    private void SetMenuMusicState()
-    {
-        menuMusSrc.volume = musicSlider.value;
+        private void SetMenuMusicState()
+        {
+            menuMusSrc.volume = musicSlider.value;
+        }
     }
 }

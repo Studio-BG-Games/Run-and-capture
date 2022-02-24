@@ -130526,7 +130526,7 @@ MonoBehaviour:
   attackText: {fileID: 1033038899}
   reloadText: {fileID: 985521934}
   chosenWeaponDataPath: ChosenWeapon.json
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 933ff56c36f8e2048ac179b755c821f7, type: 2}
 --- !u!1 &1550290323
 GameObject:
   m_ObjectHideFlags: 0

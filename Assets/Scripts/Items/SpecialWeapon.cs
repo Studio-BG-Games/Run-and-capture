@@ -46,12 +46,12 @@ namespace Items
            
             container.Unit.RotateUnit(container.Direction);
             _weapon.SetModifiedDamage(0);
-            _weapon.objectToThrow.GetComponent<ISetUp>().SetUp(container.Unit);
             container.DeAim();
             
             TimerHelper.Instance.StartTimer(() =>
             {
-                var ball = _weapon.Fire(container.Unit.Instance.transform, container.Direction, container.Unit);
+                var ball = _weapon.Fire(container.Unit.Instance.transform, container.Direction, container.Unit, false);
+                ball.GetComponent<ISetUp>().SetUp(container.Unit);
                 if (isLifeByTime)
                 {
                     TimerHelper.Instance.StartTimer(() =>
