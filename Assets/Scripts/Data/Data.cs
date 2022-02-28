@@ -27,11 +27,27 @@ namespace Data
         private ItemsData _itemsData;
         [SerializeField] private string aiDataPath = "AIData";
         private AIData _aiData;
+        [SerializeField] private string wariorsDataPath = "WariorsData";
+        private WariorsData _wariorsData;
+
         [SerializeField] private string chosenWeaponDataPath = "ChosenWeapon.json";
 
         private string pathToLevel => "Data/" + levelName + "/";
 
         public Weapon ChosenWeapon => WeaponsData.WeaponsList[int.Parse(File.ReadAllText(Application.persistentDataPath + "/" + chosenWeaponDataPath))];
+
+        public WariorsData WariorsData
+        {
+            get
+            {
+                if (_wariorsData == null)
+                {
+                    _wariorsData = Load<WariorsData>(pathToLevel + wariorsDataPath);
+                }
+
+                return _wariorsData;
+            }
+        }
 
         public AIData AIData
         {

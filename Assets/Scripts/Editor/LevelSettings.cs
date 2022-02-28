@@ -104,7 +104,8 @@ namespace Editor
                 Bonus,
                 Building,
                 CaptureAbility,
-                SpecialWeapon
+                SpecialWeapon, 
+                SwitchingPlaces
             }
             [Serializable]
             internal class NewItem
@@ -121,6 +122,7 @@ namespace Editor
                         ItemType.Building => CreateInstance<Building>(),
                         ItemType.CaptureAbility => CreateInstance<CaptureAbility>(),
                         ItemType.SpecialWeapon => CreateInstance<SpecialWeapon>(),
+                        ItemType.SwitchingPlaces => CreateInstance<SwitchingPlaces>(),
                         _ => throw new ArgumentOutOfRangeException(nameof(Type), Type, null)
                     };
                     AssetDatabase.CreateAsset(item,$"Assets/Resources/Data/Items/{ItemName}.asset");
@@ -143,7 +145,8 @@ namespace Editor
                     CreateInstance<MusicData>(),
                     CreateInstance<UIData>(),
                     CreateInstance<UnitData>(),
-                    CreateInstance<WeaponsData>()
+                    CreateInstance<WeaponsData>(),
+                    CreateInstance<WariorsData>()
                 };
             }
 
