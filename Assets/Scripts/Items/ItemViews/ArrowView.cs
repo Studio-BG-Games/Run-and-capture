@@ -2,6 +2,7 @@ using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
 using Units;
+using Units.Views;
 using UnityEngine;
 
 namespace Items.ItemViews
@@ -12,7 +13,7 @@ namespace Items.ItemViews
         [SerializeField] private float duration;
         [SerializeField]private UnitColor color;
 
-        public void SetUp(Unit unit)
+        public void SetUp(UnitBase unit)
         {
             color = unit.Color;
         }

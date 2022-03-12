@@ -21,7 +21,7 @@ namespace Items.ItemViews
             Rotate();
         }
 
-        public void PickUp(Unit unit)
+        public void PickUp(UnitBase unit)
         {
             if (_item is Bonus { BonusType: BonusType.Heal } bonus)
             {

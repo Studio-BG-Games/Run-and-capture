@@ -1,18 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
-using Units;
 using UnityEngine;
 using Weapons;
 
 namespace Units.Views
 {
-    public class UnitView : ViewBase
+    public class WariorView : ViewBase
     {
-        public UnitColor Color => _unit.Color;
-
-
         protected override void OnTriggerEnter(Collider other)
         {
             var weaponView = other.GetComponent<WeaponView>();
@@ -44,6 +40,7 @@ namespace Units.Views
                 _mana += _manaRegen;
                 _startRegen.Invoke();
             }
+            
         }
     }
 }

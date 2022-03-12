@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using AI;
-using Chars;
 using Data;
 using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
 using Items;
 using Sirenix.Utilities;
+using Units.Views;
+using Units.Wariors;
 using UnityEngine;
 using Weapons;
 using Object = UnityEngine.Object;
@@ -16,124 +17,29 @@ using Object = UnityEngine.Object;
 
 namespace Units
 {
-    public class Unit
+    public class Unit : UnitBase
     {
-        private GameObject _instance;
-        private List<ItemContainer> _inventory;
-        private List<ItemContainer> _inventoryDefence;
-        private AnimLength _animLength;
-        private HexCell _cell;
-        private HexGrid _hexGrid;
-        public event Action<Unit> OnPlayerSpawned;
-        private Animator _animator;
         private UnitInfo _data;
-        private int _hp;
-        private int _mana;
-        private Weapon _weapon;
-        private Vector2 _direction;
-
-        private bool _isCapturing;
-        private bool _isInfiniteMana;
-       
-        private int _defenceBonus;
-        private Camera _camera;
-        private UnitColor _easyCaptureColor;
-        
-        public bool IsStaned;
-        public bool isSwitched;
-        public int AttackBonus => _weapon.modifiedDamage - _weapon.damage;
-
-        
-        public int DefenceBonus => _defenceBonus;
-
-        public bool IsBusy { get; set; }
-
-        public UnitView UnitView { get; private set; }
-
-        public bool IsAlive { get; private set; }
-
-        public bool IsHardToCapture { get; private set; }
-
-
-        public UnitColor Color => _data.color;
-        public int InventoryCapacity => _data.inventoryCapacity;
-        public event Action<ItemContainer> OnItemPickUp;
-        public event Action<Unit> OnDeath;
-        public BarCanvas BarCanvas => UnitView.BarCanvas;
-        public GameObject Instance => _instance;
         public UnitInfo Data => _data;
-        public int Mana => _mana;
-        public int Hp => _hp;
-        public List<ItemContainer> Inventory => _inventory;
-        public List<ItemContainer> InventoryDefence => _inventoryDefence;
-        public Weapon Weapon => _weapon;
+        public WariorInfo wariorInfo;
+        public WariorFactory wariorFactory;
         public bool IsPlayer => _data.isPlayer;
-        public Animator Animator => _animator;
+        public event Action<ItemContainer> OnItemPickUp;
+        public event Action<WariorInfo,UnitColor> OnShoot;
 
-        public bool IsVisible
+
+        public Unit(UnitInfo data, Weapon weapon, HexGrid hexGrid)
         {
-            get;
-            private set;
+            Initialize(weapon, hexGrid);
+            _data = data;
+            Color = _data.color;
+            maxHP = _data.maxHP;
+            maxMana = _data.maxMana;
+            InventoryCapacity = _data.inventoryCapacity;
+            
         }
 
-        public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
-        {
-            _camera = Camera.main;
-            _weapon = weapon;
-            _data = unitData;
-            IsAlive = false;
-            _hexGrid = hexGrid;
-            IsBusy = false;
-            IsHardToCapture = false;
-            _isCapturing = false;
-            _easyCaptureColor = UnitColor.Grey;
-        }
-
-        public void SetUpBonus(float duration, int value, BonusType type)
-        {
-            switch (type)
-            {
-                case BonusType.Attack:
-                    TimerHelper.Instance.StartTimer(() => _weapon.SetModifiedDamage(0), duration);
-                    _weapon.SetModifiedDamage(value);
-                    break;
-                case BonusType.Defence:
-                    TimerHelper.Instance.StartTimer(() => _defenceBonus = 0, duration);
-                    _defenceBonus = value;
-                    break;
-                case BonusType.Heal:
-                    break;
-                case BonusType.Magnet:
-                    var col = UnitView.gameObject.GetComponent<CapsuleCollider>();
-                    var defRadius = col.radius;
-                    col.radius = value * HexGrid.HexDistance;
-                    TimerHelper.Instance.StartTimer(() => col.radius = defRadius, duration);
-                    break;
-                case BonusType.Mana:
-                    _isInfiniteMana = true;
-                    TimerHelper.Instance.StartTimer(() =>  _isInfiniteMana = false, duration);
-                    break;
-                case BonusType.Invisible:
-                    IsVisible = false;
-                    UnitView.SetInvisible(IsVisible);
-                    TimerHelper.Instance.StartTimer(() =>
-                    {
-                        IsVisible = true;
-                        UnitView.SetInvisible(IsVisible);
-                    }, duration);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public void SetTimeScale(float scale)
-        {
-            _animator.speed = scale;
-           
-        }
-
-        public void Retreet(HexDirection dir)
+        public override void Retreet(HexDirection dir)
         {
             if (!_isCapturing) return;
             var openList = _cell.GetListNeighbours().Where(x => x != null && x.Color == _data.color).ToList();
@@ -148,7 +54,7 @@ namespace Units
             Move(dir);
         }
 
-        public void Move(HexDirection direction)
+        public override void Move(HexDirection direction)
         {
             if (_cell.GetNeighbor(direction) == null || _cell.GetNeighbor(direction).BuildingInstance != null ||
                 IsBusy || IsHardToCapture ||
@@ -176,7 +82,7 @@ namespace Units
             }
         }
 
-        private void DoTransit(HexDirection direction)
+        protected override void DoTransit(HexDirection direction)
         {
             IsBusy = true;
             _isCapturing = _data.color != _cell.GetNeighbor(direction).Color;
@@ -189,7 +95,7 @@ namespace Units
             _instance.transform.DOMove(_cell.transform.position, _animLength.Move);
         }
 
-        public void SetCell(HexCell cell, bool isInstanceTrans = false, bool isPaintingHex = false)
+        public override void SetCell(HexCell cell, bool isInstanceTrans = false, bool isPaintingHex = false)
         {
             _cell = cell;
             HexManager.UnitCurrentCell[Color] = (cell, this);
@@ -208,21 +114,9 @@ namespace Units
             {
                 cell.PaintHex(Color, true);
             }
-
-            
         }
 
-        public void SetEasyColor(UnitColor color, float time)
-        {
-            _easyCaptureColor = color;
-            if (time > 0f)
-            {
-                TimerHelper.Instance.StartTimer(() => _easyCaptureColor = UnitColor.Grey, time);
-            }
-           
-        }
-
-        private void CaptureHex()
+        protected override void CaptureHex()
         {
             if (!_isInfiniteMana)
             {
@@ -237,7 +131,7 @@ namespace Units
             }
 
             UnitView.RegenMana();
-            
+
 
             UpdateBarCanvas();
             IsBusy = false;
@@ -245,32 +139,7 @@ namespace Units
             _cell.PaintHex(_data.color);
         }
 
-        private void SetAnimLength()
-        {
-            AnimationClip[] clips = _animator.runtimeAnimatorController.animationClips;
-            foreach (var clip in clips)
-            {
-                switch (clip.name)
-                {
-                    case "MoveJump":
-                        _animLength.Move = clip.length;
-                        break;
-                    case "Attack":
-                        _animLength.Attack = clip.length;
-                        break;
-                    case "Dead":
-                        _animLength.Death = clip.length;
-                        break;
-                    case "SuperAttack":
-                        _animLength.SuperJump = clip.length;
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-        public void Spawn(HexCoordinates hexCoordinates, HexCell spawnCell = null)
+        public override void Spawn(HexCoordinates hexCoordinates, HexCell spawnCell = null)
         {
             if (!IsAlive)
             {
@@ -302,17 +171,17 @@ namespace Units
                 _weapon.SetModifiedDamage(0);
 
                 IsBusy = false;
-                OnPlayerSpawned?.Invoke(this);
+                OnOnPlayerSpawned(this);
             }
         }
 
-        private void RegenMana()
+        protected override void RegenMana()
         {
             _mana += _data.manaRegen;
             UpdateBarCanvas();
         }
 
-        public bool CanPickUpItem(Item item)
+        public override bool CanPickUpItem(Item item)
         {
             switch (item.Type)
             {
@@ -337,7 +206,7 @@ namespace Units
             return false;
         }
 
-        public void PickUpItem(ItemContainer item)
+        public override void PickUpItem(ItemContainer item)
         {
             switch (item.Item.Type)
             {
@@ -360,65 +229,20 @@ namespace Units
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
             OnItemPickUp?.Invoke(item);
         }
 
-        public void UseItem(Item item)
-        {
-            if (item.Type == ItemType.ATTACK)
-            {
-                var i = _inventory.First(i => i.Item == item);
-                _inventory.Remove(i);
-            }
-            else
-            {
-                var i = _inventoryDefence.First(i => i.Item == item);
-                _inventoryDefence.Remove(i);
-            }
-        }
-
-        private void MoveEnd()
-        {
-            IsBusy = false;
-            _animator.SetBool("isMoving", IsBusy);
-
-            if (!_isCapturing)
-            {
-                return;
-            }
-
-            if (IsHardToCapture)
-            {
-                UnitView.HardCaptureHex(_cell);
-            }
-            else
-            {
-                CaptureHex();
-            }
-        }
-
-        private void AttackEnd()
-        {
-            IsBusy = false;
-            UpdateBarCanvas();
-        }
-
-        private void Attacking()
+        protected override void Attacking()
         {
             Aim(_direction);
 
             _weapon.Fire(_instance.transform, _direction, this);
+            if(IsPlayer)
+            OnShoot.Invoke(wariorInfo,_data.color);
         }
 
-        private void SetUpActions()
-        {
-            UnitView.OnStep += MoveEnd;
-            UnitView.OnAttackEnd += AttackEnd;
-            UnitView.OnAttack += Attacking;
-            UnitView.OnHit += Damage;
-        }
-
-        private void UpdateBarCanvas()
+        protected override void UpdateBarCanvas()
         {
             if (_hp > _data.maxHP)
                 _hp = _data.maxHP;
@@ -433,7 +257,7 @@ namespace Units
             BarCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
-        public void Death()
+        public override void Death()
         {
             UnitView.OnStep -= MoveEnd;
             UnitView.OnAttackEnd -= AttackEnd;
@@ -448,20 +272,18 @@ namespace Units
                 _instance.transform.position);
             TimerHelper.Instance.StartTimer(() =>
             {
-                
                 HexManager.PaintHexList(hexToPaint.Where(x => x.Color == Color).ToList(), UnitColor.Grey);
 
                 Object.Destroy(_instance);
-                OnDeath?.Invoke(this);
+                OnOnDeath(this);
             }, _animLength.Death);
-            
+
             MusicController.Instance.AddAudioSource(vfx);
             MusicController.Instance.PlayAudioClip(MusicController.Instance.MusicData.SfxMusic.Death, vfx);
             MusicController.Instance.RemoveAudioSource(_instance);
         }
 
-
-        public void StartAttack()
+        public override void StartAttack()
         {
             if (IsBusy || !UnitView.Shoot()) return;
 
@@ -484,22 +306,7 @@ namespace Units
             _animator.SetTrigger("Attack");
         }
 
-        public void RotateUnit(Vector2 direction)
-        {
-            UnitView.transform.DOLookAt(new Vector3(direction.x, 0, direction.y) + UnitView.transform.position,
-                0.1f).onUpdate += () => BarCanvas.transform.LookAt(
-                BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
-                _camera.transform.rotation * Vector3.up);
-        }
-
-        public void Aim(Vector2 direction)
-        {
-            UnitView.AimCanvas.transform.LookAt(
-                new Vector3(direction.x, 0, direction.y) + UnitView.transform.position);
-            _direction = direction;
-        }
-
-        public HexCell PlaceItemAim(HexDirection direction)
+        public override HexCell PlaceItemAim(HexDirection direction)
         {
             if (_cell.GetNeighbor(direction).Color != Color)
             {
@@ -512,7 +319,7 @@ namespace Units
             return cell;
         }
 
-        private void Damage(int dmg)
+        protected override void Damage(int dmg)
         {
             if (_defenceBonus == 0 && _hp - dmg <= 0f)
             {

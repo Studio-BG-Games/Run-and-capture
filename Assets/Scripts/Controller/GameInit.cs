@@ -8,6 +8,7 @@ using GameUI;
 using HexFiled;
 using Items;
 using Units;
+using Units.Wariors;
 using UnityEngine;
 using Weapons;
 using Random = UnityEngine.Random;
@@ -35,12 +36,15 @@ namespace Controller
             
 
             var unitFactory = new UnitFactory(hexGrid, data, uiController, paintedController, controllers);
+            var wariorFactory = new WariorFactory(hexGrid, controllers, data);
 
             hexGrid.OnGridLoaded += () => unitFactory.SpawnList(data.UnitData.Units);
-            
+
             hexGrid.OnHexPainted += paintedController.SetHexColors;
 
             hexGrid.SpawnField();
+            unitFactory.Player.OnShoot += wariorFactory.Spawn;
+            unitFactory.Player.wariorInfo = data.UnitData.Warior[0];
         }
         
     }

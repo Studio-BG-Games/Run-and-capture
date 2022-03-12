@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using DefaultNamespace;
 using HexFiled;
+using Units;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -68,7 +69,8 @@ namespace Items
             var obj = Instantiate(buildingPrefab,
                 cell.transform.position + buildingPrefab.transform.position, Quaternion.identity);
             obj.GetComponent<ISetUp>().SetUp(container.Unit);
-            if (!container.Unit.IsPlayer)
+            var unit = (Unit) container.Unit;
+            if (!unit.IsPlayer)
             {
                 obj.transform.GetChilds().Where(x => !x.TryGetComponent(typeof(ISetUp), out _))
                     .Select(x => x.gameObject).ToList()

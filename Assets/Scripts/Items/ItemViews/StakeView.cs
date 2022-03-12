@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using DefaultNamespace;
 using Units;
+using Units.Views;
 using UnityEngine;
 using Weapons;
 
@@ -13,9 +14,9 @@ namespace Items.ItemViews
         [SerializeField] private int time;
         [SerializeField] private GameObject catchVfx;
         [SerializeField] private GameObject destroed;
-        private Unit _unit;
+        private UnitBase _unit;
 
-        public void SetUp(Unit unit)
+        public void SetUp(UnitBase unit)
         {
             _unit = unit;
         }

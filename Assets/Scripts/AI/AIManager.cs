@@ -32,42 +32,43 @@ namespace AI
         {
             _data = data;
             Instance = this;
-            HexManager.agents = new Dictionary<GameObject, AIAgent>();
+            HexManager.agents = new Dictionary<GameObject, AIBase>();
         }
 
-        public void AddAgent(AIAgent agent)
+        public void AddAgent(AIBase agent)
         {
             agent.OnAgentInited += InitAI;
         }
 
-        public void RemoveAgent(AIAgent agent)
+        public void RemoveAgent(AIBase agent)
         {
             agent.OnAgentInited -= InitAI;
         }
 
-        private void InitAI(AIAgent agent)
+        private void InitAI(AIBase agent)
         {
             SetBehaviour(BotState.Patrol, agent);
         }
 
-        private void StartPatrolBehaviour(AIAgent agent)
+        private void StartPatrolBehaviour(AIBase agent)
         {
-            HexManager.GetNearestDifferCell(agent.Unit.Color, agent.currentPath);
+            HexManager.GetNearestDifferCell(agent.UnitBase.Color, agent.currentPath);
             while (agent.currentPath.Count == 0 && _triesToCalculatePath < _maxTriesToCalculatePath)
             {
-                HexManager.GetNearestDifferCell(agent.Unit.Color, agent.currentPath);
+                HexManager.GetNearestDifferCell(agent.UnitBase.Color, agent.currentPath);
                 _triesToCalculatePath++;
             }
 
             _triesToCalculatePath = 0;
         }
 
-        public static Unit GetNearestUnit(int cellDist, Unit agent)
+        public static Unit GetNearestUnit(int cellDist, UnitBase agent)
         {
-            List<(float dist, Unit unit)> res = new List<(float, Unit)>();
+            List<(float dist, UnitBase unit)> res = new List<(float, UnitBase)>();
             try
             {
-                res.AddRange(from color in (UnitColor[])Enum.GetValues(typeof(UnitColor))
+                
+                res.AddRange(from color in (UnitColor[]) Enum.GetValues(typeof(UnitColor))
                     where HexManager.UnitCurrentCell.ContainsKey(color) &&
                           HexManager.UnitCurrentCell[color].unit.IsVisible &&
                           HexManager.UnitCurrentCell[color] != (null, null) &&
@@ -78,7 +79,7 @@ namespace AI
                         Vector3.Distance(HexManager.UnitCurrentCell[color].unit.Instance.transform.position,
                             agent.Instance.transform.position), HexManager.UnitCurrentCell[color].unit));
 
-                return res.Count > 0 ? res.OrderBy(x => x.Item1).First().unit : null;
+                return (Unit) (res.Count > 0 ? res.OrderBy(x => x.Item1).First().unit : null);
             }
             catch (Exception e)
             {
@@ -88,28 +89,28 @@ namespace AI
         }
 
 
-        public BotState GetNewBehaviour(AIAgent agent)
+        public BotState GetNewBehaviour(AIBase agent)
         {
-            var attack = agent.Unit.Inventory.Where(x => x.Item is Bonus { BonusType: BonusType.Attack }).ToList();
-            if (agent.CurentState is BotState.Attack && agent.Unit.AttackBonus == 0 && attack.Count > 0)
+            var attack = agent.UnitBase.Inventory.Where(x => x.Item is Bonus { BonusType: BonusType.Attack }).ToList();
+            if (agent.CurentState is BotState.Attack && agent.UnitBase.AttackBonus == 0 && attack.Count > 0)
             {
                 SetBehaviour(BotState.AttackBonusUsage, agent);
                 return BotState.AttackBonusUsage;
             }
 
 
-            var enemy = GetNearestUnit(_data.DistanceToAgr, agent.Unit);
-            if (enemy != null && agent.Unit.Hp > agent.Unit.Data.maxHP * _data.PercentToRetreet && enemy.IsAlive)
+            var enemy = GetNearestUnit(_data.DistanceToAgr, agent.UnitBase);
+            if (enemy != null && agent.UnitBase.Hp > agent.UnitBase.maxHP * _data.PercentToRetreet && enemy.IsAlive)
             {
-                if (agent.Unit.Hp <= agent.Unit.Data.maxHP * _data.PercentToRetreet ||
-                    agent.Unit.UnitView.AvailableShots == 0)
+                if (agent.UnitBase.Hp <= agent.UnitBase.maxHP * _data.PercentToRetreet ||
+                    agent.UnitBase.UnitView.AvailableShots == 0)
                 {
                     SetBehaviour(BotState.Retreet, agent);
                     return BotState.Retreet;
                 }
 
-                if (Vector3.Distance(agent.Unit.Instance.transform.position, enemy.Instance.transform.position) <=
-                    agent.Unit.Weapon.disnatce)
+                if (Vector3.Distance(agent.UnitBase.Instance.transform.position, enemy.Instance.transform.position) <=
+                    agent.UnitBase.Weapon.disnatce)
                 {
                     SetBehaviour(BotState.Attack, agent);
                     return BotState.Attack;
@@ -118,25 +119,27 @@ namespace AI
                 SetBehaviour(BotState.Agressive, agent);
                 return BotState.Agressive;
             }
-
-            var item = GetNearestItem(agent);
-            if (item.hex != null)
+            if (agent == (AIAgent)agent)
             {
-                if ((item.dist <= _data.DistaceToCollectBonus ||
-                     agent.Unit.Mana <= agent.Unit.Data.maxMana * _data.ManaPercentToCollectBonus) &&
-                    (item.hex.Item.Item.Type == ItemType.DEFENCE
-                        ? agent.Unit.InventoryDefence.Count
-                        : agent.Unit.Inventory.Count) < agent.Unit.InventoryCapacity / 2)
+                var item = GetNearestItem((AIAgent)agent);
+                if (item.hex != null)
                 {
-                    SetBehaviour(BotState.CollectingBonus, agent);
-                    return BotState.CollectingBonus;
+                    if ((item.dist <= _data.DistaceToCollectBonus ||
+                         agent.UnitBase.Mana <= agent.UnitBase.maxMana * _data.ManaPercentToCollectBonus) &&
+                        (item.hex.Item.Item.Type == ItemType.DEFENCE
+                            ? agent.UnitBase.InventoryDefence.Count
+                            : agent.UnitBase.Inventory.Count) < agent.UnitBase.InventoryCapacity / 2)
+                    {
+                        SetBehaviour(BotState.CollectingBonus, agent);
+                        return BotState.CollectingBonus;
+                    }
                 }
             }
 
-            var protect = agent.Unit.InventoryDefence.Where(x => x.Item is Bonus { BonusType: BonusType.Defence })
+            var protect = agent.UnitBase.InventoryDefence.Where(x => x.Item is Bonus { BonusType: BonusType.Defence })
                 .ToList();
-            if (protect.Count > 0 && agent.Unit.Hp <= agent.Unit.Data.maxHP * _data.PercentToUseProtectBonus &&
-                agent.Unit.DefenceBonus == 0)
+            if (protect.Count > 0 && agent.UnitBase.Hp <= agent.UnitBase.maxHP * _data.PercentToUseProtectBonus &&
+                agent.UnitBase.DefenceBonus == 0)
             {
                 SetBehaviour(BotState.ProtectBonusUsage, agent);
                 return BotState.ProtectBonusUsage;
@@ -147,7 +150,7 @@ namespace AI
             return BotState.Patrol;
         }
 
-        private void SetBehaviour(BotState state, AIAgent agent)
+        private void SetBehaviour(BotState state, AIBase agent)
         {
             switch (state)
             {
@@ -161,13 +164,16 @@ namespace AI
                     AttackEnemy(agent);
                     break;
                 case BotState.CollectingBonus:
-                    MoveToBonus(agent);
+                    if (agent != (AIAgent)agent) break;
+                    MoveToBonus((AIAgent)agent);
                     break;
                 case BotState.ProtectBonusUsage:
-                    UseBonus(agent, BonusType.Defence);
+                    if (agent != (AIAgent)agent) break;
+                    UseBonus((AIAgent)agent, BonusType.Defence);
                     break;
                 case BotState.AttackBonusUsage:
-                    UseBonus(agent, BonusType.Attack);
+                    if (agent != (AIAgent)agent) break;
+                    UseBonus((AIAgent)agent, BonusType.Attack);
                     break;
                 case BotState.Dead:
                     break;
@@ -181,25 +187,25 @@ namespace AI
 
         private void UseBonus(AIAgent agent, BonusType type)
         {
-            var attack = agent.Unit.Inventory.Where(x => x.Item is Bonus bonus && bonus.BonusType == type).ToList();
-            if (attack.Count == 0 || !agent.Unit.IsAlive)
+            var attack = agent.UnitBase.Inventory.Where(x => x.Item is Bonus bonus && bonus.BonusType == type).ToList();
+            if (attack.Count == 0 || !agent.UnitBase.IsAlive)
             {
                 GetNewBehaviour(agent);
                 return;
             }
 
-            ((Bonus)attack.First().Item).Invoke(agent.Unit);
+            ((Bonus)attack.First().Item).Invoke((Unit)(agent.UnitBase));
         }
 
-        private void Retreet(AIAgent agent)
+        private void Retreet(AIBase agent)
         {
-            var enemy = GetNearestUnit(6, agent.Unit)?.Instance.transform;
+            var enemy = GetNearestUnit(6, agent.UnitBase)?.Instance.transform;
             if (enemy == null)
             {
                 return;
             }
 
-            var dir = -DirectionHelper.DirectionTo(agent.Unit.Instance.transform.position,
+            var dir = -DirectionHelper.DirectionTo(agent.UnitBase.Instance.transform.position,
                 enemy.position);
             agent.currentPath.Clear();
             agent.currentPath.Enqueue(DirectionHelper.VectorToDirection(new Vector2(dir.x, dir.z)));
@@ -209,9 +215,9 @@ namespace AI
         {
             var itemsToMove =
                 (from entry in ItemFabric.Items
-                    where Vector3.Distance(agent.Unit.Instance.transform.position, entry.Value.transform.position) <
+                    where Vector3.Distance(agent.UnitBase.Instance.transform.position, entry.Value.transform.position) <
                           10 * HexGrid.HexDistance
-                    orderby Vector3.Distance(agent.Unit.Instance.transform.position, entry.Value.transform.position)
+                    orderby Vector3.Distance(agent.UnitBase.Instance.transform.position, entry.Value.transform.position)
                     select entry).ToList();
 
 
@@ -222,35 +228,35 @@ namespace AI
 
             var itemToMove = itemsToMove.First();
             return (
-                (int)(Vector3.Distance(itemToMove.Value.transform.position, agent.Unit.Instance.transform.position) /
+                (int)(Vector3.Distance(itemToMove.Value.transform.position, agent.UnitBase.Instance.transform.position) /
                       HexGrid.HexDistance), itemToMove.Value);
         }
 
         private void MoveToBonus(AIAgent agent)
         {
-            if (HexManager.UnitCurrentCell.TryGetValue(agent.Unit.Color, out var value))
+            if (HexManager.UnitCurrentCell.TryGetValue(agent.UnitBase.Color, out var value))
 
                 Pathfinding.FindPath(value.cell, GetNearestItem(agent).hex,
                     agent.currentPath);
         }
 
-        private void AttackEnemy(AIAgent agent)
+        private void AttackEnemy(AIBase agent)
         {
-            var enemy = GetNearestUnit(agent.Unit.Weapon.disnatce, agent.Unit);
-            var dir = DirectionHelper.DirectionTo(agent.Unit.Instance.transform.position,
+            var enemy = GetNearestUnit(agent.UnitBase.Weapon.disnatce, agent.UnitBase);
+            var dir = DirectionHelper.DirectionTo(agent.UnitBase.Instance.transform.position,
                 enemy.Instance.transform.position);
             agent.AttackTarget(new Vector2(dir.x, dir.z));
         }
 
-        private void MoveToEnemy(AIAgent agent)
+        private void MoveToEnemy(AIBase agent)
         {
             var enemies = HexManager.UnitCurrentCell
                 .Where(unit =>
-                    unit.Value.unit.Color != agent.Unit.Color &&
+                    unit.Value.unit.Color != agent.UnitBase.Color &&
                     Vector3.Distance(unit.Value.unit.Instance.transform.position,
-                        agent.Unit.Instance.transform.position) <= 6 * HexGrid.HexDistance).ToList();
+                        agent.UnitBase.Instance.transform.position) <= 6 * HexGrid.HexDistance).ToList();
 
-            Pathfinding.FindPath(HexManager.UnitCurrentCell[agent.Unit.Color].cell,
+            Pathfinding.FindPath(HexManager.UnitCurrentCell[agent.UnitBase.Color].cell,
                 enemies[Random.Range(0, enemies.Count)].Value.cell, agent.currentPath);
         }
     }

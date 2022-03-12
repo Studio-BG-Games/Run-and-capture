@@ -2,6 +2,7 @@ using System;
 using DefaultNamespace;
 using HexFiled;
 using Units;
+using Units.Views;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -13,16 +14,16 @@ namespace Items
         [SerializeField] private GameObject aimCanvas;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float time;
-        
-        
+
+
         public override void Invoke(ItemContainer container)
         {
-            if (!container.Unit.IsPlayer)
+            var unit = (Unit) container.Unit;
+            if (!unit.IsPlayer)
             {
                 return;
             }
 
-            
 
             if (container.AimInstance == null)
                 container.AimInstance = Object.Instantiate(aimCanvas, container.Unit.Instance.transform);
@@ -31,7 +32,8 @@ namespace Items
 
         public void Aim(Vector2 direction, ItemContainer container)
         {
-            if (container.Unit.IsPlayer)
+            var unit = (Unit) container.Unit;
+            if (unit.IsPlayer)
             {
                 if (container.AimInstance == null)
                     container.AimInstance = Object.Instantiate(aimCanvas, container.Unit.Instance.transform);
@@ -50,7 +52,6 @@ namespace Items
                 container.Value = hit.collider.gameObject.GetComponent<UnitView>().Unit;
             }
 
-            
 
             Debug.DrawRay(ray.origin,
                 ray.direction * hit.distance, UnityEngine.Color.red, 10f);
@@ -64,6 +65,7 @@ namespace Items
                 container.DeAim();
                 return;
             }
+
             container.Unit.UseItem(this);
             container.Unit.isSwitched = true;
             container.DeAim();
@@ -84,7 +86,5 @@ namespace Items
                 container.Value.IsBusy = false;
             }, time);
         }
-
-        
     }
 }

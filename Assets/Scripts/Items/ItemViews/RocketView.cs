@@ -20,7 +20,7 @@ namespace Items.ItemViews
         [SerializeField] private UnitColor _color;
         [SerializeField] private float speed;
 
-        public void SetUp(Unit unit)
+        public void SetUp(UnitBase unit)
         {
             _unit = unit.Instance;
             _color = unit.Color;

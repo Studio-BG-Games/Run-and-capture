@@ -2,6 +2,7 @@ using System;
 using DefaultNamespace;
 using HexFiled;
 using Units;
+using Units.Views;
 using UnityEngine;
 
 namespace Items
@@ -11,10 +12,10 @@ namespace Items
         [SerializeField] private int damage;
         [SerializeField] private GameObject hit;
         [SerializeField] private float timeHit;
-        private Unit _unit;
+        private UnitBase _unit;
 
 
-        public void SetUp(Unit unit)
+        public void SetUp(UnitBase unit)
         {
             _unit = unit;
             gameObject.AddComponent<CapsuleCollider>().radius = HexGrid.HexDistance;

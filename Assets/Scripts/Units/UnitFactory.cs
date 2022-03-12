@@ -20,6 +20,7 @@ namespace Chars
         private readonly Data.Data _data;
         private readonly Controllers _controllers;
         private readonly UIController _uiController;
+        public Unit Player { get; private set; }
 
         public UnitFactory(HexGrid grid, Data.Data data, UIController uiController, PaintedController paintedController,
             Controllers controllers)
@@ -59,7 +60,7 @@ namespace Chars
                     new CameraControl(Camera.main, _data.CameraData);
                 _controllers.Add(cameraControl);
 
-                player.OnPlayerSpawned += p =>
+                player.OnSpawned += p =>
                 {
                     playerControl = new PlayerControl(player, _uiController.PlayerControlView,
                         _uiController.PlayerInventoryView);
@@ -67,10 +68,10 @@ namespace Chars
                 };
                 
                 
-                player.OnPlayerSpawned += unit => _uiController.CheatMenu.SetPlayerNData(unit, _data);
+                player.OnSpawned += unit => _uiController.CheatMenu.SetPlayerNData((Unit)unit, _data);
                 player.OnDeath += unit1 => _controllers.Remove(playerControl);
                 player.OnDeath += u => playerControl.Dispose();
-                player.OnPlayerSpawned += unit => cameraControl.InitCameraControl(unit.Instance);
+                player.OnSpawned += unit => cameraControl.InitCameraControl(unit.Instance);
                 player.OnDeath += unit => _uiController.CheatMenu.OnPlayerDeath();
                 
                 player.OnDeath += p => _uiController.AdsMob.ShowCanvas(unitInfo, this);
@@ -78,6 +79,7 @@ namespace Chars
                 player.Spawn(spawnPos.coordinates, spawnPos);
                 spawnPos.isSpawnPos = false;
                 player.UnitView.SetBar(_data.UnitData.PlayerBarCanvas, _data.UnitData.AttackAimCanvas);
+                Player = player;
             }
             else
             {
@@ -86,8 +88,8 @@ namespace Chars
 
                 if (unitInfo.isAI)
                 {
-                    AIAgent agent = new AIAgent(unitInfo, enemy);
-                    enemy.OnPlayerSpawned += x => _controllers.Add(agent);
+                    AIAgent agent = new AIAgent(enemy);
+                    enemy.OnSpawned += x => _controllers.Add(agent);
                     enemy.OnDeath += x => { _controllers.Remove(agent); };
                 }
 

@@ -12,9 +12,9 @@ namespace HexFiled
 {
     public static class HexManager
     {
-        public static Dictionary<UnitColor, (HexCell cell, Unit unit)> UnitCurrentCell;
+        public static Dictionary<UnitColor, (HexCell cell, UnitBase unit)> UnitCurrentCell;
         public static Dictionary<UnitColor, List<HexCell>> CellByColor;
-        public static Dictionary<GameObject, AIAgent> agents;
+        public static Dictionary<GameObject, AIBase> agents;
 
         public static void GetNearestDifferCell(UnitColor color, Queue<HexDirection> path)
         {

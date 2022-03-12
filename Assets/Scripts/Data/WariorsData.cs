@@ -13,7 +13,7 @@ namespace Data
     }
 
     [Serializable]
-    public struct WariorInfo
+    public partial struct WariorInfo
     {
         [SerializeField] private GameObject prefab;
         [SerializeField] private WariorType Type;

@@ -9,6 +9,7 @@ using HexFiled;
 using Items;
 using Runtime.Controller;
 using Units;
+using Units.Views;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -40,7 +41,7 @@ namespace Chars
             _attackJoystick = joyView.AttackJoystick;
             _placeJoystick = joyView.PlaceJoystick;
             _placeJoystick.gameObject.SetActive(false);
-            _unitView = unit.UnitView;
+            _unitView = (UnitView) unit.UnitView;
 
             _attackJoystick.OnTouchUp += DoAttack;
             _attackJoystick.OnDrug += AimCanvas;
@@ -163,7 +164,7 @@ namespace Chars
                     switchingPlaces.Aim(placeDir.normalized, _itemToPlace);
                     if (_itemToPlace.Value != null)
                     {
-                        chosenUnit = _itemToPlace.Value;
+                       chosenUnit = (Unit) _itemToPlace.Value;
                     }
                     break;
             }

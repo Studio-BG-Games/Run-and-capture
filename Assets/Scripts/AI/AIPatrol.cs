@@ -1,22 +1,13 @@
-using System;
-using System.Collections.Generic;
-using AI;
-using Controller;
-using Data;
-using DG.Tweening;
+﻿using AI;
 using HexFiled;
-using Runtime.Controller;
 using Units;
-using Units.Wariors.AbstractsBase;
-using UnityEngine;
 
 namespace DefaultNamespace.AI
 {
-    public class AIAgent : AIBase
+    public class AIPatrol : AIBase
     {
-        public AIAgent(UnitBase unitBase) : base(unitBase)
+        public AIPatrol(UnitBase unitBase) : base(unitBase)
         {
-
         }
 
         protected override void InitAgent(UnitBase aiBase)

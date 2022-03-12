@@ -13,7 +13,7 @@ namespace HexFiled
 
         public PaintedController()
         {
-            HexManager.UnitCurrentCell = new Dictionary<UnitColor, (HexCell cell, Unit unit)>();
+            HexManager.UnitCurrentCell = new Dictionary<UnitColor, (HexCell cell, UnitBase unit)>();
         }
 
 

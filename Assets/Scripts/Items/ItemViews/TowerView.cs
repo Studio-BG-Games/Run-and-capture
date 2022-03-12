@@ -7,6 +7,7 @@ using DG.Tweening;
 using HexFiled;
 using Items;
 using Units;
+using Units.Views;
 using UnityEngine;
 using Weapons;
 
@@ -29,7 +30,7 @@ public class TowerView : MonoBehaviour, ISetUp
 
     public UnitColor Color => _color;
 
-    public void SetUp(Unit unit)
+    public void SetUp(UnitBase unit)
     {
         _color = unit.Color;
 

@@ -30,7 +30,7 @@ namespace Weapons
             modifiedDamage = damage + bonus;
         }
 
-        public GameObject Fire(Transform start, Vector2 direction, Unit unit, bool isMoving = true)
+        public GameObject Fire(Transform start, Vector2 direction, UnitBase unit, bool isMoving = true)
         {
             var ball = Object.Instantiate(objectToThrow,
                 start.forward + start.transform.position + new Vector3(0, 1),

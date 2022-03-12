@@ -3,6 +3,7 @@ using System.Linq;
 using DefaultNamespace;
 using HexFiled;
 using Units;
+using Units.Views;
 using UnityEngine;
 using Weapons;
 
@@ -13,11 +14,11 @@ namespace Items.ItemViews
         [SerializeField] private GameObject Hit;
         [SerializeField] private GameObject vfx;
         [SerializeField] private int dmg;
-        private Unit _unit;
+        private UnitBase _unit;
         private GameObject _instance;
    
 
-        public void SetUp(Unit unit)
+        public void SetUp(UnitBase unit)
         {
             _unit = unit;
             _instance = Instantiate(vfx, transform);

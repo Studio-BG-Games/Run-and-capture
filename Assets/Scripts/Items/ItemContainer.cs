@@ -16,7 +16,7 @@ namespace Items
 
         public ItemView Instance => _instance;
 
-        public Unit Unit { get; }
+        public UnitBase Unit { get; }
 
         public GameObject AimInstance { get; set; }
 
@@ -24,9 +24,9 @@ namespace Items
         
         public Vector2 Direction { get; set; }
 
-        public Unit Value { get; set; }
+        public UnitBase Value { get; set; }
 
-        public ItemContainer(Item item, ItemView instance, Unit unit)
+        public ItemContainer(Item item, ItemView instance, UnitBase unit)
         {
             Item = item;
             _instance = instance;
