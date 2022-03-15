@@ -61,31 +61,6 @@ MonoBehaviour:
     maxHP: 100
     inventoryCapacity: 4
     InvisibleMaterial: {fileID: 0}
-  _warior:
-  - spawnPos:
-      x: 0
-      z: 0
-    wariorPrefa: {fileID: 5982292246613942016, guid: e508e7126551af140aae54649db1a0c1, type: 3}
-    color: 0
-    manaRegen: 100
-    maxMana: 1000
-    maxHP: 100
-    InvisibleMaterial: {fileID: 0}
-    prefab: {fileID: 0}
-    Type: 0
-    _weapon:
-      name: 
-      icon: {fileID: 0}
-      objectToThrow: {fileID: 0}
-      VFXGameObject: {fileID: 0}
-      modifiedDamage: 0
-      damage: 0
-      speed: 0
-      disnatce: 0
-      reloadTime: 0
-      shots: 0
-      shotSound: {fileID: 0}
-      hitSound: {fileID: 0}
   playerBarCanvas: {fileID: 482855193181693567, guid: dec5dd0d644d5c548a53563e65837162, type: 3}
   botBarCanvas: {fileID: 482855193181693567, guid: 1af9afdbdd132df4989c826eb6cb6562, type: 3}
   attackAimCanvas: {fileID: 2273039178377770117, guid: 09a0317cbdff9fa479a18c9e20743a8e, type: 3}

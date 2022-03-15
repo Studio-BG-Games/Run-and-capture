@@ -12,10 +12,10 @@ namespace DefaultNamespace.AI
     {
         protected UnitBase _unitBase;
         private Camera _camera;
-        private BotState curentState;
+        protected BotState curentState;
         public Queue<HexDirection> currentPath;
         public Action<AIBase> OnAgentInited;
-        private Vector2 _attackDirection;
+        protected Vector2 _attackDirection;
         
         public UnitBase UnitBase => _unitBase;
 

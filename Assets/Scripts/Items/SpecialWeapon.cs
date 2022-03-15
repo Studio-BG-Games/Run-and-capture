@@ -34,7 +34,7 @@ namespace Items
            
             container.AimInstance.SetActive(true);
             container.AimInstance.transform.LookAt(
-                    new Vector3(direction.x, 0, direction.y) + container.Unit.UnitView.transform.position);
+                    new Vector3(direction.x, 0, direction.y) + container.Unit.BaseView.transform.position);
             container.Direction = direction;
         }
         

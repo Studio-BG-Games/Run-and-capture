@@ -11,7 +11,6 @@ namespace Data
     public class UnitData : ScriptableObject
     {
         [SerializeField] private List<UnitInfo> _units;
-        [SerializeField] private List<WariorInfo> _warior;
         [SerializeField] private BarCanvas playerBarCanvas;
         [SerializeField] private BarCanvas botBarCanvas;
         [SerializeField] private GameObject attackAimCanvas;
@@ -22,8 +21,6 @@ namespace Data
         public GameObject AttackAimCanvas => attackAimCanvas;
 
         public List<UnitInfo> Units => _units;
-
-        public List<WariorInfo> Warior => _warior;
 
         public BarCanvas PlayerBarCanvas => playerBarCanvas;
 
@@ -44,15 +41,4 @@ namespace Data
         public int inventoryCapacity;
         public Material InvisibleMaterial;
     }   
-    public partial struct WariorInfo
-    {
-        public HexCoordinates spawnPos;
-        public GameObject wariorPrefa;
-        public UnitColor color;
-        public int manaRegen;
-        public int maxMana;
-        public int maxHP;
-        public Material InvisibleMaterial;
-        internal int inventoryCapacity;
-    }
 }

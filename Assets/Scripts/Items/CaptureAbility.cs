@@ -65,7 +65,7 @@ namespace Items
             var cell = HexManager.UnitCurrentCell[container.Unit.Color].cell.GetNeighbor(container.HexDirection);
             container.OnItemUsed?.Invoke();
 
-            container.Unit.UnitView.AnimActionDic[animName] = null;
+            container.Unit.BaseView.AnimActionDic[animName] = null;
             
             container.OnItemUsed = null;
             if (cell == null)
@@ -116,7 +116,7 @@ namespace Items
             container.Unit.Animator.SetTrigger(animName);
             container.DeAim();
             container.Unit.SetCell(cell);
-            container.Unit.UnitView.AnimActionDic[animName] += () => DoPaint(container);
+            container.Unit.BaseView.AnimActionDic[animName] += () => DoPaint(container);
         }
     }
 }

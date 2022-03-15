@@ -57,10 +57,10 @@ namespace Units
 
 
 
-        public BarCanvas BarCanvas => UnitView.BarCanvas;
+        public BarCanvas BarCanvas => BaseView.BarCanvas;
         public GameObject Instance => _instance;
         public int Mana => _mana;
-        public ViewBase UnitView { get; protected set; }
+        public ViewBase BaseView { get; protected set; }
 
         public int Hp => _hp;
         public List<ItemContainer> Inventory => _inventory;
@@ -101,7 +101,7 @@ namespace Units
                 case BonusType.Heal:
                     break;
                 case BonusType.Magnet:
-                    var col = UnitView.gameObject.GetComponent<CapsuleCollider>();
+                    var col = BaseView.gameObject.GetComponent<CapsuleCollider>();
                     var defRadius = col.radius;
                     col.radius = value * HexGrid.HexDistance;
                     TimerHelper.Instance.StartTimer(() => col.radius = defRadius, duration);
@@ -112,11 +112,11 @@ namespace Units
                     break;
                 case BonusType.Invisible:
                     IsVisible = false;
-                    UnitView.SetInvisible(IsVisible);
+                    BaseView.SetInvisible(IsVisible);
                     TimerHelper.Instance.StartTimer(() =>
                     {
                         IsVisible = true;
-                        UnitView.SetInvisible(IsVisible);
+                        BaseView.SetInvisible(IsVisible);
                     }, duration);
                     break;
                 default:
@@ -209,7 +209,7 @@ namespace Units
 
             if (IsHardToCapture)
             {
-                UnitView.HardCaptureHex(_cell);
+                BaseView.HardCaptureHex(_cell);
             }
             else
             {
@@ -227,10 +227,10 @@ namespace Units
 
         protected void SetUpActions()
         {
-            UnitView.OnStep += MoveEnd;
-            UnitView.OnAttackEnd += AttackEnd;
-            UnitView.OnAttack += Attacking;
-            UnitView.OnHit += Damage;
+            BaseView.OnStep += MoveEnd;
+            BaseView.OnAttackEnd += AttackEnd;
+            BaseView.OnAttack += Attacking;
+            BaseView.OnHit += Damage;
         }
 
         protected abstract void UpdateBarCanvas();
@@ -242,7 +242,7 @@ namespace Units
 
         public void RotateUnit(Vector2 direction)
         {
-            UnitView.transform.DOLookAt(new Vector3(direction.x, 0, direction.y) + UnitView.transform.position,
+            BaseView.transform.DOLookAt(new Vector3(direction.x, 0, direction.y) + BaseView.transform.position,
                 0.1f).onUpdate += () => BarCanvas.transform.LookAt(
                 BarCanvas.transform.position + _camera.transform.rotation * Vector3.back,
                 _camera.transform.rotation * Vector3.up);
@@ -250,8 +250,8 @@ namespace Units
 
         public void Aim(Vector2 direction)
         {
-            UnitView.AimCanvas.transform.LookAt(
-                new Vector3(direction.x, 0, direction.y) + UnitView.transform.position);
+            BaseView.AimCanvas.transform.LookAt(
+                new Vector3(direction.x, 0, direction.y) + BaseView.transform.position);
             _direction = direction;
         }
 

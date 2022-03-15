@@ -88,9 +88,9 @@ namespace Units.Wariors.AbstractsBase
                 Death();
             }
 
-            if (_hp - dmg > maxHP)
+            if (_hp - dmg > _unitData.maxHP)
             {
-                _hp = maxHP;
+                _hp = _unitData.maxHP;
             }
 
             if (_defenceBonus > 0)

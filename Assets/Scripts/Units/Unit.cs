@@ -19,30 +19,30 @@ namespace Units
 {
     public class Unit : UnitBase
     {
-        private UnitInfo _data;
-        public UnitInfo Data => _data;
-        public WariorInfo wariorInfo;
-        public WariorFactory wariorFactory;
-        public bool IsPlayer => _data.isPlayer;
+        private UnitInfo _unitData;
+        public UnitInfo UnitData => _unitData;
+        private WariorsData wariorData;
+        public bool IsPlayer => _unitData.isPlayer;
         public event Action<ItemContainer> OnItemPickUp;
-        public event Action<WariorInfo,UnitColor> OnShoot;
+        public event WariorFactory.SpawnWarior OnShoot;
+        private List<UnitBase> NotEnemy;
 
 
-        public Unit(UnitInfo data, Weapon weapon, HexGrid hexGrid)
+        public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid, Data.Data data)
         {
             Initialize(weapon, hexGrid);
-            _data = data;
-            Color = _data.color;
-            maxHP = _data.maxHP;
-            maxMana = _data.maxMana;
-            InventoryCapacity = _data.inventoryCapacity;
-            
+            _unitData = unitData;
+            Color = _unitData.color;
+            maxHP = _unitData.maxHP;
+            maxMana = _unitData.maxMana;
+            InventoryCapacity = _unitData.inventoryCapacity;
+            wariorData = data.WariorsData;
         }
 
         public override void Retreet(HexDirection dir)
         {
             if (!_isCapturing) return;
-            var openList = _cell.GetListNeighbours().Where(x => x != null && x.Color == _data.color).ToList();
+            var openList = _cell.GetListNeighbours().Where(x => x != null && x.Color == _unitData.color).ToList();
             if (!openList.Contains(_cell.GetNeighbor(dir)))
             {
                 return;
@@ -50,7 +50,7 @@ namespace Units
 
             IsBusy = false;
             IsHardToCapture = false;
-            UnitView.StopHardCapture();
+            BaseView.StopHardCapture();
             Move(dir);
         }
 
@@ -63,7 +63,7 @@ namespace Units
                  && value.cell.Equals(_cell.GetNeighbor(direction)))) return;
 
 
-            if (_cell.GetNeighbor(direction).Color == _data.color ||
+            if (_cell.GetNeighbor(direction).Color == _unitData.color ||
                 (_cell.GetNeighbor(direction).Color == _easyCaptureColor && _easyCaptureColor != UnitColor.Grey))
             {
                 DoTransit(direction);
@@ -85,9 +85,9 @@ namespace Units
         protected override void DoTransit(HexDirection direction)
         {
             IsBusy = true;
-            _isCapturing = _data.color != _cell.GetNeighbor(direction).Color;
+            _isCapturing = _unitData.color != _cell.GetNeighbor(direction).Color;
             _cell = _cell.GetNeighbor(direction);
-            HexManager.UnitCurrentCell[_data.color] = (_cell, this);
+            HexManager.UnitCurrentCell[_unitData.color] = (_cell, this);
             RotateUnit(new Vector2((_cell.transform.position - _instance.transform.position).normalized.x,
                 (_cell.transform.position - _instance.transform.position).normalized.z));
             _animator.SetTrigger("Move");
@@ -130,13 +130,13 @@ namespace Units
                 }
             }
 
-            UnitView.RegenMana();
+            BaseView.RegenMana();
 
 
             UpdateBarCanvas();
             IsBusy = false;
             IsHardToCapture = false;
-            _cell.PaintHex(_data.color);
+            _cell.PaintHex(_unitData.color);
         }
 
         public override void Spawn(HexCoordinates hexCoordinates, HexCell spawnCell = null)
@@ -145,28 +145,28 @@ namespace Units
             {
                 _cell = spawnCell != null ? spawnCell : _hexGrid.GetCellFromCoord(hexCoordinates);
                 IsVisible = true;
-                _cell.PaintHex(_data.color, true);
+                _cell.PaintHex(_unitData.color, true);
                 _cell.GetListNeighbours().ForEach(x => { x?.PaintHex(Color, true); });
                 _inventory = new List<ItemContainer>();
                 _inventoryDefence = new List<ItemContainer>();
 
-                HexManager.UnitCurrentCell.Add(_data.color, (_cell, this));
+                HexManager.UnitCurrentCell.Add(_unitData.color,(_cell ,this));
 
-                _instance = Object.Instantiate(_data.unitPrefa, _cell.transform.parent);
+                _instance = Object.Instantiate(_unitData.unitPrefa, _cell.transform.parent);
 
                 _instance.transform.localPosition = _cell.transform.localPosition;
 
                 IsAlive = true;
                 _animator = _instance.GetComponent<Animator>();
-                UnitView = _instance.AddComponent<UnitView>();
+                BaseView = _instance.AddComponent<UnitView>();
 
 
-                UnitView.SetUp(_weapon, RegenMana, _data.manaRegen, CaptureHex,
+                BaseView.SetUp(_weapon, RegenMana, _unitData.manaRegen, CaptureHex,
                     this, _hexGrid.HardCaptureTime);
                 SetAnimLength();
                 MusicController.Instance.AddAudioSource(_instance);
-                _mana = _data.maxMana;
-                _hp = _data.maxHP;
+                _mana = _unitData.maxMana;
+                _hp = _unitData.maxHP;
                 SetUpActions();
                 _weapon.SetModifiedDamage(0);
 
@@ -177,7 +177,7 @@ namespace Units
 
         protected override void RegenMana()
         {
-            _mana += _data.manaRegen;
+            _mana += _unitData.manaRegen;
             UpdateBarCanvas();
         }
 
@@ -186,14 +186,14 @@ namespace Units
             switch (item.Type)
             {
                 case ItemType.ATTACK:
-                    if (_inventory.Count < _data.inventoryCapacity / 2)
+                    if (_inventory.Count < _unitData.inventoryCapacity / 2)
                     {
                         return true;
                     }
 
                     break;
                 case ItemType.DEFENCE:
-                    if (_inventoryDefence.Count < _data.inventoryCapacity / 2)
+                    if (_inventoryDefence.Count < _unitData.inventoryCapacity / 2)
                     {
                         return true;
                     }
@@ -211,7 +211,7 @@ namespace Units
             switch (item.Item.Type)
             {
                 case ItemType.ATTACK:
-                    if (_inventory.Count < _data.inventoryCapacity / 2)
+                    if (_inventory.Count < _unitData.inventoryCapacity / 2)
                     {
                         _inventory.Add(item);
                         _cell.Item = null;
@@ -219,7 +219,7 @@ namespace Units
 
                     break;
                 case ItemType.DEFENCE:
-                    if (_inventoryDefence.Count < _data.inventoryCapacity / 2)
+                    if (_inventoryDefence.Count < _unitData.inventoryCapacity / 2)
                     {
                         _inventoryDefence.Add(item);
                         _cell.Item = null;
@@ -238,31 +238,31 @@ namespace Units
             Aim(_direction);
 
             _weapon.Fire(_instance.transform, _direction, this);
-            if(IsPlayer)
-            OnShoot.Invoke(wariorInfo,_data.color);
+            if (IsPlayer)
+                OnShoot.Invoke(wariorData.Wariors[0], _unitData.color);
         }
 
         protected override void UpdateBarCanvas()
         {
-            if (_hp > _data.maxHP)
-                _hp = _data.maxHP;
-            if (_mana > _data.maxMana)
-                _mana = _data.maxMana;
+            if (_hp > _unitData.maxHP)
+                _hp = _unitData.maxHP;
+            if (_mana > _unitData.maxMana)
+                _mana = _unitData.maxMana;
 
             float hp = _hp;
             float mana = _mana;
-            float maxHp = _data.maxHP;
-            float maxMana = _data.maxMana;
+            float maxHp = _unitData.maxHP;
+            float maxMana = _unitData.maxMana;
             BarCanvas.ManaBar.DOFillAmount(mana / maxMana, 0.5f).SetEase(Ease.InQuad);
             BarCanvas.HealthBar.DOFillAmount(hp / maxHp, 0.5f).SetEase(Ease.InQuad);
         }
 
         public override void Death()
         {
-            UnitView.OnStep -= MoveEnd;
-            UnitView.OnAttackEnd -= AttackEnd;
-            UnitView.OnAttack -= Attacking;
-            UnitView.OnHit -= Damage;
+            BaseView.OnStep -= MoveEnd;
+            BaseView.OnAttackEnd -= AttackEnd;
+            BaseView.OnAttack -= Attacking;
+            BaseView.OnHit -= Damage;
             IsAlive = false;
             IsBusy = true;
             HexManager.UnitCurrentCell.Remove(Color);
@@ -285,7 +285,7 @@ namespace Units
 
         public override void StartAttack()
         {
-            if (IsBusy || !UnitView.Shoot()) return;
+            if (IsBusy || !BaseView.Shoot()) return;
 
             IsBusy = true;
             if (_direction.Equals(Vector2.zero))
@@ -293,7 +293,7 @@ namespace Units
                 var enemy = AIManager.GetNearestUnit(_weapon.disnatce, this);
                 if (enemy == null)
                     _direction =
-                        new Vector2(UnitView.transform.forward.x, UnitView.transform.forward.z);
+                        new Vector2(BaseView.transform.forward.x, BaseView.transform.forward.z);
                 else
                 {
                     var dir = DirectionHelper.DirectionTo(_instance.transform.position,
@@ -310,12 +310,12 @@ namespace Units
         {
             if (_cell.GetNeighbor(direction).Color != Color)
             {
-                UnitView.AimCanvas.SetActive(false);
+                BaseView.AimCanvas.SetActive(false);
                 return null;
             }
 
             var cell = _cell.GetNeighbor(direction);
-            UnitView.AimCanvas.transform.LookAt(cell.transform);
+            BaseView.AimCanvas.transform.LookAt(cell.transform);
             return cell;
         }
 
@@ -326,9 +326,9 @@ namespace Units
                 Death();
             }
 
-            if (_hp - dmg > _data.maxHP)
+            if (_hp - dmg > _unitData.maxHP)
             {
-                _hp = _data.maxHP;
+                _hp = _unitData.maxHP;
             }
 
             if (_defenceBonus > 0)

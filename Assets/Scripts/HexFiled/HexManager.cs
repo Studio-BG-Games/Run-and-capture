@@ -12,7 +12,7 @@ namespace HexFiled
 {
     public static class HexManager
     {
-        public static Dictionary<UnitColor, (HexCell cell, UnitBase unit)> UnitCurrentCell;
+        public static Dictionary<UnitColor, (HexCell cell,UnitBase unit)> UnitCurrentCell;
         public static Dictionary<UnitColor, List<HexCell>> CellByColor;
         public static Dictionary<GameObject, AIBase> agents;
 

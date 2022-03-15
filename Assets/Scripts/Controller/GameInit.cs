@@ -44,7 +44,6 @@ namespace Controller
 
             hexGrid.SpawnField();
             unitFactory.Player.OnShoot += wariorFactory.Spawn;
-            unitFactory.Player.wariorInfo = data.UnitData.Warior[0];
         }
         
     }

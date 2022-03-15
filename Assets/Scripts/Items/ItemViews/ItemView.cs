@@ -26,11 +26,11 @@ namespace Items.ItemViews
             if (_item is Bonus { BonusType: BonusType.Heal } bonus)
             {
                 VFXController.Instance.PlayEffect(bonus.UsisngVFX, unit.Instance.transform);
-                unit.UnitView.OnHit.Invoke(-bonus.Value);
+                unit.BaseView.OnHit.Invoke(-bonus.Value);
                 Despawn();
                 return;
             }
-            transform.DOMove(unit.UnitView.transform.position + new Vector3(0,1,0), 0.1f).OnComplete(() =>
+            transform.DOMove(unit.BaseView.transform.position + new Vector3(0,1,0), 0.1f).OnComplete(() =>
             {
                 ItemContainer itemContainer = new ItemContainer(Item, this, unit);
                 unit.PickUpItem(itemContainer);

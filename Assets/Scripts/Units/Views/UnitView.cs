@@ -33,12 +33,12 @@ namespace Units.Views
 
         protected override IEnumerator Regen()
         {
-            if (_mana >= ((Unit)_unit).Data.maxMana)
+            if (_mana >= ((Unit)_unit).UnitData.maxMana)
             {
                 yield break;
             }
 
-            while (_mana < ((Unit)_unit).Data.maxMana)
+            while (_mana < ((Unit)_unit).UnitData.maxMana)
             {
                 yield return new WaitForSeconds(1f);
                 _mana += _manaRegen;

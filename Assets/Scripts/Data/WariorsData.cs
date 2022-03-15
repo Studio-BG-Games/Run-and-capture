@@ -10,14 +10,18 @@ namespace Data
     public class WariorsData : ScriptableObject
     {
         [SerializeField] private List<WariorInfo> _wariors;
+        public List<WariorInfo> Wariors { get { return _wariors; } }
     }
 
     [Serializable]
     public partial struct WariorInfo
     {
-        [SerializeField] private GameObject prefab;
+        public GameObject wariorPrefab;
         [SerializeField] private WariorType Type;
         [SerializeField, ShowIf("hasWeapon")] private Weapon _weapon;
+        public int maxHP;
+        public int manaRegen;
+        public int maxMana; 
         private bool hasWeapon => Type != WariorType.Defence;
     }
 

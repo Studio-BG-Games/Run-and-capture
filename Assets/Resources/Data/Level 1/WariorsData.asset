@@ -13,17 +13,8 @@ MonoBehaviour:
   m_Name: WariorsData
   m_EditorClassIdentifier: 
   _wariors:
-  - spawnPos:
-      x: 0
-      z: 0
-    wariorPrefa: {fileID: 5982292246613942016, guid: e508e7126551af140aae54649db1a0c1, type: 3}
-    color: 0
-    manaRegen: 2
-    maxMana: 50
-    maxHP: 20
-    InvisibleMaterial: {fileID: 0}
-    prefab: {fileID: 0}
-    Type: 0
+  - wariorPrefab: {fileID: 7527582019267571087, guid: f102085e8bc4cad4992d43b84dee1055, type: 3}
+    Type: 1
     _weapon:
       name: 
       icon: {fileID: 0}
@@ -37,3 +28,6 @@ MonoBehaviour:
       shots: 0
       shotSound: {fileID: 0}
       hitSound: {fileID: 0}
+    maxHP: 1000
+    manaRegen: 100
+    maxMana: 1000

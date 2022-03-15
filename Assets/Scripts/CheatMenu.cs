@@ -58,7 +58,7 @@ public class CheatMenu : MonoBehaviour
         playerGridGO.GetComponentInChildren<TMP_Text>().text = "Player";
         AddButton(() =>
         {
-            _player.UnitView.OnHit.Invoke(_player.Data.maxHP);
+            _player.BaseView.OnHit.Invoke(_player.UnitData.maxHP);
             scrollRect.SetActive(false);
         }, "Kill Player", playerGrid.gameObject);
         

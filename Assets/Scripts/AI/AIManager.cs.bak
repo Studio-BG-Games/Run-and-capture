@@ -244,6 +244,7 @@ namespace AI
         private void AttackEnemy(AIBase agent)
         {
             var enemy = GetNearestUnit(agent.UnitBase.Weapon.disnatce, agent.UnitBase);
+            if (enemy.Color == agent.UnitBase.Color) return;
             var dir = DirectionHelper.DirectionTo(agent.UnitBase.Instance.transform.position,
                 enemy.Instance.transform.position);
             agent.AttackTarget(new Vector2(dir.x, dir.z));

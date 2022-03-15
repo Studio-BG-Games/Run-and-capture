@@ -53,7 +53,7 @@ namespace Chars
 
             if (unitInfo.isPlayer)
             {
-                var player = new Unit(unitInfo, _chosenWeapon, _hexGrid);
+                var player = new Unit(unitInfo, _chosenWeapon, _hexGrid, _data);
                 PlayerControl playerControl = null;
 
                 CameraControl cameraControl =
@@ -78,13 +78,13 @@ namespace Chars
                
                 player.Spawn(spawnPos.coordinates, spawnPos);
                 spawnPos.isSpawnPos = false;
-                player.UnitView.SetBar(_data.UnitData.PlayerBarCanvas, _data.UnitData.AttackAimCanvas);
+                player.BaseView.SetBar(_data.UnitData.PlayerBarCanvas, _data.UnitData.AttackAimCanvas);
                 Player = player;
             }
             else
             {
                 var enemy = new Unit(unitInfo,
-                    _data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid);
+                    _data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid, _data);
 
                 if (unitInfo.isAI)
                 {
@@ -96,7 +96,7 @@ namespace Chars
                 enemy.Spawn(spawnPos.coordinates, spawnPos);
                 spawnPos.isSpawnPos = false;
                 
-                enemy.UnitView.SetBar(_data.UnitData.BotBarCanvas, _data.UnitData.AttackAimCanvas);
+                enemy.BaseView.SetBar(_data.UnitData.BotBarCanvas, _data.UnitData.AttackAimCanvas);
             }
         }
     }

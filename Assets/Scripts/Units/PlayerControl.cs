@@ -41,7 +41,7 @@ namespace Chars
             _attackJoystick = joyView.AttackJoystick;
             _placeJoystick = joyView.PlaceJoystick;
             _placeJoystick.gameObject.SetActive(false);
-            _unitView = (UnitView) unit.UnitView;
+            _unitView = (UnitView) unit.BaseView;
 
             _attackJoystick.OnTouchUp += DoAttack;
             _attackJoystick.OnDrug += AimCanvas;
