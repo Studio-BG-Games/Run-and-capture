@@ -63,7 +63,7 @@ public class CheatMenu : MonoBehaviour
             var unit = HexManager.UnitCurrentCell.ElementAt(i).Value.unit;
             AddButton(() =>
             {
-                unit.BaseView.OnHit.Invoke(unit.maxHP);
+                unit.UnitView.OnHit.Invoke(unit.maxHP);
                 scrollRect.SetActive(false);
             }, $"Kill {unit.Color} unit", playerGrid.gameObject);
         }
