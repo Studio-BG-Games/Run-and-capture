@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using CamControl;
 using Controller;
 using Data;
+using DefaultNamespace;
 using DefaultNamespace.AI;
 using GameUI;
 using HexFiled;
@@ -35,6 +37,7 @@ namespace Chars
         public void SpawnList(List<UnitInfo> units)
         {
             units.ForEach(x => Spawn(x));
+            _uiController.CheatMenu.SetPlayerNData(_data);
         }
 
         public void Spawn(UnitInfo unitInfo, HexCell spawnHex = null)
@@ -66,16 +69,16 @@ namespace Chars
                         _uiController.PlayerInventoryView);
                     _controllers.Add(playerControl);
                 };
+
+
                 
-                
-                player.OnSpawned += unit => _uiController.CheatMenu.SetPlayerNData((Unit)unit, _data);
                 player.OnDeath += unit1 => _controllers.Remove(playerControl);
                 player.OnDeath += u => playerControl.Dispose();
                 player.OnSpawned += unit => cameraControl.InitCameraControl(unit.Instance);
                 player.OnDeath += unit => _uiController.CheatMenu.OnPlayerDeath();
-                
+
                 player.OnDeath += p => _uiController.AdsMob.ShowCanvas(unitInfo, this);
-               
+
                 player.Spawn(spawnPos.coordinates, spawnPos);
                 spawnPos.isSpawnPos = false;
                 player.UnitView.SetBar(_data.UnitData.PlayerBarCanvas, _data.UnitData.AttackAimCanvas);
@@ -86,6 +89,9 @@ namespace Chars
                 var enemy = new Unit(unitInfo,
                     _data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid);
 
+
+                enemy.OnDeath += unit => RandomSpawn(unitInfo);
+
                 if (unitInfo.isAI)
                 {
                     AIAgent agent = new AIAgent(enemy);
@@ -93,11 +99,30 @@ namespace Chars
                     enemy.OnDeath += x => { _controllers.Remove(agent); };
                 }
 
+                enemy.OnDeath += x => _uiController.CheatMenu.OnEnemyDeath();
+                
                 enemy.Spawn(spawnPos.coordinates, spawnPos);
                 spawnPos.isSpawnPos = false;
-                
+
                 enemy.UnitView.SetBar(_data.UnitData.BotBarCanvas, _data.UnitData.AttackAimCanvas);
             }
+        }
+
+        private void RandomSpawn(UnitInfo info)
+        {
+            TimerHelper.Instance.StartTimer(() =>
+            {
+                var cellToSpawn = HexManager.CellByColor[UnitColor.Grey].Where(cell => cell != null &&
+                    cell.GetListNeighbours().TrueForAll(neighbour => neighbour == null || neighbour.Color == UnitColor.Grey)).ToList();
+                if (cellToSpawn.Count == 0)
+                {
+                    RandomSpawn(info);
+                    return;
+                }
+                
+                Spawn(info, cellToSpawn[Random.Range(0, cellToSpawn.Count - 1)]);
+                _uiController.CheatMenu.OnEnemyDeath();
+            }, 1f);
         }
     }
 }

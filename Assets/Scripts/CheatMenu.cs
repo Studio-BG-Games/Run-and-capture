@@ -20,10 +20,10 @@ public class CheatMenu : MonoBehaviour
     private GameObject _itemsPrefab;
     private List<GameObject> _buttons;
 
-    public void SetPlayerNData(Unit player, Data.Data data)
+    public void SetPlayerNData(Data.Data data)
     {
         _buttons = new List<GameObject>();
-        _player = player;
+        _player = (Unit)(HexManager.UnitCurrentCell.FirstOrDefault(unit => ((Unit)unit.Value.unit).IsPlayer).Value.unit);
         _itemsPrefab = new GameObject("CheatedItems");
         
         showButton.onClick.AddListener(() => scrollRect.SetActive(!scrollRect.activeSelf));
@@ -56,11 +56,18 @@ public class CheatMenu : MonoBehaviour
         _buttons.Add(playerGridGO);
         var playerGrid = playerGridGO.GetComponentInChildren<GridLayoutGroup>();
         playerGridGO.GetComponentInChildren<TMP_Text>().text = "Player";
-        AddButton(() =>
+        
+        
+        for (var i = 0; i < HexManager.UnitCurrentCell.Count; i++)
         {
-            _player.UnitView.OnHit.Invoke(_player.Data.maxHP);
-            scrollRect.SetActive(false);
-        }, "Kill Player", playerGrid.gameObject);
+            var unit = HexManager.UnitCurrentCell.ElementAt(i).Value.unit;
+            AddButton(() =>
+            {
+                unit.UnitView.OnHit.Invoke(unit.maxHP);
+                scrollRect.SetActive(false);
+            }, $"Kill {unit.Color} unit", playerGrid.gameObject);
+        }
+        
         
         _buttons.Add(AddButton(() => scrollRect.SetActive(false), "CLOSE", grid).gameObject);
     }
@@ -78,5 +85,11 @@ public class CheatMenu : MonoBehaviour
         showButton.onClick.RemoveAllListeners();
         scrollRect.SetActive(false);
         _buttons.ForEach(Destroy);
+    }
+
+    public void OnEnemyDeath()
+    {
+        _buttons.ForEach(Destroy);
+        AddAllButtons();
     }
 }
