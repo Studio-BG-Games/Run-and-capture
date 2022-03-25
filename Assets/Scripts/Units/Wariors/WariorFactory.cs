@@ -31,7 +31,7 @@ namespace Units.Wariors
             HexManager.CellByColor[unitColor].Where(x => x != null).ToList()[
               Random.Range(0, HexManager.CellByColor[unitColor].Count - 1)];
 
-            var patrol = new Holem(wariorInfo,_data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid,unitColor);
+            var patrol = new TestInvader(wariorInfo,_data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid,unitColor);
 
             AIAgent agent = new AIAgent (patrol);
             patrol.OnSpawned += x => _controllers.Add(agent);

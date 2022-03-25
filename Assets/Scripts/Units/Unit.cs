@@ -239,7 +239,7 @@ namespace Units
 
             _weapon.Fire(_instance.transform, _direction, this);
             if (IsPlayer)
-                OnShoot.Invoke(wariorData.Wariors[0], _unitData.color);
+                OnShoot.Invoke(wariorData.Wariors[1], _unitData.color);
         }
 
         protected override void UpdateBarCanvas()

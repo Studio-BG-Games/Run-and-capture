@@ -31,3 +31,21 @@ MonoBehaviour:
     maxHP: 1000
     manaRegen: 100
     maxMana: 1000
+  - wariorPrefab: {fileID: 3762867976042010436, guid: d00f156879942114488e4db0689a3fb7, type: 3}
+    Type: 1
+    _weapon:
+      name: 
+      icon: {fileID: 0}
+      objectToThrow: {fileID: 0}
+      VFXGameObject: {fileID: 0}
+      modifiedDamage: 0
+      damage: 0
+      speed: 0
+      disnatce: 0
+      reloadTime: 0
+      shots: 0
+      shotSound: {fileID: 0}
+      hitSound: {fileID: 0}
+    maxHP: 1000
+    manaRegen: 100
+    maxMana: 1000

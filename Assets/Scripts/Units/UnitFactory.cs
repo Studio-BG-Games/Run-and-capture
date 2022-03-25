@@ -94,7 +94,7 @@ namespace Chars
 
                 if (unitInfo.isAI)
                 {
-                    AIAgent agent = new AIAgent(enemy);
+                    AIPatrol agent = new AIPatrol(enemy);
                     enemy.OnSpawned += x => _controllers.Add(agent);
                     enemy.OnDeath += x => { _controllers.Remove(agent); };
                 }
@@ -121,7 +121,7 @@ namespace Chars
                 
                 Spawn(info, cellToSpawn[Random.Range(0, cellToSpawn.Count - 1)]);
                 _uiController.CheatMenu.OnEnemyDeath();
-            }, 1f);
+            }, 5f);
         }
     }
 }

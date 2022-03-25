@@ -103,13 +103,7 @@ namespace Chars
                 
                 enemy.Spawn(spawnPos.coordinates, spawnPos);
                 spawnPos.isSpawnPos = false;
-<<<<<<< HEAD
-                
                 enemy.BaseView.SetBar(_data.UnitData.BotBarCanvas, _data.UnitData.AttackAimCanvas);
-=======
-
-                enemy.UnitView.SetBar(_data.UnitData.BotBarCanvas, _data.UnitData.AttackAimCanvas);
->>>>>>> abaf11d23750589a662b4fd2daa471f53d864cf7
             }
         }
 
@@ -127,7 +121,7 @@ namespace Chars
                 
                 Spawn(info, cellToSpawn[Random.Range(0, cellToSpawn.Count - 1)]);
                 _uiController.CheatMenu.OnEnemyDeath();
-            }, 1f);
+            }, 5f);
         }
     }
 }

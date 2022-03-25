@@ -24,6 +24,7 @@ namespace Units.Wariors.AbstractsBase
             Color = spawnerColor;
             maxHP = _data.maxHP;
             maxMana = _data.maxMana;
+			hexGrid.OnHexPainted += Death;
         }
         public override void SetCell(HexCell cell, bool isInstanceTrans = false, bool isPaintingHex = false)
         {
@@ -88,9 +89,9 @@ namespace Units.Wariors.AbstractsBase
                 Death();
             }
 
-            if (_hp - dmg > _unitData.maxHP)
+            if (_hp - dmg > maxHP)
             {
-                _hp = _unitData.maxHP;
+                _hp = maxHP;
             }
 
             if (_defenceBonus > 0)
@@ -113,5 +114,8 @@ namespace Units.Wariors.AbstractsBase
         public override void PickUpItem(ItemContainer item)
         {
         }
+		private void Death(){
+			OnOnDeath(this);
+		}
 	}
 }
