@@ -1,24 +1,16 @@
-using AI;
+﻿using AI;
 using HexFiled;
 using Units;
 
 namespace DefaultNamespace.AI
 {
-    public class AIAgent : AIBase
+    public class AIInvader : AIWarior
     {
-        public AIAgent(UnitBase unitBase) : base(unitBase)
+        public AIInvader(UnitBase unitBase) : base(unitBase)
         {
-
         }
-
         public override void FixedExecute()
         {
-            if (curentState == BotState.Attack && !_unitBase.IsBusy)
-            {
-                _unitBase.Aim(_attackDirection);
-                _unitBase.StartAttack();
-                curentState = Unit.Instance.GetNewBehaviour(this);
-            }
             if (currentPath.Count > 0 && !_unitBase.IsBusy)
             {
                 var dir = currentPath.Dequeue();
@@ -34,15 +26,8 @@ namespace DefaultNamespace.AI
             }
             if (currentPath.Count == 0 && !_unitBase.IsBusy)
             {
-                curentState = Unit.Instance.GetNewBehaviour(this);
+                curentState = Warior.Instance.GetNewBehaviour(this);
             }
-        }
-
-        protected override void InitAgent(UnitBase aiBase)
-        {
-            AIManager.Instance.AddAgent(this);
-            HexManager.agents.Add(aiBase.Instance, this);
-            OnAgentInited?.Invoke(this);
         }
     }
 }

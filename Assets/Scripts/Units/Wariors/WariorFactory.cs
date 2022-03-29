@@ -33,7 +33,7 @@ namespace Units.Wariors
 
             var patrol = new TestInvader(wariorInfo,_data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid,unitColor);
 
-            AIAgent agent = new AIAgent (patrol);
+            AIInvader agent = new AIInvader (patrol);
             patrol.OnSpawned += x => _controllers.Add(agent);
             patrol.OnDeath += x => { _controllers.Remove(agent); };
 

@@ -69,7 +69,7 @@ namespace Items
             var obj = Instantiate(buildingPrefab,
                 cell.transform.position + buildingPrefab.transform.position, Quaternion.identity);
             obj.GetComponent<ISetUp>().SetUp(container.Unit);
-            var unit = (Unit) container.Unit;
+            var unit = (Units.Unit.Unit) container.Unit;
             if (!unit.IsPlayer)
             {
                 obj.transform.GetChilds().Where(x => !x.TryGetComponent(typeof(ISetUp), out _))

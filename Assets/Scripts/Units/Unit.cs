@@ -15,7 +15,7 @@ using Weapons;
 using Object = UnityEngine.Object;
 
 
-namespace Units
+namespace Units.Unit
 {
     public class Unit : UnitBase
     {

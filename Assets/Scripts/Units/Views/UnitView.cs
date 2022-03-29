@@ -2,7 +2,6 @@ using System.Collections;
 using DefaultNamespace;
 using DG.Tweening;
 using HexFiled;
-using Units;
 using UnityEngine;
 using Weapons;
 
@@ -33,12 +32,12 @@ namespace Units.Views
 
         protected override IEnumerator Regen()
         {
-            if (_mana >= ((Unit)_unit).UnitData.maxMana)
+            if (_mana >= (( Units.Unit.Unit)_unit).UnitData.maxMana)
             {
                 yield break;
             }
 
-            while (_mana < ((Unit)_unit).UnitData.maxMana)
+            while (_mana <  ((Units.Unit.Unit)_unit).UnitData.maxMana)
             {
                 yield return new WaitForSeconds(1f);
                 _mana += _manaRegen;

@@ -5,6 +5,7 @@ using Units;
 using Units.Views;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using Unit = Units.Unit.Unit;
 
 namespace Items
 {

@@ -75,7 +75,6 @@ namespace Units.Views
 
         public void SetInvisible(bool isVisible)
         {
-            var i = 0;
             transform.GetChilds().ForEach(x =>
             {
                 if (x.gameObject.TryGetComponent(typeof(SkinnedMeshRenderer), out var mesh))
@@ -152,7 +151,7 @@ namespace Units.Views
             return true;
         }
 
-        public void RegenMana()
+        public virtual void RegenMana()
         {
             _mana = _unit.Mana;
             if (_previosRegen != null)

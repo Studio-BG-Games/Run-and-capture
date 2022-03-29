@@ -15,7 +15,7 @@ public class CheatMenu : MonoBehaviour
     [SerializeField] private GameObject grid;
     [SerializeField] private Button buttonPrefab;
     [SerializeField] private GameObject gridPrefab;
-    private Unit _player;
+    private Units.Unit.Unit _player;
     private Data.Data _data;
     private GameObject _itemsPrefab;
     private List<GameObject> _buttons;
@@ -23,7 +23,7 @@ public class CheatMenu : MonoBehaviour
     public void SetPlayerNData(Data.Data data)
     {
         _buttons = new List<GameObject>();
-        _player = (Unit)(HexManager.UnitCurrentCell.FirstOrDefault(unit => ((Unit)unit.Value.unit).IsPlayer).Value.unit);
+        _player = (Units.Unit.Unit)(HexManager.UnitCurrentCell.FirstOrDefault(unit => ((Units.Unit.Unit)unit.Value.unit).IsPlayer).Value.unit);
         _itemsPrefab = new GameObject("CheatedItems");
         
         showButton.onClick.AddListener(() => scrollRect.SetActive(!scrollRect.activeSelf));

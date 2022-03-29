@@ -4,15 +4,13 @@ using Units;
 
 namespace DefaultNamespace.AI
 {
-    public class AIAgent : AIBase
+    public class AIWarior : AIBase
     {
-        public AIAgent(UnitBase unitBase) : base(unitBase)
+        public AIWarior(UnitBase unitBase) : base(unitBase)
         {
-
         }
 
-        public override void FixedExecute()
-        {
+        public override void FixedExecute(){
             if (curentState == BotState.Attack && !_unitBase.IsBusy)
             {
                 _unitBase.Aim(_attackDirection);
@@ -34,7 +32,7 @@ namespace DefaultNamespace.AI
             }
             if (currentPath.Count == 0 && !_unitBase.IsBusy)
             {
-                curentState = Unit.Instance.GetNewBehaviour(this);
+                curentState = Warior.Instance.GetNewBehaviour(this);
             }
         }
 

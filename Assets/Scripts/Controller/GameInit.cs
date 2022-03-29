@@ -1,17 +1,12 @@
-﻿using System.Collections.Generic;
-using AI;
-using CamControl;
+﻿using AI;
 using Chars;
 using DefaultNamespace;
-using DefaultNamespace.AI;
 using GameUI;
 using HexFiled;
 using Items;
-using Units;
 using Units.Wariors;
 using UnityEngine;
-using Weapons;
-using Random = UnityEngine.Random;
+
 
 namespace Controller
 {
@@ -19,7 +14,8 @@ namespace Controller
     {
         public GameInit(Controllers controllers, Data.Data data)
         {
-            new AIManager(data.AIData);
+            new Unit(data.AIData);
+            new Warior(data.AIData);
             var hexGrid = new HexGrid(data.FieldData);
             new MusicController();
             new VFXController();

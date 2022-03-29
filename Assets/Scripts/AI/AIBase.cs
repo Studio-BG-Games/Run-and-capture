@@ -45,32 +45,7 @@ namespace DefaultNamespace.AI
             
         }
         
-        public virtual void FixedExecute()
-        {
-            if (curentState == BotState.Attack && !_unitBase.IsBusy)
-            {
-                _unitBase.Aim(_attackDirection);
-                _unitBase.StartAttack();
-                curentState = AIManager.Instance.GetNewBehaviour(this);
-            }
-            if (currentPath.Count > 0 && !_unitBase.IsBusy)
-            {
-                var dir = currentPath.Dequeue();
-                if (!HexManager.UnitCurrentCell.TryGetValue(_unitBase.Color, out var value))
-                {
-                    return;
-                }
-                while (value.cell == null)
-                {
-                    dir = dir.PlusSixtyDeg();
-                }
-                _unitBase.Move(dir);
-            }
-            if(currentPath.Count == 0 && !_unitBase.IsBusy)
-            {
-                curentState = AIManager.Instance.GetNewBehaviour(this);
-            }
-        }
+        public abstract void FixedExecute();
 
 
         public void Dispose()

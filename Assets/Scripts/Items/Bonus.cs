@@ -1,4 +1,5 @@
-﻿using DefaultNamespace;
+﻿using System;
+using DefaultNamespace;
 using HexFiled;
 using Units;
 using UnityEngine;
@@ -31,7 +32,7 @@ namespace Items
         public GameObject UsisngVFX => usisngVFX;
 
 
-        public void Invoke(Unit unit)
+        public void Invoke(Units.Unit.Unit unit)
         {
             unit.SetUpBonus(duration, value, bonusType);
             var vfx = VFXController.Instance.PlayEffect(usisngVFX, unit.Instance.transform);

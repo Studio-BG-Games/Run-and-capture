@@ -1,6 +1,7 @@
 using Data;
 using DG.Tweening;
 using HexFiled;
+using UnityEngine;
 using Weapons;
 
 namespace Units.Wariors.AbstractsBase
@@ -10,8 +11,9 @@ namespace Units.Wariors.AbstractsBase
         protected Invader(WariorInfo data, Weapon weapon, HexGrid hexGrid, UnitColor spawnerColor) : base(data, weapon, hexGrid, spawnerColor)
         {
         }
-                public override void Move(HexDirection direction)
+        public override void Move(HexDirection direction)
         {
+            if (_cell.GetNeighbor(direction) == null) return;
             base.Move(direction);
             if (_cell.GetNeighbor(direction).Color == Color ||
                 (_cell.GetNeighbor(direction).Color == _easyCaptureColor && _easyCaptureColor != UnitColor.Grey))
@@ -34,7 +36,7 @@ namespace Units.Wariors.AbstractsBase
         public override void StartAttack()
         {
         }
-                public override void SetCell(HexCell cell, bool isInstanceTrans = false, bool isPaintingHex = false)
+        public override void SetCell(HexCell cell, bool isInstanceTrans = false, bool isPaintingHex = false)
         {
             _cell = cell;
             HexManager.UnitCurrentCell[Color] = (cell, this);

@@ -22,7 +22,7 @@ namespace Chars
         private readonly Data.Data _data;
         private readonly Controllers _controllers;
         private readonly UIController _uiController;
-        public Unit Player { get; private set; }
+        public Units.Unit.Unit Player { get; private set; }
 
         public UnitFactory(HexGrid grid, Data.Data data, UIController uiController, PaintedController paintedController,
             Controllers controllers)
@@ -56,7 +56,7 @@ namespace Chars
 
             if (unitInfo.isPlayer)
             {
-                var player = new Unit(unitInfo, _chosenWeapon, _hexGrid, _data);
+                var player = new Units.Unit.Unit(unitInfo, _chosenWeapon, _hexGrid, _data);
                 PlayerControl playerControl = null;
 
                 CameraControl cameraControl =
@@ -86,7 +86,7 @@ namespace Chars
             }
             else
             {
-                var enemy = new Unit(unitInfo,
+                var enemy = new Units.Unit.Unit(unitInfo,
                     _data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid, _data);
 
 
@@ -94,7 +94,7 @@ namespace Chars
 
                 if (unitInfo.isAI)
                 {
-                    AIPatrol agent = new AIPatrol(enemy);
+                    AIWarior agent = new AIWarior(enemy);
                     enemy.OnSpawned += x => _controllers.Add(agent);
                     enemy.OnDeath += x => { _controllers.Remove(agent); };
                 }

@@ -5,6 +5,7 @@ using Items;
 using Units;
 using UnityEngine;
 using UnityEngine.UI;
+using Unit = Units.Unit.Unit;
 
 namespace GameUI
 {
@@ -80,14 +81,14 @@ namespace GameUI
                 switch (Item.Item)
                 {
                     case Bonus bonus:
-                    {
-                        button.onClick.RemoveAllListeners();
-                        bonus.Invoke(_unit);
+                        {
+                            button.onClick.RemoveAllListeners();
+                            bonus.Invoke(_unit);
 
-                        button.onClick.RemoveAllListeners();
-                        button.gameObject.SetActive(false);
-                        break;
-                    }
+                            button.onClick.RemoveAllListeners();
+                            button.gameObject.SetActive(false);
+                            break;
+                        }
                     case Building building:
                         Item.OnItemUsed += () => SwitchButton(button);
                         building.Invoke(Item);
