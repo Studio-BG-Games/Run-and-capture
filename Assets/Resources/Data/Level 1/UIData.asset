@@ -19,3 +19,4 @@ MonoBehaviour:
   inventoryView: {fileID: 1527356263590969195, guid: ff3bc3b17ddefd14eb798b22cf0a854f, type: 3}
   adsMob: {fileID: 4936557783008875079, guid: 85d07d76a184d2446b7055ffc6293eeb, type: 3}
   cheatMenu: {fileID: 791049004453965678, guid: 33deb58e3852451419239c8df4119f91, type: 3}
+  wariorSpawnView: {fileID: 5306195404982712185, guid: 5491a92bf650d0840bc8a356a8463340, type: 3}

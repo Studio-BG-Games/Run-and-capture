@@ -14,10 +14,12 @@ namespace Data
         [SerializeField] private PlayerInventoryView inventoryView;
         [SerializeField] private AdsMob adsMob;
         [SerializeField] private CheatMenu cheatMenu;
+        [SerializeField] private WariorSpawnView wariorSpawnView;
         public List<GameObject> ObjectsToSpawn => _objectsToSpawn;
         public PlayerControlView PlayerControlView => joystickView;
 
         public PlayerInventoryView InventoryView => inventoryView;
+        public WariorSpawnView WariorSpawnView => wariorSpawnView;
 
         public AdsMob AdsMob => adsMob;
 

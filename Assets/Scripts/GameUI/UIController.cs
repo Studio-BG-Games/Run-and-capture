@@ -16,6 +16,7 @@ namespace GameUI
         public AdsMob AdsMob { get; private set; }
 
         public CheatMenu CheatMenu { get; private set; }
+        public WariorSpawnView WariorSpawnView { get; private set; }
 
         public UIController(UIData uiData)
         {
@@ -25,13 +26,14 @@ namespace GameUI
         public void Spawn()
         {
             var canvasGroup = Object.Instantiate(_uiData.Canvas);
-            
+
             PlayerControlView = Object.Instantiate(_uiData.PlayerControlView, canvasGroup.transform);
             PlayerInventoryView = Object.Instantiate(_uiData.InventoryView, canvasGroup.transform);
             _uiData.ObjectsToSpawn.ForEach(x => Object.Instantiate(x, canvasGroup.transform));
             CheatMenu = Object.Instantiate(_uiData.CheatMenu, canvasGroup.transform);
+            WariorSpawnView = Object.Instantiate(_uiData.WariorSpawnView, canvasGroup.transform);
             AdsMob = Object.Instantiate(_uiData.AdsMob, canvasGroup.transform);
-            
+
         }
     }
 }

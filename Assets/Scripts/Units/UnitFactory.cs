@@ -56,7 +56,7 @@ namespace Chars
 
             if (unitInfo.isPlayer)
             {
-                var player = new Units.Unit.Unit(unitInfo, _chosenWeapon, _hexGrid, _data);
+                var player = new Units.Unit.Unit(unitInfo, _chosenWeapon, _hexGrid);
                 PlayerControl playerControl = null;
 
                 CameraControl cameraControl =
@@ -87,7 +87,7 @@ namespace Chars
             else
             {
                 var enemy = new Units.Unit.Unit(unitInfo,
-                    _data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid, _data);
+                    _data.WeaponsData.WeaponsList[Random.Range(0, _data.WeaponsData.WeaponsList.Count - 1)], _hexGrid);
 
 
                 enemy.OnDeath += unit => RandomSpawn(unitInfo);

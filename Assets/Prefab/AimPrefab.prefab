@@ -99,7 +99,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 319
 --- !u!1 &4408587040574959135
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,8 +165,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4007780875627063171, guid: e816ecf82b202d0449267fe992da842e,
-    type: 3}
+  m_Sprite: {fileID: 4007780875627063171, guid: e816ecf82b202d0449267fe992da842e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -10,7 +10,7 @@ namespace Data
     public class WariorsData : ScriptableObject
     {
         [SerializeField] private List<WariorInfo> _wariors;
-        public List<WariorInfo> Wariors { get { return _wariors; } }
+        public WariorInfo Wariors { get { return _wariors[0]; } }
     }
 
     [Serializable]

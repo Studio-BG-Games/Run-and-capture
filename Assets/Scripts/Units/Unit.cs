@@ -21,14 +21,12 @@ namespace Units.Unit
     {
         private UnitInfo _unitData;
         public UnitInfo UnitData => _unitData;
-        private WariorsData wariorData;
         public bool IsPlayer => _unitData.isPlayer;
         public event Action<ItemContainer> OnItemPickUp;
-        public event WariorFactory.SpawnWarior OnShoot;
         private List<UnitBase> NotEnemy;
 
 
-        public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid, Data.Data data)
+        public Unit(UnitInfo unitData, Weapon weapon, HexGrid hexGrid)
         {
             Initialize(weapon, hexGrid);
             _unitData = unitData;
@@ -36,7 +34,6 @@ namespace Units.Unit
             maxHP = _unitData.maxHP;
             maxMana = _unitData.maxMana;
             InventoryCapacity = _unitData.inventoryCapacity;
-            wariorData = data.WariorsData;
         }
 
         public override void Retreet(HexDirection dir)
@@ -238,8 +235,6 @@ namespace Units.Unit
             Aim(_direction);
 
             _weapon.Fire(_instance.transform, _direction, this);
-            if (IsPlayer)
-                OnShoot.Invoke(wariorData.Wariors[1], _unitData.color);
         }
 
         protected override void UpdateBarCanvas()
